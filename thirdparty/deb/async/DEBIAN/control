@@ -1,0 +1,10 @@
+Package: python3-async-timeout
+Version: 3.0.1
+Architecture: amd64
+Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>
+Installed-Size: 39
+Depends: python3:any (>= 3.5~)
+Section: python
+Priority: optional
+Description: Timeout context manager for asyncio programs
+ Summary: Timeout context manager for asyncio programs

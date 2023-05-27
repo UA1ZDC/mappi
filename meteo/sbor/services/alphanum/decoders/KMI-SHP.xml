@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="KMI-SHP" text="Штормовое предупреждение"  category="47">
+  <MessageSections>9994((?:4|5|9)\s*\d{5}\s*\d{5}\s*(?:44444)?\s*(?:\d{5}|33333\s*99\d{3}\s*\d{5})\s*(?:(?:\d{5}|33333\s*99\d{3}\s*\d{5}\s*)*\s*99999)?)\s*((?:0\d{4}\s*(?:(?!0)[\d/]{5}\s*)*)*)</MessageSections>
+    <Section number="0" text="" >
+    <GroupValues>(4|5|9)\s*(\d{2})(\d{2})(\d)\s*(\d{2})(\d{2})(\d)\s*(?:(44)444)?\s*(?:(\d{2})(\d{3})|33333\s*99(\d{3})\s*([1357/])([\d/]{4}))\s*(?:(?:\d{5}|33333\s*99\d{3}\s*\d{5}\s*)*\s*99999)?</GroupValues>
+    <Value number="1"  descrName="UNK"   text="" />
+    <Value number="2"  descrName="YY"    text="" />
+    <Value number="3"  descrName="GG"    text="" />
+    <Value number="4"  descrName="gg_d"  text="" />
+    <Value number="5"  descrName="YY"    text="" />
+    <Value number="6"  descrName="GG"    text="" />
+    <Value number="7"  descrName="gg_d"  text="" />
+    <Value number="8"  descrName="station_type" text="" />
+    <Value number="9"  descrName="II"    text="" />
+    <Value number="10" descrName="iii"   text="" />
+    <Value number="11" descrName="LaLaLa"   text="" />
+    <Value number="12" descrName="Qc"       text="" />
+    <Value number="13" descrName="LoLoLoLo" text="" />
+    </Section>
+  <Section number="3" text="" >
+    <GroupValues>0([\d/]{2})(?:(3)(\d)\s*([\d/]{5})|((?!3)[\d/])([\d/])\s*((?:[14789][\d/]{4}\s*)*))</GroupValues>
+    <Value number="1"  descrName="ww"   text="" />
+    <Value number="1"  descrName="UNK"   text="" />
+    <Value number="1"  descrName="UNK"   text="" />
+    <Group number="1" text="">
+      <GroupValues>([\d/])()()([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="0"  descrName="N"   text="cloud cover (total)" />
+      <Value number="1"  descrName="t_sign" num="8" default="2" text="time significance"	/>
+      <Value number="2"  descrName="ggp" num="8" default="-10" text="wind direction"	/>
+      <Value number="3"  descrName="dd"  num="8" text="wind direction"	/>
+      <Value number="4"  descrName="ff"  num="8" text="wind velocity"	/>     
+    </Group>    
+    <Value number="1"  descrName="UNK"   text="" />
+    <Value number="1"  descrName="UNK"   text="" />
+    <Group number="2" text="">
+      <GroupValues>(?:1([\d/]{4})\s*|7([\d/]{2})()([\d/])([\d/])\s*|8([\d/])([\d/])([\d/])([\d/])\s*|9([\d/]{2})([\d/]{2})\s*)|44([\d/])([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="snTTT"    text="Temperature/dry-bulb temperature" />
+      <Value number="3"  descrName="ww"  num="7" text="Present weather" />
+      <Value number="4"  descrName="GGp" num="9" default="-3" text="Срок"  />
+      <Value number="5"  descrName="W1"  num="9" text="Past weather 1"  />
+      <Value number="6"  descrName="W2"  num="9" text="Past weather 2"  />
+      <Value number="7"  descrName="Nh"  num="1" text="Cloud amount"      />
+      <Value number="8"  descrName="CL"  num="1" text="Low cloud type"	   />
+      <Value number="9"  descrName="CM"  num="1" text="Medium cloud type" />
+      <Value number="10" descrName="CH"  num="1" text="High cloud type"   />
+      <Value number="11"  descrName="hshs_f" text="Высота нижней границы облачности, измеренная инструментально"/>
+      <Value number="12"  descrName="htht"   text="Высота верхней границы облачности, измеренная инструментально"/>
+      <Value number="1"  descrName="hgr" num="1" text="Высота нижней границы облачности" />
+      <Value number="2"  descrName="VV"  text="Видимость" />
+    </Group>    
+  </Section>
+</Message>

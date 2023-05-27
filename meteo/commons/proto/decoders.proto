@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+import "msgparser.proto";
+
+package meteo.decoders;
+
+//! Телеграмма
+message  DecodeRequest {
+  required bytes tlg = 1;
+}
+
+//! Раскодированные данные
+message DecodedMsg {
+  repeated bytes data = 1;   //!< Результат раскодирования
+  optional string error = 2; //!< Результат выполнения запроса
+}
+
+service DecodersRpc {
+  rpc GetDecodedMsg( DecodeRequest ) returns ( DecodedMsg ); //!< Запрос на раскодирование данных
+  rpc GetDecodedMsgDt( meteo.tlg.MessageNew ) returns ( DecodedMsg ); //!< Запрос на раскодирование данных
+}

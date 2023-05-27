@@ -1,0 +1,14 @@
+name: "av12.map"
+title: "Бюллетень погоды АВ-12"
+center: 4
+formal {
+    template: "av12.odt"
+    name: "Бюллетень погоды АВ-12"
+    module_path: "av12.py"
+    format: kOdt
+    icon_path: ":product/icons/weather_journal.png"
+}
+ 
+document {
+  doctype: kFormalDocument
+}

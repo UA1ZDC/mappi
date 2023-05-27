@@ -1,0 +1,12 @@
+name: "stormvoiska.map"
+title: "Сведения о количестве разработанных ШП"
+formal {
+    template: "stormvoiska.odt"
+    name: "Сведения о количестве разработанных ШП"
+    module_path: "stormvoiska.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

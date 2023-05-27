@@ -1,0 +1,10 @@
+<bookcase color="2">
+  <books>
+    <book name="Война и мир" pages="1368">
+      <card id="100"/>
+    </book>
+    <book name="Собрание сочинений" pages="325">
+      <card id="101"/>
+    </book>
+  </books>
+</bookcase>

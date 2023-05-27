@@ -1,0 +1,11 @@
+{
+  "distinct": "obanal",
+  "key": "model",
+  "query": {
+      "center":     {"$in": @center@},
+      "descr":      {"$in": @descr@},
+      "hour":       {"$in": @hour@},
+      "level":      {"$in": @level@},
+      "level_type":  {"$in": @level_type@}
+   }
+}

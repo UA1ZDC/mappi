@@ -1,0 +1,12 @@
+name: "adp1.map"
+title: "Аэрологическая диаграмма"
+formal {
+    template: "adp1.odt"
+    name: "Аэрологическая диаграмма"
+    module_path: "adp1.py"
+    format: kOdt
+    icon_path: ":product/icons/aero.png"
+}
+document {
+  doctype: kFormalDocument
+}

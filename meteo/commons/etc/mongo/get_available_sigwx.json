@@ -1,0 +1,21 @@
+{
+  "aggregate": "flight_wx",
+  "pipeline": [
+    { "$match": {  "dt": { "$gte": @date_start@, "$lte": @date_end@ } } },
+    { "$group":
+      {
+        "_id":
+        { "dt": "$dt",
+          "dt_beg": "$dt_beg",
+          "dt_end": "$dt_end",
+          "center": "$center",
+          "level_lo": "$level_lo",
+          "level_hi": "$level_hi"
+        },
+        "count": { "$sum": 1 },
+        "fileid": { "$push": "$fileid" }
+      } },
+      {"$sort": {"dt" : -1, "center": 1}}
+  ],
+  "cursor": { "batchSize": 1 }
+}

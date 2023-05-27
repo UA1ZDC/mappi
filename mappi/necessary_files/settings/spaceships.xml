@@ -1,0 +1,867 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <recieveParams complex="true" type="group" value="true" source="this" text="Параметры приёма">
+    <generalRecvParam complex="true" type="group" value="true" source="this" valueSrc="generalRecvParam" text="Общие параметры">
+      <endPlaceAngle maxValue="180" type="spin" value="10" source="this" valueSrc="endPlaceAngle" text="Угол места в кульминации (град.)" minValue="0"/>
+      <priorityOnConflict values="восточный регион;западный регион;продолжительность сеанса;начало сеанса;" type="combo" value="0" source="this" valueSrc="priorityOnConflict" text="Приоритеты при конфликтах"/>
+      <schedMode values="по расписанию;по плану;" type="combo" value="0" source="this" valueSrc="schedMode" text="Режим работы"/>
+      <recvMode values="Низкое разрешение;Высокое разрешение;" type="combo" value="0" source="this" valueSrc="recvMode" text="Режим приёма"/>
+      <systemTimeCorrection type="bool" value="true" source="this" valueSrc="systemTimeCorrection" text="Коррекция системного времени"/>
+      <plusWefax type="bool" value="true" source="this" valueSrc="plusWefax" text="+WEFAX (LRIT)"/>
+      <plusHrit type="bool" value="false" source="this" valueSrc="plusHrit" text="+HRIT"/>
+      <autoTreat type="bool" value="false" source="this" valueSrc="autoTreat" text="Автоматическая обработка данных"/>
+    </generalRecvParam>
+    <hrptRecvParam complex="true" type="group" value="true" source="this" valueSrc="hrptRecvParam" text="HRPT (CHRPT)">
+      <startPlaceAngleHrpt maxValue="180" type="spin" value="5" source="this" valueSrc="startPlaceAngleHrpt" text="Начальный угол места (град.)" minValue="0"/>
+    </hrptRecvParam>
+    <aptRecvParam complex="true" type="group" value="true" source="this" valueSrc="aptRecvParam" text="APT (LRPT)">
+      <!--item valueSrc="resolutionApt" values="высокое-2400 пикс./строка;среднее-1200 пикс./строка;" type="1" source="this" value="0" text="Разрешение" /-->
+      <startPlaceAngleApt maxValue="180" type="spin" value="5" source="this" valueSrc="startPlaceAngleApt" text="Начальный угол места (град.)" minValue="0"/>
+      <!--item valueSrc="autoRegulationApt" type="2" source="this" value="true" text="Автоматическая регулировка усиления" /-->
+      <amplificationFactorApt maxValue="255" type="spin" value="100" source="this" valueSrc="amplificationFactorApt" text="Коэффициент усиления" minValue="0"/>
+    </aptRecvParam>
+    <wefaxRecvParam complex="true" type="group" value="true" source="this" valueSrc="wefaxRecvParam" text="WEFAX (LRIT)">
+      <!--item valueSrc="autoRegulationWefax" type="2" source="this" value="true" text="Автоматическая регулировка усиления" /-->
+      <amplificationFactorWefax maxValue="255" type="spin" value="240" source="this" valueSrc="amplificationFactorWefax" text="Коэффициент усиления" minValue="0"/>
+    </wefaxRecvParam>
+  </recieveParams>
+  <KA type="group" value="true" source="this" text="Используемые КА">
+    <orbitalSpaceships columnName="Имя" chiefFile="this" id1="satParam" forEdit="1" hideOnDel="true" listType="0" windowName="Орбитальные аппараты" templateFile="satParamTemplate.xml" type="tabs" complex="true" buttonName="Выбрать" source="this" valueSrc="orbitalSpaceships" filepath1="./lists/orbitalshipsList.xml" isEditable="true" text="Орбитальные аппараты">
+      <satParam value="true" complex="true" type="group" source="this" valueSrc="satParam" text="FENGYUN 1D">
+        <shortName value="FY-1D" type="string" source="this" valueSrc="shortName" text="Краткое наименование"/>
+        <hrptAddr maxValue="999" value="13" type="spin" source="this" valueSrc="hrptAddr" text="Номер в кадре" minValue="0"/>
+        <coefPath value="FY-1D.txt" type="path" source="this" valueSrc="coefPath" text="Файл с коэффициентами калибровки"/>
+        <devices chiefFile="devices.xml" templateFile="devTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="devices" text="Приборы спутника">
+          <MVISR value="true" complex="true" type="group" source="this" valueSrc="device" text="MVISR">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themVegetation value="true" complex="true" type="group" source="this" valueSrc="themVegetation" text="Индекс вегетации">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" chiefNode="devices/devices/MVISR/channels" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <template value="true" tagName="channel$" type="bool" source="this" text="Канал $"/>
+                  <channel0 value="true" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel9 value="true" type="bool" source="this" valueSrc="channel" text="Канал 9"/>
+                </themChannels>
+              </themVegetation>
+              <themChannel value="true" complex="true" type="group" source="this" valueSrc="themChannel" text="Канал">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" chiefNode="devices/devices/MVISR/channels" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 type="bool" value="false" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 type="bool" value="false" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 type="bool" value="false" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 type="bool" value="false" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 type="bool" value="false" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 type="bool" value="false" source="this" valueSrc="channel" text="Канал 5"/>
+                  <channel6 type="bool" value="false" source="this" valueSrc="channel" text="Канал 6"/>
+                  <channel7 type="bool" value="false" source="this" valueSrc="channel" text="Канал 7"/>
+                  <channel8 type="bool" value="false" source="this" valueSrc="channel" text="Канал 8"/>
+                  <channel9 type="bool" value="false" source="this" valueSrc="channel" text="Канал 9"/>
+                </themChannels>
+              </themChannel>
+              <themFalsecolor value="true" complex="true" type="group" source="this" valueSrc="themFalsecolor" text="Цветные изображения">
+                <themFalseAlgs addable="true" templateFile="templatesList.xml" complex="true" type="group" value="true" source="this" valueSrc="themFalseAlgs" text="Алгоритмы">
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Natural colors">
+                    <item type="group" value="true" text="RGB"/>
+                    <redColor value="K6" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Night microphysics">
+                    <item type="group" value="true" text="RGB"/>
+                    <redColor value="-K5+K4" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="-K4+K3" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="255-K4" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Day microphysics">
+                    <item type="group" value="true" text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="255-K3" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="255-K4" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Day fog-snow">
+                    <item type="group" value="true" text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K6" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="255-K3" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Snow">
+                    <item type="group" value="true" text="RGB"/>
+                    <redColor value="(3*K1-K4)/2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="(3*K1+K4)/2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1-K6" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseHsvAlgParam value="true" complex="true" type="group" source="this" index="1" valueSrc="falseHsvAlgParam" text="False">
+                    <item type="group" value="true" text="HSV"/>
+                    <hue value="K4" type="string" source="this" valueSrc="hue" text="Тон"/>
+                    <saturation value="K1/2" type="string" source="this" valueSrc="saturation" text="Насыщенность"/>
+                    <value value="K2" type="string" source="this" valueSrc="value" text="Яркость"/>
+                  </falseHsvAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="2">
+                    <item type="group" value="true" text="RGB"/>
+                    <redColor value="K1" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K9" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K7" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="3">
+                    <item type="group" value="true" text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K1" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="4">
+                    <item type="group" value="true" text="RGB"/>
+                    <redColor value="K1" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K6" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                </themFalseAlgs>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="true" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="true" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="true" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="true" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="true" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="true" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                  <channel6 value="true" type="bool" source="this" valueSrc="channel" text="Канал 6"/>
+                  <channel7 value="true" type="bool" source="this" valueSrc="channel" text="Канал 7"/>
+                  <channel8 value="true" type="bool" source="this" valueSrc="channel" text="Канал 8"/>
+                  <channel9 value="true" type="bool" source="this" valueSrc="channel" text="Канал 9"/>
+                </themChannels>
+              </themFalsecolor>
+            </algs>
+          </MVISR>
+        </devices>
+        <recvModes complex="true" type="group" value="true" valueSrc="recvModes" text="Режимы приёма">
+          <highRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="6" complex="true" type="combo" source="this" valueSrc="highRes" text="Высокое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1700.4" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </highRes>
+          <lowRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="1" complex="true" type="combo" source="this" valueSrc="lowRes" text="Низкое разрешение">
+            <enabled value="false" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1000" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </lowRes>
+        </recvModes>
+      </satParam>
+      <satParam hidden="" value="true" complex="true" type="group" source="this" valueSrc="satParam" text="METEOR-M 1">
+        <shortName value="M-M1" type="string" source="this" valueSrc="shortName" text="Краткое наименование"/>
+        <hrptAddr maxValue="999" value="0" type="spin" source="this" valueSrc="hrptAddr" text="Номер в кадре" minValue="0"/>
+        <coefPath value="meteor1.txt" type="path" source="this" valueSrc="coefPath" text="Файл с коэффициентами калибровки"/>
+        <devices chiefFile="devices.xml" templateFile="devTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="devices" text="Приборы спутника">
+          <MSU_MR value="true" complex="true" type="group" source="this" valueSrc="device" text="MSU_MR">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themChannel value="true" complex="true" type="group" source="this" valueSrc="themChannel" text="Канал">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themChannel>
+              <themFalsecolor value="true" complex="true" type="group" source="this" valueSrc="themFalsecolor" text="Цветные изображения">
+                <themFalseAlgs addable="true" templateFile="templatesList.xml" complex="true" type="group" value="true" source="this" valueSrc="themFalseAlgs" text="Алгоритмы">
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Natural colors">
+                    <item text="RGB"/>
+                    <redColor value="K3" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Night microphysics">
+                    <item text="RGB"/>
+                    <redColor value="-K6+K5" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="-K5+K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="255-K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Day microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="255-K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="255-K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Day fog-snow">
+                    <item text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K3" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="255-K4" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="Snow">
+                    <item text="RGB"/>
+                    <redColor value="(3*K1-K5)/2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="(3*K1+K5)/2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1-K3" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="False">
+                    <item text="RGB"/>
+                    <redColor value="K5" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K1/2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K2" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="1">
+                    <item text="RGB"/>
+                    <redColor value="K1" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K1" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K2" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="2">
+                    <item text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K1" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                </themFalseAlgs>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="ch0" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="ch1" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="ch2" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="ch3" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="ch4" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="ch5" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themFalsecolor>
+            </algs>
+          </MSU_MR>
+        </devices>
+        <recvModes complex="true" type="group" value="true" valueSrc="recvModes" text="Режимы приёма">
+          <highRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="true" complex="true" type="group" source="this" valueSrc="highRes" text="Высокое разрешение">
+            <enabled value="true" type="2" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1700" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </highRes>
+          <lowRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="true" complex="true" type="group" source="this" valueSrc="lowRes" text="Низкое разрешение">
+            <enabled value="false" type="2" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1000" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </lowRes>
+        </recvModes>
+      </satParam>
+      <satParam hidden="true" value="true" complex="true" type="group" source="this" valueSrc="satParam" text="NOAA 17">
+        <shortName value="N17" type="string" source="this" valueSrc="shortName" text="Краткое наименование"/>
+        <hrptAddr value="11" type="string" source="this" valueSrc="hrptAddr" text="Номер в кадре"/>
+        <coefPath value="N17.txt" type="string" source="this" valueSrc="coefPath" text="Файл с коэффициентами калибровки"/>
+        <devices chiefFile="devices.xml" templateFile="devTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="devices" text="Приборы спутника">
+          <AMSU_A1 value="true" complex="true" type="group" source="this" valueSrc="device" text="AMSU-A1">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="7" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </AMSU_A1>
+          <AMSU_A2 value="true" complex="true" type="group" source="this" valueSrc="device" text="AMSU-A2">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="7" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </AMSU_A2>
+          <AMSU_B value="true" complex="true" type="group" source="this" valueSrc="device" text="AMSU-B">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="7" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </AMSU_B>
+          <AVHRR_3 value="true" complex="true" type="group" source="this" valueSrc="device" text="AVHRR/3">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themVegetation value="true" complex="true" type="group" source="this" valueSrc="themVegetation" text="Индекс вегетации">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="ch0" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="ch1" source="this" valueSrc="channel" text="Канал 1"/>
+                </themChannels>
+              </themVegetation>
+              <themChannel value="true" complex="true" type="group" source="this" valueSrc="themChannel" text="Канал">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themChannel>
+              <themFire value="true" complex="true" type="group" source="this" valueSrc="themFire" text="Индекс пожароопасности">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                </themChannels>
+              </themFire>
+              <themTemperature value="true" complex="true" type="group" source="this" valueSrc="themTemperature" text="Температура подстилающей поверхности">
+                <PolynA0 value="0.97981" type="string" source="this" valueSrc="PolynA0" text="a0"/>
+                <PolynA1 value="0" type="string" source="this" valueSrc="PolynA1" text="a1"/>
+                <PolynB0 value="0" type="string" source="this" valueSrc="PolynB0" text="b0"/>
+                <PolynB1 value="1.12134" type="string" source="this" valueSrc="PolynB1" text="b1"/>
+                <PolynB2 value="0.08100" type="string" source="this" valueSrc="PolynB2" text="b2"/>
+                <PolynC0 value="0.95857" type="string" source="this" valueSrc="PolynC0" text="c0"/>
+                <PolynC1 value="0.0" type="string" source="this" valueSrc="PolynC1" text="c1"/>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themTemperature>
+              <themFalsecolor value="true" complex="true" type="group" source="this" valueSrc="themFalsecolor" text="Цветные изображения">
+                <themFalseAlgs addable="true" templateFile="templatesList.xml" complex="true" type="group" value="true" source="this" valueSrc="themFalseAlgs" text="Алгоритмы">
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="Natural colors">
+                    <item text="RGB"/>
+                    <redColor value="K3" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="Night microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K6-K5" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K5-K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="Day microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseHsvAlgParam value="true" complex="true" type="group" source="this" index="1" valueSrc="falseHsvAlgParam" text="False">
+                    <item text="HSV"/>
+                    <hue value="335-K5" type="string" source="this" valueSrc="hue" text="Тон"/>
+                    <saturation value="K1/2" type="string" source="this" valueSrc="saturation" text="Насыщенность"/>
+                    <value value="K2" type="string" source="this" valueSrc="value" text="Яркость"/>
+                  </falseHsvAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Snow">
+                    <item text="RGB"/>
+                    <redColor value="(3*K1-335+K5)/2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="(3*K1+335-K5)/2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1-K3" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                </themFalseAlgs>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themFalsecolor>
+              <themCloudmask value="true" complex="true" type="group" source="this" valueSrc="themCloudmask" text="Маска облачности">
+                <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Автоматический расчёт"/>
+                <conditions addable="true" templateFile="cloudmaskCondTemplate.xml" complex="true" type="group" value="true" source="this" valueSrc="conditions" text="Условия">
+                  <cloudMaskCond value="true" complex="true" type="group" index="0" source="this" valueSrc="cloudMaskCond" text="1">
+                    <snowNight value="0" type="string" source="this" valueSrc="snowNight" text="Снег (ночь)"/>
+                    <snowDay value="0" type="string" source="this" valueSrc="snowDay" text="Снег (день)"/>
+                    <iceNight value="0" type="string" source="this" valueSrc="iceNight" text="Лёд (ночь)"/>
+                    <iceDay value="0" type="string" source="this" valueSrc="iceDay" text="Лёд (день)"/>
+                    <overcastLandNight value="K2>=8ANDK1>=8AND(K4-K5)>=3.5" type="string" source="this" valueSrc="overcastLandNight" text="Облачность (ночь-суша)"/>
+                    <overcastLandDay value="K2>=8ANDK1>=8AND(K4-K5)>=3.5" type="string" source="this" valueSrc="overcastLandDay" text="Облачность (день-суша)"/>
+                    <overcastWaterNight value="K2>=8ANDK1>=8AND(K4-K5)>=3.5" type="string" source="this" valueSrc="overcastWaterNight" text="Облачность (ночь-вода)"/>
+                    <overcastWaterDay value="K2>=8ANDK1>=8AND(K4-K5)>=3.5" type="string" source="this" valueSrc="overcastWaterDay" text="Облачность (день-вода)"/>
+                  </cloudMaskCond>
+                </conditions>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themCloudmask>
+              <themProfiler value="true" complex="true" type="group" source="this" valueSrc="themProfiler" text="Расчёт вертикального профиля атмосферы">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                </themChannels>
+              </themProfiler>
+            </algs>
+          </AVHRR_3>
+          <HIRS_3 value="true" complex="true" type="group" source="this" valueSrc="device" text="HIRS/3">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </HIRS_3>
+          <SEM_2 value="true" complex="true" type="group" source="this" valueSrc="device" text="SEM-2">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themGeophys value="true" complex="true" type="group" source="this" valueSrc="themGeophys" text="Таблица геофизических величин">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                </themChannels>
+              </themGeophys>
+            </algs>
+          </SEM_2>
+        </devices>
+        <recvModes complex="true" type="group" value="true" valueSrc="recvModes" text="Режимы приёма">
+          <highRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" complex="true" type="combo" source="this" valueSrc="highRes" text="Высокое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1698" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </highRes>
+          <lowRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="4" complex="true" type="combo" source="this" valueSrc="lowRes" text="Низкое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="137.5" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </lowRes>
+        </recvModes>
+      </satParam>
+      <satParam value="true" complex="true" type="group" source="this" valueSrc="satParam" text="NOAA 18">
+        <shortName value="N18" type="string" source="this" valueSrc="shortName" text="Краткое наименование"/>
+        <hrptAddr value="13" type="string" source="this" valueSrc="hrptAddr" text="Номер в кадре"/>
+        <coefPath value="N18.txt" type="string" source="this" valueSrc="coefPath" text="Файл с коэффициентами калибровки"/>
+        <devices chiefFile="devices.xml" templateFile="devTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="devices" text="Приборы спутника">
+          <AVHRR_3 value="true" complex="true" type="group" source="this" valueSrc="device" text="AVHRR/3">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <!--item complex="true" valueSrc="themCloudform" hidden="true" source="this" value="th6" text="Форма облачности" >
+                <item complex="true" valueSrc="themChannels" chiefFile="channels.xml" buttonName="Выбрать" type="7" source="this" text="Каналы тематической обработки" />
+              </item-->
+              <themFire value="true" complex="true" type="group" source="this" valueSrc="themFire" text="Индекс пожароопасности">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                </themChannels>
+              </themFire>
+              <themVegetation value="true" complex="true" type="group" source="this" valueSrc="themVegetation" text="Индекс вегетации">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                </themChannels>
+              </themVegetation>
+              <themChannel value="true" complex="true" type="group" source="this" valueSrc="themChannel" text="Канал">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themChannel>
+              <themTemperature value="true" complex="true" type="group" source="this" valueSrc="themTemperature" text="Температура подстилающей поверхности">
+                <PolynA0 value="0.96163" type="string" source="this" valueSrc="PolynA0" text="a0"/>
+                <PolynA1 value="0" type="string" source="this" valueSrc="PolynA1" text="a1"/>
+                <PolynB0 value="0" type="string" source="this" valueSrc="PolynB0" text="b0"/>
+                <PolynB1 value="0.89572" type="string" source="this" valueSrc="PolynB1" text="b1"/>
+                <PolynB2 value="0.07080" type="string" source="this" valueSrc="PolynB2" text="b2"/>
+                <PolynC0 value="0.92201" type="string" source="this" valueSrc="PolynC0" text="c0"/>
+                <PolynC1 value="0" type="string" source="this" valueSrc="PolynC1" text="c1"/>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themTemperature>
+              <themFalsecolor value="true" complex="true" type="group" source="this" valueSrc="themFalsecolor" text="Цветные изображения">
+                <themFalseAlgs addable="true" templateFile="templatesList.xml" complex="true" type="group" value="true" source="this" valueSrc="themFalseAlgs" text="Алгоритмы">
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="1">
+                    <item text="RGB"/>
+                    <redColor value="K1" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K1" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K2" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Natural colors">
+                    <item text="RGB"/>
+                    <redColor value="K3" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Night microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K6-K5" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K5-K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Day microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseHsvAlgParam value="true" complex="true" type="group" index="1" source="this" valueSrc="falseHsvAlgParam" text="False">
+                    <item text="HSV"/>
+                    <hue value="335-K5" type="string" source="this" valueSrc="hue" text="Тон"/>
+                    <saturation value="K1/2" type="string" source="this" valueSrc="saturation" text="Насыщенность"/>
+                    <value value="K2" type="string" source="this" valueSrc="value" text="Яркость"/>
+                  </falseHsvAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="Snow">
+                    <item text="RGB"/>
+                    <redColor value="(3*K1-335+K5)/2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="(3*K1+335-K5)/2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1-K3" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                </themFalseAlgs>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themFalsecolor>
+              <themCloudmask value="true" complex="true" type="group" source="this" valueSrc="themCloudmask" text="Маска облачности">
+                <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Автоматический расчёт"/>
+                <conditions addable="true" templateFile="cloudmaskCondTemplate.xml" complex="true" type="string" value="" source="this" valueSrc="conditions" text="Условия"/>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themCloudmask>
+              <themProfiler value="true" complex="true" type="group" source="this" valueSrc="themProfiler" text="Расчёт вертикального профиля атмосферы">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                </themChannels>
+              </themProfiler>
+              <themGeophys hidden="true" value="true" complex="true" type="group" source="this" valueSrc="themGeophys" text="Таблица геофизических величин">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                </themChannels>
+              </themGeophys>
+            </algs>
+          </AVHRR_3>
+          <HIRS_4 value="true" complex="true" type="group" source="this" valueSrc="device" text="HIRS/4">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </HIRS_4>
+          <MHS value="true" complex="true" type="group" source="this" valueSrc="device" text="MHS">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </MHS>
+          <SEM_2 value="true" complex="true" type="group" source="this" valueSrc="device" text="SEM-2">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themGeophys value="th8" complex="true" type="string" source="this" valueSrc="themGeophys" text="Таблица геофизических величин">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                </themChannels>
+              </themGeophys>
+            </algs>
+          </SEM_2>
+          <AMSU_A1 value="true" complex="true" type="group" source="this" valueSrc="device" text="AMSU-A1">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </AMSU_A1>
+          <AMSU_A2 value="true" complex="true" type="group" source="this" valueSrc="device" text="AMSU-A2">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </AMSU_A2>
+        </devices>
+        <recvModes complex="true" type="group" value="true" valueSrc="recvModes" text="Режимы приёма">
+          <highRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" complex="true" type="combo" source="this" valueSrc="highRes" text="Высокое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1707" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </highRes>
+          <lowRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="true" complex="true" type="group" source="this" valueSrc="lowRes" text="Низкое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="137.91" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </lowRes>
+        </recvModes>
+      </satParam>
+      <satParam value="true" complex="true" type="group" source="this" valueSrc="satParam" text="NOAA 19">
+        <shortName itemAddr="0x9f9d9c0" value="N19" type="string" source="this" valueSrc="shortName" text="Краткое наименование"/>
+        <hrptAddr itemAddr="0x9f9e648" value="15" type="string" source="this" valueSrc="hrptAddr" text="Номер в кадре"/>
+        <coefPath itemAddr="0x9fa00a0" value="N19.txt" type="string" source="this" valueSrc="coefPath" text="Файл с коэффициентами калибровки"/>
+        <devices chiefFile="devices.xml" templateFile="devTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="devices" text="Приборы спутника">
+          <HIRS_4 value="true" complex="true" type="group" source="this" valueSrc="device" text="HIRS/4">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </HIRS_4>
+          <AVHRR_3 value="true" complex="true" type="group" source="this" valueSrc="device" text="AVHRR/3">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themFalsecolor value="true" complex="true" type="group" source="this" valueSrc="themFalsecolor" text="Цветные изображения">
+                <themFalseAlgs addable="true" templateFile="templatesList.xml" complex="true" type="group" value="true" source="this" valueSrc="themFalseAlgs" text="Алгоритмы">
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="1">
+                    <item text="RGB"/>
+                    <redColor value="K1" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K1" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K2" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Natural colors">
+                    <item text="RGB"/>
+                    <redColor value="K3" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Night microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K6-K5" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K5-K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Day microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseHsvAlgParam value="true" complex="true" type="group" index="1" source="this" valueSrc="falseHsvAlgParam" text="False">
+                    <item text="HSV"/>
+                    <hue value="335-K5" type="string" source="this" valueSrc="hue" text="Тон"/>
+                    <saturation value="K1/2" type="string" source="this" valueSrc="saturation" text="Насыщенность"/>
+                    <value value="K2" type="string" source="this" valueSrc="value" text="Яркость"/>
+                  </falseHsvAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="Snow">
+                    <item text="RGB"/>
+                    <redColor value="(3*K1-335+K5)/2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="(3*K1+335-K5)/2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1-K3" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                </themFalseAlgs>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themFalsecolor>
+              <themTemperature value="th2" complex="true" type="string" source="this" valueSrc="themTemperature" text="Температура подстилающей поверхности">
+                <PolynA0 value="0.96832" type="string" source="this" valueSrc="PolynA0" text="a0"/>
+                <PolynA1 value="0" type="string" source="this" valueSrc="PolynA1" text="a1"/>
+                <PolynB0 value="0" type="string" source="this" valueSrc="PolynB0" text="b0"/>
+                <PolynB1 value="0.05513" type="string" source="this" valueSrc="PolynB1" text="b1"/>
+                <PolynB2 value="0.81105" type="string" source="this" valueSrc="PolynB2" text="b2"/>
+                <PolynC0 value="1.5673" type="string" source="this" valueSrc="PolynC0" text="c0"/>
+                <PolynC1 value="0.302" type="string" source="this" valueSrc="PolynC1" text="c1"/>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themTemperature>
+              <themVegetation value="th3" complex="true" type="string" source="this" valueSrc="themVegetation" text="Индекс вегетации">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                </themChannels>
+              </themVegetation>
+              <themFire value="true" complex="true" type="group" source="this" valueSrc="themFire" text="Индекс пожароопасности">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                </themChannels>
+              </themFire>
+              <themChannel value="true" complex="true" type="group" source="this" valueSrc="themChannel" text="Канал">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themChannel>
+              <themCloudmask value="th5" complex="true" type="string" source="this" valueSrc="themCloudmask" text="Маска облачности">
+                <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Автоматический расчёт"/>
+                <conditions addable="true" templateFile="cloudmaskCondTemplate.xml" complex="true" source="this" valueSrc="conditions" text="Условия"/>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themCloudmask>
+              <themProfiler value="true" complex="true" type="group" source="this" valueSrc="themProfiler" text="Расчёт вертикального профиля атмосферы">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                </themChannels>
+              </themProfiler>
+              <themGeophys hidden="true" value="true" complex="true" type="group" source="this" valueSrc="themGeophys" text="Таблица геофизических величин">
+                <themChannels chiefFile="channels.xml" complex="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки"/>
+              </themGeophys>
+            </algs>
+          </AVHRR_3>
+          <AMSU_A1 value="true" complex="true" type="group" source="this" valueSrc="device" text="AMSU-A1">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </AMSU_A1>
+          <AMSU_A2 value="true" complex="true" type="group" source="this" valueSrc="device" text="AMSU-A2">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </AMSU_A2>
+          <MHS value="true" complex="true" type="group" source="this" valueSrc="device" text="MHS">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="string" value="" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки"/>
+          </MHS>
+          <SEM_2 value="true" complex="true" type="group" source="this" valueSrc="device" text="SEM-2">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themGeophys value="th8" complex="true" type="string" source="this" valueSrc="themGeophys" text="Таблица геофизических величин">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                </themChannels>
+              </themGeophys>
+            </algs>
+          </SEM_2>
+        </devices>
+        <recvModes complex="true" type="group" value="true" valueSrc="recvModes" text="Режимы приёма">
+          <highRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" complex="true" type="combo" source="this" valueSrc="highRes" text="Высокое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1698" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </highRes>
+          <lowRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="4" complex="true" type="combo" source="this" valueSrc="lowRes" text="Низкое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="137.1" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </lowRes>
+        </recvModes>
+      </satParam>
+      <satParam hidden="true" value="true" complex="true" type="group" source="this" valueSrc="satParam" text="NOAA 15">
+        <shortName itemAddr="0x9f9d9c0" value="N15" type="string" source="this" valueSrc="shortName" text="Краткое наименование"/>
+        <hrptAddr itemAddr="0x9f9e648" value="15" type="string" source="this" valueSrc="hrptAddr" text="Номер в кадре"/>
+        <coefPath itemAddr="0x9fa00a0" value="N15.txt" type="string" source="this" valueSrc="coefPath" text="Файл с коэффициентами калибровки"/>
+        <devices chiefFile="devices.xml" templateFile="devTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="devices" text="Приборы спутника">
+          <AVHRR_3 value="dev0" complex="true" type="string" source="this" valueSrc="device" text="AVHRR/3">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themFalsecolor value="th0" complex="true" type="string" source="this" valueSrc="themFalsecolor" text="Цветные изображения">
+                <themFalseAlgs addable="true" templateFile="templatesList.xml" complex="true" type="group" value="true" source="this" valueSrc="themFalseAlgs" text="Алгоритмы">
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="1">
+                    <item text="RGB"/>
+                    <redColor value="K1" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K1" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K2" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Natural colors">
+                    <item text="RGB"/>
+                    <redColor value="K3" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Night microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K6-K5" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K5-K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Day microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseHsvAlgParam value="true" complex="true" type="group" index="1" source="this" valueSrc="falseHsvAlgParam" text="False">
+                    <item text="HSV"/>
+                    <hue value="300-K5" type="string" source="this" valueSrc="hue" text="Тон"/>
+                    <saturation value="K1/2" type="string" source="this" valueSrc="saturation" text="Насыщенность"/>
+                    <value value="K2" type="string" source="this" valueSrc="value" text="Яркость"/>
+                  </falseHsvAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="Snow">
+                    <item text="RGB"/>
+                    <redColor value="(3*K1-300+K5)/2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="(3*K1+300-K5)/2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1-K3" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                </themFalseAlgs>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themFalsecolor>
+            </algs>
+          </AVHRR_3>
+        </devices>
+        <recvModes complex="true" type="group" value="true" valueSrc="recvModes" text="Режимы приёма">
+          <highRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" complex="true" type="combo" source="this" valueSrc="highRes" text="Высокое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1702.5" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </highRes>
+          <lowRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="4" complex="true" type="combo" source="this" valueSrc="lowRes" text="Низкое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="137.62" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </lowRes>
+        </recvModes>
+      </satParam>
+      <satParam hidden="" value="true" complex="true" type="group" source="this" valueSrc="satParam" text="NOAA 16">
+        <shortName itemAddr="0x9f9d9c0" value="N16" type="string" source="this" valueSrc="shortName" text="Краткое наименование"/>
+        <hrptAddr itemAddr="0x9f9e648" value="15" type="string" source="this" valueSrc="hrptAddr" text="Номер в кадре"/>
+        <coefPath itemAddr="0x9fa00a0" value="N16.txt" type="string" source="this" valueSrc="coefPath" text="Файл с коэффициентами калибровки"/>
+        <devices chiefFile="devices.xml" templateFile="devTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="devices" text="Приборы спутника">
+          <AVHRR_3 value="dev0" complex="true" type="string" source="this" valueSrc="device" text="AVHRR/3">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themFalsecolor value="th0" complex="true" type="string" source="this" valueSrc="themFalsecolor" text="Цветные изображения">
+                <themFalseAlgs addable="true" templateFile="templatesList.xml" complex="true" type="group" value="true" source="this" valueSrc="themFalseAlgs" text="Алгоритмы">
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="1">
+                    <item text="RGB"/>
+                    <redColor value="K1" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K1" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K2" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Natural colors">
+                    <item text="RGB"/>
+                    <redColor value="K3" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Night microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K6-K5" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K5-K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" source="this" index="0" valueSrc="falseRgbAlgParam" text="Day microphysics">
+                    <item text="RGB"/>
+                    <redColor value="K2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="K4" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K5" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                  <falseHsvAlgParam value="true" complex="true" type="group" index="1" source="this" valueSrc="falseHsvAlgParam" text="False">
+                    <item text="HSV"/>
+                    <hue value="335-K5" type="string" source="this" valueSrc="hue" text="Тон"/>
+                    <saturation value="K1/2" type="string" source="this" valueSrc="saturation" text="Насыщенность"/>
+                    <value value="K2" type="string" source="this" valueSrc="value" text="Яркость"/>
+                  </falseHsvAlgParam>
+                  <falseRgbAlgParam value="true" complex="true" type="group" index="0" source="this" valueSrc="falseRgbAlgParam" text="Snow">
+                    <item text="RGB"/>
+                    <redColor value="(3*K1-335+K5)/2" type="string" source="this" valueSrc="redColor" text="Красный цвет"/>
+                    <greenColor value="(3*K1+335-K5)/2" type="string" source="this" valueSrc="greenColor" text="Зелёный цвет"/>
+                    <blueColor value="K1-K3" type="string" source="this" valueSrc="blueColor" text="Синий цвет"/>
+                  </falseRgbAlgParam>
+                </themFalseAlgs>
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themFalsecolor>
+              <themVegetation value="th3" complex="true" type="string" source="this" valueSrc="themVegetation" text="Индекс вегетации">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                </themChannels>
+              </themVegetation>
+              <themChannel value="th10" complex="true" type="string" source="this" valueSrc="themChannel" text="Канал">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                  <channel1 value="false" type="bool" source="this" valueSrc="channel" text="Канал 1"/>
+                  <channel2 value="false" type="bool" source="this" valueSrc="channel" text="Канал 2"/>
+                  <channel3 value="false" type="bool" source="this" valueSrc="channel" text="Канал 3"/>
+                  <channel4 value="false" type="bool" source="this" valueSrc="channel" text="Канал 4"/>
+                  <channel5 value="false" type="bool" source="this" valueSrc="channel" text="Канал 5"/>
+                </themChannels>
+              </themChannel>
+            </algs>
+          </AVHRR_3>
+        </devices>
+        <recvModes complex="true" type="group" value="true" valueSrc="recvModes" text="Режимы приёма">
+          <highRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" complex="true" type="combo" source="this" valueSrc="highRes" text="Высокое разрешение">
+            <enabled value="true" type="2" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1698" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </highRes>
+          <lowRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="4" complex="true" type="combo" source="this" valueSrc="lowRes" text="Низкое разрешение">
+            <enabled value="false" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="0" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </lowRes>
+        </recvModes>
+      </satParam>
+    </orbitalSpaceships>
+    <geostationarySpaceships filepath="./lists/geostatshipsList.xml" columnName="Имя" chiefFile="this" id1="satParam" forEdit="1" hideOnDel="true" listType="0" windowName="Геостационарные аппараты" templateFile="geostationarySpaceshipTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="geostationarySpaceships" isEditable="true" text="Геостационарные аппараты">
+      <satParam value="true" complex="true" type="group" source="this" valueSrc="satParam" text="METEOSAT-7">
+        <shortName itemAddr="0x9f9d9c0" value="MET7" type="string" source="this" valueSrc="shortName" text="Краткое наименование"/>
+        <satRecvParam complex="true" type="group" value="true" valueSrc="satRecvParam" text="Параметры приёма">
+          <geoSshFreqOne validator="\d{1,5}\.\d{2}" value="517" type="string" source="this" valueSrc="geoSshFreqOne" text="Частота 1 (МГц)"/>
+          <geoSshFreqTwo validator="\d{1,5}\.\d{2}" value="577" type="string" source="this" valueSrc="geoSshFreqTwo" text="Частота 2 (МГц)"/>
+          <scanCourse values="снизу вверх;сверху вниз;" value="1" type="combo" source="this" valueSrc="scanCourse" text="Направление развертки кадра"/>
+          <streamType values="HRIT;LRIT;" value="0" type="combo" source="this" valueSrc="streamType" text="Предпочтительный режим приема"/>
+          <longitude readOnly="true" value="57.59" type="string" source="this" valueSrc="longitude" text="Долгота (град.)"/>
+          <elevation readOnly="true" value="17.34" type="string" source="this" valueSrc="elevation" text="Угол места (град.)"/>
+          <azimuth readOnly="true" value="149.4" type="string" source="this" valueSrc="azimuth" text="Азимут (град.)"/>
+        </satRecvParam>
+        <devices chiefFile="devices.xml" templateFile="devTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="devices" text="Приборы спутника">
+          <WEFAX value="true" complex="true" type="group" source="this" valueSrc="device" text="WEFAX">
+            <algs chiefFile="them_proc.xml" hideOnDel="true" templateFile="themTemplate.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="algs" text="Тематические обработки">
+              <themChannel value="true" complex="true" type="group" source="this" valueSrc="themChannel" text="Канал">
+                <themChannels chiefFile="channels.xml" complex="true" type="group" value="true" buttonName="Выбрать" source="this" valueSrc="themChannels" text="Каналы тематической обработки">
+                  <channel0 value="false" type="bool" source="this" valueSrc="channel" text="Канал 0"/>
+                </themChannels>
+              </themChannel>
+            </algs>
+          </WEFAX>
+        </devices>
+        <recvModes complex="true" type="group" value="true" valueSrc="recvModes" text="Режимы приёма">
+          <highRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="7" complex="true" type="combo" source="this" valueSrc="highRes" text="Высокое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1691" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </highRes>
+          <lowRes values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="7" complex="true" type="combo" source="this" valueSrc="lowRes" text="Низкое разрешение">
+            <enabled value="true" type="bool" source="this" valueSrc="enabled" text="Включён"/>
+            <freq validator="\d{1,5}\.\d{2}" value="1691" type="string" source="this" valueSrc="freq" text="Частота (МГц)"/>
+          </lowRes>
+        </recvModes>
+      </satParam>
+    </geostationarySpaceships>
+  </KA>
+</body>

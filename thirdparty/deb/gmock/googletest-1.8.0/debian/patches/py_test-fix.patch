@@ -1,0 +1,24 @@
+From: "Steve M. Robbins" <smr@debian.org>
+Date: Sun, 8 Apr 2018 14:11:03 -0500
+Subject: Fix python-based tests
+
+Remove $<CONFIGURATION> from the build dir supplied to python-based tests.
+Forwarded: no
+Last-Update: 2016-09-07
+---
+ googletest/cmake/internal_utils.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/googletest/cmake/internal_utils.cmake b/googletest/cmake/internal_utils.cmake
+index 777b91e..28fd80d 100644
+--- a/googletest/cmake/internal_utils.cmake
++++ b/googletest/cmake/internal_utils.cmake
+@@ -243,7 +243,7 @@ function(py_test name)
+       add_test(
+         NAME ${name}
+         COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test/${name}.py
+-            --build_dir=${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>)
++            --build_dir=${CMAKE_CURRENT_BINARY_DIR})
+     else (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} GREATER 3.1)
+       add_test(
+         ${name}

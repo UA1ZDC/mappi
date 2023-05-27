@@ -1,0 +1,7 @@
+{
+  "find" : "parameters",
+  "filter" : 
+  {
+    "%1" : { "$in" : "%2" }
+  }
+}

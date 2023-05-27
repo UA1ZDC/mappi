@@ -1,0 +1,82 @@
+DEPS=(
+  cross-commons
+  sql
+  commons
+  meteo/commons
+  meteo/sbor
+  meteo/prognoz
+  meteo/bank
+  meteo/product
+  sat-commons
+)
+
+DIRS=(
+  meteo/commons/ui/mainwindow/appmain
+  mappi/etc
+  mappi/proto
+  mappi/settings
+  mappi/global
+  mappi/appmanager
+  mappi/appclient
+  mappi/cron
+  mappi/cleaner
+  mappi/landmask
+  mappi/schedule
+  mappi/fsm
+  mappi/schedule/appmain
+  mappi/pretreatment/savenotify
+  mappi/pretreatment/images
+  mappi/pretreatment/formats
+  mappi/pretreatment/handler
+  mappi/pretreatment/fileapp
+  mappi/pretreatment/app
+  mappi/pretreatment/service
+  mappi/device/receiver
+  mappi/device/antenna
+
+  mappi/services/schedule
+  mappi/services/playback
+  mappi/services/receiver
+  mappi/services/antenna
+
+  mappi/services/sessiondataservice
+  mappi/services/fileservice
+  mappi/services/fileservice/fileserviceclient
+
+  mappi/thematic/asmjit
+  mappi/thematic/thematiccalc
+  mappi/projection
+  mappi/ui/pos
+  mappi/ui/scheduletable
+  mappi/ui/antenna
+  mappi/ui/exprguid
+  mappi/ui/satlayer
+  mappi/ui/satelliteimage
+# mappi/thematic/algs
+  mappi/thematic/algs_calc
+  mappi/thematic/app_calc
+  mappi/thematic/service
+
+  mappi/ui/plugins/settings/base
+  mappi/ui/plugins/settings/receiver
+  mappi/ui/plugins/settings/schedule
+  mappi/ui/plugins/settings/thematic
+  mappi/ui/plugins/settings
+  mappi/ui/plugins/antenna
+  mappi/ui/plugins/sessions
+  mappi/ui/plugins/sessionviewerplugin
+#  mappi/ui/plugins/uhdcontrol/coordaction
+#  mappi/ui/plugins/uhdcontrol/valueaction
+#  mappi/ui/plugins/uhdcontrol
+  mappi/ui/plugins/pointvalue
+  mappi/ui/plugins/maskslider
+  mappi/ui/plugins/montageaction
+  mappi/ui/plugins/histogrameditor
+  mappi/ui/plugins/brightnessaction
+  mappi/ui/plugins/transparencyaction
+
+  mappi/ui/mainwindow
+
+  # mappi/ftploader
+  # mmirz
+)

@@ -1,0 +1,7 @@
+{
+  "find" : "bufr_code",
+  "filter" : 
+  {
+    "bufr_code" : { "$in" : @bufrcode@ }
+  }
+}

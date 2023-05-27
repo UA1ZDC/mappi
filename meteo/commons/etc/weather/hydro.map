@@ -1,0 +1,15 @@
+name: "hydro.map"
+title: "Гидрологическая карта"
+spline_koef: 2
+data {
+  query_type: kLastValue
+  data_type: kHydroType
+  data_type: kHydroStation
+  data_type: kEndHydroType
+  level: 0
+  type_level: 1
+  mode: kPuanson
+  template_name: "kn15dLevel"
+  center: 250
+  model: 250
+}

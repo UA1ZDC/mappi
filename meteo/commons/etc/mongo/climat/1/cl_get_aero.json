@@ -1,0 +1,35 @@
+{
+  "aggregate" : "%1",
+  "pipeline" : [
+    { "$addFields" : {
+      "month" : { "$month" : "$_id.dt"}
+    } },
+    { "$match" : {
+      "_id.station" : "%2",
+      "_id.station_type" : "%3",  
+      "_id.level_type"   : "%4",
+      "_id.descrname" : { "$in" : "%5" },
+      "month" : "%6",
+      "$and" : [
+	{ "_id.dt" : { "$gte" : "%7" } },
+	{ "_id.dt" : { "$lte" : "%8" } }
+      ] }
+    },
+    { "$sort" : {
+      "_id.descrname"  : 1,
+      "_id.level_type" : 1,
+      "_id.level" : 1,
+      "_id.dt" : 1
+    } },
+    { "$project" : { 
+      "_id.level" : 1, 
+      "_id.dt"    : 1,
+      "_id.descrname" : 1,
+      "value" : 1
+    } }
+  ],  
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+  
+}
+

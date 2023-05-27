@@ -1,0 +1,11 @@
+name: "fhi.map"
+title: "Пожарная опасность"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "fire"
+  data_type: kSynopFix
+  level: 0
+  type_level: 1
+}
+webpunchmap: true

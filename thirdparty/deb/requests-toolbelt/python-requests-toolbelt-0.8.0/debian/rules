@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+export PYBUILD_NAME=requests-toolbelt
+
+# Requires betamax #808880
+export PYBUILD_DISABLE=test
+
+%:
+	dh $@ --with python2,python3 --buildsystem=pybuild
+
+override_dh_installdocs:
+	LC_ALL=C PYTHONPATH=. http_proxy='http://127.0.0.1:9/' sphinx-build -N -bhtml docs debian/html
+	dh_installdocs
+	dh_sphinxdoc
+
+override_dh_auto_clean:
+	$(RM) -r debian/html
+	dh_auto_clean
+
+override_dh_installchangelogs:
+	dh_installchangelogs HISTORY.rst
+	# Remove backup file included in distribution by mistake
+	$(RM) debian/*/usr/lib/*/dist-packages/requests_toolbelt/multipart/.encoder.py.swp

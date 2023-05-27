@@ -1,0 +1,14 @@
+g++
+make
+qt5-default
+postgresql-server-dev-all
+libboost-python-dev
+libpng-dev
+pkg-config
+qtscript5-dev
+qttools5-dev
+qttools5-dev-tools
+libqt5x11extras5-dev
+libsnappy-dev
+libssl-dev
+libicu-dev

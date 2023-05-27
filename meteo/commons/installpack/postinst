@@ -1,0 +1,57 @@
+#!/bin/bash
+
+export PRJ_DIR=@PRJ_DIR@
+
+# Цвета
+ct_red="\e[31m"        #red
+ct_yel="\033[33;40m"   #yellow
+ct_green="\033[32;40m" #green
+ct_blue="\033[34;40m"  #blue
+
+c_def="\033[0m"         # default
+c_status=$ct_blue       # status
+c_ok=$ct_green          # ok
+c_err=$ct_red           # error
+c_wrn=$ct_yel           # warning
+
+EXIT_SUCCESS=0
+EXIT_FAILTURE=1
+
+# Функции логирования
+
+function f_error_log()
+{
+  echo -e "${c_err}[ ОШИБКА ]${c_def} ${@}"
+}
+
+function f_warning_log()
+{
+  echo -e "${c_wrn}[ ПРЕДУПРЕЖДЕНИЕ ]${c_def} ${@}"
+}
+
+function f_success_log()
+{
+  echo -e "${c_ok}[ УСПЕШНО ]${c_def} ${@}"
+}
+
+function f_status_log()
+{
+  echo -e "${c_status}[ ИНФОРМАЦИЯ ]${c_def} ${@}"
+}
+
+function f_ld_config()
+{
+  f_status_log 'Настройка путей поиска динамических библиотек'
+  if ldconfig
+  then
+    f_success_log 'Пути поиска динамических библиотек успешно обновлены'
+  else
+    f_warning_log 'Пути поиска динамических библиотек не обновлены. Рекомендуется обновить их самостоятельно, запустив команду "ldconfig"'
+  fi
+  return $EXIT_SUCCESS
+}
+
+f_ld_config
+
+
+

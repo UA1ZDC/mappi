@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>files/rawparser/unimas_tcp.conf</file>
+    </qresource>
+</RCC>

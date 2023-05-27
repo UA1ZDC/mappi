@@ -1,0 +1,20 @@
+{ "aggregate": "meteoreport", "pipeline":
+  [
+    {
+      "$match": {
+        "dt": {"$gt": @start_dt@ , "$lte": @end_dt@ },
+        "station_type": 1,
+        "param.descrname": { "$in": @descrname@ }
+        }
+    },
+    { "$group": {
+      "_id": { "station": "$station", "dt" : "$dt" },
+      "station": { "$first" : "$station" },
+      "dt": { "$first" : "$dt" },
+      "coord": { "$first" : "$location.coordinates" },
+      "count": {"$sum": 1}
+    } }
+  ],
+  "cursor": { "batchSize": 1 }
+}
+

@@ -1,0 +1,13 @@
+package meteo;
+
+//!
+message StormSettings {
+  optional StormRing  storm_ring  = 1;
+}
+
+//! "Штормовое кольцо"
+message StormRing {
+  repeated string address   = 1;//!< Список получетелей шторомых оповещений.
+}
+
+

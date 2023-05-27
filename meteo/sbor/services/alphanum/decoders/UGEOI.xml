@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="UGEOI" text="фактические данные геомагнитных, солнечных измерений и наблюдений за сутки"  category="174">
+  <MessageSections>UGEOI\s*(\d{5}\s*\d{5}\s*\d{4}/)\s*(\s*\d{2}///\s*(?:[\d/]{5}\s*){9})\s*99999\s*(?:PLAIN(.*)BT)?</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d)(\d\d)(\d\d)\s*(\d\d)(\d\d)/</GroupValues>
+    <Value number="1"  descrName="station_index" text="индекс регионального центра" />
+    <Value number="2"  descrName="J"   text="год выпуска сообщения" />
+    <Value number="3"  descrName="MM"  text="месяц" />
+    <Value number="4"  descrName="YY"  text="день" />
+    <Value number="5"  descrName="GG"  text="час" />
+    <Value number="6"  descrName="gg"  text="минута" />   
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <GroupValues>\s*(\d{2})()()///\s*1([\d/]{4})\s*2()([\d/]{3})([\d/]{1})\s*3([\d/]{3})([\d/]{1})\s*4([\d/]{3})([\d/]{1})\s*5([\d/]{2})([\d/]{2})\s*6([\d/]{4})\s*7([\d/]{4})\s*8([\d/]{2})([\d/]{2})\s*9([\d/]{4})\s*</GroupValues>
+      <Value number="7"   descrName="YY"    text="день наблюдения" />
+      <Value number="5"   descrName="GG"  default="0" text="час" />
+      <Value number="6"   descrName="gg"  default="00" text="минута" />   
+      <Value number="1"   descrName="gw"    text="относительное число солнечных пятен (число Вольфа)" />
+      <Value number="9"   descrName="gfreq" default="2802" text="частота" />
+      <Value number="2"   descrName="gF"    text="фоновое значение плотности потока радиоизлучения Солнца на l=10.7 см" />
+      <Value number="3"   descrName="gFcnt" text="количество значительных всплесков плотности потока радиоизлучения Солнца на l=10.7 см" />
+      <Value number="4"   descrName="gAk"   text="суточный Aк-индекс данного регионального центра за дату “dd”" />
+      <Value number="5"   descrName="gSyn"  text="признак геомагнитного событи" />
+      <Value number="6"   descrName="gic"   text="средняя  интенсивность  космических  лучей" />
+      <Value number="7"   descrName="gcSyn" text="признак события в потоках космических лучей" />
+      <Value number="8"   descrName="gMcnt" text="количество рентгеновских вспышек класса М" />
+      <Value number="9"   descrName="gXcnt" text="количество рентгеновских вспышек класса Х" />
+      <Value number="10"  descrName="ggamma" text="фоновое значение х-лучей" />
+      <Value number="11"  descrName="gpi1"  text="поток частиц с энергиями > 10 МэВ" />
+      <Value number="12"  descrName="gncnt" text="количество новых групп пятен" />
+      <Value number="13"  descrName="gacnt" text="общее количество активных областей на видимом диске Солнца" />
+      <Value number="14"  descrName="gSq"    text="общая площадь групп пятен в миллионных долях солнечной полусферы" />
+    </item>
+  </Section>
+  <Section number="2" text="" >
+    <GroupValues>(.*)</GroupValues>
+    <Value number="1"  descrName="text" text="текстового сообщения (необходимые дополнения к прогнозу)" />
+  </Section>
+</Message>

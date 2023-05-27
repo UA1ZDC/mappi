@@ -1,0 +1,13 @@
+{
+  "find": "obanal",
+  "filter": {
+    "dt": { "$gte": @start_dt@, "$lte": @end_dt@ },
+    "descr": @descr@,
+    "hour": @hour@,
+    "model": @model@,
+    "level_type": @level_type@,
+    "level": @level@,
+    "center": @center@
+  },
+  "limit": 1
+}

@@ -1,0 +1,5 @@
+{"delete" : "gmi_condition",
+  "deletes" : [
+  	{ "q" : { "_id" : "%1" }, "limit" : 1 }
+  ]
+}

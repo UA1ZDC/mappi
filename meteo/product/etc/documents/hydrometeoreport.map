@@ -1,0 +1,12 @@
+name: "hydrometeoreport.map"
+title: "Доклад гидрометеорологических условий"
+formal {
+    template: "HydroMeteoReport.odt"
+    name: "Доклад гидрометеорологических условий"
+    module_path: "hydrometeoreport.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteosummary.png"
+}
+document {
+  doctype: kFormalDocument
+}

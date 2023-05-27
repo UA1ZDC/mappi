@@ -1,0 +1,11 @@
+name: "phenomen"
+title: "Явления"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "phenomen"
+  data_type: kSynopFix
+  type_level: 1
+  level: 0
+}
+webpunchmap: true

@@ -1,0 +1,7304 @@
+code: "is"
+name: "is"
+path: "/opt/maslo//share/meteo//punch/is.template"
+wind: false
+rule {
+  pos {
+    x: -37
+    y: -18
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    postfix: "дымка"
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: 10
+      maxval: 10
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d18bd0bcd0bad0b0"
+      label: "Дымка1"
+    }
+    symbol {
+      minval: 11
+      maxval: 12
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 13
+      maxval: 13
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d097d0b0d180d0bdd0b8d186d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 0
+      maxval: 4
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0b3d0bbd0b0"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd18bd0bbd18cd0bdd18bd0b520d0b2d0b8d185d180d0b8"
+      label: ""
+    }
+    symbol {
+      minval: 14
+      maxval: 16
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed181d0b0d0b4d0bad0b820d0b2d0bdd0b520d181d182d0b0d0bdd186d0b8d0b8"
+      label: ""
+    }
+    symbol {
+      minval: 17
+      maxval: 17
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 18
+      maxval: 18
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a8d0bad0b2d0b0d0bb"
+      label: ""
+    }
+    symbol {
+      minval: 19
+      maxval: 19
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 20
+      maxval: 20
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 21
+      maxval: 21
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 22
+      maxval: 22
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 23
+      maxval: 23
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c20d181d0be20d181d0bdd0b5d0b3d0bed0bc"
+      label: ""
+    }
+    symbol {
+      minval: 24
+      maxval: 24
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d097d0b0d0bcd0b5d180d0b7d0b0d18ed189d0b0d18f20d0bcd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 25
+      maxval: 25
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0bdd0b5d0b2d0bed0b920d0b4d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 26
+      maxval: 26
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0bdd0b5d0b2d0bed0b920d181d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 27
+      maxval: 27
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0bdd0b5d0b2d0bed0b920d0b3d180d0b0d0b4"
+      label: ""
+    }
+    symbol {
+      minval: 28
+      maxval: 28
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 29
+      maxval: 29
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 30
+      maxval: 35
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd18bd0bbd18cd0bdd0b0d18f28d0bfd0b5d181d187d0b0d0bdd0b0d18f2920d0b1d183d180d18f"
+      label: ""
+    }
+    symbol {
+      minval: 36
+      maxval: 37
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+    }
+    symbol {
+      minval: 38
+      maxval: 39
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09dd0b8d0b7d0bed0b2d0b0d18f20d0bcd0b5d182d0b5d0bbd18c"
+      label: ""
+    }
+    symbol {
+      minval: 40
+      maxval: 49
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 50
+      maxval: 59
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 60
+      maxval: 69
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 70
+      maxval: 75
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3d0bed0bfd0b0d0b4"
+      label: ""
+    }
+    symbol {
+      minval: 76
+      maxval: 76
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 77
+      maxval: 77
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b6d0bdd18bd0b520d0b7d0b5d180d0bdd0b0"
+      label: ""
+    }
+    symbol {
+      minval: 78
+      maxval: 78
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 79
+      maxval: 79
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b5d0b4d18fd0bdd0bed0b920d0b4d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 80
+      maxval: 84
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0bdd0b5d0b2d0bed0b920d0b4d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 85
+      maxval: 88
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0bdd0b5d0b2d0bed0b920d181d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 89
+      maxval: 90
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0b0d0b4"
+      label: ""
+    }
+    symbol {
+      minval: 91
+      maxval: 92
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 93
+      maxval: 94
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 95
+      maxval: 99
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 100
+      maxval: 103
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 104
+      maxval: 105
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d18bd0bcd0bad0b0"
+      label: ""
+    }
+    symbol {
+      minval: 110
+      maxval: 110
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d18bd0bcd0bad0b0"
+      label: ""
+    }
+    symbol {
+      minval: 111
+      maxval: 111
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd18bd0bbd18c"
+      label: ""
+    }
+    symbol {
+      minval: 11
+      maxval: 112
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d097d0b0d180d0bdd0b8d186d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 118
+      maxval: 118
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a8d0bad0b2d0b0d0bbd18b"
+      label: ""
+    }
+    symbol {
+      minval: 120
+      maxval: 120
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 121
+      maxval: 121
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed181d0b0d0b4d0bad0b8"
+      label: ""
+    }
+    symbol {
+      minval: 122
+      maxval: 122
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 123
+      maxval: 123
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 124
+      maxval: 124
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 125
+      maxval: 125
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d097d0b0d0bcd0b5d180d0b72ed0b4d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 126
+      maxval: 126
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 127
+      maxval: 129
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0b5d182d0b5d0bbd18c"
+      label: ""
+    }
+    symbol {
+      minval: 130
+      maxval: 135
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 140
+      maxval: 148
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed181d0b0d0b4d0bad0b8"
+      label: ""
+    }
+    symbol {
+      minval: 150
+      maxval: 158
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 160
+      maxval: 168
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 170
+      maxval: 173
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 174
+      maxval: 176
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b5d0b4d18fd0bdd0bed0b920d0b4d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 177
+      maxval: 177
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b6d0bdd18bd0b520d0b7d0b5d180d0bdd0b0"
+      label: ""
+    }
+    symbol {
+      minval: 178
+      maxval: 178
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b5d0b4d18fd0bdd18bd0b520d0bad180d0b8d181d182d0b0d0bbd0bbd18b"
+      label: ""
+    }
+    symbol {
+      minval: 180
+      maxval: 187
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0bdd0b5d0b2d18bd0b520d0bed181d0b0d0b4d0bad0b8"
+      label: ""
+    }
+    symbol {
+      minval: 189
+      maxval: 189
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0b0d0b4"
+      label: ""
+    }
+    symbol {
+      minval: 190
+      maxval: 196
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 199
+      maxval: 199
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d0bed180d0bdd0b0d0b4d0be"
+      label: ""
+    }
+    symbol {
+      minval: 204
+      maxval: 204
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d092d183d0bbd0bad0b0d0bdd0b8d187d0b5d181d0bad0b8d0b920d0bfd0b5d0bfd0b5d0bb"
+      label: ""
+    }
+    symbol {
+      minval: 206
+      maxval: 206
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0b8d0bbd18cd0bdd0b0d18f20d0bfd18bd0bbd18cd0bdd0b0d18f20d0b4d18bd0bcd0bad0b0"
+      label: ""
+    }
+    symbol {
+      minval: 207
+      maxval: 207
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d092d0bed0b4d18fd0bdd0b0d18f20d0bfd18bd0bbd18c"
+      label: ""
+    }
+    symbol {
+      minval: 208
+      maxval: 209
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd18bd0bbd18c"
+      label: ""
+    }
+    symbol {
+      minval: 210
+      maxval: 210
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b6d0bdd0b0d18f20d0b4d18bd0bcd0bad0b0"
+      label: ""
+    }
+    symbol {
+      minval: 211
+      maxval: 211
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d091d0b5d0bbd0b0d18f20d0bcd0b3d0bbd0b0"
+      label: ""
+    }
+    symbol {
+      minval: 213
+      maxval: 213
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed0bbd0bdd0b8d18f"
+      label: ""
+    }
+    symbol {
+      minval: 217
+      maxval: 217
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d183d185d0b0d18f20d0b3d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 219
+      maxval: 219
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed0b1d0bbd0b0d0bad0be20d182d0bed180d0bdd0b0d0b4d0be"
+      label: ""
+    }
+    symbol {
+      minval: 220
+      maxval: 220
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed182d0bbd0bed0b6d0b5d0bdd0b8d0b520d0b2d183d0bbd0ba2ed0bfd0b5d0bfd0bbd0b0"
+      label: ""
+    }
+    symbol {
+      minval: 221
+      maxval: 221
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed182d0bbd0bed0b6d0b5d0bdd0b8d0b520d0bfd18bd0bbd0b8"
+      label: ""
+    }
+    symbol {
+      minval: 222
+      maxval: 222
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed182d0bbd0bed0b6d0b5d0bdd0b8d0b520d180d0bed181d18b"
+      label: ""
+    }
+    symbol {
+      minval: 223
+      maxval: 223
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed182d0bbd0bed0b6d0b5d0bdd0b8d0b520d0bcd0bed0bad180d0bed0b3d0be20d181d0bdd0b5d0b3d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 224
+      maxval: 225
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed182d0bbd0bed0b6d0b5d0bdd0b8d0b520d0b8d0b7d0bcd0bed180d0bed0b7d0b8"
+      label: ""
+    }
+    symbol {
+      minval: 226
+      maxval: 226
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed182d0bbd0bed0b6d0b5d0bdd0b8d0b520d0b8d0bdd0b5d18f"
+      label: ""
+    }
+    symbol {
+      minval: 227
+      maxval: 227
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed182d0bbd0bed0b6d0b5d0bdd0b8d0b520d0b3d0bed0bbd0bed0bbd0b5d0b4d0bdd0bed0b3d0be20d182d0b8d0bfd0b0"
+      label: ""
+    }
+    symbol {
+      minval: 228
+      maxval: 228
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed182d0bbd0bed0b6d0b5d0bdd0b8d0b520d0bbd0b5d0b4d18fd0bdd0bed0b920d0bad0bed180d0bad0b8"
+      label: ""
+    }
+    symbol {
+      minval: 230
+      maxval: 230
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd18bd0bbd18cd0bdd0b0d18f20d0b1d183d180d18f"
+      label: ""
+    }
+    symbol {
+      minval: 239
+      maxval: 239
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b6d0bdd0b0d18f20d0bcd0b5d182d0b5d0bbd18c"
+      label: ""
+    }
+    symbol {
+      minval: 241
+      maxval: 241
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd20d0bdd0b020d0bcd0bed180d0b5"
+      label: ""
+    }
+    symbol {
+      minval: 242
+      maxval: 242
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd20d0b220d0b4d0bed0bbd0b8d0bdd0b0d185"
+      label: ""
+    }
+    symbol {
+      minval: 243
+      maxval: 246
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 247
+      maxval: 249
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd0bbd0bed182d0bdd18bd0b920d182d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 250
+      maxval: 257
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 259
+      maxval: 259
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c20d0b820d181d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 260
+      maxval: 267
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 270
+      maxval: 278
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 279
+      maxval: 279
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed0bad180d18bd0b920d181d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 280
+      maxval: 281
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 282
+      maxval: 282
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bcd0b5d188d0b0d0bdd0bdd18bd0b520d0bed181d0b0d0b4d0bad0b8"
+      label: ""
+    }
+    symbol {
+      minval: 283
+      maxval: 287
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 288
+      maxval: 288
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0b0d0b4"
+      label: ""
+    }
+    symbol {
+      minval: 289
+      maxval: 289
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0b0d0b420d18120d0b4d0bed0b6d0b4d0b5d0bc"
+      label: ""
+    }
+    symbol {
+      minval: 290
+      maxval: 290
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0b0d0b420d18120d0b4d0bed0b6d0b4d0b5d0bc20d0b820d181d0bdd0b5d0b3d0bed0bc"
+      label: ""
+    }
+    symbol {
+      minval: 291
+      maxval: 291
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0b0d0b420d181d0be20d181d0bdd0b5d0b3d0bed0bc"
+      label: ""
+    }
+    symbol {
+      minval: 292
+      maxval: 292
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0b5d0bdd18c20d0b8d0bbd0b820d0b3d180d0bed0b7d0b020d0bdd0b0d0b420d0bcd0bed180d0b5d0bc"
+      label: ""
+    }
+    symbol {
+      minval: 293
+      maxval: 293
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0b5d0bdd18c20d0b8d0bbd0b820d0b3d180d0bed0b7d0b020d0bdd0b0d0b420d0b3d0bed180d0b0d0bcd0b8"
+      label: ""
+    }
+  }
+  testval: 90
+  id {
+    descr: 20003
+    name: "w"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -41
+    y: -30
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: 30
+      maxval: 30
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 31
+      maxval: 31
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4375"
+      label: ""
+    }
+    symbol {
+      minval: 32
+      maxval: 32
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4375"
+      label: ""
+    }
+    symbol {
+      minval: 33
+      maxval: 33
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4362"
+      label: ""
+    }
+    symbol {
+      minval: 34
+      maxval: 34
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "5363"
+      label: ""
+    }
+    symbol {
+      minval: 35
+      maxval: 35
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "5363"
+      label: ""
+    }
+    symbol {
+      minval: 36
+      maxval: 36
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "5374"
+      label: ""
+    }
+    symbol {
+      minval: 37
+      maxval: 37
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "5374206672"
+      label: ""
+    }
+    symbol {
+      minval: 38
+      maxval: 38
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4375"
+      label: ""
+    }
+    symbol {
+      minval: 39
+      maxval: 39
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4362"
+      label: ""
+    }
+  }
+  testval: 35
+  id {
+    descr: 20012
+    name: "CL"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: true
+  }
+  symbol {
+    symbol {
+      minval: 11
+      maxval: 11
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09dd0b5d0b1d0be20d0b7d0b0d0bad180d18bd182d0be"
+      label: ""
+    }
+    symbol {
+      minval: 12
+      maxval: 12
+      font {
+        family: "wths"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09dd0b5d0b1d0be20d187d0b0d181d182d0b8d187d0bdd0be20d0b7d0b0d0bad180d18bd182d0be"
+      label: ""
+    }
+    symbol {
+      minval: 17
+      maxval: 17
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09dd0b0d0b1d0bbd18ed0b4d0b5d0bdd0b8d18f20d0bdd0b520d0bfd180d0bed0b2d0b5d0b4d0b5d0bdd0be"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 20011
+    name: "Nh"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 20061
+    name: "VRVR"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 106
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+  }
+  testval: 4500
+  id {
+    descr: 20013
+    name: "h"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kComma
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 13055
+    name: "precip"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bfd0b5d1802e"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 11001
+    name: "dd"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 12101
+    name: "T"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 12111
+    name: "f_Tx"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 12112
+    name: "f_Tn"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 13003
+    name: "U"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 10004
+    name: "P0"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 20
+      maxval: 20
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 21
+      maxval: 21
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4173"
+      label: ""
+    }
+    symbol {
+      minval: 22
+      maxval: 22
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4173"
+      label: ""
+    }
+    symbol {
+      minval: 23
+      maxval: 23
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4163"
+      label: ""
+    }
+    symbol {
+      minval: 24
+      maxval: 24
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4163"
+      label: ""
+    }
+    symbol {
+      minval: 25
+      maxval: 25
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4163"
+      label: ""
+    }
+    symbol {
+      minval: 26
+      maxval: 26
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4163"
+      label: ""
+    }
+    symbol {
+      minval: 27
+      maxval: 27
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4163"
+      label: ""
+    }
+    symbol {
+      minval: 28
+      maxval: 28
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4163"
+      label: ""
+    }
+    symbol {
+      minval: 29
+      maxval: 29
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4163"
+      label: ""
+    }
+  }
+  testval: 22
+  id {
+    descr: 20012
+    name: "CM"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 10
+      maxval: 10
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 11
+      maxval: 11
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4369"
+      label: ""
+    }
+    symbol {
+      minval: 12
+      maxval: 12
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4369"
+      label: ""
+    }
+    symbol {
+      minval: 13
+      maxval: 13
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4369"
+      label: ""
+    }
+    symbol {
+      minval: 14
+      maxval: 14
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4369"
+      label: ""
+    }
+    symbol {
+      minval: 15
+      maxval: 15
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4373"
+      label: ""
+    }
+    symbol {
+      minval: 16
+      maxval: 16
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4373"
+      label: ""
+    }
+    symbol {
+      minval: 17
+      maxval: 17
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4373"
+      label: ""
+    }
+    symbol {
+      minval: 18
+      maxval: 18
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4373"
+      label: ""
+    }
+    symbol {
+      minval: 19
+      maxval: 19
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4363"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 20012
+    name: "CH"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d188d182d0b8d0bbd18c"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 11002
+    name: "ff"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 11041
+    name: "fx"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4369"
+      label: ""
+    }
+    symbol {
+      minval: 1
+      maxval: 1
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4363"
+      label: ""
+    }
+    symbol {
+      minval: 2
+      maxval: 2
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4373"
+      label: ""
+    }
+    symbol {
+      minval: 3
+      maxval: 3
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4163"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4173"
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4e73"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 6
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "5363"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 7
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "5374"
+      label: ""
+    }
+    symbol {
+      minval: 8
+      maxval: 8
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4375"
+      label: ""
+    }
+    symbol {
+      minval: 9
+      maxval: 9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4362"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 20012
+    name: "Cn"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 85
+    y: 10
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: -10
+      maxval: 9.9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 9.9
+      maxval: 24.9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "31"
+      label: ""
+    }
+    symbol {
+      minval: 24.9
+      maxval: 39.9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "33"
+      label: ""
+    }
+    symbol {
+      minval: 39.9
+      maxval: 49.9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "34"
+      label: ""
+    }
+    symbol {
+      minval: 49.9
+      maxval: 59.9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "35"
+      label: ""
+    }
+    symbol {
+      minval: 59.9
+      maxval: 74.9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "36"
+      label: ""
+    }
+    symbol {
+      minval: 74.9
+      maxval: 89.9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "38"
+      label: ""
+    }
+    symbol {
+      minval: 89.9
+      maxval: 99.9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "39"
+      label: ""
+    }
+    symbol {
+      minval: 99.9
+      maxval: 110
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3130"
+      label: ""
+    }
+    symbol {
+      minval: 113
+      maxval: 113
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09dd0b5d0b1d0be20d0bdd0b520d0b2d0b8d0b4d0bdd0be"
+      label: ""
+    }
+    codedigit: false
+  }
+  testval: 12.34
+  id {
+    descr: 20010
+    name: "N"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -26
+    y: -22
+  }
+  align: kTopLeft
+  type: kSymNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: 10000
+      maxval: 100000
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3130"
+      label: ""
+    }
+    symbol {
+      minval: 9000
+      maxval: 9999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "39"
+      label: ""
+    }
+    symbol {
+      minval: 8000
+      maxval: 8999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "38"
+      label: ""
+    }
+    symbol {
+      minval: 7000
+      maxval: 7999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "37"
+      label: ""
+    }
+    symbol {
+      minval: 6000
+      maxval: 6999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "36"
+      label: ""
+    }
+    symbol {
+      minval: 5000
+      maxval: 5999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "35"
+      label: ""
+    }
+    symbol {
+      minval: 4000
+      maxval: 4999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "34"
+      label: ""
+    }
+    symbol {
+      minval: 3000
+      maxval: 3999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "33"
+      label: ""
+    }
+    symbol {
+      minval: 2001
+      maxval: 2999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "32"
+      label: ""
+    }
+  }
+  testval: 40
+  id {
+    descr: 20001
+    name: "V"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -19
+    y: -24
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 13022
+    name: "R12"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 20
+    y: -34
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 13022
+    name: "R2"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -70
+    y: -37
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 13022
+    name: "R24"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -7
+    y: 12
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 13022
+    name: "R48"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -67
+    y: -21
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 13011
+    name: "R"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -2
+    y: -2
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.3
+  id {
+    descr: 13013
+    name: "sss"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 1
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d188d0bad0b2d0b0d0bb"
+      label: ""
+      codeval: "SQ"
+    }
+    symbol {
+      minval: 2
+      maxval: 3
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bfd18bd0bb2e20d0b2d0b8d185d180d18c"
+      label: ""
+      codeval: "PO"
+    }
+    symbol {
+      minval: 4
+      maxval: 13
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d182d0bed180d0bdd0b0d0b4d0be"
+      label: ""
+      codeval: "FC"
+    }
+    symbol {
+      minval: 14
+      maxval: 23
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b4d18bd0bcd0bad0b0"
+      label: ""
+      codeval: "BR"
+    }
+    symbol {
+      minval: 24
+      maxval: 33
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bcd0b3d0bbd0b0"
+      label: ""
+      codeval: "HZ"
+    }
+    symbol {
+      minval: 34
+      maxval: 43
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b4d18bd0bc"
+      label: ""
+      codeval: "FU"
+    }
+    symbol {
+      minval: 44
+      maxval: 53
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bfd18bd0bb2ed0b1d183d180d18f"
+      label: ""
+      codeval: "DS"
+    }
+    symbol {
+      minval: 54
+      maxval: 63
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bfd0b5d1812ed0b1d183d180d18f"
+      label: ""
+      codeval: "SS"
+    }
+    symbol {
+      minval: 64
+      maxval: 73
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bfd0b5d1812ed0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "DRSA"
+    }
+    symbol {
+      minval: 74
+      maxval: 83
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bfd18bd0bb2ed0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "DRDU"
+    }
+    symbol {
+      minval: 84
+      maxval: 93
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bfd18bd0bbd18c"
+      label: ""
+      codeval: "DU"
+    }
+    symbol {
+      minval: 94
+      maxval: 103
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "DRSN"
+    }
+    symbol {
+      minval: 104
+      maxval: 113
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bcd0b5d182d0b5d0bbd18c"
+      label: ""
+      codeval: "BLSN"
+    }
+    symbol {
+      minval: 114
+      maxval: 123
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "VCFG"
+    }
+    symbol {
+      minval: 124
+      maxval: 133
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "FZFG"
+    }
+    symbol {
+      minval: 134
+      maxval: 143
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "MIFG"
+    }
+    symbol {
+      minval: 144
+      maxval: 153
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "PRFG"
+    }
+    symbol {
+      minval: 154
+      maxval: 163
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "FG"
+    }
+    symbol {
+      minval: 164
+      maxval: 173
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "RA"
+    }
+    symbol {
+      minval: 174
+      maxval: 183
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bdd0b5d0b3"
+      label: ""
+      codeval: "SN"
+    }
+    symbol {
+      minval: 184
+      maxval: 193
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b4d0bed0b6d0b4d18c2cd181d0bdd0b5d0b3"
+      label: ""
+      codeval: "RASN"
+    }
+    symbol {
+      minval: 194
+      maxval: 203
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bdd0b5d0b32cd0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "SNRA"
+    }
+    symbol {
+      minval: 204
+      maxval: 213
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bbd0b8d0b2d0bd2ed181d0bdd0b5d0b3"
+      label: ""
+      codeval: "SHSN"
+    }
+    symbol {
+      minval: 214
+      maxval: 223
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bbd0b8d0b2d0bd2ed0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "SHRA"
+    }
+    symbol {
+      minval: 224
+      maxval: 233
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "FZRA"
+    }
+    symbol {
+      minval: 234
+      maxval: 243
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "FZSHRA"
+    }
+    symbol {
+      minval: 244
+      maxval: 253
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "FZDZ"
+    }
+    symbol {
+      minval: 254
+      maxval: 263
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bcd0bed180d0bed181d18c"
+      label: ""
+      codeval: "DZ"
+    }
+    symbol {
+      minval: 264
+      maxval: 273
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bbd0b5d0b42ed0b8d0b3d0bbd18b"
+      label: ""
+      codeval: "IC"
+    }
+    symbol {
+      minval: 274
+      maxval: 283
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "PE"
+    }
+    symbol {
+      minval: 284
+      maxval: 293
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0b0d0b4"
+      label: ""
+      codeval: "GR"
+    }
+    symbol {
+      minval: 294
+      maxval: 303
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0bbd0b5d0b42ed0bad180d183d0bfd0b0"
+      label: ""
+      codeval: "GS"
+    }
+    symbol {
+      minval: 304
+      maxval: 313
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bd2ed0b7d0b5d180d0bdd0b0"
+      label: ""
+      codeval: "SG"
+    }
+    symbol {
+      minval: 314
+      maxval: 323
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b7d0b0d180d0bdd0b8d186d0b0"
+      label: ""
+      codeval: "FLASES"
+    }
+    symbol {
+      minval: 324
+      maxval: 333
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0bed0b7d0b0"
+      label: ""
+      codeval: "TS"
+    }
+    symbol {
+      minval: 334
+      maxval: 343
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0bed0b7d0b02cd181d0bdd0b5d0b3"
+      label: ""
+      codeval: "TSSN"
+    }
+    symbol {
+      minval: 344
+      maxval: 353
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0bed0b7d0b02cd0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "TSRA"
+    }
+    symbol {
+      minval: 354
+      maxval: 363
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "TSGR"
+    }
+    symbol {
+      minval: 364
+      maxval: 373
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "TSGS"
+    }
+    symbol {
+      minval: 374
+      maxval: 383
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "TSRAGR"
+    }
+    symbol {
+      minval: 384
+      maxval: 393
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0bed0b7d0b02cd0bfd18bd0bbd18c"
+      label: ""
+      codeval: "TSDS"
+    }
+    symbol {
+      minval: 394
+      maxval: 403
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b3d180d0bed0b7d0b0"
+      label: ""
+      codeval: "VCTS"
+    }
+    symbol {
+      minval: 404
+      maxval: 413
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed188d0bad0b2d0b0d0bb"
+      label: ""
+      codeval: "+SQ"
+    }
+    symbol {
+      minval: 414
+      maxval: 423
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed188d0bad0b2d0b0d0bb"
+      label: ""
+      codeval: "-SQ"
+    }
+    symbol {
+      minval: 424
+      maxval: 433
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b2d0b8d185d180d18c"
+      label: ""
+      codeval: "+PO"
+    }
+    symbol {
+      minval: 434
+      maxval: 443
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b2d0b8d185d180d18c"
+      label: ""
+      codeval: "-PO"
+    }
+    symbol {
+      minval: 444
+      maxval: 453
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed182d0bed180d0bdd0b0d0b4d0be"
+      label: ""
+      codeval: "+FC"
+    }
+    symbol {
+      minval: 454
+      maxval: 463
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed182d0bed180d0bdd0b0d0b4d0be"
+      label: ""
+      codeval: "-FC"
+    }
+    symbol {
+      minval: 464
+      maxval: 473
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b4d18bd0bcd0bad0b0"
+      label: ""
+      codeval: "+BR"
+    }
+    symbol {
+      minval: 474
+      maxval: 483
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b4d18bd0bcd0bad0b0"
+      label: ""
+      codeval: "-BR"
+    }
+    symbol {
+      minval: 484
+      maxval: 493
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bcd0b3d0bbd0b0"
+      label: ""
+      codeval: "+HZ"
+    }
+    symbol {
+      minval: 494
+      maxval: 503
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bcd0b3d0bbd0b0"
+      label: ""
+      codeval: "-HZ"
+    }
+    symbol {
+      minval: 504
+      maxval: 513
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b4d18bd0bc"
+      label: ""
+      codeval: "+FU"
+    }
+    symbol {
+      minval: 514
+      maxval: 523
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b4d18bd0bc"
+      label: ""
+      codeval: "-FU"
+    }
+    symbol {
+      minval: 524
+      maxval: 533
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bfd18bd0bb2ed0b1d183d180d18f"
+      label: ""
+      codeval: "+DS"
+    }
+    symbol {
+      minval: 534
+      maxval: 543
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bfd18bd0bb2ed0b1d183d180d18f"
+      label: ""
+      codeval: "-DS"
+    }
+    symbol {
+      minval: 544
+      maxval: 553
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bfd0b5d1812ed0b1d183d180d18f"
+      label: ""
+      codeval: "+SS"
+    }
+    symbol {
+      minval: 554
+      maxval: 563
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bfd0b5d1812ed0b1d183d180d18f"
+      label: ""
+      codeval: "-SS"
+    }
+    symbol {
+      minval: 564
+      maxval: 573
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bfd0b5d1812ed0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "+DRSA"
+    }
+    symbol {
+      minval: 574
+      maxval: 583
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bfd0b5d1812ed0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "-DRSA"
+    }
+    symbol {
+      minval: 584
+      maxval: 593
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bfd18bd0bb2ed0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "+DRDU"
+    }
+    symbol {
+      minval: 594
+      maxval: 603
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bfd18bd0bb2ed0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "-DRDU"
+    }
+    symbol {
+      minval: 604
+      maxval: 613
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bfd18bd0bbd18c"
+      label: ""
+      codeval: "+DU"
+    }
+    symbol {
+      minval: 614
+      maxval: 623
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bfd18bd0bbd18c"
+      label: ""
+      codeval: "-DU"
+    }
+    symbol {
+      minval: 624
+      maxval: 633
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed181d0bd2ed0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "+DRSN"
+    }
+    symbol {
+      minval: 634
+      maxval: 643
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed181d0bd2ed0bfd0bed0b7d0b5d0bcd0bed0ba"
+      label: ""
+      codeval: "-DRSN"
+    }
+    symbol {
+      minval: 644
+      maxval: 653
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bcd0b5d182d0b5d0bbd18c"
+      label: ""
+      codeval: "+BLSN"
+    }
+    symbol {
+      minval: 654
+      maxval: 663
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bcd0b5d182d0b5d0bbd18c"
+      label: ""
+      codeval: "-BLSN"
+    }
+    symbol {
+      minval: 664
+      maxval: 673
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "+FCFG"
+    }
+    symbol {
+      minval: 674
+      maxval: 683
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "-FCFG"
+    }
+    symbol {
+      minval: 684
+      maxval: 693
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "+FZFG"
+    }
+    symbol {
+      minval: 694
+      maxval: 703
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "-FZFG"
+    }
+    symbol {
+      minval: 704
+      maxval: 713
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "+MIFG"
+    }
+    symbol {
+      minval: 714
+      maxval: 723
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "-MIFG"
+    }
+    symbol {
+      minval: 724
+      maxval: 733
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "+PRFG"
+    }
+    symbol {
+      minval: 734
+      maxval: 743
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "-PRFG"
+    }
+    symbol {
+      minval: 744
+      maxval: 753
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "+FG"
+    }
+    symbol {
+      minval: 754
+      maxval: 763
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed182d183d0bcd0b0d0bd"
+      label: ""
+      codeval: "-FG"
+    }
+    symbol {
+      minval: 764
+      maxval: 773
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "+RA"
+    }
+    symbol {
+      minval: 774
+      maxval: 783
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "-RA"
+    }
+    symbol {
+      minval: 784
+      maxval: 793
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed181d0bdd0b5d0b3"
+      label: ""
+      codeval: "+SN"
+    }
+    symbol {
+      minval: 794
+      maxval: 803
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed181d0bdd0b5d0b3"
+      label: ""
+      codeval: "-SN"
+    }
+    symbol {
+      minval: 804
+      maxval: 813
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b4d0bed0b6d0b4d18c2cd181d0bdd0b5d0b3"
+      label: ""
+      codeval: "+RASN"
+    }
+    symbol {
+      minval: 814
+      maxval: 823
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b4d0bed0b6d0b4d18c2cd181d0bdd0b5d0b3"
+      label: ""
+      codeval: "-RASN"
+    }
+    symbol {
+      minval: 824
+      maxval: 833
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed181d0bdd0b5d0b32cd0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "+SNRA"
+    }
+    symbol {
+      minval: 834
+      maxval: 843
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed181d0bdd0b5d0b32cd0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "-SNRA"
+    }
+    symbol {
+      minval: 844
+      maxval: 853
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bbd0b8d0b2d0bd2ed181d0bdd0b5d0b3"
+      label: ""
+      codeval: "+SHSN"
+    }
+    symbol {
+      minval: 854
+      maxval: 863
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bbd0b8d0b2d0bd2ed181d0bdd0b5d0b3"
+      label: ""
+      codeval: "-SHSN"
+    }
+    symbol {
+      minval: 864
+      maxval: 873
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bbd0b8d0b2d0bd2ed0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "+SHRA"
+    }
+    symbol {
+      minval: 874
+      maxval: 883
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bbd0b8d0b2d0bd2ed0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "-SHRA"
+    }
+    symbol {
+      minval: 884
+      maxval: 893
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "+FZRA"
+    }
+    symbol {
+      minval: 894
+      maxval: 903
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "-FZRA"
+    }
+    symbol {
+      minval: 904
+      maxval: 913
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "+FZSHRA"
+    }
+    symbol {
+      minval: 914
+      maxval: 923
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "-FZSHRA"
+    }
+    symbol {
+      minval: 924
+      maxval: 933
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "+FZDZ"
+    }
+    symbol {
+      minval: 934
+      maxval: 943
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "-FZDZ"
+    }
+    symbol {
+      minval: 944
+      maxval: 953
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0bcd0bed180d0bed181d18c"
+      label: ""
+      codeval: "+DZ"
+    }
+    symbol {
+      minval: 954
+      maxval: 963
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0bcd0bed180d0bed181d18c"
+      label: ""
+      codeval: "-DZ"
+    }
+    symbol {
+      minval: 964
+      maxval: 973
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "+PE"
+    }
+    symbol {
+      minval: 974
+      maxval: 983
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d0bed0bbd0bed0bbd0b5d0b4"
+      label: ""
+      codeval: "-PE"
+    }
+    symbol {
+      minval: 984
+      maxval: 993
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0b0d0b4"
+      label: ""
+      codeval: "+GR"
+    }
+    symbol {
+      minval: 994
+      maxval: 1003
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0b0d0b4"
+      label: ""
+      codeval: "-GR"
+    }
+    symbol {
+      minval: 1004
+      maxval: 1013
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b7d0b0d180d0bdd0b8d186d0b0"
+      label: ""
+      codeval: "+FLASES"
+    }
+    symbol {
+      minval: 1014
+      maxval: 1023
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b7d0b0d180d0bdd0b8d186d0b0"
+      label: ""
+      codeval: "-FLASES"
+    }
+    symbol {
+      minval: 1024
+      maxval: 1033
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0bed0b7d0b0"
+      label: ""
+      codeval: "+TS"
+    }
+    symbol {
+      minval: 1034
+      maxval: 1043
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0bed0b7d0b0"
+      label: ""
+      codeval: "-TS"
+    }
+    symbol {
+      minval: 1044
+      maxval: 1053
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0bed0b7d0b02cd181d0bdd0b5d0b3"
+      label: ""
+      codeval: "+TSSN"
+    }
+    symbol {
+      minval: 1054
+      maxval: 1063
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0bed0b7d0b02cd181d0bdd0b5d0b3"
+      label: ""
+      codeval: "-TSSN"
+    }
+    symbol {
+      minval: 1064
+      maxval: 1073
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0bed0b7d0b02cd0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "+TSRA"
+    }
+    symbol {
+      minval: 1074
+      maxval: 1083
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0bed0b7d0b02cd0b4d0bed0b6d0b4d18c"
+      label: ""
+      codeval: "-TSRA"
+    }
+    symbol {
+      minval: 1084
+      maxval: 1093
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "+TSGR"
+    }
+    symbol {
+      minval: 1094
+      maxval: 1103
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "-TSGR"
+    }
+    symbol {
+      minval: 1104
+      maxval: 1113
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "+TSGS"
+    }
+    symbol {
+      minval: 1114
+      maxval: 1123
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "-TSGS"
+    }
+    symbol {
+      minval: 1124
+      maxval: 1133
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "+TSRAGR"
+    }
+    symbol {
+      minval: 1134
+      maxval: 1143
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0bed0b7d0b02cd0b3d180d0b0d0b4"
+      label: ""
+      codeval: "-TSRAGR"
+    }
+    symbol {
+      minval: 1144
+      maxval: 1153
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0bed0b7d0b02cd0bfd18bd0bbd18c"
+      label: ""
+      codeval: "+TSDS"
+    }
+    symbol {
+      minval: 1154
+      maxval: 1163
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0bed0b7d0b02cd0bfd18bd0bbd18c"
+      label: ""
+      codeval: "-TSDS"
+    }
+    symbol {
+      minval: 1164
+      maxval: 1173
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0b8d0bb2ed0b3d180d0bed0b7d0b0"
+      label: ""
+      codeval: "+VCTS"
+    }
+    symbol {
+      minval: 1174
+      maxval: 1183
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d181d0bb2ed0b3d180d0bed0b7d0b0"
+      label: ""
+      codeval: "-VCTS"
+    }
+    codedigit: false
+  }
+  testval: 12.34
+  id {
+    descr: 20019
+    name: "w_w_"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -44
+    y: 10
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+  }
+  testval: 12.34
+  id {
+    descr: 10061
+    name: "p"
+    description: ""
+    parent: "Ptend"
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6c"
+      label: ""
+    }
+    symbol {
+      minval: 1
+      maxval: 1.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6d"
+      label: ""
+    }
+    symbol {
+      minval: 3
+      maxval: 3.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6f"
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "71"
+      label: ""
+    }
+    symbol {
+      minval: 2
+      maxval: 2.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6e"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "70"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 6.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "72"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 7.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "73"
+      label: ""
+    }
+    symbol {
+      minval: 8
+      maxval: 8.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "74"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 10063
+    name: "a"
+    description: ""
+    parent: "Ptend"
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -28
+    y: -49
+  }
+  align: kTopLeft
+  type: kSymNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: 9000
+      maxval: 9999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "39"
+      label: ""
+    }
+    symbol {
+      minval: 8000
+      maxval: 8999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "38"
+      label: ""
+    }
+    symbol {
+      minval: 10000
+      maxval: 100000
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3130"
+      label: ""
+    }
+    symbol {
+      minval: 7000
+      maxval: 7999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "37"
+      label: ""
+    }
+    symbol {
+      minval: 6000
+      maxval: 6999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "36"
+      label: ""
+    }
+    symbol {
+      minval: 5000
+      maxval: 5999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "35"
+      label: ""
+    }
+    symbol {
+      minval: 4000
+      maxval: 4999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "34"
+      label: ""
+    }
+    symbol {
+      minval: 3000
+      maxval: 3999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "33"
+      label: ""
+    }
+    symbol {
+      minval: 2001
+      maxval: 2999
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "32"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 20060
+    name: "VV"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 18
+    y: -22
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 12102
+    name: "Tb"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -70
+    y: -14
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 12103
+    name: "Td"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -23
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 10052
+    name: "PQNH"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 120013
+    name: "hgr"
+    description: ""
+    parent: "cloud"
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    codedigit: true
+  }
+  testval: 12.34
+  id {
+    descr: 5520019
+    name: "w_tr"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 26
+    y: -5
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 10
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 22022
+    name: "Hw"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -54
+    y: -8
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 22043
+    name: "Tw"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 22061
+    name: "S"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 30
+    y: 6
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 22043
+    name: "Tw"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -54
+    y: -40
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 12113
+    name: "Tg"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -19
+    y: -24
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 5555112
+    name: "FHI"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 2
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed0b1d0bbd0b0d187d0bdd0bed181d182d18c"
+      label: ""
+    }
+    symbol {
+      minval: 3
+      maxval: 3
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd0b5d181d187d0b0d0bdd0b0d18f20d0b1d183d180d18f"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 6
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 7
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 8
+      maxval: 8
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0b5d0bdd18c"
+      label: ""
+    }
+    symbol {
+      minval: 9
+      maxval: 9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 10
+      maxval: 10
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed181d0bed0b1d18bd18520d18fd0b2d0bbd0b5d0bdd0b8d0b920d0bfd0bed0b3d0bed0b4d18b20d0bdd0b520d0bdd0b0d0b1d0bbd18ed0b4d0b0d0bbd0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 11
+      maxval: 11
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd09ed09dd098d096d095d09dd09dd090d0af20d092d098d094d098d09cd09ed0a1d0a2d0ac"
+      label: ""
+    }
+    symbol {
+      minval: 12
+      maxval: 12
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0b5d182d0b5d0bbd18c"
+      label: ""
+    }
+    symbol {
+      minval: 13
+      maxval: 13
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d0a3d09cd090d09d"
+      label: ""
+    }
+    symbol {
+      minval: 14
+      maxval: 14
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed0a1d090d094d09ad098"
+      label: ""
+    }
+    symbol {
+      minval: 15
+      maxval: 15
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 16
+      maxval: 16
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 17
+      maxval: 17
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b320d0b8d0bbd0b820d181d0bdd0b5d0b6d0bdd0b0d18f20d0bad180d183d0bfd0b0"
+      label: ""
+    }
+    symbol {
+      minval: 18
+      maxval: 18
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0bdd0b5d0b2d18bd0b520d0b8d0bbd0b820d0bfd0b5d180d0b5d0bcd0b5d0b6d0b0d18ed189d0b8d0b5d181d18f20d0bed181d0b0d0b4d0bad0b8"
+      label: ""
+    }
+    symbol {
+      minval: 19
+      maxval: 19
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 20
+      maxval: 20
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 21
+      maxval: 21
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 22
+      maxval: 22
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 23
+      maxval: 23
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 24
+      maxval: 24
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 25
+      maxval: 25
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 26
+      maxval: 26
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 27
+      maxval: 27
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 27
+      maxval: 27
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 28
+      maxval: 28
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 30
+      maxval: 30
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 31
+      maxval: 31
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+  }
+  testval: 12
+  id {
+    descr: 20004
+    name: "W1"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 2
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed0b1d0bbd0b0d187d0bdd0bed181d182d18c"
+      label: ""
+    }
+    symbol {
+      minval: 3
+      maxval: 3
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd0b5d181d187d0b0d0bdd0b0d18f20d0b1d183d180d18f"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d183d0bcd0b0d0bd"
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 6
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 7
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b3"
+      label: ""
+    }
+    symbol {
+      minval: 8
+      maxval: 8
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0b5d0bdd18c"
+      label: ""
+    }
+    symbol {
+      minval: 9
+      maxval: 9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 10
+      maxval: 10
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed181d0bed0b1d18bd18520d18fd0b2d0bbd0b5d0bdd0b8d0b920d0bfd0bed0b3d0bed0b4d18b20d0bdd0b520d0bdd0b0d0b1d0bbd18ed0b4d0b0d0bbd0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 11
+      maxval: 11
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09fd09ed09dd098d096d095d09dd09dd090d0af20d092d098d094d098d09cd09ed0a1d0a2d0ac"
+      label: ""
+    }
+    symbol {
+      minval: 12
+      maxval: 12
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0b5d182d0b5d0bbd18c"
+      label: ""
+    }
+    symbol {
+      minval: 13
+      maxval: 13
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a2d0a3d09cd090d09d"
+      label: ""
+    }
+    symbol {
+      minval: 14
+      maxval: 14
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09ed0a1d090d094d09ad098"
+      label: ""
+    }
+    symbol {
+      minval: 15
+      maxval: 15
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09cd0bed180d0bed181d18c"
+      label: ""
+    }
+    symbol {
+      minval: 16
+      maxval: 16
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d094d0bed0b6d0b4d18c"
+      label: ""
+    }
+    symbol {
+      minval: 17
+      maxval: 17
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0a1d0bdd0b5d0b320d0b8d0bbd0b820d181d0bdd0b5d0b6d0bdd0b0d18f20d0bad180d183d0bfd0b0"
+      label: ""
+    }
+    symbol {
+      minval: 18
+      maxval: 18
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d09bd0b8d0b2d0bdd0b5d0b2d18bd0b520d0b8d0bbd0b820d0bfd0b5d180d0b5d0bcd0b5d0b6d0b0d18ed189d0b8d0b5d181d18f20d0bed181d0b0d0b4d0bad0b8"
+      label: ""
+    }
+    symbol {
+      minval: 19
+      maxval: 19
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d093d180d0bed0b7d0b0"
+      label: ""
+    }
+    symbol {
+      minval: 20
+      maxval: 20
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 21
+      maxval: 21
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 22
+      maxval: 22
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 23
+      maxval: 23
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 24
+      maxval: 24
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 25
+      maxval: 25
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 26
+      maxval: 26
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 27
+      maxval: 27
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 27
+      maxval: 27
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 28
+      maxval: 28
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 30
+      maxval: 30
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 31
+      maxval: 31
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+  }
+  testval: 14
+  id {
+    descr: 20005
+    name: "W2"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+datatype: kSurface
+center: kNoCenter
+crisscross: false
+radius: 5
+windfont {
+  family: "Arial"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+flow: false

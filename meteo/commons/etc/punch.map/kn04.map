@@ -1,0 +1,18 @@
+name: "kn-04"
+title: "КН-04"
+data_type: kAeroType
+data {
+  source: kSurface
+  template_name: "kn04"
+  data_type: kAeroFix
+  data_type: kAeroType
+  data_type: kAeroMobSea
+  data_type: kAeroMobAir
+  data_type: kAeroMob
+  data_type: kAeroWindSea
+  data_type: kAeroWindMob
+  data_type: kAeroBufr
+  data_type: kAeroUnk
+  type_level: 100
+}
+webpunchmap: true

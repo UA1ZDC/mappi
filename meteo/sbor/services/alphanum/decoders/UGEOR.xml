@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="UGEOR" text="характеристики активных областей на видимом диске Солнца и прогноз их вспышечной активности"  category="175">
+  <MessageSections>UGEOR\s*(\d{5}\s*\d{5}\s*\d{4}/)\s*(\d{2}/\d{2}\s*\d{5}\s*(?:(?:[\d/]{5}\s*){8})*)\s*99999\s*(?:PLAIN(.*)BT)?</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d)(\d\d)(\d\d)\s*(\d\d)(\d\d)/</GroupValues>
+    <Value number="1"  descrName="station_index" text="индекс регионального центра" />
+    <Value number="2"  descrName="J"   text="год выпуска сообщения" />
+    <Value number="3"  descrName="MM"  text="месяц" />
+    <Value number="4"  descrName="YY"  text="день" />
+    <Value number="5"  descrName="GG"  text="час" />
+    <Value number="6"  descrName="gg"  text="минута" />   
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <GroupValues>(\d{2})/(\d{2})\s*()(\d\d)()()()(\d)\d\d\s*((?:(?:[\d/]{5}\s*){8})*)</GroupValues>
+      <Value number="7"  descrName="YY"  text="день наблюдения" />
+      <Value number="7"  descrName="GG"  text="Час наблюдения" />
+      <Value number="9"  descrName="t_sign" default="4"   innum="0" text="прогноз" />
+      <Value number="9"  descrName="YY"  innum="0" text="день начала действия прогноза" />
+      <Value number="9"  descrName="GG"  innum="0" default="0" text="день начала действия прогноза" />
+      <Value number="9"  descrName="gg"  innum="0" default="00" text="день начала действия прогноза" />
+      <Value number="10" descrName="YYp" innum="0" default="0" text="продолжительность прогноза в днях" />
+      <Value number="10" descrName="YYp" innum="0" text="продолжительность прогноза в днях" />
+      <!-- <Value number="11"  descrName="UNK" text="количество групп солнечных пятен" /> -->
+      <SubSection number="0" text="" >
+	<item>
+	  <GroupValues>((?:[1234][\d/]{4}\s*){4})\s*((?:[\d/]{5}\s*){4})</GroupValues>
+	  <Subsection number="0" text="" >
+	    <GroupValues>1([\d/]{4})\s*2([\d/]{2})([\d/]{2})\s*3([\d/]{2})([\d/])([\d/])\s*4([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="nns"   text="порядковый номер группы пятен" />
+	    <Value number="2"  descrName="gMcnt" text="количество рентгеновских вспышек класса M" />
+	    <Value number="3"  descrName="gXcnt" text="количество рентгеновских вспышек класса Х" />
+	    <Value number="4"  descrName="gflcnt" text="количество субвспышек в группе пятен" />
+	    <Value number="5"  descrName="gflcnt" default="0" text="количество вспышек 1 балла в группе пятен" />
+	    <Value number="6"  descrName="gflcnt" default="0" text="количество вспышек 2 балла в группе пятен" />
+	    <Value number="7"  descrName="gCc" text="Цюрихский класс группы" />
+	    <Value number="8"  descrName="gsh" text="тип полутени у самого большого пятна в группе" />
+	    <Value number="9"  descrName="gdstr" text="компактность центральных пятен" />
+	    <Value number="10" descrName="gm"  text="магнитная классификация группы пятен" />
+	  </Subsection>
+	  <Subsection number="1" text="" >
+	    <GroupValues>5([\d/]{4})\s*6([\d/]{4})\s*([\d/])([\d/]{2})([\d/]{2})\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"   descrName="gSq" text="площадь группы в миллионных долях полусферы Солнца" />
+	    <Value number="2"   descrName="gscnt" text="общее число пятен в группе" />
+	    <Value number="3"   descrName="gQc" text="квадрант, в котором находится группа" />
+	    <Value number="4"   descrName="gLo" text="расстояние до центрального меридиана в градусах (долгота)" />
+	    <Value number="5"   descrName="gLa" text="гелиографическая широта в градусах" />
+	    <Value number="6"   descrName="gS"  text="основной прогноз вспышечной активности группы “NNNN” для даты “РР”" />
+	    <Value number="7"   descrName="gPC" text="вероятность рентгеновских вспышек класса C с точностью до 10%" />
+	    <Value number="8"   descrName="gPM" text="вероятность рентгеновских вспышек класса M" />
+	    <Value number="9"   descrName="gPX" text="вероятность рентгеновских вспышек класса X" />
+	    <Value number="10"  descrName="gPp" text="вероятность протонных вспышек" />
+	  </Subsection>
+	</item>
+      </SubSection>
+    </item>
+  </Section>
+  <Section number="2" text="" >
+    <GroupValues>(.*)</GroupValues>
+    <Value number="1"  descrName="text" text="текстового сообщения (необходимые дополнения к прогнозу)" />
+  </Section>
+</Message>

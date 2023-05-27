@@ -1,0 +1,14 @@
+{
+  "update": "conferences",
+  "updates": [
+    { "q": { "name" : @name@ },
+      "u": { "$setOnInsert" : {
+        "name" : @name@,
+        "owner" : @owner@,
+        "members" : [ @owner@ ]
+      } },
+      "upsert": true, 
+      "multi": false
+    }
+  ]
+}

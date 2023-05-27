@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?ppadbr');
+  src:  url('fonts/icomoon.eot?ppadbr#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ppadbr') format('truetype'),
+    url('fonts/icomoon.woff?ppadbr') format('woff'),
+    url('fonts/icomoon.svg?ppadbr#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-barometr:before {
+  content: "\e903";
+}
+.icon-dewpoint:before {
+  content: "\e900";
+}
+.icon-hygrometer:before {
+  content: "\e901";
+}
+.icon-pressure:before {
+  content: "\e902";
+}

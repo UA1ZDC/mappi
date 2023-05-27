@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="UABSE" text="ионосферное поглощение" category="176">
+  <MessageSections>UABSE\s*(\d{5}\s*\d{5})\s*(?:(?:[0/]{5}\s*){2,3}|((?:[1-7][\d/]{4}\s*(?:9\d{4})?\s*[\d/]{5}\s*)*))</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d\d)(\d)(\d\d)</GroupValues>
+    <Value number="1"  descrName="station_index" text="индекс обсерватории" />
+    <Value number="2"  descrName="YY"  text="день наблюдения" />
+    <Value number="3"  descrName="gir" text="способ измерения" />
+    <Value number="4"  descrName="GG"  text="час" />
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <GroupValues>(\d)(?:(\d{2})(\d{2})|////)\s*(?:9()(\d\d)(\d\d))?\s*(?:(\d{2})/|(\d{3}))(?:()(\d{2})|//)</GroupValues>
+      <Value number="1"  descrName="git" text="тип явления" />
+      <Value number="2"  descrName="GG"  text="часы начала явления" />
+      <Value number="3"  descrName="gg"  text="минуты начала явления" />
+      <Value number="4"  descrName="stat_sign" innum="0" default="2" text="час максимума явления" />
+      <Value number="4"  descrName="GG"  innum="0" text="часы максимума явления" />
+      <Value number="5"  descrName="gg"  innum="0" text="минуты максимума явления" />
+      <Value number="6"  descrName="gia" innum="0" text="число дБ максимума поглощения за час до времени “КК”" />
+      <Value number="7"  descrName="gif" text="задержка фазы в градусах" />
+      <Value number="8"  descrName="gg"  default="00" text="минута конца явления" />
+      <Value number="8"  descrName="GG"  text="час конца явления" />
+    </item>
+  </Section>
+</Message>

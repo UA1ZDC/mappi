@@ -1,0 +1,34 @@
+syntax = "proto2";
+
+package meteo.bufr;
+
+import "surface.proto";
+
+//! Категории данных
+enum Category {
+  kSurfCateg = 0;        //!< Приземные (суша)
+  kSeaCateg  = 1;        //!< Приземные (море)
+  kAeroCateg = 2;        //!< Вертикальное зондирование
+  kSatAeroCateg = 3;     //!< Вертикальное зондирование (спуник)
+  kAeroOneCateg = 4;     //!< Аэрология по 1 уровню
+  kSatAeroOneCateg = 5;  //!< Аэрология по 1 уровню (спутник)
+  kRadarCateg =  6;      //!< Радиолокация
+  kSynPhen    =  7;      //!< Синоптические характеристики
+  kPhysChem   =  8;      //!< Физические/химические составляющие
+  kSatSurf    = 12;      //!< Приземные данные (спутник)
+  kOceanCateg = 31;      //!< Океанография
+};
+
+//! Для отображения состояния
+message CategoryView {
+  required Category num = 1; //!< Номер категории Bufr
+  required string name = 2;  //!< Название для отображения состояния
+  optional bool process = 3 [default = false]; //!< true - обрабатывать
+};
+
+
+//! Раскодируемые данные
+message DecodingTypes {
+  repeated CategoryView category = 1; //!< Раскодируемые категории Bufr
+  repeated surf.DataType type = 2; //!< Обрабатываемые типы данных (внутри категории, которая раскодируется)
+};

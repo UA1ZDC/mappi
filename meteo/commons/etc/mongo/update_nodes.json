@@ -1,0 +1,15 @@
+{
+  "findAndModify":"stations",
+  "query": { "station": @station@ },
+  "update": {
+    "$set" : {
+          "index.cccc" : @cccc@,
+          "station": @station@,
+          "name.ru": @name_ru@,
+          "location": @location@,
+          "station_type": 13
+        }
+    },
+  "new": true,
+  "upsert": true
+}

@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+package meteo.test.proto;
+
+message TestMessage {
+  optional int32 count = 1; //Просто счетчик
+};
+
+//! Сервис контроля и диагностики
+service TestService {
+  rpc testreq( TestMessage ) returns (TestMessage);
+}
+

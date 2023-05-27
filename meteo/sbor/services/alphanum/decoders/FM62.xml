@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM62" text="TRACKOB"  category="23">
+  <MessageSections>\s*NNXX\s*([\d/]{5})((?:\s*[\d/]{4}/\s*[\d/]{5}\s*[\d/]{5}\s*(?:4[\d]{4})?\s*(?:6[\d]{4})?\s*(?:8[\d/]{4})?\s*(?:9[\d/]{4})?)+)\s*([\w/]{3,})</MessageSections>
+  <Section number="0" text="" >
+    <SectionGroups>\s*(.*)</SectionGroups>
+    <Group number="1" text="">
+      <GroupValues>([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+      <Value number="1"  descrName="YY"/>
+      <Value number="1"	 descrName="MM"/>
+      <Value number="1"	 descrName="J"/>
+    </Group>
+  </Section>			     
+
+  <Section number="1" text="" >
+    <item>
+    <SectionGroups>\s*([\d/]{4}/\s*[\d/]{5}\s*[\d/]{5})\s*(4[\d]{4})?\s*(6[\d]{4})?\s*(8[\d/]{4})?\s*(9[\d/]{4})?</SectionGroups>
+    <Group number="1" text="">
+      <GroupValues>([\d/]{2})([\d/]{2})/\s*([\d/]{1})([\d/]{4})\s*([\d/]{5})</GroupValues>
+      <Value number="1"  descrName="GG"/>
+      <Value number="1"	 descrName="gg"/>
+      <Value number="1"	 descrName="Qc"/>
+      <Value number="1"	 descrName="LaLaLaLa"/>
+      <Value number="1"	 descrName="LoLoLoLoLo"/>
+    </Group>
+    <Group number="1" text="">
+    <GroupValues>4([\d/])([\d/])([\d/])([\d/])</GroupValues>
+      <Value number="1"  descrName="mT" text="Период усреднения для солености" />
+      <Value number="1"	 descrName="mS" text="Период усреднения для температуры моря" />
+      <Value number="1"	 descrName="mc" text="Период усреднения для скорости и направления поверхностного морского течения" />
+      <Value number="1"	 descrName="ic" text="Указатель единиц скорости поверхностного морского течения" />
+    </Group>
+    <Group number="1" text="">
+    <GroupValues>6([\d]{4})</GroupValues>
+      <Value number="1"  descrName="snTwTwTw" text="Температура поверхности моря, в десятых долях градуса Цельсия" />
+    </Group>
+    <Group number="1" text="">
+      <GroupValues>8([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="S0S0S0S0" text="Соленость в сотых долях промиля (‰)" />
+    </Group>
+    <Group number="1" text="">
+    <GroupValues>9([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="d0d0" text="Истинное направление, в десятках градусов, в котором движется поверхностное морское течение" />
+      <Value number="1"	 descrName="c0c0" text="Скорость течения на поверхности моря в десятых долях ic" /> 
+    </Group>
+    </item>
+  </Section>			     
+  <Section number="2" text="" >
+    <SectionGroups>\s*(.*)</SectionGroups>
+    <Group number="1" text="">
+      <GroupValues>([\w/]{3,})</GroupValues>
+      <Value number="1"  descrName="D____D" text="Позывной" />
+    </Group>
+  </Section>			     
+</Message>

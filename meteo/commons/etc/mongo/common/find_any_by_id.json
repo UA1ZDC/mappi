@@ -1,0 +1,4 @@
+{  
+  "find" : @login@,
+  "filter" : { "_id" : @id@ }
+}

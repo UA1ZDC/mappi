@@ -1,0 +1,1 @@
+SELECT * FROM meteo.users WHERE id=@id@

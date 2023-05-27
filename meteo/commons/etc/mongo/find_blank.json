@@ -1,0 +1,8 @@
+{
+  "find": "blanks",
+  "filter": {
+      "ipaddr": @ip@,
+      "namegms":  @namegms@
+     },
+  "limit": 1
+}

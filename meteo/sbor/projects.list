@@ -1,0 +1,29 @@
+#DEPS=(
+#  cross-commons
+#  sql
+#  commons
+#  meteo/commons
+#)
+
+DIRS_EXTRA=(
+  meteo/sbor/etc
+)
+
+DIRS=(
+  #meteo/commons/ui/previewwidget
+  #meteo/commons/ui/tlgeditor
+  #meteo/commons/ui/customviewer
+  meteo/sbor/msgcenter
+  meteo/sbor/msgstream
+  meteo/sbor/services/alphanum
+  meteo/sbor/services/bufr
+  meteo/sbor/services/grib
+  meteo/sbor/services/chainloader
+  meteo/sbor/services/control
+  meteo/sbor/services/netcdf
+  meteo/sbor/ui/msgloader
+)
+
+
+
+

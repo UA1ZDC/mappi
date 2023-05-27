@@ -1,0 +1,100 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+import sys
+import getopt
+import os
+from time import sleep
+
+files = { 'NOAA 15'   :  [ 200000, os.getenv("HOME") + '/satdata/stub/N190103181545n.Raw16' ],
+          'NOAA 18'   :  [ 200000, os.getenv("HOME") + '/satdata/stub/N19_3110141357n.l5.old.Raw16' ],
+          'NOAA 19'   :  [ 200000, os.getenv("HOME") + '/satdata/stub/N191207191641n.raw16' ],
+          'FENGYUN 3A' : [ 200000, os.getenv("HOME") + '/satdata/stub/FY3A_2017-03-01_091051.pds' ],
+          'FENGYUN 3B' : [ 200000, os.getenv("HOME") + '/satdata/stub/FY3B_2017-03-03_141730.pds' ],
+          'FENGYUN 3C' : [ 200000, os.getenv("HOME") + '/satdata/stub/FY3A_2017-03-03_115930.pds' ],
+          'METEOR-M 2' : [ 200000, os.getenv("HOME") + '/satdata/stub/MN2_10_50_27_12_2014.l5.no.mn2',
+                           150000, os.getenv("HOME") + '/satdata/stub/meteor110.low.bin' ],
+          'METOP-A':     [ 100000, os.getenv("HOME") + '/satdata/stub/metop_cadu.pds'  ],
+          }
+defaultdst = os.getenv("HOME") + '/satdata/streamfile.raw'
+
+def printError(err):
+    sys.stderr.write("Ctrl Error: " + err + "\n")
+
+def printOut(out):
+    sys.stderr.write("Ctrl Output: " + out + "\n")
+
+def print_help():
+    print
+    print 'mappi_rxstub.py -n <sat_name> -f <freq> -d <destination_file>'
+    print '-d <dst> - destination file [default = ' + defaultdst + ']'
+
+
+def main(argv):
+    try:
+        opts, args = getopt.getopt(argv,"hn:f:d:r:g:",["name="])
+    except getopt.GetoptError:
+        print_help()
+        sys.exit(2)
+
+    name = ''
+    dstname = defaultdst
+    freq = 100e6
+
+    for opt, arg in opts:
+        if opt == '-h':
+            print_help()
+            sys.exit()
+        elif opt in ("-n", "--name"):
+            name = arg
+        elif opt in ("-f", "--freq"):
+            freq = float(arg)
+        elif opt in ("-d", "--dst"):
+            dstname = arg
+
+    name = name.strip();
+
+    if not name:
+        printError("не указано название спутника")
+        sys.exit(1)
+
+    if not dstname:
+        printError("не указано название файла для сохранения")
+        sys.exit(1)
+
+
+    filename = ''
+    if freq >= 100e6:
+        filename = files[name][1]
+    else:
+        filename = files[name][2]
+
+    if not filename:
+        printError("не определён файл-источник")
+        sys.exit(1)
+
+    printOut("источник " + filename)
+    printOut("результат " + dstname)
+
+    srcfile = open(filename, 'rb')
+    dstfile = open(dstname, 'wb')
+
+    size = os.stat(filename).st_size
+    printOut("размер   " + str(size))
+
+    pos = 0
+    oneReadSize = files[name][0]
+    sleep_time = (600. / size) * oneReadSize
+    printOut("sleep " + str(sleep_time))
+    while pos < size:
+        data = srcfile.read(oneReadSize)
+        dstfile.write(data);
+        pos += oneReadSize;
+        printOut(str(pos*100/size) + '%')
+        sleep(sleep_time)
+
+    dstfile.close()
+    srcfile.close()
+
+if __name__ == '__main__':
+    main(sys.argv[1:])

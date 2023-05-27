@@ -1,0 +1,5 @@
+{ "find" : "positions",
+  "filter" : {
+    "parent" : "%1"
+  }
+}

@@ -1,0 +1,7 @@
+python3-lxml
+python3-pyqt5
+python3-numpy
+python3-six
+python3-protobuf
+libboost-python1.62.0
+xvfb

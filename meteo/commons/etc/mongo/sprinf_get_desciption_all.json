@@ -1,0 +1,5 @@
+{"aggregate": "bufr_code", "pipeline": [ 
+  { "$unwind" : "$values" }  
+  ], 
+  "cursor": { "batchSize": 1 }
+}

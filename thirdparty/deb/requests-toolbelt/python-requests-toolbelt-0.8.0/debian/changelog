@@ -1,0 +1,79 @@
+python-requests-toolbelt (0.8.0-1) unstable; urgency=medium
+
+  * New upstream version 0.8.0.
+  * Changed Standards-Version from 3.9.8 to 4.0.0.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 16 Jul 2017 09:19:44 +0000
+
+python-requests-toolbelt (0.7.0-1) unstable; urgency=medium
+
+  * New upstream version 0.7.0.
+  * Added intersphinx-localmapping.diff to make sure build do not try
+    to use the Internet during build (See #830186).
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 27 Aug 2016 08:49:23 +0200
+
+python-requests-toolbelt (0.6.2-1) unstable; urgency=medium
+
+  * New upstream version 0.6.2.
+  * Add autopkgtest-pkg-python testsuite to d/control to get basic testing.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Tue, 12 Jul 2016 11:18:56 +0200
+
+python-requests-toolbelt (0.6.0-3) unstable; urgency=medium
+
+  * Updated Standards-Version from 3.9.7 to 3.9.8.
+  * Added python-sphinx-rtd-theme as build dependency. (Closes: #829192)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Wed, 06 Jul 2016 09:21:50 +0200
+
+python-requests-toolbelt (0.6.0-2) unstable; urgency=medium
+
+  [ Ross Gammon ]
+  * Add myself to uploaders.
+
+  [ Petter Reinholdtsen ]
+  * Change Standards-Version from 3.9.6 to 3.9.7.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon, 08 Feb 2016 22:22:24 +0000
+
+python-requests-toolbelt (0.6.0-1) unstable; urgency=medium
+
+  * Remove forgotten and redundant override_dh_auto_build.
+  * Add gbp.conf file enforcing the need for pristine-tar with git-buildpackage.
+  * Imported Upstream version 0.6.0
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon, 08 Feb 2016 13:35:37 +0000
+
+python-requests-toolbelt (0.5.1-4) unstable; urgency=medium
+
+  * Changed doc building rules to use LC_ALL=C and dh_sphinxdoc.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 16 Jan 2016 06:42:14 +0000
+
+python-requests-toolbelt (0.5.1-3) unstable; urgency=medium
+
+  * Add missing build dependency on python-requests/python3-requests.
+    (Closes: #810644)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 10 Jan 2016 21:37:43 +0000
+
+python-requests-toolbelt (0.5.1-2) unstable; urgency=low
+
+  [ Federico Ceratto ]
+  * Rename license.
+  * Build Python3 and docs, install HISTORY.rst.
+  * Install doc files.
+
+  [ Petter Reinholdtsen ]
+  * Make sure backup file included in distribution by mistake do not end
+    up in binary packages.
+  * Make sure clean target remove generated html documentation.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Fri, 08 Jan 2016 00:08:51 +0100
+
+python-requests-toolbelt (0.5.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #809969).
+
+ -- Petter Reinholdtsen <pere@debian.org>  Tue, 05 Jan 2016 21:15:53 +0000

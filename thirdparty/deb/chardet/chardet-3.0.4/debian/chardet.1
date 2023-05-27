@@ -1,0 +1,20 @@
+.TH CHARDET "1" "December 2013" "chardet 2.2.1" "User Commands"
+.SH NAME
+chardet \- universal character encoding detector
+.SH SYNOPSIS
+.B chardet
+[\fIfile \fR...]
+.SH DESCRIPTION
+Report heuristically\-detected character encoding for each file.
+.PP
+For every specified file (defaulting to stdin if no files are
+specified), reads and determines the character encoding of the file
+content. Reports the name and confidence level for each file's
+detected character encoding.
+.SH "SEE ALSO"
+/usr/share/doc/python-chardet-doc/index.html
+.SH AUTHOR
+chardet module was written by Mark Pilgrim <mark@diveintomark.org>
+.PP
+This manual page was written by Piotr Ożarowski <piotr@debian.org>,
+for the Debian project (but may be used by others).

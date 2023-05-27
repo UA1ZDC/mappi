@@ -1,0 +1,309 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+import "sprinf.proto";
+
+package meteo.climat;
+
+//! Тип военно-климатических характеристик
+enum VkoType {
+  kVkoN = 0;   //!< Ясные и пасмурные дни по общей и нижней облачности
+  kVkoh = 1;   //!< Высота нижней границы облаков
+  kVkoC = 2;   //!< Форма облаков нижнего яруса и вертикального развития
+  kVkoV = 3;   //!< Горизонтальная дальности видимости у земли
+  kVkoR = 4;   //!< Количество (мм) осадков по месяцам (среднее, наибольшее, наименьшее)
+  kVkoYR = 5;  //!< Среднее количество дней с осадками по месяцам
+  kVkow = 6;   //!< Число дней с опасными явлениями погоды
+  kVkodd = 7;  //!< Повторяемость направлений ветра и штилей (%)
+  kVkoff = 8;  //!< Средняя месячная и максимальная скорость ветра, м/с
+  kVkoYfx = 9; //!< Число дней с сильным ветром
+  kVkoT = 10;  //!< Температура воздуха у земли
+  kVkoYFr = 11;//!< Дата первого и последнего заморозка и продолжительность безморозного периода
+  kVkodT = 12; //!< Cуточный ход отклонений температуры
+  kVkoU = 13;  //!< Влажность
+  kVkoss = 14; //!< Высота снежного покрова по декадам
+  kVkoYss = 15;//!< Дата образования и разрушения устойчивого снежного покрова
+  kVkoff1 = 16;//!< Средняя повторяемость направления и скорости ветра в слое
+  kVkohV  = 17;//!< Условия погоды различной степени сложности (ВНГО + ГДВ)
+  kVkot1  = 18;		//!< Температура по уровням
+  kVkoIsoterm = 19;	//!< Высоты изотерм 0, -10, -20
+  kVkoTropo = 20;	//!< Нижняя граница и температура тропопаузы
+  
+  kVkoddY   = 21; //!< Напрвление для общей инфо
+  kVkoffxY = 22; //!< Скорость ветра для общей инфо
+  kVkoNY    = 23; //!< Облачность для общей инфо
+  kVkowRY    = 24; //!< Явления для общей инфо
+  kVkoTY    = 25; //!< Температура для общей инфо
+  
+  kVkoNm  = 26; //!< Облачность за месяц по декадам
+  kVkohm  = 27; //!< ВНГО за месяц по декадам
+  kVkoVm  = 28; //!< МДВ за месяц по декадам
+  kVkohVm = 29; //!< ВНГО/МДВ, за месяц по декадам
+  kVkoP0m = 30; //!< Давление на уровне станции
+  kVkoRm  = 31; //!< Количество осадков, за месяц по декадам
+  kVkoYfxm = 32;//!< Число дней с сильным ветром, месяц по декадам
+  kVkowm  = 33; //!< Опасные явления погоды, месяц по декадам
+  kVkoTm  = 34; //!< Температура воздуха у земли, месяц по декадам
+  kVkoUm  = 36;
+  kVkoff1m = 37;//!< Средняя повторяемость направления и скорости ветра в слое за месяц по декадам
+  kVkoTropom = 38; //!< Тропопауза, месяц
+  kVkoTgm = 39;  //!< Температура почвы, месяц
+  kVkossm = 40;  //!< Высота снежного покрова, месяц
+  kVkoYssm = 41; //!< Дата образования и разрушения устойчивого снежного покрова
+  kVkoCnt  = 42;
+};
+
+//! Соседние станции
+message ClimatStation {
+  required meteo.sprinf.Station station = 1; //!< Станция
+  optional float  utc = 2 [default = 0];     //!< Разница с UTC в часах
+  optional bool isown = 3 [default = false]; //!< true - своя станция. может и не надо уже
+  optional float dist = 4; //!< Расстояние до своей
+  optional meteo.sprinf.MeteostationType cltype = 5; //!< Тип станции для климата (напр., приземные может забирать с аэродрома)
+  optional string dtbeg = 6; //!< Дата первой записи, Qt::ISODate
+  optional string dtend = 7; //!< Дата последней записи, Qt::ISODate
+};
+
+//! Параметры для сохранения в БД климат
+message ClimatSaveProp {
+  repeated ClimatStation stations = 1;       //!< Станции, для которых сохраняются данные в климатическую БД
+  optional string error    = 2;
+};
+
+//! Параметры для климатической характеристики
+message VkoProperty {
+  required VkoType type = 1;	//!< Тип ВКО
+  required meteo.sprinf.MeteostationType station = 2; // тип станции
+  required string title = 3;	//!< Название климатической характеристики
+  repeated string descr = 5;    //!< Список дескрипторов для описания характеристики
+  optional int32 levtype = 6;	//!< Тип уровня
+};
+
+//! Параметры для всех характеристик
+message VkoDescription {
+  repeated VkoProperty prop = 1;
+};
+
+//--------
+
+//! Запрос приземных климатических данных
+message DataRequest {
+  required string station = 1;	   //!< Станция
+  required sprinf.MeteostationType station_type = 2; //!< Тип станции
+  optional string date_start = 3;  //!< Начало периода, Qt::ISODate
+  optional string date_end   = 4;  //!< Окончание периода, Qt::ISODate
+  repeated string descrname  = 5;  //!< 
+  optional int32  levtype    = 6;  //!< Тип уровня
+  //для запроса начала/окончания явления
+  optional float limit = 7;        //!< Предельное значение метеопараметра, по которому определяется начало/окночание периода
+  optional bool  less_then = 8;     //!< true - ялвения характеризуется значением меньшим порога, false - большим
+  optional int32 lmonth_start = 9; //!< Месяц, с которого может начаться явление
+  optional int32 lmonth_end = 10;  //!< Месяц, до которого явление может продолжаться
+  optional string collection = 11; //!< Коллекция, к которой запрос
+  optional int32 month    = 12;    //!< Данные по одному месяцу из указанного диапазона
+};
+
+
+//! Доступные данные
+message DataSeriesDate {
+  repeated string station = 1;    //!< Индексы станций
+  repeated int32  type = 2;	  //!< Тип станции
+  repeated string date_start = 3; //!< Дата первой записи, Qt::ISODate
+  repeated string date_end = 4;   //!< Дата последней записи, Qt::ISODate
+  repeated meteo.sprinf.MeteostationType cltype = 5; //!< Тип климатических данных (синоптические/аэрологические)
+  optional string error    = 6;
+};
+
+
+//----- С полной датой
+
+message SurfAllValuesList {
+  required int32 hour = 2;
+  optional int32 day  = 4; //!< от начала года
+  required int32 year = 1;
+  required float avg  = 3;
+};
+
+message SurfMonthAllValues {
+  required int32 month  = 1; //!< Месяц
+  repeated SurfAllValuesList avglist = 2;
+};
+
+//! Данные по срокам за все месяца
+message SurfMonthAllReply {
+  required string descrname = 1;
+  repeated SurfMonthAllValues val = 2; //!< Значения по срокам для каждого месяца
+  optional string error     = 3;
+};
+
+//! Данные по срокам за все месяца, несколько дескрипторов
+message SurfAllListReply {
+  repeated SurfMonthAllReply all = 1;
+  optional string error     = 5;
+};
+
+//----- По срокам
+
+//! Список значений за срок
+message ValuesList {
+  required int32 hour         = 1; //!< Срок
+  repeated float avg          = 2; //!< Список значений за указанные года (месяцы)
+};
+
+//! Приземные данные по срокам за месяц
+message SurfHourValues {
+  required int32 month        = 1; //!< Месяц
+  repeated ValuesList avglist = 2; //!< Список значений по каждому сроку
+};
+
+//! Данные по срокам за все месяца
+message SurfMonthReply {
+  required string descrname = 1; //!< Дескриптор
+  repeated SurfHourValues val = 2; //!< Значения по срокам для каждого месяца
+  optional string error     = 3;
+};
+
+//----- За сутки
+
+//! Список значений за сутки
+message DayValuesList {
+  required int32 year         = 1; //!< Год
+  repeated float avg          = 2; //!< Список значений за указанные года (месяцы)
+  repeated int32 day          = 3; //!< От начала года для каждого значения
+};
+
+//! Приземные данные за сутки за месяц
+message SurfDayValues {
+  required int32 month       = 1; //!< Месяц
+  repeated DayValuesList avglist  = 2; //!< Список значений (за все года)
+};
+
+//! Данные за сутки
+message SurfDayReply {
+  required string descrname  = 1; //!< Дескриптор
+  repeated SurfDayValues val = 2; //!< Значения по срокам для каждого месяца
+  optional string error      = 3;
+};
+
+//----- Средние по декадам
+
+//! Список значений за декады
+message DecadeValuesList {
+  required int32 decade      = 2; //!< Декада
+  required int32 year         = 1; //!< Год
+  required float avg          = 3; //!< Значение
+};
+
+//! Приземные данные за месяц по декадам
+message SurfDecadeValues {
+  required int32 month       = 1; //!< Месяц
+  repeated DecadeValuesList avglist  = 2; //!< Список значений (за все года)
+};
+
+//! Данные по декадам
+message SurfDecadeReply {
+  required string descrname = 1; //!< Дескриптор
+  repeated SurfDecadeValues val = 2; //!< Значения по декадам для каждого месяца
+  optional string error     = 3;
+};
+
+//----- Средние за месяц
+
+//! Приземные данные по срокам
+message SurfAvgValues {
+  required int32 month = 1; //!< Месяц
+  repeated float avg  = 2; //!< Список значений за указанные года для month
+};
+
+//! Данные за все месяца
+message SurfMonthAvgReply {
+  required string descrname = 1; //!< Дескриптор
+  repeated SurfAvgValues val = 2; //!< Значения по срокам для каждого месяца
+  optional string error      = 3;
+};
+
+
+//----- По месяцам
+
+//! Список значений за месяц
+message YearValuesList {
+  required int32 year         = 1; //!< Год
+  optional int32 hour         = 3; //!< Срок (если есть, среднее за месяц по этому сроку)
+  required float avg          = 2; //!< Среднее значение
+};
+
+//! Приземные данные месяцам
+message SurfMonthValues {
+  required int32 month       = 1; //!< Месяц
+  repeated YearValuesList avglist  = 2; //!< Список значений по каждому году
+};
+
+//! Данные по годам и месяцам
+message SurfYearReply {
+  required string descrname = 1; //!< Дескриптор
+  repeated SurfMonthValues val = 2; //!< Значения по месяцам (12 штук)
+  optional string error     = 3;
+};
+
+//----- Даты установления явления (заморозки, устойчивый покров)
+
+message SurfDateValues {
+  optional string start_date = 1; //!< Дата начала явления
+  optional string end_date = 2;   //!< Дата окончания явления
+  optional int32 days_count = 3;    //!< Продолжительность, дней
+};
+
+message SurfDateReply {
+  required string descrname = 1; //!< Дескриптор
+  repeated SurfDateValues val = 4; 
+  optional string error      = 5;
+};
+
+//----- Аэрологические данные
+
+//! Список значений по месяцам
+message AeroValuesList {
+  required string date       = 1; //!< Дата, Qt::ISODate
+  required float avg         = 2; //!< Среднее значение в слое
+};
+
+//! Аэрологические данные по уровням
+message AeroLayerValues {
+  required int32 layer       = 1; //!< Слой
+  repeated AeroValuesList avglist  = 2; //!< Список значений по уровням
+};
+
+//! Среднемесячные
+message AeroLayerReply {
+  required string descrname = 1; //!< Название
+  repeated AeroLayerValues val = 2; //!< Значения
+  optional string error    = 3;
+};
+
+//! Несколько дескрипторов
+message AeroLayerListReply {
+  repeated AeroLayerReply all = 1;
+  optional string error    = 5;
+};
+
+message Dummy {}
+
+//----- 
+
+service Service {
+  
+  rpc GetSurfDay(DataRequest) returns (SurfDayReply); //!< Среднесуточные данные за все месяцы указанного периода
+  rpc GetSurfDecade(DataRequest) returns (SurfDecadeReply); //!< Данные по декадам за все месяцы указанного периода
+  rpc GetSurfMonth(DataRequest) returns (SurfMonthReply); //!< Среднемесячные данные по срокам за все месяцы указанного периода
+  rpc GetSurfMonthAvg(DataRequest) returns (SurfMonthAvgReply); //!< Данные за все месяцы указанного периода
+  rpc GetSurfYear(DataRequest) returns (SurfYearReply); //!< Среднемесячные данные за все года
+  rpc GetSurfAllList(DataRequest) returns (SurfAllListReply); //!< Все данные
+  rpc GetSurfDate(DataRequest) returns (SurfDateReply); //!< Дата начала/окончания явления
+
+  rpc GetAeroMonthList(DataRequest) returns (AeroLayerListReply); //!< Аэрология
+
+  rpc GetAvailable(Dummy) returns (DataSeriesDate); //!< Даты начала записи данных по станциям (поиск по данным)
+  rpc GetAvailableStations(Dummy) returns (ClimatSaveProp); //!< Параметры клим станции с датами записи данных (по коллекции станций)
+};

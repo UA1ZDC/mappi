@@ -1,0 +1,13 @@
+name: "gmi-long.map"
+title: "Долгосрочный прогноз ГМИ"
+formal {
+    template: "gmilong.odt"
+    name: "Долгосрочный прогноз ГМИ"
+    module_path: "shortgmi36h.py"
+    format: kOdt
+    icon_path: ":product/icons/AV-4.png"
+}
+
+document {
+  doctype: kFormalDocument
+}

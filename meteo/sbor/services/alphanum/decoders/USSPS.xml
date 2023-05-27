@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="USSPS" text="Описание групп солнечных пятен"  category="171">
+  <MessageSections>(?:USSPS\s*(\d{5}\s*\d{5}\s*\d{5})\s*((?:(?:\d{5}\s*){3}\s*)*))|(?:USSPT\s*(\d{5}\s*\d{5}\s*\d{5})\s*((?:(?:\d{5}\s*){5}\s*)*))</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d\d)(\d{2})(\d)\s*(\d{3})(\d)(\d)</GroupValues>
+    <Value number="1"  descrName="station_index" text="индекс обсерватории" />
+    <Value number="2"  descrName="YY"  text="День наблюдения" />
+    <Value number="3"  descrName="GG"  text="Час" />
+    <Value number="4"  descrName="ggh" text="десятые доли часа" />
+    <Value number="5"  descrName="gw"  text="относительное число солнечных пятен (число Вольфа)" />
+    <Value number="6"  descrName="gVq" text="качество наблюдения" />
+    <Value number="7"  descrName="gss" text="размер солнечного диска, используемый при наблюдениях" />
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <GroupValues>(\d\d)(\d{3})\s*(\d)(\d\d)(\d\d)\s*(\d)(\d)(\d)(\d{2})</GroupValues>
+      <Value number="1"  descrName="nns"  text="порядковый номер группы пятен" />
+      <Value number="2"  descrName="gSqd" text="площадь группы в десятках миллионных долей солнечной полусферы" />
+      <Value number="3"  descrName="gQc"    text="квадрант, в котором находится геометрический центр группы" />
+      <Value number="4"  descrName="gLo"   text="расстояние до центрального меридиана в градусах (долгота)" />
+      <Value number="5"  descrName="gLa"   text="гелиографическая широта в градусах" />
+      <Value number="6"  descrName="gsh"  text="тип полутени у самого большого пятна в группе" />
+      <Value number="7"  descrName="ggs"  text="относительный размер головного пятна и плотность рассеяния солнечных пятен" />
+      <Value number="8"  descrName="gCc"  text="Цюрихская классификация солнечных пятен" />
+      <Value number="9"  descrName="gscnt" text="количество пятен в группе “NN”" />
+    </item>
+  </Section>
+  <Section number="2" text="" >
+    <GroupValues>(\d{5})\s*(\d\d)(\d{2})(\d)\s*(\d{3})(\d)(\d)</GroupValues>
+    <Value number="1"  descrName="station_index" text="индекс обсерватории" />
+    <Value number="2"  descrName="YY"   text="День наблюдения" />
+    <Value number="3"  descrName="GG"   text="Час" />
+    <Value number="4"  descrName="ggh"  text="десятые доли часа" />
+    <Value number="5"  descrName="gw"   text="относительное число солнечных пятен (число Вольфа)" />
+    <Value number="6"  descrName="gVq"  text="качество видимости" />
+    <Value number="7"  descrName="gss"  text="размер солнечного диска, используемый при наблюдениях" />
+  </Section>
+  <Section number="3" text="" >
+    <item>
+      <GroupValues>(\d\d)(\d{3})\s*(\d)(\d\d)(\d\d)\s*(\d)(\d)(\d)(\d{2})\s*(\d)(\d\d)(\d\d)\s*(\d{2})(\d)(\d)(\d)</GroupValues>
+      <Value number="1"  descrName="nns"  text="порядковый номер группы пятен" />
+      <Value number="2"  descrName="gSqd" text="площадь группы в десятках миллионных долей солнечной полусферы" />
+      <Value number="3"  descrName="gQc"    text="квадрант, в котором находится геометрический центр группы" />
+      <Value number="4"  descrName="gLo"   text="расстояние до центрального меридиана в градусах (долгота)" />
+      <Value number="5"  descrName="gLa"   text="гелиографическая широта в градусах" />
+      <Value number="6"  descrName="gsh"  text="тип полутени у самого большого пятна в группе" />
+      <Value number="7"  descrName="ggs"  text="относительный размер головного пятна и плотность рассеяния солнечных пятен" />
+      <Value number="8"  descrName="gCc"  text="Цюрихская классификация солнечных пятен" />
+      <Value number="9"  descrName="gscnt" text="количество пятен в группе “NN”" />
+      <Value number="10" descrName="gQc"   innum="0" text="квадрант, в котором находится геометрический центр Нα-флоккулов" />
+      <Value number="11" descrName="gLo"  innum="0" text="расстояние до центрального меридиана в градусах (долгота)" />
+      <Value number="12" descrName="gLa"  innum="0" text="гелиографическая широта в градусах" />
+      <Value number="13" descrName="gHs" innum="0" text="продольный размер Нα-флоккулов" />
+      <Value number="14" descrName="gHb" innum="0" text="яркость Нα по 5-бальной шкале" />
+      <Value number="15" descrName="gHa" innum="0" text="описание яркой Нα-структуры" />
+      <Value number="16" descrName="gHf" innum="0" text="положение тёмного волокна относительно фотосферных пятен" />
+    </item>
+  </Section>
+</Message>

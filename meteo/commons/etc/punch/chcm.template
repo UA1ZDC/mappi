@@ -1,0 +1,273 @@
+code: "chcm"
+name: "Ch и Cm"
+path: "/home/gotur/build_dir//share/meteo//punch/chcm.template"
+wind: false
+rule {
+  pos {
+    x: -72
+    y: -72
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: -1000000
+      maxval: 1000000
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "43"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 9920063
+    name: "A91"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+  absent_rule {
+    minval: 0
+    maxval: 0
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    color: 4278190080
+    patternba: "43"
+    label: ""
+  }
+}
+rule {
+  pos {
+    x: -67
+    y: -72
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: -1000000
+      maxval: 1000000
+      font {
+        family: "helvetica"
+        pointsize: 6
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "48"
+      label: ""
+    }
+  }
+  testval: 10.34
+  id {
+    descr: 9920012
+    name: "C42"
+    description: ""
+  }
+  y_plus_bad_dd: false
+  absent_rule {
+    minval: 0
+    maxval: 0
+    font {
+      family: "helvetica"
+      pointsize: 6
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    color: 4278190080
+    patternba: "48"
+    label: ""
+  }
+}
+rule {
+  pos {
+    x: -53
+    y: -72
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: -1000000
+      maxval: 1000000
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "d0b8"
+      label: ""
+    }
+  }
+  testval: 10.34
+  id {
+    descr: 9920001
+    name: "VV88"
+    description: ""
+  }
+  y_plus_bad_dd: false
+  absent_rule {
+    minval: 0
+    maxval: 0
+    font {
+      family: "Synop"
+      pointsize: 6
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    color: 4278190080
+    patternba: "d0b8"
+    label: ""
+  }
+}
+rule {
+  pos {
+    x: -41
+    y: -72
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: -1000000
+      maxval: 1000000
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "43"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 9913003
+    name: "Uv"
+    description: ""
+  }
+  y_plus_bad_dd: false
+  absent_rule {
+    minval: 0
+    maxval: 0
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    color: 4278190080
+    patternba: "43"
+    label: ""
+  }
+}
+rule {
+  pos {
+    x: -33
+    y: -72
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: -1000000
+      maxval: 1000000
+      font {
+        family: "helvetica"
+        pointsize: 6
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4d"
+      label: ""
+    }
+  }
+  testval: 10.34
+  id {
+    descr: 9905021
+    name: "Da42"
+    description: ""
+  }
+  y_plus_bad_dd: false
+  absent_rule {
+    minval: 0
+    maxval: 0
+    font {
+      family: "helvetica"
+      pointsize: 6
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    color: 4278190080
+    patternba: "4d"
+    label: ""
+  }
+}
+datatype: kSurface
+center: kNoCenter
+crisscross: false
+radius: 3
+windfont {
+  family: "helvetica"
+  pointsize: 6
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}

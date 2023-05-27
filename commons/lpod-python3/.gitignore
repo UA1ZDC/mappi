@@ -1,0 +1,37 @@
+MANIFEST
+version.txt
+python_path.txt
+build
+doc_make/autodocs
+dist
+test/trash
+*.swp
+*.py[co]
+.buildinfo
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+# OS X
+.DS_Store
+
+#Translations
+*.mo
+

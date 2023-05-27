@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item complex="true" valueSrc="" source="this" textItem="" text="">
+    <item valueSrc="usedForRecv" type="2" textItem="false" text="Используется для приёма" />
+  </item>
+</body>

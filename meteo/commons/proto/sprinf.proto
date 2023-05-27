@@ -1,0 +1,539 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+import "meteo.proto";
+import "map_city.proto";
+
+package meteo.sprinf;
+
+//! Типы запросов
+enum TlgStatisticRequestType {
+  kDestination    = 0; //!< запрос по назначению данных
+  kSource         = 1; //!< запрос по источнику данных
+};
+//! Типы станций (sprinf.stations_types). DONT TOUCH!!!!
+enum MeteostationType {
+  kStationUnk        = -1;
+  kStationSynop      = 0;  //!< Синоптическая фиксированная наземная станция
+  kStationSynmob     = 1;  //!< Синоптическая подвижная станция
+  kStationAirport    = 2;  //!< Аэродромная система
+  kStationAero       = 3;  //!< Аэрологическая фиксированная наземная станция
+  kStationAeromob    = 4;  //!< Аэрологическая подвижная станция
+  kStationHydro      = 5;  //!< Гидрологический пост
+  kStationOcean      = 6;  //!< Океан (по глубинам)
+  kStationTyphoon    = 7;  //!< Радиолокационная система, передающая информацию о тропических циклонах
+  kStationRadarmap   = 8;  //!< Радиолокационная система, данные на карте
+  kStationGeophysics = 9;  //!< Геофизическая
+  kStationVa         = 10; //!< Консультативные центры по вулканическому пеплу
+  kStationFir        = 11; //!< Районы полетной информации
+  kStationAirplane   = 12; //!< Донесения с борта самолёта
+  kStationNode       = 13; //!< Справочник станций для обмена служебными сообщениями
+  kStationAerodrome  = 14; //!< Военный аэродром
+  kStationSatAero    = 15; //!< Спутник, вертикальное зондирование
+  kStationSatSurf    = 16; //!< Спутник, приземные данные
+};
+
+message Dummy {
+}
+
+message CountryRequest {
+  optional int32 priority       = 1;
+}
+
+message TlgStatisticResponse {
+  repeated TlgStatistic stats   = 1;
+  required bool   result        = 7;  //!< результат выполнения
+  optional string comment       = 8;  //!< сообщение об ошибке
+
+}
+
+//!Статистика принятых/отправленных сообщений
+message TlgStatistic {
+  required string date          = 1; //!< дата
+  optional string src_address   = 2; //!<имя канала источника данных
+  optional string dest_address  = 3; //!<имя канала назначения данных
+  required string T1            = 4; //!< значение по Т1
+  required string T2            = 5; //!< значение по Т2
+  required int32  count         = 6; //!<количество сообщений
+}
+
+message TlgStatisticRequest {
+  optional string date_begin    = 1;  //!< выбрать записи не ранее указанной даты (формат Qt::ISODate)
+  optional string date_end      = 2;  //!< выбрать записи не позднее указанной даты (формат Qt::ISODate)
+  optional TlgStatisticRequestType type = 3[default = kSource];//! Типы запросa
+}
+
+//! Географическая координата
+message GeoPoint {
+  required double lat_radian    = 1;  //!< широта (радианы)
+  required double lon_radian    = 2;  //!< долгота (радианы)
+  optional double height_meters = 3;  //!< высота над уровнем моря (метры)
+}
+
+//! Набор географических координат для представления полигона
+message GeoPolygon {
+  repeated GeoPoint point       = 1;  //!< точки полигона
+}
+
+//! Представление окружности
+message GeoCircle {
+  required GeoPoint center      = 1;  //!< точка центра окружности
+  optional double radius_meter  = 2;  //!< радиус окружности (метры)
+}
+
+//! Представление маршрута движения
+message GeoRoute {
+  required GeoPolygon trace     = 1;  //!< траектория маршрута
+  optional double distance_to   = 2;  //!< отклонение от траектории движения (метры)
+}
+
+//! Названия станции
+message StationName {
+  optional string international = 1;  //!< международное название
+  optional string short         = 2;  //!< краткое название
+  optional string rus           = 3;  //!< русское название
+}
+
+message Country {
+  optional int32        number          = 1;
+  optional string       code            = 2;
+  repeated string       icao            = 3;
+  optional string       name            = 4;
+  optional string       name_en         = 5;
+  optional string       name_ru         = 6;
+  optional string       wmocode         = 7;
+  optional int32        wmonumber       = 8;
+}
+
+//! Основная информация о станции
+message Station {
+  optional string id            = 1;  //!< идентификатор в БД
+  optional int32 index          = 2;  //!< индекс
+  optional int32 type           = 3;  //!< тип
+  optional StationName name     = 4;  //!< название
+  optional meteo.GeoPointPb position    = 5;  //!< местоположение
+  optional string cccc          = 6;  //!< ICAO
+  optional int32 data_type      = 7;  //!< тип данных
+  optional string station       = 8;
+  optional Country country      = 9;
+  optional HydroLevels hydro_levels  = 10; //!< опасные уровни гидрологического поста
+  optional double airstrip_direction = 11; //!< направление ВПП
+}
+
+//! Информация о станции с её удалёностью от некоторой точки
+message StationWithDistance {
+  required Station main         = 1;  //!< информация о станции
+  required double distance_to   = 2;  //!< вычисленное расстояние до траектории маршрута или центра окружности (метры)
+}
+
+//! Полная информация о станции
+message StationFull {
+  required Station main         = 1;  //!< основная информация
+  optional string icao          = 2;  //!< код ИКАО
+  optional string callsign      = 3;  //!< позывной
+  optional int32 buoy           = 4;  //!< номер буя
+  optional int32 data_type      = 5;  //!< тип данных
+  optional int32 country        = 6;  //!< код страны
+  optional string last_date     = 7;  //!< дата/время последней записи данных для станции (Qt::ISODate)
+}
+
+//! Информация о типе станции
+message StationType {
+  required int32 type           = 1;  //!< идентификатор
+  required string name          = 2;  //!< описание
+  optional int32 min_gmi_types  = 3;  //!< минимальное значение типа данных станции
+  optional int32 max_gmi_types  = 4;  //!< максимальное значение типа данных станции
+}
+
+//! Информация о типе ГМИ
+message GmiType {
+  required int32        type    = 1;  //!< идентификатор
+  required string       name    = 2;  //!< описание
+  optional bool         total   = 3;  //!< обобщающий тип
+  optional int32        parent  = 4;  //!< родительский тип
+}
+
+//! Информация о типе уровня
+message LevelType {
+  required int32        type    = 1;  //!< тип уровня
+  required string       name    = 2;  //!< название
+  repeated int32        value   = 3;  //!< стандартные значения уровня
+}
+
+
+//! Ответ на запрос информации о типах станций
+message StationTypes {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated StationType station  = 3;  //!< информация о зарегистрированных типах станций
+}
+
+//! Ответ на запрос информации о типах ГМИ
+message GmiTypes {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated GmiType gmi          = 3;  //!< информация о типах ГМИ
+}
+
+//! Ответ на запрос информации о типах уровней
+message LevelTypes {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated LevelType level  = 3;  //!< информация о зарегистрированных типах уровней
+}
+
+
+//! Ответ на запрос полной информации о станциях
+message StationFullInfo {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated StationFull station  = 3;  //!< полная информация о станции
+}
+
+//! Ответ на запрос информации о станциях
+message Stations {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated Station station      = 3;  //!< информация о станции
+}
+
+
+//! Ответ на запрос информации о регионах
+message Regions {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated Region region        = 3;  //!< информация о регионах
+}
+
+// описание региона
+message Region {
+  optional int32 id                        = 1;  //!< идентификатор в БД
+  optional string name                     = 2;  //!< название региона
+  optional string descr                    = 3;  //!< описание
+  optional string region_center_name       = 4;  //!< Штаб округа (или центра региона)
+  optional meteo.GeoPointPb region_center  = 5;  //!< координаты Штаб округа (или взвешенного центра)
+  // надо добавить координаты региона в JSONb
+  repeated meteo.GeoVectorPb region_coords = 6;  //!< координаты региона
+}
+
+//! Ответ на запрос информации о станциях c их удалённостью от некоторой точки
+message StationsWithDistance {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated StationWithDistance station = 3;  //!< информация о станции
+}
+
+//! Запрос информации по типу
+message TypesRequest {
+  repeated int32 type           = 1;  //!< типы станций (если не добавлять ни одного - будет возвращен список всех типов)
+}
+
+//! Запрос информации о станции
+message StationRequest {
+  repeated uint64 value         = 1;  //!< значение интересующего параметра (если не добавлять ни одного - будет возвращен список для всех станций)
+  repeated uint64 data_type     = 2;  //!< тип данных интересующей станции (реализовано только для GetStationsByIndex(...)
+}
+
+//! Запрос информации о станции по её названию
+message NameRequest {
+  repeated string name          = 1;  //!< название станции (если не добавлять ни одного - будет возвращен список для всех станций)
+}
+
+//! Запрос активных станций за период
+message PeriodRequest {
+  required string date_begin    = 1;  //!< выбрать записи для станций, информация по которым обновлялась не ранее указанной даты (формат Qt::ISODate)
+  optional string date_end      = 2;  //!< выбрать записи для станций, информация по которым обновлялась не позднее указанной даты (формат Qt::ISODate). Значение по умолчанию - now()
+}
+
+//! Запрос станций по принадлежности к области карты
+message CircleRegionRequest {
+  required GeoCircle circle     = 1;  //!< интересующая область в виде окружности
+  optional int32  station_type   = 2;  //!< тип станции
+}
+
+//! Запрос станций по принадлежности к области карты
+message PolygonRegionRequest {
+  required GeoPolygon polygon   = 1;  //!< интересующая область в виде полигона
+}
+
+//! Запрос станций вдоль маршрута движения
+message RouteRequest {
+  required GeoRoute route       = 1;  //!< интересующий маршрут
+}
+
+//! Запрос информации о станциях, комбинирующий одновременно несколько условий (условия будут объединены посредством логического AND)
+message MultiStatementRequest {
+  repeated string id            = 1;  //!< интересующий идентификатор станции
+  repeated int32 index          = 2;  //!< интересующий индекс станции
+  repeated string cccc          = 3; //!< интересующий индекс ИКАО
+  repeated int32 type           = 4;  //!< интересующий тип станции
+  repeated int32 data_type      = 5;  //!< интересующий тип данных
+  repeated int32 country        = 6;  //!< интересующий код страны
+  repeated string name          = 7;  //!< название станции
+
+  optional string date_begin    = 8;  //!< выбрать записи для станций, информация по которым обновлялась не ранее указанной даты (формат Qt::ISODate)
+  optional string date_end      = 9;  //!< выбрать записи для станций, информация по которым обновлялась не позднее указанной даты (формат Qt::ISODate). Значение по умолчанию - now()
+
+  optional int32 skip           = 10;  //!< количество записей, которые будут пропущены в PSQL запросе (для пагинации)
+  optional int32 limit          = 11;  //!< количество записей, которые будут выбраны в PSQL запросе (для пагинации)
+  optional string query         = 12;  //!< запрос для поиска по нескольким полям в PSQL (например поиск станции по имени, индексу и т.д.)
+
+  optional GeoCircle circle     = 13;  //!< интересующая область в виде окружности
+  optional GeoPolygon polygon   = 14; //!< интересующая область в виде полигона
+  optional GeoRoute route       = 15; //!< интересующий маршрут (не реализовано в данном запросе)
+
+  repeated string station       = 16;  //!< станция(поле station в БД)
+}
+
+//! Запрос центров распространения метеоинформации
+message MeteoCenterRequest {
+  repeated int32 center_id      = 1;  //!< идентификаторы центра (если не добавлять ни одного - будет возвращен список всех центров)
+  repeated int32 subcenter_id   = 2;  //!< идентификаторы подчинённых центров
+}
+
+//! Подчинённые центры распространения метеоинформации
+message MeteoSubCenter {
+  required int32 id             = 1;  //!< идентификатор в БД
+  required string name          = 2;  //!< название
+}
+
+//! Центры распространения метеоинформации
+message MeteoCenter {
+  required int32 id             = 1;  //!< идентификатор в БД
+  required string name          = 2;  //!< название
+  optional string short_name    = 3;  //!< короткое название
+  optional int32  priority      = 4 [default = 0];  //!< приоритет (значение больше - приоритет выше)
+  repeated MeteoSubCenter subcenter = 5;  //!< подчинённые центры
+}
+
+//! Ответ на запрос информации о центрах распространения метеоинформации
+message MeteoCenters {
+  required bool result          = 1;  //!< результат выполнения запроса
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated MeteoCenter center   = 3;  //!< информация о центрах
+}
+
+//! Запрос на получение информации об измеряемых метеорологических величинах
+message MeteoParameterRequest {
+  repeated int32 value          = 1;  //!< значение параметра (если не добавлять ни одного - будет возвращен полный список величин, для которых параметр установлен (т.е. не NULL))
+}
+
+//! Характеристики измеряемых метеорологических величин
+message MeteoParameter {
+  required int32 id             = 1;  //!< идентификатор в БД - parameter
+  required string name          = 2;  //!< наименование
+  required string unit          = 3;  //!< единицы измерения
+  optional int32 grib           = 4;  //!< параметр GRIB
+  optional int32 bufr           = 5;  //!< дескриптор BUFR
+  optional int32 discipline     = 6;  //!< отношение к дисциплине
+  optional int32 category       = 7;  //!< отношение к категории
+  required string unit_en       = 8;  //!< единицы измерения латиницей (для перевода)
+}
+
+//! Ответ на запрос информации об измеряемых метеорологических величинах
+message MeteoParameters {
+  required bool result          = 1;  //!< результат выполнения запроса
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated MeteoParameter parameter = 3;  //!< информация об измеряемых метеорологических величинах
+}
+
+//! Информация о дисциплинах продукции
+message GmiDiscipline {
+  required int32 type           = 1;  //!< идентификатор
+  required string name          = 2;  //!< описание
+}
+
+//! Ответ на запрос информации о дисциплинах продукции
+message GmiDisciplines {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated GmiDiscipline discipline = 3;  //!< информация о дисциплинах продукции
+}
+
+//! Информация о категориях продукции
+message GmiCategory {
+  required int32 type           = 1;  //!< идентификатор
+  required int32 discipline     = 2;  //!< отношение к дисциплине
+  required string name          = 3;  //!< описание
+}
+
+//! Ответ на запрос информации о категориях продукции
+message GmiCategories {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated GmiCategory category = 3;  //!< информация о категориях продукции
+}
+
+//! Описание параметра BUFR
+message BufrParameter {
+  required int32 code           = 1;  //!< код параметра
+  required string name          = 2;  //!< текстовое описание
+}
+
+//! Таблица параметров BUFR
+message BufrParametersTable {
+  required string table_code       = 1;  //!< код таблицы
+  required string name             = 2;  //!< текстовое описание
+  repeated BufrParameter parameter = 3;  //!< список параметоров
+}
+
+//! Ответ на запрос информации о таблицах параметров BUFR
+message BufrParametersTables {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  repeated BufrParametersTable table = 3; //!< информация о таблице параметров BUFR
+}
+
+//! Ответ на запрос информации о конкретном параметре BUFR
+message SomeBufrParameter {
+  required bool result          = 1;  //!< результат выполнения
+  optional string error_message = 2;  //!< сообщение об ошибке
+  optional BufrParameter parameter = 3; //!< информация о параметре BUFR
+}
+
+//! Запрос информации для таблицы параметров BUFR
+message BufrParametersTableRequest {
+  repeated string table_code    = 1;  //!< код интересующей таблицы (если не добавлять ни одного - будет возвращен список всех таблиц со всеми параметрами)
+}
+
+//! Запрос информации о конкретном параметре BUFR
+message SomeBufrParameterRequest {
+  optional string       table_code      = 1; //!< код интересующей таблицы
+  optional int32        parameter_code  = 2; //!< код параметра в таблице
+}
+
+message MeteoParam {
+  optional string       descrname       = 1; //!< дескриптор.toString()+группа.toString() парамтра
+  optional double       value           = 2; //!< значение параметра
+  optional string       description     = 3; //!< описание параметра
+}
+
+message MeteoParams {
+  repeated MeteoParam   param           = 1; //!< параметры
+  optional bool         result          = 2; //!< результат выполнения rpc-вызова
+  optional string       comment         = 3; //!< описание результата выполнения
+}
+
+message HydroLevels {
+  optional double floodplain             = 1; //!< уровень поймы (poima)
+  optional double flooding               = 2; //!< уровень затопления (zatop)
+  optional double danger_level           = 3; //!< опасный уровень
+  optional double max_level              = 4;
+  optional double mid_level              = 5;
+  optional double min_level              = 6;
+}
+
+//! Добавление или обновление станций(Основная информация)
+message AdditionalStations {
+  repeated int32                type          = 1; //!< Тип станции
+  repeated int64                index         = 2; //!< Международный индекс станции
+  repeated GeoPoint             position      = 3; //!< Координаты станции
+  repeated string               CCCC          = 4;
+  repeated string               D____D        = 5;
+  repeated StationName          name          = 6; //!< Символьное название танции
+  repeated HydroLevels          levels        = 7; //!< Уровни гидрологической станции (только для добавления гидрологисческих станций)
+}
+
+//! Добавление или обновление станций(Основная информация)
+message AdditionalHydroStations {
+  repeated int32                type          = 1; //!< Тип станции
+  repeated int64                index         = 2; //!< Международный индекс станции
+  repeated GeoPoint             position      = 3; //!< Координаты станции
+  repeated StationName          name          = 4; //!< Символьное название танции
+  repeated HydroLevels          levels        = 5; //!< Уровни гидрологической станции
+}
+
+//! Ответ на запрос добавления станций
+message ReportStationsAdded {
+  required bool result                  = 1;  //!< результат выполнения
+  repeated bool is_success              = 2;  //!< успех добавление/обновления каждой станнции
+  repeated bool is_update               = 3;  //!< произошло true - обновление, false - довабление каждой станции
+  optional string comment               = 4;  //!< сообщение об ошибке
+}
+
+message Countries {
+  repeated Country      country         = 1;
+  optional bool         result          = 2;
+  optional string       comment         = 3;
+}
+
+
+// ссылки/связи на таблицы со станциям/регионами
+message RegionGroupsLinks {
+  optional int32  regiongroup_id          = 1;  // ссылка на группу регионов
+  optional int32  region_id               = 2;  // ссылка на регионы
+  optional int32  parent_id               = 3;  // ссылка на родительскую группу
+  optional meteo.GeoPointPb station_coord = 4;
+  optional meteo.GeoPointPb region_coord  = 5;
+  optional Station station                = 6;
+  optional string title                   = 7;  // заголовок, который заполняется для ответа
+}
+
+// сообщение для запроса/редактирования/удаления группы регионов/станций
+message RegionGroupsRequest {
+  optional int32  id                 = 1;
+  optional string title              = 2; // название группы регионов
+  optional string description        = 3; // подробное описание
+  optional bool is_active            = 4; // активирован или нет?
+  repeated RegionGroupsLinks regions = 5; // список сопряженных станций/регионов
+}
+
+// ответ от сервиса
+message RegionGroupsReply {
+  repeated RegionGroupsReplyResult data = 1;
+  optional string  comment           = 2;
+  optional bool  result              = 3;
+}
+
+// сам результат
+message RegionGroupsReplyResult {
+  optional int32  id                 = 1;
+  optional string title              = 2; // название группы регионов
+  optional string description        = 3; // подробное описание
+  optional bool is_active            = 4; // активирован или нет?
+  repeated RegionGroupsLinks regions = 5; // список сопряженных станций/регионов
+}
+
+message StatementRequest {
+  repeated int32 id             = 1;  //!< идентификатор в БД
+  repeated string name          = 2;  //!< название
+  optional string query          = 3;  //!< шаблон название
+}
+
+
+service SprinfService {
+  rpc GetStationTypes (TypesRequest) returns (StationTypes);    //!< возвращает информацию по заданным типам станций
+  rpc GetGmiTypes (TypesRequest) returns (GmiTypes);            //!< возвращает информацию по заданным типам ГМИ
+  rpc GetLevelTypes (TypesRequest) returns (LevelTypes);        //!< возвращает информацию по заданным типам уровней
+
+  rpc GetMilitaryDistrict  (StatementRequest) returns (Regions);   //!< возвращает информацию по военным округам (обычно используется для прогнозов по территории)
+  rpc GetRegions  (MultiStatementRequest) returns (Regions);   //!< возвращает информацию по регионам(обычно используется для прогнозов по территории)
+  rpc GetStations (MultiStatementRequest) returns (Stations);   //!< возвращает информацию по станциям, соответствующим заданным условиям
+
+  // методы работы с группами регионов
+  rpc GetRegionGroups( RegionGroupsRequest ) returns ( RegionGroupsReply ); // метод получения групп регионов
+  rpc SaveRegionGroups( RegionGroupsRequest ) returns ( RegionGroupsReply ); // метод создания/редактирования групп регионов
+  rpc DeleteRegionGroups( RegionGroupsRequest ) returns ( RegionGroupsReply ); // метод удаления групп регионов
+  
+
+  rpc GetStationsByPosition (CircleRegionRequest) returns (StationsWithDistance); //!< возвращает информацию по станциям, которые находятся в пределах заданного круга (с указанием расстояния до центра круга)
+  
+  rpc GetMeteoCenters(MeteoCenterRequest) returns (MeteoCenters); //!< возвращает информацию по центрам с указанными идентификаторами
+
+  rpc GetMeteoParametersByBufr(MeteoParameterRequest) returns (MeteoParameters);  //!< возвращает информацию по метеопараметру с указанным дескриптором буфр(используется в обанале
+
+  rpc GetBufrParametersTables(BufrParametersTableRequest) returns (BufrParametersTables); //!< возвращает описание кода BUFR и его возможные значения
+
+  rpc GetCountry( CountryRequest ) returns ( Countries );
+
+  rpc UpdateStation (Station) returns (ReportStationsAdded);
+  rpc DeleteStation (Station) returns (ReportStationsAdded);
+
+  rpc GetTlgStatistic (TlgStatisticRequest) returns (TlgStatisticResponse);
+
+  rpc GetCities( Dummy ) returns ( meteo.map.proto.Cities );                       //!< получить перечень параметров населенных пунктов
+  rpc GetCityDisplayConfig( Dummy ) returns ( meteo.map.proto.CityDisplayConfig ); //!< получить параметры отображения населенных пунктов
+
+}

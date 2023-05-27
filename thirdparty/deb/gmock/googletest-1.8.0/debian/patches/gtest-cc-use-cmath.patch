@@ -1,0 +1,23 @@
+From: "Steve M. Robbins" <smr@debian.org>
+Date: Sun, 8 Apr 2018 14:11:04 -0500
+Subject: gtest-cc-use-cmath
+
+Fix for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=846254
+Fix for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=846254
+---
+ googletest/src/gtest.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/googletest/src/gtest.cc b/googletest/src/gtest.cc
+index d882ab2..2bc72c2 100644
+--- a/googletest/src/gtest.cc
++++ b/googletest/src/gtest.cc
+@@ -36,7 +36,7 @@
+ #include "gtest/gtest-spi.h"
+ 
+ #include <ctype.h>
+-#include <math.h>
++#include <cmath>
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>

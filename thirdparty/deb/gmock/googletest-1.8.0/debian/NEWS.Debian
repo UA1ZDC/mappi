@@ -1,0 +1,46 @@
+googletest (1.8.0-9) unstable; urgency=medium
+
+  The includes and shared libraries are now shipped in packages
+  libgtest-dev and libgmock-dev.  Use one of these packages if
+  you wish to link against the system gtest/gmock library for
+  testing.
+
+  The sources (for both gtest and gmock) are shipped in package
+  googletest.  Use this package if you wish to compile your own
+  version of the gtest/gmock library for testing.
+
+  The tool "gmock_gen" is shipped in package googletest-tools.
+
+  NOTE: package libgtest-dev had previously contained the sources,
+  so to avoid breaking packages that depend on it for sources,
+  libgtest-dev retains a dependency on package googletest.  This
+  dependency will be removed in future, so packages that require
+  the sources to build are advised to update their dependency to
+  "googletest" at the earliest opportunity.
+
+
+googletest (1.8.0-7) unstable; urgency=medium
+
+  Reinstated compiled libraries for both googletest and googlemock.
+
+
+googletest (1.8.0-1) unstable; urgency=medium
+
+  Upstream has merged formerly-separate Google Test and Google Mock
+  projects.  The binary package googletest reflects this merge: sources
+  for both projects are now installed under /usr/src/googletest.
+
+  The old packages libgtest-dev and google-mock are retained for
+  compatibility and provide the old /usr/src/gtest and /usr/src/gmock
+  via symlinks.
+
+
+gtest (1.6.0-1) unstable; urgency=low
+  
+  Use of precompiled libgtest is no longer recommended.  See README.Debian
+  for instructions on using gtest with your projects.  The precompiled
+  shared library has been removed and the static library will be removed
+  in a future upload.
+  
+  The script gtest-config is no longer supplied since upstream's
+  autoconfigure-based build is deprecated.

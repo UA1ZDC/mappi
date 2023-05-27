@@ -1,0 +1,12 @@
+name: "dokladoperboi.map"
+title: "Доклад об обеспечении мероприятий оперативной и боевой подготовки"
+formal {
+    template: "dokladoperboi.odt"
+    name: "Доклад об обеспечении мероприятий оперативной и боевой подготовки"
+    module_path: "dokladoperboi.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

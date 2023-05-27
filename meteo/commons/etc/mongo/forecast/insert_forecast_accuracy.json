@@ -1,0 +1,26 @@
+{
+  "update": "forecast",
+  "updates" : [
+     {
+        "q" : {
+          "center" : @center@,
+          "dt_beg" : { "$lte" : @dt_beg@ },
+          "dt_end" : {"$gte" : @dt_end@},
+          "level" : @level@,
+          "level_type" : @level_type@,
+          "station_info.station": @station@,
+          "param.descrname" : @descrname@
+          },
+      "u": {
+         "$inc" : {"flag_obr": 1},
+          "$addToSet" : {
+            "param.$.real" : {
+              "field_value" : @field_value@,
+              "dt" :  @dt@
+            }
+          }
+        },
+      "upsert": false, "multi": true
+     }
+  ]
+}

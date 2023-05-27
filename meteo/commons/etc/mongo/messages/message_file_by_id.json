@@ -1,0 +1,19 @@
+{
+  "aggregate": "message.info",
+  "pipeline": [
+    { "$match" : {
+      "_id" : "%1"
+      }
+    },
+    { "$lookup":
+     {
+       "from": "message.files",
+       "localField": "_id",
+       "foreignField": "_id",
+       "as": "fs"
+     }
+    }, 
+    { "$unwind" : "$fs" }  
+  ],
+  "cursor":{"batchSize":1}
+}

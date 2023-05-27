@@ -1,0 +1,31 @@
+{
+  "update": "forecast_opr",
+  "updates" : [
+    {
+      "q" : {
+        "center"      : @center@,
+        "punkt.punkt_id" : @punkt_id@,
+        "descrname" : @descrname@,
+        "level"       : @level@,
+        "type_level"  : @type_level@,
+        "ftype_method"      : @method@,
+	"hour"        : @hour@
+      },
+      "u": {
+          "$set" : {
+          "center"      :@center@,
+          "punkt.punkt_id" : @punkt_id@,
+          "descrname" : @descrname@,
+          "level"       : @level@,
+          "type_level"  : @type_level@,
+	  "hour" : @hour@,
+          "ftype_method": @ftype_method@,    	  
+          "opr"         : @opr@,
+          "not_opr"     : @not_opr@,
+          "total"       : @total@
+        }
+      },
+      "upsert": true
+    }
+  ]
+}

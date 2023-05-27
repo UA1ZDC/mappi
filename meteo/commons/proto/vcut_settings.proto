@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+import "surface.proto";
+
+package meteo.proto;
+
+message VCutSettings {
+  repeated meteo.surf.Point place = 1;  //!< список пунктов
+  optional int32            type  = 2;  //!< Тип вертикального разреза
+  optional int32            src   = 3;  //!< Источник данных
+}

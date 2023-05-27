@@ -1,0 +1,20 @@
+{
+  "aggregate": "obanal",
+  "pipeline": [
+    { "$match": {
+    "forecast_start": {"$gte": @start_fdt@,"$lte": @end_fdt@},
+    "center": { "$in": @center@}
+     }
+    },
+    { "$project" : {
+       "forecast_start":1
+     }
+    },
+    { "$group": {
+       "forecast_start": "$forecast_start"
+     }
+    },
+    { "$sort": { "forecast_start": -1 } }
+  ],
+  "cursor": { "batchSize": 1 }
+}

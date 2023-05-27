@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="KN-15" text="HYDRA" category="101">
+<MessageSections>^\s*(?:HHzz|HHZZ)((?:\s*[\d/]{5}){2})((?:\s*[1-80][\d/]{4})*)((?:(?:\s*922[\d/]{2})(?:\s*[1-80][\d/]{4})*)*)((?:(?:\s*933[\d/]{2})(?:\s*[1-7][\d/]{4})*)*)((?:(?:\s*944[\d/]{2})(?:\s*[1-8][\d/]{4})*)*)((?:(?:\s*955[\d/]{2})(?:\s*[1-7][\d/]{4})*)*)((?:(?:\s*966[\d/]{2})(?:\s*[1-8][\d/]{4})*)*)((?:\s*97701)(?:\s*[1-6][\d/]{4})*(?:.*)?)?((?:\s*97702)(?:\s*[1-6][\d/]{4})*(?:.*)?)?((?:\s*97703)(?:\s*5[\d/]{4})*(?:.*)?)?((?:\s*97704)(?:\s*8[\d/]{4})(?:.*)?)?((?:\s*97705)(?:\s*0[\d/]{4})(?:.*)?)?(.*)?</MessageSections>
+<Section number="1" text="DATA FOR REPORTING IDENTIFICATION"> <!--опознавательные данные-->
+  <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+  <Group number="1" text="WMO station number">
+    <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+    <Value number="1"  descrName="II"/>
+    <Value number="2"  descrName="iii" text="WMO STATION NUMBER"/>
+  </Group>
+  <Group number="2" text="DATE">
+    <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+    <Value number="1"  descrName="YY" text="day"/>
+    <Value number="2"  descrName="GG" text="H"/>
+    <Value number="3"  descrName="n"/>
+  </Group>
+</Section>
+<!--данные ежедневных стандартных наблюдений на гидрологическом посту за текущие сутки-->
+<Section number="2" text="Данные ежедневных стандартных наблюдений за текущие сутки">
+  <item>
+    <SectionGroups>(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?((?:\s*5[\d/]{4}){,5})((?:\s*6[\d/]{4}){,5})(\s*7[\d/]{4})?(\s*8[\d/]{4})?(\s*0[\d/]{4})?</SectionGroups>
+    <Group number="1" text="Уровень воды в срок наблюдения, в см">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем поста в срок наблюдения, в см"/>
+    </Group>
+    <Group number="2" text="Изменение уровня воды">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HiHiHiK" text="Изменение уровня воды"/>
+    </Group>
+    <Group number="3" text="Уровень воды за предшествующий 20-часовой срок">
+      <GroupValues>\s*3([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHH20" text="Уровень воды над нулем поста за предшествующий 20-часовой срок, в см"/>
+    </Group>
+    <Group number="4" text="Температура воды и воздуха">
+      <GroupValues>\s*4([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="tt" text="Температура воды"/>
+      <Value number="2"  descrName="TTt" text="Температура воздуха"/>
+    </Group>
+    <Group number="5" text="Ледовые явления">
+      <GroupValues>\s*5([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="EE" text="Характеристика ледовых явлений"/>
+      <Value number="2"  descrName="ieie" text="Интенсивность ледовых явлений"/>
+      <Value number="3"  descrName="EE"   text="Характеристика ледовых явлений"/>
+    </Group>
+    <Group number="6" text="Состояние водного объекта">
+      <GroupValues>\s*6([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="CC" text="Характеристика состояния водного объекта"/>
+      <Value number="2"  descrName="icic" text="Интенсивнось явления"/>
+      <Value number="3"  descrName="CC"   text="Характеристика состояния водного объекта"/>
+    </Group>
+    <Group number="7" text="Толщина льда">
+      <GroupValues>\s*7([\d/]{3})([\d/])</GroupValues>
+      <Value number="1"  descrName="DDD" text="Тольщина льда, в см"/>
+      <Value number="2"  descrName="S1" text="Высота снежного покрова на льду"/>
+    </Group>
+    <Group number="8" text="Ежедневный расход воды">
+      <GroupValues>\s*8([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQ" text="Расход воды"/>
+    </Group>
+    <Group number="9" text="Количество и продолжительность осадков за сутки">
+      <item>
+        <GroupValues>\s*0([\d/]{3})([\d/])</GroupValues>
+        <Value number="1"  descrName="RRR24" text="Количество осадков, в мм"/>
+        <Value number="2"  descrName="dc" text="Продолжительность осадков"/>
+      </item>
+    </Group>
+  </item>
+</Section>
+<!--данные ежедневных стандартных наблюдений на гидрологическом посту за предидущие сутки-->
+<Section number="3" text="Данные ежедневных стандартных наблюдений за предыдущие сутки">
+  <item>
+    <SectionGroups>(\s*922[\d/]{2})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?((?:\s*5[\d/]{4}){,5})((?:\s*6[\d/]{4}){,5})(\s*7[\d/]{4})?(\s*8[\d/]{4})?(\s*0[\d/]{4})?</SectionGroups>
+    <Group number="1" text="Дата наблюдения">
+      <GroupValues>\s*922([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+    </Group>
+    <Group number="2" text="Уровень воды в срок наблюдения, в см">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем поста в срок наблюдения, в см"/>
+    </Group>
+    <Group number="3" text="Изменение уровня воды">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HiHiHiK" text="Изменение уровня воды"/>
+    </Group>
+    <Group number="4" text="Уровень воды за предшествующий 20-часовой срок">
+      <GroupValues>\s*3([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHH20" text="Уровень воды над нулем поста за предшествующий 20-часовой срок, в см"/>
+    </Group>
+    <Group number="5" text="Температура воды и воздуха">
+      <GroupValues>\s*4([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="tt" text="Температура воды"/>
+      <Value number="2"  descrName="TTt" text="Температура воздуха"/>
+    </Group>
+    <Group number="6" text="Ледовые явления">
+      <GroupValues>\s*5([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="EE" text="Характеристика ледовых явлений"/>
+      <Value number="2"  descrName="ieie" text="Интенсивность ледовых явлений"/>
+      <Value number="3"  descrName="EE"   text="Характеристика ледовых явлений"/>
+    </Group>
+    <Group number="7" text="Состояние водного объекта">
+      <GroupValues>\s*6([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="CC" text="Характеристика состояния водного объекта"/>
+      <Value number="2"  descrName="icic" text="Интенсивнось явления"/>
+      <Value number="3"  descrName="CC"   text="Характеристика состояния водного объекта"/>
+    </Group>
+    <Group number="8" text="Толщина льда">
+      <GroupValues>\s*7([\d/]{3})([\d/])</GroupValues>
+      <Value number="1"  descrName="DDD" text="Тольщина льда, в см"/>
+      <Value number="2"  descrName="S1" text="Высота снежного покрова на льду"/>
+    </Group>
+    <Group number="9" text="Ежедневный расход воды">
+      <GroupValues>\s*8([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQ" text="Расход воды"/>
+    </Group>
+    <Group number="10" text="Количество и продолжительность осадков за сутки">
+      <GroupValues>\s*0([\d/]{3})([\d/])</GroupValues>
+      <Value number="1"  descrName="RRR24" text="Количество осадков, в мм"/>
+      <Value number="2"  descrName="dc" text="Продолжительность осадков"/>
+    </Group>
+  </item>
+</Section>
+<!--средние, высшие и низжшие значения уровня и расхода воды за сутки/декаду/другие периоды-->
+<Section number="4" text="Средние, высшие и низжшие значения уровня и расхода воды за сутки/декаду/другие периоды">
+  <item>
+    <SectionGroups>(\s*933[\d/]{2})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?</SectionGroups>
+    <Group number="1" text="Период наблюдения">
+      <GroupValues>\s*933([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="TiTi" text="Период наблюдения"/>
+    </Group>
+    <Group number="2" text="Средний уровень воды">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="MIDHHHH" text="Средний уровень воды"/>
+    </Group>
+    <Group number="3" text="Высший уровень воды">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="MAXHHHH" text="Высший уровень воды"/>
+    </Group>
+    <Group number="4" text="Низший уровень воды">
+      <GroupValues>\s*3([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="MINHHHH" text="Низший уровень воды"/>
+    </Group>
+    <Group number="5" text="Средний расход воды">
+      <GroupValues>\s*4([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="MIDkQQQ" text="Средний расход воды"/>
+    </Group>
+    <Group number="6" text="Наибольший расход воды">
+      <GroupValues>\s*5([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="MAXkQQQ" text="Наибольший расход воды"/>
+    </Group>
+    <Group number="7" text="Наименьший расход воды">
+      <GroupValues>\s*6([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="MINkQQQ" text="Наименьший расход воды"/>
+    </Group>
+    <Group number="8" text="Время прохождения наивысшего уровня/расхода воды">
+      <GroupValues>\s*7([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="YYM" text="day"/>
+      <Value number="2"  descrName="GGM" text="H"/>
+    </Group>
+  </item>
+</Section>
+<!--уровни и объемы водохранилища-->
+<Section number="5" text="Уровни и объемы водохранилища">
+  <item>
+    <SectionGroups>(\s*944[\d/]{2})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{4})?</SectionGroups>
+    <Group number="1" text="Дата наблюдения">
+      <GroupValues>\s*944([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+    </Group>
+    <Group number="2" text="Уровень воды верхнего бьефа">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHHvb" text="Уровень воды верхнего бьефа"/>
+    </Group>
+    <Group number="3" text="Средний уровень водохранилища в срок наблюдений">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHHs" text="Средний уровень водохранилища в срок наблюдений"/>
+    </Group>
+    <Group number="4" text="Средний уровень водохранилища на конец предшествующих суток">
+      <GroupValues>\s*3([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHHks" text="Средний уровень водохранилища на конец предшествующих суток"/>
+    </Group>
+    <Group number="5" text="Уровень воды нижнего бьефа">
+      <GroupValues>\s*4([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHHnb" text="Уровень воды нижнего бьефа"/>
+    </Group>
+    <Group number="6" text="Высший за предшествующие сутки уровень воды нижнего бьефа">
+      <GroupValues>\s*5([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHHv" text="Высший за предшествующие сутки уровень воды нижнего бьефа"/>
+    </Group>
+    <Group number="7" text="Низший за предшествующие сутки уровень воды нижнего бьефа">
+      <GroupValues>\s*6([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHHn" text="Низший за предшествующие сутки уровень воды нижнего бьефа"/>
+    </Group>
+    <Group number="8" text="Объем воды в водохранилище по среднему уровню в срок наблюдений">
+      <GroupValues>\s*7([\d/]{4})</GroupValues>
+      <Value number="1"   descrName="kVVVs" text="Объем воды в водохранилище по среднему уровню в срок наблюдений"/>
+    </Group>
+    <Group number="9" text="Объем воды в водохранилище по среднему уровню на конец предшествующих суток">
+      <GroupValues>\s*8([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kVVVks" text="Объем воды в водохранилище по среднему уровню на конец предшествующих суток"/>
+    </Group>
+  </item>
+</Section>
+<!--приток воды в водохранилища-->
+<Section number="6" text="Приток воды в водохранилища">
+  <item>
+    <SectionGroups>(\s*955[\d/]{2})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?</SectionGroups>
+    <Group number="1" text="Дата наблюдения">
+      <GroupValues>\s*955([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+    </Group>
+    <Group number="2" text="Общий приток воды в срок наблюдений">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQo" text="Общий приток воды в срок наблюдений"/>
+    </Group>
+    <Group number="3" text="Боковой приток воды в срок наблюдений">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQb" text="Боковой приток воды в срок наблюдений"/>
+    </Group>
+    <Group number="4" text="Приток воды к акватории водохранилища">
+      <GroupValues>\s*3([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQa" text="Приток воды к акватории водохранилища"/>
+    </Group>
+    <Group number="5" text="Общий приток воды, средний за предшествующие сутки">
+      <GroupValues>\s*4([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQo1" text="Общий приток воды, средний за предшествующие сутки"/>
+    </Group>
+    <Group number="6" text="Боковой приток воды, средний за предшествующие сутки">
+      <GroupValues>\s*5([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQb1" text="Боковой приток воды, средний за предшествующие сутки"/>
+    </Group>
+    <Group number="7" text="Приток воды к акватории водохранилища, средний за предшествующие сутки">
+      <GroupValues>\s*6([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQa1" text="Приток воды к акватории водохранилища, средний за предшествующие сутки"/>
+    </Group>
+    <Group number="8" text="Сброс воды через гидроузел">
+      <GroupValues>\s*7([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQsb" text="Сброс воды через гидроузел"/>
+    </Group>
+  </item>
+</Section>
+<!--изменение расхода воды, состояние водного объекта-->
+<Section number="7" text="Изменение расхода воды, состояние водного объекта">
+  <item>
+    <SectionGroups>(\s*966[\d/]{2})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{4})?</SectionGroups>
+    <Group number="1" text="Месяц наблюдения">
+      <GroupValues>\s*966([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="MM" text="month"/>
+    </Group>
+    <Group number="2" text="Уровень воды">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHH" text="Уровень воды к которому отнесен измеренный расход"/>
+    </Group>
+    <Group number="3" text="Измеренный расход воды">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQ" text="Измеренный расход воды"/>
+    </Group>
+    <Group number="4" text="Площадь живого сечения реки">
+      <GroupValues>\s*3([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kFFF" text="Площадь живого сечения реки"/>
+    </Group>
+    <Group number="5" text="Максимальная глубина на гидростворе">
+      <GroupValues>\s*4([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="hhhh" text="Максимальная глубина на гидростворе"/>
+    </Group>
+    <Group number="6" text="Дата измерения расхода воды">
+      <GroupValues>\s*5([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+      <Value number="2"  descrName="GG" text="H"/>
+    </Group>
+    <Group number="7" text="Направление и скорость вера на водном объекте">
+      <GroupValues>\s*6([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="dd1" text="wind direction"/>
+      <Value number="2"  descrName="ff1" text="wind velocity"/>
+    </Group>
+    <Group number="8" text="Волнение на водном объекте">
+      <GroupValues>\s*7([\d/])([\d/]{2})([\d/])</GroupValues>
+      <Value number="1"  descrName="Dw1" text="direction"/>
+      <Value number="2"  descrName="HwHw" text="Высота ветровых волн"/>
+      <Value number="3"  descrName="Cw" text="Характеристика поверхности водоема"/>
+    </Group>
+    <Group number="9" text="Дата наблюдения за ветром и волнением">
+      <GroupValues>\s*8([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+      <Value number="2"  descrName="GG" text="H"/>
+    </Group>
+  </item>
+</Section>
+<!--сведения о высоких уровнях воды-->
+<Section number="8" text="Сведения о высоких уровнях воды">
+  <item>
+    <SectionGroups>\s*97701(\s*1[\d/]{4})(\s*2[\d/]{4})((?:\s*5[\d/]{4}){,5})((?:\s*6[\d/]{4}){,5})(.*)?</SectionGroups>
+    <Group number="1" text="Уровень воды в срок наблюдения, в см">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем поста в срок наблюдения, в см"/>
+    </Group>
+    <Group number="2" text="Изменение уровня воды">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HiHiHiK" text="Изменение уровня воды"/>
+    </Group>
+    <Group number="3" text="Ледовые явления">
+      <GroupValues>\s*5([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="EE" text="Характеристика ледовых явлений"/>
+      <Value number="2"  descrName="ieie" text="Интенсивность ледовых явлений"/>
+      <Value number="2"  descrName="EE"   text="Характеристика ледовых явлений"/>
+    </Group>
+    <Group number="4" text="Состояние водного объекта">
+      <GroupValues>\s*6([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="CC" text="Характеристика состояния водного объекта"/>
+      <Value number="2"  descrName="icic" text="Интенсивнось явления"/>
+      <Value number="3"  descrName="CC"   text="Характеристика состояния водного объекта"/>
+    </Group>
+    <Group number="5" text="Сообщение">
+      <GroupValues>(.*)</GroupValues>
+      <Value number="1"  descrName="alarm" text="Сообщение"/>
+    </Group>
+  </item>
+</Section>
+<!--сведения о низких уровнях воды-->
+<Section number="9" text="Сведения о низких уровнях воды">
+  <item>
+    <SectionGroups>\s*97702(\s*1[\d/]{4})(\s*2[\d/]{4})((?:\s*5[\d/]{4}){,5})((?:\s*6[\d/]{4}){,5})(.*)?</SectionGroups>
+    <Group number="1" text="Уровень воды в срок наблюдения, в см">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем поста в срок наблюдения, в см"/>
+    </Group>
+    <Group number="2" text="Изменение уровня воды">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="HiHiHiK" text="Изменение уровня воды"/>
+    </Group>
+    <Group number="3" text="Ледовые явления">
+      <GroupValues>\s*5([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="EE" text="Характеристика ледовых явлений"/>
+      <Value number="2"  descrName="ieie" text="Интенсивность ледовых явлений"/>
+      <Value number="2"  descrName="EE"   text="Характеристика ледовых явлений"/>
+    </Group>
+    <Group number="4" text="Состояние водного объекта">
+      <GroupValues>\s*6([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="CC" text="Характеристика состояния водного объекта"/>
+      <Value number="2"  descrName="icic" text="Интенсивнось явления"/>
+      <Value number="3"  descrName="CC"   text="Характеристика состояния водного объекта"/>
+    </Group>
+    <Group number="5" text="Сообщение">
+      <GroupValues>(.*)</GroupValues>
+      <Value number="1"  descrName="alarm" text="Сообщение"/>
+    </Group>
+  </item>
+</Section>
+<!--раннее образование ледостава и появление льда-->
+<Section number="10" text="Раннее образование ледостава и появление льда">
+  <item>
+    <SectionGroups>\s*97703((?:\s*5[\d/]{4}){,5})(.*)?</SectionGroups>
+    <Group number="1" text="Ледовые явления">
+      <GroupValues>\s*5([\d/]{2})(?:(0\d|10)|([\d/]{2}))</GroupValues>
+      <Value number="1"  descrName="EE" text="Характеристика ледовых явлений"/>
+      <Value number="2"  descrName="ieie" text="Интенсивность ледовых явлений"/>
+      <Value number="2"  descrName="EE"   text="Характеристика ледовых явлений"/>
+    </Group>
+    <Group number="2" text="Сообщение">
+      <GroupValues>(.*)</GroupValues>
+      <Value number="1"  descrName="alarm" text="Сообщение"/>
+    </Group>
+  </item>
+</Section>
+<!--очень большой или очень малый расход воды, приток, сброс-->
+<Section number="11" text="Очень большой или очень малый расход воды, приток, сброс">
+  <item>
+    <SectionGroups>\s*97704(\s*8[\d/]{4})(.*)?</SectionGroups>
+    <Group number="1" text="Расход воды">
+      <GroupValues>\s*8([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="kQQQ" text="Расход воды"/>
+    </Group>
+    <Group number="2" text="Сообщение">
+      <GroupValues>(.*)</GroupValues>
+      <Value number="1"  descrName="alarm" text="Сообщение"/>
+    </Group>
+  </item>
+</Section>
+<!--сильный дождь-->
+<Section number="12" text="Сильный дождь">
+  <item>
+    <SectionGroups>\s*97705(\s*0[\d/]{4})(.*)?</SectionGroups>
+    <Group number="1" text="Количество и продолжительность осадков">
+      <GroupValues>\s*0([\d/]{3})([\d/])</GroupValues>
+      <Value number="1"  descrName="RRR1" text="Количество осадков, в мм"/>
+      <Value number="2"  descrName="dc" text="Продолжительность осадков"/>
+    </Group>
+    <Group number="2" text="Сообщение">
+      <GroupValues>(.*)</GroupValues>
+      <Value number="1"  descrName="alarm" text="Сообщение"/>
+    </Group>
+  </item>
+</Section>
+<!--сели, лавины и прочее-->
+<Section number="13" text="Сели, лавины и прочее">
+  <SectionGroups>(.*)</SectionGroups>
+  <Group number="1" text="Сообщение">
+    <GroupValues>(.*)</GroupValues>
+    <Value number="1"  descrName="alarm" text="Сообщение"/>
+  </Group>
+</Section>
+</Message>

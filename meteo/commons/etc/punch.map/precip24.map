@@ -1,0 +1,22 @@
+name: "precip24.map"
+title: "Количество осадков"
+spline_koef: 2
+data {
+  mode: kPuanson
+  level: 0
+  type_level: 1
+  template_name: "precip24"
+  query_type: kMaximumValue
+  data_type: kSynopType
+  data_type: kSynopFix
+  data_type: kSynopCoast
+  data_type: kSynopWarep
+  data_type: kSynopSnow
+  data_type: kSynopArtillery
+  data_type: kSynopMonth
+  data_type: kSynopDecade
+  data_type: kHydroType
+  data_type: kHydroStation
+  data_type: kSynopMobSea
+  data_type: kSynopMobShip
+}

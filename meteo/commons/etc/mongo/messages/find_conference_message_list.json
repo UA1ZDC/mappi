@@ -1,0 +1,10 @@
+{
+  "find" : "conference_messages",
+  "filter" : {
+    "mac": { "$lte" : @mac@ },
+    "to" : @to@
+  },
+  "limit" : 50,
+  "skip" : @skip@,
+  "sort" : { "dt" : -1 }
+}

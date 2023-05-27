@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StationFind</class>
+ <widget class="QWidget" name="StationFind">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1354</width>
+    <height>44</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Станция</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QToolButton" name="filterBtn">
+     <property name="toolTip">
+      <string>Фильтр станций</string>
+     </property>
+     <property name="text">
+      <string>F</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../etc/meteo.icons.qrc">
+       <normaloff>:/meteo/icons/tools/filter-btn.png</normaloff>:/meteo/icons/tools/filter-btn.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="station">
+     <property name="placeholderText">
+      <string>Станция</string>
+     </property>
+     <property name="clearButtonEnabled">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="GeoPointEditor" name="coordEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>350</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="oneLine">
+      <bool>true</bool>
+     </property>
+     <property name="labelVisible">
+      <bool>false</bool>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+     <property name="mapButtonVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="searchCheck">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;При включении будет производится поиск ближайщей станции, при указании координаты на карте.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>поиск станции</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="ResizedComboBox" name="savedStation">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>140</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="addBtn">
+     <property name="maximumSize">
+      <size>
+       <width>29</width>
+       <height>29</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Добавить пункт</string>
+     </property>
+     <property name="text">
+      <string>+</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../etc/meteo.icons.qrc">
+       <normaloff>:/meteo/icons/tools/plus.png</normaloff>:/meteo/icons/tools/plus.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="removeBtn">
+     <property name="maximumSize">
+      <size>
+       <width>29</width>
+       <height>29</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Удалить пункт</string>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../etc/meteo.icons.qrc">
+       <normaloff>:/meteo/icons/tools/minus.png</normaloff>:/meteo/icons/tools/minus.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GeoPointEditor</class>
+   <extends>QWidget</extends>
+   <header location="global">meteo/commons/ui/custom/geopointeditor.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ResizedComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">meteo/commons/ui/custom/resizedcombo.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>station</tabstop>
+  <tabstop>searchCheck</tabstop>
+  <tabstop>savedStation</tabstop>
+  <tabstop>addBtn</tabstop>
+  <tabstop>removeBtn</tabstop>
+  <tabstop>filterBtn</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../etc/meteo.icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

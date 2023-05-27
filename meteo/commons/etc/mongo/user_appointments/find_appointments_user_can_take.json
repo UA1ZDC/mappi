@@ -1,0 +1,5 @@
+{ "find" : "user_appointments",
+  "filter" : { 
+    "users" : { "$elemMatch" : { "$eq" : @users@ } }
+  }
+}

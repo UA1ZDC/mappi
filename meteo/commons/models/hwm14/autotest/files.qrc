@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>files/hwm14_height_profile_cpp.txt</file>
+        <file>files/hwm14_lon_profile_cpp.txt</file>
+        <file>files/hwm14_lat_profile_cpp.txt</file>
+        <file>files/hwm14_time_profile_cpp.txt</file>
+        <file>files/hwm14_doy_profile_cpp.txt</file>
+        <file>files/hwm14_ap_profile_cpp.txt</file>
+        <file>files/dwm_latitude_profile_cpp.txt</file>
+        <file>files/dwm_local_time_profile_cpp.txt</file>
+        <file>files/dwm_kp_profile_cpp.txt</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <hrptParam textItem="" type="group" value="true" source="this" valueSrc="hrptParam" text="HRPT">
+    <fillMissingLines value="false" type="bool" source="this" valueSrc="fillMissingLines" text="Восстановление пропущенных строк"/>
+    <filtrChannel checkable="true" value="true" type="bool" source="this" valueSrc="filtrChannel" text="Фильтрация данных каналов">
+      <filtrThresh value="0.9" type="string" source="this" valueSrc="filtrThresh" text="Порог"/>
+    </filtrChannel>
+    <calibrationData value="true" type="bool" source="this" valueSrc="calibrationData" text="Калибровка данных каналов"/>
+  </hrptParam>
+  <aptParam type="group" value="true" source="this" valueSrc="aptParam" text="APT (LRPT)">
+    <keepStreamApt value="true" type="bool" source="this" valueSrc="keepStreamApt" text="Сохранять поток"/>
+    <filtrChannel checkable="true" value="true" type="bool" source="this" valueSrc="filtrChannel" text="Фильтрация данных каналов">
+      <filtrThresh maxValue="1." value="0.7" type="string" source="this" valueSrc="filtrThresh" text="Порог" minValue="0."/>
+    </filtrChannel>
+    <calibrationData value="true" type="bool" source="this" valueSrc="calibrationData" text="Калибровка данных"/>
+  </aptParam>
+  <wefaxParam textItem="" complex="true" type="group" value="true" source="this" valueSrc="wefaxParam" text="WEFAX (LRIT)">
+    <opacificationWefax textItem="true" type="bool" value="false" source="this" valueSrc="opacificationWefax" text="Контрастирование"/>
+  </wefaxParam>
+</body>

@@ -1,0 +1,487 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<grib2grids>
+  <!-- Latitude/Longitude. Also called Equidistant Cylindrical or Plate Caree  -->
+  <grid name="latlon" template="0" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="la1" idx="47" size="4" pbnum="6" />
+    <val name="lo1" idx="51" size="4" pbnum="7" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="la2" idx="56" size="4" pbnum="9" />
+    <val name="lo2" idx="60" size="4" pbnum="10" />
+    <val name="di" idx="64" size="4" pbnum="11" />
+    <val name="dj" idx="68" size="4" pbnum="12" />
+    <val name="scanMode" idx="72" size="1" pbnum="13" />
+    <val name="points" idx="73" size="1" pbnum="14"  field="repeated"/>
+  </grid>
+
+  <!-- Rotate Latitude/Longitude (or equidistant cylindrical, or Plate Carree) -->
+  <grid name="rotLatlon" template="1" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="la1" idx="47" size="4" pbnum="6" />
+    <val name="lo1" idx="51" size="4" pbnum="7" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="la2" idx="56" size="4" pbnum="9" />
+    <val name="lo2" idx="60" size="4" pbnum="10" />
+    <val name="di" idx="64" size="4" pbnum="11" />
+    <val name="dj" idx="68" size="4" pbnum="12" />
+    <val name="scanMode" idx="72" size="1" pbnum="13" />
+    <val name="lats" idx="73" size="4" pbnum="17" />
+    <val name="lons" idx="77" size="4" pbnum="18" />
+    <val name="rotAngle" idx="81" size="4" pbnum="19" />
+    <val name="points" idx="85" size="1" pbnum="14"  field="repeated"/>
+  </grid>
+
+  <!-- Stretched Latitude/Longitude (or equidistant cylindrical, or Plate Carree) -->
+  <grid name="strechLatlon" template="2" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="la1" idx="47" size="4" pbnum="6" />
+    <val name="lo1" idx="51" size="4" pbnum="7" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="la2" idx="56" size="4" pbnum="9" />
+    <val name="lo2" idx="60" size="4" pbnum="10" />
+    <val name="di" idx="64" size="4" pbnum="11" />
+    <val name="dj" idx="68" size="4" pbnum="12" />
+    <val name="scanMode" idx="72" size="1" pbnum="13" />
+    <val name="latSt" idx="73" size="4" pbnum="20" />
+    <val name="lonSt" idx="77" size="4" pbnum="21" />
+    <val name="stretch" idx="81" size="4" pbnum="22" />
+    <val name="points" idx="85" size="1" pbnum="14"  field="repeated"/>
+  </grid>
+  
+
+  <!-- Stretched and Rotate Latitude/Longitude (or equidistant cylindrical, or Plate Carree) -->
+  <grid name="strechRotLatlon" template="3" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="la1" idx="47" size="4" pbnum="6" />
+    <val name="lo1" idx="51" size="4" pbnum="7" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="la2" idx="56" size="4" pbnum="9" />
+    <val name="lo2" idx="60" size="4" pbnum="10" />
+    <val name="di" idx="64" size="4" pbnum="11" />
+    <val name="dj" idx="68" size="4" pbnum="12" />
+    <val name="scanMode" idx="72" size="1" pbnum="13" />
+    <val name="lats" idx="73" size="4" pbnum="17" />
+    <val name="lons" idx="77" size="4" pbnum="18" />
+    <val name="rotAngle" idx="81" size="4" pbnum="19" />
+    <val name="latSt" idx="85" size="4" pbnum="20" />
+    <val name="lonSt" idx="89" size="4" pbnum="21" />
+    <val name="stretch" idx="93" size="4" pbnum="22" />
+    <val name="points" idx="97" size="1" pbnum="14"  field="repeated"/>
+  </grid>
+
+  <!-- Variable Resolution Latitude/longitude -->
+  <grid name="varlatlon" template="4" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="scanFlag" idx="47" size="1" pbnum="8" />
+    <val name="scanMode" idx="48" size="1" pbnum="13" />
+    <val name="lonList" idx="49" size="4" pbnum="15"  field="repeated" cnt_pbnum="2" />
+    <val name="latList" idx="49" offset_pbnum="2" offset_size="4" size="4" pbnum="16"  field="repeated" cnt_pbnum="3" />
+  </grid>
+
+ <!-- Variable Resolution Rotated Latitude/longitude -->
+  <grid name="varlatlon" template="5" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="scanFlag" idx="47" size="1" pbnum="8" />
+    <val name="scanMode" idx="48" size="1" pbnum="13" />
+    <val name="lats" idx="49" size="4" pbnum="17" />
+    <val name="lons" idx="53" size="4" pbnum="18" />
+    <val name="rotAngle" idx="57" size="4" pbnum="19" />
+    <val name="lonList" idx="61" size="4" pbnum="15"  field="repeated" cnt_pbnum="2" />
+    <val name="latList" idx="61" offset_pbnum="2" offset_size="4" size="4" pbnum="16"  field="repeated" cnt_pbnum="3" />
+  </grid>
+
+  <!-- Mercator -->
+  <grid name="Mercator" template="10" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="la1" idx="39" size="4" pbnum="4" />
+    <val name="lo1" idx="43" size="4" pbnum="5" />
+    <val name="scanFlag" idx="47" size="1" pbnum="6" />
+    <val name="lad" idx="48" size="4" pbnum="7" />
+    <val name="la2" idx="52" size="4" pbnum="8" />
+    <val name="lo2" idx="56" size="4" pbnum="9" />
+    <val name="scanMode" idx="60" size="1" pbnum="10" />
+    <val name="basicAngle" idx="61" size="4" pbnum="11" />
+    <val name="di" idx="65" size="4" pbnum="12" />
+    <val name="dj" idx="69" size="4" pbnum="13" />
+  </grid>
+
+ <!-- Transverse Mercator -->
+  <grid name="transvMercator" template="12" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="laR" idx="39" size="4" pbnum="14" />
+    <val name="loR" idx="43" size="4" pbnum="15" />
+    <val name="scanFlag" idx="47" size="1" pbnum="6" />
+    <val name="m" idx="48" size="4" pbnum="16" />
+    <val name="xr" idx="52" size="4" pbnum="17" />
+    <val name="yr" idx="56" size="4" pbnum="18" />
+    <val name="scanMode" idx="60" size="1" pbnum="10" />
+    <val name="di" idx="61" size="4" pbnum="12" />
+    <val name="dj" idx="65" size="4" pbnum="13" />
+    <val name="x1" idx="69" size="4" pbnum="19" />
+    <val name="y1" idx="73" size="4" pbnum="20" />
+    <val name="x2" idx="77" size="4" pbnum="21" />
+    <val name="y2" idx="81" size="4" pbnum="22" />
+  </grid>
+
+
+  <!-- Polar stereographic projection -->
+  <grid name="polarStereo" template="20" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="la1" idx="39" size="4" pbnum="6" />
+    <val name="lo1" idx="43" size="4" pbnum="7" />
+    <val name="scanFlag" idx="47" size="1" pbnum="8" />
+    <val name="lad" idx="48" size="4" pbnum="24" />
+    <val name="lov" idx="52" size="4" pbnum="25" />
+    <val name="di" idx="56" size="4" pbnum="11" />
+    <val name="dj" idx="60" size="4" pbnum="12" />
+    <val name="centerFlag" idx="64" size="1" pbnum="26" />
+    <val name="scanMode" idx="65" size="1" pbnum="13" />
+  </grid>
+
+  <!-- Lambert conformal -->
+  <grid name="Lambert" template="30" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="la1" idx="39" size="4" pbnum="6" />
+    <val name="lo1" idx="43" size="4" pbnum="7" />
+    <val name="scanFlag" idx="47" size="1" pbnum="8" />
+    <val name="lad" idx="48" size="4" pbnum="24" />
+    <val name="lov" idx="52" size="4" pbnum="25" />
+    <val name="di" idx="56" size="4" pbnum="11" />
+    <val name="dj" idx="60" size="4" pbnum="12" />
+    <val name="centerFlag" idx="64" size="1" pbnum="26" />
+    <val name="scanMode" idx="65" size="1" pbnum="13" />
+    <val name="latin1" idx="66" size="4" pbnum="27" />
+    <val name="latin2" idx="70" size="4" pbnum="28" />
+    <val name="lats" idx="74" size="4" pbnum="17" />
+    <val name="lons" idx="78" size="4" pbnum="18" />
+  </grid> 
+  
+  <!-- Albers equal area -->
+  <grid name="Albers" template="31" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="la1" idx="39" size="4" pbnum="6" />
+    <val name="lo1" idx="43" size="4" pbnum="7" />
+    <val name="scanFlag" idx="47" size="1" pbnum="8" />
+    <val name="lad" idx="48" size="4" pbnum="24" />
+    <val name="lov" idx="52" size="4" pbnum="25" />
+    <val name="di" idx="56" size="4" pbnum="11" />
+    <val name="dj" idx="60" size="4" pbnum="12" />
+    <val name="centerFlag" idx="64" size="1" pbnum="26" />
+    <val name="scanMode" idx="65" size="1" pbnum="13" />
+    <val name="latin1" idx="66" size="4" pbnum="27" />
+    <val name="latin2" idx="70" size="4" pbnum="28" />
+    <val name="lats" idx="74" size="4" pbnum="17" />
+    <val name="lons" idx="78" size="4" pbnum="18" />
+  </grid> 
+
+  <grid name="gaussian" template="40" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="la1" idx="47" size="4" pbnum="6" />
+    <val name="lo1" idx="51" size="4" pbnum="7" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="la2" idx="56" size="4" pbnum="9" />
+    <val name="lo2" idx="60" size="4" pbnum="10" />
+    <val name="di" idx="64" size="4" pbnum="11" />
+    <val name="N"  idx="68" size="4" pbnum="23" />
+    <val name="scanMode" idx="72" size="1" pbnum="13" />
+    <val name="points" idx="73" size="1" pbnum="14"  field="repeated"/>
+  </grid>
+
+  <!-- Rotated Gaussian Latitude/Longitude -->
+ <grid name="rotGaussian" template="41" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="la1" idx="47" size="4" pbnum="6" />
+    <val name="lo1" idx="51" size="4" pbnum="7" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="la2" idx="56" size="4" pbnum="9" />
+    <val name="lo2" idx="60" size="4" pbnum="10" />
+    <val name="di" idx="64" size="4" pbnum="11" />
+    <val name="N"  idx="68" size="4" pbnum="23" />
+    <val name="scanMode" idx="72" size="1" pbnum="13" />
+    <val name="lats" idx="73" size="4" pbnum="17" />
+    <val name="lons" idx="77" size="4" pbnum="18" />
+    <val name="rotAngle" idx="81" size="4" pbnum="19" />
+    <val name="points" idx="85" size="1" pbnum="14"  field="repeated"/>
+  </grid>
+
+  <!-- Stretched Gaussian Latitude/Longitude -->
+  <grid name="strechGaussian" template="42" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="la1" idx="47" size="4" pbnum="6" />
+    <val name="lo1" idx="51" size="4" pbnum="7" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="la2" idx="56" size="4" pbnum="9" />
+    <val name="lo2" idx="60" size="4" pbnum="10" />
+    <val name="di" idx="64" size="4" pbnum="11" />
+    <val name="N"  idx="68" size="4" pbnum="23" />
+    <val name="scanMode" idx="72" size="1" pbnum="13" />
+    <val name="latSt" idx="73" size="4" pbnum="20" />
+    <val name="lonSt" idx="77" size="4" pbnum="21" />
+    <val name="stretch" idx="81" size="4" pbnum="22" />
+    <val name="points" idx="85" size="1" pbnum="14"  field="repeated"/>
+  </grid>
+
+  <!-- Stretched and Rotated Gaussian Latitude/Longitude -->
+  <grid name="stretchRotGaussisn" template="43" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="basicAngle" idx="39" size="4" pbnum="4" />
+    <val name="divBasicAngle" idx="43" size="4" pbnum="5" />
+    <val name="la1" idx="47" size="4" pbnum="6" />
+    <val name="lo1" idx="51" size="4" pbnum="7" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="la2" idx="56" size="4" pbnum="9" />
+    <val name="lo2" idx="60" size="4" pbnum="10" />
+    <val name="di" idx="64" size="4" pbnum="11" />
+    <val name="N"  idx="68" size="4" pbnum="23" />
+    <val name="scanMode" idx="72" size="1" pbnum="13" />
+    <val name="lats" idx="73" size="4" pbnum="17" />
+    <val name="lons" idx="77" size="4" pbnum="18" />
+    <val name="rotAngle" idx="81" size="4" pbnum="19" />
+    <val name="latSt" idx="85" size="4" pbnum="20" />
+    <val name="lonSt" idx="89" size="4" pbnum="21" />
+    <val name="stretch" idx="93" size="4" pbnum="22" />
+    <val name="points" idx="97" size="1" pbnum="14"  field="repeated"/>
+  </grid>
+
+  <!-- Spherical Harmonic Coefficients -->
+  <grid name="spherCoef" template="50" startIdx="15">
+    <val name="J" idx="15" size="4" pbnum="1" />
+    <val name="K" idx="19" size="4" pbnum="2" />
+    <val name="M" idx="23" size="4" pbnum="3" />
+    <val name="type" idx="27" size="1" pbnum="4" />
+    <val name="mode" idx="28" size="1" pbnum="5" />
+  </grid>
+
+  <!-- Rotated Spherical Harmonic Coefficients -->
+  <grid name="rotSpherCoef" template="51" startIdx="15">
+    <val name="J" idx="15" size="4" pbnum="1" />
+    <val name="K" idx="19" size="4" pbnum="2" />
+    <val name="M" idx="23" size="4" pbnum="3" />
+    <val name="type" idx="27" size="1" pbnum="4" />
+    <val name="mode" idx="28" size="1" pbnum="5" />
+    <val name="lats" idx="29" size="4" pbnum="6" />
+    <val name="lons" idx="33" size="4" pbnum="7" />
+    <val name="rotAngle" idx="37" size="4" pbnum="8" />
+  </grid>
+
+  <!-- Stretched Spherical Harmonic Coefficients -->
+  <grid name="StrechSpherCoef" template="52" startIdx="15">
+    <val name="J" idx="15" size="4" pbnum="1" />
+    <val name="K" idx="19" size="4" pbnum="2" />
+    <val name="M" idx="23" size="4" pbnum="3" />
+    <val name="type" idx="27" size="1" pbnum="4" />
+    <val name="mode" idx="28" size="1" pbnum="5" />
+    <val name="latSt" idx="29" size="4" pbnum="9" />
+    <val name="lonSt" idx="33" size="4" pbnum="10" />
+    <val name="stretch" idx="37" size="4" pbnum="11" />
+  </grid>
+  
+  <!-- Stretched and Rotated Spherical Harmonic Coefficients -->
+  <grid name="StrechRotSpherCoef" template="53" startIdx="15">
+    <val name="J" idx="15" size="4" pbnum="1" />
+    <val name="K" idx="19" size="4" pbnum="2" />
+    <val name="M" idx="23" size="4" pbnum="3" />
+    <val name="type" idx="27" size="1" pbnum="4" />
+    <val name="mode" idx="28" size="1" pbnum="5" />
+    <val name="lats" idx="29" size="4" pbnum="6" />
+    <val name="lons" idx="33" size="4" pbnum="7" />
+    <val name="rotAngle" idx="37" size="4" pbnum="8" />
+    <val name="latSt" idx="41" size="4" pbnum="9" />
+    <val name="lonSt" idx="45" size="4" pbnum="10" />
+    <val name="stretch" idx="49" size="4" pbnum="11" />
+  </grid>
+
+  <!-- Space View Perspective or Orthographic -->
+  <grid name="space" template="90" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="nx" idx="31" size="4" pbnum="2" />
+    <val name="ny" idx="35" size="4" pbnum="3" />
+    <val name="lap" idx="39" size="4" pbnum="4" />
+    <val name="lop" idx="43" size="4" pbnum="5" />
+    <val name="scanFlag" idx="47" size="1" pbnum="6" />
+    <val name="dx" idx="48" size="4" pbnum="7" />
+    <val name="dy" idx="52" size="4" pbnum="8" />
+    <val name="xp" idx="56" size="4" pbnum="9" />
+    <val name="yp" idx="60" size="4" pbnum="10" />
+    <val name="scanMode" idx="64" size="1" pbnum="11" />
+    <val name="orientation" idx="65" size="4" pbnum="12" />    
+    <val name="nr" idx="69" size="4" pbnum="13" />
+    <val name="xo" idx="73" size="4" pbnum="14" />
+    <val name="yo" idx="77" size="4" pbnum="15" />
+  </grid>
+
+  <!-- Triangular Grid Based on an Icosahedron -->
+  <grid name="Icosahedron" template="100" startIdx="15">
+    <val name="n2" idx="15" size="1" pbnum="1" />
+    <val name="n3" idx="16" size="1" pbnum="2" />
+    <val name="ni" idx="17" size="2" pbnum="3" />
+    <val name="nd" idx="19" size="1" pbnum="4" />
+    <val name="latPole" idx="20" size="4" pbnum="5" />
+    <val name="lonPole" idx="24" size="4" pbnum="6" />
+    <val name="lonC" idx="28" size="4" pbnum="7" />
+    <val name="pos" idx="32" size="1" pbnum="8" />
+    <val name="num" idx="33" size="1" pbnum="9" />
+    <val name="mode" idx="34" size="1" pbnum="10" />
+    <val name="nt" idx="35" size="4" pbnum="11" />
+  </grid>
+
+
+  <!-- General Unstructured Grid -->
+  <grid name="" template="101" startIdx="15">
+    <val name="shape" idx="15" size="1" pbnum="1" />
+    <val name="grid"  idx="16" size="3" pbnum="2" />
+    <val name="gridRef" idx="19" size="1" pbnum="3" />
+    <val name="gridId" idx="20" size="16" pbnum="4" />
+  </grid>
+
+
+  <!-- Equatorial Azimuthal Equidistant Projection -->
+  <grid name="" template="110" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="la1" idx="39" size="4" pbnum="6" />
+    <val name="lo1" idx="43" size="4" pbnum="7" />
+    <val name="scanFlag" idx="47" size="1" pbnum="8" />
+    <val name="di" idx="48" size="4" pbnum="11" />
+    <val name="dj" idx="52" size="4" pbnum="12" />
+    <val name="centerFlag" idx="56" size="1" pbnum="26" />
+    <val name="scanMode" idx="57" size="1" pbnum="13" />
+  </grid>
+
+  <!-- Lambert Azimuthal Equal Area Projection -->
+  <grid name="LambertEqualArea" template="140" startIdx="15">
+    <val name="shape" idx="15" size="1" type="custom">
+      <radius factor_idx="16" factor_size="1" value_idx="17" value_size="4"/>
+      <major factor_idx="21" factor_size="1" value_idx="22" value_size="4"  />
+      <minor factor_idx="26" size="1" value_idx="27" value_size="4"  />
+    </val>
+    <val name="ni" idx="31" size="4" pbnum="2" />
+    <val name="nj" idx="35" size="4" pbnum="3" />
+    <val name="la1" idx="39" size="4" pbnum="6" />
+    <val name="lo1" idx="43" size="4" pbnum="7" />
+    <val name="" idx="47" size="4" pbnum="" />
+    <val name="" idx="51" size="4" pbnum="" />
+    <val name="scanFlag" idx="55" size="1" pbnum="8" />
+    <val name="di" idx="56" size="4" pbnum="11" />
+    <val name="dj" idx="60" size="4" pbnum="12" />
+    <val name="scanMode" idx="64" size="1" pbnum="13" />
+  </grid> 
+
+</grib2grids>

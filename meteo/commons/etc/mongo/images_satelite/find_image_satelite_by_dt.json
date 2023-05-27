@@ -1,0 +1,4 @@
+{ "find" : "image_satelite", "filter" : {
+  "dt" : { "$lte" : @start_dt@, "$gte" : @end_dt@ }
+}
+}

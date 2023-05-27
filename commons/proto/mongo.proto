@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+package mongo.proto;
+
+enum QueryType {
+  kUpdate       = 1;
+  kInsert       = 2;
+  kFind         = 3;
+  kAggregate    = 4;
+  kCustom       = 5;
+}
+
+message Query {
+  optional QueryType    type            = 1; //!< тип запроса
+  optional string       name            = 2; //!< наименование запроса
+  optional string       query           = 3; //!< строка запроса
+  optional string       selector        = 4; //!< для update-запросов
+  optional bool         upsert          = 5; //!< для update-запросов
+  optional string       comment         = 6; //!< комментарий
+}
+
+message Queries {
+  repeated Query query          = 1; //!< набор запросов
+}

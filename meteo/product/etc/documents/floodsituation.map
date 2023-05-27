@@ -1,0 +1,12 @@
+name: "floodsituation.map"
+title: "Паводковая обстановка"
+formal {
+    template: "FloodSituation.odt"
+    name: "Паводковая обстановка"
+    module_path: "floodsituation.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteosummary.png"
+}
+document {
+  doctype: kFormalDocument
+}

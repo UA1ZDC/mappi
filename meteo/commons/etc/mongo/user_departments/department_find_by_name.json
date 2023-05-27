@@ -1,0 +1,6 @@
+{
+  "find": "departments",
+  "filter": {
+    "name" : @name@
+  }
+}

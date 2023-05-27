@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ExprEditor</class>
+ <widget class="QWidget" name="ExprEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>468</width>
+    <height>459</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Редактор математических выражений</string>
+  </property>
+  <layout class="QVBoxLayout" name="iExprEditorVbox">
+   <item>
+    <widget class="QWidget" name="expressionWdg" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QHBoxLayout" name="iExpressionHbox">
+      <item>
+       <widget class="QLabel" name="exprLbl">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string>Формула:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="exprViewWdg" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="exprEdt">
+     <property name="frame">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="variableControlWdg" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QHBoxLayout" name="iChannelControlHbox">
+      <item>
+       <widget class="QToolButton" name="variableBtn">
+        <property name="contextMenuPolicy">
+         <enum>Qt::CustomContextMenu</enum>
+        </property>
+        <property name="text">
+         <string>Переменные</string>
+        </property>
+        <property name="popupMode">
+         <enum>QToolButton::InstantPopup</enum>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+        <property name="arrowType">
+         <enum>Qt::DownArrow</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="addVariable">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../etc/mappi.qrc">
+          <normaloff>:/mappi/icons/edit-black.png</normaloff>:/mappi/icons/edit-black.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="clearBtn">
+        <property name="toolTip">
+         <string>Очистить</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../etc/mappi.qrc">
+          <normaloff>:/mappi/icons/clear.png</normaloff>:/mappi/icons/clear.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="undoBtn">
+        <property name="toolTip">
+         <string>Отменить последнее действие</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../etc/mappi.qrc">
+          <normaloff>:/mappi/icons/undo.png</normaloff>:/mappi/icons/undo.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>500</number>
+        </property>
+        <property name="autoRepeatInterval">
+         <number>300</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="redoBtn">
+        <property name="toolTip">
+         <string>Повторить последнее действие</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../etc/mappi.qrc">
+          <normaloff>:/mappi/icons/redo.png</normaloff>:/mappi/icons/redo.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>500</number>
+        </property>
+        <property name="autoRepeatInterval">
+         <number>300</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="calculatorWdg" native="true">
+     <layout class="QGridLayout" name="calcLay">
+      <item row="5" column="3">
+       <widget class="QPushButton" name="mulBtn">
+        <property name="toolTip">
+         <string>Умножение</string>
+        </property>
+        <property name="text">
+         <string>*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QPushButton" name="threeBtn">
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="sinBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Синус</string>
+        </property>
+        <property name="text">
+         <string>sin</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="sixBtn">
+        <property name="text">
+         <string>6</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="fourBtn">
+        <property name="text">
+         <string>4</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QPushButton" name="subBtn">
+        <property name="toolTip">
+         <string>Вычитание/Отрицание</string>
+        </property>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="eightBtn">
+        <property name="text">
+         <string>8</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QPushButton" name="modBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Остаток от деления</string>
+        </property>
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="fiveBtn">
+        <property name="text">
+         <string>5</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QPushButton" name="commaBtn">
+        <property name="text">
+         <string>.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="tanBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Тангенс</string>
+        </property>
+        <property name="text">
+         <string>tan</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QPushButton" name="oneBtn">
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="3">
+       <widget class="QPushButton" name="addBtn">
+        <property name="toolTip">
+         <string>Сложение</string>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="ctgBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Катангенс</string>
+        </property>
+        <property name="text">
+         <string>ctg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="nineBtn">
+        <property name="text">
+         <string>9</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="cosBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Косинус</string>
+        </property>
+        <property name="text">
+         <string>cos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QPushButton" name="zeroBtn">
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QPushButton" name="twoBtn">
+        <property name="text">
+         <string>2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QPushButton" name="divBtn">
+        <property name="toolTip">
+         <string>Деление</string>
+        </property>
+        <property name="text">
+         <string>/</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="sevenBtn">
+        <property name="text">
+         <string>7</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QPushButton" name="factBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Факториал</string>
+        </property>
+        <property name="text">
+         <string>!</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QPushButton" name="powBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Степень</string>
+        </property>
+        <property name="text">
+         <string>^</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="4">
+       <widget class="QPushButton" name="absBtn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Модуль</string>
+        </property>
+        <property name="text">
+         <string>|</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4">
+       <widget class="QPushButton" name="lBrackBtn">
+        <property name="text">
+         <string>(</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="4">
+       <widget class="QPushButton" name="rBrackBtn">
+        <property name="text">
+         <string>)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QPushButton" name="leftBtn">
+        <property name="toolTip">
+         <string>переместить курсор влево</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../etc/mappi.qrc">
+          <normaloff>:/mappi/icons/left-arrow.png</normaloff>:/mappi/icons/left-arrow.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QPushButton" name="rightBtn">
+        <property name="toolTip">
+         <string>Переместить курсор вправо</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../etc/mappi.qrc">
+          <normaloff>:/mappi/icons/right-arrow.png</normaloff>:/mappi/icons/right-arrow.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QPushButton" name="backspaceBtn">
+        <property name="toolTip">
+         <string>Удалить символ слева</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../etc/mappi.qrc">
+          <normaloff>:/mappi/icons/backspace.png</normaloff>:/mappi/icons/backspace.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="QPushButton" name="delBtn">
+        <property name="toolTip">
+         <string>Удалить символ справа</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../../etc/mappi.qrc">
+          <normaloff>:/mappi/icons/frontspace.png</normaloff>:/mappi/icons/frontspace.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="4">
+       <widget class="QPushButton" name="enterBtn">
+        <property name="toolTip">
+         <string>Сохранить и закрыть</string>
+        </property>
+        <property name="text">
+         <string>Применить</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>subBtn</zorder>
+     <zorder>addBtn</zorder>
+     <zorder>mulBtn</zorder>
+     <zorder>divBtn</zorder>
+     <zorder>sinBtn</zorder>
+     <zorder>sixBtn</zorder>
+     <zorder>threeBtn</zorder>
+     <zorder>eightBtn</zorder>
+     <zorder>fiveBtn</zorder>
+     <zorder>fourBtn</zorder>
+     <zorder>commaBtn</zorder>
+     <zorder>twoBtn</zorder>
+     <zorder>nineBtn</zorder>
+     <zorder>tanBtn</zorder>
+     <zorder>oneBtn</zorder>
+     <zorder>cosBtn</zorder>
+     <zorder>zeroBtn</zorder>
+     <zorder>modBtn</zorder>
+     <zorder>ctgBtn</zorder>
+     <zorder>sevenBtn</zorder>
+     <zorder>factBtn</zorder>
+     <zorder>powBtn</zorder>
+     <zorder>absBtn</zorder>
+     <zorder>lBrackBtn</zorder>
+     <zorder>rBrackBtn</zorder>
+     <zorder>leftBtn</zorder>
+     <zorder>rightBtn</zorder>
+     <zorder>backspaceBtn</zorder>
+     <zorder>delBtn</zorder>
+     <zorder>enterBtn</zorder>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>exprEdt</tabstop>
+  <tabstop>variableBtn</tabstop>
+  <tabstop>addVariable</tabstop>
+  <tabstop>sinBtn</tabstop>
+  <tabstop>cosBtn</tabstop>
+  <tabstop>tanBtn</tabstop>
+  <tabstop>ctgBtn</tabstop>
+  <tabstop>factBtn</tabstop>
+  <tabstop>sevenBtn</tabstop>
+  <tabstop>eightBtn</tabstop>
+  <tabstop>nineBtn</tabstop>
+  <tabstop>modBtn</tabstop>
+  <tabstop>powBtn</tabstop>
+  <tabstop>fourBtn</tabstop>
+  <tabstop>fiveBtn</tabstop>
+  <tabstop>sixBtn</tabstop>
+  <tabstop>divBtn</tabstop>
+  <tabstop>absBtn</tabstop>
+  <tabstop>oneBtn</tabstop>
+  <tabstop>twoBtn</tabstop>
+  <tabstop>threeBtn</tabstop>
+  <tabstop>mulBtn</tabstop>
+  <tabstop>lBrackBtn</tabstop>
+  <tabstop>zeroBtn</tabstop>
+  <tabstop>commaBtn</tabstop>
+  <tabstop>subBtn</tabstop>
+  <tabstop>addBtn</tabstop>
+  <tabstop>rBrackBtn</tabstop>
+  <tabstop>leftBtn</tabstop>
+  <tabstop>rightBtn</tabstop>
+  <tabstop>backspaceBtn</tabstop>
+  <tabstop>delBtn</tabstop>
+  <tabstop>enterBtn</tabstop>
+  <tabstop>clearBtn</tabstop>
+  <tabstop>undoBtn</tabstop>
+  <tabstop>redoBtn</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../../../etc/mappi.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,11 @@
+{
+"aggregate" : "msg",
+"pipeline" : [
+    { "$match" : { "dddd" : "%1" }},
+    { "$sort" :  {"%2" : "%3" }  },
+    { "$skip" : "%4" } ,
+    { "$limit" : "%5" }
+],
+"cursor": { "batchSize": 1 },
+"allowDiskUse": true
+}

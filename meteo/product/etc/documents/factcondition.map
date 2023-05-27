@@ -1,0 +1,12 @@
+name: "factcondition.map"
+title: "Фактические гидрометеорологические условия"
+formal {
+    template: "Condition.odt"
+    name: "Фактические гидрометеорологические условия"
+    module_path: "condition.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteosummary.png"
+}
+document {
+  doctype: kFormalDocument
+}

@@ -1,0 +1,11 @@
+{
+"aggregate" : "%1",
+    "pipeline" : [
+        { "$unwind" : "$param" },
+        { "$sort" : { %2 }},
+        { "$skip" : %3 },
+        { "$limit" : %4 }
+],
+"cursor": { "batchSize": 1 },
+"allowDiskUse": true
+}

@@ -1,0 +1,106 @@
+syntax = "proto2";
+option cc_generic_services = true;
+package mappi.conf;
+
+import "common.proto";
+import "schedule.proto";
+
+
+//! типы используемых антенн
+enum AntennaType {
+  kNiitvAntenna = 0;
+  kVkaAntenna = 1;
+  kAngleSpeedAntenna = 2;
+}
+
+//! рабочий диапазон по углу, градусы
+message AngleRange {
+  required float min = 1;       //!< минимально допустимое значение
+  required float max = 2;       //!< максимально допустимое значение
+}
+
+//! параметры вращения, градус/сек.
+message SpinParam {
+  required float dsa = 1;       //!< degree per second azimut
+  required float dse = 2;       //!< degree per second elevat
+}
+
+//! профиль (параметры) антенны
+message AntennaProfile
+{
+  required AntennaType type = 1;        //!< тип антенны
+  required AngleRange azimut = 2;       //!< рабочий диапазон по азимуту
+  required AngleRange elevat = 3;       //!< рабочий диапазон по углу места
+  required SpinParam spin = 4;          //!< параметры вращения
+  required float time_slot = 5;         //!< временной интервал между отправками команд на позиционирование, сек
+  required bool travel_mode = 6;        //!< поддержка походного положения
+  required bool feedhorn_control = 7;   //!< возможность управления облучателем антенны
+}
+
+//! параметры serial port
+message SerialPort {
+  required string tty = 1;              //!< порт антенны
+  required int32 baud_rate = 2;         //!< скорость порта
+  required float tx_timeout = 3;
+  required bool dtr_signal = 4;
+  required bool rts_signal = 5;
+}
+
+//! настройки антенны
+message AntennaConf {
+  required AntennaType type = 1;        //!< выбранный тип антенны
+  required float azimut_correct = 2;    //!< поправка угла по азимута, градусы
+  required SerialPort serial_port = 3;  //!< параметры serial port
+}
+
+//! местоположение антенны, градусы
+message Position {
+  required float azimut = 1; //!< по азимуту
+  required float elevat = 2; //!< по уголу места
+  optional float azimut_speed = 3 [default = 0]; //!< скорость по азимуту
+  optional float elevat_speed = 4 [default = 0]; //!< скорость по уголу места
+}
+
+//! привод
+message Drive {
+  required float dst = 1;       //!< целевое значение угла, градусы
+  required float self = 2;      //!< текущее значение угла, градусы
+  required int32 state = 3;     //!< состояние привода
+}
+
+//! облучатель
+message Feedhorn {
+  optional bool power_on = 1;   //!< true - вкл, false - выкл питание +12В
+  optional bool output_1 = 2;   //!< доп. выход #1, true - вкл, false - выкл
+  optional bool output_2 = 3;   //!< доп. выход #2, true - вкл, false - выкл
+  optional bool output_3 = 4;   //!< доп. выход #3, true - вкл, false - выкл
+  optional bool output_4 = 5;   //!< доп. выход #4, true - вкл, false - выкл
+}
+
+//! ответ антенны
+message AntennaResponse {
+  required Drive azimut = 1;            //!< привод азимута
+  required Drive elevat = 2;            //!< привод угла места
+  required Feedhorn feedhorn = 3;       //!< облучатель
+  required ServiceState state = 4;      //!< текущее состояние сервиса
+
+  required bool result = 5;
+  optional string comment = 6;
+}
+
+service AntennaService {
+  rpc AcceptSession(SessionBundle) returns (AntennaResponse);   //!< запрос на приём сеанса
+  rpc ServiceMode(ServiceRequest) returns (AntennaResponse);    //!< переход в\из сервисный режим
+  rpc HealthCheck(Dummy) returns (AntennaResponse);             //!< запрос текущего состояния
+
+  rpc FeedhornPower(Feedhorn) returns (AntennaResponse);        //!< управление питанием облучателя
+  rpc FeedhornOutput(Feedhorn) returns (AntennaResponse);       //!< управление доп. выходами облучателя
+
+  // ручное управление антенной, доступно только в сервисном режиме
+  rpc SetPosition(Position) returns (AntennaResponse);          //!< позициониование антенны
+  rpc Stop(Dummy) returns (AntennaResponse);                    //!< остановить перемещение антенны
+  rpc MonkeyTest(SpinParam) returns (AntennaResponse);          //!< бесконечное движение (прогон)
+  rpc TravelMode(Dummy) returns (AntennaResponse);              //!< походное положение
+
+  rpc Subscribe(Dummy) returns (stream AntennaResponse);        //!< подписка на изменение состояния антенны
+}

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>isolines.menu.conf</file>
+    </qresource>
+</RCC>

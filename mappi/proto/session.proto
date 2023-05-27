@@ -1,0 +1,97 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+package mappi.proto;
+
+import "satellite.proto";
+import "thematic.proto";
+// import "reception.proto";
+// import "spo_options.proto";
+
+
+message _Session {
+  optional int64 id = 1;
+  optional string satellite = 2;
+  optional string site = 3;
+  optional string date_start = 4;       //!< формат ISO yyyy-mm-ddTHH-MM-SS
+  optional string date_end = 5;         //!< формат ISO yyyy-mm-ddTHH-MM-SS
+  optional string fpath = 6;
+  optional bytes tle = 7;
+}
+
+message _SessionResponse {
+  repeated _Session list = 1;
+  required bool result = 2;
+  optional string comment = 3;
+}
+
+message _Pretreatment {
+  // основная таблица
+  optional int64 session = 1;
+  optional mappi.conf.InstrumentType instrument = 2;
+  optional int32 channel_number = 3;
+  optional string date_start = 4;       //!< формат ISO yyyy-mm-ddTHH-MM-SS
+  optional string date_end = 5;         //!< формат ISO yyyy-mm-ddTHH-MM-SS
+  optional bool calibration = 6;
+  optional string fpath = 7;
+
+  // view
+  optional string satellite = 8;
+  optional string channel_alias = 9;
+}
+
+message _PretreatmentResponse {
+  repeated _Pretreatment list = 1;
+  required bool result = 2;
+  optional string comment = 3;
+}
+
+message _Thematic {
+  required int64 session = 1;
+  optional mappi.conf.ThemType type = 2;
+  optional string date_start = 3;       //!< формат ISO yyyy-mm-ddTHH-MM-SS
+  optional string date_end = 4;         //!< формат ISO yyyy-mm-ddTHH-MM-SS
+  optional string fpath = 5;
+  optional string name = 6;
+
+  // view
+  optional string satellite = 7;
+  // optional string title = 8;
+}
+
+message _ThematicResponse {
+  repeated _Thematic list = 1;
+  required bool result = 2;
+  optional string comment = 3;
+}
+
+//message Response {
+//  optional bool result = 1;
+//  optional string comment = 2;
+//  optional int32 index = 3;     //!< индекс занесенной в базу данных записи (для сессий)
+//}
+
+//message Dummy {
+//}
+
+service SessionService {
+  rpc GetSession(_Session) returns (_SessionResponse);                  //!< получить сессию
+  rpc SaveSession(_Session) returns (_Session);                         //!< сохранить сессиию, в ответной сессии возвращает идентификатор сохраненной сессии
+
+  rpc GetRawPretreatment(_Session) returns (_SessionResponse);          //!< получить список сессий по которым не сделано ни одной предварительной обработки
+  rpc GetPretreatment(_Pretreatment) returns (_PretreatmentResponse);
+  rpc SavePretreatment(_Pretreatment) returns (_PretreatmentResponse);
+
+  rpc GetRawThematic(_Session) returns (_SessionResponse);              //!< получить список сессий по которым не сделано ни одной тематической обработки
+  rpc GetThematic(_Thematic) returns (_ThematicResponse);
+  rpc SaveThematic(_Thematic) returns (_ThematicResponse);
+
+  //rpc SavePretreatment(PretreatmentData) returns (Response);                    //!< сохранить данные предварительной обработки
+  //rpc GetAvailablePretreatment(PretreatmentData) returns (PretreatmentResponse);    //!< получить список имеющихся предварительных обработок, удовлетворящих заданным фильтрам
+  //rpc SaveThematic(ThematicData) returns (Response);                        //!< созранить данные тематической обработки
+  //rpc GetAvailableThematic(ThematicData) returns (ThematicList);            //!< получить список имеющихся тематических обработок, удовлетворящих заданным фильтрам
+  //rpc GetAvailableThematicTypes( Dummy ) returns ( ThematicList );              //!< получить список имеющих разных видов тематической обработки
+  //rpc MarkSessionThematicDone( SessionData ) returns ( Response );              //!< установить флаг завершенности тематических обработок (флаг можно и снимать, устанавливая значение thematic_done в false)
+  // rpc GetGrayscaleChannels( Dummy ) returns ( ThematicList );                   //!< возвращает список псевдонимов каналов всех обработок типа grayscale
+}

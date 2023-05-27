@@ -1,0 +1,7 @@
+{
+  "find" : "disciplines",
+  "filter" : 
+  {
+    "id" : { "$in" : "%1" }
+  }
+}

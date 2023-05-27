@@ -1,0 +1,12 @@
+name: "firehazardreport.map"
+title: "Доклад по пожароопасности"
+formal {
+    template: "FireHazardReport.odt"
+    name: "Доклад по пожароопасности"
+    module_path: "firehazardreport.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteosummary.png"
+}
+document {
+  doctype: kFormalDocument
+}

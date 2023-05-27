@@ -1,0 +1,7 @@
+{
+  "find": "user.app.settings",
+  "filter": {
+    "login"   : @login@,
+    "proto" : @proto@
+  }
+}

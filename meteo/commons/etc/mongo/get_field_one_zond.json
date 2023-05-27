@@ -1,0 +1,13 @@
+{
+  "find": "obanal",
+  "filter": {
+    "forecast_start": { "$gte": "%1", "$lte": "%2"},
+    "center": { "$in": "%3"},
+    "descr": { "$in": "%4" },
+    "level_type": { "$in": "%5" },
+    "level": { "$in": "%6" }    
+     },
+    "sort": {"hour": 1} 
+}
+
+

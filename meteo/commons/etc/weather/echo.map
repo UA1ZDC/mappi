@@ -1,0 +1,12 @@
+name: "echo.map"
+title: "Высота радиоэха МРЛ"
+spline_koef: 10
+data {
+  mode: kRadar
+  source: kSurface
+  template_name: "Наибольшая высота радиоэха МРЛ"
+  data_type: kRadarMapType
+  type: kLayerMrl
+  h1: 0
+  h2: 0
+}

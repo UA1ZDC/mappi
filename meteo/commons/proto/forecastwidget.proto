@@ -1,0 +1,48 @@
+syntax = "proto2";
+
+package meteo.ui.proto;
+
+//! Табы, которые есть в приложении
+message TabType {
+  optional string name          = 1; // название таба
+  repeated SectionType section  = 2; //секции, которые содержатся
+  optional RGBType rgb          = 3; // цвет кнопки
+  optional bool   last_section  = 4; // выводим ли секцию с набранным текстом
+};
+
+//! Секции, которые находятся в нужном табе
+message SectionType {
+  optional string name       = 1;  // название секции
+  repeated ButtonType button = 2;  //кнопки которые содержатся в секции
+  repeated InputType  input  = 3;  //поля ввода
+};
+
+//! кнопки, которые находятся в нужной секции
+message ButtonType {
+  optional string name      = 1;  // название секции
+  optional string type      = 2;  // тип кнопки 
+  optional string category  = 3;  // категория
+  optional bool bcomma      = 4;  // запятая до
+  optional bool comma       = 5;  // запятая
+  optional bool catcomma    = 6;  // запятая между категориями
+  optional bool afterspace  = 7;  // пропуск после кнопки 
+  optional bool notfirst    = 8;  // Если не с этого начинается
+};
+
+//! поля ввода текста
+message InputType{
+  optional string name      = 1;  // название поля
+  optional int32  gradation = 2;  // градации
+};
+
+message ForecastWidget {
+  repeated TabType tabs = 1; // список табов, который возвращается
+};
+
+message RGBType {
+  optional int32 r = 1;
+  optional int32 g = 2;
+  optional int32 b = 3;
+};
+
+

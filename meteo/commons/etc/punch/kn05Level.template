@@ -1,0 +1,154 @@
+code: "kn05Level"
+name: "КН-05n"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/kn05Level.template"
+wind: false
+rule {
+  pos {
+    x: -11
+    y: -6
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 2
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 13.34
+  id {
+    descr: 22043
+    name: "Tw"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -11
+    y: 6
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 2
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 7.34
+  id {
+    descr: 22062
+    name: "Sn"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: 11
+    y: 6
+  }
+  align: kNoPosition
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 44
+  testqual: 0
+  id {
+    descr: 22031
+    name: "cncn"
+    description: ""
+  }
+  visible: true
+}
+rule {
+  pos {
+    x: 11
+    y: -6
+  }
+  align: kNoPosition
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 66
+  testqual: 0
+  id {
+    descr: 22004
+    name: "dndn"
+    description: ""
+  }
+  visible: true
+}
+datatype: kSurface
+center: kCircle
+crisscross: false
+radius: 5
+windfont {
+  family: "Sans Serif"
+  pointsize: 8
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+flow: true

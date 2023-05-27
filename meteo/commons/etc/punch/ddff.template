@@ -1,0 +1,45 @@
+code: "ddff"
+name: "ddff"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/ddff.template"
+wind: true
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 25
+  testqual: 0
+  id {
+    descr: 11001
+    name: "dd"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 0
+  testqual: 0
+  id {
+    descr: 11002
+    name: "ff"
+    parent: "wind"
+  }
+}
+datatype: kSpecial
+center: kCircle
+crisscross: false
+radius: 3
+windfont {
+  family: "Arial"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+draw_bad_dd: true
+flow: false

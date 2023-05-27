@@ -1,0 +1,16 @@
+{
+  "findAndModify": "requests",
+  "query" : {
+      "ipaddr" : @ip@,
+      "namegms": @namegms@
+    },
+  "update": {
+    "$set" : {
+       "ipaddr" : @ip@,
+        "namegms": @namegms@
+    }
+  },
+  "remove": false,
+  "new": true,
+  "upsert": true
+}

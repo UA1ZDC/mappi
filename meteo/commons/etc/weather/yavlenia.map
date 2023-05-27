@@ -1,0 +1,12 @@
+name: "yavlenia.map"
+title: "Явления МРЛ"
+spline_koef: 1
+data {
+  mode: kRadar
+  source: kSurface
+  template_name: "Явления МРЛ"
+  data_type: kRadarMapType
+  type: kLayerMrl
+  h1: 0
+  h2: 0
+}

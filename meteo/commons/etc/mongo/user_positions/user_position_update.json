@@ -1,0 +1,17 @@
+{
+  "findAndModify": "positions",
+  "query": { "_id" : @id@ },
+  "update": {
+    "$set" : {
+      "name": @name@,
+      "parent" : @parent@,
+      "current" : @current@
+    },
+    "$unset" : {      
+      "parent" : @parent@,
+      "current" : @current@
+    }
+  },
+  "new": true,
+  "upsert": false
+}

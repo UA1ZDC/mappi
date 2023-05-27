@@ -1,0 +1,20 @@
+package meteo;
+
+message UserOptions {
+  required string login                            = 1;  //!< логин
+  required int32 role                              = 2;  //!< роль
+  required string password                         = 3;  //!< пароль
+  optional string surname                          = 4;  //!< фамилия пользователя
+  optional string name                             = 5;  //!< имя пользователя
+  optional string patron                           = 6;  //!< отчество пользователя
+  optional int32 rank                              = 7;  //!< звание пользователя
+}
+
+message AeroAxisSettings {
+  optional bool show_left_h_axis    = 1;
+  optional bool show_left_p_axis    = 2;
+  optional bool show_left_w_axis    = 3;
+  optional bool show_right_h_axis   = 4;
+  optional bool show_right_p_axis   = 5;
+  optional bool show_right_w_axis   = 6;
+}

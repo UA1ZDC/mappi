@@ -1,0 +1,12 @@
+{ 
+  "_id" : @id@,
+  "description" : @description@,
+  "contestant" : @contestant@,
+  "date_end" : @date@,
+  "comment" : @comment@,
+  "completion" : @completion@,
+  "idfile" : @idfile@,
+  "place" : @place@,
+  "date_received" : @dtRecived@,
+  "result" : @result@
+}

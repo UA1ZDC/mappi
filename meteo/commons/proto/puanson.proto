@@ -1,0 +1,141 @@
+syntax = "proto2";
+
+package meteo.puanson.proto;
+
+import "meteo.proto";
+
+message Position {
+  required int32 x                      = 1;
+  required int32 y                      = 2;
+}
+
+enum Align
+{
+  kCenter       =  0;
+  kTopCenter    =  1;
+  kLeftCenter   =  2;
+  kTopLeft      =  3;
+  kBottomCenter =  4;
+  kBottomLeft   =  6;
+  kRightCenter  =  8;
+  kTopRight     =  9;
+  kBottomRight  = 12;
+  kNoPosition   = 13;
+}
+
+//! правила усечения целой части
+enum CutOrder {
+  kUpper        = 0;                                                    //!< оставлять старшие разряды
+  kLower        = 1;                                                    //!< оставлять младшие разряды
+  kNoCut        = 2;                                                    //!< не отрезать разряды
+}
+
+//! способ отображения разделителя дробной части
+enum SepType {
+  kDot          = 0;                                                    //!< точка
+  kComma        = 1;                                                    //!< запятая
+  kNoSep        = 2;                                                    //!< нет разделителя
+}
+
+//! способы отображения знака
+enum SignView {
+  kMinus        = 0;                                                    //!< отображать для отриц. чисел
+  kBoth         = 1;                                                    //!< отображать для отриц./полож.
+  kNoSign       = 2;                                                    //!< не отображать знак
+}
+
+enum CellType {
+  kNumber       = 0;                                                    //!< форматированная строка
+  kSymbol       = 1;                                                    //!< набор строк для набора значений
+  kSymNumber    = 2;                                                    //!< оба правила работают
+}
+
+//! Идентификатор метеопараметра
+message Id {
+  optional int64      descr             = 1;                            //!< дескриптор (-1 - означает, что это вымышленная величина)
+  optional string     name              = 2;                            //!< наименование
+  optional string     description       = 3;                            //!< описание
+  optional string     parent            = 4;                            //!< наличие значение, означает, что метеопараметр - часть составного
+}
+
+//! Правила формирования элемента пуансона
+message CellRule {
+  message NumbeRule {                                                   //!< форматная строка (для отобажения значения)
+    optional int32      intcount        = 1 [default = -1];             //!< количество разрядов целой части
+    optional CutOrder   cutorder        = 2 [default = kNoCut];         //!< правила усечения целой части
+    optional int32      fracount        = 3 [default = -1];             //!< количество знаков после запятой
+    optional SepType    septype         = 4 [default = kComma];         //!< разделитель дробной части 
+    optional SignView   signview        = 5 [default = kMinus];         //!< отображение знака
+    optional uint32     pluscolor       = 6 [default = 0xFF000000];     //!< цвет положительного значения
+    optional uint32     minuscolor      = 7 [default = 0xFF000000];     //!< цвет отрицательного значения
+    optional meteo.Font font  = 8;                            //!< шрифт
+    optional double     factor          = 9 [default = 1.0];            //!< множитель
+    optional string     postfix         =10;                            //!< постфикс
+    optional bool       zerohide        =11 [default = false];          //!< не отображать нулевые значения
+  }
+  message Symbol {
+    optional double     minval          = 1 [default = 0];
+    optional double     maxval          = 2 [default = 0];
+    optional meteo.Font font  = 3;
+    optional uint32     color           = 4 [default = 0xFF000000];
+    optional string     pattern         = 5;
+    optional bytes      patternba       = 6;
+    optional string     label           = 7;
+    optional string     codeval         = 8; //!< цифра кода
+    optional NumbeRule  number          = 9;
+  }
+  message SymbolRule {
+    repeated Symbol     symbol          = 1;
+    optional bool       codedigit       = 8 [default = false];
+  }
+
+  optional Position     pos             = 1;                            //!< позиция относительно центра
+  optional Align        align           = 2 [default = kTopLeft];       //!< выравнивание текста
+  optional CellType     type            = 3 [default = kNumber];        //!< Тип клетки ( число или набор символов )
+  optional NumbeRule    number          = 4;                            //!< правила, определяющие вид числа
+  optional SymbolRule   symbol          = 5;                            //!< правила отображения в виде символа
+  optional double       testval         = 6 [default = 12.34];          //!< тестовое значение
+  optional int32        testqual        = 7 [default = 0];              //!< качество тестового значения
+  optional Id           id              = 8;                            //!< идентификатор величины
+  optional bool         visible         = 9 [default = true];           //!< признак отображения величины в пуансоне
+  optional bool         drawrect        =10 [default = false];          //!< признак отображения рамки вокруг элемента пуансона
+  optional bool         y_plus_bad_dd   =11 [default = false];          //!< признак увеличения координаты y на высоту ветра, если ddqual = bad
+  optional Symbol       absent_rule     =12;                            //!< символ для отсутствующего значения
+}
+
+enum DataType {
+  kSurface                              = 0;                            //!< Призменые
+  kAero                                 = 1;                            //!< По уровням (аэрологические)
+  kSpecial                              = 65535;                        //!< Специальный тип
+}
+
+enum CenterSign {
+  kNoCenter                             = 0;                            //!< Нет символа в центре
+  kCircle                               = 1;                            //!< Окружность в центре
+  kSquare                               = 2;                            //!< Квадрат в центре
+}
+
+//! Шаблон пуансона
+message Puanson {
+  required string       code            = 1;                            //!< идентификатор знака
+  required string       name            = 2;                            //!< наименование знака
+  optional string       path            = 3;                            //!< имя файла шаблона
+  optional bool         wind            = 4 [default = false];          //!< рисовать ветер
+  repeated CellRule     rule            = 5;                            //!< правила для элемента пунасона
+  optional DataType     datatype        = 6 [default = kSurface];       //!< тип данных
+  optional CenterSign   center          = 7 [default = kNoCenter];      //!< Знак для центра пуансона
+  optional bool         crisscross      = 8 [default = false];          //!< Крестик в центре
+  optional int32        radius          = 9 [default = 3];              //!< Радиус знака в центре
+  optional meteo.RuleView ruleview  =10 [default = kBadWithRect];   //!<
+  optional meteo.Font windfont      =11;
+  optional bool         draw_bad_dd     =12 [default = true];           //!< признак отображения ветра, у которого качество dd = bad
+  optional int32        priority        =13 [default = 21];             //!< приоритет
+  optional bool         flow            =14 [default = false];          //!< рисовать течение
+  optional uint32       color           =15;                            //!< цвет всего пуансона
+  optional double       scale           =16 [default = 1.0];            //!< масштаб пуансона
+  optional bool         drawrect        =17 [default = false];          //!< рисовать прямоугольник вокруг пуансона
+  optional uint32       rectpencolor    =18 [default = 0xFF000000];     //!< цвет ручки прямоугольника
+  optional uint32       rectbrushcolor  =19 [default = 0xFFFFFFFF];     //!< цвет кисти прямоугольника
+  optional bool         libvisible      =20 [default = true];           //!< показывать в библиотеке шаблонов
+}
+

@@ -1,0 +1,36 @@
+{
+  "aggregate": "station_types",
+  "pipeline": [
+    { "$match":  { "min_data_type": { "$lte": "%3" },
+  	           "max_data_type": { "$gte": "%3" } }
+    },
+    { "$lookup": { "from": "stations", 
+                   "let" : { "stype" : "$type" },
+                   "pipeline" : [
+		     { "$match":
+                       { "$expr":
+			 { "$and": [
+                           { "$eq": [ "%1",  "%2" ] },
+                           { "$eq": [ "$station_type", "$$stype" ] }
+			 ]
+			 }
+                       }
+		     }
+		   ],
+		   "as": "info" } },
+    { "$lookup": { "from": "countries", "localField": "info.country", "foreignField": "number", "as": "countries" } },     
+    { "$unwind" : "$info" },
+    { "$project": { 
+      "type" : true,
+      "location": "$info.location", 
+      "country" : "$info.country",
+      "country_en" : { "$arrayElemAt": ["$countries.name_en", 0] },
+      "country_ru" : { "$arrayElemAt": ["$countries.name_ru", 0] },
+      "icao"  : "$info.index.cccc", 
+      "index" : "$info.index.station_index",
+      "name" : "$info.name.international", 
+      "name_ru" : "$info.name.ru" } }    
+  ],
+  "cursor": { "batchSize": 1 },
+  "collation": {"locale": "ru", "strength": 1, "alternate": "shifted"}
+}

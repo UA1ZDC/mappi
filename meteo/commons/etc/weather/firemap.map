@@ -1,0 +1,12 @@
+name: "firemap.map"
+title: "Карта пожарной опасности"
+spline_koef: 2
+data {
+  mode: kPuanson
+  template_name: "fire"
+  level: 0
+  type_level: 1
+  data_type: kSynopFix
+  center: 250
+  model: 250
+}

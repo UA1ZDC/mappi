@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="GMC" text="ГМЦ МЦУ, аэродромы"  category="58">
+  <MessageSections>(?:obmn91\s*\w{4}\s*\d{6})?\s*(\S+\s+[\d.]{5})\s+([\d/nN,.]+\s+[\w/,]+\s+[\d/,]+)\s+(\w+|,)((?:\s+\S+){5})\s*</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\S+)\s+(\d\d).(\d\d)</GroupValues>
+    <Value number="1"  descrName="station_tr" text="название аэродрома" />
+    <Value number="2"  descrName="GG" text="час" />
+    <Value number="3"  descrName="gg" text="мин" />
+  </Section>
+  <Section number="1" text="облачность" >
+    <GroupValues>(?:[,nN]|(\d{1,2})(?:[/.](?:[nN]|(\d{1,2})))?)\s+(?:,|[nN]/[Nn]|(\w{2,3}[\w/]*))\s+(?:(\d+)|,)(?:/(\d+))?</GroupValues>
+    <Value number="1"  descrName="Nb" text="баллы" />
+    <Value number="2"  descrName="Nh_b" text="баллы" />
+    <SubGroup number="" text="Тип облаков" >
+      <SubGroupValues>(\w\w\d?)/?</SubGroupValues>
+      <Value number="1"  descrName="Ce" text="ChCmCl" />
+    </SubGroup>
+    <Value number="4"  descrName="hsf" text="ВНГО" />
+    <Value number="5"  descrName="hsf" text="ВНГО" />
+  </Section>
+  <Section number="2" text="" >
+    <GroupValues>(\w+)|,</GroupValues>
+    <Value number="1"  descrName="w_w_tr" text="w" />
+  </Section>
+  <Section number="3" text="" >
+    <GroupValues>^\s*(?:([\d.]+)|,)\s+(?:([\d]+)|(\S+))\s+(?:(\d+)?(?:[-/.](\d+))?|,)\s+(?:(-?[\d.]+)|,)\s+(?:([\d]+)|,)</GroupValues>
+    <Value number="1"  descrName="Vgmc" text="Видимость" />
+    <Value number="2"  descrName="dd_10m" text="Направление ветра" />
+    <Value number="3"  descrName="dd_tr" text="Направление ветра" />
+    <Value number="4"  descrName="ff_10m" text="Скорость ветра" />
+    <Value number="5"  descrName="fm_10m" text="Скорость ветра" />
+    <Value number="6"  descrName="Tf" text="Температура" />
+    <Value number="7"  descrName="Uf" text="Влажность" />
+  </Section>
+
+</Message>

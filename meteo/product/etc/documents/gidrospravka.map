@@ -1,0 +1,12 @@
+name: "gidrospravka.map"
+title: "Гидрологическая сводка"
+formal {
+    template: "gidrospravka.odt"
+    name: "Гидрологическая сводка"
+    module_path: "gidrospravka.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

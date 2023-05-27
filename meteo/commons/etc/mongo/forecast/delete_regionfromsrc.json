@@ -1,0 +1,11 @@
+{
+  "delete": "meteoreport",
+  "deletes": [
+     { "q": {
+        "dt":       @dt@,
+        "location": @location@
+      },
+        "limit" : 0
+    }
+  ]
+}

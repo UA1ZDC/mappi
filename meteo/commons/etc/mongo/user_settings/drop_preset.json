@@ -1,0 +1,8 @@
+{
+   "delete": "user_folders",
+   "deletes": [
+      { "q" : { "user" : @userLogin@} , 
+        "limit" : 1
+      }
+   ]
+}

@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM33" text="PILOT SHIP"  category="84">
+  <MessageSections>(.*NO\s*\w+\s*DUE.*)|(QQAA\s*\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}.*)|(QQBB\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}.*)|(QQCC\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}.*)|(QQDD\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}.*)</MessageSections>
+  <Part number="" text="" >
+    <Part>.*</Part>
+  </Part>
+  <Part number="0" text="A" >
+    <PartSection>QQAA\s*(\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}\s*[\d/]{5}\s*[\d/]{5})\s*((?:\s*(?:44|55)[\d/]{3}\s*(?:\s*[0-3/][\d/]{4}){0,3})*)\s*((?:\s*77999|\s*(?!5[1-9]5[1-9]5|6[1-9]6[1-9]6)(?:7|6)[\d/]{4}\s*[\d/]{5}\s*(?:4[\d/]{4})?)*)\s*((?:\s*5[1-9]5[1-9]5(?:\s*(?!6[1-9]6[1-9]6)\S+)*){1,9})?((?:\s*6[1-9]6[1-9]6(?:\s*\S+)*){1,9})?</PartSection>
+    <Section number="1" text="Identification and position data" >
+      <SectionGroups>(\s*[\w]{3,})(\s*[\d/]{5})(\s*99[\d/]{3}\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="SHIP OR MOBILE LAND STATION IDENTIFIER">
+        <GroupValues>\s*([\w]{3,})</GroupValues>
+        <Value number="1" descrName="D____D"  text="CALL SIGN CONSISTING OF THREE OR MORE ALPHANUMERIC CHARACTERS"/>
+      </Group>
+      <Group number="1" text="Day,hour, type of instrumentation for wind measurement">
+        <GroupValues>\s*([\d/]{2})([\d/]{2})([0-9/])</GroupValues>
+        <Value number="1" descrName="YY"  text="Day"/>
+        <Value number="2" descrName="GG"  text="Hour"/>
+        <Value number="3" descrName="a4"  text="Тип используемого измерительного оборудования"/>
+      </Group>
+      <Group number="3" text="SHIP OR MOBILE LAND STATION HORIZONTAL POSITION INDICATOR">
+	<GroupValues>\s*99([\d/]{3})\s*([1357/])([\d/]{4})</GroupValues>
+        <Value number="1" descrName="LaLaLa"  text="LATITUDE, IN TENTHS"/>
+        <Value number="2" descrName="Qc"  text="QUADRANT OF THE GLOBE"/>
+        <Value number="3" descrName="LoLoLoLo"  text="LONGITUDE, IN TENTHS"/>	
+      </Group>
+      <Group number="4" text="Number of marsden square in which the mobile land station is situated">
+        <GroupValues>\s*([\d/]{3})([\d/])([\d/])</GroupValues>
+        <Value number="1" descrName="MMM"  text="NUMBER OF MARSDEN SQUARE (10X10 SQ.DEG) IN WHICH THE STATION IS SITUATED AT THE TIME OF OBSERVATION"/>
+        <Value number="2" descrName="ULa"  text="UNIT DIGIT IN THE REPORTED LATITUDE (1/10 OF MARSDEN SQUARE)"/>
+        <Value number="3" descrName="ULo"  text="UNIT DIGIT IN THE REPORTED LONGITUDE (1/10 OF MARSDEN SQUARE)"/>	
+      </Group>
+    </Section>
+    <Section number="2" text="Data for standard isobaric surfaces">
+      <SectionGroups>(?:44|55)([\d/]{3}\s*(?:\s*(?!44|55)[\d/]{5}){1,3})</SectionGroups>
+      <!-- <SectionGroups>(?:44|55)([\d/])([\d/]{2})\s*(?:([\d/]{2})([\d/]{3}))?\s*(?:([\d/]{2})([\d/]{3}))?\s*(?:([\d/]{2})([\d/]{3}))?</SectionGroups> -->
+      <!-- <Value number="0" descrName="n_seqA"  text="Количество поверхностей, по которым сообщаются данные о ветре"/> -->
+      <Value number="1" descrName="P1_seqA" text="Давление"/>
+      <!-- <Value number="2" descrName="d1d1fA"  text="Направление ветра"/> -->
+      <!-- <Value number="3" descrName="f1f1f1A" text="Скорость ветра"/> -->
+      <!-- <Value number="4" descrName="d1d1fA"  text="Направление ветра"/> -->
+      <!-- <Value number="5" descrName="f1f1f1A" text="Скорость ветра"/> -->
+      <!-- <Value number="6" descrName="d1d1fA"  text="Направление ветра"/> -->
+      <!-- <Value number="7" descrName="f1f1f1A" text="Скорость ветра"/> -->
+    </Section>
+    <Section number="3" text="Уровень максимального ветра">
+      <item>
+	<SectionGroups>77999|()(?:[67][67]([\d/]{3})|[67]([\d/]{4}))\s*([\d/]{2})([\d/]{3})\s*(?:4([\d/]{2})([\d/]{2}))?</SectionGroups>
+	<Value number="0" descrName="level_type"  default="6" text="Тип уровня"/>
+	<Value number="1" descrName="PmPmPmA" text="Давление на уровне максимального ветра"/>
+	<Value number="2" descrName="HmHmHmA" text="Геопотенциальная высота на уровне максимального ветра"/>
+	<Value number="3" descrName="dmdmfA"  text="Направление максимального ветра"/>
+	<Value number="4" descrName="fmfmfmA" text="Скорость максимального ветра"/>
+	<Value number="5" descrName="vbvbA"   text="Абсолютная величина векторной разности ветра между максимальным ветром и ветром на 1 км ниже него в единицах, указываемых посредством YY"/>
+	<Value number="6" descrName="vavaA"   text="Абсолютная величина векторной разности между максимальным ветром и ветром на 1 км выше него в единицах, указываемых посредством YY"/>
+      </item>
+    </Section>
+    <Section number="4" text="Кодовые группы, которые должны быть разработаны на региональном уровне">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+    <Section number="5" text="Кодовые группы, которые должны быть разработаны на национальном уровне">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+  </Part>
+
+  <Part number="1" text="B" >
+    <PartSection>QQBB\s*(\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}\s*[\d/]{5}\s*[\d/]{5})\s*(?:\s*(\s*(?:\s*[891][\d/]{4}(?:\s*(?!5[1-9]5[1-9]5|6[1-9]6[1-9]6)[\d/]{5}){1,3})*)|21212((?:\s*(?!5[1-9]5[1-9]5|6[1-9]6[1-9]6)[\d/]{5}\s*[\d/]{5})*))\s*((?:\s*5[1-9]5[1-9]5(?:\s*(?!6[1-9]6[1-9]6)\S+)*){1,9})?((?:\s*6[1-9]6[1-9]6(?:\s*\S+)*){1,9})?</PartSection>
+    <Section number="1" text="Identification and position data" >
+      <SectionGroups>(\s*[\w]{3,})(\s*[\d/]{5})(\s*99[\d/]{3}\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="SHIP OR MOBILE LAND STATION IDENTIFIER">
+        <GroupValues>\s*([\w]{3,})</GroupValues>
+        <Value number="1" descrName="D____D"  text="CALL SIGN CONSISTING OF THREE OR MORE ALPHANUMERIC CHARACTERS"/>
+      </Group>
+      <Group number="1" text="Day,hour, type of instrumentation for wind measurement">
+        <GroupValues>\s*([\d/]{2})([\d/]{2})([0-9/])</GroupValues>
+        <Value number="1" descrName="YY"  text="Day"/>
+        <Value number="2" descrName="GG"  text="Hour"/>
+        <Value number="3" descrName="a4"  text="Тип используемого измерительного оборудования"/>
+      </Group>
+      <Group number="3" text="SHIP OR MOBILE LAND STATION HORIZONTAL POSITION INDICATOR">
+	<GroupValues>\s*99([\d/]{3})\s*([1357/])([\d/]{4})</GroupValues>
+        <Value number="1" descrName="LaLaLa"  text="LATITUDE, IN TENTHS"/>
+        <Value number="2" descrName="Qc"  text="QUADRANT OF THE GLOBE"/>
+        <Value number="3" descrName="LoLoLoLo"  text="LONGITUDE, IN TENTHS"/>	
+      </Group>
+      <Group number="4" text="NUMBER OF MARSDEN SQUARE IN WHICH THE MOBILE LAND STATION IS SITUATED">
+        <GroupValues>\s*([\d/]{3})([\d/])([\d/])</GroupValues>
+        <Value number="1" descrName="MMM"  text="NUMBER OF MARSDEN SQUARE (10X10 SQ.DEG) IN WHICH THE STATION IS SITUATED AT THE TIME OF OBSERVATION"/>
+        <Value number="2" descrName="ULa"  text="UNIT DIGIT IN THE REPORTED LATITUDE (1/10 OF MARSDEN SQUARE)"/>
+        <Value number="3" descrName="ULo"  text="UNIT DIGIT IN THE REPORTED LONGITUDE (1/10 OF MARSDEN SQUARE)"/>	
+      </Group>
+    </Section>
+    <Section number="2" text="Ветер на уровне станции и на высотах" >
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="wind_pilot" text="Ветер на уровне станции и на высотах" />
+    </Section>
+    <Section number="4" text="Ветер на уровнях" >
+      <SectionGroups>\s*([\d/]{5}\s*[\d/]{5})\s*((?:\s*[\d/]{5}\s*[\d/]{5})*)</SectionGroups>
+      <Group number="1" text="Давление на уровне станции">
+        <GroupValues>[\d/]{2}([\d/]{3})\s*([\d/]{2})([\d/]{3})</GroupValues>
+        <Value number="1" descrName="P0P0P0"  text="Давление на уровне станции"/>
+        <Value number="2" descrName="d0d0f"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT SURFACE LEVEL"/>
+        <Value number="3" descrName="f0f0f0"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT STATION LEVEL"/>	
+      </Group>
+      <Group number="1" text="Давление на уровнях">
+	<item>
+	  <GroupValues>()([\d/]{2})([\d/]{3})\s*([\d/]{2})([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="100" text="Тип уровня"/>
+	  <Value number="1" descrName="n1n1WindB"   text="Номер уровня"/>
+	  <Value number="2" descrName="P1P1P1WindB" text="Давление на уровне"/>
+	  <Value number="3" descrName="d1d1fB"      text="Направление ветра"/>
+	  <Value number="4" descrName="f1f1f1B"     text="Скорость ветра"/>
+	</item>
+      </Group>
+    </Section>
+    <Section number="5" text="Кодовые группы, которые должны быть разработаны на региональном уровне">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+    <Section number="6" text="Кодовые группы, которые должны быть разработаны на национальном уровне">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+  </Part>
+
+  <Part number="2" text="C" >
+    <PartSection>QQCC\s*(\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}\s*[\d/]{5}\s*[\d/]{5})\s*((?:\s*(?:44|55)[\d/]{3}\s*(?:\s*[0-3/][\d/]{4}){0,3})*)\s*((?:\s*77999|\s*(?!5[1-9]5[1-9]5|6[1-9]6[1-9]6)(?:7|6)[\d/]{4}\s*[\d/]{5}\s*(?:4[\d/]{4})?)*)\s*((?:\s*5[1-9]5[1-9]5(?:\s*(?!6[1-9]6[1-9]6)\S+)*){1,9})?((?:\s*6[1-9]6[1-9]6(?:\s*\S+)*){1,9})?</PartSection>
+    <Section number="1" text="Identification and position data" >
+      <SectionGroups>(\s*[\w]{3,})(\s*[\d/]{5})(\s*99[\d/]{3}\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="SHIP OR MOBILE LAND STATION IDENTIFIER">
+        <GroupValues>\s*([\w]{3,})</GroupValues>
+        <Value number="1" descrName="D____D"  text="CALL SIGN CONSISTING OF THREE OR MORE ALPHANUMERIC CHARACTERS"/>
+      </Group>
+      <Group number="1" text="Day,hour, type of instrumentation for wind measurement">
+        <GroupValues>\s*([\d/]{2})([\d/]{2})([0-9/])</GroupValues>
+        <Value number="1" descrName="YY"  text="Day"/>
+        <Value number="2" descrName="GG"  text="Hour"/>
+        <Value number="3" descrName="a4"  text="Тип используемого измерительного оборудования"/>
+      </Group>
+      <Group number="3" text="SHIP OR MOBILE LAND STATION HORIZONTAL POSITION INDICATOR">
+	<GroupValues>\s*99([\d/]{3})\s*([1357/])([\d/]{4})</GroupValues>
+        <Value number="1" descrName="LaLaLa"  text="LATITUDE, IN TENTHS"/>
+        <Value number="2" descrName="Qc"  text="QUADRANT OF THE GLOBE"/>
+        <Value number="3" descrName="LoLoLoLo"  text="LONGITUDE, IN TENTHS"/>	
+      </Group>
+      <Group number="4" text="NUMBER OF MARSDEN SQUARE IN WHICH THE MOBILE LAND STATION IS SITUATED">
+        <GroupValues>\s*([\d/]{3})([\d/])([\d/])</GroupValues>
+        <Value number="1" descrName="MMM"  text="NUMBER OF MARSDEN SQUARE (10X10 SQ.DEG) IN WHICH THE STATION IS SITUATED AT THE TIME OF OBSERVATION"/>
+        <Value number="2" descrName="ULa"  text="UNIT DIGIT IN THE REPORTED LATITUDE (1/10 OF MARSDEN SQUARE)"/>
+        <Value number="3" descrName="ULo"  text="UNIT DIGIT IN THE REPORTED LONGITUDE (1/10 OF MARSDEN SQUARE)"/>	
+      </Group>
+    </Section>
+     <Section number="2" text="Data for standard isobaric surfaces">
+       <SectionGroups>(?:44|55)([\d/]{3}\s*(?:\s*(?!44|55)[\d/]{5}){1,3})</SectionGroups>
+      <!-- <SectionGroups>(?:44|55)([\d/])([\d/]{2})\s*(?:([\d/]{2})([\d/]{3}))?\s*(?:([\d/]{2})([\d/]{3}))?\s*(?:([\d/]{2})([\d/]{3}))?</SectionGroups> -->
+      <!-- <Value number="0" descrName="n_seqC"  text="Количество поверхностей, по которым сообщаются данные о ветре "/> -->
+      <Value number="1" descrName="P1_seqC" text="Давление"/>
+      <!-- <Value number="2" descrName="d1d1fC"  text="Направление ветра"/> -->
+      <!-- <Value number="3" descrName="f1f1f1C" text="Скорость ветра"/> -->
+      <!-- <Value number="4" descrName="d1d1fC"  text="Направление ветра"/> -->
+      <!-- <Value number="5" descrName="f1f1f1C" text="Скорость ветра"/> -->
+      <!-- <Value number="6" descrName="d1d1fC"  text="Направление ветра"/> -->
+      <!-- <Value number="7" descrName="f1f1f1C" text="Скорость ветра"/> -->
+    </Section>
+    <Section number="3" text="Уровень максимального ветра">
+      <item>
+	<SectionGroups>77999|()(?:[67][67]([\d/]{3})|[67]([\d/]{4}))\s*([\d/]{2})([\d/]{3})\s*(?:4([\d/]{2})([\d/]{2}))?</SectionGroups>
+	<Value number="0" descrName="level_type"  default="6" text="Тип уровня"/>
+	<Value number="1" descrName="PmPmPmC" text="Давление на уровне максимального ветра"/>
+	<Value number="2" descrName="HmHmHmC" text="Геопотенциальная высота на уровне максимального ветра"/>
+	<Value number="3" descrName="dmdmfC"  text="Направление максимального ветра"/>
+	<Value number="4" descrName="fmfmfmC" text="Скорость максимального ветра"/>
+	<Value number="5" descrName="vbvbC"   text="Абсолютная величина векторной разности ветра между максимальным ветром и ветром на 1 км ниже него в единицах, указываемых посредством YY"/>
+	<Value number="6" descrName="vavaC"   text="Абсолютная величина векторной разности между максимальным ветром и ветром на 1 км выше него в единицах, указываемых посредством YY"/>
+      </item>
+    </Section>
+    <Section number="4" text="Кодовые группы, которые должны быть разработаны на региональном уровне">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+    <Section number="5" text="Кодовые группы, которые должны быть разработаны на национальном уровне">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+  </Part>
+
+  <Part number="3" text="D" >
+    <PartSection>QQDD\s*(\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}\s*[\d/]{5}\s*[\d/]{5})\s*(?:\s*(\s*(?:\s*[891][\d/]{4}(?:\s*(?!5[1-9]5[1-9]5|6[1-9]6[1-9]6)[\d/]{5}){1,3})*)|21212((?:\s*(?!5[1-9]5[1-9]5|6[1-9]6[1-9]6)[\d/]{5}\s*[\d/]{5})*))\s*((?:\s*5[1-9]5[1-9]5(?:\s*(?!6[1-9]6[1-9]6)\S+)*){1,9})?((?:\s*6[1-9]6[1-9]6(?:\s*\S+)*){1,9})?</PartSection>
+    <Section number="1" text="Identification and position data" >
+      <SectionGroups>(\s*[\w]{3,})(\s*[\d/]{5})(\s*99[\d/]{3}\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="SHIP OR MOBILE LAND STATION IDENTIFIER">
+        <GroupValues>\s*([\w]{3,})</GroupValues>
+        <Value number="1" descrName="D____D"  text="CALL SIGN CONSISTING OF THREE OR MORE ALPHANUMERIC CHARACTERS"/>
+      </Group>
+      <Group number="1" text="Day,hour, type of instrumentation for wind measurement">
+        <GroupValues>\s*([\d/]{2})([\d/]{2})([0-9/])</GroupValues>
+        <Value number="1" descrName="YY"  text="Day"/>
+        <Value number="2" descrName="GG"  text="Hour"/>
+        <Value number="3" descrName="a4"  text="Тип используемого измерительного оборудования"/>
+      </Group>
+      <Group number="3" text="SHIP OR MOBILE LAND STATION HORIZONTAL POSITION INDICATOR">
+	<GroupValues>\s*99([\d/]{3})\s*([1357/])([\d/]{4})</GroupValues>
+        <Value number="1" descrName="LaLaLa"  text="LATITUDE, IN TENTHS"/>
+        <Value number="2" descrName="Qc"  text="QUADRANT OF THE GLOBE"/>
+        <Value number="3" descrName="LoLoLoLo"  text="LONGITUDE, IN TENTHS"/>	
+      </Group>
+      <Group number="4" text="NUMBER OF MARSDEN SQUARE IN WHICH THE MOBILE LAND STATION IS SITUATED">
+        <GroupValues>\s*([\d/]{3})([\d/])([\d/])</GroupValues>
+        <Value number="1" descrName="MMM"  text="NUMBER OF MARSDEN SQUARE (10X10 SQ.DEG) IN WHICH THE STATION IS SITUATED AT THE TIME OF OBSERVATION"/>
+        <Value number="2" descrName="ULa"  text="UNIT DIGIT IN THE REPORTED LATITUDE (1/10 OF MARSDEN SQUARE)"/>
+        <Value number="3" descrName="ULo"  text="UNIT DIGIT IN THE REPORTED LONGITUDE (1/10 OF MARSDEN SQUARE)"/>	
+      </Group>
+    </Section>
+    <Section number="2" text="Ветер на уровне станции и на высотах" >
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="wind_pilot" text="Ветер на уровне станции и на высотах" />
+    </Section>
+    <Section number="4" text="Ветер на уровнях" >
+      <SectionGroups>(.*)</SectionGroups>
+      <!-- <Group number="1" text="Давление на уровне станции"> -->
+      <!--   <GroupValues>[\d/]{2}([\d/]{3})\s*([\d/]{2})([\d/]{3})</GroupValues> -->
+      <!--   <Value number="1" descrName="P0P0P0"  text="Давление на уровне станции"/> -->
+      <!--   <Value number="2" descrName="d0d0f"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT SURFACE LEVEL"/> -->
+      <!--   <Value number="3" descrName="f0f0f0"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT STATION LEVEL"/>	 -->
+      <!-- </Group> -->
+      <Group number="1" text="Давление на уровнях">
+	<item>
+	  <GroupValues>()([\d/]{2})([\d/]{3})\s*([\d/]{2})([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="100" text="Тип уровня"/>
+	  <Value number="1" descrName="n1n1WindD"   text="Номер уровня"/>
+	  <Value number="2" descrName="P1P1P1WindD" text="Давление на уровне"/>
+	  <Value number="3" descrName="d1d1fD"      text="Направление ветра"/>
+	  <Value number="4" descrName="f1f1f1D"     text="Скорость ветра"/>
+	</item>
+      </Group>
+    </Section>
+    <Section number="5" text="Кодовые группы, которые должны быть разработаны на региональном уровне">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+    <Section number="6" text="Кодовые группы, которые должны быть разработаны на национальном уровне">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+  </Part>
+
+</Message>

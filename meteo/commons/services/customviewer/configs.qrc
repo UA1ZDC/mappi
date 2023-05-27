@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/meteo">
+        <file>msgviewer.conf</file>
+        <file>journalviewer.conf</file>
+        <file>sendviewer.conf</file>
+        <file>rcvviewer.conf</file>
+        <file>forecastaccuracy.conf</file>
+        <file>forecastviewer.conf</file>
+    </qresource>
+</RCC>

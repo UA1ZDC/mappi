@@ -1,0 +1,5 @@
+{ "find" : "fax",
+  "filter" : { "$and": [
+    { "dt": { "$gte": @start_dt@ } },
+    { "dt": { "$lte": @end_dt@ } }
+] } }

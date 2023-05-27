@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item complex="true" valueSrc="satParam" source="this" textItem="" text="">
+    <item valueSrc="shortName" type="0" source="this" textItem="" text="Краткое наименование" />
+    <item valueSrc="hrptAddr" type="0" source="this" textItem="" text="Номер в кадре" />
+    <item valueSrc="coefPath" type="0" source="this" textItem="" text="Файл с коэффициентами калибровки" />
+    <item complex="true" valueSrc="devices" templateFile="devTemplate.xml" chiefFile="devices.xml" buttonName="Выбрать" type="7" source="this" text="Приборы спутника" />
+    <item valueSrc="recvModes" complex="true" text="Режимы приёма" >
+      <item valueSrc="highRes" complex="true" type="1" values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" source="this" text="Высокое разрешение" textItem="0" >
+        <item valueSrc="enabled" type="2" source="this" textItem="false" text="Включён" />
+        <item valueSrc="freq" type="0" validator="\d{1,5}\.\d{2}" source="this" textItem="1000" text="Частота (МГц)"/>
+      </item>
+      <item valueSrc="lowRes" complex="true" type="1" values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" source="this" text="Низкое разрешение" textItem="0" >
+        <item valueSrc="enabled" type="2" source="this" textItem="false" text="Включён" />
+        <item valueSrc="freq" type="0" validator="\d{1,5}\.\d{2}" source="this" textItem="1000" text="Частота (МГц)"/>
+      </item>
+    </item>
+    <item source="this" textItem="" text="-----------------------------------------------" />
+  </item>
+</body>

@@ -1,0 +1,12 @@
+{
+  "title" : @title@,
+  "position" : @position@,
+  "folder" : {
+    "entities" : [@folder@]
+  },
+  "icon" : @icon@,
+  "server" : @server@,
+  "regexp" : @regexp@,
+  "date_format" : @date_format@,
+  "length" : @length@
+}

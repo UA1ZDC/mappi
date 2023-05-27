@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/meteo/msgstream">
+        <file>formats/bcm.conf</file>
+        <file>formats/ipv.conf</file>
+        <file>formats/ling.conf</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,111 @@
+#!/bin/sh
+
+#создание релиза. все исходники должны быть в готовом виде в ветке релиза
+#для сборки, по-умолчанию, используется $SRC/build_tools/build_rules или можно задать параметром другой скрипт
+# в нём для сборки пакетов проверяется наличие спец. файла в проекте pack_rules, если его нет, используется простое архивирование tar.bz2
+
+#вывод ОШИБОК спецом на АНГЛИЙСКОМ, из-за разных кодировок. кто переведёт, буду ругаться. а если кто поправит ломанный английский на литературный, буду признательна :) 
+
+
+#чтоб не пересобирать надо задать опцию -b0 (до остальных аргументов)
+rebuild=y
+while getopts ":b:" option
+do
+  case $option in
+    b ) if [ "$OPTARG" == "0" ]; then rebuild=n; fi;;
+  esac
+done
+shift $(($OPTIND - 1))
+
+if [ $# -lt 3 ]; then
+  echo "Usage: `basename $0` <project name> <version> <delete release branch (y,n)> [script for build]"
+  exit 1
+fi
+
+prg_name="$1"
+version="$2"
+delrel="$3"
+build_file="$4"
+default_build=$SRC"/build_tools/build_rules"
+
+branch=`git rev-parse --abbrev-ref HEAD`
+if [ $branch != "$prg_name-$version" ]; then
+  echo "Error: it's not $prg_name-$version branch"
+  exit 1
+fi
+
+if [ -z "$SRC" ]; then
+  echo "Error: SRC not defined"
+  exit 1
+fi
+
+if [ ! -d "$SRC/$prg_name" ]; then
+  echo "Error: $prg_name directory not exist"
+  exit 1
+fi
+
+
+
+if [ "$rebuild" == "y" ]; then
+    BUILD=${build_file:-"$default_build"}
+    echo "Build release $prg_name-$version"
+
+    cd $SRC/$prg_name
+
+    if [ ! -x "$BUILD" ]; then
+	echo "Error: build instructions file $BUILD don't exist or not executable"
+	exit 1
+    fi
+
+    $BUILD "$prg_name-$version"
+    if [ $? -ne 0 ]; then
+	exit 1
+    fi
+fi
+
+#добавляем в master
+echo "Merge master and release"
+
+git checkout master && git merge --no-ff "$prg_name-$version" -m "$prg_name-$version"
+if [ $? -ne 0 ]; then
+  echo "Error: git merge to master"
+  exit 1
+fi
+
+
+git tag -a "tag-$prg_name-$version"
+if [ $? -ne 0 ]; then
+  echo "Error: git tag"
+  exit 1
+fi
+
+git checkout develop && git merge --no-ff "$prg_name-$version"
+if [ $? -ne 0 ]; then
+  echo "Error: git merge to develop"
+  exit 1
+fi
+
+
+if [ $delrel == "y" ]; then
+  echo "Delete branch release"
+  git branch -d "$prg_name-$version"
+  if [ $? -ne 0 ]; then
+    echo "Error: delete local branch $prg_name-$version"
+    exit 1
+  fi
+  git push origin :"$prg_name-$version"
+  if [ $? -ne 0 ]; then
+    echo "Error: delete remote branch $prg_name-$version"
+    exit 1
+  fi
+fi
+
+git push origin develop:develop && git push origin master:master && git push origin master --tags
+if [ $? -ne 0 ]; then
+  echo "Error: can't push all into remote server. Make it inhand: git push origin develop:develop && git push origin master:master && git push origin master --tags"
+  exit 1
+fi
+
+
+echo "Nice to work with you! Goodbye."
+exit 0

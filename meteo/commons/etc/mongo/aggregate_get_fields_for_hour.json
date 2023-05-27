@@ -1,0 +1,112 @@
+  { "aggregate": "obanal",
+  "pipeline": [
+    { "$match": {
+        "hour" : { "$in" : @hour@ },
+        "forecast_start": { "$gte": @start_fdt@ ,"$lte": @end_fdt@},
+        "descr": { "$in": @descr@ },
+        "level" : { "$in" : @level@ },
+        "level_type" : { "$in" : @level_type@ },
+        "center" : { "$in" : @center@ }
+      }
+      },
+    { "$lookup": {
+        "from": "centers",
+        "localField": "center",
+        "foreignField": "center",
+        "as": "centers"
+      }
+    },
+    { "$sort": {
+        "hour": -1,
+        "centers.priority": -1
+      }
+    },
+    { "$sort": {
+        "forecast_start": -1
+      }
+    },
+    { "$unwind" : "$centers" },
+   { "$group" :
+      {
+        "_id" : {
+                  "center" : "$center",
+                  "priority" :"$centers.priority",
+                  "name" : "$centers.name",
+                  "short_name" : "$centers.short_name",
+                  "model" : "$model",
+                  "hour" : "$hour",
+                  "level": "$level",
+                  "forecast_start" : "$forecast_start"
+         },
+        "descrs" : {"$addToSet": { "descr": "$descr","id": "$_id","path": "$path","level_type":"$level_type"}},
+        "count" : {"$sum": 1}
+      }
+    },
+    { "$group" :
+      {
+        "_id" :   {
+                   "center" : "$_id.center",
+                   "priority":"$_id.priority",
+                   "name" : "$_id.name",
+                   "short_name": "$_id.short_name",
+                   "model" : "$_id.model",
+                   "hour" : "$_id.hour",
+                   "forecast_start" : "$_id.forecast_start"
+        },
+        "levels":{"$addToSet":{"level":"$_id.level", "descrs": "$descrs"}},
+        "count":{"$sum": "$count"}
+      }
+    },
+    { "$sort":
+       {
+         "count": -1,
+         "_id.hour": 1,
+         "_id.priority": 1
+       }
+    },
+    { "$group" :
+      {
+        "_id" :   {
+                   "center" : "$_id.center",
+                   "priority":"$_id.priority",
+                   "name" : "$_id.name",
+                   "short_name": "$_id.short_name",
+                   "forecast_start" : "$_id.forecast_start"
+        },
+        "hours":{"$first":{"hour":"$_id.hour", "model": "$_id.model", "count": "$count","levels": "$levels"}}
+      }
+    },
+    { "$sort":
+       {
+         "hours.count": 1
+       }
+    },
+    { "$group" :
+      {
+        "_id" : {"forecast_start" : "$_id.forecast_start"},
+        "forecast_start": { "$first" : "$_id.forecast_start" },
+        "zonds" : {
+           "$addToSet":{
+               "center": "$_id.center",
+               "priority": "$_id.priority",
+               "name" : "$_id.name",
+               "short_name": "$_id.short_name",
+               "model": "$hours.model",
+               "hour" : "$hours.hour",
+           "count":"$hours.count",
+           "levels":"$hours.levels"
+           }
+        }
+      }
+    },
+    { "$sort":
+       {
+         "_id.forecast_start": -1
+       }
+    }
+  ],
+  "allowDiskUse" : true,
+  "cursor": {
+    "batchSize": 1
+  }
+}

@@ -1,0 +1,13 @@
+name: "forecast24.map"
+title: "Прогноз погоды на 24 часа"
+formal {
+    template: "Forecast24.odt"
+    name: "Прогноз погоды на 24 часа"
+    module_path: "forecast.py"
+    format: kOdt
+    icon_path: ":product/icons/forecast24.png"
+    forecast_hour: 24
+}
+document {
+  doctype: kFormalDocument
+}

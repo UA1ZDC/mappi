@@ -1,0 +1,6 @@
+{
+   "update": "forecast",
+   "updates": [
+      { "q": { "_id" : { "$in" : @id@ } }, "u": { "$set": { "opr" : @opr@ } }, "upsert": false, "multi": true }
+   ]
+}

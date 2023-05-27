@@ -1,0 +1,44 @@
+{
+  "q" : {
+    "station_info._id" : @punkt_id@,
+    "dt" : @dt@,
+    "dt_beg" : @dt_beg@,
+    "dt_end" :  @dt_end@,
+    "level" : @level@,
+    "level_type" : @level_type@,
+    "center" : @center@,
+    "hour" : @hour@,
+    "model" : @model@
+  },
+  "u": {
+    "$setOnInsert" : {
+      "station_info" : {
+	"_id" : @punkt_id@,
+	"name" : @name@,
+	"station" : @station@,
+	"location" : @location@,
+	"station_type" : @station_type@
+      },
+      "dt" : @dt@,
+      "dt_beg" : @dt_beg@,
+      "dt_end" : @dt_end@,
+      "level"  : @level@,
+      "level_type" : @level_type@,
+      "center" : @center@,
+      "hour" : @hour@,
+      "model" : @model@
+    },
+    "$addToSet" : {
+      "param" : {
+        "descrname": @descrname@,
+        "descr" :   @descr@,
+        "value" :   @value@,
+        "code"  :   @code@,
+        "method" :  @method@,
+        "method_title": @method_title@
+      }
+    }
+  },
+
+  "upsert": true, "multi": true
+}

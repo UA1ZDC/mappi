@@ -1,0 +1,8 @@
+{
+   "update": "punkts",
+   "updates": [
+      { "q": { "_id" : @id@ },
+        "u": { "$set" : { "is_active" : @is_active@ }},
+        "upsert": false, "multi": false}
+   ]
+}

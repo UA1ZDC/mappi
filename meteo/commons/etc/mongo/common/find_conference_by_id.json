@@ -1,0 +1,4 @@
+{  
+  "find" : "conferences",
+  "filter" : { "_id" : @id@ }
+}

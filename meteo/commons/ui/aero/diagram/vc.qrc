@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/verticalcut">
+        <file alias="level.puan">resource/level.puan</file>
+        <file alias="place.puan">resource/place.puan</file>
+    </qresource>
+</RCC>

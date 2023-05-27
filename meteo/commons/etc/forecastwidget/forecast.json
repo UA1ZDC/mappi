@@ -1,0 +1,1816 @@
+tabs {
+  name: "Облачность"
+  rgb: {
+    r: 0
+    g: 0
+    b: 145
+  }
+  last_section: true
+  
+    section {
+      name: "Бальность облачности"
+      
+      button {
+        name: "1-4 балла"
+        
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "2-5 балла"
+        notfirst: false
+      }
+      button {
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "3-6 баллов"
+        notfirst: false
+      }
+      button {
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "4-7 баллов"
+        notfirst: false
+      }
+      button {
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "5-8 баллов"
+        notfirst: false
+      }
+      button {
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "6-9 баллов"
+        notfirst: false
+      }
+      button {
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "7-10 баллов"
+        notfirst: false
+      }
+      button {
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "8-10 баллов"
+        notfirst: false
+      }
+      button {
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "10 баллов"
+        notfirst: false
+        afterspace: true
+      }
+
+      button {
+        notfirst: true
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "Ясно"
+      }
+      button {
+        notfirst: true
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "Малооблачно"
+      }
+      button {
+        notfirst: true
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "Переменная облачность"
+      }
+      button {
+        notfirst: true
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "Облачно с прояснениями"
+      }
+      button {
+        notfirst: true
+        type: "cloud"
+        category: "count"
+        bcomma: false
+        comma: false
+        name: "Облачно"
+      }
+    }
+    section {
+      name: "Период"
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "кратковременно"
+      }
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "временами"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "местами"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в начале срока"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в конце срока"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "утром"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "днем"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "ночью"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в первой половине"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "во второй половине"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+           bcomma: true
+           catcomma: false
+           comma: false
+          name: "c уменьшением до"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+           bcomma: true
+           catcomma: false
+           comma: false
+          name: "c увеличением до"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+           bcomma: true
+           catcomma: false
+           comma: false
+          name: "с прояснением до"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+           bcomma: true
+           catcomma: false
+           comma: false
+          name: "с натеканием до"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+           bcomma: true
+           catcomma: false
+           comma: false
+          name: "с повышением до"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+           bcomma: true
+           catcomma: false
+           comma: false
+          name: "с понижением до"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "с провисанием до"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в явлениях"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в осадках"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в дожде"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в снеге"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в зарядах"
+      }
+
+      button {
+          type: "cloud"
+          category: "time"
+          bcomma: false
+          catcomma: false
+          comma: false
+          name: "и"
+      }
+
+    }
+
+    section {
+      name: "Форма/Ярус"
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false
+              comma: false
+              name: "верхней"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false
+              comma: false
+              name: "средней"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false
+              comma: false
+              name: "многослойной"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false
+              comma: false
+              name: "слоистой"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false
+              comma: false
+              name: "слоисто-кучевой"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false
+              comma: false
+              name: "слоисто-дождевой"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "маскированной"
+      }
+      button {
+              type: "cloud"
+              category: "time"
+              bcomma: true
+              catcomma: false
+              comma: false
+              name: "отдельной"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false 
+              comma: false 
+              name: "кучевой"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false 
+              comma: false 
+              name: "мощно-кучевой"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: true 
+              bcomma: false 
+              comma: false 
+              name: "кучево-дождевой"
+      }
+      button {
+              type: "cloud"
+              category: "morfo"
+              catcomma: false
+              bcomma: true
+              comma: false
+              name: "верхняя граница"
+      }
+    }
+
+    section {
+      name: "ВНГО/ВВГО"
+      button {
+        type: "cloud"
+        category: "height"
+        catcomma: true
+        bcomma: false
+        comma: false
+        name: "50-100м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "100-150м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "150-200м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "200-300м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "250-350м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "300-500м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "400-600м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "500-800м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "600-1000м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "1000-1500м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "1500-2000м"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "2-3км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "3-4км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "4-5км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "5-6км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "6-7км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "7-8км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "8-9км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "9-10км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "10-11км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "11-12км"
+      }
+      button {
+      type: "cloud"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "12-13км"
+      }
+    }
+}
+tabs {
+  name: "Явления"
+  rgb: {
+    r: 0
+    g: 145
+    b: 0
+  }
+  last_section: true
+
+    section {
+      name: "Явление"
+      
+        button { 
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "дымка"
+
+        }button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "дымы"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "дождь"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "ливневый дождь"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "морось"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "осадки"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "снег"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "метель"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "гроза"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "грозовое положение"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "туман"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "туман волнами"
+        }
+        button {
+            notfirst: true
+            type: "yavl"
+            category: "vid"
+            catcomma: true
+            bcomma: false
+            comma: false
+            name: "очаги тумана"
+        }
+
+
+    }
+    section {
+      name: "Явление"
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "крупа"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "ледяные иглы"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "гололед"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "гололедные явления"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "град"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "очаги града"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "низовая метель"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "обледенение"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "поземок"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "мгла"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "болтанка"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "слабая электризация"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "умеренная электризация"
+      }
+      button {
+          notfirst: true
+          type: "yavl"
+          category: "vid"
+          catcomma: true
+          bcomma: false
+          comma: false
+          name: "сильная электризация"
+      }
+    }
+
+    section {
+      name: "Период действия"
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "кратковременно"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "временами"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "местами"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в начале срока"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в конце срока"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в первой половине"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "во второй половине"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "утром"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "днем"
+      }
+      button {
+          type: "yavl"
+          category: "time"
+          notfirst: true
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "ночью"
+      }
+    }
+}
+tabs {
+  name: "Видимость"
+  rgb: {
+    r: 246
+    g: 210
+    b: 0
+  }
+  last_section: true
+
+    section {
+      name: "Дальность"
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "более 10км"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "6-10км"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "4-6км"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "3-4км"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "2-3км"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "1500-2000м"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "1000-1500м"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "600-1000м"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "400-800м"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "200-400м"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "менее 200м"
+      }
+
+    }
+    section {
+      name: "Период"
+       button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "кратковременно"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "временами"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "местами"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "в начале срока"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "в конце срока"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "в первой половине"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "во второй половине"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "утром"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "днем"
+        }
+        button {
+                notfirst: false
+                type: "vid"
+                category: "time"
+                bcomma: true
+                catcomma: false
+                comma: false
+                name: "ночью"
+        }
+    } 
+    section{
+      name: "В явлениях"
+      button {
+              notfirst: false
+              type: "vid"
+              catcomma: false
+              category: "time2"
+              bcomma: true
+              comma: false
+              name: "в явлениях"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              catcomma: false
+              category: "time2"
+              bcomma: true
+              comma: false
+              name: "в осадках"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              catcomma: false
+              category: "time2"
+              bcomma: true
+              comma: false
+              name: "в снеге"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              catcomma: false
+              category: "time2"
+              bcomma: true
+              comma: false
+              name: "в дожде"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              catcomma: false
+              category: "time2"
+              bcomma: true
+              comma: false
+              name: "в тумане"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              catcomma: false
+              category: "time2"
+              bcomma: true
+              comma: false
+              name: "в метели"
+      }
+      button {
+              notfirst: false
+              type: "vid"
+              catcomma: false
+              category: "time2"
+              bcomma: true
+              comma: false
+              name: "в зарядах"
+      }
+    }
+}
+tabs {
+  name: "Ветер"
+  rgb: {
+    r: 180
+    g: 67
+    b: 0
+  }
+  last_section: true
+
+    section {
+      name: "Направление"
+      
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "северный"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "северо-восточный"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "восточный"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "юго-восточный"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "южный"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "юго-западный"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "западный"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "северо-западный"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "vid"
+              catcomma: true
+              bcomma: false
+              comma: false
+              name: "переменный"
+      }
+    }
+    section {
+      name: "Уточнение"
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: 0
+          bcomma: true
+          comma: false
+          name: "с переходом на"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: false
+          comma: false
+          name: "/"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "с поворотом на"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "порывы"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "днем порывы"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "при грозе порывы"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "под кучево-дождевой порывы"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "местами порывы до"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "с увеличением"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "с усилением"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "с уменьшением"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "днем"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "во второй половине"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "в первой половине"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "в начале маршрута"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "в середине маршрута"
+      }
+      button {
+          notfirst: false
+          type: "wind"
+          category: "time"
+          catcomma: false
+          bcomma: true
+          comma: false
+          name: "в конце маршрута"
+      }
+    }
+    section {
+      name: "Скорость"
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: 0
+              bcomma: false
+              comma: false
+              name: "слабый"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "1-4м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "2-5м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "3-6м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "4-7м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "5-8м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "6-9м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "7-10м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "8-11м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "9-12м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "10-13м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "11-14м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "12-15м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "13-16м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "15-20м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "20-25м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "25-30м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "15м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "20м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "25м/с"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "30м/с"
+      }
+
+    }
+    section {
+      name: "Скорость"
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "0,3-1,5км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "1,6-3,3км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "3,4-5,4км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "5,5-7,9км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "8-10,7км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "10,8-13,8км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "13,9-17,1км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "17,2-20,7км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "20,8-24,4км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "24,5-28,4км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "28,5-32,6км/ч"
+      }
+      button {
+              notfirst: false
+              type: "wind"
+              category: "speed"
+              catcomma: false
+              bcomma: false
+              comma: false
+              name: "33км/ч"
+      }
+
+    }
+    
+}
+
+tabs {
+  name: "Температура"
+  section {
+    name: "Температура"
+      input {
+        gradation: 3
+        name: "Температура воздуха"
+      }
+  }
+  last_section: false
+}

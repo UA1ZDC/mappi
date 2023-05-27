@@ -1,0 +1,8 @@
+#!/bin/bash
+ETC_PATH=@PRJ_DIR@/etc
+
+
+if [[ -d "$ETC_PATH" && "$1" == "purge" ]]
+then
+  rm -rf $ETC_PATH
+fi

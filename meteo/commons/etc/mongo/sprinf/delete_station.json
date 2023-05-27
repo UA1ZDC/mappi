@@ -1,0 +1,9 @@
+{
+  "delete": "stations",
+  "deletes": [
+    { "q" : { "_id" : @id@ },
+      "limit" : 1 }
+   ]
+}
+
+

@@ -1,0 +1,63 @@
+From: "Steve M. Robbins" <smr@debian.org>
+Date: Sun, 8 Apr 2018 14:11:04 -0500
+Subject: Configure example Makefile for installed gtest
+
+Set variables to point to installed gtest source and 
+includes.
+Forwarded: not-needed
+Last-Update: 2016-08-16
+---
+ googlemock/make/Makefile | 6 +++---
+ googletest/make/Makefile | 8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/googlemock/make/Makefile b/googlemock/make/Makefile
+index 7c13e05..3b1b0cb 100644
+--- a/googlemock/make/Makefile
++++ b/googlemock/make/Makefile
+@@ -17,14 +17,14 @@
+ # Points to the root of Google Test, relative to where this file is.
+ # Remember to tweak this if you move this file, or if you want to use
+ # a copy of Google Test at a different location.
+-GTEST_DIR = ../../googletest
++GTEST_DIR = $(dir $(lastword $(MAKEFILE_LIST)))../../googletest
+ 
+ # Points to the root of Google Mock, relative to where this file is.
+ # Remember to tweak this if you move this file.
+-GMOCK_DIR = ..
++GMOCK_DIR = $(dir $(lastword $(MAKEFILE_LIST)))..
+ 
+ # Where to find user code.
+-USER_DIR = ../test
++USER_DIR = $(dir $(lastword $(MAKEFILE_LIST)))../test
+ 
+ # Flags passed to the preprocessor.
+ # Set Google Test and Google Mock's header directories as system
+diff --git a/googletest/make/Makefile b/googletest/make/Makefile
+index 9ac7449..fe7b562 100644
+--- a/googletest/make/Makefile
++++ b/googletest/make/Makefile
+@@ -14,10 +14,10 @@
+ 
+ # Points to the root of Google Test, relative to where this file is.
+ # Remember to tweak this if you move this file.
+-GTEST_DIR = ..
++GTEST_DIR = $(dir $(lastword $(MAKEFILE_LIST)))..
+ 
+ # Where to find user code.
+-USER_DIR = ../samples
++USER_DIR = $(dir $(lastword $(MAKEFILE_LIST)))/../samples
+ 
+ # Flags passed to the preprocessor.
+ # Set Google Test's header directory as a system directory, such that
+@@ -33,8 +33,8 @@ TESTS = sample1_unittest
+ 
+ # All Google Test headers.  Usually you shouldn't change this
+ # definition.
+-GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+-                $(GTEST_DIR)/include/gtest/internal/*.h
++GTEST_HEADERS = /usr/include/gtest/*.h \
++                /usr/include/gtest/internal/*.h
+ 
+ # House-keeping build targets.
+ 

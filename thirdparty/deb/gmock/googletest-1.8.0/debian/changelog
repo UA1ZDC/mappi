@@ -1,0 +1,237 @@
+googletest (1.8.0-10~bpo9+1) stretch-backports; urgency=medium
+
+  * Rebuild for stretch-backports.
+
+ -- Pirate Praveen <praveen@debian.org>  Mon, 04 Jun 2018 12:29:45 +0530
+
+googletest (1.8.0-10) unstable; urgency=medium
+
+  [ Steven Robbins ]
+  * [2423428] Fix the conflicts/replaces versioning.  Closes: #896880.
+
+ -- Steve M. Robbins <smr@debian.org>  Wed, 25 Apr 2018 20:28:02 -0500
+
+googletest (1.8.0-9) unstable; urgency=medium
+
+  [ Steven Robbins ]
+  * [565e7e9] Separate the source and pre-built binaries (closes: #896559):
+    Move the gtest lib and includes into libgtest-dev.  This is no longer
+    a transitional package.  Move the gmock lib and includes into new
+    libgmock-dev.  Closes: #787330
+  * Move tool "gmock_gen" into new package googletest-tools.  Closes:
+    #846324.
+
+ -- Steve M. Robbins <smr@debian.org>  Mon, 23 Apr 2018 21:01:11 -0500
+
+googletest (1.8.0-8) unstable; urgency=medium
+
+  [ Steven Robbins ]
+  * [625db06] Move include(GNUInstallDirs) into the exported googletest &
+    googlemock CMakeLists.  Closes: #895505.
+
+ -- Steve M. Robbins <smr@debian.org>  Sat, 14 Apr 2018 17:18:06 -0500
+
+googletest (1.8.0-7) unstable; urgency=medium
+
+  [ Steven Robbins ]
+  * [8275985] Change to debhelper compat=11.
+  * [d6465bc] Remove now-obsolete --parallel.
+
+  * [11261ca] 0006-Use-GNU-Install-Dirs-for-multiarch.patch: New.  Ensure
+    libraries installed into usr/lib/<triplet>.
+
+  * [37e59b2]
+    0005-inconsistency-with-GTEST_HAS_PTHREAD-in-library-inte.patch.
+    Helps to ensure tests compiled against gtest use same defines as
+    gtest.  Closes: #789267.
+
+  * [34a076a] Annotate python build dependency with :native. Closes:
+    #856915.
+
+  * [5100a5a] Update VCS to salsa.
+
+  * [19cfdd3] Remove Giuseppe Iuculano <iuculano@debian.org> at request of
+    MIA Team.  Closes: #866837.
+
+  * [527c04e] priority extra has been replaced by priority optional
+
+  * [49faee7] Provide compiled libraries for both googltest and
+    googlemock.  Closes: #868234
+
+ -- Steve M. Robbins <smr@debian.org>  Mon, 09 Apr 2018 23:39:24 -0500
+
+googletest (1.8.0-6) unstable; urgency=medium
+
+  * [d806ccb] Remove m68k-disable-getthreadcounttest.patch: it was based
+    on flawed interpretation of build results.  The build was on an
+    emulated machine, so the failure is presumed not to exist on a real
+    machine.
+  * [f0471a7] Patch to avoid calling member function when "this" pointer
+    is null. Can now enable the previously-failing
+    gtest_catch_exceptions_test.
+  * [ef663b6] Apply fix by Norber Lange to example makefiles.  Closes:
+    #847945.
+
+ -- Steve M. Robbins <smr@debian.org>  Thu, 22 Dec 2016 23:24:15 -0600
+
+googletest (1.8.0-5) unstable; urgency=medium
+
+  * [ccfd8af] Honor "nocheck" in DEB_BUILD_OPTIONS.
+  * [ac3dbab] Emit content of LastTest.log if test fails.
+  * [519f537] New patch to disable test for GetThreadCount() on m68k;
+    testing indicates the kernel is always returning 0 threads.
+    Closes: #846464.
+
+ -- Steve M. Robbins <smr@debian.org>  Sun, 11 Dec 2016 22:01:20 -0600
+
+googletest (1.8.0-4) unstable; urgency=medium
+
+  * Fix for building with -D_GLIBCXX_USE_C99_FP_MACROS_DYNAMIC.
+    Closes: #846254.
+
+  * rules: ensure the dpkg-supplied hardening flags are not suppressed.
+
+ -- Steve M. Robbins <smr@debian.org>  Sun, 04 Dec 2016 21:16:58 -0600
+
+googletest (1.8.0-3) unstable; urgency=medium
+
+  * Build using -mxgot for mips*.
+  * Build using -mlong-calls for hppa.  Closes: #845274.
+
+ -- Steve M. Robbins <smr@debian.org>  Tue, 22 Nov 2016 22:39:22 -0600
+
+googletest (1.8.0-2) unstable; urgency=medium
+
+  * Use dpkg-maintscript-helper to change directories /usr/src/gtest and
+    gmock to symlinks on upgrade.  Closes: #844721.
+
+ -- Steve M. Robbins <smr@debian.org>  Sat, 19 Nov 2016 21:43:25 -0600
+
+googletest (1.8.0-1) unstable; urgency=medium
+
+  * New upstream release 1.8.0.  This release includes both google test
+    and google mock.  Closes: #835487, #835486.
+    - Builds with GCC-6.  Closes: #823447, #83363.
+  * libgtest-dev: Description warns that library must be built from
+    provided sources.  Closes: #802587.
+
+ -- Steve M. Robbins <smr@debian.org>  Fri, 11 Nov 2016 16:23:19 -0600
+
+gtest (1.7.0-4) unstable; urgency=medium
+
+  * patches/gtest-freebsd-death-test.patch: New.  Enable death tests for
+    FreeBSD.  Closes: #789186
+
+ -- Steve M. Robbins <smr@debian.org>  Tue, 23 Jun 2015 22:18:22 -0500
+
+gtest (1.7.0-3) unstable; urgency=medium
+
+  * [646cfdf] Mark -dev package as Multi-Arch: same.  Closes: #745579.
+
+ -- Steve M. Robbins <smr@debian.org>  Tue, 22 Apr 2014 21:54:49 -0500
+
+gtest (1.7.0-2) unstable; urgency=medium
+
+  * [68e512e] Make death tests conditional on GTEST_HAS_DEATH_TEST.
+    (Closes: #738437)
+
+ -- Steve M. Robbins <smr@debian.org>  Mon, 31 Mar 2014 22:10:54 -0500
+
+gtest (1.7.0-1) unstable; urgency=low
+
+  * New upstream.
+  * patches/death-test-test.patch: Remove.  Issue fixed upstream.
+  * [ad5e71d] Update Standards-Version to 3.9.5.  Change to debhelper v9.
+  * [0cac359] Use autotools-dev to freshen config.{guess,sub}
+
+ -- Steve M. Robbins <smr@debian.org>  Sun, 29 Dec 2013 22:59:06 -0600
+
+gtest (1.7.0~svn20130629-2) unstable; urgency=low
+
+  * patches/death-test-test.patch: New.  Fix build failures on arches that
+    don't support death tests; e.g. hurd and kfreebsd.
+
+ -- Steve M. Robbins <smr@debian.org>  Sat, 06 Jul 2013 14:08:21 -0500
+
+gtest (1.7.0~svn20130629-1) unstable; urgency=low
+
+  * New upstream, snapshot of upcoming v 1.7.0.
+    - includes gcc 4.8 fixes.  Closes: #710253.
+
+ -- Steve M. Robbins <smr@debian.org>  Sat, 29 Jun 2013 21:45:45 -0500
+
+gtest (1.6.0-2) unstable; urgency=low
+
+  * libgtest-dev.install: Do not ship static libs (closes: #662989).
+    Install CMakeLists.txt to build lib (closes: #666438).
+
+ -- Steve M. Robbins <smr@debian.org>  Sat, 21 Apr 2012 16:10:45 -0500
+
+gtest (1.6.0-1) unstable; urgency=low
+
+  * New upstream.  Closes: #630188.
+    patches/fix-linking.patch: Remove.
+
+  * rules:
+  * control: Switch to cmake (upstream deprecated autoconf build).  Build
+    only static library (remove libgtest0 package).  Install full source
+    and example files.
+
+ -- Steve M. Robbins <smr@debian.org>  Sun, 12 Jun 2011 10:58:03 -0500
+
+gtest (1.5.0-3) unstable; urgency=low
+
+  * Remove i386 symbols file.
+
+ -- Steve M. Robbins <smr@debian.org>  Fri, 25 Mar 2011 00:16:20 -0500
+
+gtest (1.5.0-2) unstable; urgency=low
+
+  * patches/fix-linking.patch: New.  Add libgtest.la to LDADD for
+    sample1_unittest and gtest_all_test.  Closes: #554748.
+
+  * control:
+  * rules: Rewrite rules to build using dh with autoreconf.  Build-depend
+    on libtool (for libtoolize).
+
+  * control: Use debhelper v8.  Update Standards-Version to 3.9.1.
+
+ -- Steve M. Robbins <smr@debian.org>  Sun, 20 Mar 2011 13:14:00 -0500
+
+gtest (1.5.0-1) unstable; urgency=low
+
+  * [5b03f3e] Imported Upstream version 1.5.0
+  * [22d9d7e] Updated i386 symbols file
+  * [b7e31c3] Bump to Standards-Version 3.8.4, no changes needed
+  * [dab6526] Switch to dpkg-source 3.0 (quilt) format
+
+ -- Giuseppe Iuculano <iuculano@debian.org>  Wed, 21 Apr 2010 10:58:20 +0200
+
+gtest (1.4.0-1) unstable; urgency=low
+
+  * [ab9eec3] debian/control: Add python to Build-Depends and fix FTBFS
+    on Ubuntu karmic (Closes: #532768)
+  * [c00552f] debian/libgtest0.symbols.i386: Updated
+  * [0ae1048] Imported Upstream version 1.4.0
+  * [5d7c523] Updated my email address and removed DM-Upload-Allowed
+    control field
+  * [e99a44e] Updated to Standards-Version 3.8.3 (no changes needed)
+  * [416e772] updated libgtest0.symbols.i386
+
+ -- Giuseppe Iuculano <iuculano@debian.org>  Sat, 10 Oct 2009 13:40:05 +0200
+
+gtest (1.3.0-1) unstable; urgency=low
+
+  * [d9b99fd] New Upstream Version 1.3.0
+  * [c138a66] Added libgtest0 symbols file for i386 arch
+  * [7880f06] Updated to standards version 3.8.1 (No changes needed)
+  * [8311a82] debian/control: Use the new dh_auto_configure
+
+ -- Giuseppe Iuculano <giuseppe@iuculano.it>  Sun, 29 Mar 2009 20:07:11 +0200
+
+gtest (1.2.1-1) unstable; urgency=low
+
+  [ Giuseppe Iuculano ]
+  * Initial Debian packaging. (Closes: #498162)
+
+ -- Steve M. Robbins <smr@debian.org>  Sat, 07 Mar 2009 15:38:05 -0600

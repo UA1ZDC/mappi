@@ -1,0 +1,7 @@
+{
+  "find" : "gmi_types",
+  "filter" : 
+  {
+    "type" : { "$in" : "%1" }
+  }
+}

@@ -1,0 +1,22 @@
+name: "airport"
+title: "Аэропорты"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "airport"
+  data_type: kEndAirportType
+  data_type: kAirportType
+  data_type: kAirportRegType
+  data_type: kAirportSpecType
+  data_type: kAirportAdWrng
+  data_type: kAirportWsWrng
+  data_type: kAirportTextInfo
+  data_type: kAirportTextWrng
+  data_type: kAirportFcst
+  data_type: kAirportTextFcst
+  data_type: kAirportTrend
+  data_type: kAirportAmd
+  type_level: 1
+  level: 0
+}
+webpunchmap: true

@@ -1,0 +1,194 @@
+code: "indexes"
+name: "Индексы неустойчивости"
+path: "/home/maria/build_dir//share/meteo//punch/indexes.template"
+wind: false
+rule {
+  pos {
+    x: -6
+    y: -4
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 20
+  id {
+    descr: 5520195
+    name: "ki"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -6
+    y: 0
+  }
+  align: kLeftCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 28
+  id {
+    descr: 5520196
+    name: "vti"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -6
+    y: 4
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 18
+  id {
+    descr: 5520197
+    name: "cti"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 32
+    y: 1
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 44
+  id {
+    descr: 5520198
+    name: "tti"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 32
+    y: -2
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 250
+  id {
+    descr: 5520199
+    name: "sweat"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+datatype: kSurface
+center: kCircle
+crisscross: false
+radius: 3
+windfont {
+  family: "helvetica"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+draw_bad_dd: false

@@ -1,0 +1,168 @@
+#!/bin/bash
+
+arg1=$1
+
+define_qt_version()
+{
+  a=`qmake -v 2>&1 | grep "[0-9]\.[0-9]\+\.[0-9]" | sed -e 's/[^0-9]//g'`
+  if [ -z $a ]; then
+    qmake_loc=`locate qmake | grep '/bin/qmake$'`
+    a=`$qmake_loc -v 2>&1 | grep "[0-9]\.[0-9]\+\.[0-9]" | sed -e 's/[^0-9]//g'`
+  fi
+
+  a="${a}000";
+  a=${a:0:6};
+
+  if [ $a -lt 400000 ]
+  then
+    QT_VERSION=QT3
+  else
+    QT_VERSION=QT4
+  fi
+  if [ $a -gt 500000 ]
+  then
+    QT_VERSION=QT5
+  fi
+}
+
+define_protoc_version()
+{
+  a=`protoc --version 2>&1 | sed -e 's~[^0-9.]~~g'`
+  protover=($( echo $a | tr '.' "\n" ))
+  PROTOC_VER=${protover[0]}
+}
+
+if [ -z ${SRC+x} ]; then
+  echo "Ошибка: не определена переменная окружения SRC"
+else
+
+    echo "           SRC --> ${SRC}"
+
+    if [ ! -n "$BUILD_DIR" ]; then
+      export BUILD_DIR=~/build_dir
+    fi
+    export PACKAGE_DIR=$BUILD_DIR
+    echo "     BUILD_DIR --> ${BUILD_DIR}"
+    
+    if [ -z "$PRJ_DIR" ]
+    then
+      export PRJ_DIR=$BUILD_DIR
+    fi
+    echo "       PRJ_DIR --> ${PRJ_DIR}"
+
+    export LD_LIBRARY_PATH=${BUILD_DIR}/lib:/usr/local/lib:/opt/mappi/lib:${LD_LIBRARY_PATH}
+
+#only for Astra Linux SE 1.4
+#sudo update-alternatives --install /usr/bin/qmake /usr/bin/qmake-qt4 1
+
+    define_qt_version
+    export QT_VERSION=$QT_VERSION
+    echo "    QT_VERSION --> ${QT_VERSION}"
+    
+    define_protoc_version
+    export PROTOC_VER=$PROTOC_VER
+    echo "    PROTOC_VER --> ${PROTOC_VER}"
+    
+    export PYTHONPATH=${BUILD_DIR}/include.py:${BUILD_DIR}/lib:${HOME}/gr_script
+    export CPLUS_INCLUDE_PATH=`python3-config --includes`
+
+    alias src="cd $SRC"
+    alias bld="cd $BUILD_DIR"
+    alias mnc="cd $SRC/commons"
+    alias crs="cd $SRC/cross-commons"
+    alias mappi="cd $SRC/mappi"
+    alias gis="cd $SRC/gis"
+    alias tch="cd $SRC/tucha"
+    alias sql="cd $SRC/sql"
+    alias pup="cd $SRC/pups"
+    alias pirs="cd $SRC/pirs"
+    alias trn="cd $SRC/taran"
+    alias spo="cd $SRC/taran/spo"
+    alias vrz="cd $SRC/taran/voronezh"
+    alias mtk="cd $SRC/metrika"
+    alias gpstk="cd $SRC/gpstk"
+    alias avto="cd $SRC/avtoradio"
+    alias ptk="cd $SRC/ptkpp"
+    alias geo="cd $SRC/geosystem"
+    alias tdr="cd $SRC/tundra"
+    alias vtk="cd $SRC/meteo/vostok"
+    alias met="cd $SRC/meteo/commons"
+    alias bkn="cd $SRC/meteo/baikonur"
+    alias nov="cd $SRC/meteo/novost"
+    alias brn="cd $SRC/meteo/bronenosec"
+    alias wrf="cd $SRC/meteo/wrf"
+    alias ukz="cd $SRC/meteo/ukaz"
+    alias maslo="cd $SRC/meteo/maslo"
+    alias sbor="cd $SRC/meteo/sbor"
+    alias bank="cd $SRC/meteo/bank"
+    alias inter="cd $SRC/meteo/inter"
+    alias prod="cd $SRC/meteo/product"
+    alias prog="cd $SRC/meteo/prognoz"
+    alias pog="cd $SRC/meteo/pogoda"
+    alias rmk="cd $SRC/meteo/nowhere/rmk"
+    alias now="cd $SRC/meteo/nowhere"
+    alias pak="cd $SRC/meteo/pak"
+
+
+#    alias ptk="cd $SRC/ptkpp"
+#    alias mnc="cd $SRC/mn_commons"
+    alias arm="cd $SRC/arm_vgm"
+#    alias mtk="cd $SRC/metrika"
+#    alias rpc="cd $SRC/replaces"
+#    alias obs="cd $SRC/obsoletes"
+#    alias zdk="cd $SRC/zodiak"
+#    alias arg="cd $SRC/argument"
+#    alias gis="cd $SRC/gispresent"
+
+#example for win-build. you must set this variables manually or write in .bashrc
+    export MINGWCXX=i586-mingw32msvc-g++
+    export MINGW_LINK=i586-mingw32msvc-g++
+    export MINGW_STRIP=i586-mingw32msvc-strip
+    export MINGW_INCDIR=/usr/lib/gcc/i586-mingw32msvc/4.2.1-sjlj/include
+    export WINQT_INCDIR=/home/aleks/winqt/include
+    export WINQT_LIBDIR=/home/aleks/winqt/lib
+    export WINQT_MOC=~/winqt/bin/moc.exe
+    export WINQT_UIC=~/winqt/bin/uic.exe
+    export WINQT_IDC=~/winqt/bin/idc.exe
+
+fi
+
+export OSNAME=`cat /etc/os-release | sed -n 's/^ID=\(.*\)/\1/p'`
+if [ "$OSNAME" == 'astra' ]
+then
+  export TBS_GUISU='/usr/bin/fly-su'
+else
+  export TBS_GUISU='/etc/alternatives/kdesu'
+fi
+
+LD_CONF_COUNT=`cat /etc/ld.so.conf /etc/ld.so.conf.d/* | grep $BUILD_DIR/lib | wc -l`
+case $LD_CONF_COUNT in
+  0)
+    echo "  LIBRARY_PATH --> ОШИБКА"
+  ;;
+  1)
+    true
+    #echo "  LIBRARY_PATH --> OK"
+  ;;
+  *)
+    true
+    #echo "  LIBRARY_PATH --> OK"
+  ;;
+esac
+
+if [ -z "$CLOSURE_PATH" ]
+then
+  export CLOSURE_PATH="$HOME/doc/closure-library/"
+  if [ !  -d "$CLOSURE_PATH" ]
+  then
+    export CLOSURE_PATH="UNKNOWN"
+    echo "  CLOSURE_PATH --> ОШИБКА"
+  else 
+    true
+    #echo "  CLOSURE_PATH --> $CLOSURE_PATH"
+  fi  
+fi
+
+
+
+

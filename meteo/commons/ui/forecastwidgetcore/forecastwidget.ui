@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ForecastWidget</class>
+ <widget class="QMainWindow" name="ForecastWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ForecastWidget</string>
+  </property>
+  <widget class="QSplitter" name="vsplit">
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <widget class="QSplitter" name="hsplit">
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="dateLabel">
+            <property name="text">
+             <string>Срок:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTimeEdit" name="startTime">
+            <property name="displayFormat">
+             <string>hh:mm</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="startDate"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="seasonBox">
+            <property name="currentIndex">
+             <number>2</number>
+            </property>
+            <item>
+             <property name="text">
+              <string>Зима</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Весна</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Лето</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Осень</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="synsitCmb"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="frontSitCmb">
+            <item>
+             <property name="text">
+              <string>Внутримассовый процесс</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Теплый фронт</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Холодный фронт</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="resetBtn">
+            <property name="text">
+             <string>Обновить</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="cancelBtn">
+            <property name="text">
+             <string>Прервать</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>108</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="frcstTypeTree">
+          <property name="showDropIndicator" stdset="0">
+           <bool>false</bool>
+          </property>
+          <column>
+           <property name="text">
+            <string>Наименование метода</string>
+           </property>
+           <property name="toolTip">
+            <string comment="Наименование метода" extracomment="Наименование метода"/>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string comment="Число разработанных прогнозов" extracomment="Число разработанных прогнозов">Разработано</string>
+           </property>
+           <property name="toolTip">
+            <string comment="Число разработанных прогнозов" extracomment="Число разработанных прогнозов"/>
+           </property>
+           <property name="whatsThis">
+            <string comment="Число разработанных прогнозов" extracomment="Число разработанных прогнозов"/>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Оправдалось</string>
+           </property>
+           <property name="toolTip">
+            <string comment="Общая оправдываемость"/>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Автомат</string>
+           </property>
+           <property name="toolTip">
+            <string comment="Выполнять автоматически" extracomment="Выполнять автоматически"/>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="stWgtToolbar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

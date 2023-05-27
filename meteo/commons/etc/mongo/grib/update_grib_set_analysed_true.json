@@ -1,0 +1,11 @@
+{
+   "update": "grib",
+   "updates": [
+      {
+        "q": { "_id" : { "$in" : @id@ } },
+        "u": { "$set": { "analysed" : true  } },
+        "upsert": false,
+        "multi": true
+      }
+   ]
+}

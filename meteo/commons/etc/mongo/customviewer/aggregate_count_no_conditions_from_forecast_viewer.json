@@ -1,0 +1,9 @@
+{
+"aggregate" : "%1",
+    "pipeline" : [
+        { "$unwind" : "$param" },
+        { "$count" : "n" }
+],
+"cursor": { "batchSize": 1 },
+"allowDiskUse": true
+}

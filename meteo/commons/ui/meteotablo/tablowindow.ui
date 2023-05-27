@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TabloWindow</class>
+ <widget class="QMainWindow" name="TabloWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>764</width>
+    <height>390</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Метеотабло</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="6">
+     <widget class="CalendarButton" name="btnselectdt">
+      <property name="toolTip">
+       <string>Выбрать дату и время</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="7">
+     <widget class="QLabel" name="statusLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>&lt; status &gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QToolButton" name="deletePresetBtn">
+      <property name="toolTip">
+       <string>Удалить набор станций</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../etc/icons/delete.png</normaloff>../../etc/icons/delete.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="presetCombo">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Expanding</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>659</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="0" colspan="9">
+     <widget class="::meteo::TabloWidget" name="tablo" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QToolButton" name="savePresetBtn">
+      <property name="toolTip">
+       <string>Добавить набор станций</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../etc/icons/add.png</normaloff>../../etc/icons/add.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="8">
+     <widget class="QToolButton" name="btncleardt">
+      <property name="toolTip">
+       <string>Сбросить дату и время до текущих</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/meteo/icons/clear.png</normaloff>:/meteo/icons/clear.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QToolButton" name="sortButton">
+      <property name="toolTip">
+       <string>Переключение режимов перетаскивания/сортировки</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../etc/icons/sort.png</normaloff>../../etc/icons/sort.png</iconset>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CalendarButton</class>
+   <extends>QToolButton</extends>
+   <header location="global">meteo/commons/ui/custom/calendarbtn.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>::meteo::TabloWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">meteo/commons/ui/meteotablo/tablowidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,574 @@
+tabs {
+  name: "Орнитологическая обстановка"
+  rgb: {
+    r: 0
+    g: 0
+    b: 145
+  }
+  last_section: true
+    section {
+      name: "Характер полетов и размер птиц"
+      button {
+        name: "Полеты местных птиц"
+        type: "orni"
+        category: "haracter"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "Миграция"
+        type: "orni"
+        category: "haracter"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "Полеты парителей"
+        type: "orni"
+        category: "haracter"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "Полеты молодняка"
+        type: "orni"
+        category: "haracter"
+        bcomma: false
+        comma: true
+        afterspace: true
+        notfirst: false
+      }
+      button {
+        name: "Мелкие воробьиные"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "ласточки, стрижи"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "скворцы"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "средние птицы"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "Мелкие хищные птицы"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "голуби"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "врановые"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "кулики"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "чайки"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "средние хищные птицы"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "крупные птицы"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "утки"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "цапли"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "гуси"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "крупные хищные птицы"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "очень крупные птицы"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "аисты"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "лебеди"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      
+    }
+
+    section {
+      name: "Направление полета и период"
+
+      button {
+        name: "в северном направлении"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "в северо-восточном направлении"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "в восточном направлении"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "в юго-восточном направлении"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "в южном направлении"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "в юго-западном направлении"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "в западном направлении"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "в северо-западном направлении"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "в различных направлениях"
+        type: "orni"
+        category: "size"
+        bcomma: false
+        comma: true
+        afterspace: true
+        notfirst: false
+      }
+
+
+
+      button {
+          type: "orni"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "местами"
+      }
+
+      button {
+          type: "orni"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в начале срока"
+      }
+
+      button {
+          type: "orni"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в конце срока"
+      }
+
+      button {
+          type: "orni"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "утром"
+      }
+
+      button {
+          type: "orni"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "днем"
+      }
+
+      button {
+          type: "orni"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "ночью"
+      }
+
+      button {
+          type: "orni"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в первой половине"
+      }
+
+      button {
+          type: "orni"
+          category: "time"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "во второй половине"
+          afterspace: true
+      }
+
+
+      button {
+          type: "orni"
+          category: "track"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в начале маршрута"
+      }
+      button {
+          type: "orni"
+          category: "track"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в конце маршрута"
+      }
+      button {
+          type: "orni"
+          category: "track"
+          bcomma: true
+          catcomma: false
+          comma: false
+          name: "в середине маршрута"
+      }
+
+    }
+
+    section {
+      name: "Размер стай и высота полета"
+
+      button {
+        name: "отдельные птицы"
+        type: "orni"
+        category: "staya"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "малые стаи"
+        type: "orni"
+        category: "staya"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "большие стаи"
+        type: "orni"
+        category: "staya"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "очень большие стаи"
+        type: "orni"
+        category: "staya"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "малые и средние стаи"
+        type: "orni"
+        category: "staya"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "средние и большие стаи"
+        type: "orni"
+        category: "staya"
+        bcomma: false
+        comma: true
+        afterspace: false
+        notfirst: false
+      }
+      button {
+        name: "стаи всех размеров"
+        type: "orni"
+        category: "staya"
+        bcomma: false
+        comma: true
+        afterspace: true
+        notfirst: false
+      }
+
+      button {
+        type: "orni"
+        category: "height"
+        catcomma: true
+        bcomma: false
+        comma: false
+        name: "<50м"
+      }
+      button {
+        type: "orni"
+        category: "height"
+        catcomma: true
+        bcomma: false
+        comma: false
+        name: "50-100м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "100-150м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "150-200м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "200-300м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "250-350м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "300-500м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "400-600м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "500-800м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "600-1000м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "1000-1500м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "1500-2000м"
+      }
+      button {
+      type: "orni"
+      category: "height"
+      catcomma: true
+      bcomma: false
+      comma: false
+      name: "2-3км"
+      }
+
+
+    }
+}

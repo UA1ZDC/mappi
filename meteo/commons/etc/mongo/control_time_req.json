@@ -1,0 +1,28 @@
+{
+  "aggregate" : "meteoreport",
+  "pipeline" : [
+    {"$match" :  {
+      "dt_write": { "$gte" : @start_dt@,
+            "$lt"  : @end_dt@ },
+      "level_type" : { "$in" : [1, 2, 3] }
+    } },
+    { "$unwind" : "$param"},
+    { "$match" : {
+      "param.descrname" : { "$in" : [ "T", "Td", "p", "P", "P0" ] },
+      "param.control"   : { "$bitsAllClear" : 4 },
+      "param.dt_type" : 0
+    } },
+    { "$project" : {
+      "station" : 1,
+      "station_type" : 1,
+      "dt" : { "$ifNull" : ["$param.dt_end",  "$dt"]},
+      "descrname" : "$param.descrname",
+      "value"   : "$param.value",
+      "quality" : "$param.quality",
+      "control" : "$param.control"
+    } }
+  ],
+
+  "allowDiskUse": true,
+  "cursor":{"batchSize":1}
+}

@@ -1,0 +1,12 @@
+name: "wind.map"
+title: "Прогноз параметров ветра"
+formal {
+    template: "Wind.odt"
+    name: "Прогноз параметров ветра"
+    module_path: "wind.py"
+    format: kOdt
+    icon_path: ":product/icons/forecast_wind.png"
+}
+document {
+  doctype: kFormalDocument
+}

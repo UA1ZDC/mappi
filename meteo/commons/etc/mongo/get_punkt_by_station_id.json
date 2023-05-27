@@ -1,0 +1,7 @@
+{
+        "find" : "punkts",
+        "filter": { "station_id":  @station_id@  }
+}
+
+
+

@@ -1,0 +1,149 @@
+syntax = "proto2";
+
+package meteo.tlg;
+
+//! форматы сообщений
+enum Format {
+  kWMO          =       0; //!< метеорологическое международного формата
+  kGMS          =       1; //!< метеорологическое РФ формата
+  kOther        =       2; //!< все остальные
+}
+
+//! способ адресации сообщения
+enum AddressMode {
+  kCircular     =       0; //!< циркулярное
+  kAddress      =       1; //!< адресное
+  kMultiAddres  =       2; //!< многоадресное
+  kConvert      =       3; //!< конверт
+}
+
+//! приоритет (срочность) сообщения. Для WMO определяется группой TT, для ГМС - значением групы C в начальной строке
+enum Priority {
+  kHigh         =       1; //!< наивысший
+  kNormal       =       2; //!< средний
+  kLow          =       3; //!< низкий
+  kNoUrgent     =       4; //!< без приоритета
+  kUnk1         =       5; //!<? 
+  kUnk2         =       6; //!<?
+  kUnk3         =       7; //!<?
+  kUnk4         =       8; //!<?
+  kUnk5         =       9; //!<?
+  kUnk6         =       0; //!<?
+}
+
+//! типы сообщений
+enum MsgType {
+  kMessage      =       0; //!< оперативное метеорологическое сообщение
+  kService      =       1; //!< служебное сообщение
+  kRequest      =       2; //!< запрос
+  kAdmin        =       3; //!< административное
+  kDbRequest    =       4; //!< запрос в базу данных
+  kData         =       5; //!< данные
+  kConfirm      =       6; //!< подтверждение
+  kMessageGMS   =       7; //!< сообщение ГМС не в форме стандартного метеорологического бюллетеня
+}
+
+//! начальная строка (особенности начальной строки ГМС)
+message StartGMS {
+  optional int32        F               = 1;  //!< формат сообщения
+  optional Priority     priority        = 2 [default = kNoUrgent];  //!< приоритет сообщения
+  optional int32        B               = 3;  //!< указатель вида ифомрации
+  optional int32        K1K2            = 4;  //!< центр, узел связи, в который послается сообщение
+  optional int32        K3K4            = 5;  //!< абонент, рабочее место, терминал центра
+  optional int32        K5K6            = 6;  //!< расширение группы
+  optional string       GGgg            = 7;  //!< часы, минуты времени ввода сообщения
+}
+
+//! начальная строка
+message StartLine {
+  optional int32        number          = 1;  //!< порядковый номер
+  optional bytes        data            = 2;
+  repeated StartGMS     gms             = 3;  //!< особенности начальной строки ГМС
+}
+
+//! заголовок сообщения (особенности заголовка ГМС)
+message HeaderGMS {
+  optional string       DDDD            = 1;  //!< получатель адресованного сообщения
+}
+
+//! заголовок сообщения
+message Header {
+  optional string       T1              = 1;  //!<
+  optional string       T2              = 2;  //!<
+  optional string       A1              = 3;  //!<
+  optional string       A2              = 4;  //!<
+  optional int32        ii              = 5;  //!<
+  optional string       CCCC            = 6;  //!< отправитель сообщения
+  optional string       YYGGgg          = 7;  //!< срок сообщения
+  optional string       BBB             = 8;  //!<
+  optional HeaderGMS    gms             = 9;  //!< ообенности начального заголовка ГМС
+  optional bytes        data            = 10; //!<
+}
+
+//! метаинформация сообщения
+message MetaInfo {
+  optional string converted_dt  = 2;  //!< расчитанная дата формирования сообщения (ISO)
+  optional string from          = 3;  //!< идентификатор msgstream, из которого получено сообщение
+  repeated string distibuted    = 4;  //!< список идентификаторов msgstream, в которые распределено сообщение
+  optional int64  id            = 5;  //! уникальный идентификатор документа
+  optional string map_name      = 6;  //!<
+  optional string job_name      = 7;  //!<
+  optional bool   external      = 8;  //!<
+  optional bool   duplicate     = 9 [ default = false ];  //!<
+  optional string file_id       = 10; //!< идентификатор файла в БД
+  optional int32  globalfile_id = 11; //!< идентификатор целого файла, если это куски одного файла
+}
+
+//! метеорологическое сообщение
+message MessageNew {
+  optional Format       format          = 1 [default = kOther];    //!<
+  optional AddressMode  addrmode        = 2 [default = kCircular]; //!<
+  optional StartLine    startline       = 3; //!< начальная строка
+  optional Header       header          = 4; //!< заголовок
+  optional bytes        msg             = 5; //!< сообщение без начальной строки, заголовка и идентификатора конца сообщения
+  optional bytes        end             = 6; //!< идентификатор конца сообщения
+  optional bool         isbinary        = 7; //!< бинарное (true) или текстовое (false) сообщение
+  optional string       msgtype         = 8; //!< тип (текстовый код, bufr, grib, fax, img,other )
+  optional MetaInfo     metainfo        = 9; //!<
+  optional int32        cor_number      = 10; //!< номер исправления (извлекается из группы BBB заголовка телеграммы)
+}
+
+message Messages {
+  repeated MessageNew   msg             = 1;
+}
+
+
+message MsgDocument {
+  optional string dt        = 1;    //! время добавления документа в БД (ISO,UTC)
+  optional int64  _id       = 2;    //! уникальный идентификатор документа
+
+  optional string t1        = 10;
+  optional string t2        = 11;
+  optional string a1        = 12;
+  optional string a2        = 13;
+  optional int32  ii        = 14;
+  optional string cccc      = 15;
+  optional string yygggg    = 16;
+  optional string bbb       = 17;
+  optional string dddd      = 18;
+
+  optional string msg_dt    = 20;   //! рассчитанная дата формирования сообщения (ISO,UTC)
+  optional string format    = 21;   //! формат сообщения (ВМО, ГМС, другой)
+  optional string type      = 22;   //! тип (alphanum, bufr, grib, fax, img, other)
+  optional int32  prior     = 23;   //! приоритет
+  optional bool   bin       = 24;   //! если true, сообщение бинарное, иначе буквенно-цифровое
+  optional bool   external  = 25;   //! если false, сообщение было сформированно на текущем АРМ
+
+  optional int32  dup       = 30;
+  optional bytes  md5       = 31;
+  optional int32  size      = 32;
+  optional string path      = 33;
+
+  optional bool   decoded   = 40;
+  repeated RouteInfo route  = 41;
+
+  message RouteInfo {
+    optional string src = 1;  // идентификатор msgstream, из которого было получено сообщение
+    repeated string dst = 2;  // идентификаторы msgstream, в которые было направлено сообщение
+  }
+}

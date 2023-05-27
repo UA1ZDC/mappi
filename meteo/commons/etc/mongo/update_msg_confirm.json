@@ -1,0 +1,10 @@
+{
+   "update": "msg",
+   "updates": [
+      { "q": { "md5" : @md5@ },
+        "u": { "$set": { "confirm" : @confirm@  } },
+        "upsert": false,
+        "multi": false
+      }
+   ]
+}

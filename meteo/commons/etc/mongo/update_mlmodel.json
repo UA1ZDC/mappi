@@ -1,0 +1,32 @@
+{
+  "findAndModify": @collection@,
+  "query" : {
+    "descr": @descr@,
+    "net_type": @net_type@,
+    "hour": @hour@,
+    "model": @model@,
+    "level_type": @level_type@,
+    "level": @level@,
+    "center": @center@,
+    "path": @path@,
+    "mlmodel_type": @mlmodel_type@,
+    "location" : @location@
+    },
+  "update": {
+    "$set" : {
+        "descr": @descr@,
+        "net_type": @net_type@,
+        "hour": @hour@,
+        "model": @model@,
+        "level_type": @level_type@,
+        "level": @level@,
+        "center": @center@,
+        "path": @path@,
+        "mlmodel_type": @mlmodel_type@,
+        "dt_write" : @dt_write@,
+        "location" : @location@
+      }
+  },
+  "remove": false,
+  "upsert": true
+}

@@ -1,0 +1,26 @@
+#DEPS=(
+#  cross-commons
+#  sql
+#  commons
+#  meteo/commons
+#)
+
+DIRS_EXTRA=(
+  meteo/bank/etc 
+)
+
+DIRS=(
+  meteo/bank/proto
+  meteo/bank/services/customviewer
+  
+  meteo/bank/services/sprinf
+  meteo/bank/services/srcdata
+  meteo/bank/services/fieldata
+  
+#  meteo/bank/ui/plugins/msgviewerplugin
+#  meteo/bank/ui/plugins/tlglogplugin
+)
+
+
+
+

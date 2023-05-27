@@ -1,0 +1,26 @@
+name: "critical"
+title: "Значения"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "critical"
+  data_type: kSynopFix
+  data_type: kSynopCoast
+  data_type: kSynopWarep
+  data_type: kSynopBufr
+  data_type: kSynopMob
+  data_type: kSynopMobSea
+  data_type: kSynopMobShip
+  data_type: kEndSynopType;
+  data_type: kAirportRegType
+  data_type: kAirportSpecType
+  data_type: kAirportAdWrng
+  data_type: kAirportWsWrng
+  data_type: kAirportTextInfo
+  data_type: kAirportTextWrng
+  data_type: kAirportFcst
+  data_type: kAirportTextFcst
+  type_level: 1
+  level: 0
+}
+webpunchmap: true

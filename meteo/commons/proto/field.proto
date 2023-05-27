@@ -1,0 +1,396 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+import "surface.proto";
+import "surface_service.proto";
+import "meteo.proto";
+import "map_isoline.proto";
+
+package meteo.field;
+
+//запрос на получение данных об эталонных полях
+
+message ProcessFieldDesc {
+  optional int32        process_id        = 1;  //!< номер процесса
+  optional int32        fnumber           = 2;  //!< номер поля для процесса
+  optional int32        level             = 3;  //!< изобарический уровень данных FIXME сделать repeated
+  optional int32        type_level        = 4;  //!< тип уровня
+  optional int32        fparam            = 5;  //!< Дескриптор данных
+  optional int32        hour              = 6;  //!< заблаговременность прогноза
+  optional string       season            = 7;  //!< сезон 0 - зима, 1 - весна, 2 - лето, 3 - осень
+  optional int32        net_type          = 8;  //!< тип сетки
+  optional string       field_id          = 9;  //!<
+  optional string       process_name      = 10; //!< название процесса
+  optional string       process_title     = 11; //!< описание процесса
+}
+
+//! Ответ на запрос
+message ProcessFieldData {
+  optional ProcessFieldDesc descr = 1;
+  optional bytes        fielddata         = 2; //!< метео данные в виде Field
+  optional string       error             = 3; //!< описание ошибки
+  optional float        koef_kor          = 4 [default = -1.0]; //!< кореляция
+  optional bool         result            = 5 [default = true]; //!< результат выполнения запроса
+}
+
+message ProcessFieldsData {
+  repeated ProcessFieldData data          = 1;
+  optional string       error             = 2;  //!< описание ошибки
+  optional bool         result            = 3 [default = true]; //!< результат выполнения запроса
+
+}
+
+//запрос на выполнение анализа данных
+message DataAnalyseRequest {
+  repeated int32             centers           = 1; //!< центры для которых проводить анализ
+  optional int32             days_interval     = 2; //!< интервал времени за который проводить анализ (в сутках)
+  optional int32             step              = 3; //!< шаг по времени в секундах
+  repeated DataDesc          fdesc             = 4;
+}
+
+
+//запрос на получение данных
+message DataRequest {
+  optional string       date_start        = 1;  //!< дата и время начала интервала или срок данных (анализ, без учета срока прогноза) (формат YYYY-MM-dd hh:mm::ss)
+  optional string       date_end          = 2;  //!< дата и время конца интервала (анализ, без учета срока прогноза) (формат YYYY-MM-dd hh:mm::ss)
+  repeated int32        meteo_descr       = 3;  //!< Дескрипторы данных
+  repeated string       descrname         = 4;  //!< Наименования метеопараметров (альтернатива meteo_descr)
+  repeated int32        hour              = 5;  //!< заблаговременность прогноза
+  optional int32        model             = 6;  //!< модель обработки (250, 251 - свой анализ)
+  repeated int32        level             = 7;  //!< изобарический уровень данных FIXME сделать repeated
+  repeated int32        center            = 8;  //!< центр обработки
+  optional int32        net_type          = 9;  //!< тип сетки
+  repeated int32        type_level        = 10;  //!< тип уровня
+  optional bool         only_equally      = 11; //!< TODO НЕ РЕАЛИЗОВАНА  если true, то ищем только за эту дату. в протвном случае, найдет ближайшую
+  optional bool         need_field_descr  = 12; //!< если true, то в ответе будет описание
+  optional string       field_id          = 13; //!<
+  optional int32        is_df             = 14; //!< если true, то в ответе будет ветер в виде направления и скорости( dd ff) иначе - составляющие скорости UV
+  optional int32        only_last         = 15; //!< если true, то в ответе будет последняя дата
+  repeated meteo.surf.Point coords        = 16; //координаты пункта
+  optional int32        only_best         = 17; //!< если true, то в ответе будет поле с максимальным приоритетом по полям forecast_time  fhour, cpriority
+  optional int32        interval          = 18; //!< данные брать в интервале date_start+-interval
+  optional string       forecast_start    = 19;  //!< дата и время начала интервала прогноза (формат YYYY-MM-dd hh:mm::ss)
+  optional string       forecast_end      = 20;  //!< дата и время конца интервала прогноза (формат YYYY-MM-dd hh:mm::ss)
+  optional bool         as_proto          = 21 [default = false]; //!< если true данные возвращаются как proto-структура, иначе как TMeteoData
+  optional bool         need_extremums    = 22 [default = false]; //!< если true  возвращаются и значения экстремумов поля
+  optional int32        min_level_count   = 23; //!< минимальное количество уровней (используется в GetAvailableHours)
+}
+
+//! Описание доступных данных
+message DataDesc {
+  required string       date              = 1; //!< срок данных в формате Qt::ISODate
+  required int32        meteodescr        = 2; //!< дескриптор
+  optional int32        hour              = 3; //!< заблаговременность прогноза
+  optional int32        model             = 4; //!< модель обработки (250, 251 - свой анализ)
+  optional int32        level             = 5; //!< изобарический уровень данных
+  optional int32        center            = 6; //!< центр обработки
+  optional int32        net_type          = 7; //!< тип сетки
+  optional int32        level_type        = 8; //!< тип уровня
+  optional int32        count_point       = 9; //!< количество данных
+  optional string       id                = 10; //!< идентификатор записи в базе
+  optional string       center_name       = 11; //!< центр обработки название
+  optional string       descr_name        = 12; //!< дескриптор название
+  optional string       level_type_name   = 13; //!< тип уровня название //список имен можно получить: meteo::global::kLevelTypes();
+  optional int32        priority          = 14; //!<
+  optional string       dt1               = 15; //!< первая точка времени
+  optional string       dt2               = 16; //!< вторая точка времени
+  optional int32        time_range        = 17; //!< смысловое значение dt1 и dt2  (т.4.10 GRIB2)
+  //  optional string       filepath          = 18; //!< путь к файлу с данными
+  optional string       file_id           = 19; //!< идентификатор файла в БД (gridfs)
+  repeated string       dates             = 20; //!< сроки данных в формате Qt::ISODate (в случае, если данные сразу за несколько сроков)
+}
+
+message DataDescResponse {
+  required bool         result            = 1; //!< Результат выполнения запроса
+  optional string       comment           = 2; //!< Описание результата выполнения операции
+  repeated DataDesc     descr             = 3; //!< Список описаний данных
+}
+
+//! Ответ на запрос
+message DataReply {
+  optional DataDesc     descr             = 1;
+  optional bytes        fielddata         = 2; //!< метео данные в виде Field
+  optional string       error             = 3; //!< описание ошибки
+  optional bool         result            = 4 [default = true]; //!< результат выполнения запроса
+  optional string       comment           = 5;
+}
+
+//! Ответ на запрос
+message ManyDataReply {
+  repeated DataReply    data              = 1; //!< метео данные в виде Field
+  optional string       error             = 2;
+  optional string       comment           = 3;
+  optional bool         result            = 4; //!< результат выполнения запроса
+}
+//запрос по дескрипторам
+message SimpleDataRequest {
+  repeated string       id                = 1; //!< метео данные в виде Field
+  optional float       smootch           = 2;
+
+}
+
+message Skelet {
+  message Dot {
+  optional int32           number = 1;//номер точки в скелете
+  repeated meteo.surf.Point coord = 2;//последовательность точек, обозначающих перемещение исходной (number==0) точки скелета
+  optional float           length = 3;//длина траектории адвекции каждой точки
+ }
+  optional string       uuid = 1;
+  repeated Dot          dots = 2;//точки скелета. точки с number==0 образуют исходный скелет
+}
+
+//ответ на получение точек адвекции
+message AdvectObjectReply {
+  repeated Skelet       skelets              = 1;  //!< координаты точек объекта
+  required string       total_adv_time       = 2;  //!< конечное время в формате Qt::ISODate
+  optional string       error                = 3;  //!< результат выполнения запроса
+  repeated DataDesc     descr                = 4;  //!< Список описаний, использованных при расчетах полей
+}
+
+
+//запрос на получение точки адвекции
+message AdvectObjectRequest {
+  repeated Skelet       skelet              = 1;
+  required string       date              = 2; //!< дата и время (срок) данных
+  required int32        adv_time          = 3; //!< время расчета секунды
+  optional int32        time_step         = 4; //!< шаг для промежуточных точек
+  optional int32        center            = 5; //!< центр для расчетов
+  optional int32        level             = 6; //!< уровень для расчетов
+  optional int32        hour              = 7; //!< начальный срок для расчетов
+  optional bool         need_field_descr  = 8; //!< если true, то в ответе будет описание
+  optional bool         need_prom_points  = 9; //!< если true, то в ответе будет весь трак
+  optional bool         need_length       = 10; //!<если true, то в ответе будет длина трака
+  optional double       koef              = 11;//!< коэффициент пересчета для адвекции
+}
+
+message OnePointData{
+  required meteo.surf.Point coord         = 1;  //!< координаты точек
+  optional double       value             = 2;  //!< значение параметра
+  optional string       text_value        = 3; //!< значение параметра в текстовом виде
+  optional string       text              = 4;  //!< описание значения
+  optional DataDesc     fdesc             = 5;  //!< описание доступных данных
+  optional double       dd_x              = 6;  //!< производная по долготе (на 100 км)
+  optional double       dd_y              = 7;  //!< производная по широте(на 100 км)
+  optional double       dd2_xx            = 8;  //!< вторая производная по долготе(на 100 км)
+  optional double       dd2_yy            = 9;  //!< вторая производная по широте(на 100 км)
+  optional double       dd2_xy            = 10;  //!< вторая производная по широте(на 100 км)
+  optional double       rad_kriv          = 11; //!< радиус кривизны изолинии
+  optional bool         danger            = 12; //!< наличие ОЯП
+}
+
+message PointsData{
+  repeated meteo.surf.MeteoData meteo_data = 1; //<! координаты точек и значения
+  optional DataDesc     fdesc             = 2;
+}
+
+//ответ на получение данных
+message ValueDataReply {
+  repeated OnePointData data              = 1; //!< значение параметра
+  optional string       error             = 2; //!< описание результата выполнения запроса
+  optional string       comment           = 3; //!< описание результата выполнения запроса
+  optional bool         result            = 4; //!< результат выполнения запроса
+}
+
+//ответ на получение данных
+message ValuesDataReply {
+  repeated OnePointData data              = 1;
+  optional string       error             = 2;
+  optional string       comment           = 3; //!< описание результата выполнения запроса
+  optional bool         result            = 4; //!< результат выполнения запроса
+}
+//
+//message Extremum {
+//  optional meteo.surf.Point coord         = 1; //!< координаты экстремумов поля
+//  optional double           value         = 2; //!<значение экстремумa поля
+//  optional int32            tip           = 3; //!<тип экстремума поля (0 - "+") (1 - "-")
+//  optional string           date          = 4; //!< дата и время (срок) данных
+//  optional meteo.GeoPointPb pbcoord       = 5; //!< координаты экстремумов поля
+//}
+//
+//message Extremums {
+//  optional int32            num           = 1;
+//  repeated Extremum         extremums     = 2;
+//  optional string           error         = 3; //!< результат выполнения запроса
+//  optional string           date          = 4; //!< дата и время (срок) данных
+//}
+
+//ответ на получение данных
+message ExtremumTrajReply {
+  repeated Extremums        traj          = 1;
+  optional string           error         = 2; //!< результат выполнения запроса
+}
+
+
+//информация о центрах
+message CenterInfo {
+ optional int32             number        = 1;  //!< номер прогностического центра
+ optional int32             priority      = 2;  //!< приоритет о прогностического центра (используется для выбора наиболле подходящего центра для отбора данных)
+ optional string            name          = 3;  //!< данные о прогностическом центре
+ optional string            short_name    = 4;  //!< данные о прогностическом центре
+ repeated HourInfo          hour          = 5;  //!< доступные прогностические сроки
+}
+
+//ответ на получение центров
+message CentersResponse {
+  repeated CenterInfo       info          = 1; //!< данные о прогностическом центре
+  optional string           error         = 2; //!< описание ошибки
+  optional string           comment       = 3; //!< описание результата выполнения запроса
+  optional bool             result        = 4; //!< результат выполнения запроса
+}
+
+message HourInfo {
+  optional string           datetime      = 1; //!<время разработки прогноза
+  optional int32            hour          = 2; //!<срок прогноза в секундах
+}
+
+message HourResponse {
+  repeated CenterInfo info          = 1; //!<
+  optional bool             result        = 2; //!<результат выполнения запроса
+  optional string           comment       = 3; //!<описание результата выполнения запроса
+}
+
+
+//ответ на получение прогностических зондов
+message ProfileDataReply {
+  required meteo.surf.ZondValueReply zonds = 1; //данные
+  optional string           error         = 2; //!<результат выполнения запроса
+  optional string           comment       = 3;//!<описание результата выполнения запроса
+  optional bool             result        = 4; //!< результат выполнения запроса
+}
+
+message SimpleDataReply {
+  optional string           id            = 1; //!< метео данные в виде Field
+  optional string           error         = 2;
+  optional string           comment       = 3;
+  optional bool             result        = 4; //!< результат выполнения запроса
+
+}
+
+message DateReply {
+  repeated string  date       = 1; //!< срок данных
+  optional string  comment    = 2; //!<описание результата выполнения запроса
+  optional bool    result     = 3; //!< результат выполнения запроса
+}
+
+message FieldId {
+  optional int32   center     = 1;
+  optional int32   priority   = 2;
+  optional int32   model      = 3;
+  optional string  name       = 4;
+  optional string  short_name = 5;
+  optional int32   hour       = 6;
+}
+
+message Descr {
+  optional int32  descr       = 1;
+  optional string fileid      = 2; //!< id записи с параметрами поля
+  //  optional string filepath    = 3;
+  optional int32  level_type  = 4;
+  optional string fs_id    = 5; //!< id файла (gridfs)
+}
+
+message Level {
+  optional int32  level  = 1;
+  repeated Descr  descrs = 2;
+}
+
+message FieldsResponse {
+  optional FieldId     id = 1;
+  repeated Level   levels = 2;
+  optional int32    count = 3;
+}
+
+message ManyFieldsResponse {
+  repeated FieldsResponse zond = 1;
+}
+
+message ManyFieldsForDate {
+   optional string          forecast_start = 1;
+   repeated FieldsResponse  zonds          = 2;
+}
+
+
+message ManyFieldsForDatesResponse {
+  repeated ManyFieldsForDate    date    = 1;
+  optional string               comment = 2;
+  optional bool                 result  = 3;
+}
+
+message NetValue {
+  optional int32                index   = 1; //!< Индекс узла сетки
+  optional double               value   = 2; //!< Значение величины в узле
+}
+
+message Field {                 //!< Поле значений величины (значения в узлах регулярной сетки)
+  optional FieldHeader                header      = 1;
+  optional meteo.map.proto.FieldColor color       = 2;
+  repeated NetValue                   value       = 3;
+  repeated Extremum                   extremums   = 4;
+}
+
+message FieldReply {
+  repeated Field                field   = 1;
+  optional bool                 result  = 2;
+  optional string               comment = 3;
+}
+
+//! Сервис
+service FieldService {
+
+    rpc GetAvailableCenters( DataRequest ) returns ( CentersResponse ); //! Получить список доступных данных
+    rpc GetAvailableCentersForecast( DataRequest ) returns ( CentersResponse ); //! Получить список доступных данных
+    rpc GetAvailableCentersAD( DataRequest ) returns ( CentersResponse );
+    rpc GetAvailableHours( DataRequest ) returns ( HourResponse ) ; //!< Получить информацию о доступных сроках
+
+    rpc GetFieldDataPoID( SimpleDataRequest ) returns ( DataReply ); //!< Запрос на получение данных
+
+    rpc GetFieldData( DataRequest ) returns ( DataReply ); //!< Запрос на получение данных
+    rpc GetFieldsData( DataRequest ) returns ( ManyDataReply ); //!< Запрос на получение данных
+    rpc GetRadarData( DataRequest ) returns ( DataReply ); //!< Запрос на получение данных МРЛ
+
+    rpc GetAvailableData( DataRequest ) returns ( DataDescResponse ); //! Получить список доступных данных
+
+    rpc GetFieldProto( DataRequest ) returns ( FieldReply );
+
+   //rpc GetAdvectFields( AdvectDataRequest ) returns ( AdvectDataReply ); //! Получить список полей для адвекции
+
+    //rpc GetAdvectPoints( AdvectDataRequest ) returns ( AdvectDataReply ); //! Получить координаты точки адвекции
+    rpc GetAdvectObject( AdvectObjectRequest ) returns ( AdvectObjectReply );//! Получить координаты точки адвекции
+    //rpc GetAdvectObjects( AdvectObjectsRequest ) returns ( AdvectObjectsReply );
+
+    rpc GetProfile( DataRequest ) returns ( ProfileDataReply );
+    rpc GetADZond( DataRequest ) returns ( meteo.surf.TZondValueReply ); //! Получить зонд для аэрологической диаграммы
+    rpc GetLastDate( DataRequest ) returns ( SimpleDataReply  ); //! Получить последнюю дату начала прогноза для центра за выбранный период. Для получения полейж
+    rpc GetFieldDates (DataRequest) returns ( DateReply ); //!Получить список дат, по которым есть даные, за диапазон дат
+    rpc GetNearDate   (DataRequest) returns ( DateReply ); //! Получить ближайшую дату, за которую есть данные, от заданной даты.
+    rpc GetFieldsForDate (DataRequest) returns ( ManyFieldsForDatesResponse ); //! Получить филды за дату. Сгруппированные по Центрам, Срокам, моделям и каждый дескриптор на своём слое.
+   // rpc GetValues( DataRequest ) returns ( ValueDataReply );
+
+
+    rpc AddProcessField( ProcessFieldData ) returns ( SimpleDataReply ); //!< Запрос на получение данных
+    rpc GetProcessField( SimpleDataRequest ) returns ( ProcessFieldData ); //!< Запрос на получение данных
+    rpc GetProcessFieldsKorr( SimpleDataRequest ) returns ( ProcessFieldsData ); //!< Запрос на получение данных
+    rpc GetProcessFields( SimpleDataRequest ) returns ( ProcessFieldsData ); //!< Запрос на получение данных
+    rpc EditProcessField( ProcessFieldData ) returns ( SimpleDataReply ); //!< Запрос на получение данных
+    rpc DeleteProcessField( SimpleDataRequest ) returns ( SimpleDataReply ); //!< Запрос на получение данных
+
+    rpc GetForecastValues( DataRequest ) returns ( ValueDataReply ); //!< Запрос на получение прогностических данных
+   // rpc getAvailableForecastData( DataRequest ) returns ( DataDescResponse ); //!< Запрос на получение прогностических данных
+
+    rpc getSynSit( DataRequest ) returns ( ValueDataReply ); //!< Запрос на получение  данных о синоптической обстановке в точке с координатами
+    rpc GetFieldsMData( DataRequest ) returns ( surf.DataReply ); //!< Запрос на получение  данных в виде meteodata
+    rpc GetFieldsDataWithoutForecast( DataRequest ) returns ( ManyDataReply ); //!< Запрос на получение данных
+
+    rpc GetExtremumsTraj( SimpleDataRequest ) returns ( ExtremumTrajReply ); //!< Запрос на получение прогностических данных
+    rpc GetExtremums( DataRequest ) returns ( meteo.field.ExtremumTrajReply );      //!<
+
+    rpc GetFieldDataForMeteosummary( DataRequest ) returns ( ValueDataReply ); //!< Запрос данных по координате и дате для формирования метеосводок
+    rpc CalcForecastOpr( DataAnalyseRequest ) returns ( SimpleDataReply ); //!< Провести анализ поля
+
+    rpc GetIsoLines( DataRequest ) returns ( meteo.IsoLines );
+    rpc GetIsoLinesShp( DataRequest ) returns ( meteo.IsoLinesShp );
+    rpc GetGeoTiff( DataRequest ) returns ( DataReply );
+
+}

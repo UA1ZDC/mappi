@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+import "satellite.proto";
+import "thematic.proto";
+
+package mappi.proto;
+
+
+message SatelliteImage {
+  optional string satellite_name = 1;   //!< название спутника (в данный момент не используется)
+  optional string date_start = 2;       //!< дата и время начала сеанса
+  optional string date_end = 3;         //!< дата и время конца сеанса
+  optional string path = 4;             //!< путь к файлу (в данный момент не используется)
+  optional int32 session_id = 6;        //!< идентификатор сессии
+  optional mappi.conf.InstrumentType instrument_type = 7;
+  optional mappi.conf.ThemType type = 8;           //!< тип тематической обработки
+  optional string themName = 9;           //!< название тематической обработки
+  optional string format = 10 [default = "bin"];               //!< формат данных: бинарные ("bin"), изображение ("png", "tiff" и т.д.)
+
+}

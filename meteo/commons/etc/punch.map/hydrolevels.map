@@ -1,0 +1,14 @@
+name: "hydrolevels"
+title: "Состояние уровня воды"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "kn15dLevel"
+  query_type: kLastValue
+  data_type: kHydroType
+  data_type: kHydroStation
+  data_type: kEndHydroType
+  type_level: 1
+  level : 0
+}
+webpunchmap: true

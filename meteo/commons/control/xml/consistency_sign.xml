@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<control>
+  <category name="level_type" num="100"/> <!--аэрологические данные-->
+
+  <level >
+    <val level="1000" range="150"/>
+    <val level="850" range="150"/>
+    <val level="700" range="150"/>
+    <val level="500" range="100"/>
+    <val level="400" range="100"/>
+    <val level="300" range="100"/>
+    <val level="250" range="75"/>
+    <val level="200" range="75"/>
+    <val level="150" range="75"/>
+    <val level="100" range="75"/>
+    <val level="70"  range="20"/>
+    <val level="50"  range="20"/>
+    <val level="30"  range="20"/>
+    <val level="20"  range="10"/>
+    <val level="10"  range="10"/>
+    <val level="7"   range="10"/>
+    <val level="5"   range="10"/>
+    <val level="3"   range="10"/>
+    <val level="2"   range="10"/>
+    <val level="1"   range="10"/>
+  </level>
+
+  <interpolation>
+    <!-- <val signName="TT1Temp" name="TT1" signLevel="PP1Temp" nameLevel="PP1" level="300" low_limit="1.5" hi_limit="3" /> -->
+    <!-- <val signName="TdTemp"  name="Td1" signLevel="PP1Temp" nameLevel="PP1" limit="1.5" /> -->
+    <!-- <val signName="dd1Wind" name="dd1" signLevel="PP1Wind" nameLevel="PP1" limit="10"  />  -->
+    <!-- <val signName="ff1Wind" name="ff1" signLevel="PP1Wind" nameLevel="PP1" limit="5"   />  -->
+    <val signName="T"   signLevel="P1" level="300" low_limit="1.5" hi_limit="3" />
+    <val signName="Td"  signLevel="P1" limit="1.5" />
+    <val signName="dd"  signLevel="P1" limit="10"  /> 
+    <val signName="ff"  signLevel="P1" limit="5"   /> 
+  </interpolation>  
+  
+  <hydrostatic>
+    <val signName="hh" signLevel="P1" level="400" low_limit="15" hi_limit="30" />
+    <!-- <val signName="hh1Temp" name="hh1" signLevel="PP1Temp" nameLevel="PP1" level="400" low_limit="15" hi_limit="30" />  -->
+    <!-- <val signName="hh1Temph" name="hh1h" signLevel="PP1Temph" nameLevel="PP1h" level="400" low_limit="15" hi_limit="30" />  -->
+   </hydrostatic>
+</control>

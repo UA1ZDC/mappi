@@ -1,0 +1,4 @@
+{
+  "count": @collection@,
+  "query": { @collectionGridFsField@ :  { "$in" : [ @fieldValue@, @fieldValue2@ ] } }
+}

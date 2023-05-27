@@ -1,0 +1,22 @@
+From: Steven Robbins <smr@debian.org>
+Date: Mon, 23 Apr 2018 21:48:25 -0500
+Subject: Set import path for private python module.
+
+---
+ googlemock/scripts/generator/gmock_gen.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/googlemock/scripts/generator/gmock_gen.py b/googlemock/scripts/generator/gmock_gen.py
+index 8cc0d13..68af073 100755
+--- a/googlemock/scripts/generator/gmock_gen.py
++++ b/googlemock/scripts/generator/gmock_gen.py
+@@ -22,8 +22,7 @@ import os
+ import sys
+ 
+ if __name__ == '__main__':
+-  # Add the directory of this script to the path so we can import gmock_class.
+-  sys.path.append(os.path.dirname(__file__))
++  sys.path.append("/usr/share/googletest-tools/generator")
+ 
+   from cpp import gmock_class
+   # Fix the docstring in case they require the usage.

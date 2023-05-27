@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SelectLevel</class>
+ <widget class="QWidget" name="SelectLevel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>193</width>
+    <height>793</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Выбор уровня</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <widget class="QGroupBox" name="aerobox">
+     <property name="minimumSize">
+      <size>
+       <width>175</width>
+       <height>370</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>175</width>
+       <height>370</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QRadioButton" name="aerotropo">
+        <property name="text">
+         <string>Тропопауза</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">groupaero</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="aeromaxwind">
+        <property name="text">
+         <string>Макс.ветер</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">groupaero</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="2" column="0">
+         <widget class="QRadioButton" name="aero850">
+          <property name="text">
+           <string>850</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QRadioButton" name="aero50">
+          <property name="text">
+           <string>50</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QRadioButton" name="aero10">
+          <property name="text">
+           <string>10</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QRadioButton" name="aero200">
+          <property name="text">
+           <string>200</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QRadioButton" name="aero700">
+          <property name="text">
+           <string>700</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QRadioButton" name="aero30">
+          <property name="text">
+           <string>30</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <widget class="QRadioButton" name="aeroLE5">
+          <property name="text">
+           <string>&lt;5</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QRadioButton" name="aero150">
+          <property name="text">
+           <string>150</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QRadioButton" name="aero100">
+          <property name="text">
+           <string>100</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QRadioButton" name="aero500">
+          <property name="text">
+           <string>500</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QRadioButton" name="aero250">
+          <property name="text">
+           <string>250</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QRadioButton" name="aero70">
+          <property name="text">
+           <string>70</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QRadioButton" name="aero300">
+          <property name="text">
+           <string>300</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QRadioButton" name="aero400">
+          <property name="text">
+           <string>400</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <widget class="QRadioButton" name="aero7">
+          <property name="text">
+           <string>7</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QRadioButton" name="aero1000">
+          <property name="text">
+           <string>1000</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QRadioButton" name="aero925">
+          <property name="text">
+           <string>925</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QRadioButton" name="aero20">
+          <property name="text">
+           <string>20</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QRadioButton" name="aero5">
+          <property name="text">
+           <string>5</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="9" column="1">
+         <widget class="QRadioButton" name="aeroAll">
+          <property name="text">
+           <string>Все</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupaero</string>
+          </attribute>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>0</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="oceanbox">
+     <property name="minimumSize">
+      <size>
+       <width>175</width>
+       <height>250</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>175</width>
+       <height>350</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QRadioButton" name="ocean5">
+          <property name="text">
+           <string>5</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QRadioButton" name="ocean50">
+          <property name="text">
+           <string>50</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QRadioButton" name="ocean10">
+          <property name="text">
+           <string>10</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QRadioButton" name="ocean100">
+          <property name="text">
+           <string>100</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QRadioButton" name="ocean15">
+          <property name="text">
+           <string>15</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QRadioButton" name="ocean150">
+          <property name="text">
+           <string>150</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QRadioButton" name="ocean20">
+          <property name="text">
+           <string>20</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QRadioButton" name="ocean200">
+          <property name="text">
+           <string>200</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QRadioButton" name="ocean25">
+          <property name="text">
+           <string>25</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QRadioButton" name="ocean250">
+          <property name="text">
+           <string>250</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QRadioButton" name="ocean30">
+          <property name="text">
+           <string>30</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QRadioButton" name="ocean300">
+          <property name="text">
+           <string>300</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QRadioButton" name="ocean40">
+          <property name="text">
+           <string>40</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QRadioButton" name="ocean400">
+          <property name="text">
+           <string>400</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <widget class="QRadioButton" name="oceanbottom">
+          <property name="text">
+           <string>Дно</string>
+          </property>
+          <attribute name="buttonGroup">
+           <string notr="true">groupsea</string>
+          </attribute>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>17</width>
+          <height>23</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="custombox">
+     <property name="minimumSize">
+      <size>
+       <width>175</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>175</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>aerotropo</tabstop>
+  <tabstop>aeromaxwind</tabstop>
+  <tabstop>aero1000</tabstop>
+  <tabstop>aero150</tabstop>
+  <tabstop>aero925</tabstop>
+  <tabstop>aero100</tabstop>
+  <tabstop>aero850</tabstop>
+  <tabstop>aero70</tabstop>
+  <tabstop>aero700</tabstop>
+  <tabstop>aero50</tabstop>
+  <tabstop>aero500</tabstop>
+  <tabstop>aero30</tabstop>
+  <tabstop>aero400</tabstop>
+  <tabstop>aero20</tabstop>
+  <tabstop>aero300</tabstop>
+  <tabstop>aero10</tabstop>
+  <tabstop>aero250</tabstop>
+  <tabstop>aero7</tabstop>
+  <tabstop>aero200</tabstop>
+  <tabstop>aeroLE5</tabstop>
+  <tabstop>ocean5</tabstop>
+  <tabstop>ocean50</tabstop>
+  <tabstop>ocean10</tabstop>
+  <tabstop>ocean100</tabstop>
+  <tabstop>ocean15</tabstop>
+  <tabstop>ocean150</tabstop>
+  <tabstop>ocean20</tabstop>
+  <tabstop>ocean200</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="groupaero"/>
+  <buttongroup name="groupsea"/>
+ </buttongroups>
+</ui>

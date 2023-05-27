@@ -1,0 +1,38 @@
+code: "maxTemp"
+name: "Максимальная температура"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/maxTemp.template"
+wind: false
+rule {
+  pos {
+    x: -11
+    y: -2
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4294128420
+    minuscolor: 4280035572
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  testval: 2
+  id {
+    descr: 812111
+    name: "Tx"
+    description: ""
+  }
+}
+center: kCircle
+radius: 5

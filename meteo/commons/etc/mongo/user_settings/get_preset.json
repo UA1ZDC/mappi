@@ -1,0 +1,6 @@
+{
+  "find" : "user_folders",
+  "filter" : {
+    "user" : @user@
+  }
+}

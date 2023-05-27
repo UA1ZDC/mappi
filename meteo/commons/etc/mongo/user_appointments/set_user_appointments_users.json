@@ -1,0 +1,14 @@
+{
+   "update": "user_appointments",
+   "updates": [
+      { "q": { "_id" : { "$eq" : @id@ }  },
+        "u": {
+          "$set" : {
+	    "users" : @users@
+          }
+        },
+        "upsert": false,
+        "multi": false
+      }
+   ]
+}

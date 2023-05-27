@@ -1,0 +1,7 @@
+locate 
+qt5-qmake
+qtbase5-dev
+qtbase5-dev-tools
+qt5-default
+g++
+make

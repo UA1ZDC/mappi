@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="METEO44" text="METEO44" category="62">
+   <MessageSections>^(?:\s*М[еЕ][тТ][еЕ][оО])?((?:\s*[\-/]){0,2}(?:\s*44[\d/]{2})(?:\s*[\-/]){0,2}(?:\s*[\d/]{5}))((?:\s*[\-/]){0,2}(?:\s*[\d/]{4})(?:\s*[\-/]){0,2}(?:\s*[\d/]{6})(?:\s*[\-/]){0,2})((?:\s*[\-/]){0,2}(?:\s*24[\d/]{2})(?:\s*[\-/]){0,2}(?:\s*[\d/]{5})(?:\s*[\-/]){0,2}(?:\s*34[\d/]{2})(?:\s*[\-/]){0,2}(?:\s*[\d/]{5})(?:\s*[\-/]){0,2}(?:\s*44[\d/]{2})(?:\s*[\-/]){0,2}(?:\s*54[\d/]{2})(?:\s*[\-/]){0,2}(?:\s*64[\d/]{2})(?:\s*[\-/]){0,2})</MessageSections> 
+    <Section number="1" text="ALL SECTION">
+      <SectionGroups>(?:\s*[\-/]{1})?(\s*44[\d/]{2})(?:\s*[\-/]{1})?(\s*[\d/]{5})</SectionGroups>
+        <Group number="1" text="mumber of station">
+  	  <GroupValues>\s*44([\d]{2})</GroupValues>
+	  <Value number="1"  descrName="NN44" text="Условный номер станции" />
+         </Group>
+         <Group number="2" text="Day,hour, min">
+	 <GroupValues>\s*([0-3]{1}[0-9]{1})([0-2]{1}[0-9]{1})([0-5]{1})</GroupValues>
+         <Value number="1"  descrName="YY" text="day"/>
+  	 <Value number="2"  descrName="GG" text="hour"/>
+ 	 <Value number="3"  descrName="g" text="min"/>
+      </Group>
+         </Section>
+    <Section number="2" text="stations">  
+	<SectionGroups>(?:\s*[\-/]{1})?(\s*[\d/]{4})(?:\s*[\-/]{1})?(\s*[\d/]{6})(?:\s*[\-/]{1})?</SectionGroups>
+         <Group number="1" text="">
+         <GroupValues>\s*([\d/]{4})</GroupValues>
+         <Value number="1"  descrName="bbbb" text="h of station"/>
+           </Group>
+         <Group number="2" text="">
+         <GroupValues>\s*([\d/]{4})([\d/]{2})</GroupValues>
+         <Value number="1"  descrName="pppp0" text="pressure of station"/>
+ 	 <Value number="2"  descrName="tt0" text="temperature of station"/>
+      </Group>
+    </Section>
+    <Section number="3" text="baric">  
+	<SectionGroups>(?:\s*[\-/]{1})?(\s*24[\d/]{2}(?:\s*[\-/]){0,2}\s*[\d/]{5})(?:\s*[\-/]){0,2}(\s*34[\d/]{2}(?:\s*[\-/]){0,2}\s*[\d/]{5})(?:\s*[\-/]){0,2}(\s*44[\d/]{2})(?:\s*[\-/]){0,2}(\s*54[\d/]{2})(?:\s*[\-/]){0,2}(\s*64[\d/]{2})(?:\s*[\-/]){0,2}</SectionGroups>
+    <Group number="1" text="">
+      <item>
+         <GroupValues>\s*([\d/]{2})([\d/]{2})(?:\s*[\-/]){0,2}\s*([\d/]{3})([\d/]{2})</GroupValues>
+	 <Value number="1"  descrName="hhb" />
+         <Value number="2"  descrName="ttb" />
+         <Value number="1"  descrName="ddb" />
+ 	 <Value number="2"  descrName="ffb" />
+	</item>
+      </Group>
+      <Group number="3" text="">
+	<item>
+         <GroupValues>\s*([\d/]{2})([\d/]{2})(?:\s*[\-/]){0,2}\s*([\d/]{3})([\d/]{2})</GroupValues>
+	 <Value number="1"  descrName="hhb" />
+         <Value number="2"  descrName="ttb" />
+         <Value number="1"  descrName="ddb" />
+ 	 <Value number="2"  descrName="ffb" />
+	</item>
+      </Group>
+      <Group number="5" text="">
+	<item>
+         <GroupValues>\s*([\d/]{2})([\d/]{2})</GroupValues>
+         <Value number="1"  descrName="hhb" />
+ 	 <Value number="2"  descrName="ttb" />
+	</item>
+      </Group>
+       <Group number="6" text="">
+	 <item>
+         <GroupValues>\s*([\d/]{2})([\d/]{2})</GroupValues>
+         <Value number="1"  descrName="hhb" />
+ 	 <Value number="2"  descrName="ttb" />
+	 </item>
+      </Group>
+       <Group number="7" text="">
+	 <item>
+         <GroupValues>\s*([\d/]{2})([\d/]{2})</GroupValues>
+         <Value number="1"  descrName="hhb" />
+ 	 <Value number="2"  descrName="ttb" />
+	 </item>
+      </Group>
+    </Section>
+</Message>
+  
+
+  
+  

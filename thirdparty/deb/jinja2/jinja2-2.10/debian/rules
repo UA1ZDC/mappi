@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+
+export PYBUILD_NAME=jinja2
+
+%:
+	dh $@ --with python2,python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_auto_clean:
+	make -C docs clean
+	dh_auto_clean
+
+override_dh_auto_build-indep:
+	PYTHONPATH=$(CURDIR):$(CURDIR)/docs make -C docs html
+
+override_dh_installchangelogs:
+	dh_installchangelogs CHANGES.rst

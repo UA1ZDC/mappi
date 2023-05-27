@@ -1,0 +1,10 @@
+Package: typing-extensions
+Version: 3.7.4.2
+Architecture: amd64
+Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>
+Installed-Size: 111
+Depends: python3:any (>= 3.5~)
+Section: python
+Priority: optional
+Description: Backported and Experimental Type Hints for Python 3.5+
+ Summary: Backported and Experimental Type Hints for Python 3.5+

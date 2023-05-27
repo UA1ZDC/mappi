@@ -1,0 +1,135 @@
+syntax = "proto2";
+
+package TGrid;
+
+//Номера в описании структур - номера шаблонов сеток
+//т. - таблица; п. - примечание
+
+message Shape {
+  enum ShapeType {
+    Spherical = 0;
+    Oblate    = 1;
+  };
+
+  required ShapeType type = 1;	//!< Форма Земли 
+  optional float radius = 2;	//!< Радиус сферической Земли
+  optional float majorAxis = 3;	//!< Большая ось сплюснутого сфероида Земли
+  optional float minorAxis = 4;	//!< Малая ось сплюснутого сфероида Земли
+}
+
+//! grib2 :0, 1, 2, 3, 4, 5, 20, 30, 31, 40, 41, 42, 43, 110; grib1: 0, 3, 4, 5, 8, 10, 13, 14, 20, 24, 30, 34
+message LatLon {
+  optional Shape shape = 1;	//!< Форма Земли 
+  required uint32 ni = 2;	//!< Количество узлов вдоль параллели
+  required uint32 nj = 3;	//!< Количество узлов вдоль меридиана
+  optional sint32 basicAngle = 4; //!< Основной угол начальной продукционной области 
+  optional sint32 divBasicAngle = 5; //!< Подразделения основного угла используются для определения экстремальных долгот и широт и приращений по направлениям
+  optional sint32 la1 = 6;	//!< Широта первого узла сетки 
+  optional sint32 lo1 = 7;	//!< Долгота первого узла сетки 
+  required uint32 scanFlag = 8; //!< Флаги разрешения и компонентов (grib2:т.3.3; grib1: т.7)
+  optional sint32 la2 = 9;	//!< Широта последнего узла сетки 
+  optional sint32 lo2 = 10;	//!< Долгота последнего узла сетки приращение в направлении i
+  optional sint32 di = 11;	//!< Приращение в направлении i
+  optional sint32 dj = 12;	//!< Приращение в направлении j
+  required uint32 scanMode = 13; //!< Режим сканирования (grib2:т.3.4; grib1: т.8)
+  repeated uint32 points = 14;   //!< Перечень количества узлов вдоль каждой меридианы или параллели только для квазирегулярных сеток, описанных в примечаниях 2 и 3)
+  repeated sint32 lonList = 15; //!< Список долгот
+  repeated sint32 latList = 16; //!< Список широт
+  optional sint32 lats = 17;	   //!< Latitude of the Southern pole of projection
+  optional sint32 lons = 18;	   //!< Longitude of the Southern pole of projection
+  optional sint32 rotAngle = 19;  //!< Angle of rotation of projection
+  optional sint32 latSt = 20;	   //!< Latitude of the pole of stretching
+  optional sint32 lonSt = 21;	   //!< Longitude of the pole stretching
+  optional uint32 stretch = 22;	  //!< Stretching factor
+  optional uint32 N = 23;          //!< Число параллелей между полюсом и экватором
+  optional sint32 lad = 24;        //!< latitude(s) at which the Mercator projection intersects the Earth (Latitude(s) where Di and Dj are specified)   
+  optional uint32 lov = 25;        //!< ориентация сетки
+  optional uint32 centerFlag = 26; //!< Метка центра флага (grib2:т.3.5; grib1:п.5)
+  optional sint32 latin1 = 27;     //!< первая широта от полюса, на которой секущий конус пересекает сферу
+  optional sint32 latin2 = 28;     //!< вторая широта от полюса, на которой секущий конус пересекает сферу
+};
+
+//!grib2: 10, 12; grib1: 1
+message Mercator {
+  required Shape shape = 1;	//!< Форма Земли 
+  required uint32 ni = 2;	//!< Количество узлов вдоль параллели
+  required uint32 nj = 3;	//!< Количество узлов вдоль меридиана
+  optional sint32 la1 = 4;	//!< Широта первого узла сетки 
+  optional sint32 lo1 = 5;	//!< Долгота первого узла сетки 
+  required uint32 scanFlag = 6; //!< Флаги разрешения и компонентов (grib2:т.3.3; grib1: т.7)
+  optional sint32 lad = 7;        //!< latitude(s) at which the Mercator projection intersects the Earth (Latitude(s) where Di and Dj are specified)   
+  optional sint32 la2 = 8;	//!< Широта последнего узла сетки 
+  optional sint32 lo2 = 9;	//!< Долгота последнего узла сетки приращение в направлении i
+  required uint32 scanMode = 10; //!< Режим сканирования (grib2:т.3.4; grib1: т.8)
+  optional sint32 basicAngle = 11; //!< Основной угол начальной продукционной области 
+  optional sint32 di = 12;	//!< Приращение в направлении i
+  optional sint32 dj = 13;	//!< Приращение в направлении j
+  optional sint32 laR = 14;	//!< Географическая широта точки отсчета
+  optional sint32 loR = 15;	//!< Географическая долгота точки отсчета
+  optional float  m  = 16;	//!< Коэффициент масштабирования в точке отсчета соотношения расстояния на карте к расстоянию на сфероиде
+  optional sint32 xr = 17;	//!< Смещение по долготе, координата направления i точки отсчета, в 10^-2 м
+  optional sint32 yr = 18;	//!< Смещение по широте, координата направления j точки отсчета, в 10^-2 м
+  optional sint32 x1 = 19;	//!< Координата первой точки сетки в направлении i, в единицах, равных 10^-2 м	 
+  optional sint32 y1 = 20;	//!< Координата первой точки сетки в направлении j, в единицах, равных 10^-2 м	 
+  optional sint32 x2 = 21;	//!< Координата последней точки сетки в направлении i, в единицах, равных 10^-2 м
+  optional sint32 y2 = 22;	//!< Координата последней точки сетки в направлении j, в единицах, равных 10^-2 м
+}
+
+
+//! grib2: 50, 51, 52, 53; grib1: 50, 60, 70, 80
+message SpherHarmCoef {
+  required uint32 J = 1; //!< Пятиугольный параметр разрешения
+  required uint32 K = 2; //!< Пятиугольный параметр разрешения
+  required uint32 M = 3; //!< Пятиугольный параметр разрешения
+  required uint32 type = 4; //!< Тип представления (grib2:т.3.6; grib1:т.9)
+  required uint32 mode = 5; //!< Режим представления (grib2:т.3.7; grib1:т.10)
+  optional sint32 lats = 6; //!< Широта Южного полюса
+  optional sint32 lons = 7; //!< Долгота Южного полюса
+  optional sint32 rotAngle = 8; //!< Угол поворота 
+  optional sint32 latSt = 9;  //!< Широта полюса растягивания
+  optional sint32 lonSt = 10; //!< Долгота полюса растягивания
+  optional uint32 stretch = 11; //!< Коэффициент растягивания 
+}
+
+//! grib2: 90 grib1: 90
+message SpaceView {
+  optional Shape shape = 1;	//!< Форма Земли 
+  required uint32 nx = 2;	//!< Количество узлов по оси x (колонок)
+  required uint32 ny = 3;	//!< Количество узлов по оси y (рядов или линий)
+  required sint32 lap = 4;	//!< Широта подспутниковой точки
+  required sint32 lop = 5;	//!< Долгота подспутниковой точки
+  required uint32 scanFlag = 6;	//!< Флаги разрешения и компонентов (grib2:т.3.3; grib1: т.7)
+  required uint32 dx = 7;	//!< Видимый диаметр Земли в направлении оси x, выраженный в шагах сетки
+  required uint32 dy = 8;	//!< Видимый диаметр Земли в направлении оси y, выраженный в шагах сетки
+  required sint32 xp= 9;	//!< Координата x подспутниковой точки (в единицах, равных 10^-3 шага сетки, выраженных целым числом)
+  required sint32 yp= 10;	//!< Координата y подспутниковой точки (в единицах, равных 10^-3 шага сетки, выраженных целым числом)
+  required uint32 scanMode = 11; //!< Режим сканирования (grib2:т.3.4; grib1: т.8)
+  required uint32 orientation = 12; //!< Ориентация сетки, т. е. угол между осью y и меридианом подспутниковой точки в направлении возрастания широты
+  required uint32 nr = 13;	//!< Высота камеры над центром Земли, измеренная в единицах радиуса (экваториального) Земли, умноженных на коэффициент масштабирования, равный 10^6
+  required sint32 xo= 14;	//!< Координата x точки получения изображения сектора
+  required sint32 yo= 15;	//!< Координата y точки получения изображения сектора
+}
+
+//! grib2: 100
+message Icosahedron {
+  required uint32 n2 = 1;	//!< Показатель степени 2 для количества интервалов на сторонах главного треугольника
+  required uint32 n3 = 2;	//!< Показатель степени 3 для количества интервалов на сторонах главного треугольника
+  required uint32 ni = 3;	//!< Количество интервалов на сторонах главного треугольника икосаэдра
+  required uint32 nd = 4;	//!< Количество ромбов
+  required uint32 latPole = 5;	//!< Широта точки полюса икосаэдра на сфере
+  required uint32 lonPole = 6;	//!< Долгота точки полюса икосаэдра на сфере
+  required uint32 lonC = 7;	//!< Долгота центральной линии первого ромба икосаэдра на сфере
+  required uint32 pos = 8;	//!< Положение узла сетки (см. кодовую таблицу 3.8)
+  required uint32 num = 9;	//!< Порядок нумерации ромбов (флаг — см. таблицу флагов 3.9)
+  required uint32 mode = 10;	//!< Режим сканирования для одного ромба (флаги — см. таблицу флагов 3.10)
+  required uint32 nt = 11;	//!< Общее количество узлов сетки
+};
+
+//! grib2: 101
+message Unstructured {
+  required uint32 shape = 1;	//!< Форма Земли 
+  required uint32 grid = 2;	//!< Номер используемой сетки (определяется центром-поставщиком)
+  required uint32 gridRef = 3;	//!< Соответствующий номер сетки (для возможности снабжения пояснительными замечаниями С-сетки Аракавы на произвольной сетке координат)
+  required uint32 gridId  = 4;	//!< Универсальный уникальный идентификатор горизонтальной сетки
+};
+

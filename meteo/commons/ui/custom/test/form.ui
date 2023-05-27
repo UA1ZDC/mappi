@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>956</width>
+    <height>772</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form2</string>
+  </property>
+  <widget class="TButtonsTempl" name="tButtonsTempl4">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>11</y>
+     <width>934</width>
+     <height>750</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="TDatedit" name="tDatedit1">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>150</y>
+     <width>256</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>TButtonsTempl</class>
+   <extends>QWidget</extends>
+   <header location="global">tbuttonstempl.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TDatedit</class>
+   <extends>QWidget</extends>
+   <header location="global">tdatedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local">tbuttonstempl.h</include>
+  <include location="local">tdatedit.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

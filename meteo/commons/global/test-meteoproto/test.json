@@ -1,0 +1,257 @@
+{ "_id" : { "station" : "23711", "station_type" : 0 }, "station" : "23711",
+"station_type" : 0, "station_info" : { "index" : 23711, "country_ru" :
+"Российская Федерация", "country_en" : "Russian Federation", "country" : 164,
+"name" : "Troicko-Pechorskoe", "name_ru" : "Троицко-Печорское" }, "oid" : {
+"$oid" : "5d9c853c3fcf67d5f7ca21d8" }, "dt" : { "$date" : 1570536000000 },
+"location" : { "type" : "Point", "coordinates" : [ 56.183300000000002683,
+62.700000000000002842 ], "alt" : 133.0 }, "data_type" : 1, "level_type" : 1,
+"level" : 0.0, "param" : [ { "descrname" : "U", "descr" : 13003, "value" :
+56.300600000000002865, "code" : "", "quality" : 0, "control" : 2, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"", "dubl" : [ { "value" : 56.300600000000002865, "code" : "", "quality" : 0,
+"control" : 2, "tlgid" : 169503715, "dt_write" : { "$date" : 1570538955000 },
+"dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" :
+1570536000000 }, "uuid" : "" }, { "value" : 56.300600000000002865, "code" : "",
+"quality" : 0, "control" : 2, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" : "" } ] }, { "descrname" :
+"Tg'", "descr" : 12120, "value" : 6.0, "code" : "006", "quality" : 9, "control"
+: 0, "tlgid" : 169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" :
+0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000
+}, "uuid" : "", "dubl" : [ { "value" : 6.0, "code" : "006", "quality" : 9,
+"control" : 0, "tlgid" : 169503715, "dt_write" : { "$date" : 1570538955000 },
+"dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" :
+1570536000000 }, "uuid" : "" } ] }, { "descrname" : "P0", "descr" : 10004,
+"value" : 996.79999999999995453, "code" : "9968", "quality" : 9, "control" : 0,
+"tlgid" : 169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0,
+"dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 },
+"uuid" : "", "dubl" : [ { "value" : 996.79999999999995453, "code" : "9968",
+"quality" : 9, "control" : 0, "tlgid" : 169503715, "dt_write" : { "$date" :
+1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" : "" }, { "value" :
+996.79999999999995453, "code" : "", "quality" : 9, "control" : 0, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"" }, { "value" : 996.79999999999995453, "code" : "9968", "quality" : 9,
+"control" : 0, "tlgid" : 169505597, "dt_write" : { "$date" : 1570539195000 },
+"dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" :
+1570536000000 }, "uuid" : "" } ] }, { "descrname" : "P", "descr" : 10051,
+"value" : 1013.6000000000000227, "code" : "0136", "quality" : 0, "control" : 1,
+"tlgid" : 169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0,
+"dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 },
+"uuid" : "", "dubl" : [ { "value" : 1013.6000000000000227, "code" : "0136",
+"quality" : 0, "control" : 1, "tlgid" : 169503715, "dt_write" : { "$date" :
+1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" : "" }, { "value" :
+1013.6000000000000227, "code" : "", "quality" : 0, "control" : 1, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"" }, { "value" : 1013.6000000000000227, "code" : "0136", "quality" : 0,
+"control" : 1, "tlgid" : 169505597, "dt_write" : { "$date" : 1570539195000 },
+"dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" :
+1570536000000 }, "uuid" : "" } ] }, { "descrname" : "N", "descr" : 20010,
+"value" : 50.0, "code" : "4", "quality" : 0, "control" : 2, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"", "dubl" : [ { "value" : 50.0, "code" : "4", "quality" : 0, "control" : 2,
+"tlgid" : 169503715, "dt_write" : { "$date" : 1570538955000 }, "dt_type" : 0,
+"dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 },
+"uuid" : "" }, { "value" : 50.0, "code" : "", "quality" : 0, "control" : 2,
+"tlgid" : 169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0,
+"dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 },
+"uuid" : "" }, { "value" : 50.0, "code" : "4", "quality" : 0, "control" : 2,
+"tlgid" : 169505597, "dt_write" : { "$date" : 1570539195000 }, "dt_type" : 0,
+"dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 },
+"uuid" : "" } ] }, { "descrname" : "V", "descr" : 20001, "value" : 20000.0,
+"code" : "98", "quality" : 0, "control" : 2, "tlgid" : 169503677, "dt_write" :
+{ "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" : { "$date" :
+1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" : "", "dubl" :
+[ { "value" : 20000.0, "code" : "98", "quality" : 0, "control" : 2, "tlgid" :
+169503715, "dt_write" : { "$date" : 1570538955000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"" }, { "value" : 20000.0, "code" : "", "quality" : 0, "control" : 2, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"" }, { "value" : 20000.0, "code" : "98", "quality" : 0, "control" : 2, "tlgid"
+: 169505597, "dt_write" : { "$date" : 1570539195000 }, "dt_type" : 0, "dt_beg"
+: { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"" } ] }, { "descrname" : "E", "descr" : 20062, "value" : 1.0, "code" : "1",
+"quality" : 9, "control" : 0, "tlgid" : 169503677, "dt_write" : { "$date" :
+1570538946000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" : "", "dubl" : [ { "value" :
+1.0, "code" : "1", "quality" : 9, "control" : 0, "tlgid" : 169503715,
+"dt_write" : { "$date" : 1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" :
+1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" : "" } ] }, {
+"descrname" : "T", "descr" : 12101, "value" : 8.5999999999999996447, "code" :
+"0086", "quality" : 0, "control" : 19, "tlgid" : 169503677, "dt_write" : {
+"$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000
+}, "dt_end" : { "$date" : 1570536000000 }, "uuid" : "", "dubl" : [ { "value" :
+8.5999999999999996447, "code" : "0086", "quality" : 0, "control" : 3, "tlgid" :
+169503715, "dt_write" : { "$date" : 1570538955000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"" }, { "value" : 8.5999999999999996447, "code" : "", "quality" : 0, "control"
+: 3, "tlgid" : 169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" :
+0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000
+}, "uuid" : "" }, { "value" : 8.5999999999999996447, "code" : "0086", "quality"
+: 0, "control" : 3, "tlgid" : 169505597, "dt_write" : { "$date" : 1570539195000
+}, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date"
+: 1570536000000 }, "uuid" : "" } ] }, { "descrname" : "Td", "descr" : 12103,
+"value" : 0.4000000000000000222, "code" : "0004", "quality" : 0, "control" :
+19, "tlgid" : 169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" :
+0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000
+}, "uuid" : "", "dubl" : [ { "value" : 0.4000000000000000222, "code" : "0004",
+"quality" : 0, "control" : 3, "tlgid" : 169503715, "dt_write" : { "$date" :
+1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" : "" }, { "value" :
+0.3999880000000000102, "code" : "", "quality" : 0, "control" : 3, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"" }, { "value" : 0.4000000000000000222, "code" : "0004", "quality" : 0,
+"control" : 3, "tlgid" : 169505597, "dt_write" : { "$date" : 1570539195000 },
+"dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" :
+1570536000000 }, "uuid" : "" } ] }, { "descrname" : "p", "descr" : 10061,
+"value" : 3.6000000000000000888, "code" : "036", "quality" : 0, "control" : 2,
+"tlgid" : 169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0,
+"dt_beg" : { "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 },
+"uuid" : "{6a08d56c-24ee-411a-b924-dd4156bcb444}", "dubl" : [ { "value" :
+3.6000000000000000888, "code" : "036", "quality" : 0, "control" : 2, "tlgid" :
+169503715, "dt_write" : { "$date" : 1570538955000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{58c689f7-5b6b-4f55-9c66-5a0fa92dc86e}" }, { "value" : 3.6000000000000000888,
+"code" : "", "quality" : 0, "control" : 2, "tlgid" : 169505649, "dt_write" : {
+"$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000
+}, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{5bc759a4-c1c4-4fa8-b0dc-c326c529a83a}" }, { "value" : 3.6000000000000000888,
+"code" : "036", "quality" : 0, "control" : 2, "tlgid" : 169505597, "dt_write" :
+{ "$date" : 1570539195000 }, "dt_type" : 0, "dt_beg" : { "$date" :
+1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{070d7b95-fd3b-483d-84c0-7a5bebb37a3d}" } ] }, { "descrname" : "a", "descr" :
+10063, "value" : 2.0, "code" : "2", "quality" : 0, "control" : 2, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{6a08d56c-24ee-411a-b924-dd4156bcb444}", "dubl" : [ { "value" : 2.0, "code" :
+"2", "quality" : 0, "control" : 2, "tlgid" : 169503715, "dt_write" : { "$date"
+: 1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{58c689f7-5b6b-4f55-9c66-5a0fa92dc86e}" }, { "value" : 2.0, "code" : "",
+"quality" : 0, "control" : 2, "tlgid" : 169505649, "dt_write" : { "$date" :
+1570539092000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{5bc759a4-c1c4-4fa8-b0dc-c326c529a83a}" }, { "value" : 2.0, "code" : "2",
+"quality" : 0, "control" : 2, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{070d7b95-fd3b-483d-84c0-7a5bebb37a3d}" } ] }, { "descrname" : "Nh", "descr" :
+20011, "value" : 4.0, "code" : "4", "quality" : 0, "control" : 2, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{d283cbd8-43df-4f54-a801-b1341b0425e9}", "dubl" : [ { "value" : 4.0, "code" :
+"4", "quality" : 0, "control" : 2, "tlgid" : 169503715, "dt_write" : { "$date"
+: 1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{6fa4f63f-1bbe-40a1-b550-7b6ca3cf984c}" }, { "value" : 4.0, "code" : "4",
+"quality" : 0, "control" : 2, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{1a15784a-80b8-48bf-b9c2-be645146d8bb}" } ] }, { "descrname" : "h", "descr" :
+20013, "value" : 2500.0, "code" : "9", "quality" : 0, "control" : 2, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{d283cbd8-43df-4f54-a801-b1341b0425e9}", "dubl" : [ { "value" : 2500.0, "code"
+: "9", "quality" : 0, "control" : 2, "tlgid" : 169503715, "dt_write" : {
+"$date" : 1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000
+}, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{6fa4f63f-1bbe-40a1-b550-7b6ca3cf984c}" }, { "value" : 2500.0, "code" : "9",
+"quality" : 0, "control" : 2, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{1a15784a-80b8-48bf-b9c2-be645146d8bb}" } ] }, { "descrname" : "CL", "descr" :
+20012, "value" : 30.0, "code" : "0", "quality" : 0, "control" : 2, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{d283cbd8-43df-4f54-a801-b1341b0425e9}", "dubl" : [ { "value" : 30.0, "code" :
+"0", "quality" : 0, "control" : 2, "tlgid" : 169503715, "dt_write" : { "$date"
+: 1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{6fa4f63f-1bbe-40a1-b550-7b6ca3cf984c}" }, { "value" : 30.0, "code" : "0",
+"quality" : 0, "control" : 2, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{1a15784a-80b8-48bf-b9c2-be645146d8bb}" } ] }, { "descrname" : "CM", "descr" :
+20012, "value" : 23.0, "code" : "3", "quality" : 0, "control" : 2, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{d283cbd8-43df-4f54-a801-b1341b0425e9}", "dubl" : [ { "value" : 23.0, "code" :
+"3", "quality" : 0, "control" : 2, "tlgid" : 169503715, "dt_write" : { "$date"
+: 1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{6fa4f63f-1bbe-40a1-b550-7b6ca3cf984c}" }, { "value" : 23.0, "code" : "3",
+"quality" : 0, "control" : 2, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{1a15784a-80b8-48bf-b9c2-be645146d8bb}" } ] }, { "descrname" : "CH", "descr" :
+20012, "value" : 11.0, "code" : "1", "quality" : 0, "control" : 2, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{d283cbd8-43df-4f54-a801-b1341b0425e9}", "dubl" : [ { "value" : 11.0, "code" :
+"1", "quality" : 0, "control" : 2, "tlgid" : 169503715, "dt_write" : { "$date"
+: 1570538955000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{6fa4f63f-1bbe-40a1-b550-7b6ca3cf984c}" }, { "value" : 11.0, "code" : "1",
+"quality" : 0, "control" : 2, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 0, "dt_beg" : { "$date" : 1570536000000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{1a15784a-80b8-48bf-b9c2-be645146d8bb}" } ] }, { "descrname" : "dd", "descr" :
+11001, "value" : 200.0, "code" : "20", "quality" : 0, "control" : 3, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 2, "dt_beg" :
+{ "$date" : 1570535400000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{2b6dcf16-cdae-4cb4-a6bb-eebc00735486}", "dubl" : [ { "value" : 200.0, "code"
+: "20", "quality" : 0, "control" : 3, "tlgid" : 169503715, "dt_write" : {
+"$date" : 1570538955000 }, "dt_type" : 2, "dt_beg" : { "$date" : 1570535400000
+}, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{5cde5b09-143c-40c6-aaa6-76dd18629031}" }, { "value" : 200.0, "code" : "",
+"quality" : 0, "control" : 2, "tlgid" : 169505649, "dt_write" : { "$date" :
+1570539092000 }, "dt_type" : 2, "dt_beg" : { "$date" : 1570492200000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{578ee4ef-5c30-473f-9ea6-cc2b241735d4}" }, { "value" : 200.0, "code" : "20",
+"quality" : 0, "control" : 3, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 2, "dt_beg" : { "$date" : 1570535400000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{67d44b87-70d8-428e-b320-264c09e30bfe}" } ] }, { "descrname" : "ff", "descr" :
+11002, "value" : 3.0, "code" : "03", "quality" : 0, "control" : 3, "tlgid" :
+169503677, "dt_write" : { "$date" : 1570538946000 }, "dt_type" : 2, "dt_beg" :
+{ "$date" : 1570535400000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{2b6dcf16-cdae-4cb4-a6bb-eebc00735486}", "dubl" : [ { "value" : 3.0, "code" :
+"03", "quality" : 0, "control" : 3, "tlgid" : 169503715, "dt_write" : { "$date"
+: 1570538955000 }, "dt_type" : 2, "dt_beg" : { "$date" : 1570535400000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{5cde5b09-143c-40c6-aaa6-76dd18629031}" }, { "value" : 3.0, "code" : "",
+"quality" : 0, "control" : 3, "tlgid" : 169505649, "dt_write" : { "$date" :
+1570539092000 }, "dt_type" : 2, "dt_beg" : { "$date" : 1570492200000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{578ee4ef-5c30-473f-9ea6-cc2b241735d4}" }, { "value" : 3.0, "code" : "03",
+"quality" : 0, "control" : 3, "tlgid" : 169505597, "dt_write" : { "$date" :
+1570539195000 }, "dt_type" : 2, "dt_beg" : { "$date" : 1570535400000 },
+"dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{67d44b87-70d8-428e-b320-264c09e30bfe}" } ] }, { "descrname" : "h", "descr" :
+20013, "value" : 3000.0, "code" : "", "quality" : 0, "control" : 2, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{e0427199-b73a-47d1-acca-efed941913c9}" }, { "descrname" : "CL", "descr" :
+20012, "value" : 30.0, "code" : "", "quality" : 0, "control" : 2, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{e0427199-b73a-47d1-acca-efed941913c9}" }, { "descrname" : "CM", "descr" :
+20012, "value" : 23.0, "code" : "", "quality" : 0, "control" : 2, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{e0427199-b73a-47d1-acca-efed941913c9}" }, { "descrname" : "CH", "descr" :
+20012, "value" : 11.0, "code" : "", "quality" : 0, "control" : 2, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{e0427199-b73a-47d1-acca-efed941913c9}" }, { "descrname" : "Nh", "descr" :
+20011, "value" : 4.0, "code" : "", "quality" : 0, "control" : 2, "tlgid" :
+169505649, "dt_write" : { "$date" : 1570539092000 }, "dt_type" : 0, "dt_beg" :
+{ "$date" : 1570536000000 }, "dt_end" : { "$date" : 1570536000000 }, "uuid" :
+"{e0427199-b73a-47d1-acca-efed941913c9}" } ] }

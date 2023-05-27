@@ -1,0 +1,43 @@
+{
+  "aggregate" : "obanal",
+  "pipeline" :
+   [
+     {"$match" : {
+      "forecast_start" : {"$gte": @start_fdt@,"$lte": @end_fdt@},
+      "descr" : {"$in": @descr@},
+      "level_type" : {"$in": @level_type@},
+      "level" : {"$in": @level@},
+      "hour" : {"$in": @hour@},
+      "center" : {"$in": @center@},
+      "model": @model@
+       }
+     },
+     { "$lookup": {
+        "from": "centers",
+        "localField": "center",
+        "foreignField": "center",
+        "as": "center"
+      }
+    },
+    {"$unwind": "$center"},
+    { "$group":
+      {
+        "_id" : {
+         "center": "$center.center",
+         "name": "$center.name",
+         "short_name": "$center.short_name",
+         "priority": "$center.priority"
+        },
+        "center": { "$first" : "$center.center" },
+        "name": { "$first" : "$center.name" },
+        "short_name": { "$first" : "$center.short_name" },
+        "priority": { "$first" : "$center.priority" }
+
+      }
+    },
+    { "$sort": {"_id.priority": 1}
+    }
+
+   ],
+   "cursor":{"batchSize":1}
+}

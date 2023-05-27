@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/astro">
+        <file alias="open">icons/doc_open.png</file>
+        <file alias="print">icons/doc_print.png</file>
+        <file alias="save">icons/doc_save.png</file>
+        <file alias="moon_1q">icons/moon_1q.png</file>
+        <file alias="moon_3q">icons/moon_3q.png</file>
+        <file alias="moon_full">icons/moon_full.png</file>
+        <file alias="moon_new">icons/moon_new.png</file>
+        <file alias="moon_young">icons/moon_young.png</file>
+        <file alias="moon_waxing">icons/moon_waxing.png</file>
+        <file alias="moon_waning">icons/moon_waning.png</file>
+        <file alias="moon_old">icons/moon_old.png</file>
+    </qresource>
+</RCC>

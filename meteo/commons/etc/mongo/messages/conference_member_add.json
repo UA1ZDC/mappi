@@ -1,0 +1,15 @@
+{
+   "update": "conferences",
+   "updates": [
+    {
+     "q": { "_id" : @id@ },
+     "u": { "$push" : {
+              "members" : @members@
+            }
+     },
+    "upsert": false,
+    "multi": false 
+    }
+   ]
+}
+

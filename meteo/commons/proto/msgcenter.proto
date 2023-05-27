@@ -1,0 +1,228 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+import "msgparser.proto";
+import "meteo.proto";
+import "locsettings.proto";
+
+//import "pogodainput.proto";
+
+package meteo.msgcenter;
+
+enum ProcessError {
+  kUnknown          = 0; //!< Неизвестная ошибка.
+  kQueueOverflow    = 1; //!< Очередь переполнена.
+}
+
+enum RuleType {
+  kAllow = 0; //!< Маршрут отправки сообщений
+  kDeny  = 1; //!< Запрет на отправку сообщений
+}
+
+
+message ProcessMsgRequest {
+  optional meteo.tlg.MessageNew msg = 1;
+}
+
+message ProcessMsgReply {
+  optional ProcessError error = 1;
+}
+
+//! Запрос на получение телеграмм.
+//! Подписчику передаются метеосообщения в соответствии с таблицей маршрутизации ЦКС.
+message DistributeMsgRequest {
+  optional string       uid             = 1; //!< Идентификатор подписчика.
+  repeated Rule         rule            = 2; //!< фильтры.
+  optional bool         drop_duplicate  = 4 [ default = false ]; //!< Если true, подписчику не будут передаваться
+                                                                 //!< повторно принятые телеграммы.
+  optional bool         received_only   = 5 [ default = false ]; //!< Если true, подписчику будут передаваться только
+                                                                 //!< усвоенные (записанные в БД и ФС) телеграммы
+}
+
+message DistributeMsgReply {
+  repeated meteo.tlg.MessageNew msg = 1;
+}
+
+message TlgFilter {
+  optional string t1        = 1;
+  optional string t2        = 2;
+  optional string a1        = 3;
+  optional string a2        = 4;
+  optional string ii        = 5;
+  optional string bbb       = 6;
+  optional string cccc      = 7;
+  optional string dddd      = 8;
+  optional string yygggg    = 9;
+  optional string format    = 10;
+  optional string channel   = 11;
+  optional string priority  = 12;
+  optional string msgtype   = 13;
+  optional bool   external  = 14;
+}
+
+
+message Rule {
+  optional RuleType  type = 1;
+  //!< Маршрут:
+  //!<    "db"      - в БД первичной ГМИ
+  //!<    "all"       - всем подписчикам
+  optional string    to   = 2;
+  optional string    from = 3;
+  optional TlgFilter tlgfilter  = 4;
+  optional int32     priority = 5;
+}
+
+message RuleTable {
+  repeated Rule rule = 1;
+}
+
+message Dummy {}
+
+message DecodeRequest {
+  repeated int64 id    = 1;
+  optional bool  state = 2 [ default = true ];
+}
+
+message GetUndecodedFaxTelegramRequest {
+  repeated string msgtype       = 20;
+  optional string beg_dt        = 32; // дата усвоения
+  optional string end_dt        = 33;
+  optional int32 limit          = 100; // получить только последние N телеграмм
+}
+
+// 0. Можно запрашивать телеграммы по идентификаторам в БД.
+// 1. Пустой запрос возвращает сроки, за которые есть данные.
+// 2. Если заполнено msg_beg_dt и msg_end_dt, возвращает количество данных для каждого срока из диапазона [msg_beg_dt;msg_end_dt).
+//    Если msg_beg_dt == msg_end_dt, возвращает заголовки телеграмм для указанного срока.
+message GetTelegramRequest {
+  optional bool   onlyheader    = 1 [default = true];   // получить только заголовки
+  optional bool   onlyamount    = 2 [default = false];  // получить количество данных для каждого срока из диапазона [msg_beg_dt;msg_end_dt).
+
+  repeated int64  ptkpp_id      = 10; //!< Идентификатор телеграммы в БД
+  repeated string t1            = 11;
+  repeated string t2            = 12;
+  repeated string a1            = 13;
+  repeated string a2            = 14;
+  repeated int32  ii            = 15;
+  repeated string cccc          = 16;
+  repeated string yygggg        = 17;
+  repeated string bbb           = 18;
+  repeated bool   bin           = 19;
+  repeated string msgtype       = 20;
+  optional bool   decoded       = 21;
+  optional int32  global_file_id = 22;
+
+  optional string msg_beg_dt    = 30; // срок телеграммы
+  optional string msg_end_dt    = 31;
+  optional string beg_dt        = 32; // дата усвоения
+  optional string end_dt        = 33;
+
+  optional int32 limit          = 100; // получить только последние N телеграмм
+  optional int32 skip           = 101; // отбросить N телеграмм перед выдачей
+  optional int32 sort_by_id     = 102; // сортировка (1 - по возрастанию, -1 - по убыванию)
+}
+
+message GetTelegramResponse {
+  optional string         error  = 1; //!< Описание ошибки, в случае неудачного выполнения запроса
+  repeated tlg.MessageNew msg    = 2; //!< Список телеграмм
+
+  repeated string dt_list     = 3;
+  repeated int32  count_list  = 4;
+
+  optional bool   finished    = 10 [ default = false ]; //!< устанавливается в true для последнего сообщения (при многократных ответах)
+
+  optional bool   result      = 20;
+  optional string comment     = 21;
+}
+
+//!
+message SearchNodeRequest {
+  repeated string station     = 1;   //!< Поиск определённых станций по ICAO или индексу станции
+  repeated string ttaa        = 2;   //!< Поиск по типам предоставляемых метеоданных
+  repeated meteo.GeoPointPb region = 3; //!< Поиск в заданном районе
+}
+
+//!
+message SearchNodeResponse {
+  optional meteo.settings.Location station_info = 1; //!< Информация о станции
+  optional string peer      = 2; //!< Имя и адрес узла (NODE_NAME:HOST:PORT)
+  optional int32  progress  = 3; //!< Прогресс выполнения запроса
+}
+
+
+
+message CreateTelegramReply {
+  optional int64  ptkpp_id  = 1;
+  optional bool   result    = 2;
+  optional string comment   = 3;
+}
+
+// запрос на сохранение погоды в базе
+message SavePogodaRequest{
+  repeated MeteoDataStation weather    = 1;
+}
+
+message MeteoDataStation{
+  optional string          station = 1;
+  optional string     hour         = 2;
+  optional string     minute       = 3;
+  optional string     n            = 4;
+  optional string     cl           = 5;
+  optional string     h            = 6;
+  optional string     ww           = 7;
+  optional string     v            = 8;
+  optional string     dd           = 9;
+  optional string     ff           = 10;
+  optional string     t            = 11;
+  optional string     u            = 12;
+  optional string     name         = 13;
+  optional int32      cor_number   = 14;
+}
+
+//! Запрос сводок, принадлежащих станции station
+message GetReportRequest {
+  optional string station = 1;      //!< Идентификатор (station в БД)
+  optional string station_name = 2; //!< Название станции, рус
+  repeated int64  tlg_id  = 3;      //!< Список проверяемых телеграмм
+}
+
+message OneReport {
+  optional int64  tlg_id = 1; //!< id телеграммы
+  optional string report = 2; //!< сводка станции
+}
+
+//! Список сводок, принадлежащих станции station
+message GetReportResponse {
+  optional string comment = 1; //!< Описание ошибки, в случаи неудачного выполнения запроса
+  optional bool   result  = 2;
+  optional string station = 3;
+  repeated OneReport report  = 4; //!< id телеграммы и сводка
+}
+
+//! Сервис MsgCenterService обеспечивает приём, распределение и пердачу метеорологических сообщений.
+service MsgCenterService {
+  //! Запрос на обработку метеосообщений
+  rpc ProcessMsg( ProcessMsgRequest ) returns ( ProcessMsgReply );
+
+  rpc SetDecode( DecodeRequest ) returns ( Dummy );
+  rpc CreateTelegram( meteo.tlg.MessageNew ) returns ( CreateTelegramReply );
+
+  //! Запрос метеосообщений по заданных параметрам
+  rpc GetTelegram( GetTelegramRequest ) returns ( GetTelegramResponse );
+  //! Запрос сводок
+  rpc GetReport( GetReportRequest ) returns ( GetReportResponse );
+  //! Запрос метеосообщений fax по заданных параметрам
+  rpc GetUndecodedFaxTelegram( GetUndecodedFaxTelegramRequest ) returns ( GetTelegramResponse );
+
+  //! Подписка на получение метеосообщений
+  rpc DistributeMsg( DistributeMsgRequest ) returns ( stream meteo.tlg.MessageNew );
+
+  //
+  // Функции ввода погоды (ввод)
+  //
+  // сохраняем погоду
+  rpc SavePogodaInput( SavePogodaRequest ) returns ( CreateTelegramReply );
+}
+

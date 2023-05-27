@@ -1,0 +1,5 @@
+#!/bin/sh
+# see debian/rules for how debian/native_protoc gets populated during cross builds
+location=$(dirname "$0")
+export LD_LIBRARY_PATH="$location/native_protoc${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec "$location/native_protoc/protoc" "$@"

@@ -1,0 +1,175 @@
+syntax = "proto2";
+
+package meteo.sigwx;
+
+import "meteo.proto";
+
+//! Метеорологическая характеристика (syn_sign, таблица 08011, кроме kTropo)
+enum SynSign {
+  kQFront  = 0;      //!< Квазистационарный фронт у поверхности земли
+  kQFrontAbv = 1;    //!< Верхний квазистационарный фронт	     
+  kWFront  = 2;	     //!< Теплый фронт у поверхности земли	     
+  kWFrontAbv = 3;    //!< Верхний теплый фронт			     
+  kCFront    = 4;    //!< Холодный фронт у поверхности земли	     
+  kCFrontAbv = 5;    //!< Верхний холодный фронт		     
+  kOcclus = 6;	     //!< Окклюзия				     
+  kInstabilLine = 7; //!< Линия неустойчивости			     
+  kInTtropFront = 8; //!< Внутритропический фронт		     
+  kConvergLine = 9;  //!< Линия конвергенции			     
+  kJetStream   = 10; //!< Струйное течение			     
+  kCloud  = 12;	     //!< Облачность				     
+  kTurb	  = 13;	     //!< Турбулентность			     
+  kVolcano = 17;     //!< Вулкан
+  kTropo  = 64;	     //!< Тропопауза
+}		     		     
+
+//! Заголовок 
+message Header {
+  required int32  center = 1;	//!< Номер центра
+  required string dt_beg = 2;	//!< Время анализа,  "yyyy-MM-dd hh:mm:ss"
+  required string dt_end = 3;	//!< Время прогноза, "yyyy-MM-dd hh:mm:ss"
+  optional int32  lev_type = 4 [default = 0]; //!< Тип уровня
+  optional float  h_lo   = 5 [default = -1]; //!< Нижняя граница высоты, м
+  optional float  h_hi   = 6 [default = -1]; //!< Верхняя граница высоты, м
+  required int32 descr  = 7;	//!< Дескриптор, обозначающий явление (syn_type, syn_sign)
+  required int32 value  = 8;	//!< Явление, в соответствии с дескриптором (таблицы)
+}
+
+//---
+
+//! Облачность, турбулентность или обледенение
+message SkyPhen {
+  required float h_lo = 1;	//!< Нижняя граница высоты
+  required float h_hi = 2;	//!< Верхняя граница высоты
+  optional int32 turb = 3;	//!< Повышенная степень турбулентности (таблица 11030, B) 
+  optional int32 ice  = 4;      //!< Обледенение фюзеляжа (таблица 20041, Ic)
+  optional int32 cloud = 5;	//!< Тип облачности (таблица 20012, C)
+  optional int32 cloud_amount = 6; //!< Распределение облачности (таблица 20008, Na)
+}
+
+//! Облачность
+message Cloud {
+  repeated meteo.GeoPointPb pnt = 1;	//!< Область
+  repeated SkyPhen phen = 2; //!< Облачность, турбулентность или обледенение
+}
+
+//! Облачность
+message SigCloud {
+  required Header header = 1;
+  repeated Cloud  cloud  = 2;
+}
+
+//---
+
+//! Турбулентность
+message Turbulence {
+  repeated meteo.GeoPointPb pnt = 1;	//!< Область
+  required float h_lo = 2;		//!< Нижняя граница высоты
+  required float h_hi = 3;		//!< Верхняя граница высоты
+  optional int32 degree = 4;		//!< Повышенная степень турбулентности (таблица 11030, B)
+}
+
+//! Турбулентность
+message SigTurbulence {
+  required Header header = 1;
+  repeated Turbulence turb  = 2;
+}
+
+//---
+
+//! Точка линии фронта
+message FrontPoint {
+  required float lat = 1;	//!< Широта, градусы
+  required float lon = 2;	//!< Долгота, градусы
+  optional float dd  = 3;	//!< Направление ветра
+  optional float ff  = 4;	//!< Скорость ветра, м/с
+}
+
+//! Фронт
+message Front {
+  required int32 phen = 1;	//!< Явление (тип фронта, таблица 8011, synf)
+  repeated FrontPoint pnt = 2;	//!< Точка линии фронта
+}
+
+//! Фронт
+message SigFront {
+  required Header header = 1;
+  repeated Front  front  = 2;
+}
+
+//---
+
+//! Точка струйного течения
+message JetPoint {
+  required float lat = 1;	//!< Широта, градусы
+  required float lon = 2;	//!< Долгота, градусы
+  optional float ff  = 3;	//!< Скорость ветра, м/с
+  optional float fl  = 4;	//!< Уровень (эшелон)
+  optional float fl_abv = 5;	//!< Уровень (эшелон) изотахи 80 узлов над струйным течением
+  optional float fl_blw = 6;	//!< Уровень (эшелон) изотахи 80 узлов под струйным течением
+}
+
+//! Струйное течение
+message JetStream {
+  repeated JetPoint pnt = 1;	//!< Точка струйного течения
+}
+
+//! Фронт
+message SigJetStream {
+  required Header header = 1;
+  repeated JetStream jet = 2;
+}
+
+//---
+
+//! Тропопауза
+message SigTropo {
+  required Header header = 1;
+  repeated meteo.GeoPointPb tropo = 2; //!< Набор точек
+  repeated meteo.GeoPointPb tmin = 3;  //!< Набор точек, минимальные значения
+  repeated meteo.GeoPointPb tmax = 4;  //!< Набор точек, максимальные значения
+}
+
+//---
+
+//! Шторм
+message Storm {
+  required meteo.GeoPointPb pnt = 1;  //!< Координаты
+  optional string name = 2;		//!< Название шторма
+  optional int32 sign = 3;		//!< Значимость синоптического образования (таблица 8005, meteo_sign)
+}
+
+//! Шторм
+message SigStorm {
+  required Header header = 1;
+  repeated Storm storm = 2;
+}
+
+//! Извержение вулкана
+message Volcano {
+  optional string dt = 1;		//!< Дата/время извержения Qt::ISODate
+  required meteo.GeoPointPb pnt = 2;  //!< Координаты вулкана
+  optional string name = 3;		//!< Название вулкана
+}
+
+//! Извержение вулкана
+message SigVolcano {
+  required Header header = 1;
+  repeated Volcano volcano = 2;
+}
+
+//ещё могут быть данные по радиации
+
+
+message SigWx {
+  optional bool                 result  = 1; //!< Результат выполнения запроса 
+  optional string               comment = 2; //!< Комментарий выполнения запроса
+  repeated SigCloud             cloud   = 3; //!< Облачность
+  repeated SigTurbulence        turb    = 4; //!< Турбулентность
+  repeated SigFront             front   = 5; //!< Фронт
+  repeated SigJetStream         jet     = 6; //!< Струйное течение
+  repeated SigTropo             tropo   = 7; //!< Тропопауза
+  repeated SigStorm             storm   = 8; //!< Шторм
+  repeated SigVolcano           volcano = 9; //!< Извержение вулкана
+  optional string		layer_name = 10;//!< наименование слоя
+}

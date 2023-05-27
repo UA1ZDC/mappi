@@ -1,0 +1,10 @@
+{
+  "insert": "cities",
+  "documents": [ {
+    "name":      "%1",
+    "location":  "%2",
+    "priority":  "%3",
+    "min_level": "%4",
+    "max_level": "%5"
+  } ]
+}

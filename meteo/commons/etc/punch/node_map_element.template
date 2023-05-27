@@ -1,0 +1,497 @@
+code: "node_map_element"
+name: "Карта сети"
+path: "/disk1/build_maslo//share/meteo//punch/node_map_element.template"
+wind: false
+rule {
+  pos {
+    x: 18
+    y: 0
+  }
+  align: kRightCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 9
+      font {
+        family: "Serif"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "55554d55"
+      label: ""
+    }
+    codedigit: true
+  }
+  testval: 8
+  id {
+    descr: 1063
+    name: "CCCC"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 990000
+    name: "hostname"
+    description: ""
+  }
+  visible: false
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -21
+    y: -8
+  }
+  align: kLeftCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 990001
+    name: "port"
+    description: ""
+  }
+  visible: false
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -19
+    y: 7
+  }
+  align: kBottomLeft
+  number {
+  }
+  id {
+    descr: 999001
+    name: "speed_qual"
+    description: ""
+  }
+  visible: false
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 1
+      maxval: 1
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "42"
+      label: ""
+    }
+    symbol {
+      minval: 2
+      maxval: 2
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "43"
+      label: ""
+    }
+    symbol {
+      minval: 3
+      maxval: 3
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "44"
+      label: ""
+    }
+    symbol {
+      minval: 0
+      maxval: 0
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "41"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "45"
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "46"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 6
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "47"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 7
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "48"
+      label: ""
+    }
+    symbol {
+      minval: 8
+      maxval: 8
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "49"
+      label: ""
+    }
+    symbol {
+      minval: 9
+      maxval: 9
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "4a"
+      label: ""
+    }
+    symbol {
+      minval: 10
+      maxval: 10
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "4b"
+      label: ""
+    }
+    symbol {
+      minval: 11
+      maxval: 11
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "4c"
+      label: ""
+    }
+    symbol {
+      minval: 12
+      maxval: 12
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "48"
+      label: ""
+    }
+    symbol {
+      minval: 13
+      maxval: 13
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "4d"
+      label: ""
+    }
+    symbol {
+      minval: 14
+      maxval: 14
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "4e"
+      label: ""
+    }
+    symbol {
+      minval: 15
+      maxval: 15
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "4f"
+      label: ""
+    }
+    symbol {
+      minval: 16
+      maxval: 16
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "50"
+      label: ""
+    }
+    symbol {
+      minval: 17
+      maxval: 17
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "51"
+      label: ""
+    }
+    symbol {
+      minval: 18
+      maxval: 18
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4287585312
+      patternba: "52"
+      label: ""
+    }
+    symbol {
+      minval: 19
+      maxval: 19
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4287585312
+      patternba: "53"
+      label: ""
+    }
+    symbol {
+      minval: 20
+      maxval: 20
+      font {
+        family: "gms"
+        pointsize: 26
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4287585312
+      patternba: "54"
+      label: ""
+    }
+  }
+  testval: 1
+  id {
+    descr: 12
+    name: "station_type"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+datatype: kSpecial
+center: kNoCenter
+crisscross: false
+radius: 9
+windfont {
+  family: "helvetica"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+flow: false

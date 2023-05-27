@@ -1,0 +1,6 @@
+{ "find" : "message",
+  "filter" : { 
+    "from" : "%1",
+    "to" : "%2"
+  }
+}

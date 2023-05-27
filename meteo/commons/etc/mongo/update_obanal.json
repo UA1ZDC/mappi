@@ -1,0 +1,34 @@
+{
+  "update": @collection@,
+    "updates": [ {
+      "q": {
+        "dt": @dt@,
+        "descr": @descr@,
+        "net_type": @net_type@,
+        "hour": @hour@,
+        "model": @model@,
+        "level_type": @level_type@,
+        "level": @level@,
+        "center": @center@
+      },
+      "u": {
+        "dt": @dt@,
+        "descr": @descr@,
+        "net_type": @net_type@,
+        "hour": @hour@,
+        "model": @model@,
+        "level_type": @level_type@,
+        "level": @level@,
+        "center": @center@,
+        "path": @path@,
+        "count_points": @count_points@,
+        "forecast_start": @forecast_start@,
+        "forecast_end": @forecast_end@,
+        "time_range": @time_range@,
+        "dt_write" : @dt_write@,
+        "dates" : @dates@
+      },
+      "upsert": true
+    } ],
+  "ordered": true
+}

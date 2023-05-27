@@ -1,0 +1,14 @@
+{
+   "update": "grib",
+   "updates": [
+      { "q": { "_id" : @id@ },
+        "u": { "$set": {
+          "analysed" : true,
+          "error" : true,
+          "comment" : @comment@
+          } },
+        "upsert": false,
+        "multi": true
+        }
+   ]
+}

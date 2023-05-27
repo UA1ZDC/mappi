@@ -1,0 +1,7 @@
+{
+  "find": "up_down_loads.parts",
+  "filter": {
+    "upload_id" : "%1",
+    "chunk_id" : "%2"
+  }
+}

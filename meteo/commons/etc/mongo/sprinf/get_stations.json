@@ -1,0 +1,31 @@
+{
+  "aggregate": "stations",
+  "pipeline": [
+    { "$match": {
+      "_id" : { "$in" : @id@ },
+      "index.station_index" : { "$in" : @stationindex@ },
+      "index.cccc" : { "$in" : @cccc@ },
+      "station_type" : { "$in" : @stationtype@ },
+      "data_type" : { "$in" : @datatype@ },
+      "country" : { "$in" : @country@ },
+      "$or" : [
+          { "name.international" : { "$in" : @name@ } },
+          { "name.short" : { "$in" : @name@ } },
+          { "name.ru" : { "$in" : @name@ } }
+      ],
+      "station" : { "$in" : @station@ }
+    }},
+    {"$lookup": {
+      "from": "countries",
+      "localField": "country",
+      "foreignField": "number",
+      "as": "countryinfo"
+    }
+    },
+    { "$unwind": "$countryinfo" }
+  ],
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}
+
+

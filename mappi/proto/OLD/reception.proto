@@ -1,0 +1,159 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+import "spo_options.proto";
+
+package mappi.conf;
+import "sprinf.proto";
+import "satellite.proto";
+import "schedule.proto";
+
+/*!
+  \brief  Параметры приёма
+*/
+
+enum SatType {
+  kUnkSatType = -1;
+  kOrbitalSat = 0;      //!< Полярно-орбитальный спутник
+  kGeostatSat = 1;      //!< Геостационарный спутник
+  kAnySatType = 2;
+}
+
+//! Порты устройств
+// message DevicesPort {
+//   optional int32 nav_port    = 1; //!< Порт навигатора
+//   optional string ant_port   = 2; //!< Порт антенны
+//   optional int32 recv_port   = 3; //!< Порт приёмника
+//   optional int32 compas_port = 4; //!< Порт компаса
+// }
+
+//! Пункт приёма
+message Site {
+  optional string name = 1;                     //!< Название
+  optional meteo.sprinf.GeoPoint point = 5;     //!< координаты пункта
+  //часовой пояс?
+}
+
+//! Настройки для приёмника
+message RecvParam {
+  required RecvMode mode = 1;   //!< Режим приёма
+  required float freq = 2;      //!< Частота
+  required float gain = 3;      //!< Усиление
+  required float rate = 4;      //!< Частота дискретизации
+}
+
+//! Настройки приёма для спутников
+message SatRecv {
+  required string name = 1;     //!< Название спутника
+  required SatType type = 2;    //!< Тип орбиты
+  repeated RecvParam recv = 3;  //!< Настройки для приёмника (в зависимости от режима)
+}
+
+//! Тип антенны
+enum AntennaType {
+  kUnkAntenna = -1;
+  kSuzhetAntenna = 0;
+  kSmallAntenna = 1;
+  kCafAntenna = 2;
+}
+
+//! Настройки антенны
+message Antenna {
+  required AntennaType type = 1;        //!< Тип антенны
+  required string port = 2;             //!< Порт антенны
+  required int32 azimut_corr = 3;       //!< Поправка угла азимута антенны, градусы
+  optional float track_step = 4;        //!< Шаг при построении траектории, секунды
+}
+
+//! Настройки для приёма
+message Reception {
+  required Site site = 1;               //!< Пункт приёма
+  required Schedule sched = 2;          //!< Построение расписания
+  repeated SatRecv sat = 3;             //!< Приёмник
+  optional string recvapp = 4;          //!< Приложение для запуска приёмника
+  optional bool adjust_freq = 5;        //!< Подстройка частоты при приёме
+  required RecvMode recvmode = 12;      //!< Режим приёма данных
+  // required DevicesPort ports = 7;    //!< Порты устройств
+  required Antenna antenna = 8;         //!< Параметры антенны
+  required string tledir = 9;           //!< Папка с TLE файлами
+  required string satdata = 10;         //!< Директория для сохранения файла, с полученными от приёмника данными
+  optional string receiverfile = 11;    //!< Файл, в который сохраняется поток от приёмника (потом будет сокет)
+}
+
+//! Параметры антенны
+message AntennaAttr {
+  required AntennaType type  = 1;               //!< Тип антенны
+  optional int32 az_min_tech = 2;               //!< Технический минимальный угол для двигателя азимута
+  optional int32 az_max_tech = 3;               //!< Технический максимальный угол для двигателя азимута
+  required int32 el_min_tech = 4;               //!< Технический минимальный угол для двигателя угла места
+  required int32 el_max_tech = 5;               //!< Технический максимальный угол для двигателя угла места
+  required int32 az_min = 6;                    //!< Программный минимальный угол для двигателя азимута
+  required int32 az_max = 7;                    //!< Программный максимальный угол для двигателя азимута
+  required int32 el_min = 8;                    //!< Программный минимальный угол для двигателя азимута
+  required int32 el_max = 9;                    //!< Программный максимальный угол для двигателя азимута
+  required float dsa_max = 10;                  //!< Максимальная скорость движения по азимуту, градус/сек
+  required float dse_max = 11;                  //!< Максимальная скорость движения по углу места, градус/сек
+  optional float az_angle_scale = 12;           //!< Масштаб угла для азимута (для получения угла из делений и наоборот)
+  optional float az_division_scale = 13;        //!< Масштаб делений для азимута (для получения угла из делений и наоборот)
+  optional float el_angle_scale = 14;           //!< Масштаб угла для угла места (для получения угла из делений и наоборот)
+  optional float el_division_scale = 15;        //!< Масштаб делений для угла места (для получения угла из делений и наоборот)
+}
+
+message AntennaCollect {
+  repeated AntennaAttr antenna = 1;
+}
+
+enum SubscrType {
+  kDataSubscr    = 1;
+  kFileSubsr     = 2;
+  kAntennaSubscr = 3;
+}
+
+enum StatusSession {
+  kStart = 1;           //!< Первый пакет сессии приема
+  kContinue = 2;        //!< Средний пакет сессии приема
+  kEnd = 3;             //!< Крайний пакет сессии приема
+}
+
+//! Запрос/подписка
+message DataRequest {
+  required SubscrType subscr = 1;
+}
+
+//! Принимаемые данные
+message DataReply {
+  optional string file = 1;
+  optional int64 session_id = 2;
+  optional bytes data = 3;
+  optional StatusSession status = 4;    //!< Тип пакета { первый пакет, средний пакет, крайний пакет }
+}
+
+//! Состояние антенны
+message AntennaState {
+  required float ant_azimut = 1;        //!< Текущий азимут антенны
+  required float ant_elev = 2;          //!< Текущий угол места
+  required float azimut = 3;            //!< Устанавливаемый азимут
+  required float elevation = 4;         //!< Устанавливаемый угол места
+  optional string error = 5;            //!< Ошибка
+}
+
+//! Состояние железа
+message DeviceStateReply {
+  optional AntennaState antenna = 1;
+  optional string satellite = 2;        //!< Название спутника
+  optional uint64 revol = 3;            //!< Номер витка
+  optional int32 time_offset = 4;       //!< Разница между реальным временем и виртуальным (для тестового приёма)
+}
+
+service ReceiveService {
+  rpc GetDataMulti(DataRequest) returns (DataReply)  //!< Подписка на получение данных
+  {
+    option( spo.protobuf.multiresponse ) = true;
+  }
+
+  rpc GetDeviceStateMulti(DataRequest) returns (DeviceStateReply)  //!< Подписка на получение состояния железок
+  {
+    option( spo.protobuf.multiresponse ) = true;
+  }
+}

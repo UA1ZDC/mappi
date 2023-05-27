@@ -1,0 +1,17 @@
+{
+  "find": "obanal",
+  "filter": {
+      "forecast_start" : {"$gte": @start_fdt@,"$lte": @end_fdt@},
+      "descr" : {"$in": @descr@},
+      "level_type" : {"$in": @level_type@},
+      "level" : {"$in": @level@},
+      "hour" : {"$in": @hour@},
+      "center" : {"$in": @center@},
+      "model": @model@
+     },
+  "sort": {
+    "forecast_start": -1,
+    "hour": 1
+    },
+  "limit": 1
+}

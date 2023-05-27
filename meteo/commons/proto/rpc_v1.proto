@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package rpc;
+
+message Package {
+  required bytes id             = 1;
+  required bool  stub           = 2;
+  required bool failed          = 3;
+  optional string error_text    = 4;
+  required bytes service        = 5;
+  required bytes method         = 6;
+  required bytes message        = 7;
+  optional bool testconnect     = 8 [default = false];
+}

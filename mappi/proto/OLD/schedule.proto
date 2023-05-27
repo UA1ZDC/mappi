@@ -1,0 +1,115 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+import "spo_options.proto";
+
+package mappi.conf;
+
+
+//! Способ разрешения конфликта
+enum PriorType {
+  kUnkPrior = -1;       //!< Неизвестно
+  kBeginPrior = 0;      //!< Начало сеанса
+  kContinPrior = 1;     //!< Продолжительность сеанса
+  kWestPrior = 2;       //!< Западный регион
+  kEastPrior = 3;       //!< Восточный регион
+};
+
+//! Состояние конфликта с другими спутниками
+enum ConflState {
+  kUnkState = -1;               //!< Неизвестно
+  kNormalState = 0;             //!< Ни с кем не конфликтует
+  kSettlState = 1;              //!< Конфликт решён в пользу этого спутника
+  kConflState = 2;              //!< Конфликт решён в пользу другого спутника (т.е. этот д.б. исключён из расписания)
+  kUserEnableState = 3;         //!< Конфликт решён пользователем в пользу этого спутника
+  kUserDisableState = 4;        //!< Конфликт решён пользователем в пользу другого спутника
+};
+
+//! Направление спутника
+enum SatDirection {
+  kUnkDirection = -1;
+  kDescending = 0;      //!< Нисходящее
+  kAscending = 1;       //!< Восходящее
+};
+
+//! Настройки построения расписания
+message Schedule {
+  repeated string sats = 1;             //!< Список названий спутников (как в TLE)
+  required float elmax = 2;             //!< Пороговое значение угола кульминации(минимальный угол для включения в расписаие), градусы
+  required float elmin = 3;             //!< Пороговое значения для угла места (минимальный угол), градусы
+  required PriorType priority = 4;      //!< Способ разрешения конфликтов
+  required float period = 5;            //!< Период на который составляется расписание, ч
+};
+
+//! Описание сеанса
+message Session {
+  required string satellite = 1;        //!< Название спутника
+  required string aos = 2;              //!< Время начала сеанса
+  required string los = 3;              //!< Время окончания сеанса
+  required float maxel = 4;             //!< Угол кульминации
+  required uint64 revol = 5;            //!< Номер витка
+  required SatDirection direction = 6;  //!< Направление(Восходящее/Нисходящее)
+  required ConflState state = 7;        //!< Состояние конфликта
+}
+
+//! Пустой запрос
+message IdleRequest {
+}
+
+//Запрос на подписку/отписку
+message ScheduleSubscribeRequest {
+  required bool subscr = 1;
+}
+
+//! Запрос на изменение расписания
+message SessionRequest {
+  required string satellite = 1;        //!< Название спутника
+  required uint64 revol = 2;            //!< Номер витка
+  required ConflState state = 3;        //!< Состояние конфликта
+}
+
+//! Сформированное расписание
+message ScheduleReply {
+  required bool result  = 1;
+  optional string comment = 2;
+  repeated Session session = 3; //!< Сеансы
+}
+
+//! Запрос TLE параметров
+message TleRequest {
+  required string name = 1;     //!< Название спутника
+  required string aos = 2;      //!< Время начала сеанса
+}
+
+//! TLE параметры в виде строк { MnSat::STLEParams }
+message STleReply {
+  required bool result = 1;
+  optional string name = 2;             //!< Название спутника
+  optional string firststring  = 3;     //!< Первая строка параметров
+  optional string secondstring = 4;     //!< Вторая строка параметров
+}
+
+message AllSatellitesReply {
+  repeated string name = 1;     //!< Название спутника
+}
+
+service ScheduleService {
+
+  rpc Subscribe(ScheduleSubscribeRequest) returns (ScheduleReply) //Запрос на подписку
+  {
+    option( spo.protobuf.multiresponse ) = true;
+  }
+
+  rpc GetSchedule(IdleRequest) returns (ScheduleReply);            //!< Запрос расписания
+
+  rpc EditSession(SessionRequest) returns (ScheduleReply);         //!< Редактирование сеанса
+
+  rpc Recreate(IdleRequest) returns (ScheduleReply);               //!< Перестроить расписание
+
+  rpc Refresh(IdleRequest) returns (ScheduleReply);                //!< Обновить расписание с сохранением пользовательских решений конфликтов
+
+  rpc GetSTle(TleRequest) returns (STleReply);                     //!< Запрос TLE в виде MnSat::STLEParams { имя спутника, первая строка, вторая строка }
+
+  rpc GetAllSatellites(IdleRequest) returns (AllSatellitesReply);  //!< Запрос спутников из TLE файла
+}

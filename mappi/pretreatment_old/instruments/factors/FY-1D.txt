@@ -1,0 +1,13 @@
+[MVISR]
+
+#Pre-launch calibration coefficients (albedo representation)
+#1, 2, 6, 7, 8, 9, 10 каналы
+#Slope 	Intercept
+vizible,7,2
+8.930e-02, -1.0719
+9.980e-02, -1.1972
+8.310e-02, -2.4113
+4.230e-02, -0.5498
+6.310e-02, -0.7570
+8.170e-02, -1.0624
+8.920e-02, -1.2486

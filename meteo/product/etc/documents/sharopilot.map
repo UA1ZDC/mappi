@@ -1,0 +1,12 @@
+name: "sharopilot.map"
+title: "Сведения о потребности в шаропилотных оболочках"
+formal {
+    template: "sharopilot.odt"
+    name: "Сведения о потребности в шаропилотных оболочках"
+    module_path: "sharopilot.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

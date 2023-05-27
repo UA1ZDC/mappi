@@ -1,0 +1,10 @@
+{
+  "find" : "documents",
+  "filter" : {
+    "jobid" : @jobid@
+  },
+  "sort" : {
+    "dt" : -1
+  },
+  "limit" : 1
+}

@@ -1,0 +1,28 @@
+syntax = "proto2";
+
+// package mappi.proto;
+
+
+message Dummy {
+}
+
+message StringList {
+  repeated string item = 1;
+}
+
+//! состояния сервиса, реализуюещего логику через машину состояний
+//! все возможные состояния собраны вместе для удобства, т.к. по сути состояние - только для чтения
+enum ServiceState {
+  kIdlingState = 0;     //!< ожидание приёма, холостой ход
+  kWarmingState = 1;    //!< подготовка к приёму, "прогрев"
+  kActiveState = 2;     //!< приём сеанса
+  kSkippingState = 3;   //!< пассивное ожидание завершения приёма
+  kServiceState = 4;    //!< сервисный режим
+  kFindState = 5;       //!< поиск сеанса для приёма
+  kPreWaitState = 6;    //!< предварительное ожидание начала приёма
+  kSyncState = 7;       //!< синхронизация
+}
+
+message ServiceRequest {
+  required bool flag = 1;
+}

@@ -1,0 +1,205 @@
+syntax = "proto2";
+
+package TProduct;
+
+message ProductCommon {
+  required uint32 category = 1;
+  required uint32 number = 2;
+  required uint32 processType = 3;
+  required uint32 backId = 4;
+  required uint32 id = 5;
+  required uint32 hours = 6;
+  required uint32 min = 7;
+  required uint64 forecastTime= 8;
+  optional uint32 surf1_type= 9;
+  optional float  surf1 = 10;
+  optional uint32 surf2_type= 11;
+  optional float  surf2 = 12;
+  optional uint32 chemType = 15;//t40, t41, t42, t43
+  optional uint32 aerosolType = 16; //t44, t45
+  optional uint32 intervalType = 17;//t44, t45
+  optional float firstSize = 18;//t44, t45
+  optional float secSize = 19;  //t44, t45
+  optional uint32 waveInterval = 20;//t48
+  optional float firstWave = 21;//t48
+  optional float secWave = 22;  //t48
+}
+
+message StatTimeRange {
+  required uint32 statProc = 1; 
+  required uint32 timeRange = 2;
+  required uint64 timeLength = 3; 
+  required uint64 succesTime = 4; 
+}
+
+
+message TimeInterval {
+  optional uint32 endYear  = 1;
+  optional uint32 endMonth = 2;
+  optional uint32 endDay  = 3;
+  optional uint32 endHour = 4;
+  optional uint32 endMinute = 5;
+  optional uint32 endSecond = 6;
+  optional uint32 n = 7;
+  required uint32 missing = 8;
+  repeated StatTimeRange tr = 9;
+}
+
+message SatBands {
+  required uint32 series = 1;
+  required uint32 number = 2;
+  required uint32 instrument = 3;
+  required float waveNum= 4;
+}
+
+message ForecastCategory {
+  required uint32 code = 1;
+  required uint32 intervalType = 2;
+  required float firstLim= 3;
+  required float secLim = 4;
+}
+
+//----
+
+//template 0, 1, 2, 6, 7, 8, 10, 11, 12, 15, 40, 41, 42, 43, 44, 45, 46, 47, 48, 1000, 10001
+message Product0 {
+  required ProductCommon pc = 1;
+  optional uint32 ensembleType = 2; //t1, t11, t41, t43, t45, t47
+  optional uint32 perturbNum  = 3;  //t1, t11, t41, t43, t45, t47
+  optional uint32 ensembleNum = 4; //t1, t2, t11, t12, t41, t43, t45, t47
+  optional uint32 derived  = 5; //t2, t12
+  optional uint32 percent  = 6; //t6, t10
+  optional uint32 statProc = 7; //t15
+  optional uint32 spatialType = 8; //t15
+  optional uint32 spatialNum  = 9; //t15
+  optional TimeInterval ti = 10;//t8, t10, t11, t42, t43, t46, t47
+}
+
+//template 3, 4, 13, 14
+message Product1 {
+  required ProductCommon pc = 1;
+  required uint32 derived = 2;
+  required uint32 ensembleNum = 3;
+  required uint32 clusterId = 4;
+  required uint32 clusterNumHigh = 5;
+  required uint32 clusterNumLow = 6;
+  required uint32 clusterNum = 7;
+  required uint32 clusterMethod = 8;
+  optional sint32 latN = 9; //t3, t13
+  optional sint32 latS = 10;//t3, t13
+  optional sint32 lonE = 11;//t3, t13
+  optional sint32 lonW = 12;//t3, t13
+  required uint32 Nc = 13;
+  required float  deviation = 14;
+  required float  distance = 15;
+  repeated uint32 listNum = 16;
+  optional sint32 latC = 17;//t4, t14
+  optional sint32 lonC = 18;//t4, t14
+  optional uint32 rad = 19;//t4, t14
+  optional TimeInterval ti = 20; //t13, t14
+}
+
+//template 5, 9
+message Product2 {
+  required ProductCommon pc = 1;
+  required uint32 probabNum = 2;
+  required uint32 totalNum = 3;
+  required uint32 probabType= 4;
+  required float lowLim= 5;
+  required float upLim = 6;
+  optional TimeInterval ti = 7; //t9
+}
+
+//template 20
+message Product3 {
+  required uint32 category = 1;
+  required uint32 number = 2;
+  required uint32 processType = 3;
+  required uint32 numSites = 4;
+  required uint32 timeUnit = 5;
+  required sint32 lat = 6;
+  required sint32 lon = 7;
+  required uint32 el = 8;
+  required uint32 id_an = 9;
+  required uint32 id = 10;
+  required uint32 mode = 11;
+  required uint32 calibr = 12;
+  required uint32 qual = 13;
+  required uint32 filtr = 14;
+  required uint32 el_angle = 15;
+  required uint32 accum = 16;
+  required uint32 refl = 17;
+  required uint32 rangeSpacing = 18;
+  required uint32 anularSpacing = 19;
+}
+
+//tempate 31, 32, 33, 34
+message Product4 {
+  required uint32 category = 1;
+  required uint32 number = 2;
+  required uint32 processType = 3;
+  required uint32 backId = 4;
+  optional uint32 id = 5; //t32, t33
+  optional uint32 hours = 6;//t32, t33
+  optional uint32 min = 7;//t32, t33
+  optional uint64 forecastTime= 8;//t32, t33
+  required uint32 nb = 9;
+  repeated SatBands sb = 10;
+  optional uint32 ensembleType = 11; //t33
+  optional uint32 perturbNum  = 12; //t33
+  optional uint32 ensembleNum = 13; //t33
+  optional TimeInterval ti = 14; //t34
+}
+
+//template 51, 91
+message Product5 {
+  required ProductCommon pc = 1;
+  required uint32 nc = 2;
+  repeated ForecastCategory fc = 3;
+  optional TimeInterval ti = 4; //t91
+}
+
+//template 53, 54
+message Product6 {
+  required uint32 category = 1;
+  required uint32 number = 2;
+  required uint32 ptn = 13;
+  required uint32 np  = 14; 
+  repeated uint32 pList = 15;
+  repeated uint32 pNum = 16;
+  required uint32 processType = 3;
+  required uint32 backId = 4;
+  required uint32 id = 5;
+  required uint32 hours = 6;
+  required uint32 min = 7;
+  required uint64 forecastTime= 8;
+  required uint32 surf1_type= 9;
+  required float  surf1 = 10;
+  required uint32 surf2_type= 11;
+  required float  surf2 = 12;
+  optional uint32 ensembleType = 17;//t54
+  optional uint32 perturbNum  = 18; //t54
+  optional uint32 ensembleNum = 19; //t54
+}
+
+//template 60, 61
+message Product7 {
+  required ProductCommon pc = 1;
+  required uint32 ensembleType = 2; 
+  required uint32 perturbNum  = 3;
+  required uint32 ensembleNum = 4;
+  required uint32 modelYear = 5;
+  required uint32 modelMonth = 6;
+  required uint32 modelDay  = 7;
+  required uint32 modelHour = 8;
+  required uint32 modelMin =  9;
+  required uint32 modelSec = 10;
+  optional TimeInterval ti = 11;//t61
+}
+
+//template 254
+message Product8 {
+  required uint32 category = 1;
+  required uint32 number = 2;
+  required uint32 symCnt = 3;
+}

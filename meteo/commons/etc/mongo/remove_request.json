@@ -1,0 +1,9 @@
+{  "delete": "requests",
+   "deletes": [ {
+      "q": {
+            "ipaddr" : @ip@,
+            "namegms": @namegms@
+           },
+      "limit": 1
+}
+]}

@@ -1,0 +1,10 @@
+Package: python3-aiohttp
+Version: 3.6.2
+Architecture: amd64
+Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>
+Installed-Size: 3303
+Depends: python3 (<< 3.6), python3 (>= 3.5~), python3-async-timeout, python3-attr, python3-chardet, python3-multidict, python3-yarl, python3:any (>= 3.5~), libc6 (>= 2.14), typing-extensions, python3-idna-ssl
+Section: python
+Priority: optional
+Description: Async http client/server framework (asyncio)
+ Summary: Async http client/server framework (asyncio)

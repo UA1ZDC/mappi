@@ -1,0 +1,9 @@
+{
+   "find": "conference_messages",
+   "filter": {
+     "to" : @to@   
+   },
+   "sort": { "dt" : -1 },
+   "limit" : 1,
+   "singleBatch": true
+}

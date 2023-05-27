@@ -1,0 +1,22 @@
+Source: aiohttp-jinja2
+Section: python
+Priority: optional
+Maintainer: Piotr Ożarowski <piotr@debian.org>
+Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Build-Depends: debhelper-compat (= 9), dh-python,
+               python3-aiohttp,
+               python3-all,
+               python3-jinja2,
+               python3-setuptools,
+Standards-Version: 4.5.0
+Homepage: https://github.com/aio-libs/aiohttp_jinja2/
+Vcs-Git: https://salsa.debian.org/python-team/modules/aiohttp-jinja2.git
+Vcs-Browser: https://salsa.debian.org/python-team/modules/aiohttp-jinja2
+
+Package: python3-aiohttp-jinja2
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Enhances: python3-aiohttp
+Description: jinja2 template renderer for aiohttp.web
+ aiohttp_jinja2 library makes it easier to integrate Jinja2 (template engine for
+ Python) templates in aiohttp.web (asyncio HTTP server)

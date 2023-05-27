@@ -1,0 +1,5 @@
+{ "find" : "conferences",
+  "filter" : { 
+    "members" : { "$elemMatch" : { "$eq" : @member@ } }
+  }
+}

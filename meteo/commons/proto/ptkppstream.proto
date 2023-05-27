@@ -1,0 +1,39 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+import "msgcenter.proto";
+
+package meteo.msgstream;
+
+message Dummy {}
+
+message SubscribeData {
+  enum Action {
+    kNoneAction   = 0;
+    kRunAction    = 1;
+    kStopAction   = 2;
+    kRemoveAction = 3;
+  }
+
+  // информация о подписке
+  optional msgcenter.DistributeMsgRequest params = 1; //!< Параметры подписки
+  optional string address = 2;      //!< Адрес ЦКС (CCCC:ХОСТ:ПОРТ)
+  optional Action action  = 4;      //!< Состояние подписки или действие, которое необходимо выполнить
+  repeated string error_text  = 5;  //!< Список ошибок (заполняется при выявлении неполадок в процессе работы)
+}
+
+message SubscribeListResponse {
+  repeated SubscribeData  subscribe = 1;
+}
+
+
+//! Данный сервис позволяет просматривать и управлять подписками на получение телеграмм от удалённых ЦКС.
+service PtkppStreamService
+{
+  //! Получить список подписок к ЦКС.
+  rpc GetSubscribeList( Dummy ) returns ( SubscribeListResponse );
+  //! Изменить подписку.
+  rpc UpdateSubscribe( SubscribeData ) returns ( SubscribeData );
+}
+

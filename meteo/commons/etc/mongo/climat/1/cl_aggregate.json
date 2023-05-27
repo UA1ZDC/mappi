@@ -1,0 +1,12 @@
+{
+  "aggregate" : "%1",
+  "pipeline" : [
+    { "$addFields" : {
+      "month" : { "$month" : "$_id.date"}
+    } },
+    { "$match" : "%2" },
+    "%3"
+  ],  
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}

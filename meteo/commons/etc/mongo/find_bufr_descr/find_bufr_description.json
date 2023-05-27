@@ -1,0 +1,9 @@
+{
+  "aggregate": "bufr_code",
+  "pipeline": [
+    { "$match" : { "bufr_code": { "$in": "%1" } } },
+    { "$unwind": "$values" },
+    { "$match": { "$or": [ "%2" ] } }
+  ],
+  "cursor": { "batchSize": 1 } 
+}

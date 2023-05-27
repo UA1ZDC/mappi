@@ -1,0 +1,10 @@
+name: "maxTemp.map"
+title: "Карта максимальной температуры"
+spline_koef: 2
+data {
+  mode: kGradient
+  level: 0
+  type_level: 1
+  template_name: "12111"
+  transparency: 50
+}

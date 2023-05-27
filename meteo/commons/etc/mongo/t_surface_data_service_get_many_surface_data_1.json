@@ -1,0 +1,16 @@
+{
+  "aggregate": "meteoreport",
+  "pipeline":[
+        {"$unwind": "$param"},
+        {"$match":  {
+                "level_type": @level_type@,
+                "level": @level@,
+                "data_type": 1,
+                "dt": @dt@,
+                "param.descrname": @descrname@
+            }
+        }
+    ],
+    "cursor": { "batchSize": 1 }
+
+}

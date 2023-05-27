@@ -1,0 +1,12 @@
+name: "aerobulletin.map"
+title: "Аэрометеорологический бюллетень"
+formal {
+    template: "Aerobill.odt"
+    name: "Аэрометеорологический бюллетень"
+    module_path: "aerobulletin.py"
+    format: kOdt
+    icon_path: ":product/icons/aero-blt.png"
+}
+document {
+  doctype: kFormalDocument
+}

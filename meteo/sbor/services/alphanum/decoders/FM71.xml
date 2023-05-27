@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM71" text="CLIMAT"  category="12">
+  <MessageSections>(?:\s*CLIMAT)?(\s*[\d]{5}\s*[\w/]{5})\s*(?:RR\w)?\s*(\s*(?:\s*[\d]{3}(?:\s*[\w/-]{1,10}){1,10})*)</MessageSections>
+  <Section number="0" text="" >
+    <SectionGroups>\s*([\d]{2})([\d]{3})\s*([\d/]{2})([\d/]{3})</SectionGroups>
+    <Value number="1"  descrName="MM"/>
+    <Value number="2"  descrName="JJJ"/>
+    <Value number="3"  descrName="II" />
+    <Value number="4"  descrName="iii" />
+  </Section>
+
+  <Section number="1" text="Месячные данные за месяц" >
+    <SectionGroups>(\s*111(?:\s*[\w/-]{4,10}){1,9})?(\s*222(?:\s*[\w/]{4,10}){1,10})?(\s*333(?:\s*[\w/]{4,10}){1,10})?(\s*444(?:\s*[\w/]{4,10}){1,8})?</SectionGroups>
+    <Group number="1" text="">
+      <item>
+      <GroupValues>\s*111(?:\s*1([\d/]{4}))?(?:\s*2([\d/]{4}))?(?:\s*3([\d/]{4})([\d/]{3}))?(?:\s*4([\d/]{4})([\d/]{4}))?(?:\s*5([\d/]{3}))?(?:\s*6([\d/]{4})([\d/])([\d/]{2}))?(?:\s*7([\d/]{3})([\d/]{3}))?(?:\s*8([\d/-]{2})([\d/-]{2})([\d/]|-1)([\d/]|-1))?(?:\s*9([\d/]{2})([\d/]{2})([\d/]{2}))?</GroupValues>
+      <Value number="1"   descrName="P0P0P0P0_avg" text="Среднемесячное давление на уровне станции" />
+      <Value number="2"   descrName="PPPP_avg" text="Среднемесячное давление, в десятых долях гектопаскаля или средний месячный геопотенциал в гпм для уровня станции" />
+      <Value number="3"   descrName="snTTT_avg" text="Среднемесячная температура воздуха" />
+      <Value number="4"   descrName="ststst" text="Среднеквадратичное отклонение среднесуточных величин относительно среднемесячной температуры воздуха, в десятых долях градуса Цельсия" />
+      <Value number="5"   descrName="snTxTxTx_avg" text="Максимальная среднесуточная температура воздуха за месяц, в десятых долях градуса" />
+      <Value number="6"   descrName="snTnTnTn_avg" text="Минимальная среднесуточная температура воздуха за месяц, в десятых долях градуса" />
+      <Value number="7"   descrName="eee_avg" text="Среднемесячная упругость водяного пара, в десятых долях гектопаскаля" />
+      <Value number="8"   descrName="R1R1R1R1" text="Суммарное количество осадков за месяц" />
+      <Value number="9"   descrName="Rd" text="Группа повторяемости, в пределы которой попадает R1R1R1R1" />
+      <Value number="10"  descrName="nrnr" text="Количество дней в месяце с осадками, равными или больше 1 мм" />
+      <Value number="11"  descrName="S1S1S1" text="Общая продолжительность солнечного сияния за месяц с точностью до ближайшего часа" />
+      <Value number="12"  descrName="pSpSpS" text="Процент общей продолжительности солнечного сияния по отношению к норме" />
+      <Value number="13"  descrName="mpmp" text="Количество дней с отсутствием данных о давлении" />
+      <Value number="14"  descrName="mTmT" text="Количество дней с отсутствием данных о температуре воздуха" />
+      <Value number="15"  descrName="mTx" text="Количество дней с отсутствием данных о максимальной суточной температуре воздуха" />
+      <Value number="16"  descrName="mTn" text="Количество дней с отсутствием данных о минимальной суточной температуре воздуха" />
+      <Value number="17"  descrName="meme" text="Количество дней с отсутствием данных о давлении водяного пара" />
+      <Value number="18"  descrName="mRmR" text="Количество дней с отсутствием данных об осадках" />
+      <Value number="19"  descrName="mSmS" text="Количество дней с отсутствием данных о продолжительности солнечного сияния" />
+      </item>
+    </Group>
+
+    <Group number="2" text="">
+      <item>
+      <GroupValues>\s*222(?:\s*0([\d/]{2})([\d/]{2}))?(?:\s*1([\d/]{4}))?(?:\s*2([\d/]{4}))?(?:\s*3([\d/]{4})([\d/]{3}))?(?:\s*4([\d/]{4})([\d/]{4}))?(?:\s*5([\d/]{3}))?(?:\s*6([\d/]{4})([\d/]{2}))?(?:\s*7([\d/]{3}))?(?:\s*8([\d/]{2})([\d/]{2})([\d/]{2}))?(?:\s*9([\d/]{2})([\d/]{2})([\d/]{2}))?</GroupValues>
+      <Value number="1"   descrName="YbYb" text="" />
+      <Value number="2"   descrName="YcYc" text="" />
+      <Value number="3"   descrName="P0P0P0P0_avg" text="" />
+      <Value number="4"   descrName="PPPP_avg" text="" />    
+      <Value number="5"   descrName="snTTT_avg" text="" />   
+      <Value number="6"   descrName="ststst" text="" />      
+      <Value number="7"   descrName="snTxTxTx_avg" text="" />
+      <Value number="8"   descrName="snTnTnTn_avg" text="" />
+      <Value number="9"   descrName="eee_avg" text="" />     
+      <Value number="10"  descrName="R1R1R1R1" text="" />    
+      <Value number="12"  descrName="nrnr" text="" />        
+      <Value number="13"  descrName="S1S1S1" text="" />      
+      <Value number="14"  descrName="yPyP" text="" />
+      <Value number="15"  descrName="yTyT" text="" />
+      <Value number="16"  descrName="yTxyTx" text="" />
+      <Value number="17"  descrName="yeye" text="" />
+      <Value number="18"  descrName="yRyR" text="" />
+      <Value number="19"  descrName="ySyS" text="" />
+      </item>
+    </Group>
+
+
+    <Group number="3" text="">
+      <item>
+      <GroupValues>\s*333(?:\s*0([\d/]{2})([\d/]{2}))?(?:\s*1([\d/]{2})([\d/]{2}))?(?:\s*2([\d/]{2})([\d/]{2}))?(?:\s*3([\d/]{2})([\d/]{2}))?(?:\s*4([\d/]{2})([\d/]{2}))?(?:\s*5([\d/]{2})([\d/]{2}))?(?:\s*6([\d/]{2})([\d/]{2}))?(?:\s*7([\d/]{2})([\d/]{2}))?(?:\s*8([\d/]{2})([\d/]{2})([\d/]{2}))?(?:\s*9([\d/]{2})([\d/]{2})([\d/]{2}))?</GroupValues>
+      <Value number="1"   descrName="T25T25" text="" />
+      <Value number="2"   descrName="T30T30" text="" />
+      <Value number="3"   descrName="T35T35" text="" />
+      <Value number="4"   descrName="T40T40" text="" />
+      <Value number="5"   descrName="Tn0Tn0" text="" />
+      <Value number="6"   descrName="Tx0Tx0" text="" />
+      <Value number="7"   descrName="R01R01" text="" />
+      <Value number="8"   descrName="R05R05" text="" />
+      <Value number="9"   descrName="R10R10" text="" />
+      <Value number="10"  descrName="R50R50" text="" />
+      <Value number="11"  descrName="R100R100" text="" />
+      <Value number="12"  descrName="R150R150" text="" />
+      <Value number="13"  descrName="s00s00" text="" />
+      <Value number="14"  descrName="s01s01" text="" />
+      <Value number="15"  descrName="s10s10" text="" />
+      <Value number="16"  descrName="s50s50" text="" />
+      <Value number="17"  descrName="f10f10" text="" />
+      <Value number="18"  descrName="f20f20" text="" />
+      <Value number="19"  descrName="f30f30" text="" />
+      <Value number="20"  descrName="V1V1" text="" />
+      <Value number="21"  descrName="V2V2" text="" />
+      <Value number="22"  descrName="V3V3" text="" />
+      </item>
+    </Group>
+
+    <Group number="4" text="">
+      <item>
+      <GroupValues>\s*444(?:\s*0([\d/]{4})([\d/]{2}))?(?:\s*1([\d/]{4})([\d/]{2}))?(?:\s*2([\d/]{4})([\d/]{2}))?(?:\s*3([\d/]{4})([\d/]{2}))?(?:\s*4([\d/]{4})([\d/]{2}))?(?:\s*5([\d/])([\d/]{3})([\d/]{2}))?(?:\s*6([\d/]{2})([\d/]{2}))?(?:\s*7([\d/])([\d/]{2})([\d/]{2}))?</GroupValues>
+      <Value number="1"   descrName="snTxdTxdTxd" text="" />
+      <Value number="3"   descrName="yxyx" text="" />
+      <Value number="2"   descrName="snTndTndTnd" text="" />
+      <Value number="3"   descrName="ynyn" text="" />
+      <Value number="4"   descrName="snTaxTaxTax" text="" />
+      <Value number="5"   descrName="yaxyax" text="" />
+      <Value number="6"   descrName="snTanTanTan" text="" />
+      <Value number="7"   descrName="yanyan" text="" />
+      <Value number="8"   descrName="RxRxRxRx" text="" />
+      <Value number="9"   descrName="yryr" text="" />
+      <Value number="10"  descrName="iw" text="" />
+      <Value number="11"  descrName="fxfxfx" text="" />
+      <Value number="12"  descrName="yfxyfx" text="" />
+      <Value number="13"  descrName="DtsDts" text="" />
+      <Value number="14"  descrName="DgrDgr" text="" />
+      <Value number="15"  descrName="iy" text="" />
+      <Value number="16"  descrName="GxGx" text="" />
+      <Value number="17"  descrName="GnGn" text="" />
+      </item>
+    </Group>
+
+
+  </Section>
+
+
+
+</Message>
+

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SendDlg</class>
+ <widget class="QDialog" name="SendDlg">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>531</width>
+    <height>124</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Отправка сообщения в ЦКС</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Заголовок:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,2,2,2,3,4,2">
+     <item>
+      <widget class="QLineEdit" name="numEdit">
+       <property name="toolTip">
+        <string>Номер</string>
+       </property>
+       <property name="maxLength">
+        <number>3</number>
+       </property>
+       <property name="placeholderText">
+        <string>Номер</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="ttEdit">
+       <property name="toolTip">
+        <string>TT</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="placeholderText">
+        <string>TT</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="aaEdit">
+       <property name="toolTip">
+        <string>AA</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="placeholderText">
+        <string>AA</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="iiEdit">
+       <property name="toolTip">
+        <string>ii</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="placeholderText">
+        <string>ii</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="ccccEdit">
+       <property name="toolTip">
+        <string>CCCC</string>
+       </property>
+       <property name="maxLength">
+        <number>4</number>
+       </property>
+       <property name="placeholderText">
+        <string>CCCC</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="yyggggEdit">
+       <property name="toolTip">
+        <string>YYGGgg</string>
+       </property>
+       <property name="maxLength">
+        <number>6</number>
+       </property>
+       <property name="placeholderText">
+        <string>YYGGgg</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="bbbEdit">
+       <property name="toolTip">
+        <string>BBB</string>
+       </property>
+       <property name="maxLength">
+        <number>3</number>
+       </property>
+       <property name="placeholderText">
+        <string>BBB</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>17</width>
+       <height>12</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>195</width>
+       <height>28</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="sendBtn">
+     <property name="text">
+      <string>Отправить</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QPushButton" name="cancelBtn">
+     <property name="text">
+      <string>Отмена</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>sendBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>SendDlg</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>226</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>SendDlg</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>389</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>226</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

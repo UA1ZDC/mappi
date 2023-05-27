@@ -1,0 +1,28 @@
+syntax = "proto2";
+
+package meteo.cleaner;
+
+//! Удаление документов из БД из файлов из БД и ФС.
+message FileDbRemove {
+  optional string name            = 1;  //!< Название задачи (описание)
+  optional string timesheet       = 2;  //!< Расписание запуска задания
+
+  optional string conn_name       = 3; //!< Идентификатор соединения c БД
+  optional string collection      = 4; //!< Название коллекции
+
+  optional string dt_field        = 5; //!< Поле документа, в котором содержится время добавления записи в БД
+  optional int32 delete_period    = 6; //!< Период времени по истечению которого файлы подлежат удаления (кол. дней)
+
+  optional string dt_write_field  = 7; //!< Поле документа, в котором содержится дата записи файла
+  optional int32 store_period     = 8; //!< Время хранения файла, после сохранения
+
+  optional string gridfs_prefix   = 41; //!< Префикс коллекции, в которой хранятся файлы
+  optional string gridfs_field    = 9; //!< Поле документа, в котором содержится идентификатор (_id) файла в GridFS
+  optional string gridfs_path     = 10; //!< Поле документа, в котором содержится имя файла (filename) файла в GridFS
+
+  optional int32 archive_period   = 11; //!< Время хранения архивов, после сохранения
+}
+
+message Tasks {
+  repeated FileDbRemove remove = 1;
+}

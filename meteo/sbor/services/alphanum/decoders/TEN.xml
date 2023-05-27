@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="TENCM" text="трёхдневный прогноз F10.7 - плотности потока радиоизлучения Солнца, Оттава"  category="168">
+  <MessageSections>TENCM\s*((?:\d{5}\s*){3})</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>\s*()((?:\d{5}\s*){3})</GroupValues>
+    <Value number="1"  descrName="station"  default="Оттава" text="центр" />
+    <SubSection number="0" text="" >
+      <item>
+	<GroupValues>\s*()(\d{3})(\d\d)()()\s*</GroupValues>
+	<Value number="5"  descrName="gfreq" default="2802" text="частота"  />
+	<Value number="1"  descrName="gF"    text="F10.7" />
+	<Value number="2"  descrName="YY"    text="День"  />
+	<Value number="3"  descrName="GG"  default="0" text="Час"  />
+	<Value number="4"  descrName="gg"  default="0" text="Минута"  />
+      </item>
+    </SubSection>
+  </Section>
+</Message>

@@ -1,0 +1,9 @@
+{ "find" : "positions",
+  "filter" : {
+    "current" : { "$exists" : true },
+    "$or" : [
+      { "_id" : @id@ },
+      { "parent" : @parent@ }
+    ]
+  }
+}

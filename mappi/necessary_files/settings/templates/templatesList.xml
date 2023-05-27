@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='KOI8-r'?>
+<body>
+  <algs showNameField="0" >
+    <type valueSrc="False color" fileName="themFalseTemplate.xml"/>
+    <type valueSrc="Температура подстилающей поверхности" fileName="themTempTemplate.xml" />
+    <type valueSrc="Индекс вегетации" fileName="themTemplate.xml" />
+    <type valueSrc="Индекс пожароопасности" fileName="themTemplate.xml" />
+    <type valueSrc="Маска облачности" fileName="themCloudmaskTemplate.xml" />
+    <type valueSrc="Форма облачности" fileName="themTemplate.xml" />
+    <type valueSrc="Диагностика поля ветра" fileName="themTemplate.xml" />
+    <type valueSrc="Таблица геофизических величин" fileName="themTemplate.xml" />
+    <type valueSrc="Расчёт вертикального профиля атмосферы" fileName="themTemplate.xml" />
+    <type valueSrc="Канал" fileName="themTemplate.xml" />
+  </algs>
+  <themFalseAlgs>
+    <type valueSrc="RGB" fileName="falseRgbTemplate.xml"/>
+    <type valueSrc="HSV" fileName="falseHsvTemplate.xml"/>
+  </themFalseAlgs>
+</body>

@@ -1,0 +1,192 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+package meteo.inter.proto;
+
+message Task {
+  optional string uuid = 1;
+  optional string name = 2; //Название задачи
+  optional string text = 3; //Содержание задачи
+  optional string date_start = 4; //Дата начала
+  optional string date_end = 5; //Дата выполнения
+  optional string labor = 6; //Трудозатраты
+  repeated Stage stage = 7; //Этапы задачи
+  optional string basics = 8; //Основание
+  optional string owner = 9; //Ответственный
+  optional string parent = 10; //Родительская задача
+  repeated string idfile = 11; //Прикрепляемые файлы
+  optional bool control	= 12; //На контроле
+};
+
+enum StageResultCode {
+  kDefault = 0;
+  kFailed = 1;
+  kSuccess = 2;
+};
+
+message StageResult {
+  optional string date = 1;
+  optional string user = 2;
+  optional StageResultCode result = 3 [ default = kDefault ];
+  optional string comment = 4;
+};
+
+message Stage {
+ optional string id             = 1; //
+ optional string description    = 2; // Описание задачи
+ optional string contestant     = 3; // Исполнитель
+ optional string date_end       = 4; // Дата выполнения
+ optional string comment        = 5; // Отчёт исполнителя
+ optional string completion     = 6; // Процент выполнения
+ repeated string idfile         = 7; // Прикрепляемые файлы исполнителя
+ optional string place          = 8; // Место
+ optional string date_received  = 9; // Дата получения задания
+ repeated StageResult result    = 10 ; // Результат выполнения (принят, отклонен, комментарий и т.д.)
+};
+
+message Taskresult {
+  optional string date = 1;
+  optional string user = 2;
+  optional bool result = 3;
+  optional string comment = 4;
+};
+
+message SubservientRequest {
+  optional string subservient = 1; //uuid руководителя
+};
+
+message SubservientList {
+  repeated string subservient = 1; //список подчиненных(uuid)
+};
+
+
+message TaskListRequest {
+  optional string uuid = 1; //Уникальный идентификатор задачи
+  optional string name = 2; //Название задачи
+  optional string text = 3; //Содержание задачи
+  optional string date_start = 4; //Дата начала
+  optional string date_end = 5; //Дата выполнения
+  optional string labor = 6; //Трудозатраты
+  optional string basics = 7; //Основание
+  optional string owner = 8; //Ответственный
+  optional string parent = 9; //Родитальская задача
+  optional bool control	= 10; //На контроле
+  optional bool completion = 11; //Отметка о выполнении
+  optional string contestant = 12; //ID исполнителя
+  optional bool is_received = 13; //Имеет ли задача не принятые исполнителями этапы  
+  optional StageResultCode result = 14; //Результат выполнения задачи
+  optional bool stages_results_exists = 15; //Проверяет на наличие этапов
+};
+
+message TaskListResponce {
+ repeated Task tasks = 1; // Список задач
+ optional bool result = 2; // true - запрос выполнен успешно, false - запрос выполнен с ошибкой
+ optional string comment = 3; // Комментарий к результату
+};
+
+message DefaultResponse {
+  optional bool result = 1; // true - запрос выполнен успешно, false - произошла ошибка
+  optional string comment = 2; // Комментарий к результату
+}
+
+message TaskRequest {
+  optional string uuid = 1;
+};
+
+message TaskResponce {
+  optional Task task = 1; // Задача
+  optional bool result = 2; // true - запрос выполнен успешно, false - произошла ошибка
+  optional string comment = 3; // Комментарий к результату
+}
+
+message FileUploadStartRequest {
+  optional string file_name = 1; // Имя загружаемого файла
+}
+
+message FileUploadStartResponce {
+  optional string upload_id = 1; // Уникальный ID загрузки  
+  optional bool   result    = 2;
+  optional string comment   = 3; // Сообщение об ошибке
+}
+
+message FileUploadChunkRequest {
+  optional string upload_id = 1; // Уникальный ID загрузки
+  optional int32  chunk_id  = 2; // Номер фрагмента
+  optional bytes  data      = 3; // Данные
+}
+
+message FileUploadChunkResponce {
+  optional int32 next_chunk_id = 1; // ID фрагмента, который ожидается следующим
+  optional bool result = 2; // Результат выполнения
+  optional string comment = 3; // Сообщение об ошибке
+}
+
+message FileUploadEndRequest {
+  optional string upload_id   = 1; // Уникальный ID загрузки
+  optional int32 chunks_total = 2; // Количество фрагментов
+}
+
+message FileUploadEndResponce {  
+  optional string file_id = 1; // Уникальный ID загруженного файла
+  optional bool result = 2;
+  optional string comment = 3; // Сообщение об ошибке
+}
+
+message FileDownloadStartRequest {
+  optional string file_id = 1; // ID файла  
+}
+
+message FileMetainfoResponce {
+ optional string md5 = 1; // md5 сумма передаваемого файла
+ optional string content_type = 2; // content_type выбранного файла
+ optional string file_name = 3; // имя файла
+ optional string upload_dt = 4; // Дата загрузки
+ optional bool result = 5;
+ optional string comment = 6; // Сведения об ошибке
+}
+
+message FileDownloadStartResponce {  
+  optional int32 chunks_total = 1; // Размер файла
+  optional bool result = 2;
+  optional string comment = 3; // Сведения об ошибке
+}
+
+message FileDownloadChunkRequest {
+  optional string file_id = 1; // Имя загруженного файла
+  optional int32 chunk_id = 2; // ID загружаемого фрагмента
+}
+
+message FileDownloadChunkResponce {
+  optional bytes data = 1; // Данные
+  optional bool result = 2;
+  optional string comment = 3; // Сообщение об ошибке
+}
+
+message TaskAddResponce {
+  optional string id = 1; // ID новой задачи
+  optional bool result = 2;
+  optional string comment = 3;
+}
+
+service TaskService {
+  rpc TaskAdd     ( Task ) returns ( TaskAddResponce ); // Добавление новой задачи
+  rpc TaskListGet ( TaskListRequest ) returns ( TaskListResponce ); // Вывод списка задач с фильтрами
+  rpc TaskGet ( TaskRequest ) returns (TaskResponce); //Получение задания
+  rpc TaskUpdate ( Task ) returns ( DefaultResponse ); // Изменение задачи
+  rpc TaskDelete ( TaskRequest ) returns ( DefaultResponse ); // Удаление задачи
+  rpc SubservientGet ( SubservientRequest ) returns ( SubservientList ); //Получение списка подчиненных
+
+//Загрузка файла на сервер
+  rpc FileUploadStart( FileUploadStartRequest ) returns ( FileUploadStartResponce ); // Начать загрузку файла в gridfs
+  rpc FileUploadSend( FileUploadChunkRequest ) returns ( FileUploadChunkResponce ); //Загрузить фрагмент на сервер
+  rpc FileUploadEnd( FileUploadEndRequest ) returns ( FileUploadEndResponce ); // Завершить загрузку файла на сервер
+
+//Информация о загруженном файле
+  rpc FileMetainfo( FileDownloadStartRequest ) returns ( FileMetainfoResponce );
+
+//Загрузка файлов с сервера
+  rpc FileDownloadStart( FileDownloadStartRequest ) returns ( FileDownloadStartResponce ); // Зачать загрузку файла из gridfs
+  rpc FileDownloadReceive( FileDownloadChunkRequest ) returns ( FileDownloadChunkResponce ); // Получить фрагмент файла из gridfs
+}

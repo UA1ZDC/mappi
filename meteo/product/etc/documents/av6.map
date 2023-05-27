@@ -1,0 +1,12 @@
+name: "av6.map"
+title: "Дневник погоды"
+formal {
+    template: "AV6.ods"
+    name: "Дневник погоды"
+    module_path: "av6.py"
+    format: kOds
+    icon_path: ":product/icons/weather_journal.png"
+}
+document {
+  doctype: kFormalDocument
+}

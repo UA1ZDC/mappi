@@ -1,0 +1,11 @@
+name: "indexes_2"
+title: "Индексы неустойчивости (v2)"
+data_type: kAeroType
+data {
+  source: kSurface
+  template_name: "index_proba"
+  data_type: kAeroFix
+  type_level: 1
+  level : 0
+}
+webpunchmap: true

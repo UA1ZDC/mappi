@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+
+package meteo.app;
+
+//! Рабочее состояние процесса
+enum OperationState { 
+  OperationState_NONE   = 0;     //!< Состояние не указано
+  OperationState_NORM   = 1;     //!< Нормальное состояние
+  OperationState_WARN   = 2;     //!< Возникла ситуация, на которую необходимо обратить внимание
+  OperationState_ERROR  = 3;     //!< Возникли ошибки в ходе выполнения
+}
+
+//! Контролируемый параметр процесса
+message OperationParam {
+  //  required string id          = 1;
+  optional string title       = 2;     //!< Наименование параметра (такое наименование увидит пользователь)
+  optional string value       = 3;     //!< Значение параметра
+  optional string dt          = 5;     //!< Время измерения параметра
+  optional OperationState state = 4 [default = OperationState_NONE]; //!< Состояние параметра
+}
+
+//! Описание рабочего состояния процесса
+message OperationStatus {
+  optional int64             id = 1;      //!< Уникальный идентификатор процесса
+  repeated OperationParam param = 2;    //!< Контролируемые параметры процесса
+  optional OperationState state = 3 [default = OperationState_NONE]; //!< Рабочее состояние процесса
+}
+
+message Dummy {
+}

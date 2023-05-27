@@ -1,0 +1,12 @@
+{
+      "find" : "radarmap",
+      "filter":
+       {
+         "data_type": @data_type@,
+         "h1": @h1@,
+         "h2": @h2@,
+         "product": { "$in" : [@product@] },
+         "$and": [ {  "dt": { "$gte": @start_dt@ } },
+                   {  "dt": { "$lte": @end_dt@ } } ]
+       }
+}

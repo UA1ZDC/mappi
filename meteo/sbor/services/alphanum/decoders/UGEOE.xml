@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="UGEOE" text="энергичные события на Солнце"  category="173">
+  <MessageSections>UGEOE\s*(\d{5}\s*\d{5}\s*\d{4}/)\s*(\d{2}/\d{2}\s*(?:\d{5}\s*\d{4}/\s*(?:[\d/]{5}\s*){5}\s*9[\d/]{4}\s*)*)\s*99999\s*(?:PLAIN(.*)BT)?</MessageSections>
+     <!-- <MessageSections>UGEOE\s*(\d{5}\s*\d{5}\s*\d{4}/\s*\d{2}/\d{2})\s*(\d{5}\s*\d{4})(.*)</MessageSections> -->
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d)(\d\d)(\d\d)\s*(\d\d)(\d\d)/\s*</GroupValues>
+    <Value number="1"  descrName="station_index" text="индекс регионального центра" />
+    <Value number="2"  descrName="J"   text="год выпуска сообщения" />
+    <Value number="3"  descrName="MM"  text="месяц" />
+    <Value number="4"  descrName="YY"  text="день" />
+    <Value number="5"  descrName="GG"  text="час" />
+    <Value number="6"  descrName="gg"  text="минута" />   
+  </Section>
+  <Section number="1" text="" >
+    <item>
+    <GroupValues>(\d{2})/\d{2}\s*((?:\d{5}\s*\d{4}/\s*(?:[\d/]{5}\s*){5}\s*9[\d/]{4}\s*)*)</GroupValues>
+    <Value number="1"  descrName="YY"  text="день наблюдения" />
+    <!-- <Value number="2"  descrName="UNK" text="число явлений" /> -->
+    <Subsection number="0" text="" >
+      <item>
+	<GroupValues>(\d{5}\s*\d{4}/\s*\d{5})\s*((?:[\d/]{5}\s*){4}\s*9[\d/]{4})</GroupValues>
+        <Subsection number="0" text="" >
+	  <GroupValues>(\d{2})(\d{2})\d\s*()(\d{2})(\d{2})/\s*(\d{2})(\d{2})\d</GroupValues>
+	  <Value number="1"  descrName="GG" text="час начала явления" />
+	  <Value number="2"  descrName="gg" text="минута начала явления" />
+	  <!-- <Value number="3"  descrName="UNK" text="временной индикатор" /> -->
+	  <Value number="4"  descrName="stat_sign" innum="0" default="2" text="час максимума явления" />
+	  <Value number="5"  descrName="GG" innum="0" text="час максимума явления" />
+	  <Value number="6"  descrName="gg" innum="0" text="минута максимума явления" />
+	  <Value number="7"  descrName="GG" text="час окончания явления" />
+	  <Value number="8"  descrName="gg" text="минута окончания явления" />
+	  <!-- <Value number="9"  descrName="UNK" text="временной индикатор" /> -->
+	</Subsection>
+	<Subsection number="1" text="" >
+	  <GroupValues>(\d)([\d/]{2})([\d/])([\d/])\s*(\d)()([\d/]{4})\s*([\d/])()([\d/]{4})\s*([\d/])([\d/]{2})([\d/]{2})\s*9([\d/]{4})</GroupValues>
+	  <Value number="1"   descrName="gc"  text="рентгеновский класс события" />
+	  <Value number="2"   descrName="gci" text="интенсивность рентгеновского события" />
+	  <Value number="3"   descrName="ge"  text="оптический  балл  вспышки" />
+	  <Value number="4"   descrName="gb"  text="признак яркости вспышки" />
+	  <Value number="5"   descrName="gFa"   innum="0" text="признак всплеска II типа" />
+	  <Value number="6"   descrName="gfreq" innum="0" default="245" text="частота" />
+	  <Value number="7"   descrName="gF_st" innum="0" text="плотность потока на частоте 245 МГц" />
+	  <Value number="8"   descrName="gFa"   innum="1" text="всплеск IV типа" />
+	  <Value number="9"   descrName="gfreq" innum="1" default="2802" text="частота" />
+	  <Value number="10"  descrName="gF_st" innum="1" text="поток на l = 10.7 см" />
+	  <Value number="11"  descrName="gQc"  text="квадрант, где наблюдался источник" />
+	  <Value number="12"  descrName="gLo"  text="расстояние до центрального меридиана в градусах (долгота)" />
+	  <Value number="13"  descrName="gLa"  text="гелиографическая широта в градусах" />
+	  <Value number="14"  descrName="grwc" text="номер области по нумерации регионального центра RWC" />
+	</Subsection>
+      </item>
+    </Subsection>
+    </item>
+  </Section>
+  <Section number="2" text="" >
+    <GroupValues>(.*)</GroupValues>
+    <Value number="1"  descrName="text" text="текстового сообщения (необходимые дополнения к прогнозу)" />
+  </Section>
+</Message>

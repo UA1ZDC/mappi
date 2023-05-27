@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item valueSrc="satDevice" complex="true" source="this" textItem="" text="">
+    <item complex="true" valueSrc="devChannels" chiefFile="channels.xml" buttonName="Выбрать" templateFile="devChannelTemplate.xml" type="7" source="this" text="Каналы прибора" />
+    <item valueSrc="streamType" type="1" values="WEFAX;LRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" source="this" text="Тип потока" textItem="0" />
+    <item valueSrc="progType" type="1" values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" source="this" text="Тип проекции" textItem="0" />
+    <item valueSrc="geomCorr" type="1" values="Да;Нет" source="this" text="Геом. коррекция" textItem="0" />
+    <item valueSrc="dataType" type="1" values="instrPretDataPath" source="this" text="Тип данных" textItem="0" />
+    <item valueSrc="dataPath" type="0" source="this" text="Путь к данным прибора" textItem="avhrr3" />
+    <item valueSrc="recvSpeed" type="0" source="this" text="Скорость передачи данных (FIXME ед. изм.)" textItem="100" />
+    <item valueSrc="scanAngle" type="0" source="this" text="Угол сканирования (FIXME ед. изм.)" textItem="100" />
+    <item valueSrc="scanStep" type="0" source="this" minValue="0" text="Шаг сканирования (FIXME ед. изм.)" textItem="100" />
+    <item valueSrc="diaScanArea" type="0" source="this" text="Диаметр сканирования (FIXME ед. изм.)" textItem="100" />
+    <item valueSrc="scanCourse" type="1" values="Справа налево;Слева направо" source="this" text="Направление сканирования (FIXME ед. изм.)" textItem="0" />
+    <item valueSrc="calibrElemSize" maxValue="1000000" minValue="0" type="9" source="this" text="Размер калбированных данных (байт)" textItem="4" />
+    <item valueSrc="necalibrElemSize" maxValue="1000000" minValue="0" type="9" source="this" text="Размер некалбированных данных (байт)" textItem="2" />
+    <item valueSrc="samplesCnt" type="0" source="this" text="Количество областей сканирования" textItem="0" />
+  </item>
+</body>

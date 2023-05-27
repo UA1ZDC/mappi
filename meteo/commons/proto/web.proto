@@ -1,0 +1,350 @@
+syntax = "proto2";
+
+package meteo.web;
+option cc_generic_services = true;
+option py_generic_services = true;
+
+
+enum WebMsgType {
+  //Системные сообщения
+  kMsgSystemOk = -2;
+  kMsgSystemFail = -1;
+  kNoneMsgType = 0;
+  // Статус пользователей
+  kUserStatus = 1;
+  // Диалоги
+  kDialogUserListRequest = 2;
+  kDialogUserListResponce = 3;
+  kDialogMessageListRequest = 4;
+  kDialogMessageList = 5;
+  kDialogMessageSendRequest = 6;
+  kDialogMessageSendResponce = 7;
+  kDialogMessageStatusUpdate = 8;
+
+  //Конференции
+  kConferenceListRequest = 9;
+  kConferenceListResponce = 10;
+  kConferenceCreateRequest = 11;
+  kConferenceUpdateNotification = 12;  
+
+  kConferenceMessageSendRequest = 13;
+  kConferenceMessageList = 14;
+  kConferenceMessageListRequest = 15;
+  kConferenceMemberUpdate = 16;
+  kConferenceMessageStatusUpdate = 17;
+  kConferenceRenameRequest = 18;
+
+  //Исполняемые обязанности
+  kAppointmentListGet = 21;
+  kAppointmentList = 22;
+  kAppointmentMessageListRequest = 23;
+  kAppointmentMessageList = 24;
+  kAppointmentMessageStatusUpdate = 25;
+  kAppointmentMessageSendRequest = 26;
+  kAppointmentError = 27;
+
+  //Подразделения
+  kDepartmentListGet = 28;
+  kDepartmentList = 29;
+  kDepartmentMessageListRequest = 30;
+  kDepartmentMessageList = 31;
+  kDepartmentMessageStatusUpdate = 32;
+  kDepartmentMessageSendRequest = 33;
+}
+
+message WebDialogMsgUserList {
+  optional string login = 1;
+  optional string name = 2;
+  optional string surname = 3;
+  optional string patron = 4;
+  optional string department = 5;
+  optional string ranks = 6;
+  optional string last_msg_dt = 7;
+  optional int32  unread = 8;
+  optional string avatar = 9; //!< Аватар пользователя
+}
+
+enum MessageStatus {
+  kUnknownStatus      = 0; //!< не удалось определить статус
+  kErrorStatus        = 1; //!< при обработке сообщения произошла ошибка
+  kReceivedStatus     = 2; //!< сообщение доставлено серверу (записано в БД)
+  kDeliveredStatus    = 3; //!< сообщение доставлено полючателю
+  kReadStatus         = 4; //!< получатель прочитал сообщение
+}
+
+message Url {
+  optional string text = 1;
+  optional string link = 2;
+}
+
+message DialogMessage {
+  optional string         id              = 1;  //!< идентификатор сообщения в БД
+  optional string         dt              = 2;  //!< время записи сообщения в БД (ISO,UTC)
+  optional string         text            = 3;  //!< текст сообщения
+  optional MessageStatus  status          = 4;  //!< статус сообщения
+  repeated string         file            = 5;  //!< список вложений (используется только идентификатор в БД)
+  optional string         parent          = 8;  //!< Сообщение верхнего уровня по иерархии
+  optional string         from            = 9;  //!< Отправитель сообщения
+  optional string         to              = 10; //!< Получатель сообщения    
+  repeated Url            urls            = 11; //!< Прикрепленные к сообщению ссылки
+  repeated string         formal_docs     = 12; //!< список прикрепленных формализованных документов
+  optional bool           system          = 13; //!< Флаг того, что сообщение является сгенерированным системой
+}
+
+message DialogMessageListRequest {
+  optional string contact = 1; //!< Имя пользователя
+  optional int32  skip = 2; //!< Лимит количества сообщений
+}
+
+message DialogMessageStatusUpdate {
+  optional string id      = 1; //!< Идентификатор сообщения в БД
+  optional int32  status  = 2; //!< Новый статус
+}
+
+message DialogMessageSendRequest {
+  optional string        to       = 1;
+  optional string        text    = 2;  //!< текст сообщения
+  repeated string        file    = 3;  //!< список вложений (используется только идентификатор в БД)
+  optional string        parent  = 4; //!< Сообщение верхнего уровня по иерархии
+  repeated Url           urls    = 5; //!< Прикрепленные к сообщению ссылки
+  repeated string        formal_docs = 6; //!< Список формализованных документов
+  optional bool          system  = 7 [default = false]; //!< Флаг того, что сообщение является сгенерированным системой
+}
+
+message DialogMessageSendResponce {
+  optional bool   result  = 1;
+  optional string comment = 2;
+}
+
+message Conference {
+  optional string id = 1;
+  optional string name = 2;
+  optional string owner = 3;
+  repeated string member = 4;
+  optional bool   self_owner = 5;
+  optional string last_msg_dt = 6;
+  optional int32  unread_cnt = 7;
+}
+
+message ConferenceCreateRequest {
+  optional string conference_name = 1;  
+}
+
+message ConferenceMessageListRequest {
+  optional string conference_id = 1;
+  optional int32  skip = 2;
+}
+
+message ConferenceMessageStatusUpdate {
+  optional string id = 1; //!< Идентификатор сообщения
+  optional bool   delivery = 2; //!< Сообщение доставлено
+  optional bool   read = 3; //!< Сообщение прочитано
+}
+
+message ConferenceUpdate {
+  enum Type {
+    //Создание конференции
+    kConferenceCreated = 1;
+    kConferenceCreateAlreadyExists = 2;
+    kConferenceCreateEmptyNameNotAllowed = 3;
+    kConferenceCreateFailed = 4;
+
+    //Изменение списка участников конференции
+    kConferenceUpdateUsersOk = 5;
+    kConferenceUpdateUsersNoPermission = 6;
+    kConferenceUpdateUsersFailed = 7;
+
+    //Переименование конференции
+    kConferenceNameUpdated = 8;
+    kConferenceNameUpdateFailedName = 9;
+    kConferenceNameUpdateFailed = 10;
+  }
+  optional Type type = 1; //!< Тип уведомления
+  optional string conference_id = 2; //! ID конференции  
+}
+
+message ConferenceMessageSendRequest {
+  optional string        to       = 1;
+  optional string        text    = 2;  //!< текст сообщения
+  repeated string        file    = 3;  //!< список вложений (используется только идентификатор в БД)
+  optional string        parent  = 4; //!< Сообщение верхнего уровня по иерархии
+}
+
+message ConferenceMessage {
+  optional string         id              = 1;  //!< идентификатор сообщения в БД
+  optional string         dt              = 2;  //!< время записи сообщения в БД (ISO,UTC)
+  optional string         text            = 3;  //!< текст сообщения  
+  repeated string         file            = 5;  //!< список вложений (используется только идентификатор в БД)
+  optional string         parent          = 8;  //!< Сообщение верхнего уровня по иерархии
+  optional string         conference      = 7;  //!< ID конференции, к которой принадлежит сообщение
+  optional string         from            = 9;  //!< Отправитель сообщения
+  repeated string         unread          = 10; //!< Пользователи, которые не прочитали это сообщение
+  repeated string         delivery        = 11; //!< Пользователи, сообщение к которым еще не доставлено
+  optional int32          total           = 12; //!< Количество пользователей, к которым сообщение должно быть доставлено
+  optional bool           notify_delivery = 13; //!< Уведомить о доставке
+  optional bool           notify_read     = 14; //!< Уведомить о прочтении
+  optional bool           from_you        = 15; //!< Флаг, указывающий, что сообщение послано запрашивающим
+}
+
+message ConferenceMemberUpdate {
+  optional string id = 1; //!< Идентификатор конференции
+  repeated string users_add = 2; //!< Добавить пользователей
+  repeated string users_remove = 3; //!< Исключить пользователей
+}
+
+message ConferenceRenameRequest {
+  optional string id = 1; //!< Уникальный ID конференции
+  optional string name = 2; //!< Новое имя для конференции
+}
+
+message AppointmentInfo {
+  optional string id = 1; //!< ID обязанности
+  optional string name = 2; //!< Наименование
+  optional string current = 3; //!< Текущий пользователь, исполняющий эти обязанности
+  optional string dt_start = 4; //!< Дата\время, когда пользователь приступил к исполнению обязанностей
+  optional string last_msg_dt = 5;//!< Дата\время последнего сообщения
+  optional int32  unread_cnt = 6; //!< Счетчик непрочитанных сообщений
+}
+
+message AppointmentListRequest {
+  optional string appointment = 1; //!< ID обязанности, переписку с которой требуется получить
+  optional int32  skip = 2; //!< Пропустить сообщения
+}
+
+message AppointmentMessage {
+  optional string         id              = 1;  //!< идентификатор сообщения в БД
+  optional string         dt              = 2;  //!< время записи сообщения в БД (ISO,UTC)
+  optional string         text            = 3;  //!< текст сообщения
+  repeated string         file            = 5;  //!< список вложений (используется только идентификатор в БД)
+  optional string         parent          = 8;  //!< Сообщение верхнего уровня по иерархии
+
+  optional string         from            = 9;  //!< Отправитель сообщения(ИО)
+  optional string         to              = 10; //!< Получатель сообщения(ИО)
+  optional string         created         = 11; //!< Отправлено пользователем
+  optional string         delivered       = 12; //!< Доставлено пользователю
+  optional string         read            = 13; //!< Прочтано пользователем
+}
+
+message AppointmentMessageStatusUpdateRequest {
+  optional string id = 1; //!< Идентификатор сообщения
+  optional bool   delivery = 2; //!< Сообщение доставлено
+  optional bool   read = 3; //!< Сообщение прочитано
+}
+
+message AppointmentMessageSendRequest {
+  optional string        to      = 1;
+  optional string        text    = 2;  //!< текст сообщения
+  repeated string        file    = 3;  //!< список вложений (используется только идентификатор в БД)
+  optional string        parent  = 4; //!< Сообщение верхнего уровня по иерархии
+}
+
+enum AppointmentErrorCode {
+  kAppointmentOk = 0;
+  kAppointmentDenied = 1; //!< Доступ запрещен, пользователь не является ИО
+}
+
+message DepartmentInfo {
+  optional string id = 1; //!< ID подразделения
+  optional string name = 2; //!< Наименование подразделения
+  repeated string members = 3; //!< Члены подразделения
+  optional string last_msg_dt = 4; //!< Дата последнего сообщения
+  optional int32  unread_cnt = 5; //!< Количество непрочитанных сообщений
+}
+
+message DepartmentMessageSend {
+  optional string        to      = 1;
+  optional string        text    = 2;  //!< текст сообщения
+  repeated string        file    = 3;  //!< список вложений (используется только идентификатор в БД)
+  optional string        parent  = 4;
+}
+
+message DepartmentMessage {
+  optional string         id              = 1;  //!< идентификатор сообщения в БД
+  optional string         dt              = 2;  //!< время записи сообщения в БД (ISO,UTC)
+  optional string         text            = 3;  //!< текст сообщения
+  repeated string         file            = 5;  //!< список вложений (используется только идентификатор в БД)
+  optional string         parent          = 8;  //!< Сообщение верхнего уровня по иерархии
+
+  optional string         from            = 9;  //!< Отправитель сообщения(ИО)
+  optional string         to              = 10; //!< Получатель сообщения(ИО)
+  optional string         from_user       = 11; //!< Пользователь, отправивший сообщение
+  optional string         delivered       = 12; //!< Пользователь, который первым получил сообщение
+  optional string         read            = 13; //!< Пользователь, который первым прочитал сообщение
+}
+
+message DepartmentMessageListRequest {
+  optional string department = 1; //!< ID подразделения
+  optional int32 skip = 2;
+}
+
+message DepartmentMessageStatusUpdate {
+  optional string id = 1; //!< ID сообщения
+  optional bool delivered = 2; //!< Сообщение доставлено
+  optional bool read = 3; //!< Сообщение прочитано
+}
+
+//! Сообщение для обмена данными между сервером и клиентом.
+message WebMsg {
+  optional int32 index = 1; //!< Номер сообщения, для системы
+  optional WebMsgType msg_type  = 2 [ default = kNoneMsgType ]; //!< тип сообщения
+
+  repeated string online_users = 3;
+
+  //Диалоги
+  repeated WebDialogMsgUserList dialog_user = 4; //!< Список пользователей. Ответ на сообщение.
+  repeated DialogMessage dialog_message_list = 5; //!< Список сообщений диалога
+  optional DialogMessageListRequest dialog_message_list_request = 6; //!< Запрос на получение сообщений
+  optional DialogMessageSendRequest dialog_message_send_request = 7; // Отправка сообщения получателю
+  optional DialogMessageSendResponce dialog_message_send_responce = 8; // Подтверждение отправки сообщения
+  optional DialogMessageStatusUpdate dialog_message_status_update_request = 9; //!< Изменение статуса сообщения
+
+  //Конференции
+  repeated Conference conference_list_responce = 10;
+  optional ConferenceCreateRequest conference_create_request = 11; //!< Запрос на создание конференции
+  optional ConferenceUpdate conference_update_notification = 12; //!< Уведомление от сервера о изменении состояния конференции
+  optional ConferenceMessageSendRequest conference_send_request = 13; //!< Отправка сообщения в конференцию
+  repeated ConferenceMessage conference_message_list = 14; //!< Список сообщений конференции
+  optional ConferenceMessageListRequest conference_message_list_request = 15; //!< Получить список сообщений в конференции
+  optional ConferenceMemberUpdate conference_member_update_request = 16; //!< Обновить список пользователей в конференции
+  optional ConferenceMessageStatusUpdate conference_message_status_update = 17; //!< Обновить статус сообщения конференции
+  optional ConferenceRenameRequest conference_rename_request = 18; //!< Переименовать конференцию
+
+  //Должностные лица
+  repeated AppointmentInfo appointments = 19; //!< Список доступных ИО
+  optional AppointmentListRequest  appointment_message_list_request = 20; //!< Запрос на получение списка сообщений
+  repeated AppointmentMessage appointment_message_list = 21; //!< Получить список сообщения к ИО
+  optional AppointmentMessageStatusUpdateRequest appointment_message_status_update = 22; //!< Изменить статус сообщения для ИО
+  optional AppointmentErrorCode appointment_error_code = 23;
+  optional AppointmentMessageSendRequest appointment_message_send_request = 24; //!< Отправка сообщения должностному лицу
+
+  repeated DepartmentInfo departments = 25; //!< Подразделения
+  optional DepartmentMessageSend department_message_send_request = 26; //!< Запрос на отправку сообщения подразделению
+  repeated DepartmentMessage department_message_list = 27; //!< Список сообщений подразделениям
+  optional DepartmentMessageListRequest department_message_list_request = 28; //!< Запрос списка сообщений с подразделением
+  optional DepartmentMessageStatusUpdate department_message_status_update_request = 29; //!< Запрос на изменение статуса сообщения
+}
+
+message UserListRequest {
+  optional string username = 1;
+}
+
+message UserListResponce {
+  repeated WebDialogMsgUserList users = 1;
+  optional bool result = 2;
+  optional string comment = 3;
+}
+
+message InterDialogMessageSend {
+  optional string username = 1;  
+  optional DialogMessageSendRequest send_request = 2;
+}
+
+message InterDialogMessageSendResponce {
+  optional string comment = 1;
+  optional bool result = 2;
+}
+
+service InterService {
+  rpc GetUserListForUser( UserListRequest ) returns ( UserListResponce );
+  rpc SendDialogMessage(InterDialogMessageSend) returns (InterDialogMessageSendResponce);
+}

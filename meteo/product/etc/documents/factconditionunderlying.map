@@ -1,0 +1,12 @@
+name: "factconditionunderlying.map"
+title: "ОГМУ по району"
+formal {
+    template: "FactConditionUnderlying.odt"
+    name: "ОГМУ по району"
+    module_path: "factconditionunderlying.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteosummary.png"
+}
+document {
+  doctype: kFormalDocument
+}

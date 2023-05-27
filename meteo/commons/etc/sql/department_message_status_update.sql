@@ -1,0 +1,2 @@
+select * from meteo.department_message_status_update(@id@, @to@) 
+as (_id bigint, mac integer, dt timestamp without time zone, text text, from_user text, "from" text, "to" text, read_by text, files text[], parent text, delivered_to text);

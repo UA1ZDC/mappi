@@ -1,0 +1,300 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+package meteo.proto;
+import "msgparser.proto";
+
+message ConditionBoolProto {
+  optional string name = 1;
+  optional string display_name = 2;
+  optional bool value = 3;
+}
+
+message ConditionDateIntervalProto {
+  optional string name = 1;
+  optional string display_name = 2;
+  optional string dt_begin = 3;
+  optional string dt_end = 4;
+}
+
+message ConditionIntProto {
+  optional string name = 1;
+  optional string display_name = 2;
+  optional int32 value = 3;
+  optional int32 condition = 4;
+}
+
+message ConditionLongIntProto {
+  optional string name = 1;
+  optional string display_name = 2;
+  optional int64 value = 3;
+  optional int32 condition = 4;
+}
+
+message ConditionDoubleProto {
+  optional string name = 1;
+  optional string display_name = 2;
+  optional double value = 3;
+  optional int32 condition = 4;
+}
+
+message ConditionStringProto {
+  optional string name = 1;
+  optional string display_name = 2;
+  optional int32  condition = 3;
+  optional string value = 4;
+  optional int32 case_sensetive = 5;
+  optional int32 transliterate = 6;
+}
+
+message ConditionLogicalProto {
+  optional int32 condition_type = 1;
+  repeated ConditionProto subitems = 2;
+}
+
+message ConditionStringListProto {
+  optional string name = 1;
+  optional string display_name = 2;
+  repeated string values = 3;
+}
+
+message ConditionOidProto {
+  optional string name = 1;
+  optional string display_name = 2;
+  optional string value = 3;
+}
+
+message ConditionNull {
+  optional string name = 1;
+  optional string display_name = 2;
+  optional bool value = 3;
+}
+
+message ConditionProto {
+  oneof subproto {
+    ConditionBoolProto          condition_bool = 1;
+    ConditionDateIntervalProto  condition_date_interval = 2;
+    ConditionIntProto           condition_int = 3;
+    ConditionLongIntProto       condition_long_int = 4;
+    ConditionDoubleProto        condition_double = 5;
+    ConditionStringProto        condition_string = 6;
+    ConditionLogicalProto       condition_logical = 7;
+    ConditionStringListProto    condition_string_list = 8;
+    ConditionOidProto           condition_oid = 9;
+    ConditionNull               condition_null = 10;
+  }
+};
+
+enum CustomViewerId {
+  kViewerUnknown = 0;
+  kViewerMsg = 1;
+  kViewerJournal = 2;
+  kViewerSend = 3;
+  kViewerRcv = 4;
+  kViewerForecastAccuracy = 5;
+  kViewerForecast = 6;
+}
+
+enum ConditionType {
+//Для числовых типов
+  kEqual = 0;
+  kNotEqual = 1;
+  kLess = 2;
+  kMore = 3;
+  kLessOrEqual = 4;
+  kMoreOrEqual = 5;
+
+//Для строк
+  kMatch = 6;
+  kNotMatch = 7;
+  kContains = 8;
+  kNotContains = 9;
+  kNull = 10;
+  kNotNull  = 11;
+}
+
+
+enum ViewerType {
+  kUnknown = 0;
+  kString = 1;
+  kInt = 2;
+  kDouble = 3;
+  kOid = 4;
+  kDateTime = 5;
+  kBool = 6;
+  kLongInt = 7;
+  kArray = 8;
+};
+
+message ViewerColumnMenu {
+  optional string value = 1; //Значение пункта меню
+  optional string display_value = 2; //Отображаемое значение  
+  optional string icon = 3; // Иконка
+}
+
+message ViewerColumn {
+  optional string name            = 1; // Имя колонки в БД
+  optional string display_name    = 2; // Отображаемое имя для пользователя
+  optional ViewerType type        = 3; // Тип данных в колонке
+  optional bool filter            = 4; // Может ли пользователь устанавливать фильтр на эту колонку
+  optional bool recomended        = 5; // Относится ли колонка к "рекомендованным"
+  optional string tooltip         = 6; // tooltip для колонки в меню
+  optional bool sort              = 7; // Может ли пользователь устанавливать сортировку на этой колонке
+  optional string post            = 8; // Функция для дополнительной обработки данных из этой колонки
+  repeated ViewerColumnMenu menu  = 9; // Меню колонки
+  optional bool primary_key       = 10;// Флаг, указатель на поле с уникальным ID 
+}
+
+message ViewerConfig {
+  optional string name = 1;
+  repeated ViewerColumn column = 2;
+}
+
+message CustomviewerDataRequest{
+  optional CustomViewerId table = 1;
+  repeated ConditionProto conditions = 2;
+  repeated string fields = 3;
+  optional string sort_column = 4;
+  optional int32  sort_order = 5;
+  optional int32  skip = 6;
+  optional int32  limit = 7;
+  optional string distinct_column = 8;
+
+}
+
+message CustomViewerField {
+  optional string name = 1;
+  optional string value = 2;
+  optional string display_value = 3;
+  optional string tooltip = 4;
+  optional string icon = 5;
+}
+
+message CustomViewerTableRecord {
+  repeated CustomViewerField field = 1;
+}
+
+message CustomviewerDataResponce {
+  repeated CustomViewerTableRecord record = 1;
+}
+
+message ViewerConfigRequest {
+  optional CustomViewerId viewid = 1;
+}
+
+message CustomViewerCountRequest {
+  optional CustomViewerId viewid = 1;
+  repeated ConditionProto conditions = 2;
+}
+
+message CustomViewerCountResponce{
+  optional int64 count = 1;
+}
+
+message Dummy {
+}
+
+message GetLastTlgIdResponce {
+  optional int64 last_tlg_id = 1 [default = -1];
+}
+
+message AvailableTT {
+  optional string t1 = 2;
+  optional string t2 = 3;
+  optional string name = 4;
+}
+
+message GetAvailableTTResponce {
+  repeated AvailableTT t1 = 1;
+  repeated AvailableTT t2 = 2;
+}
+
+message TypecArea {
+  optional string name_smb = 2;
+  optional string name_lat = 3;
+  optional string name_cyr = 4;
+}
+
+message GetTypecAreasResponce {
+  repeated TypecArea area = 1;
+}
+
+message UserColumnSettings {
+  optional string column_name = 1;
+  optional bool column_visible = 2;
+}
+
+message CustomViewerUserConfig {
+  optional int32 rows_per_page = 1 [default = 20]; //Количество записей на странице по умолчанию
+  repeated UserColumnSettings columns = 2; //Колонки в порядке их отображения
+  optional string sort_column_name = 3; //Наименование колонки по которой включена сортировка
+  optional bool reverse_sort = 4 [default = true]; //Признак обратной сортировки
+}
+
+message CustomViewerIconRequest {
+  optional string icon = 1;
+}
+
+message CustomViewerIconResponce {
+  optional bytes icon = 1;
+  optional string mime_type = 2;
+}
+
+message MsgViewerDetailsRequest {
+  optional tlg.MessageNew  msg = 1; // ID телеграммы
+  optional string encoding  = 2; // Кодировка
+}
+
+message MsgViewerDetailsResponce {
+  message Param { 
+    optional string   name          = 1; // Наименование параметра
+    optional string   code          = 2; // Значение в цифрах кода
+    optional string   value         = 3; // Значение параметра
+    optional string   unit          = 4; // Единица измерения
+    optional string   quality_text  = 5; // Показатель качества(текстовое описание)
+    optional string   quality_color = 6; // Показатель качества( код RGB #FFGGFF )
+    optional string   descr         = 7; // Дескриптор
+    optional bool     special       = 8; // Признак служебного дескриптора
+  }
+
+  message GribHumanInfo {
+    message GribParam {
+      optional string title = 1;
+      optional string value = 2;
+    };
+    repeated GribParam generic_params = 1;
+    repeated GribParam grid_params = 2;
+    repeated GribParam grib1_params = 3;
+    repeated GribParam grib2_params = 4;
+  }
+
+  message ParamList {
+    optional string title   = 1; // Заголовок группы параметров
+    repeated Param  params  = 2; // Параметры
+  }
+
+  optional string     description = 1; //Описание  
+  optional string     tlg         = 2; // Текстовая телеграмма(без спецсимволов)
+  optional string     tlg_full    = 3; // Текстовое представление телеграммы(с спецсимволами)    
+  
+  repeated GribHumanInfo  grib_info   = 4;  // Информация GRIB
+  
+  optional string     error       = 5; // Сообщение об ошибке декодирования
+  repeated ParamList  brief       = 6; // Сводки
+}
+
+service CustomViewerService {
+  rpc LoadConfig( ViewerConfigRequest ) returns ( ViewerConfig );
+  rpc LoadData( CustomviewerDataRequest ) returns ( CustomviewerDataResponce ); //Загрузка данных
+  rpc CountData( CustomViewerCountRequest ) returns (CustomViewerCountResponce ); //Подсчет данных
+
+  rpc GetLastTlgId( Dummy ) returns ( GetLastTlgIdResponce ); //Получение номера телеграммы для msgviewer-а
+  rpc GetAvailableTT( Dummy ) returns ( GetAvailableTTResponce ); // Получения списка TTAA
+  rpc GetTypecAreas( Dummy ) returns ( GetTypecAreasResponce ); // Получения списка известных областей
+  
+  rpc GetIcon( CustomViewerIconRequest ) returns ( CustomViewerIconResponce ); //Получение иконки из ресурсов QT
+  
+  rpc GetTelegramDetails( MsgViewerDetailsRequest ) returns ( MsgViewerDetailsResponce ); // Получение информации о телеграмме(для отображения человеку)
+}

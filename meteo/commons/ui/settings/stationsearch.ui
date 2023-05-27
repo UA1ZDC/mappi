@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StationSearch</class>
+ <widget class="QDialog" name="StationSearch">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>944</width>
+    <height>524</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0" colspan="3">
+    <widget class="QTreeWidget" name="stationsList">
+     <property name="styleSheet">
+      <string notr="true">alternate-background-color: rgb(251, 244, 225);</string>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::ExtendedSelection</enum>
+     </property>
+     <property name="rootIsDecorated">
+      <bool>true</bool>
+     </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="expandsOnDoubleClick">
+      <bool>false</bool>
+     </property>
+     <attribute name="headerCascadingSectionResizes">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Пункт?</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Название</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Широта, °</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Долгота, °</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Высота, м</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Тип станции</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Расстояние до пункта, км</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Расстояние от центра поиска, км</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="0" column="1" alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Найденные станции:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" alignment="Qt::AlignRight">
+    <widget class="QPushButton" name="pbAccept">
+     <property name="text">
+      <string>Выбрать станции</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

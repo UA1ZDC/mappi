@@ -1,0 +1,13 @@
+{
+  "index" : @index@,
+  "icao"  : @icao@,
+  "call_sign" : @call_sign@,
+  "buoy"  : @buoy@,
+  "name"  : @name@,
+  "name_ru" : @name_ru@,
+  "country" : @country@,
+  "country_en" : @country_en@,
+  "country_ru" : @country_ru@,
+  "satellite"  : @satellite@,
+  "instrument" : @instrument@
+}

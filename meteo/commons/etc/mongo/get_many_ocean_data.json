@@ -1,0 +1,19 @@
+{
+    "aggregate": "meteoreport",
+  "pipeline": [
+        { "$match" : { "dt": @dt@, "level": @level@, "level_type": @level_type@ }},
+        { "$unwind": "$param"},
+        { "$match" : { "param.descrname" : @descrname@ }},
+        { "$unwind": "$location"},
+        { "$group" :
+          {
+            "_id" : { "coords" : "$location.coordinates" },
+            "coords" : { "$first" : "$location.coordinates"},
+            "station" : { "$first" : "$station" },
+            "param" : { "$first" : "$param" },
+            "id" : { "$first" : "$_id" }
+          }
+        }
+        ],
+  "cursor": { "batchSize": 1 }
+}

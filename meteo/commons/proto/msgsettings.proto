@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package meteo.settings;
+
+//! Уровни журналирования событий
+enum RegLevel {
+  kNone     = 0; //!< нет регистрации и светоиндикации
+  kReg      = 1; //!< только регистрация
+  kShow     = 2; //!< регистрация + светоиндикация
+}
+message MsgSettings {
+  optional RegLevel debug    = 1 [default = kNone];
+  optional RegLevel info     = 2 [default = kNone];
+  optional RegLevel warning  = 3 [default = kReg];
+  optional RegLevel error    = 4 [default = kShow];
+  optional RegLevel critical = 5 [default = kShow];
+}

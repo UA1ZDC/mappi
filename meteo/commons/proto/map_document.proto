@@ -1,0 +1,79 @@
+syntax = "proto2";
+
+import "meteo.proto";
+
+package meteo.map.proto;
+
+enum PunchOrient
+{
+  kNoOrient              = 0;
+  kLatitudeOrient        = 1;
+};
+
+enum DocumentType
+{
+  kGeoMap                = 0;
+  kVerticalCut           = 1;
+  kAeroDiagram           = 2;
+  kOceanDiagram          = 3;
+  kMeteogram             = 4;
+  kFormalDocument        = 5;
+};
+
+enum CrossType
+{
+  kCrossLayer        = 1;
+  kCrossDocument     = 2;
+};
+
+message IncutLabel {
+  optional string       key             = 1;
+  optional string       value           = 2;
+  optional bool         visible         = 3;
+};
+
+message IncutParams {
+  optional Position     pos             = 1 [default = kTopCenter];
+  optional Position     align           = 2 [default = kCenter];
+  optional bool         visible         = 3;
+  repeated IncutLabel   label           = 4;
+};
+
+message LegendParams {
+  optional Position     pos             = 1 [default = kBottomCenter];
+  optional Orientation  orient          = 2 [default = kHorizontal];
+};
+
+message Document {
+  optional GeoPointPb     map_center      = 1;    //!< центр проекции
+  optional GeoPointPb     doc_center      = 2;    //!< центр документа
+  optional ProjectionType projection      = 3 [default = kStereo]; //!< тип проекции
+  optional Size           docsize         = 4;
+  optional double         scale           = 5 [default = 14]; //!< масштаб
+  optional double         rot_angle       = 6 [default = 0]; //!< угол поворота
+  optional Size           mapsize         = 7;
+  optional string         uuid            = 8;   //!< uuid документа
+  optional string         name            = 9;
+  optional PunchOrient    punchorient     = 10 [default = kNoOrient]; //!< Ориентация пуансонов на карте
+  optional string         geoloader       = 11;
+  optional string         gridloader      = 12 [default = "grid.common"];
+  optional int32          gridlatstep     = 13 [default = -1];
+  optional int32          gridlonstep     = 14 [default = -1];
+  optional bool           text_towards_iso= 15 [default = false];
+  optional RuleView       ruleview        = 16 [default = kBadWithoutRect];
+  optional bool           smooth_iso      = 17 [default = true];
+  optional DocumentType   doctype         = 18 [default = kGeoMap];
+  optional IncutParams    incut           = 19;
+  optional LegendParams   legend          = 20;
+  optional bool           text_outline    = 21 [default = false];
+  optional CrossType      cross_type      = 22 [default = kCrossLayer];
+  optional uint32         outlinecolor    = 23 [default = 0xFFFFFFFF];
+  optional bytes          raw_data        = 24;
+  optional bool           cache           = 25 [default = false];
+  optional bool           sxfttfsupported = 26 [default = true];  //!< экспорт в sxf с поддержкой/без поддержки truetype-шрифтов
+  optional bool           opengeopolygon  = 27 [default = false]; //!< полигоны геогр. основы - разомкнутые ( для наноски береговой черты без заливки )
+  optional bool           white_sea_under_gradient = 28 [default = false]; //!< водные объекты заливать белым, при наличии градиентной заливки
+  repeated string         messages        = 29; //!< список информационных сообщений
+  optional bool           showcccc        = 30 [default = true];
+  optional meteo.Property border_property = 31;
+}

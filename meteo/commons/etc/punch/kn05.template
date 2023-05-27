@@ -1,0 +1,196 @@
+code: "kn05"
+name: "КН-05"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/kn05.template"
+wind: true
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  id {
+    descr: 11001
+    name: "dd"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  id {
+    descr: 11002
+    name: "ff"
+    parent: "wind"
+  }
+}
+rule {
+  pos {
+    x: -11
+    y: -18
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 2
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 12.34
+  id {
+    descr: 12101
+    name: "T"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -11
+    y: -6
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 2
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 4.34
+  id {
+    descr: 22043
+    name: "Tw"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -11
+    y: 6
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 2
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 8.4
+  id {
+    descr: 22059
+    name: "S0S0"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: 11
+    y: -6
+  }
+  align: kTopRight
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 2
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 0.1
+  }
+  testval: 28
+  id {
+    descr: 22005
+    name: "d0d0"
+    description: ""
+    parent: "stream"
+  }
+}
+rule {
+  pos {
+    x: 11
+    y: 6
+  }
+  align: kBottomRight
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: -4.66
+  id {
+    descr: 22032
+    name: "c0c0"
+    description: ""
+    parent: "stream"
+  }
+}
+datatype: kSurface
+center: kCircle
+radius: 5

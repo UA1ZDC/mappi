@@ -1,0 +1,29 @@
+{
+  "aggregate": "weather_maps",
+  "pipeline": [
+    { "$match": { "dt": { "$gte": @start_dt@, "$lte": @end_dt@ },
+                  "map_template": @map_template@
+                }
+    },
+    { "$group": {
+        "_id": { "template":, "$map_template",
+                 "dt": "$dt",
+                 "hour": "$hour",
+                 "center": "$center",
+                 "center_name": "$center_name",
+                 "model":  "$model"
+               },
+        "layer": { "$push":
+                   { "layer_name": "$layer_name",
+                     "level": "$level",
+                     "level_type": "$level_type",
+                     "datasource": "$datasource",
+                     "point_size": "$point_counts",
+                     "center_name": "$center_name" } }
+      }
+    },
+    { "$sort": { "_id.dt": 1, "_id.hour": 1 } }
+  ],
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}

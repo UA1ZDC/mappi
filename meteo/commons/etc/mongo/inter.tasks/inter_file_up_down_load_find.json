@@ -1,0 +1,6 @@
+{
+   "find": "up_down_loads",
+   "filter": {
+     "_id": @id@
+   }
+}

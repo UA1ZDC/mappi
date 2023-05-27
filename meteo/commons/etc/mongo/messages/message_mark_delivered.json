@@ -1,0 +1,16 @@
+{
+   "update": "message",
+   "updates": [
+      { "q": { "_id" : "%1" }, 
+        "u": { "$pull" : {
+                 "delivery" :"%2" 
+               },
+               "$addToSet" : {
+                 "history" : { "delivered" : "%3"}
+               }
+             },
+        "upsert": false, 
+        "multi": false 
+      }
+   ]   
+}

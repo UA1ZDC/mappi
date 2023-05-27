@@ -1,0 +1,316 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+import "surface.proto";
+import "sprinf.proto";
+import "field.proto";
+import "surface_service.proto";
+
+package meteo.forecast;
+
+
+// Типы айтемов в методах прогнозирования
+enum ForecastMethodItemRole{
+  kNoData              = 1;
+  kSimpleData          = 2;
+  kSrfData             = 3;
+  kAeroData            = 4;
+  kScriptableData      = 5;
+  kFieldData           = 6;
+  kFieldValueData      = 7;
+  kAdvFieldData        = 8;
+  kComboData           = 9;
+  kCalcData            = 10;
+  kCoordData           = 11;
+  kScriptableComboData = 12;
+  kResultData          = 13;
+  kSrcData             = 14;
+  kDatetimeData        = 15;
+}
+
+//!
+message ForecastMethod {
+  optional int32  id     = 1; //!<
+  optional string name   = 2; //!<полное наименование
+  optional bool   isAuto = 3; //!<
+  optional bool   isAdapt = 4; //!<
+  optional string hours  = 5; //!<в какие сроки работает (через ";")
+  optional string season = 6; //!<в какие сезоны работает (через ";")
+  optional string synsit = 7; //!< в какие синситуации работает (через ";")
+  optional string short_name   = 9; //!<используется при запросе результата
+  optional string yavl_type   = 10; //!<тип явления (облачность и проч)
+}
+
+enum PunktRequestType {
+  kPunktGetRequest = 1;
+  kPunktAddRequest = 2;
+  kPunktRemoveRequest = 3;
+  kPunktEnabledChangeRequest = 4;
+};
+
+message ForecastMethodList {
+  repeated ForecastMethod       method  = 1; //!<
+  optional bool                 result  = 2;
+}
+
+message ForecastFizData {
+  optional string text                            = 1;  // описание величины
+  optional string value                           = 2;  // значение величины ( в случае комбобокса - это само выбранное значение)
+  optional string descr                           = 3;  // дескриптор величины
+  optional ForecastMethodItemRole item_role       = 4;  // тип данных (комбо бокс, )
+  repeated string data_options                    = 5;  // данные доступные для выбора опции
+  repeated meteo.field.DataDesc available_centers = 6;  // доступные прогностические центры
+  optional int32 selected_center                  = 7;  // выбранный центр, если надо
+  optional bool loading                           = 8;  // загрузка данных (для фронтенда используется)
+  repeated ForecastFizData childs                 = 9;  // группа значений или вложенные величины, использованные для расчета этой
+}
+
+message ForecastFizResult {
+  optional string                date_time    = 1;
+  optional string                syn_sit      = 2;
+  optional string                name         = 3;
+  optional string                season       = 4;
+  optional ForecastFizData       source_data  = 5; //!<
+  optional ForecastFizData       rezult_data  = 6; //!<
+  optional bool                  result       = 7;
+  optional string                notice       = 8;
+}
+
+//!
+message AccuracyRequest {
+  optional string method           = 1;
+  optional meteo.surf.Point  punkt = 2;
+  optional string descrname        = 3;
+  optional int32  level            = 4;
+  optional int32  type_level       = 5;
+  optional int32  center           = 6;
+  optional int32  hour             = 7;
+}
+
+// запрос для всех прогностических методов в пункте
+message ManyAccuracyRequest{
+  optional meteo.surf.Point  punkt   = 1; // пункт, по которому запрашиваем
+  repeated string methods            = 2; // массив названий методов
+}
+
+// ответ для нескольких прогнозов
+message ManyAccuracyReply{
+  repeated AccuracyReply accuracy = 1; //массив ответов точности
+  optional string comment         = 2;
+  optional bool result            = 3; //Результат выполнения операции.
+}
+
+//!
+message AccuracyReply {
+  optional string method  = 1;
+  optional int32  total   = 2;
+  optional int32  opr     = 3;
+  optional int32  not_opr = 4;
+  optional bool   result    = 5; //Результат выполнения операции.
+  optional string msg     = 6; //Сообщение об ошибке.
+  optional string comment = 7;
+}
+
+message ForecastPointData{
+  required meteo.surf.Point coord     = 1; //пункт
+  optional meteo.field.DataDesc fdesc = 2;//здесь время разработки прогноза и заблаговременность (отсчитывается до time_start)
+  optional double  value              = 3;
+  optional string  text_value         = 4;
+  optional string  method_name        = 5;
+  optional string  method_title       = 6;
+  optional string  time_start         = 7; //время начала действия прогноза
+  optional string  time_end           = 8;//время окончания действия прогноза
+}
+
+message ForecastManyPointsData{
+  repeated ForecastPointData points = 1;
+}
+
+message ForecastResultRequest{
+  required meteo.surf.Point coord      = 1;  //пункт
+  optional string  method_name         = 2;
+  optional string  time_start          = 3;  //время начала действия прогноза
+  optional string  time_end            = 4;  //время окончания действия прогноза
+  optional bool    without_opravd      = 5;  //true - только те, которые ещё не учтены в оправдываемости
+  optional int32  center_number        = 6;  //номер центра
+  optional int32  model_number         = 7;  //номер модели
+  optional ForecastFizData manual_data = 8;  // скорректированные пользователем данные, по которым надо пересчитать проноз
+}
+
+message ForecastResult{
+  optional meteo.surf.Point coord      = 1;   //пункт
+  optional string  method_name         = 2;
+  optional string  time_prod           = 3;   //время разработки прогноза
+  optional int32  val_descr            = 4;
+  optional int32  flevel               = 5;
+  optional int32  type_level           = 6;
+  optional string  time_start          = 7;   //врForecastResultемя начала действия прогноза
+  optional string  time_end            = 8;   //время окончания действия прогноза
+  optional double  value               = 9;
+  optional double  freal_value         = 10;
+  optional double  freal_field_value   = 11;
+  optional int32  center               = 12;
+  optional string  ftype_method        = 13;
+  optional string  forecast_text       = 14;
+  optional string  ftype_element       = 15;
+  optional int32  fkach_pr             = 16;
+  optional int32  fflag_obr            = 17;
+  optional int32  fhour                = 18;
+  optional string  accuracy_field_date = 19;  //время фактических данных
+  optional string  accuracy_data_date  = 20;  //время фактических данных
+  optional string id                   = 21;  //Уникальный ID из базы данных
+  optional bool opr                    = 22;  // Оправдался/не оправдался прогноз
+}
+
+message ForecastResultReply{
+repeated ForecastResult data = 1;
+optional string  result      = 2;
+}
+
+message ForecastRequest {
+  repeated ForecastResult data = 1;
+};
+
+// запрос для прогнозов составленных вручную
+message ForecastManualRequest {
+  optional int32 id                     = 1;
+  repeated int32 region_id              = 2;   // массив айди регионов, по которым делался прогноз
+  optional int32 user_id                = 3;   // ади пользователя, составившего прогноз
+  optional string dt                    = 4;   // время составления прогноза
+  optional string dt_start              = 5;   // время начала действия прогноза
+  optional string dt_end                = 6;   // время окончания действия прогноза
+  optional string from_dt               = 7;   // даты для поиска  срока начала действия прогноза от
+  optional string to_dt                 = 8;   // даты для поиска  срока начала действия прогноза до
+  optional int32 forecast_hour          = 9;   // заблаговременность пронгноза
+  optional bool only_last               = 10;  // загружаем токлько последний прогноз
+  repeated meteo.sprinf.Station station = 11;  // массив станций, по которой составляется прогноз
+}
+
+// ответ от сервиса ручных прогнозов 
+message ForecastManualReply {
+  repeated ForecastManualResult data = 1;
+  optional string  comment           = 2;
+  optional bool  result              = 3;
+}
+
+// результаты выборки из базы данных прогнозирования
+message ForecastManualResult {
+  required int32 id               = 1;
+  optional int32 region_id        = 2;   // айди региона, по которому делался прогноз
+  optional string region_name     = 3;   // название региона, по которому делался прогноз
+  optional int32 user_id          = 4;   // ади пользователя, составившего прогноз
+  optional string dt              = 5;   // время составления прогноза
+  optional string dt_start        = 6;   // время начала действия прогноза
+  optional string dt_end          = 7;   // время окончания действия прогноза
+  optional int32 forecast_hour    = 8;   // заблаговременность пронгноза
+  optional string forecast_code   = 9;   // прогноз в кодовой форме
+  optional string forecast_text   = 10;  // текстуальная версия прогноза
+  optional string forecast_params = 11;  // распарсенные параметры прогноза
+  optional string station         = 12;  // номер станции, по которой составляется прогноз
+  optional int32 station_type     = 13;  // тип станции
+  optional string station_name    = 14;  // название станции, по которой составляется прогноз
+}
+
+// данные рукопашных прогнозов для сохранения в БД
+message ForecastManualData {
+  optional int32  id              = 1;
+  optional int32  region_id       = 2;   // айди региона, по которому делался прогноз
+  optional int32  user_id         = 3;   // ади пользователя, составившего прогноз
+  optional string dt              = 4;   // время составления прогноза
+  optional string dt_start        = 5;   // время начала действия прогноза
+  optional string dt_end          = 6;   // время окончания действия прогноза
+  optional int32  forecast_hour   = 7;   // заблаговременность пронгноза
+  optional string forecast_code   = 8;   // прогноз в кодовой форме
+  optional string forecast_text   = 9;   // текстуальная версия прогноза
+  optional string forecast_params = 10;  // распарсенные параметры прогноза
+  optional int32  station_id      = 11;  // номер станции, по которой составляется прогноз
+}
+
+
+message PunktValue {
+  optional string id           = 1; //!< идентификатор в БД
+  optional string name         = 2; //!< название рус
+  optional double fi           = 3; //!< широта
+  optional double la           = 4; //!< долгота
+  optional double height       = 5; //!< высота
+  optional string stationID    = 6; //!< идентификатор станции (номер, икао и пр)
+  optional bool   isActive     = 7; //!< true - выполнение автоматической оправдываемости
+  optional int32  station_type = 8; //!< тип станции
+}
+
+message PunktRequest {
+  optional int32 requestCode = 1;
+  repeated PunktValue punkts = 2;
+}
+
+message PunktResponce {
+  optional string message      = 1;
+  optional bool result         = 2;
+  repeated PunktValue punkts   = 3;
+}
+
+
+message Gradacii {
+  optional int32 descr         = 1;
+  optional string descrname    = 2;
+  optional int32 level         = 3;
+  optional int32 type_level    = 4;
+  optional int32 fhour         = 5;
+  optional double delta        = 6;
+  optional int32 dopusk_grad   = 7;
+  optional double time_delta   = 8;
+  repeated double gradacii_min = 9;
+  repeated double gradacii_max = 10;
+}
+
+message MsgCalAccuracyForecastMany {
+  repeated meteo.field.OnePointData data = 1;
+}
+
+message ForecastAv12Request {
+  optional string dt            = 1;
+  optional int32 hour           = 2;
+  optional string station_index = 3;
+}
+message ForecastAv12Responce {
+  //true - запрос выполнен, msg содержит результат выполнения запроса,
+  //false - запрос не выполнен, msg содержит информацию об ошибке
+  optional bool success = 1;
+  optional string msg   = 2;
+}
+
+message Dummy {
+}
+
+service ForecastData
+{
+  rpc SaveForecast( ForecastPointData ) returns ( meteo.field.SimpleDataReply ); //! сохранить
+  rpc SaveManyForecasts( ForecastManyPointsData ) returns ( meteo.field.SimpleDataReply ); //! сохранить много
+  rpc SaveForecastOpr( ForecastRequest ) returns ( ForecastResultReply );
+  rpc SaveForecastError( ForecastRequest ) returns ( ForecastResultReply );
+  rpc CalcAccuracyForecast( meteo.field.OnePointData ) returns ( meteo.field.SimpleDataReply ); //! сохранить
+  rpc CalAccuracyForecastMany( MsgCalAccuracyForecastMany ) returns ( meteo.field.SimpleDataReply ); //! сохранить много
+
+  rpc CalcForecastOprStation( AccuracyRequest ) returns (meteo.field.SimpleDataReply);
+
+  rpc FillGradacii( Gradacii ) returns ( Gradacii ); //Заполнить значения в структуре градации
+
+  // методы для прогнозов от кожаных специалистов
+  rpc SaveManualForecast( ForecastManualData ) returns ( ForecastManualReply ); // метод сохранения введенных вручную прогнозов
+  rpc GetManualForecast( ForecastManualRequest ) returns ( ForecastManualReply ); // метод получения введенных вручную прогнозов
+
+  //!
+  rpc GetAccuracy( AccuracyRequest ) returns ( AccuracyReply );
+  rpc GetManyAccuracy( ManyAccuracyRequest ) returns ( ManyAccuracyReply );
+  rpc GetForecastResult( ForecastResultRequest ) returns ( ForecastResultReply );
+  rpc GetForecastPunkts( PunktRequest ) returns ( PunktResponce );
+  rpc GetMeteoData( meteo.surf.DataRequest ) returns ( meteo.surf.DataReply );
+  rpc getForecastAV12( ForecastAv12Request ) returns ( ForecastAv12Responce );
+
+  //методы для работы с модулем физико-статистического прогнозирования
+  rpc GetForecastMethodsList( Dummy ) returns ( ForecastMethodList ); //получить список доступных методов
+  rpc GetForecastMethodsResultRun( ForecastResultRequest ) returns ( ForecastFizResult ); //запустить петод прогнозироания и получить результат
+
+}

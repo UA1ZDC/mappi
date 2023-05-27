@@ -1,0 +1,140 @@
+code: "kn04"
+name: "КН-04"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/kn04.template"
+wind: true
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 31
+  testqual: 4
+  id {
+    descr: 11001
+    name: "dd"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 25
+  testqual: 0
+  id {
+    descr: 11002
+    name: "ff"
+    parent: "wind"
+  }
+}
+rule {
+  pos {
+    x: -11
+    y: -6
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4292282928
+    minuscolor: 4280035572
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 12.34
+  id {
+    descr: 12101
+    name: "T"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: 9
+    y: 0
+  }
+  align: kRightCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 0.1
+  }
+  testval: 11500
+  id {
+    descr: 10009
+    name: "hh"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -11
+    y: 6
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  testval: 2.3
+  id {
+    descr: 12108
+    name: "D"
+    description: ""
+  }
+}
+datatype: kAero
+center: kCircle
+radius: 5
+windfont {
+  family: "Sans Serif"
+  pointsize: 5
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}

@@ -1,0 +1,34 @@
+{
+  "findAndModify": "tasks",
+  "query": { "_id" : @id@ },  
+  "update": {
+    "$set": {
+      "name"        : @name@,
+      "text"        : @text@,
+      "date_start"  : @dtStart@,
+      "date_end"    : @dtEnd@,
+      "labor"       : @labor@,        
+      "basics"      : @basics@,
+      "owner"       : @owner@,
+      "parent"      : @parent@,
+      "idfile"      : @idfile@,
+      "control"     : @control@,
+      "stage"       : @stage@
+    },
+    "$unset": {
+      "dummy"       : "",
+      "name"        : "",
+      "text"        : "",
+      "date_start"  : "",
+      "date_end"    : "",
+      "labor"       : "",        
+      "basics"      : "",
+      "owner"       : "",
+      "parent"      : "",
+      "idfile"      : "",
+      "control"     : "",
+      "stage"       : ""
+    }
+  },  
+  "upsert": false
+}

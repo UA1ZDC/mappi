@@ -1,0 +1,8 @@
+qt5-default
+g++
+libprotoc-dev
+protobuf-compiler
+postgresql-server-9.4
+libpng12-dev
+libjasper-dev
+qtscript5-dev

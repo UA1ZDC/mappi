@@ -1,0 +1,8 @@
+{ "find" : @collection@,
+  "projection": {
+    "_id" : 1,
+    @collectionGridFsField@ : 1,
+    "fs_error" : 1
+  },
+  "noCursorTimeout": true
+}

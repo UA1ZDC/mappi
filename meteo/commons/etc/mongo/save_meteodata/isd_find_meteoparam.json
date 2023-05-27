@@ -1,0 +1,44 @@
+{
+  "findAndModify" : "%1",
+  "query" : {
+    "dt" : "%2",
+    "station" : "%3",
+    "station_type" : "%4",
+    "data_type" : "%5",
+    "level_type" : "%6",
+    "level" : "%7",
+    "location" : "%8",
+    "level_hi" : "%9"
+  },
+  "update" : {       
+    "$setOnInsert" : {
+      "dt" : "%2",
+      "station_type" : "%4",
+      "station" : "%3",
+      "station_ident" : {
+	"usaf" : "%10",
+	"wban" : "%11",
+	"name" : "%12",
+	"call" : "%13"
+      },      
+      "data_type"  : "%5",
+      "level_type" : "%6",
+      "level" : "%7",
+      "location" : "%8",    
+      "level_hi" : "%9",
+      "param" : "%14"
+    }
+  },
+  "fields" : { 
+      "dt" : 0,
+      "station" : 0,
+      "station_type" : 0,
+      "data_type" :  0,
+      "level_type" : 0,
+      "level" :     0,
+      "level_hi" :  0,
+      "location":   0, 
+      "param.dubl": 0 
+  },
+  "upsert": true
+}

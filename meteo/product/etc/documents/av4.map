@@ -1,0 +1,12 @@
+name: "av4.map"
+title: "Штормовое предупреждение"
+formal {
+    template: "AV4.odt"
+    name: "Штормовое предупреждение"
+    module_path: "av4.py"
+    format: kOdt
+    icon_path: ":product/icons/AV-4.png"
+}
+document {
+  doctype: kFormalDocument
+}

@@ -1,0 +1,27 @@
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=835514
+Bug-Upstream: https://github.com/google/protobuf/issues/2019
+From: Markus Koschany <apo@debian.org>
+Description: set scope of "junit" and "easymock" to "test".
+
+--- a/java/core/pom.xml
++++ b/java/core/pom.xml
+@@ -21,16 +21,19 @@
+   <dependencies>
+     <dependency>
+       <groupId>junit</groupId>
+       <artifactId>junit</artifactId>
++      <scope>test</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.easymock</groupId>
+       <artifactId>easymock</artifactId>
++      <scope>test</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.easymock</groupId>
+       <artifactId>easymockclassextension</artifactId>
++      <scope>test</scope>
+     </dependency>
+   </dependencies>
+ 
+   <build>

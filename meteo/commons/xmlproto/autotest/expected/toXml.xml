@@ -1,0 +1,6 @@
+<application size="1024" platform="1" id="12501" name="test.exe">
+  <args>
+    <item>--no-gui</item>
+    <item>--loop=5</item>
+  </args>
+</application>

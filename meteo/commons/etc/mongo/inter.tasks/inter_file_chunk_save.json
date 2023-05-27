@@ -1,0 +1,10 @@
+{
+   "insert": "up_down_loads.parts",
+   "documents": [ {
+     "upload_id" : "%1",
+     "chunk_id" : "%2",
+     "gridfs_id" : "%3",
+     "dt_write" : "%4"
+   }
+   ]   
+}

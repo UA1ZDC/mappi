@@ -1,0 +1,43 @@
+Last-Update: 2016-08-24
+Forwarded: no
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=835266
+Bug-Upstream: https://github.com/google/protobuf/issues/1797
+Bug-Upstream: https://github.com/google/protobuf/issues/1698
+Author: Bas Couwenberg <sebastic@debian.org>
+Description: Don't treat misleading-indentation warning as error, causes FTBFS.
+
+--- a/more_tests/Makefile
++++ b/more_tests/Makefile
+@@ -36,6 +36,6 @@
+ 
+ header_warning_test: header_warning_test.cc
+ 	# TODO(kenton):  Consider adding -pedantic and -Weffc++.  Currently these
+ 	#   produce tons of extra warnings so we'll need to do some work first.
+-	g++ -Itarget/include -Wall -Werror -Wsign-compare -O2 -c header_warning_test.cc
++	g++ -Itarget/include -Wall -Werror -Wno-error=misleading-indentation -Wsign-compare -O2 -c header_warning_test.cc
+ 	touch header_warning_test
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -189,8 +189,9 @@
+       extra_compile_args.append('-Wno-shorten-64-to-32')
+ 
+     if warnings_as_errors in sys.argv:
+       extra_compile_args.append('-Werror')
++      extra_compile_args.append('-Wno-error=misleading-indentation')
+       sys.argv.remove(warnings_as_errors)
+ 
+     # C++ implementation extension
+     ext_module_list.extend([
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -851,9 +851,9 @@
+                         ../gmock/gtest/lib/libgtest.la      \
+                         ../gmock/gtest/lib/libgtest_main.la
+ no_warning_test_CPPFLAGS = -I$(srcdir)/../gmock/gtest/include
+ no_warning_test_CXXFLAGS = $(PTHREAD_CFLAGS) $(PTHREAD_DEF) $(ZLIB_DEF) \
+-                           -Wall -Werror
++                           -Wall -Werror -Wno-error=misleading-indentation
+ nodist_no_warning_test_SOURCES = no_warning_test.cc $(protoc_outputs)
+ 
+ TESTS = protobuf-test protobuf-lazy-descriptor-test protobuf-lite-test \
+         google/protobuf/compiler/zip_output_unittest.sh $(GZTESTS)     \

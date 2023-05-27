@@ -1,0 +1,7 @@
+{
+  "find" : "stations",
+  "filter" : 
+  {
+    "last_used" : { "$gte" : %9 , "$lte" : %10 }
+  }
+}

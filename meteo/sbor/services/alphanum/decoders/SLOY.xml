@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="SLOY" text="SLOY" category="71">
+  <MessageSections>^\s*(?:СЛОЙ|SLOJ|sloj)(?:\d{5}\s*\d{5}\s*[Nn][iI][Ll]|((?:\s*[\d/]{5}){2})((?:\s*[\d/]{5})+)(.*))</MessageSections>
+  <Section number="1" text="DATA FOR REPORTING IDENTIFICATION"> <!--опознавательные данные-->
+    <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+    <Group number="1" text="WMO station number">
+      <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+      <Value number="1"  descrName="II"/>
+      <Value number="2"  descrName="iii" text="WMO STATION NUMBER"/>
+    </Group>
+    <Group number="2" text="DATE">
+      <GroupValues>\s*([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+      <Value number="2"  descrName="GG" text="H"/>
+    </Group>
+  </Section>
+  <Section number="2" text="WIND"> <!--данные о среднем ветре по слоям-->
+    <SectionGroups>((?:\s*[\d/]{5})+)</SectionGroups>
+      <Group number="2" text="Средний ветер в слое">
+        <item>
+          <GroupValues>\s*()()([\d/])([\d/]{2})([\d/]{2})</GroupValues>
+          <Value number="1"  descrName="level_type" default="103" text="Тип уровня"/>
+          <Value number="2"  descrName="h0" default="0" text="Нижняя граница"/>
+          <Value number="3"  descrName="Tns" text="Слой"/>
+          <Value number="4"  descrName="dd" text="wind direction"/>
+          <Value number="5"  descrName="ff" text="wind velocity"/>
+        </item>
+      </Group>
+  </Section>
+  <Section number="2" text="WIND"> <!--данные о среднем ветре по слоям-->
+    <SectionGroups>(.*)</SectionGroups>
+    <Value number="1"  descrName="national" text=""/>
+  </Section>
+</Message>

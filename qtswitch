@@ -1,0 +1,109 @@
+#!/bin/bash
+#Переключение qt3/qt4
+
+VERSION=$1
+
+QT3=qt3
+QT4=qt4
+MANUAL=manual
+
+UPD_ALT=update-alternatives
+
+
+function manual_mode()
+{
+  $UPD_ALT --config qmake
+  $UPD_ALT --config designer
+  $UPD_ALT --config lrelease
+  $UPD_ALT --config lupdate
+  $UPD_ALT --config qtconfig
+  $UPD_ALT --config uic
+}
+
+function set_version()
+{
+  case $VERSION in
+    $QT3)
+      QMAKE="/usr/bin/qmake-qt3"
+      DESIGNER="/usr/bin/designer-qt3"
+      LRELEASE="/usr/bin/lrelease-qt3"
+      LUPDATE="/usr/bin/lupdate-qt3"
+      QTCONFIG="/usr/bin/qtconfig-qt3"
+      UIC="/usr/bin/uic-qt3"
+      ;;
+    $QT4)
+      QMAKE="/usr/bin/qmake-qt4"
+      DESIGNER="/usr/bin/designer-qt4"
+      LRELEASE="/usr/bin/lrelease-qt4"
+      LUPDATE="/usr/bin/lupdate-qt4"
+      QTCONFIG="/usr/bin/qtconfig-qt4"
+      UIC="/usr/bin/uic3"
+      ;;
+    *)
+    echo "unknown parameter = $VERSION"
+    exit 1
+    ;;
+  esac
+}
+
+function auto_mode()
+{
+  $UPD_ALT --set qmake $QMAKE
+  $UPD_ALT --set designer $DESIGNER
+  $UPD_ALT --set lrelease $LRELEASE
+  $UPD_ALT --set lupdate $LUPDATE
+  $UPD_ALT --set qtconfig $QTCONFIG
+  $UPD_ALT --set uic $UIC
+}
+
+function get_version()
+{
+  case $VERSION in
+    $QT3 | $QT4 | $MANUAL )
+      return
+      ;;
+    *)
+      ;;
+  esac
+
+  echo "Select of qt version [$QT3|$QT4|$MANUAL]:"
+  while read opt ; do
+    case $opt in
+      $QT3)
+        VERSION=$QT3
+        break
+        ;;
+      $QT4)
+        VERSION=$QT4
+        break
+        ;;
+      $MANUAL)
+        VERSION=$MANUAL
+        break
+        ;;
+      q)
+        exit
+        ;;
+      *)
+        echo "You are wrong opt = $opt"
+        echo "available options: [$QT3|$QT4|$MANUAL]"
+        ;;
+    esac
+  done
+}
+
+get_version
+
+case $VERSION in
+  $MANUAL)
+    manual_mode
+    ;;
+  $QT3 | $QT4 )
+    set_version
+    auto_mode
+    ;;
+  *)
+    echo "unknown parameter = $VERSION"
+    exit 1
+esac
+

@@ -1,0 +1,11 @@
+{ "find" : "fax",
+  "filter" : {
+    "t1" : @t1@,
+    "t2" : @t2@,
+    "a1" : @a1@,
+    "a2" : @a2@,
+    "ii" : @ii@,
+    "cccc" : @cccc@,
+    "yygggg" : @yygggg@
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "find" : "%1",
+    "sort" : { %2 },
+    "skip" : %3,
+    "limit" : %4,
+    "batchSize": 1
+}

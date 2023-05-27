@@ -1,0 +1,49 @@
+# --- meteo.app.conf
+autostart_msgcenter=false
+autostart_filestream=false
+autostart_ftpstream=false
+autostart_tcpstream_bcm=false
+autostart_tcpstream_ipv=false
+autostart_tcpstream_ling=false
+autostart_tcpstream_dev_lomo=false
+autostart_send_service=false
+autostart_alphanum=false
+autostart_bufr=false
+autostart_grib=false
+autostart_sprinf=false
+autostart_srcdata=false
+autostart_fieldata=false
+autostart_cron=false
+autostart_cleaner=false
+autostart_forecast=false
+autostart_climatdata=false
+autostart_ftploader=false
+autostart_out_grib=false
+autostart_curstate=false
+
+data_path=/home/viktor/stend/ukaz
+obanal_data_path=/home/viktor/obanal/
+tlg_path=/home/viktor/stend/ukaz/telegrams
+
+db_host=localhost
+db_port=5432
+services_host=localhost
+
+# --- msgstream.conf
+filestream_path=/home/viktor/stend/ukaz/tlg_in
+ftpstream_path=ukaz_tlg
+
+grib_path_out=/home/viktor/stend/ukaz/grib_out
+
+# --- wrf.conf
+wrf_path=/home/viktor/wrf/
+geogdata_path=/home/viktor/wrf/geog
+tfield_path_out=/home/viktor/stend/wrf/tfield_out
+
+# --- ungrib.conf
+ungrib_path_out=/home/viktor/stend/wrf/grib
+gfs_grib_path=/home/viktor/stend/wrf/downloads/gfs
+jmagsm_grib_path=/home/viktor/stend/ukaz/jma_grib1
+
+# --- ftploader.conf
+ftploader_download_path=/home/viktor/stend/wrf/downloads/gfs/

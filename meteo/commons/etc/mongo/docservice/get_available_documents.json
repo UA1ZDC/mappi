@@ -1,0 +1,14 @@
+{
+  "find" : "documents",
+  "filter" : {
+    "dt" : {"$gte": @start_dt@, "$lte": @end_dt@},
+    "mapid":  @mapid@,
+    "jobid":  @jobid@,
+    "center": @center@,
+    "model":  @model@,
+    "format": @format@,
+    "hour":   @hour@,
+    "map_title": @map_title@,
+    "job_title": @job_title@
+  }
+}

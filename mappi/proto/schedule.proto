@@ -1,0 +1,118 @@
+syntax = "proto2";
+option cc_generic_services = true;
+package mappi.conf;
+
+import "common.proto";
+
+
+//! направление спутника
+enum SatDirection {
+  kUnkDirection = -1;
+  kDescending = 0;      //!< нисходящее
+  kAscending = 1;       //!< восходящее
+};
+
+//! состояние конфликта
+enum ConflState {
+  kUnkState = -1;       //!< неизвестно
+  kNormalState = 0;     //!< не конфликтует
+  kSelfState = 1;       //!< конфликт решён в пользу этого спутника
+  kOtherState = 2;      //!< конфликт решён в пользу другого спутника (т.е. этот д.б. исключён из расписания)
+  kUserSelfState = 3;   //!< конфликт решён пользователем в пользу этого спутника
+  kUserOtherState = 4;  //!< конфликт решён пользователем в пользу другого спутника
+};
+
+//! сеанс
+message Session {
+  required string satellite = 1;        //!< название спутника
+  required string aos = 2;              //!< время начала сеанса
+  required string los = 3;              //!< время окончания сеанса
+  required float elevat_max = 4;        //!< угол кульминации
+  required uint64 revol = 5;            //!< номер витка
+  required SatDirection direction = 6;  //!< направление (восходящее/нисходящее)
+  required ConflState confl_state = 7;  //!< состояние конфликта
+}
+
+// TODO адаптировать
+message SessionInfo {
+  required string satellite = 1;        //!< название спутника
+  required uint64 revol = 2;            //!< номер витка
+}
+
+//!< tle-параметры, одна запись из tle-файла для заданного спутника
+message TleItem {
+  required string title = 1;    //!< заголовок
+  required string line_1 = 2;   //!< первая строка
+  required string line_2 = 3;   //!< вторая строка
+};
+
+//! пакет, полное описание сеанса с tle-параметрами спутника
+message SessionBundle {
+  required Session session = 1;
+  required TleItem tle = 2;
+
+  optional string demo_aos = 3;  //!< время начала сеанса для demo mode
+}
+
+//! Полное описание сеанса с tle-параметрами спутника
+message SessionResponse {
+  required Session session = 1;
+  optional TleItem tle = 2;
+  optional string demo_aos = 3;  //!< время начала сеанса для demo mode
+
+  required bool result = 4;
+  optional string comment = 5;
+}
+
+//! пороговое значение угла кульминации, градусы
+message Elevation {
+  required float min = 1;
+  required float max = 2;
+}
+
+//! способ разрешения конфликта между сеансами
+enum ConflResol
+{
+  kUnkResol      = -1;       //!< неизвестно
+  kStartResol    = 0;      //!< начало сеанса
+  kDurationResol = 1;   //!< продолжительность сеанса
+  kWestResol     = 2;       //!< западный регион
+  kEastResol     = 3;       //!< восточный регион
+  kMaxElevResol  = 4;       //!< максимальный угол кульминации
+};
+
+//! настройки расписания
+message ScheduleConf {
+  required StringList satellite = 1;    //!< список названий спутников (как в tle-файле)
+  required Elevation elevation = 2;
+  required ConflResol resol = 3;        //!< способ разрешения конфликтов
+  required uint32 period = 4;           //!< период на который составляется расписание, ч
+};
+
+//! список сеансов
+message ScheduleResponse {
+  repeated Session list = 1;    //!< сеансы
+
+  required bool result = 2;
+  optional string comment = 3;
+}
+
+//! перечень спутников из tle-файла
+message SatelliteResponse {
+  repeated string list = 1;     //!< название спутникoв
+
+  required bool result = 2;
+  optional string comment = 3;
+}
+
+service ScheduleService {
+  rpc CurrentSchedule(Dummy) returns (ScheduleResponse);        //!< текущее расписания
+  rpc MakeSchedule(Dummy) returns (ScheduleResponse);           //!< сформировать расписание (tle-файл читается заново)
+
+  rpc EditSession(Session) returns (SessionResponse);           //!< редактировать сеанс
+  rpc NearSession(Dummy) returns (SessionResponse);             //!< запрос ближайшего сеанса
+  rpc NextSession(Session) returns (SessionResponse);           //!< запрос следующего сеанса
+
+  rpc TleSatellite(SessionInfo) returns (SessionResponse);      //!< TLE в виде MnSat::STLEParams { имя спутника, первая строка, вторая строка }
+  rpc TleSatelliteList(Dummy) returns (SatelliteResponse);      //!< список спутников из tle-файла
+}

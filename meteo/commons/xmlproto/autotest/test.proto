@@ -1,0 +1,72 @@
+package test;
+
+enum Platform {
+  WINDOWS = 1;
+  UNIX    = 2;
+}
+
+message Application {
+  optional int32    id    = 1;
+  optional string   name  = 2;
+  repeated bytes    args  = 3;
+
+  optional uint64   size     = 4;
+  optional Platform platform = 5;
+}
+
+// ----------------------------------------------------------------------------
+
+enum Color {
+  WHITE = 1;
+  BLACK = 2;
+}
+
+message Card {
+  optional fixed64  id = 1;
+}
+
+message Book {
+  required Card   card  = 1;
+  optional string name  = 2;
+  optional uint32 pages = 3;
+}
+
+message Bookcase {
+  required Color  color = 1;
+  repeated Book   books = 2;
+}
+
+message BookBox {
+  optional Book book1 = 1;
+  optional Book book2 = 2;
+  optional Book book3 = 3;
+}
+
+// ----------------------------------------------------------------------------
+
+message Planet {
+  optional string name = 1;
+}
+
+message SolarSystem {
+  repeated Planet planets = 1;
+}
+
+message Galaxy {
+  optional bytes       name     = 1;
+  repeated SolarSystem systems  = 2;
+}
+
+message Universe {
+  repeated Galaxy galaxies  = 1;
+}
+
+// ----------------------------------------------------------------------------
+
+message Settings {
+  optional int32  id    = 1;
+  optional group Db = 2 {
+    optional bytes host = 3;
+    optional bytes name = 4;
+  }
+}

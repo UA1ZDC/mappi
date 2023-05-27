@@ -1,0 +1,41 @@
+{
+  "findAndModify": "stations",
+  "query": { "_id" : @id@ },
+  "update": {
+    "$unset": {
+      "index":@rmindex@,
+      "index.station_index":@rmstindex@,
+      "index.cccc":@rmcccc@,
+      "name":@rmname@,
+      "name.ru":@rmnameru@,
+      "name.short":@rmnameshort@,
+      "name.international":@rmnameen@,
+      "airstrip_direction":@rmdirection@,
+      "hydro_levels":@rmhidrolevels@,
+      "hydro_levels.poima":@rmpoima@,
+      "hydro_levels.zatop":@rmzatop@,
+      "hydro_levels.danger_level":@rmdangerlevel@
+    },
+    "$set": { 
+      "index.station_index": @stationindex@,
+      "index.cccc": @cccc@,
+      "station": @station@,
+      "name.ru": @nameru@,
+      "name.short": @nameshort@,
+      "name.international": @nameen@,
+      "country": @country@,
+      "station_type": @stationtype@,
+      "location": @location@,
+      "airstrip_direction": @direction@,
+      "hydro_levels.poima": @poima@,
+      "hydro_levels.zatop": @zatop@,
+      "hydro_levels.danger_level": @dangerlevel@,
+      "last_update": @lastupdate@,
+      "source": "user-modified"
+    }
+  },
+  "new": true,
+  "upsert": true
+} 
+
+

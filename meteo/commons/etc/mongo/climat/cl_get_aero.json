@@ -1,0 +1,36 @@
+{
+  "aggregate" : "aero",
+  "pipeline" : [
+    { "$addFields" : {
+      "month" : { "$month" : "$_id.dt"}
+    } },
+    { "$match" : {
+      "_id.station" :      @station@,
+      "_id.station_type" : @station_type@,  
+      "_id.level_type"   : @level_type@,
+      "_id.descrname"    : { "$in" : @descrname@ },
+      "month" : @month@,
+      "$and"  : [
+	{ "_id.dt" : { "$gte" : @start_dt@ } },
+	{ "_id.dt" : { "$lte" : @end_dt@ } }
+      ] }
+    },
+    { "$sort" : {
+      "_id.descrname"  : 1,
+      "_id.level_type" : 1,
+      "_id.level" : 1,
+      "_id.dt" : 1
+    } },
+    { "$project" : { 
+      "level" : "$_id.level", 
+      "dt"    : "$_id.dt"   ,
+      "descrname" : "$_id.descrname" ,
+      "value" : 1,
+      "_id" : 0
+    } }
+  ],  
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+  
+}
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="KOI8-R"?>
+<body>
+  <item valueSrc="facilitiesList" columnName="Программные компоненты" source="this" text="Программные компоненты" >
+    <item valueSrc="facility" source="this" textItem="facility0" text="Предварительная обработка"/>
+    <item valueSrc="facility" source="this" textItem="facility1" text = "Модуль расписания"/>
+    <item valueSrc="facility" source="this" textItem="facility2" text = "Пользовательский интерфейс"/>
+    <item valueSrc="facility" source="this" textItem="facility3" text = "ПК приёма данных"/>
+    <item valueSrc="facility" source="this" textItem="facility4" text = "Настройка"/>
+    <item valueSrc="facility" source="this" textItem="facility5" text = "Дополнительно"/>
+  </item>
+</body>
+

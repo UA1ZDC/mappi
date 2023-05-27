@@ -1,0 +1,16 @@
+{
+   "update": "conferences",
+   "updates": [{
+   "q": {
+           "_id" : @id@ 
+        },
+        "u": {
+           "$pull" : {
+                  "members" : @members@ 
+            } 
+        },
+   "upsert": false,
+   "multi": false
+   } ]
+}
+

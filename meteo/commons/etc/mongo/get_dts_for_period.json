@@ -1,0 +1,11 @@
+{
+  "find": "meteoreport",
+  "filter": {
+    "station": @station@,
+    "dt": {
+      "$gte": @start_dt@,
+      "$lte": @end_dt@
+    }
+  },
+  "projection": {"dt": 1}
+}

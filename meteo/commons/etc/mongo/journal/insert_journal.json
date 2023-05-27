@@ -1,0 +1,14 @@
+{
+  "insert": "journal",
+  "documents": [ {
+    "priority": @priority@,
+    "sender": @sender@,
+    "username": @username@,
+    "file_name": @filename@,
+    "line_number": @linenumber@,
+    "ip": @ip@,
+    "host": @host@,
+    "dt": @dt@,
+    "message": @message@
+  } ]
+}

@@ -1,0 +1,38 @@
+{
+"aggregate" : @collection@,
+"pipeline" : [
+    { "$group": {
+      "_id" : {
+        "cccc"          : "$cccc" ,
+        "dddd"          : "$dddd",
+        "type"          : "$type",
+        "t1"            : "$t1",
+        "t2"            : "$t2",
+        "yygggg"        : "$yygggg",
+        "globalfile_id" : "$globalfile_id"
+      },
+      "id"     : { "$first": "$_id" },
+      "cccc"   : { "$first": "$cccc" },
+      "dddd"   : { "$first": "$dddd" },
+      "type"   : { "$first": "$type" },
+      "t1"     : { "$first": "$t1" },
+      "t2"     : { "$first": "$t2" },
+      "a1"     : { "$first": "$a1" },
+      "a2"     : { "$first": "$a2" },
+      "yygggg" : { "$first": "$yygggg" },
+      "dt"     : { "$first": "$dt" },
+      "msg_dt" : { "$first": "$msg_dt" },
+      "size"   : { "$first": "$size" },
+      "confirm": { "$first": "$confirm" },
+      "count"  : { "$sum": 1 }
+      }
+    },
+    
+    { "$match" : { "$and" : @filter@ } },
+    { "$sort" :  @sort@  },
+    { "$skip" : @skip@ } ,
+    { "$limit" : @limit@ }
+],
+  "cursor": { "batchSize": 1 },
+  "allowDiskUse": true
+}

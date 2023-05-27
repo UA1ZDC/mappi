@@ -1,0 +1,492 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM14" text="SYNOP MOBIL"  category="21">
+    <MessageSections>OOXX(\s*[\w/]{3,}\s*[\d/]{5}\s*99[\d/]{3}\s*[\d/]{5}\s*[\d/]{5}\s*[\d/]{5})((?:\s*[0-4][1-7/][\d/]{3})(?:\s*[\d/]{5})(?:\s*[01][\d/]{4}){0,2}(?:\s*2[019/][\d/]{3}){0,2}(?:\s*3[\d/]{4})?(?:\s*4[\d/]{4})?(?:\s*5[\d/]{4})?(?:\s*6[\d/]{4})?(?:\s*7[\d/]{4})?(?:\s*8[\d/]{4})?(?:\s*9[\d/]{4})?)?(\s*222[\d/]{2}(?:\s*[0-6][\d/]{4}){0,7}\w*(?:\s*[\d/]{5}){0,2}(?:\s*ICE\s*[\w/]*)?)?(\s*333(?:\s*[\d/]{5})*)?(\s*444(?:\s*[\d/]{5})*)?(\s*555(?:\s*\S+)*)?</MessageSections>
+    <Section number="0" text="DATA FOR REPORTING IDENTIFICATION" >
+      <SectionGroups>(\s*[\w/]{3,})(\s*[\d/]{5})(\s*99[\d/]{3}\s*[\d/]{5})(\s*[\d/]{5})(\s*[\d/]{4}[1-8/])</SectionGroups>
+      <Group number="1" text="SHIP OR MOBILE LAND STATION IDENTIFIER">
+	<GroupValues>\s*([\w/]{3,})</GroupValues>
+        <Value number="1" descrName="D____D"  text="CALL SIGN CONSISTING OF THREE OR MORE ALPHANUMERIC CHARACTERS"/>
+      </Group>
+      <Group number="2" text="DAY,HOUR, TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT">
+        <GroupValues>\s*()([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+	<Value number="0"  descrName="level_type" default="1" />
+        <Value number="1" descrName="YY"  text="DAY"	/>
+	<Value number="2" descrName="GG"  text="HOUR" />
+	<Value number="3" descrName="iw"  text="TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT" />
+      </Group>
+      <Group number="3" text="SHIP OR MOBILE LAND STATION HORIZONTAL POSITION INDICATOR">
+	<GroupValues>\s*99([\d/]{3})\s*([1357/])([\d/]{4})</GroupValues>
+        <Value number="1" descrName="LaLaLa"  text="LATITUDE, IN TENTHS"/>
+        <Value number="2" descrName="Qc"  text="QUADRANT OF THE GLOBE"/>
+        <Value number="3" descrName="LoLoLoLo"  text="LONGITUDE, IN TENTHS"/>	
+      </Group>
+      <Group number="4" text="NUMBER OF MARSDEN SQUARE IN WHICH THE MOBILE LAND STATION IS SITUATED">
+        <GroupValues>\s*([\d/]{3})([\d/])([\d/])</GroupValues>
+        <Value number="1" descrName="MMM"  text="NUMBER OF MARSDEN SQUARE (10X10 SQ.DEG) IN WHICH THE STATION IS SITUATED AT THE TIME OF OBSERVATION"/>
+        <Value number="2" descrName="ULa"  text="UNIT DIGIT IN THE REPORTED LATITUDE (1/10 OF MARSDEN SQUARE)"/>
+        <Value number="3" descrName="ULo"  text="UNIT DIGIT IN THE REPORTED LONGITUDE (1/10 OF MARSDEN SQUARE)"/>	
+      </Group>
+      <Group number="5" text="ELEVATION OF A MOBILE LAND STATION">
+        <GroupValues>\s*([\d/]{4})([1-8/])</GroupValues>
+        <Value number="1" descrName="h0h0h0h0"  text="ELEVATION OF A MOBILE LAND STATION MAKING SURFACE OR UPPER-AIR OBSERVATIONS, IN EITHER METRES OR FEET AS INDICATED BY im"/>
+        <Value number="2" descrName="im"  text="INDICATOR FOR UNITS (METRES OR FEET) OF ELEVATION, AND CONFIDENCE FACTOR FOR ACCURACY OF ELEVATION"/>
+      </Group>
+    </Section>
+    <Section number="1" text="DATA FOR GLOBAL EXCHANGE WHICH ARE COMMON TO THE SYNOP, SHIP AND SYNOP MOBIL">
+      <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})(\s*00[\d/]{3})?(\s*1[\d/]{4})?(\s*2[01/][\d/]{3}|\s*29[\d/]{3})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{4})?(\s*9[\d/]{4})?</SectionGroups>
+      <Group number="1" text="HEIGHT OF BASE OF CLOUD, HORIZONTAL VISIBILITY">
+	<GroupValues>\s*([\d/])([\d/])([\d/])([\d/]{2})</GroupValues>
+        <Value number="1" descrName="iR"  text="IDENTIFIER PRECIPITATION GROUP" />
+	<Value number="2" descrName="ix"  text="STATION TYPE (AUTOMATIC, NON AUTOMATIC)" />
+	<Value number="3" descrName="hgr"  num="1" text="HEIGHT OF BASE OF CLOUD"     />
+	<Value number="4" descrName="VV"  text="HORIZONTAL VISIBILITY,IN KM" />
+      </Group>
+      <Group number="2" text="CLOUD COVER (TOTAL), WIND DIRECTION, WIND VELOCITY">
+	<GroupValues>\s*([\d/])()()([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="0" descrName="N"  text="CLOUD COVER (TOTAL)" />
+	<Value number="1"  descrName="ggp" num="8" default="-10" text="wind direction"	/>
+	<Value number="2"  descrName="t_sign" num="8" default="2" text="time significance"	/>
+	<Value number="3" descrName="dd"   num="8" text="WIND DIRECTION"	 />
+	<Value number="4" descrName="ff"   num="8" text="WIND VELOCITY" />
+      </Group>
+      <Group number="3" text="WIND VELOCITY >= 99">
+	<GroupValues>\s*00([\d/]{3})</GroupValues>
+        <Value number="1" descrName="fff" num="8" text="WIND VELOCITY >= 99" />
+      </Group>
+      <Group number="4" text="TEMPERATURE/DRY-BULB TEMPERATURE">
+        <GroupValues>\s*1([\d/]{4})</GroupValues>
+        <Value number="1" descrName="snTTT"  text="TEMPERATURE/DRY-BULB TEMPERATURE" />
+      </Group>
+      <Group number="5" text="MOISTURE">
+        <GroupValues>\s*2(?:([01/][\d/]{3})|9([\d/]{3}))</GroupValues>
+        <Value number="1" descrName="snTdTdTd"  text="DEW-POINT TEMPERATURE" />
+	<Value number="2" descrName="UUU"  text="RELATIVE HUMIDITY"	  />
+      </Group>
+      <Group number="6" text="PRESSURE">
+        <GroupValues>\s*3([\d/]{4})</GroupValues>
+        <Value number="1" descrName="P0P0P0P0"  text="PRESSURE" />
+      </Group>
+      <Group number="7" text="PRESSURE REDUCED TO MEAN SEA  LEVEL OR STANDARD ISOBARIC SURFACE AND GEOPOTENTIAL">
+	<GroupValues>\s*4(?:([09/][\d/]{3})|([1-8/][\d/]{3}))</GroupValues>
+        <Value number="1"  descrName="PPPP" text="Pressure reduced to mean sea level" />
+	<SubGroup number="7.1" text="standard isobaric surface and geopotential">
+	  <item>
+	    <SubGroupValues>\s*()([1-8/])([\d/]{3})</SubGroupValues>
+	    <Value number="0"  descrName="level_type" default="100" />
+	    <Value number="2"  descrName="a3" text="Standard isobaric surface"/>
+	    <Value number="3"  descrName="hhh" text="Geopotential height"/>
+	  </item>
+	</SubGroup>
+      </Group>
+      <Group number="8" text="3-HOUR PRESSURE CHANGE, CHARACTERISTIC OF PRESSURE TENDENCY">
+        <GroupValues>\s*5([\d/])([\d/]{3})</GroupValues>
+        <Value number="1" descrName="a"  text="CHARACTERISTIC OF PRESSURE TENDENCY" />
+        <Value number="2" descrName="ppp"  text="3-HOUR PRESSURE CHANGE" />
+      </Group>
+      <Group number="9" text="TOTAL PRECIPITATION/TOTAL WATER EQUIVALENT, TIME PERIOD OR DISPLACEMENT">
+	<item>
+	  <GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	  <Value number="1" descrName="RRR"  text="TOTAL PRECIPITATION/TOTAL WATER EQUIVALENT" />
+	  <Value number="2" descrName="tR"  text="TIME PERIOD OR DISPLACEMENT" />
+	</item>
+      </Group>
+      <Group number="10" text="WEATHER">
+        <GroupValues>\s*7([\d/]{2})()([\d/])([\d/])</GroupValues>
+        <Value number="1" descrName="ww"  num="7" text="PRESENT WEATHER" />
+	<Value number="1"  descrName="GGp" num="9" default="-3" text="Срок"  />
+	<Value number="2" descrName="W1"  num="9" text="PAST WEATHER 1"	 />
+	<Value number="3" descrName="W2"  num="9" text="PAST WEATHER 2"  />
+      </Group>
+      <Group number="11" text="CLOUD AMOUNT, LOW CLOUD TYPE, MEDIUM CLOUD TYPE, HIGH CLOUD TYPE">
+        <GroupValues>\s*8([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	<!-- <Value number="0"  descrName="level_type" num="1" default="2" text="Тип уровня"      /> -->
+        <Value number="1" descrName="Nh" num="1" text="CLOUD AMOUNT"	    />
+	<Value number="2" descrName="CL" num="1" text="LOW CLOUD TYPE" />
+	<Value number="3" descrName="CM" num="1" text="MEDIUM CLOUD TYPE" />
+	<Value number="4" descrName="CH" num="1" text="HIGH CLOUD TYPE"   />
+      </Group>
+      <Group number="12" text="HOUR, MIN">
+        <GroupValues>\s*9()([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="0"  descrName="t_sign" default="25" text="Hour" />
+        <Value number="1" descrName="GG"  text="HOUR" />
+	<Value number="2" descrName="gg"  text="MIN"	 />
+      </Group>
+    </Section>
+    <Section number="2" text="MARITIME DATA FOR GLOBAL EXCHANGE PERTAINING TO A SEA, OR TO A COASTAL STATION">
+      <SectionGroups>(\s*222[\d/]{2})(\s*0[\d/]{4})?(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*(?:6[\d/]{4}|ICING\s*\w*))?(\s*70[\d/]{3})?(\s*8[\d/]{4})?(\s*ICE(?:\s*[\d/]{5}|[\w/]+))?</SectionGroups>
+      <Group number="1" text="SHIP DISPLACEMENT DURING THE THREE HOURS">
+        <GroupValues>\s*222([\d/])([\d/])</GroupValues>
+        <Value number="1" descrName="Ds"  text="TRUE DIRECTION OF RESULTANT DISPLACEMENT OF THE SHIP DURING THE THREE HOURS"/>
+	<Value number="2" descrName="vs"  text="SHIPБ─≥S AVERAGE SPEED MADE GOOD DURING THE THREE HOURS"/>
+      </Group>
+      <Group number="2" text="SHIP DISPLACEMENT DURING THE THREE HOURS">
+	<GroupValues>\s*0([\d/]{4})</GroupValues>
+	<Value number="1" descrName="ssTwTwTw"  text="SEA-SURFACE TEMPERATURE, IN TENTHS OF DEGREES CELSIUS"/>
+      </Group>
+      <Group number="3" text="WAVES PARAMETERS">
+	<GroupValues>\s*1([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1" descrName="PwaPwa"  text="PERIOD OF OBSERVED WAVES, IN SECOND"/>
+	<Value number="2" descrName="HwaHwa"  text="HEIGHT OF OBSERVED WAVES, OBTAINED BY INSTRUMENTAL METHODS, IN 0,5 METERS"/>	
+      </Group>
+      <Group number="4" text="WIND WAVES PARAMETERS">
+	<GroupValues>\s*2([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1" descrName="PwPw"  text="PERIOD OF WIND WAVES, OBTAINED BY INSTRUMENTAL METHODS, IN SECOND"/>
+	<Value number="2" descrName="HwHw"  text="HEIGHT OF WIND WAVES, OBTAINED BY INSTRUMENTAL METHODS, IN 0,5 METERS"/>	
+      </Group>
+      <Group number="5" text="SWELL WAVES DIRECTION">
+	<GroupValues>\s*3([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1" descrName="dw1dw1"  text="TRUE DIRECTION OF SWELL 1 WAVES, IN TENS OF DEGREES"/>
+	<Value number="2" descrName="dw2dw2"  text="TRUE DIRECTION OF SWELL 2 WAVES, IN TENS OF DEGREES"/>	
+      </Group>
+      <Group number="6" text="SWELL WAVES 1 PARAMETERS">
+	<GroupValues>\s*4([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1" descrName="Pw1Pw1"  text="PERIOD OF SWELL 1 WAVES, OBTAINED BY INSTRUMENTAL METHODS, IN SECOND"/>
+	<Value number="2" descrName="Hw1Hw1"  text="HEIGHT OF SWELL 1 WAVES, OBTAINED BY INSTRUMENTAL METHODS, IN 0,5 METERS"/>	
+      </Group>
+      <Group number="7" text="SWELL WAVES 2 PARAMETERS">
+	<GroupValues>\s*5([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1" descrName="Pw2Pw2"  text="PERIOD OF SWELL 2 WAVES, OBTAINED BY INSTRUMENTAL METHODS, IN SECOND"/>
+	<Value number="2" descrName="Hw2Hw2"  text="HEIGHT OF SWELL 2 WAVES, OBTAINED BY INSTRUMENTAL METHODS, IN 0,5 METERS"/>	
+      </Group>
+      <Group number="8" text="ICING">
+	<GroupValues>\s*(?:6([\d/])([\d/]{2})([\d/])|ICING\s*\w*)</GroupValues>
+	<Value number="1" descrName="Is"  text="CAUSE OF ICE ACCRETION ON SHIPS"/>
+	<Value number="2" descrName="EsEs"  text="THICKNESS OF ICE ACCRETION ON SHIPS, IN CENTIMETRES"/>	
+	<Value number="3" descrName="Rs"  text="RATE OF ICE ACCRETION ON SHIPS (ESTIMATED)"/>
+      </Group>
+      <Group number="9" text="WAVES PARAMETERS">
+	<GroupValues>\s*70([\d/]{3})</GroupValues>
+	<Value number="1" descrName="HwaHwaHwa"  text="HEIGHT OF WAVES, OBTAINED BY INSTRUMENTAL METHODS, IN UNITS OF 0.1 METRE"/>
+      </Group>
+      <Group number="10" text="WET-BULB TEMPERATURE">
+	<GroupValues>\s*8([0-7/][\d/]{3})</GroupValues>
+	<Value number="1" descrName="swTbTbTb"  text="WET-BULB TEMPERATURE, IN TENTHS OF DEGREES CELSIUS"/>
+      </Group>
+      <Group number="11" text="ICE">
+	<GroupValues>\s*ICE\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	<Value number="1" descrName="ci"  text="CONCENTRATION OR ARRANGEMENT OF SEA ICE"/>
+	<Value number="2" descrName="Si"  text="STAGE OF DEVELOPMENT"/>
+	<Value number="3" descrName="bi"  text="ICE OF LAND ORIGIN"/>
+	<Value number="4" descrName="Di"  text="TRUE BEARING OF PRINCIPAL ICE EDGE"/>
+	<Value number="5" descrName="zi"  text="PRESENT ICE SITUATION AND TREND OF CONDITIONS OVER PRECEDING THREE HOURS"/>
+      </Group>
+    </Section>
+    <Section number="3" text="DATA FOR REGIONAL EXCHANGE">
+      <SectionGroups i_descrName="iR" descr = "00001" text="INDICATOR OF PRECIPITATION GROUP (6RRRtR) INCLUDING" >
+	<Variant number = "1" i_values = "[134/]" text = "EXCLUDE PRECIPITATION GROUP (6RRRtR)" >\s*333(?:\s*/////)?(\s*0[\w/]*)?(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?((?:\s*5[0-46-9/][\d/]{3}|(?:\s*5[\d/]{4}(?:\s*[0-6/][\d/]{4}){0,7}))*)(EMPTY_GROUP)?(\s*7[\d/]{4})?((?:\s*8[\d/]{4})*)?((?:\s*9[\d/]{4})*)?(?:\s*80000(?:\s*[0-9][\d/]{4})*)?</Variant>
+	<Variant number = "2" i_values = "[02]"  text = "INCLUDE PRECIPITATION GROUP (6RRRtR)" >\s*333(?:\s*/////)?(\s*0[\w/]*)?(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?((?:\s*5[0-46-9/][\d/]{3}|(?:\s*5[\d/]{4}(?:\s*[0-6/][\d/]{4}){0,7}))*)(\s*6[\d/]{4})(\s*7[\d/]{4})?((?:\s*8[\d/]{4})*)?((?:\s*9[\d/]{4})*)?(?:\s*80000(?:\s*[0-9][\d/]{4})*)?</Variant>
+      </SectionGroups>      
+      <Group number="1" text="REGIONAL DATA (FOR ASIA - ABSOLUTE VALUE OF GROUND (GRASS) TEMPERATURE, IN WHOLE DEGREES CELSIUS)">
+	<GroupValues>\s*0([\d/])([\d/]{3})</GroupValues>
+	<Value number="1" descrName="E"  text="STATE OF THE GROUND WITHOUT SNOW OR MEASURABLE ICE COVER"/>
+	<Value number="2" descrName="snTg_Tg_"  text="ABSOLUTE VALUE OF GROUND (GRASS) TEMPERATURE, IN WHOLE DEGREES CELSIUS"/>
+      </Group>
+      <Group number="2" text="MAXIMUM TEMPERATURE, AT HEIGHT AND OVER PERIOD SPECIFIED">
+	<GroupValues>\s*1([\d/]{4})</GroupValues>
+	<Value number="1" descrName="snTxTxTx"  text="MAXIMUM TEMPERATURE"/>
+      </Group>
+      <Group number="3" text="MINIMUM TEMPERATURE, AT HEIGHT AND OVER PERIOD SPECIFIED">
+	<GroupValues>\s*2([\d/]{4})</GroupValues>
+	<Value number="1" descrName="snTnTnTn"  text="MIMIMUM TEMPERATURE"/>
+      </Group>
+      <Group number="4" text="REGIONAL DATA (FOR ASIA AND EUROPE - GROUND (GRASS) MINIMUM TEMPERATURE OF THE PRECEDING NIGHT)">
+	<GroupValues>\s*3([\d/])([\d/]{3})</GroupValues>
+	<Value number="1" descrName="E"  text="STATE OF THE GROUND WITHOUT SNOW OR MEASURABLE ICE COVER"/>
+	<Value number="2" descrName="snTgTg"  text="GROUND (GRASS) MINIMUM TEMPERATURE OF THE PRECEDING NIGHT, IN WHOLE DEGREES CELSIUS"/>
+      </Group>
+      <Group number="5" text="STATE OF THE GROUND WITH SNOW COVER, TOTAL SNOW DEPTH">
+	<GroupValues>\s*4([\d/])([\d/]{3})</GroupValues>
+	<Value number="1" descrName="E_"  text="STATE OF THE GROUND WITH SNOW"/>
+	<Value number="2" descrName="sss"  text="TOTAL SNOW DEPTH"/>
+      </Group>
+      <Group number="6" text="RADIATION DATA">
+	<GroupValues>(?:\s*(?:5([0-3][\d/]{2})|5///)([\d/]))?(?:\s*54([0-5])([01/][\d/])|\s*[5/]////)?(\s*55[0-26-9/][\d/]{2}(?:\s*(?!55407|55408|55507|55508)[0-6][\d/]{4})*)?(\s*553[\d/]{2}(?:\s*(?!55407|55408|55507|55508)[0-6][\d/]{4})*)?(\s*55407\s*4[\d/]{4})?(\s*55408\s*4[\d/]{4})?(\s*55507\s*5[\d/]{4})?(\s*55508\s*5[\d/]{4})?((?:\s*5[6-9][\d/]{3}){1,4})?</GroupValues>
+        <Value number="1" descrName="EEE"  text="DAILY AMOUNT OF EITHER EVAPORATION OR EVATRANSPIRATION, IN TENTHS OF A MILLIMETRE"/>
+        <Value number="2" descrName="iE"   text="INDICATOR OF TYPE OF INSTRUMENTATION FOR MEASUREMENT OR TYPE OF CROP"/>
+        <Value number="3" descrName="g0"   num="2" text="TIME OF TEMPERATURE CHANGE, IN HOURS"/>
+	<Value number="4" descrName="sndT" num="2" text="TEMPERATURE CHANGE IN PERIOD COVERED BY W1W2"/>
+        <SubGroup number="5" text="DAILY RADIATION">
+	  <item>
+	    <SubGroupValues>\s*55()([0-26-9/][\d/]{2})(?:\s*0([\d/]{4}))?(?:\s*1([\d/]{4}))?(?:\s*2([\d/]{4}))?(?:\s*3([\d/]{4}))?(?:\s*4([\d/]{4}))?(?:\s*5([\d/]{4}))?(?:\s*6([\d/]{4}))?</SubGroupValues>
+	    <Value number="-1"  descrName="GGp" default="24" text="Срок"/>
+	    <Value number="0" descrName="SSS"  text="DAILY HOURS OF SUNSHINE"/>	   
+	    <Value number="1" descrName="F24F24F24F240"  text="POSITIVE NET RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>
+	    <Value number="2" descrName="F24F24F24F241"  text="NEGATIVE NET RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>
+	    <Value number="3" descrName="F24F24F24F242"  text="GLOBAL SOLAR RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>
+	    <Value number="4" descrName="F24F24F24F243"  text="DIFFUSED SOLAR RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>
+	    <Value number="5" descrName="F24F24F24F244"  text="DOWNWARD LONG-WAVE RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>
+	    <Value number="6" descrName="F24F24F24F245"  text="UPWARD LONG-WAVE RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>
+	    <Value number="7" descrName="F24F24F24F246"  text="SHORT-WAVE RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>	   
+	  </item>
+        </SubGroup>
+        <SubGroup number="6" text="RADIATION IN THE PAST HOUR">
+	  <item>
+	    <SubGroupValues>\s*553()([\d/]{2})(?:\s*0([\d/]{4}))?(?:\s*1([\d/]{4}))?(?:\s*2([\d/]{4}))?(?:\s*3([\d/]{4}))?(?:\s*4([\d/]{4}))?(?:\s*5([\d/]{4}))?(?:\s*6([\d/]{4}))?</SubGroupValues>
+	    <Value number="-1"  descrName="GGp" default="1" text="Срок"/>
+	    <Value number="0" descrName="SS"  text="DURATION OF SUNSHINE IN THE PAST HOUR, IN TENTHS OF A HOUR"/>			
+	    <Value number="1" descrName="FFFF0"  text="POSITIVE NET RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>
+	    <Value number="2" descrName="FFFF1"  text="NEGATIVE NET RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>
+	    <Value number="3" descrName="FFFF2"  text="GLOBAL SOLAR RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>
+	    <Value number="4" descrName="FFFF3"  text="DIFFUSED SOLAR RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>
+	    <Value number="5" descrName="FFFF4"  text="DOWNWARD LONG-WAVE RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>
+	    <Value number="6" descrName="FFFF5"  text="UPWARD LONG-WAVE RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>
+	    <Value number="7" descrName="FFFF6"  text="SHORT-WAVE RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>	   
+	  </item>
+	</SubGroup>
+        <SubGroup number="7" text="RADIATION IN THE PAST HOUR">
+	  <item>
+	    <SubGroupValues>\s*55407\s*4()([\d/]{4})</SubGroupValues>
+	    <Value number="0"  descrName="GGp" default="1" text="Срок"/>
+	    <Value number="1" descrName="FFFF407"  text="NET SHORT-WAVE RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>
+	  </item>
+        </SubGroup>
+        <SubGroup number="8" text="RADIATION IN THE PAST HOUR">
+	  <item>
+	    <SubGroupValues>\s*55408\s*4()([\d/]{4})</SubGroupValues>
+	    <Value number="0"  descrName="GGp" default="1" text="Срок"/>
+	    <Value number="1" descrName="FFFF408"  text="DIRECT SOLAR RADIATION DURING THE PREVIOUS HOUR, KJ/M2"/>
+	  </item>
+        </SubGroup>
+        <SubGroup number="9" text="DAILY RADIATION">
+	  <item>
+	    <SubGroupValues>\s*55507\s*5()([\d/]{4})</SubGroupValues>
+	    <Value number="0"  descrName="GGp" default="24" text="Срок"/>
+	    <Value number="1" descrName="F24F24F24F24507"  text="NET SHORT-WAVE RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>
+	  </item>
+        </SubGroup>
+        <SubGroup number="10" text="DAILY RADIATION">
+	  <item>
+	    <SubGroupValues>\s*55508\s*5()([\d/]{4})</SubGroupValues>
+	    <Value number="0"  descrName="GGp" default="24" text="Срок"/>
+	    <Value number="1" descrName="F24F24F24F24508"  text="DIRECT SOLAR RADIATION DURING THE PRECEDING 24 HOURS, J/CM2"/>
+	  </item>
+        </SubGroup>	
+        <SubGroup number="11" text="DIRECTION OF CLOUD DRIFT, DIRECTION OF CLOUD, DAILY PRESSURE CHANGE">
+           <SubGroupValues>(?:\s*56()([\d/])()([\d/])()([\d/]))?(?:\s*57()([\d/])([\d/])([\d/]))?(?:\s*58([\d/]{3}))?(?:\s*59([\d/]{3}))?</SubGroupValues>
+	   <Value number="1_0"  descrName="v_sign" num="3" default="7" text="Вертикальная значимость"/>
+           <Value number="1" descrName="DL"      num="3"  text="DIRECTION OF LOW CLOUD DRIFT"/>
+	   <Value number="2_0"  descrName="v_sign" num="4" default="8" text="Вертикальная значимость"/>
+	   <Value number="2" descrName="DM" 	   num="4"  text="DIRECTION OF MEDIUM CLOUD DRIFT"/>
+	   <Value number="3_0"  descrName="v_sign" num="5" default="9" text="Вертикальная значимость"/>
+	   <Value number="3" descrName="DH" 	   num="5"  text="DIRECTION OF HIGH CLOUD DRIFT"/>
+	   <Value number="4_0"  descrName="v_sign" num="6" default="" text="Вертикальная значимость"/>
+           <Value number="4" descrName="C"   num="6" text="GENIUS OF CLOUD"/>
+	   <Value number="5" descrName="Da"  num="6" text="DIRECTION OF CLOUD"/>
+	   <Value number="6" descrName="eC"  num="6" text="ELEVATION OF CLOUD"/>
+           <Value number="7" descrName="p24p24p240"  text="POSITIVE CHANGE OF SURFACE PRESSURE OVER THE LAST 24 HOURS"/>
+	   <Value number="8" descrName="p24p24p241"  text="NEGATIVE CHANGE OF SURFACE PRESSURE OVER THE LAST 24 HOURS"/>
+        </SubGroup>	
+      </Group>
+      <Group number="7" text="TOTAL PRECIPITATION/TOTAL WATER EQUIVALENT, TIME PERIOD OR DISPLACEMENT">
+	<item>
+	  <GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	  <Value number="1" descrName="RRR333"  text="TOTAL PRECIPITATION/TOTAL WATER EQUIVALENT"/>
+	  <Value number="2" descrName="tR333"  text="TIME PERIOD OR DISPLACEMENT"/>
+	</item>
+      </Group>
+      <Group number="8" text="TOTAL AMOUNT OF PRECIPITATION DURING THE 24-HOUR PERIOD ENDING AT THE TIME OF OBSERVATION, IN TENTHS OF MILLIMETRES">
+	<GroupValues>\s*7([\d/]{4})</GroupValues>
+	<Value number="1" descrName="R24R24R24R24"  text="TOTAL PRECIPITATION/TOTAL WATER EQUIVALENT"/>
+      </Group>
+      <Group number="9" text="NUMBER OF DIFFERENT LAYERS OF CLOUD">
+	<item>
+	  <GroupValues>\s*8([\d/])([\d/])([\d/]{2})</GroupValues>
+	  <Value number="1" descrName="Ns"  text="AMOUNT OF INDIVIDUAL CLOUD LAYER OR MASS"/>
+	  <Value number="2" descrName="C333"  text="GENIUS OF CLOUD"/>
+	  <Value number="3" descrName="hshs"  text="HEIGHT OF CLOUD"/>	
+	</item>
+      </Group>
+      <Group number="10" text="SUPPLEMENTARY INFORMATION (CODE TABLE 3778)">
+        <GroupValues>((?:\s*90[0-79][\d/]{2}){1,9})?((?:\s*91[0-9][\d/]{2}(?:\s*00[0-9]{3})?){1,10})?(?:(\s*92[0-9][\d/]{2}){1,10})?((?:\s*93[0-9][\d/]{2}){1,11})?((?:\s*94[0-9][\d/]{2}){1,10})?((?:\s*95[0-9][\d/]{2}){1,5})?((?:\s*96[0-9][\d/]{2}){1,11})?((?:\s*97[0-9][\d/]{2}){1,10})?((?:\s*98[0-9][\d/]{2}){1,10})?((?:\s*99[0-9][\d/]{2}){1,11})?</GroupValues>
+        <SubGroup number="1" text="TIME AND VARIABILITY">
+           <SubGroupValues>(?:\s*900([\d/]{2}))?(?:\s*901([\d/]{2}))?(?:\s*902([\d/]{2}))?(?:\s*903([\d/]{2}))?(?:\s*904([\d/]{2}))?(?:\s*905([\d/]{2}))?(?:\s*906([\d/]{2}))?(?:\s*907([\d/]{2}))?(?:\s*909([\d/])([\d/]))?</SubGroupValues>
+           <Value number="1"  descrName="tt00"  num="7" text="TIME OF COMMENCEMENT, VARIABILITY, LOCATION OR INTENSITY OF WEATHER PHENOMENON REPORTED BY ww IN GROUP 7wwW1W2"/>
+	   <Value number="2"  descrName="tt01"	num="7" text="TIME OF ENDING OF WEATHER PHENOMENON REPORTED BY ww IN GROUP 7wwW1W2"/>
+	   <Value number="3"  descrName="tt02"	num="7" text="TIME OF COMMENCEMENT VARIABILITY, LOCATION OR INTENSITY OF WEATHER PHENOMENON REPORTED IN THE PRECEDING GROUP 9SPSPspsp"/>
+	   <Value number="4"  descrName="tt03"  text="TIME OF ENDING OF WEATHER PHENOMENON REPORTED IN THE PRECEDING GROUP 9SPSPspsp"/>
+	   <Value number="5"  descrName="tt04"  text="TIME OF OCCURRENCE OF WEATHER PHENOMENON REPORTED IN THE FOLLOWING GROUP 9SPSPspsp"/>
+	   <Value number="6"  descrName="tt05"  num="7" text="DURATION OF NON-PERSISTENT WEATHER PHENOMENON OR TIME OF COMMENCEMENT OF WEATHER IN GROUP 7wwW1W2"/>
+	   <Value number="7"  descrName="tt06"  text="DURATION OF NON-PERSISTENT WEATHER PHENOMENON OR TIME OF COMMENCEMENT OF WEATHER IN GROUP 9SPSPspsp"/>
+	   <Value number="8"  descrName="tt07"  text="DURATION OF PERIOD OF REFERENCE, ENDING AT THE TIME OF OBSERVATION, OF WEATHER IN GROUP 9SPSPspsp"/>
+	   <Value number="9"  descrName="Rt09"  text="TIME AT WHICH PRECIPITATION GIVEN BY RRR BEGAN OR ENDED"/>
+	   <Value number="10" descrName="dc09"  text="DURATION AND CHARACTER OF PRECIPITATION"/>   
+        </SubGroup>
+        <SubGroup number="2" text="WIND AND SQUALL">
+           <SubGroupValues>(?:\s*910([\d/][\d/])(?:\s*00([\d/]{3}))?)?(?:\s*911([\d/][\d/])(?:\s*00([0-9]{3}))?)?(?:\s*912([\d/][\d/])(?:\s*00([0-9]{3}))?)?(?:\s*913([\d/][\d/])(?:\s*00([0-9]{3}))?)?(?:\s*914([\d/][\d/])(?:\s*00([0-9]{3}))?)?(?:\s*915([\d/]{2}))?(?:\s*916([\d/]{2}))?(?:\s*917([\d/]{2}))?(?:\s*918([\d/])([\d/]))?(?:\s*919([\d/])([\d/]))?</SubGroupValues>
+           <Value number="1"  descrName="ff10"  num="8" descriptor="11041101" text="HIGHEST GUST DURING THE 10-MINUTE PERIOD IMMEDIATELY PRECEDING THE OBSERVATION"/>
+	   <Value number="2"  descrName="fff10" num="8" descriptor="11041102" text="HIGHEST GUST DURING THE 10-MINUTE PERIOD IMMEDIATELY PRECEDING THE OBSERVATION > 98"/>	   
+	   <Value number="3"  descrName="ff11"	num="9" descriptor="11041111" text="HIGHEST GUST DURING THE PERIOD COVERED BY W1W2 IN GROUP 7wwW1W2"/>
+	   <Value number="4"  descrName="fff11" num="9" descriptor="11041112" text="HIGHEST GUST DURING THE PERIOD COVERED BY W1W2 IN GROUP 7wwW1W2 > 98"/>	   
+	   <Value number="5"  descrName="ff12"	num="9" descriptor="11040121" text="HIGHEST MEAN WIND SPEED DURING THE PERIOD COVERED BY W1W2 IN GROUP 7wwW1W2"/>
+	   <Value number="6"  descrName="fff12" num="9" descriptor="11040122" text="HIGHEST MEAN WIND SPEED DURING THE PERIOD COVERED BY W1W2 IN GROUP 7wwW1W2 > 98"/>	   
+	   <Value number="7"  descrName="ff13"	num="9" descriptor="11045131" text="MEAN WIND SPEED DURING THE PERIOD COVERED BY W1W2 IN GROUP 7wwW1W2"/>
+	   <Value number="8"  descrName="fff13" num="9" descriptor="11045132" text="MEAN WIND SPEED DURING THE PERIOD COVERED BY W1W2 IN GROUP 7wwW1W2 > 98"/>	   
+	   <Value number="9"  descrName="ff14"	num="9" descriptor="11050141" text="LOWEST MEAN WIND SPEED DURING THE PERIOD COVERED BY W1W2 IN GROUP 7wwW1W2"/>
+	   <Value number="10" descrName="fff14" num="9" descriptor="11050142" text="LOWEST MEAN WIND SPEED DURING THE PERIOD COVERED BY W1W2 IN GROUP 7wwW1W2 > 98"/>
+	   <Value number="11" descrName="dd15"	num="9" text="DIRECTION OF WIND"/>
+	   <Value number="12" descrName="tt16"	num="9" text="PRONOUNCED CLOCKWISE SHIFT IN WIND DIRECTION (VEERING)"/>
+	   <Value number="13" descrName="tt17"	num="9" text="PRONOUNCED ANTICLOCKWISE SHIFT IN WIND DIRECTION (BACKING)"/>
+	   <Value number="14" descrName="sq18"	num="10" text="NATURE AND/OR TYPE OF SQUALL"/>
+	   <Value number="15" descrName="Dp18"	num="10" text="DIRECTION FROM WHICH SQUALL APPROACHES THE STATION"/>	  
+	   <Value number="16" descrName="Mw19"	num="11" text="WATER-SPOUT(S), TORNADOES, WHIRLWINDS, DUST DEVILS"/>
+	   <Value number="17" descrName="Da19"	num="11" text="DIRECTION FROM WHICH TORNADOES APPROACHES THE STATION"/>   
+        </SubGroup>
+        <SubGroup number="3" text="SATE OF THE SEA, ICING, SNOW COVER">
+           <SubGroupValues>(?:\s*920([\d/])([\d/]))?(?:\s*921([\d/])([\d/]))?(?:\s*922([\d/])([\d/]))?(?:\s*923([\d/])([\d/]))?(?:\s*924([\d/])([\d/]))?(?:\s*925([\d/]{2}))?(?:\s*926([\d/])([\d/]))?(?:\s*927([\d/])([\d/]))?(?:\s*928([\d/])([\d/]))?(?:\s*929([\d/])([\d/]))?</SubGroupValues>
+           <Value number="1"  descrName="S20"    text="STATE OF THE SEA (WATER SURFACE)"/>
+	   <Value number="2"  descrName="Fx20"	 text="MAXIMUM WIND FORCE (Fx LE. 9 BEAUFORT)"/>
+	   <Value number="3"  descrName="S21"	 text="STATE OF THE SEA (WATER SURFACE)"/>
+	   <Value number="4"  descrName="Fx21"	 text="MAXIMUM WIND FORCE (Fx GT. 9 BEAUFORT)"/>
+	   <Value number="5"  descrName="S_22"	 text="STATE OF THE SEA (WATER SURFACE)"/>
+	   <Value number="6"  descrName="Vs_22"  text="VISIBILITY AT A SEAPLANE ALIGHTING AREA, IN M"/>
+	   <Value number="7"  descrName="S_23"	 text="STATE OF THE SEA (WATER SURFACE) IN THE ALIGHTING AREA"/>
+	   <Value number="8"  descrName="S23"	descriptor="22061231" text="STATE OF THE SEA (WATER SURFACE) IN THE OPEN SEA"/>
+	   <Value number="9"  descrName="S24"	 text="STATE OF THE SEA (WATER SURFACE)"/>
+	   <Value number="10" descrName="Vs24"	 text="VISIBILITY SEAWARDS (FROM A COASTAL STATION)"/>
+	   <Value number="11" descrName="TwTw25"  text="WATER TEMPERATURE AT RESORTS DURING THE BATHING SEASON"/>
+	   <Value number="12" descrName="S026"   text="HOAR FROST OR COLOURED PRECIPITATION"/>
+	   <Value number="13" descrName="i026"	 text="INTENCITY OF THE PHENOMENON (HOAR FROST OR COLOURED PRECIPITATION)"/>
+	   <Value number="14" descrName="S627"	 text="TYPE OF FROZEN DEPOSIT (GLAZE OR RIME)"/>
+	   <Value number="15" descrName="Tw27"	 text="VARIATION OF TEMPERATURE DURING THE PERIOD COVERED BY W1W2, ASSOCIATED WITH FROZEN DEPOZIT (GLAZE OR RIME)"/>
+	   <Value number="16" descrName="S728"	 text="CHARACTER OF SNOW COVER"/>
+	   <Value number="17" descrName="S7_28"  text="REGULARITY OF SNOW COVER"/>
+	   <Value number="18" descrName="S829"	 text="SNOWSTORM PHENOMENA (SNOW RAISED BY THE WIND, DRIFT SNOW)"/>
+	   <Value number="19" descrName="S8_29"  text="EVOLUTION OF DRIFT SNOW"/>
+        </SubGroup>
+        <SubGroup number="4" text="AMOUNT OF PRECIPITATION OR DEPOSIT">
+           <SubGroupValues>(?:\s*930([\d/]{2}))?(?:\s*931([\d/]{2}))?(?:\s*932([\d/]{2}))?(?:\s*933([\d/]{2}))?(?:\s*934([\d/]{2}))?(?:\s*935([\d/]{2}))?(?:\s*936([\d/]{2}))?(?:\s*937([\d/]{2}))?(?:\s*938([\d/]{2}))?(?:\s*939([\d/]{2}))?(?:\s*939([\d/]{2}))?</SubGroupValues>
+           <Value number="1"  descrName="RR30"   text="AMOUNT OF PRECIPITATION DURING THE PERIOD COVERED BY W1W2"/>
+	   <Value number="2"  descrName="ss31"	 text="DEPTH OF NEWLY FALLEN SNOW DURING THE PERIOD COVERED BY W1W2"/>
+	   <Value number="3"  descrName="RR32"	 text="MAXIMUM DIAMETER OF HAILSTONES"/>
+	   <Value number="4"  descrName="RR33"	 text="WATER EQUIVALENT OF SOLID PRECIPITATION ON GROUND AT THE TIME OF OBSERVATION"/>
+	   <Value number="5"  descrName="RR34"	 text="DIAMETER OF GLAZE DEPOSIT AT THE TIME OF OBSERVATION"/>
+	   <Value number="6"  descrName="RR35"	 text="DIAMETER OF RIME DEPOSIT AT THE TIME OF OBSERVATION"/>
+	   <Value number="7"  descrName="RR36"	 text="DIAMETER OF COMPOUND DEPOSIT AT THE TIME OF OBSERVATION"/>
+	   <Value number="8"  descrName="RR37"	 text="DIAMETER OF WET-SNOW DEPOSIT AT THE TIME OF OBSERVATION"/>
+	   <Value number="9"  descrName="nn38"	 text="RATE OF GLAZE ACCRUAL ON A SURFACE, IN MM HБ─⌠1"/>
+	   <Value number="10" descrName="hghg39"  text="HEIGHT ABOVE GROUND, IN METRES, AT WHICH DIAMETER OF DEPOSIT REPORTED IN THE PRECEDING GROUP 9SPSPSPSP IS OBSERVED"/>
+	   <Value number="11" descrName="nn39"   text="MAXIMUM DIAMETER OF HAILSTONES, IN MILLIMETRES"/>
+        </SubGroup>
+        <SubGroup number="5" text="CLOUDS">
+           <SubGroupValues>(?:\s*940([\d/])([\d/]))?(?:\s*941([\d/])([\d/]))?(?:\s*942([\d/])([\d/]))?(?:\s*943([\d/])([\d/]))?(?:\s*944([\d/])([\d/]))?(?:\s*945([\d/]{2}))?(?:\s*946([\d/])([\d/]))?(?:\s*947([\d/])([\d/]))?(?:\s*948([\d/])([\d/]))?(?:\s*949([\d/])([\d/]))?</SubGroupValues>
+           <Value number="1"  descrName="C40"    text="TYPE OF CLOUDS"/>
+	   <Value number="2"  descrName="n340"	 text="EVOLUTION OF CLOUDS"/>
+	   <Value number="3"  descrName="C41"	 text="TYPE OF CLOUDS"/>
+	   <Value number="4"  descrName="Dp41"	 text="DIRECTION FROM WHICH CLOUDS ARE MOVING"/>
+	   <Value number="5"  descrName="C42"	 text="TYPE OF CLOUDS"/>
+	   <Value number="6"  descrName="Da42"	 text="LOCATION (DIRECTION) OF MAXIMUM CONCENTRATION OF CLOUDS"/>
+	   <Value number="7"  descrName="CL43"	 text="TYPE OF LOW-LEVEL CLOUDS"/>
+	   <Value number="8"  descrName="Dp43"	 text="DIRECTION FROM WHICH LOW-LEVEL CLOUDS ARE MOVING"/>
+	   <Value number="9"  descrName="CL44"	 text="TYPE OF LOW-LEVEL CLOUDS"/>
+	   <Value number="10" descrName="Da44"	 text="LOCATION (DIRECTION) OF MAXIMUM CONCENTRATION OF LOW-LEVEL CLOUDS"/>	  
+	   <Value number="11" descrName="htht45"  text="HEIGHT OF THE TOPS OF THE LOWEST CLOUDS OR HEIGHT OF THE LOWEST CLOUD LAYER OR FOG"/>
+	   <Value number="12" descrName="Cc46"   text="TYPE OF CLOUDS ASSOCIATED WITH A TROPICAL DISTURBANCE"/>
+	   <Value number="13" descrName="Da46"	 text="DIRECTION OF COLORATION AND/OR CONVERGENCE OF CLOUDS ASSOCIATED WITH A TROPICAL DISTURBANCE"/>
+	   <Value number="14" descrName="C47"	 text="TYPE OF CLOUDS"/>
+	   <Value number="15" descrName="e_47"	 text="ELEVATION OF CLOUDS"/>
+	   <Value number="16" descrName="C048"	 text="TYPE OF OROGRAPHIC CLOUDS"/>
+	   <Value number="17" descrName="Da48"	 text="DIRECTION FROM WHICH OROGRAPHIC CLOUDS ARE MOVING"/>
+	   <Value number="18" descrName="Ca49"	 text="TYPE OF CLOUDS OF VERTICAL DEVELOPMENT"/>
+	   <Value number="19" descrName="Da49"	 text="DIRECTION FROM WHICH CLOUDS OF VERTICAL DEVELOPMENT ARE MOVING"/>
+        </SubGroup>
+        <SubGroup number="6" text="CLOUD CONDITIONS OBSERVED FROM A HIGHER LEVEL">
+           <SubGroupValues>(?:\s*950([\d/])([\d/]))?(?:\s*951([\d/])([\d/]))?(?:\s*95[2-7][\d/][\d/])?(?:\s*958([\d/])([\d/]))?(?:\s*959([\d/])([\d/]))?</SubGroupValues>
+           <Value number="1" descrName="Nm50"  text="CLOUD CONDITIONS OVER MOUNTAINS AND PASSES"/>
+	   <Value number="2" descrName="n350"  text="EVOLUTION OF CLOUDS OVER MOUNTAINS AND PASSES"/>
+	   <Value number="3" descrName="Nv51"  text="FOG, MIST OR LOW CLOUD IN VALLEYS OR PLAINS (CLOUD CONDITIONS), OBSERVED FROM A STATION AT A HIGHER LEVEL"/>
+	   <Value number="4" descrName="n451"  text="EVOLUTION OF CLOUDS OBSERVED FROM A STATION AT A HIGHER LEVEL"/>
+	   <!-- <Value number="5"  descrName=""  text="Не используется по документации, но приходит в сводках"/> -->
+	   <Value number="6" descrName="Eh58"  text="ELEVATION ABOVE THE HORIZON OF THE BASE OF ANVIL OF CUMULONIMBUS OR OF THE SUMMIT OF OTHER PHENOMENA"/>
+	   <Value number="7" descrName="Da58"  text="LOCATION (DIRECTION) OF MAXIMUM CONCENTRATION OF CLOUD REPORTED IN THE PRECEDING GROUP 9SPSPSPSP"/>
+	   <Value number="8" descrName="vp59"  text="FORWARD SPEED AT WHICH CLOUDS ARE MOVING REPORTED IN THE PRECEDING GROUP 9SPSPSPSP"/>
+	   <Value number="9" descrName="Dp59"  text="DIRECTION FROM WHICH CLOUDS ARE MOVING REPORTED IN THE PRECEDING GROUP 9SPSPSPSP"/>
+        </SubGroup>
+        <SubGroup number="7" text="PRESENT WEATHER AND PAST WEATHER">
+           <SubGroupValues>(?:\s*960([\d/]{2}))?(?:\s*961([\d/]{2}))?(?:\s*962([\d/]{2}))?(?:\s*963([\d/]{2}))?(?:\s*964([\d/]{2}))?(?:\s*965([\d/]{2}))?(?:\s*966([\d/]{2}))?(?:\s*967([\d/]{2}))?(?:\s*9696([\d/]))?(?:\s*9697([\d/]))?(?:\s*9698([\d/]))?</SubGroupValues>
+           <Value number="1"  descrName="ww60"    text="PRESENT WEATHER PHENOMENON OBSERVED SIMULTANEOUSLY WITH AND/OR IN ADDITION TO WEATHER PHENOMENON REPORTED BY WW IN GROUP 7WWW1W2"/>
+	   <Value number="2"  descrName="w1w161"  text="PRESENT WEATHER PHENOMENON OBSERVED SIMULTANEOUSLY WITH AND/OR IN ADDITION TO WEATHER PHENOMENON REPORTED BY WW IN GROUP 7WWW1W2, OR AMPLIFICATION OF PRESENT WEATHER PHENOMENON REPORTED BY WW IN GROUP 7WWW1W2"/>
+	   <Value number="3"  descrName="ww62"    text="AMPLIFICATION OF WEATHER PHENOMENON DURING PRECEDING HOUR BUT NOT AT THE TIME OF OBSERVATION AND REPORTED BY WW = 20Б─⌠29 IN GROUP 7WWW1W2"/>
+	   <Value number="4"  descrName="w1w163"  text="AMPLIFICATION OF WEATHER PHENOMENON DURING PRECEDING HOUR BUT NOT AT THE TIME OF OBSERVATION AND REPORTED BY WW = 20Б─⌠29 IN GROUP 7WWW1W2"/>
+	   <Value number="5"  descrName="ww64"    text="AMPLIFICATION OF WEATHER PHENOMENON DURING THE PERIOD COVERED BY W1W2 AND REPORTED BY W1 AND/OR W2 IN GROUP 7WWW1W2"/>
+	   <Value number="6"  descrName="w1w165"  text="AMPLIFICATION OF WEATHER PHENOMENON DURING THE PERIOD COVERED BY W1W2 AND REPORTED BY W1 AND/OR W2 IN GROUP 7WWW1W2"/>
+	   <Value number="7"  descrName="ww66"    text="WEATHER PHENOMENON OCCURRING AT THE TIME OR DURING THE PERIOD INDICATED BY ASSOCIATED 9SPSPSPSP TIME GROUP(S)"/>
+	   <Value number="8"  descrName="w1w167"  text="WEATHER PHENOMENON OCCURRING AT THE TIME OR DURING THE PERIOD INDICATED BY ASSOCIATED 9SPSPSPSP TIME GROUP(S)"/>
+	   <Value number="9"  descrName="Da696"  descriptor="20054696" text="RAIN AT THE STATION NOT ASSOCIATED WITH THUNDERSTORM IN DISTANCE, DIRECTION Dп╟"/>
+	   <Value number="10" descrName="Da697"  descriptor="20054697" text="SNOW AT THE STATION NOT ASSOCIATED WITH THUNDERSTORM IN DISTANCE, DIRECTION Dп╟"/>
+	   <Value number="11" descrName="Da698"  descriptor="20054698" text="SHOWER AT THE STATION NOT ASSOCIATED WITH THUNDERSTORM IN DISTANCE, DIRECTION Dп╟"/>
+        </SubGroup>
+        <SubGroup number="8" text="LOCATION AND MOVEMENT OF PHENOMENA">
+           <SubGroupValues>(?:\s*970([\d/])([\d/]))?(?:\s*971([\d/])([\d/]))?(?:\s*972([\d/])([\d/]))?(?:\s*973([\d/])([\d/]))?(?:\s*974([\d/])([\d/]))?(?:\s*975([\d/])([\d/]))?(?:\s*976([\d/])([\d/]))?(?:\s*977([\d/])([\d/]))?(?:\s*978([\d/])([\d/]))?(?:\s*979([\d/])([\d/]))?</SubGroupValues>
+           <Value number="1"  descrName="Eh70"  text="LOCATION (ELEVATION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY WW IN GROUP 7WWW1W2"/>
+	   <Value number="2"  descrName="Da70"  text="LOCATION (DIRECTION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY WW IN GROUP 7WWW1W2"/>
+	   <Value number="3"  descrName="Eh71"  text="LOCATION (ELEVATION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY WW IN GROUP 960WW"/>
+	   <Value number="4"  descrName="Da71"  text="LOCATION (DIRECTION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY WW IN GROUP 960WW"/>
+	   <Value number="5"  descrName="Eh72"  text="LOCATION (ELEVATION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY W1W1 IN GROUP 961W1W1"/>
+	   <Value number="6"  descrName="Da72"  text="LOCATION (DIRECTION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY W1W1 IN GROUP 961W1W1"/>
+	   <Value number="7"  descrName="Eh73"  text="LOCATION (ELEVATION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY W1 IN GROUP 7WWW1W2"/>
+	   <Value number="8"  descrName="Da73"  text="LOCATION (DIRECTION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY W1 IN GROUP 7WWW1W2"/>
+	   <Value number="9"  descrName="Eh74"  text="LOCATION (ELEVATION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY W2 IN GROUP 7WWW1W2"/>
+	   <Value number="10" descrName="Da74"  text="LOCATION (DIRECTION) OF MAXIMUM CONCENTRATION PHENOMENON REPORTED BY W2 IN GROUP 7WWW1W2"/>
+	   <Value number="11" descrName="vp75"  text="FORWARD SPEED AT WHICH IT IS MOVING, PHENOMENON REPORTED BY WW IN GROUP 7WWW1W2"/>
+	   <Value number="12" descrName="Dp75"  text="DIRECTION FROM WHICH IT IS MOVING, PHENOMENON REPORTED BY WW IN GROUP 7WWW1W2"/>
+	   <Value number="13" descrName="vp76"  text="FORWARD SPEED AT WHICH IT IS MOVING, PHENOMENON REPORTED BY WW IN GROUP 960WW"/>
+	   <Value number="14" descrName="Dp76"  text="DIRECTION FROM WHICH IT IS MOVING, PHENOMENON REPORTED BY WW IN GROUP 960WW"/>
+	   <Value number="15" descrName="vp77"  text="FORWARD SPEED AT WHICH IT IS MOVING, PHENOMENON REPORTED BY W1W1 IN GROUP 961W1W1"/>
+	   <Value number="16" descrName="Dp77"  text="DIRECTION FROM WHICH IT IS MOVING, PHENOMENON REPORTED BY W1W1 IN GROUP 961W1W1"/>
+	   <Value number="17" descrName="vp78"  text="FORWARD SPEED AT WHICH IT IS MOVING, PHENOMENON REPORTED BY W1 IN GROUP 7WWW1W2"/>
+	   <Value number="18" descrName="Dp78"  text="DIRECTION FROM WHICH IT IS MOVING, PHENOMENON REPORTED BY W1 IN GROUP 7WWW1W2"/>
+	   <Value number="19" descrName="vp79"  text="FORWARD SPEED AT WHICH IT IS MOVING, PHENOMENON REPORTED BY W2 IN GROUP 7WWW1W2"/>   
+	   <Value number="20" descrName="Dp79"  text="DIRECTION FROM WHICH IT IS MOVING, PHENOMENON REPORTED BY W2 IN GROUP 7WWW1W2"/>   
+        </SubGroup>
+        <SubGroup number="9" text="VISIBILITY">
+           <SubGroupValues>(?:\s*980([\d/]{2}))?(?:\s*981([\d/]{2}))?(?:\s*982([\d/]{2}))?(?:\s*983([\d/]{2}))?(?:\s*984([\d/]{2}))?(?:\s*985([\d/]{2}))?(?:\s*986([\d/]{2}))?(?:\s*987([\d/]{2}))?(?:\s*988([\d/]{2}))?(?:\s*989([\d/])([\d/]))?</SubGroupValues>
+           <Value number="1"  descrName="VsVs80"  text="VISIBILITY TOWARDS THE SEA"/>
+           <Value number="2"  descrName="VV81"  text="VISIBILITY TO NE"/>
+	   <Value number="3"  descrName="VV82"  text="VISIBILITY TO E"/>
+	   <Value number="4"  descrName="VV83"  text="VISIBILITY TO SE"/>
+	   <Value number="5"  descrName="VV84"  text="VISIBILITY TO S"/>
+	   <Value number="6"  descrName="VV85"  text="VISIBILITY TO SW"/>
+	   <Value number="7"  descrName="VV86"  text="VISIBILITY TO W"/>
+	   <Value number="8"  descrName="VV87"  text="VISIBILITY TO NW"/>
+	   <Value number="9"  descrName="VV88"  text="VISIBILITY TO N"/>
+	   <Value number="10" descrName="Vb89"  text="VARIATION OF VISIBILITY DURING THE HOUR PRECEDING THE TIME OF OBSERVATION"/>
+	   <Value number="11" descrName="Da89"  text="THE DIRECTION IN WHICH OF VISIBILITY VARIATION  HAS BEEN OBSERVED"/>   
+        </SubGroup>
+        <SubGroup number="10" text="OPTICAL PHENOMENA AND MISCELLANEOUS">
+           <SubGroupValues>(?:\s*990([\d/])([\d/]))?(?:\s*991([0-8])([\d/]))?(?:\s*991(90))?(?:\s*992([\d/])([\d/]))?(?:\s*993([\d/])([\d/]))?(?:\s*994([\d/])([\d/]))?(?:\s*995([\d/]{2}))?(?:\s*996([\d/]{2}))?(?:\s*997([\d/]{2}))?(?:\s*998([\d/]{2}))?(?:\s*999([\d/]{2}))?</SubGroupValues>
+           <Value number="1"  descrName="Z090"	   text="OPTICAL PHENOMENA"/>
+	   <Value number="2"  descrName="i090"	   text="INTENCITY OF PHENOMENA"/>
+	   <Value number="3"  descrName="A91"	   text="MIRAGE"/>
+	   <Value number="4"  descrName="Da91"	   text="DIRECTION OF MIRAGE"/>
+	   <Value number="5"  descrName="StElmo91"  text="ST. ELMOБ─≥S FIRE"/>
+	   <Value number="6"  descrName="Nt92"	   text="CONDENSATION TRAILS"/>
+	   <Value number="7"  descrName="tw92"	   text="TIME OF COMMENCEMENT OF A CONDENSATION TRAILS BEFORE THE HOUR OF OBSERVATION"/>
+	   <Value number="8"  descrName="CS93"	   text="SPECIAL CLOUDS"/>
+	   <Value number="9"  descrName="Da93"	   text="DIRECTION OF CLOUDS"/>
+	   <Value number="10" descrName="A394"	   text="DAY DARKNESS"/>
+	   <Value number="11" descrName="Da94"	   text="DIRECTION OF DAY DARKNESS"/>
+	   <Value number="12" descrName="nn95"	   text="LOWEST ATMOSPHERIC PRESSURE REDUCED TO MEAN SEA LEVEL DURING THE PERIOD COVERED BY W1W2 UNLESS OTHERWISE INDICATED BY ASSOCIATED 9SPSPSPSP TIME GROUP(S), IN TENS AND UNITS OF HECTOPASCALS"/>
+	   <Value number="13" descrName="TvTv96"   text="SUDDEN RISE IN AIR TEMPERATURE, IN WHOLE DEGREES CELSIUS"/>
+	   <Value number="14" descrName="TvTv97"   text="SUDDEN FALL IN AIR TEMPERATURE, IN WHOLE DEGREES CELSIUS"/>
+	   <Value number="15" descrName="UvUv98"   text="SUDDEN RISE IN RELATIVE HUMIDITY, IN PER CENT"/>
+	   <Value number="16" descrName="UvUv99"   text="SUDDEN FALL IN RELATIVE HUMIDITY, IN PER CENT"/>
+        </SubGroup>
+     </Group>
+    </Section>
+    <Section number="4" text="DATA FOR NATIONAL USE FOR CLOUDS WITH BASE BELOW STATION LEVEL, INCLUDED BY NATIONAL DECISION">
+      <SectionGroups>\s*444((?:\s*[\d/]{5})*)</SectionGroups>
+      <Group number="0" text="CLOUDS WITH BASE BELOW STATION LEVEL, INCLUDED BY NATIONAL DECISION">
+	<item>
+	  <GroupValues>\s*([\d/])([\d/])([\d/]{2})([\d/])</GroupValues>
+	  <Value number="1" descrName="N_"    text="AMOUNT OF CLOUD WHOSE BASE IS BELOW THE LEVEL OF THE STATION"/>
+	  <Value number="2" descrName="C_"    text="GENUS OF CLOUD WHOSE BASE IS BELOW THE LEVEL OF THE STATION"/>
+	  <Value number="3" descrName="H_H_"  text="ALTITUDE OF THE UPPER SURFACE OF CLOUDS REPORTED BY Cб╢, IN HUNDREDS OF METRE"/>
+	  <Value number="4" descrName="Ct"    text="DESCRIPTION OF THE TOP OF CLOUD WHOSE BASE IS BELOW THE LEVEL OF THE STATION"/>
+	</item>
+      </Group>
+    </Section>
+    <Section number="5" text="DATA FOR NATIONAL USE">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+</Message>

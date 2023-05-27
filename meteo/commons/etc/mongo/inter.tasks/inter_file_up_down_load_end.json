@@ -1,0 +1,11 @@
+{
+  "delete": "up_down_loads",
+  "deletes": [
+  {
+    "q" : {
+      "_id" : @id@
+    }, 
+    "limit" : 1 
+    }
+  ]
+}

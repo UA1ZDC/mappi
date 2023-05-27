@@ -1,0 +1,6 @@
+hurd.patch
+s390x.patch
+disable_local_gmock.patch
+Add_Python_3.7_compatibility.patch
+more_Python_3.7_compatibility.patch
+fix_google_test_link.patch

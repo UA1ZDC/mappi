@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<controlsave>
+  <!-- описание сервиса -->
+  <connection name="meteo" service="meteo.novost.bufr" >
+    <object path="/Bufr" iface="meteo.service" />
+  </connection>
+
+
+  <!-- описание подписок сервиса -->
+  <subscription name="meteo" service="meteo.novost.msgsender">
+    <object path="/RawBufr" iface="meteo.service" />
+  </subscription>
+
+  <subscription name="meteo" service="meteo.novost.parser">
+    <object path="/RawBufr" iface="meteo.service" />
+  </subscription>
+</controlsave>

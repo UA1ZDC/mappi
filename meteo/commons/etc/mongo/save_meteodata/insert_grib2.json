@@ -1,0 +1,36 @@
+{
+  "insert" :  "grib",
+  "documents": [
+    {
+      "edition"  : @edition@,
+      "dt_write" : @dt_write@,
+      "center"   : @center@,
+      "subcenter" : @subcenter@,
+      "dt" : @dt@,
+      "sign_dt" : @sign_dt@,
+      "status"  : @status@,
+      "data_type"  : @data_type@,
+      "discipline" : @discipline@,
+      "category" : @category@,
+      "product" : @product@,
+      "descr"   : @descr@,
+      "defType" : @defType@,
+      "levelType"   : @levelType@,
+      "levelValue"  : @levelValue@,
+      "levelType2"  : @levelType2@,
+      "levelValue2" : @levelValue2@,
+      "procType"    : @procType@,
+      "timeRange"   : @timeRange@,
+      "dt1"  : @dt1@,
+      "dt2"  : @dt2@,
+      "hour" : @hour@,
+      "stepLat" : @stepLat@,
+      "stepLon" : @stepLon@,
+      "fileid" : @fileid@,
+      "tlgid"  : @tlgid@,
+      "crc"    : @crc@,
+      "analysed" : false,
+      "error" : false
+    }
+  ]
+}

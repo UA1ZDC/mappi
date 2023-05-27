@@ -1,0 +1,12 @@
+name: "hsprirodavoiska.map"
+title: "Донесение о возникновении ЧС природного характера в местах дислокации"
+formal {
+    template: "hsprirodavoiska.odt"
+    name: "Донесение о возникновении ЧС природного характера в местах дислокации"
+    module_path: "hsprirodavoiska.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- Большая часть пределов для кодового значения проверится ещё на этапе раскодирования и регулярных выражений -->
+
+<!-- str - список допустимых строковых значений через ',' -->
+<!-- num - список допустимых числовых значений через ',' -->
+<!-- segment - список через ';' допустимых диапазонов [min, max] -->
+<!-- doubtsegment - список через ';' диапазонов сомнительных величин [min, max] -->
+
+
+<control>
+  <category name="level_type" num="1,2,3"/> <!--приземные данные-->
+  <group>
+    <codeform rule="1" >
+      <match name="ix" segment="1,4"/>
+      <val name="dd"   segment="0,36" num="99" />
+      <val name="dw1"  segment="0,36" num="99" />
+    </codeform>
+    <codeform rule="2" >
+      <match name ="ix" segment="5,7"/>
+      <val name="w"    segment="0,5;10,12;18,35;40,99" str="//" />
+      <val name="dd"   segment="0,36" num="99" />
+      <val name="dw1"   segment="0,36" num="99" str="//" />
+    </codeform>
+  </group>
+  <group>
+    <phys rule="3" >
+      <match name="La" segment="-45,45" />
+      <match name="MM" segment="9,12;1,2" /> <!-- зима -->
+      <val   name="ff" segment="0,60"     doubtsegment="61,125" />
+      <val   name="T"  segment="-30,50"   doubtsegment="-40,-30;50,55"/>
+      <val   name="Tn"  segment="-30,50"   doubtsegment="-40,-30;50,55"/>
+      <val   name="Tx"  segment="-30,50"   doubtsegment="-40,-30;50,55"/>
+      <val   name="Td" segment="-35,35"   doubtsegment="-45,-35;35,40"/>
+      <val   name="P"  segment="910,1080" doubtsegment="870,910;1080,100" />
+      <val   name="Tw" segment="2,32"     doubtsegment="0,2;32,35" />
+    </phys>
+    <phys rule="4" >
+      <match name="La" segment="46,90" />
+      <match name="MM" segment="9,12;1,2" /> <!-- зима -->
+      <val   name="ff" segment="0,50" 	  doubtsegment="51,100" />
+      <val   name="T"  segment="-80,35"   doubtsegment="-90,-80;35,40"/>
+      <val   name="Tn"  segment="-80,35"   doubtsegment="-90,-80;35,40"/>
+      <val   name="Tx"  segment="-80,35"   doubtsegment="-90,-80;35,40"/>
+      <val   name="Td" segment="-85,30"   doubtsegment="-99,-85;30,35"/>
+      <val   name="P"  segment="940,1080" doubtsegment="910,940;1080,1100" />
+      <val   name="Tw" segment="-1,27" 	  doubtsegment="-2.1,-1;27,30" /> 
+    </phys>
+    <phys rule="5" >
+      <match name="La" segment="-90,-46" />
+      <match name="MM" segment="9,12;1,2" /> <!-- зима -->
+      <val   name="ff" segment="0,50" 	  doubtsegment="51,100" />
+      <val   name="T"  segment="-80,35"   doubtsegment="-90,-80;35,40"/>
+      <val   name="Tn"  segment="-80,35"   doubtsegment="-90,-80;35,40"/>
+      <val   name="Tx"  segment="-80,35"   doubtsegment="-90,-80;35,40"/>
+      <val   name="Td" segment="-85,30"   doubtsegment="-99,-85;30,35"/>
+      <val   name="P"  segment="940,1080" doubtsegment="910,940;1080,1100" />
+      <val   name="Tw" segment="-1,27" 	  doubtsegment="-2.1,-1;27,30" /> 
+    </phys>
+    <phys rule="6" >
+      <match name="La" segment="-45,45" />
+      <match name="MM" segment="3,8" /> <!-- лето -->
+      <val   name="ff" segment="0,90" doubtsegment="90,150" />
+      <val   name="T"  segment="-20,50" doubtsegment="-30,-20;50,60"/>
+      <val   name="Tn"  segment="-20,50" doubtsegment="-30,-20;50,60"/>
+      <val   name="Tx"  segment="-20,50" doubtsegment="-30,-20;50,60"/>
+      <val   name="Td" segment="-25,35" doubtsegment="-35,-25;35,40"/>
+      <val   name="P"  segment="900,1080" doubtsegment="850,900;1080,1100" />
+      <val   name="Tw" segment="2,32" doubtsegment="0,2;32,35" /> 
+    </phys>
+    <phys rule="7" >
+      <match name="La" segment="46,90" />
+      <match name="MM" segment="3,8" /> <!-- лето -->
+      <val   name="ff" segment="0,40" doubtsegment="41,75" />
+      <val   name="T"  segment="-30,45" doubtsegment="-40,-30;45,50"/>
+      <val   name="Tn"  segment="-30,45" doubtsegment="-40,-30;45,50"/>
+      <val   name="Tx"  segment="-30,45" doubtsegment="-40,-30;45,50"/>
+      <val   name="Td" segment="-35,35" doubtsegment="-45,-35;35,40"/>
+      <val   name="P"  segment="950,1080;" doubtsegment="920,950;1080,1100" />
+      <val   name="Tw" segment="-1,30" doubtsegment="-2.1,-1;30,35" /> 
+    </phys>
+    <phys rule="8" >
+      <match name="La" segment="-90,-46" />
+      <match name="MM" segment="3,8" /> <!-- лето -->
+      <val   name="ff" segment="0,40" doubtsegment="41,75" />
+      <val   name="T"  segment="-30,45" doubtsegment="-40,-30;45,50"/>
+      <val   name="Tn"  segment="-30,45" doubtsegment="-40,-30;45,50"/>
+      <val   name="Tx"  segment="-30,45" doubtsegment="-40,-30;45,50"/>
+      <val   name="Td" segment="-35,35" doubtsegment="-45,-35;35,40"/>
+      <val   name="P"  segment="950,1080;" doubtsegment="920,950;1080,1100" />
+      <val   name="Tw" segment="-1,30" doubtsegment="-2.1,-1;30,35" /> 
+    </phys>
+
+    <phys rule="9" >
+      <val   name="P0" segment="400,1080" doubtsegment="300,400;1080,1100" />
+      <val   name="p"  segment="-40,0;0,40" doubtsegment="-50,-40;40,50" />
+    </phys>
+  </group>
+
+</control>

@@ -1,0 +1,41 @@
+{
+  "aggregate" : "obanal",
+  "pipeline" :
+   [
+     {"$match" : {
+       "forecast_start" : @fdt@,
+       "descr" : { "$in" : [20012,20012,20012,20003,
+         20010,20013,20001,13055,11001,11002,12101,13003,10004,
+         13022,12103,7700001,7700002,7700003] },
+       "level_type" : 1
+       }
+     },
+     { "$group" :
+       {
+         "_id" : { "center" : "$center", "model" : "$model", "hour" : "$hour", "forecast_start" : "$forecast_start"},
+         "ids" : { "$addToSet" : "$path" },
+         "descr" : { "$addToSet" : "$descr" },
+         "center" : { "$first" : "$center" },
+         "forecast_start" : { "$first" : "$forecast_start" },
+         "model" : { "$first" : "$model" },
+         "hour" : { "$first" : "$hour" }
+       }
+     },
+     { "$lookup": {
+        "from": "centers",
+        "localField": "center",
+        "foreignField": "center",
+        "as": "centers"
+      }
+    },
+    { "$sort": {
+        "hour": 1,
+        "centers.priority": 1
+      }
+    },
+    { "$limit" : 1 }
+
+
+   ],
+   "cursor":{"batchSize":1}
+}

@@ -1,0 +1,10 @@
+Package: python3-multidict
+Version: 4.7.6
+Architecture: amd64
+Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>
+Installed-Size: 228
+Depends: python3 (<< 3.6), python3 (>= 3.5~), python3:any (>= 3.5~), libc6 (>= 2.14)
+Section: python
+Priority: optional
+Description: multidict implementation
+ Summary: multidict implementation

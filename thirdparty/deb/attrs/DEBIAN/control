@@ -1,0 +1,10 @@
+Package: python3-attr
+Version: 19.3.0
+Architecture: amd64
+Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>
+Installed-Size: 157
+Depends: python3:any (>= 3.5~)
+Section: python
+Priority: optional
+Description: Classes Without Boilerplate
+ Summary: Classes Without Boilerplate

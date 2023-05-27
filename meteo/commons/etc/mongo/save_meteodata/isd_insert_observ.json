@@ -1,0 +1,6 @@
+{
+  "insert": @collection@,
+  "documents": [
+    @documents@
+  ]
+}

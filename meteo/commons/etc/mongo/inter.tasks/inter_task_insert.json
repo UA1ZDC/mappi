@@ -1,0 +1,21 @@
+{
+  "findAndModify": "tasks",
+  "query": { "_id" : { "$exists" : false } },  
+  "update": { 
+    "$set" : {
+      "name"        : @name@,
+      "text"        : @text@,
+      "date_start"  : @dtStart@,
+      "date_end"    : @dtEnd@,
+      "labor"       : @labor@,        
+      "basics"      : @basics@,
+      "owner"       : @owner@,
+      "parent"      : @parent@,
+      "idfile"      : @idfile@,
+      "control"     : @control@,
+      "stage"       : @stage@
+    }
+  },
+  "new": true,  
+  "upsert": true  
+}

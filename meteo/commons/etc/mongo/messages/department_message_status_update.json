@@ -1,0 +1,16 @@
+{
+  "findAndModify": "department_messages",
+  "query": {
+    "_id" : @id@, 
+    "delivered_to" : { "$exists": false },
+    "read_by" : { "$exists": false }
+  },
+  "update": {
+    "$set" : {      
+      "delivered_to" : @to@,
+      "read_by" : @to@
+    }
+  },
+  "new": true,
+  "upsert": false
+}

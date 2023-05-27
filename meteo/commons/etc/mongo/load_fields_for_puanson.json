@@ -1,0 +1,41 @@
+{
+  "aggregate" : "obanal",
+  "pipeline" :
+   [
+     {"$match" : {
+      "dt" : {"$gte": @start_dt@,"$lte": @end_dt@},
+      "descr" : {"$in": @descr@},
+      "level_type" : {"$in": @level_type@},
+      "level" : {"$in": @level@},
+      "hour" : {"$in": @hour@},
+      "center" : {"$in": @center@},
+      "model": @model@,
+      "net_type": @net_type@
+     }
+     },
+     { "$lookup": {
+        "from": "centers",
+        "localField": "center",
+        "foreignField": "center",
+        "as": "centers"
+      }
+    },
+     { "$lookup": {
+        "from": "level_types",
+        "localField": "level_type",
+        "foreignField": "code_num",
+        "as": "level_types"
+      }
+    },
+    {"$unwind": "$centers"},
+    {"$unwind": "$level_types"},
+    {
+       "$sort": {
+         "dt": -1,
+         "hour": 1
+       }
+     }
+   ],
+   "allowDiskUse":true,
+   "cursor":{"batchSize":1}
+}

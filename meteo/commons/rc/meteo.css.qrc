@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/meteo/">
+        <file>css/map.css</file>        
+    </qresource>
+</RCC>

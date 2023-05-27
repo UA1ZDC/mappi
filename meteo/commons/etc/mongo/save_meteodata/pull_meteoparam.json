@@ -1,0 +1,13 @@
+{
+  "q": {
+    "_id" : @id@
+  },
+  "u": {
+    "$pull" : {
+      "param" : {
+        "descrname": { "$in": @descrname@ }
+      }
+    }
+  }
+}
+

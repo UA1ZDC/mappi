@@ -1,0 +1,13 @@
+{
+   "update": "gmi_condition",
+   "updates": [
+      { "q": { "_id" : "%1" },
+        "u": { "$set" : {
+          "name" : "%2",
+          "t1" : "%3",
+          "t2" : "%4"
+        } },
+        "upsert": false
+        }
+   ]
+}

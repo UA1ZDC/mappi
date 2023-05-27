@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VkoStations</class>
+ <widget class="QWidget" name="VkoStations">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>914</width>
+    <height>381</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Станции</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTreeWidget" name="stations">
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="expandsOnDoubleClick">
+      <bool>false</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>Первая запись</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Последняя запись</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Тип данных</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Тип станции</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Индекс</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Название (ru)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Название (en)</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Тип станции</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Координаты</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>UTC</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

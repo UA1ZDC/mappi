@@ -1,0 +1,6 @@
+{
+  "find": "bufr_code",
+  "filter" : { "bufr_code" : @bufr_code@ },
+  "singleBatch" : true,
+  "projection" : { "values": 1}
+}

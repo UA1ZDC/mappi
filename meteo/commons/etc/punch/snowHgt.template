@@ -1,0 +1,42 @@
+code: "snowHgt"
+name: "Высота снежного покрова"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/snowHgt.template"
+wind: false
+rule {
+  pos {
+    x: 3
+    y: -2
+  }
+  align: kTopRight
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "Sans Serif"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: true
+  }
+  testval: 0
+  id {
+    descr: 13013
+    name: "sss"
+    description: ""
+  }
+  visible: true
+}
+center: kCircle
+crisscross: false
+radius: 3

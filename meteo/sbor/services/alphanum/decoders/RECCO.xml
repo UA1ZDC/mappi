@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="RECCO" text="разведка погоды с самолёта, США"  category="501">
+  <MessageSections>9[27]{3}9\s*((?:[\d/]{5}\s*){7})\s*(?:(1[\d/]{4}\s*(?:[\d/]{5}\s*){1,3}\s*4[\d/]{4}\s*6[\d/]{4}\s*7[\d/]{4}\s*7[\d/]{4}\s*8[\d/]{4}\s*8[\d/]{4}\s*9[\d/]{4}\s*))?\s*(?:95559\s*((?:[\d/]{5}\s*){7}))?\s*(?:RMK.*)?</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>([\d/]{5}\s*[\d/]{5}\s*[\d/]{5})\s*([\d/]{5}\s*[\d/]{5}\s*[\d/]{5}\s*[\d/]{5})</GroupValues>  
+    <Group number="1" text="">
+      <GroupValues>([\d/]{2})([\d/]{2})[\d/]\s*[\d/]([\d/])([\d/]{3})\s*([\d/]{3})([\d/])[\d/]</GroupValues>
+      <Value number="1"  descrName="GG" text="" />
+      <Value number="2"  descrName="gg" text="" />
+      <!-- <Value number="3"  descrName="" text="" /> -->
+      <!-- <Value number="4"  descrName="" text="" /> -->
+      <Value number="5"  descrName="Qq" text="" />
+      <Value number="6"  descrName="LaLaLa" text="" />
+      <Value number="7"  descrName="LoLoLo" text="" />
+      <Value number="8"  descrName="B" text="" />
+      <!-- <Value number="9"  descrName="fc" text="" /> -->
+    </Group>
+    <Group number="2" text="">
+      <GroupValues>([\d/]{2})([\d/]{3})\s*([\d/]{2})([\d/]{2})[\d/]\s*/[\d/][\d/]{3}</GroupValues>
+      <Value number="1"  descrName="dd"  text="" />
+      <Value number="2"  descrName="fff" text="" />
+      <Value number="3"  descrName="TT"  text="" />
+      <Value number="4"  descrName="TdTd" text="" />
+      <!-- <Value number="5"  descrName="w"   text="" /> -->
+      <!-- <Value number="6"  descrName="j"   text="" /> -->
+      <!-- <Value number="7"  descrName="HHH" text="" /> -->
+    </Group> 
+  </Section>
+  <Section number="1" text="" >
+    <GroupValues>1[\d/]([\d/])([\d/])([\d/])\s*((?:[\d/]{5}\s*){1,3})\s*4([\d/]{2})([\d/]{2})\s*6[\d/][\d/][\d/][\d/]\s*7[\d/][\d/][\d/][\d/]\s*7[\d/]{2}[\d/]{2}\s*8[\d/]{2}[\d/][\d/]\s*8[\d/][\d/][\d/][\d/])\s*9[\d/][\d/]{3}</GroupValues>
+    <!-- <Value number="1"  descrName="" text="" /> -->
+    <Value number="1"  descrName="Ns" text="" />
+    <Value number="2"  descrName="Ns" text="" />
+    <Value number="3"  descrName="Ns" text="" />
+    <Group number="4" text="">
+      <GroupValues>([\d/])([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="C" text="" />
+      <Value number="2"  descrName="hshs" text="" />
+      <Value number="3"  descrName="htht" text="" />
+    </Group>
+    <Value number="5"  descrName="dd" text="" />
+    <Value number="6"  descrName="ff" text="" />
+    <!-- <Value number="7"  descrName="" text="" /> -->
+    <!-- <Value number="8"  descrName="" text="" /> -->
+    <!-- <Value number="9"  descrName="" text="" /> -->
+    <!-- <Value number="10"  descrName="" text="" /> -->
+    <!-- <Value number="11"  descrName="" text="" /> -->
+    <!-- <Value number="12"  descrName="" text="" /> -->
+    <!-- <Value number="13"  descrName="" text="" /> -->    
+  </Section>
+  <Section number="1" text="" >
+    <GroupValues>([\d/]{5})\s*([\d/]{5})\s*([\d/]{5})\s*([\d/]{5})\s*([\d/]{5})\s*([\d/]{5})\s*([\d/]{5})</GroupValues>  
+    <Group number="1" text="">
+      <GroupValues>([\d/]{2})([\d/]{2})[\d/]\s*[\d/]([\d/])([\d/]{3})\s*([\d/]{3})([\d/])[\d/]</GroupValues>
+      <Value number="1"  descrName="GG" text="" />
+      <Value number="2"  descrName="gg" text="" />
+      <!-- <Value number="3"  descrName="" text="" /> -->
+      <!-- <Value number="4"  descrName="" text="" /> -->
+      <Value number="5"  descrName="Qq" text="" />
+      <Value number="6"  descrName="LaLaLa" text="" />
+      <Value number="7"  descrName="LoLoLo" text="" />
+      <Value number="8"  descrName="B" text="" />
+      <!-- <Value number="9"  descrName="fc" text="" /> -->
+    </Group>
+    <Group number="2" text="">
+      <GroupValues>([\d/]{2})([\d/]{3})\s*([\d/]{2})([\d/]{2})[\d/]\s*/[\d/][\d/]{3}</GroupValues>
+      <Value number="1"  descrName="dd"  text="" />
+      <Value number="2"  descrName="fff" text="" />
+      <Value number="3"  descrName="TT"  text="" />
+      <Value number="4"  descrName="TdTd" text="" />
+      <!-- <Value number="5"  descrName="w"   text="" /> -->
+      <!-- <Value number="6"  descrName="j"   text="" /> -->
+      <!-- <Value number="7"  descrName="HHH" text="" /> -->
+    </Group> 
+  </Section>
+</Message>

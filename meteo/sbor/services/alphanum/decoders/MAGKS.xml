@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="MAGKS" text=""  category="166">
+  <MessageSections>(?:МАГКС|magks)\s*((?:\d{5}\s*)+)/(\d{4})\s*((?:\d{5}\s*){4})</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*</GroupValues>
+    <Value number="1"  descrName="station_index" text="Индексы станций, по которым осреднены К-индексы" />
+  </Section>
+  <Section number="1" text="" >
+    <GroupValues>(\d\d)(\d\d)()()</GroupValues>
+    <Value number="2"  descrName="YY" text="День выпуска сообщения" />
+    <Value number="3"  descrName="GG" text="Время UT начала измерений даты, предшествующей “dd”" />
+    <Value number="3"  descrName="YYp" default="0" text="" />
+    <Value number="3"  descrName="YYp" default="1" text="" />
+  </Section>
+  <Section number="1" text="" >
+    <GroupValues>\d\d(\d\d)(\d\s*\d)(\d\d)(\d\d)\s*(\d\d)(\d\d)(\d\s*\d)(\d\d)()(\d\d)</GroupValues>
+    <!-- <Value number="1"  descrName="UNK" text="Контрольная сумма цифр K1 – K8" /> -->
+    <Value number="2"  descrName="gk_p" text="Первое осреднённое значение К-индекса за время “hh”" />
+    <Value number="3"  descrName="gk_p" text="Второе осреднённое значение К-индекса за время “hh+3”" />
+    <Value number="4"  descrName="gk_p" text="Третье" />
+    <Value number="5"  descrName="gk_p" text="Четвертое" />
+    <Value number="6"  descrName="gk_p" text="Пятое" />
+    <Value number="7"  descrName="gk_p" text="Шестое" />
+    <Value number="8"  descrName="gk_p" text="Седьмое" />
+    <Value number="9"  descrName="gk_p" text="Восьмое осреднённое значение К-индекса за время “hh+24”" />
+    <Value number="10" descrName="stat_sign" default="4" text="Среднее" />
+    <Value number="11" descrName="gk_p" text="Среднее значение К-индекса за весь ряд (сутки)" />
+  </Section>
+</Message>

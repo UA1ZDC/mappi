@@ -1,0 +1,164 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+include /usr/share/dpkg/architecture.mk
+ifeq ($(origin CXX),default)
+CXX := $(DEB_HOST_GNU_TYPE)-g++
+endif
+
+export DH_RUBY = --gem-install
+export DH_RUBY_USE_DH_AUTO_INSTALL_DESTDIR = debian/ruby-google-protobuf
+export GEM2DEB_TEST_RUNNER = --check-dependencies
+
+ifneq (,$(findstring $(DEB_BUILD_ARCH), armel m68k mips mipsel powerpc powerpcspe sh4))
+export DEB_LDFLAGS_MAINT_APPEND  = -latomic
+endif
+
+%:
+	dh $@ --without autoreconf --with python2,python3
+
+ifneq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
+override_dh_auto_configure:
+	# build for the native (i.e. build) architecture, as we need
+	# the protoc compiler for the native arch.
+	dh_auto_configure -- --host=$(DEB_BUILD_GNU_TYPE)
+
+PYTHON_CROSS_VARS += PROTOC=$(CURDIR)/debian/run_protoc
+PYTHON_CROSS_VARS += PYTHONPATH=/usr/lib/python$$pv/plat-$(DEB_HOST_MULTIARCH)
+PYTHON_CROSS_VARS += _PYTHON_HOST_PLATFORM=$(DEB_HOST_ARCH_OS)-$(DEB_HOST_GNU_CPU)
+PYTHON_CROSS_VARS += CC=$(CXX)
+PYTHON_CROSS_VARS += CXX=$(CXX)
+endif
+
+override_dh_auto_build-arch:
+## Chicken<->Egg problem: protobuf requires self-generated .pb.go files to
+## be built. First we build it normally; then "generate_descriptor_proto.sh"
+## generates .pb.go files and replaces 'em if they are different as well as
+## invokes "make protoc" which re-builds "src/protoc" if required.
+	dh_auto_build --arch
+	bash -x ./generate_descriptor_proto.sh
+
+ifneq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
+	# save the native compiler
+	cp -Rv src/.libs debian/native_protoc
+	# clean everything but regenerated .pb.{cc,go} files
+	$(MAKE) clean
+	# cross build
+	dh_auto_configure -- --with-protoc=$(CURDIR)/debian/run_protoc
+	dh_auto_build --arch
+endif
+
+	# Generate the manpage.
+	xmlto man debian/protoc.xml
+
+	# Python and Python3 build.
+	cp -rv python python3
+	set -e; cd python && for pv in $(shell pyversions -vr); do \
+		$(PYTHON_CROSS_VARS) python$$pv setup.py build --cpp_implementation; \
+	done
+	set -e; cd python3 && for pv in $(shell py3versions -vr); do \
+		$(PYTHON_CROSS_VARS) python$$pv setup.py build --cpp_implementation; \
+	done
+
+	# Ruby build
+	#cd ruby && rake package genproto
+
+override_dh_auto_build-indep:
+	dh_auto_build --indep
+
+	# Java build.
+	#ant -f debian/java-build.xml jar
+
+override_dh_clean:
+	$(RM) -rv gmock
+	cd ruby && rake clobber
+	dh_clean
+	$(RM) -f config.h config.log config.status
+	$(RM) -f *.pc
+	$(RM) -f google-protobuf.gemspec
+	$(RM) -f libtool stamp-h1
+	find $(CURDIR) -name Makefile -delete
+
+override_dh_auto_test-arch:
+	dh_auto_test --arch
+
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	# Python test.
+	set -e; \
+	export LD_LIBRARY_PATH=$(CURDIR)/src/.libs; \
+	cd python && for PYTHON in $(shell pyversions -r); do \
+		$$PYTHON setup.py test --cpp_implementation; \
+	done
+    # Python3 test.
+	set -e; \
+	export LD_LIBRARY_PATH=$(CURDIR)/src/.libs; \
+	cd python3 && for PYTHON in $(shell py3versions -r); do \
+		$$PYTHON setup.py test --cpp_implementation; \
+	done
+endif
+
+override_dh_auto_test-indep:
+	:
+
+override_dh_auto_clean-arch:
+	dh_auto_clean --arch
+
+	# Python clean.
+	set -e; \
+	cd python && for python in $(shell pyversions -r); do \
+		$$python setup.py clean --all; \
+	done
+	rm -rf python/protobuf.egg-info
+	# Python3 clean.
+	rm -rf python3
+
+override_dh_auto_clean-indep:
+	dh_auto_clean --indep
+
+	# Java clean.
+	ant -f debian/java-build.xml clean || true
+	mh_clean || true
+
+override_dh_auto_install-arch:
+	dh_auto_install --arch
+
+	# Python install.
+	set -e; \
+	cd python && for pv in $(shell pyversions -vr); do \
+		$(PYTHON_CROSS_VARS) python$$pv setup.py install --cpp_implementation \
+			--install-layout=deb --no-compile \
+			--root=$(CURDIR)/debian/python-protobuf; \
+	done
+	find $(CURDIR)/debian/python-protobuf -name 'protobuf-*-nspkg.pth' -delete
+
+	# Python3 install.
+	set -e; \
+	cd python3 && for pv in $(shell py3versions -vr); do \
+		$(PYTHON_CROSS_VARS) python$$pv setup.py install --cpp_implementation \
+			--install-layout=deb --no-compile \
+			--root=$(CURDIR)/debian/python3-protobuf; \
+	done
+	find $(CURDIR)/debian/python3-protobuf -name 'protobuf-*-nspkg.pth' -delete
+
+	# Ruby install
+	 sed 's|ext/|ruby/ext/|' $(CURDIR)/ruby/google-protobuf.gemspec \
+		 >$(CURDIR)/google-protobuf.gemspec
+	dh_auto_install -O--buildsystem=ruby -O--package=ruby-google-protobuf --destdir=debian/ruby-google-protobuf
+
+override_dh_auto_install-indep:
+	dh_auto_install --indep
+
+	# Java install.
+	mh_install
+
+override_dh_install-arch:
+	dh_install --arch
+
+	# Convert doc dir to symlink for the -dev packages.
+	rm -rf $(CURDIR)/debian/libprotobuf-dev/usr/share/doc/libprotobuf-dev
+	ln -s libprotobuf17 $(CURDIR)/debian/libprotobuf-dev/usr/share/doc/libprotobuf-dev
+	rm -rf $(CURDIR)/debian/libprotoc-dev/usr/share/doc/libprotoc-dev
+	ln -s libprotoc17 $(CURDIR)/debian/libprotoc-dev/usr/share/doc/libprotoc-dev
+
+	# Remove compiler headers from libprotobuf-dev.
+	rm -rf $(CURDIR)/debian/libprotobuf-dev/usr/include/google/protobuf/compiler

@@ -1,0 +1,9 @@
+{
+   "insert": "gmi_condition",
+   "documents": [ {
+     "name" : "%1",
+     "t1" : "%2", 
+     "t2" : "%3"
+     }
+  ]
+}

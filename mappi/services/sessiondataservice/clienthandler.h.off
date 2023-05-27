@@ -1,0 +1,184 @@
+#ifndef CLIENTHANDLER_H
+#define CLIENTHANDLER_H
+
+#include <qobject.h>
+#include <qpair.h>
+#include <qfuturewatcher.h>
+#include <qfuture.h>
+#include <qtconcurrentrun.h>
+
+#include <mappi/services/sessiondataservice/sessiondataservice.h>
+#include <meteo/commons/rpc/rpc.h>
+
+namespace mappi {
+
+// class HandlerConnection;
+
+// class ClientHandler : public QObject
+// {
+//   Q_OBJECT
+// public:
+//   ClientHandler( SessionDataService* service );
+//   ~ClientHandler();
+
+//   HandlerConnection* connection( meteo::rpc::Channel* channel ) const ;
+//   void removeConnection( meteo::rpc::Channel* client );
+//   bool contains( meteo::rpc::Channel* ch ) const ;
+
+//   template <typename Request, typename Response> bool runMethod( meteo::rpc::Channel*, void (HandlerConnection::*method)(Request, Response), Request, Response, google::protobuf::Closure* );
+
+// private:
+//   SessionDataService* service_;
+//   QMap< meteo::rpc::Channel*, HandlerConnection* > connections_;
+
+// public slots:
+//   void slotClientConnected( meteo::rpc::Channel* client );
+
+// friend class HandlerConnection;
+// };
+
+
+class HandlerConnection : public QObject
+{
+  Q_OBJECT
+  public:
+    //service thread functions
+  void GetAvailableSessions( const mappi::proto::SessionData* request, mappi::proto::SessionList* response );
+  void SaveSession ( const mappi::proto::SessionData* request, mappi::proto::Response* response );
+  void MarkSessionThematicDone ( const mappi::proto::SessionData* request, mappi::proto::Response* response );
+  void GetAvailablePretreatment ( const mappi::proto::Pretreatment* request, mappi::proto::PretreatmentList* response );
+  void SavePretreatment ( const mappi::proto::Pretreatment* request, mappi::proto::Response* response );
+  void GetAvailableThematic ( const mappi::proto::ThematicData* request, mappi::proto::ThematicList* response );
+  void SaveThematic ( const mappi::proto::ThematicData* request, mappi::proto::Response* response );
+  void GetSession ( const mappi::proto::SessionData* request, mappi::proto::SessionList* response);
+  void GetAvailableThematicTypes( const mappi::proto::Dummy* request, mappi::proto::ThematicList* response );
+  void GetGrayscaleChannels( const mappi::proto::Dummy* request, mappi::proto::ThematicList* response );
+
+
+
+  public: //статистика
+    const QPair< QDateTime, QString >& runnedstat() const { return runnedstat_; }
+    const QList< QPair< QDateTime, QString > >& deferredstat() const { return deferredstat_; }
+
+  private:
+    QPair< QDateTime, QString > runnedstat_;
+    QList< QPair< QDateTime, QString > > deferredstat_;
+
+  private:
+    proto::ThematicData themeFromQuery(TSqlQuery &result,int recnumber,bool &ok);
+    proto::SessionData sessionFromQuery(TSqlQuery &result,int recnumber,bool &ok);
+    proto::Pretreatment pretreatmentFromQuery(TSqlQuery &result,int recnumber,bool &ok);
+
+
+  public:
+    HandlerConnection();
+    ~HandlerConnection();
+
+    // template <typename Request, typename Response> void pushCallback( void (HandlerConnection::*method)(Request, Response), Request, Response, google::protobuf::Closure* );
+
+    // rpc::Channel* channel() const { return channel_; }
+
+    // void removeCallback( google::protobuf::Closure* c ) { deferredcalls_.removeAll(c); }
+
+  private:
+
+    // rpc::Channel* channel_;
+    // QList<google::protobuf::Closure*> deferredcalls_;
+    bool used_;
+
+  private slots:
+    void slotFutureFinished();
+    void slotClientDisconnected();
+
+};
+
+template <typename Request, typename Response> bool ClientHandler::runMethod( rpc::Channel* ch, void (HandlerConnection::*method)(Request, Response), Request req, Response resp, google::protobuf::Closure* closure )
+{
+  HandlerConnection* conn = connection(ch);
+  if ( 0 == conn ) {
+    error_log << QObject::tr("Не найден обработчик ответа");
+    return false;
+  }
+  conn->pushCallback( method, req, resp, closure );
+  return true;
+}
+
+template< typename Request, typename Response >
+class DefferedCallback : public google::protobuf::Closure
+{
+  public:
+    typedef void (HandlerConnection::*Method)( Request request, Response response );
+    DefferedCallback( HandlerConnection* conn, Method m, Request request, Response response, google::protobuf::Closure* done )
+      : conn_(conn), method_(m), request_(request), response_(response), done_(done), watcher_( new QFutureWatcher<void>(conn_) ){}
+    ~DefferedCallback()
+    {
+      conn_->removeCallback(this);
+      watcher_->waitForFinished();
+      if ( 0 != done_ ) {
+        done_->Run();
+        done_ = 0;
+      }
+      delete watcher_; watcher_ = 0;
+    }
+
+    void Run()
+    {
+      if ( true == hasConnection() ) {
+        QObject::connect( watcher_, SIGNAL( finished() ), conn_, SLOT( slotFutureFinished() ) );
+        QFuture<void> future = QtConcurrent::run( conn_, method_, request_, response_ );
+        watcher_->setFuture(future);
+      }
+    }
+
+    bool hasConnection() const { if ( 0 == conn_ || 0 == conn_->channel() ) { return false; } return true; }
+
+  private:
+    HandlerConnection* conn_;
+    Method method_;
+    Request request_;
+    Response response_;
+    google::protobuf::Closure* done_;
+    QFutureWatcher<void>* watcher_;
+};
+
+// template <typename Request, typename Response> void HandlerConnection::pushCallback( void (HandlerConnection::*method)(Request, Response), Request req, Response resp, google::protobuf::Closure* done )
+// {
+// //  if ( (void*)&HandlerConnection::GetAvailableSessions == (void*)method ) {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Получение списка сессий") ) );
+// //  }
+// //  else if ( (void*)&HandlerConnection::SaveSession == (void*)method ) {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Сохранение сессии") ) );
+// //  }
+// //  else if ( (void*)&HandlerConnection::MarkSessionThematicDone == (void*)method ) {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Пометить сессию, как полностью обработанную") ) );
+// //  }
+// //  else if ( (void*)&HandlerConnection::GetAvailablePretreatment == (void*)method ) {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Получение списка предварительных обработок") ) );
+// //  }
+// //  else if ( (void*)&HandlerConnection::SavePretreatment == (void*)method ) {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Сохранение предварительной обработки") ) );
+// //  }
+// //  else if ( (void*)&HandlerConnection::GetAvailableThematic == (void*)method ) {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Получение списка тематических обработок") ) );
+// //  }
+// //  else if ( (void*)&HandlerConnection::SaveThematic == (void*)method ) {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Сохранение тематической обработки") ) );
+// //  }
+// //  else if ( (void*)&HandlerConnection::ExportFile == (void*)method ) {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Получить файл") ) );
+// //  }
+// //  else {
+// //    deferredstat_.append( qMakePair( QDateTime::currentDateTime(), QObject::tr("Неизвестный метод") ) );
+// //  }
+//   DefferedCallback<Request,Response>* dcb = new DefferedCallback<Request, Response>( this, method, req, resp, done );
+//   deferredcalls_.append(dcb);
+//   if ( 1 == deferredcalls_.size() ) {
+// //    runnedstat_ = deferredstat_.takeFirst();
+//     dcb->Run();
+//   }
+// }
+
+
+} // mappi
+
+#endif // CLIENTHANDLER_H

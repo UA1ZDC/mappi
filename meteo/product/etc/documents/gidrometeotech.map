@@ -1,0 +1,12 @@
+name: "gidrometeotech.map"
+title: "Сведения по обеспеченности ГМТ"
+formal {
+    template: "gidrometeotech.odt"
+    name: "Сведения по обеспеченности ГМТ"
+    module_path: "gidrometeotech.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

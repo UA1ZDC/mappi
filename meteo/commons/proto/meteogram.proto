@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package meteo.ui.proto;
+
+message MeteogramWindowState{
+optional bool isBuildT = 1;
+optional bool isBuildDewPoint = 2;
+optional bool isBuildP = 3;
+optional bool isBuildU = 4;
+optional bool isBuildPQNH = 5;
+optional bool isBuildWind = 6;
+
+optional string beginDateTime = 7;
+optional string endDateTime = 8;
+
+optional bool isByStation = 9;
+//by station
+optional string stationIndex = 10;
+  optional int32 stationType = 11;
+};

@@ -1,0 +1,11 @@
+{
+   "delete": @collection@,
+   "deletes": [
+      { "q" : {
+           @dtField@ : { "$lt" : @dt1@ },
+           @dtWriteField@ : { "$lt" : @dt2@ }
+      },
+        "limit" : 0
+        }
+   ]
+}

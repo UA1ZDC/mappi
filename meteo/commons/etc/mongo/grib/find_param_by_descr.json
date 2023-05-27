@@ -1,0 +1,6 @@
+{ "find" : "grib",
+  "filter" : {
+     "bufr_descr" : "%1"
+  }
+}
+

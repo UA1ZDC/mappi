@@ -1,0 +1,1 @@
+java/core/pom.xml --artifact=java/core/target/protobuf.jar --java-lib --no-parent --usj-name=protobuf

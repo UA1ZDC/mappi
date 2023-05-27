@@ -1,0 +1,5 @@
+{
+  "find" : "stations",
+  "filter": { "name": @name@ }
+}
+

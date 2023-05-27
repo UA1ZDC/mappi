@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<grib1grids>
+  <!-- Широтно-долготная сетка — равноудаленная цилиндрическая проекция или плоская квадратная -->
+  <grid name="latlon" template="0" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="la2" idx="18" size="3" pbnum="9" />
+    <val name="lo2" idx="21" size="3" pbnum="10" />
+    <val name="di" idx="24" size="2" pbnum="11" />
+    <val name="dj" idx="26" size="2" pbnum="12" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+  </grid>
+
+  <!-- Повернутая широтно-долготная сетка -->
+  <grid name="rotLatlon" template="10" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="la2" idx="18" size="3" pbnum="9" />
+    <val name="lo2" idx="21" size="3" pbnum="10" />
+    <val name="di" idx="24" size="2" pbnum="11" />
+    <val name="dj" idx="26" size="2" pbnum="12" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="lats" idx="33" size="3" pbnum="17" />
+    <val name="lons" idx="36" size="3" pbnum="18" />
+    <val name="rotAngle" idx="39" size="4" pbnum="19" />
+  </grid>
+
+  <!-- Растянутая широтно-долготная сетка -->
+  <grid name="strechLatlon" template="20" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="la2" idx="18" size="3" pbnum="9" />
+    <val name="lo2" idx="21" size="3" pbnum="10" />
+    <val name="di" idx="24" size="2" pbnum="11" />
+    <val name="dj" idx="26" size="2" pbnum="12" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="latSt" idx="33" size="4" pbnum="20" />
+    <val name="lonSt" idx="36" size="4" pbnum="21" />
+    <val name="stretch" idx="39" size="4" pbnum="22" />
+  </grid>
+
+  <!-- Растянутые и повернутые широтно-долготные сетки -->
+  <grid name="strechRotLatlon" template="30" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="la2" idx="18" size="3" pbnum="9" />
+    <val name="lo2" idx="21" size="3" pbnum="10" />
+    <val name="di" idx="24" size="2" pbnum="11" />
+    <val name="dj" idx="26" size="2" pbnum="12" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="lats" idx="33" size="3" pbnum="17" />
+    <val name="lons" idx="36" size="3" pbnum="18" />
+    <val name="rotAngle" idx="39" size="4" pbnum="19" />
+    <val name="latSt" idx="43" size="4" pbnum="20" />
+    <val name="lonSt" idx="46" size="4" pbnum="21" />
+    <val name="stretch" idx="49" size="4" pbnum="22" />
+  </grid>
+
+  <!-- Широтно-долготная сетка по Гауссу -->
+  <grid name="gaussLatlon" template="4" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="la2" idx="18" size="3" pbnum="9" />
+    <val name="lo2" idx="21" size="3" pbnum="10" />
+    <val name="di" idx="24" size="2" pbnum="11" />
+    <val name="N" idx="26" size="2" pbnum="23" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+  </grid>
+
+  <!-- Повернутая широтно-долготная сетка по Гауссу -->
+  <grid name="rotLatlon" template="14" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="la2" idx="18" size="3" pbnum="9" />
+    <val name="lo2" idx="21" size="3" pbnum="10" />
+    <val name="di" idx="24" size="2" pbnum="11" />
+    <val name="N" idx="26" size="2" pbnum="23" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="lats" idx="33" size="3" pbnum="17" />
+    <val name="lons" idx="36" size="3" pbnum="18" />
+    <val name="rotAngle" idx="39" size="4" pbnum="19" />
+  </grid>
+
+  <!--  Растянутая широтно-долготная сетка по Гауссу -->
+ <grid name="strechLatlon" template="24" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="la2" idx="18" size="3" pbnum="9" />
+    <val name="lo2" idx="21" size="3" pbnum="10" />
+    <val name="di" idx="24" size="2" pbnum="11" />
+    <val name="N" idx="26" size="2" pbnum="23" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="latSt" idx="33" size="4" pbnum="20" />
+    <val name="lonSt" idx="36" size="4" pbnum="21" />
+    <val name="stretch" idx="39" size="4" pbnum="22" />
+  </grid>
+
+  <!-- Растянутые и повернутые широтно-долготные сетки по Гауссу -->
+  <grid name="strechRotLatlon" template="34" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="la2" idx="18" size="3" pbnum="9" />
+    <val name="lo2" idx="21" size="3" pbnum="10" />
+    <val name="di" idx="24" size="2" pbnum="11" />
+    <val name="N" idx="26" size="2" pbnum="23" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="lats" idx="33" size="3" pbnum="17" />
+    <val name="lons" idx="36" size="3" pbnum="18" />
+    <val name="rotAngle" idx="39" size="4" pbnum="19" />
+    <val name="latSt" idx="43" size="4" pbnum="20" />
+    <val name="lonSt" idx="46" size="4" pbnum="21" />
+    <val name="stretch" idx="49" size="4" pbnum="22" />
+  </grid>
+
+
+  <!-- Коэффициенты сферических гармонических функций -->
+  <grid name="spherCoef" template="50" startIdx="7">
+    <val name="J" idx="7" size="2" pbnum="1" />
+    <val name="K" idx="9" size="2" pbnum="2" />
+    <val name="M" idx="11" size="2" pbnum="3" />
+    <val name="type" idx="13" size="1" pbnum="4" />
+    <val name="mode" idx="14" size="1" pbnum="5" />
+  </grid>
+
+  <!-- Коэффициенты сферических гармонических функций после поворота -->
+  <grid name="rotSpherCoef" template="60" startIdx="7">
+    <val name="J" idx="7" size="2" pbnum="1" />
+    <val name="K" idx="9" size="2" pbnum="2" />
+    <val name="M" idx="11" size="2" pbnum="3" />
+    <val name="type" idx="13" size="1" pbnum="4" />
+    <val name="mode" idx="14" size="1" pbnum="5" />
+    <val name="lats" idx="33" size="3" pbnum="6" />
+    <val name="lons" idx="36" size="3" pbnum="7" />
+    <val name="rotAngle" idx="39" size="3" pbnum="8" />
+  </grid>
+
+  <!-- Растянутые сферические гармонические функции -->
+  <grid name="strechSpherCoef" template="70" startIdx="7">
+    <val name="J" idx="7" size="2" pbnum="1" />
+    <val name="K" idx="9" size="2" pbnum="2" />
+    <val name="M" idx="11" size="2" pbnum="3" />
+    <val name="type" idx="13" size="1" pbnum="4" />
+    <val name="mode" idx="14" size="1" pbnum="5" />
+    <val name="latSt" idx="33" size="3" pbnum="9" />
+    <val name="lonSt" idx="36" size="3" pbnum="10" />
+    <val name="stretch" idx="39" size="3" pbnum="11" />
+  </grid>
+  
+  <!-- Растянутые и повернутые коэффициенты сферических гармонических функций -->
+  <grid name="spherCoef" template="80" startIdx="7">
+    <val name="J" idx="7" size="2" pbnum="1" />
+    <val name="K" idx="9" size="2" pbnum="2" />
+    <val name="M" idx="11" size="2" pbnum="3" />
+    <val name="type" idx="13" size="1" pbnum="4" />
+    <val name="mode" idx="14" size="1" pbnum="5" />
+    <val name="lats" idx="33" size="3" pbnum="6" />
+    <val name="lons" idx="36" size="3" pbnum="7" />
+    <val name="rotAngle" idx="39" size="3" pbnum="8" />
+    <val name="latSt" idx="43" size="3" pbnum="9" />
+    <val name="lonSt" idx="46" size="3" pbnum="10" />
+    <val name="stretch" idx="49" size="3" pbnum="11" />
+  </grid>
+
+  <!-- полярная стереографическая -->
+  <grid name="polarStereo" template="5" startIdx="7">
+    <val name="nx" idx="7" size="2" pbnum="2" />
+    <val name="ny" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="lov" idx="18" size="3" pbnum="25" />
+    <val name="dx" idx="21" size="3" pbnum="11" />
+    <val name="dy" idx="24" size="3" pbnum="12" />
+    <val name="centerFlag" idx="27" size="1" pbnum="26" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+  </grid>
+
+  <!-- проекция Меркатора -->
+  <grid name="Mercator" template="1" startIdx="7">
+    <val name="ni" idx="7" size="2" pbnum="2" />
+    <val name="nj" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="4" />
+    <val name="lo1" idx="14" size="3" pbnum="5" />
+    <val name="scanFlag" idx="17" size="1" pbnum="6" />
+    <val name="lad" idx="24" size="3" pbnum="7" />
+    <val name="la2" idx="18" size="3" pbnum="8" />
+    <val name="lo2" idx="21" size="3" pbnum="9" />
+    <val name="scanMode" idx="28" size="1" pbnum="10" />
+    <val name="di" idx="29" size="3" pbnum="12" />
+    <val name="dj" idx="32" size="3" pbnum="13" />
+  </grid>
+
+  <!--Проекция Ламберта конформная секущая или касательная, коническая или биполярная -->
+  <grid name="Lambert" template="3" startIdx="7">
+    <val name="nx" idx="7" size="2" pbnum="2" />
+    <val name="ny" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="lov" idx="18" size="3" pbnum="25" />
+    <val name="dx" idx="21" size="3" pbnum="11" />
+    <val name="dy" idx="24" size="3" pbnum="12" />
+    <val name="centerFlag" idx="27" size="1" pbnum="26" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="latin1" idx="29" size="3" pbnum="27" />
+    <val name="latin2" idx="32" size="3" pbnum="28" />
+    <val name="lats" idx="35" size="3" pbnum="17" />
+    <val name="lons" idx="38" size="3" pbnum="18" />
+  </grid>  
+
+  <!-- Секущая или касательная, коническая или биполярная проекция равных областей Альберса -->
+  <grid name="Albers" template="8" startIdx="7">
+    <val name="nx" idx="7" size="2" pbnum="2" />
+    <val name="ny" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="lov" idx="18" size="3" pbnum="25" />
+    <val name="dx" idx="21" size="3" pbnum="11" />
+    <val name="dy" idx="24" size="3" pbnum="12" />
+    <val name="centerFlag" idx="27" size="1" pbnum="26" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="latin1" idx="29" size="3" pbnum="27" />
+    <val name="latin2" idx="32" size="3" pbnum="28" />
+    <val name="lats" idx="35" size="3" pbnum="17" />
+    <val name="lons" idx="38" size="3" pbnum="18" />
+  </grid>  
+  
+
+  <!-- Наклонная конформная, секущая или касательная, коническая или биполярная проекция Ламберта -->
+  <grid name="SlopeLambert" template="13" startIdx="7">
+    <val name="nx" idx="7" size="2" pbnum="2" />
+    <val name="ny" idx="9" size="2" pbnum="3" />
+    <val name="la1" idx="11" size="3" pbnum="6" />
+    <val name="lo1" idx="14" size="3" pbnum="7" />
+    <val name="scanFlag" idx="17" size="1" pbnum="8" />
+    <val name="lov" idx="18" size="3" pbnum="25" />
+    <val name="dx" idx="21" size="3" pbnum="11" />
+    <val name="dy" idx="24" size="3" pbnum="12" />
+    <val name="centerFlag" idx="27" size="1" pbnum="26" />
+    <val name="scanMode" idx="28" size="1" pbnum="13" />
+    <val name="latin1" idx="29" size="3" pbnum="27" />
+    <val name="latin2" idx="32" size="3" pbnum="28" />
+    <val name="lats" idx="35" size="3" pbnum="17" />
+    <val name="lons" idx="38" size="3" pbnum="18" />
+  </grid>  
+
+  <!-- Вид из космоса, перспективный или ортографический -->
+    <grid name="space" template="90" startIdx="7">
+    <val name="nx" idx="7" size="2" pbnum="2" />
+    <val name="ny" idx="9" size="2" pbnum="3" />
+    <val name="lap" idx="11" size="3" pbnum="4" />
+    <val name="lop" idx="14" size="3" pbnum="5" />
+    <val name="scanFlag" idx="17" size="1" pbnum="6" />
+    <val name="dx" idx="18" size="3" pbnum="7" />
+    <val name="dy" idx="21" size="3" pbnum="8" />
+    <val name="xp" idx="24" size="2" pbnum="9" />
+    <val name="yp" idx="26" size="2" pbnum="10" />
+    <val name="scanMode" idx="28" size="1" pbnum="11" />
+    <val name="orientation" idx="29" size="3" pbnum="12" />    
+    <val name="nr" idx="32" size="3" pbnum="13" />
+    <val name="xo" idx="35" size="2" pbnum="14" />
+    <val name="yo" idx="37" size="2" pbnum="15" />
+  </grid>
+
+
+</grib1grids>

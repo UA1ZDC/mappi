@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="UMAGF" text="суточные результаты магнитометрических наблюдений"  category="166">
+  <MessageSections>UMAGF\s*(\d{5}\s*\d{5}\s*\d{4}/)\s*([\d/]{5}\s*1/[\d/]{3}\s*2[\d/]{4}\s*3[\d/]{4})\s*((?:[1-8][\d/]{4}\s*(?:[\d/]{5})?)*)</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d)(\d\d)(\d\d)\s*(\d\d)(\d\d)/</GroupValues>
+    <Value number="1"  descrName="station_index" text="Индекс станции" />
+    <Value number="2"  descrName="J"  text="Год выпуска телеграммы" />
+    <Value number="3"  descrName="MM" text="Месяц выпуска телеграммы" />
+    <Value number="4"  descrName="YY" text="День выпуска телеграммы" />
+    <Value number="5"  descrName="GG" text="Час выпуска телеграммы" />
+    <Value number="6"  descrName="gg" text="Минута выпуска телеграммы" />
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <GroupValues>(\d\d)(\d\d)[\d/]\s*1/([\d/]{3})\s*(2[\d/]{4}\s*3[\d/]{4})</GroupValues>
+      <Value number="1"  descrName="YY"  text="день начала 24х-часового периода наблюдений" />
+      <Value number="2"  descrName="GG"  text="час  начала 24х-часового периода наблюдений" />
+      <!-- <Value number="3"  descrName="YYp" default="0" text="" /> -->
+      <!-- <Value number="3"  descrName="YYp" default="1" text="" /> -->
+      <!-- <Value number="3"  descrName="UNK" text="последняя цифра контрольной суммы цифр Ак-индекса и восьми 3х-часовых К-индексов" /> -->
+      <Value number="4"  descrName="gAk" text="Ak" />
+      <SubGroup number="" text="" >
+	<SubGroupValues>()()2([\d/])()()([\d/])()()([\d/])()()([\d/])\s*()()3([\d/])()()([\d/])()()([\d/])()()([\d/])</SubGroupValues>
+	<Value number="1"  descrName="GGp" innum="0"  default="0"  text="" />
+	<Value number="1"  descrName="GGp" innum="0"  default="3"  text="" />
+	<Value number="2"  descrName="gk"  innum="0"  text="k-индекс"     />
+	<Value number="3"  descrName="GGp" innum="1"  default="3"  text="" />
+	<Value number="3"  descrName="GGp" innum="1"  default="6"  text="" />
+	<Value number="4"  descrName="gk"  innum="1"  text="k-индекс"     />
+	<Value number="5"  descrName="GGp" innum="2"  default="6"  text="" />
+	<Value number="5"  descrName="GGp" innum="2"  default="9"  text="" />
+	<Value number="6"  descrName="gk"  innum="2"  text="k-индекс"     />
+	<Value number="7"  descrName="GGp" innum="3"  default="9"  text="" />
+	<Value number="7"  descrName="GGp" innum="3"  default="12" text="" />
+	<Value number="8"  descrName="gk"  innum="3"  text="k-индекс"     />
+	<Value number="1"  descrName="GGp" innum="4"  default="12"  text="" />
+	<Value number="1"  descrName="GGp" innum="4"  default="15"  text="" />
+	<Value number="2"  descrName="gk"  innum="4"  text="k-индекс"     />
+	<Value number="3"  descrName="GGp" innum="5"  default="15"  text="" />
+	<Value number="3"  descrName="GGp" innum="5"  default="18"  text="" />
+	<Value number="4"  descrName="gk"  innum="5"  text="k-индекс"     />
+	<Value number="5"  descrName="GGp" innum="6"  default="18"  text="" />
+	<Value number="5"  descrName="GGp" innum="6"  default="21"  text="" />
+	<Value number="6"  descrName="gk"  innum="6"  text="k-индекс"     />
+	<Value number="7"  descrName="GGp" innum="7"  default="21"  text="" />
+	<Value number="7"  descrName="GGp" innum="7"  default="24"  text="" />
+	<Value number="8"  descrName="gk"  innum="7"  text="k-индекс"     />
+      </SubGroup>
+    </item>
+  </Section>
+  <Section number="2" text="" >
+    <item>
+      <!-- <GroupValues>5(\d\d)(\d\d)\s*(?:(\d*)/*)|([1-46-8])(\d\d)(\d\d)</GroupValues> -->
+      <GroupValues>5(\d\d)(\d\d)\s*([\d/]*)|([1-46-8])(\d\d)([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="GG" text="час K" />
+      <Value number="2"  descrName="gg" text="минута K" />
+      <Value number="3"  descrName="gH" text="минимум Н–компоненты, выраженный в гаммах" />
+      <Value number="4"  descrName="gSyn" text="явление" />
+      <Value number="5"  descrName="GG" text="час K" />
+      <Value number="6"  descrName="gg" text="минута K" />
+    </item>
+  </Section>
+</Message>

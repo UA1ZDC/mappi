@@ -1,0 +1,11 @@
+{ "q": { 
+    "_id" : @id@
+  },
+  "u": {
+    "$set" : {
+      "name" : @name@
+    }
+  },
+  "upsert": true,
+  "multi": false
+}

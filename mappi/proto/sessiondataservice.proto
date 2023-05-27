@@ -1,0 +1,121 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+package mappi.proto;
+
+import "common.proto";
+import "satellite.proto";
+import "reception.proto";
+import "thematic.proto";
+// import "spo_options.proto";
+
+
+enum Channels {
+  kAVHRR_1 = 1;
+  kAVHRR_2 = 2;
+  kAVHRR_3A = 3;
+  kAVHRR_3B = 4;
+  kAVHRR_4 = 5;
+  kAVHRR_5 = 6;
+}
+
+message SessionData {
+  optional string sat_name = 1;         //!< название спутника
+  optional string date_start = 2;       //!< время начала приема (Qt::ISODate)
+  optional string date_end = 3;         //!< время окончания приема (Qt::ISODate)
+  optional mappi.conf.Site site = 4;    //!< пункт приема
+  optional string server_path = 5;      //!< путь к файлу на сервере
+  optional bytes data = 6;              //!< файл данных (не используется)
+  optional bool processed = 7;          //!< флаг, указывающий, была ли проведена обработка
+  optional int32 id = 8;                //!< идентификатор
+  optional bool thematic_done = 9;      //!< флаг, указывающий, были ли проведены все виды тематической обработки
+  optional bytes tle = 10;              //!< TLE параметры
+}
+
+message SessionList {
+  repeated SessionData sessions = 1;    //!< список полученных сессий
+  optional bool result = 2;             //!< результат
+  optional string comment = 3;          //!< комментарий
+}
+
+message Pretreatment {
+  optional string date_start = 1;                               //!< время начала приема, в формате ISO yyyy-mm-ddTHH-MM-SS
+  optional string date_end = 2;                                 //!< время окончания приема, в формате ISO yyyy-mm-ddTHH-MM-SS
+  optional mappi.conf.InstrumentType instrument_type = 3;       //!< тип прибора
+  optional string sat_name = 4;                           //!< название спутника
+  repeated string channel_alias = 5;                            //!< псевдоним канала
+  repeated int32 channel = 6;                                   //!< номер канала в приборе
+  optional bool calibration = 7;                                //!< флаг калибровки
+  optional int32 session_id = 8;                                //!< идентификатор сессии
+  optional string path = 9;                                     //!< путь к файлу
+  optional bytes data = 10;                                     //!< файл данных
+}
+
+message PretreatmentList {
+  repeated Pretreatment pretreatments = 1; //!< список предварительных обработок
+  optional bool result                = 2; //!< флаг выполнения
+  optional string comment             = 3; //!< комментарий/ошибка
+}
+
+message ThematicData {
+  optional int32 session_id = 1;                               //!< идентификатор сессии
+  optional mappi.conf.ThemType type = 2;                       //!< тип тематической обработки
+  optional string name = 3;                                    //!< название тематической обработки (Оттенки серого, Псевдоцвета, NDVI)
+  optional string date_start = 4;                              //!< начальная дата срока, в формате ISO yyyy-mm-ddTHH-MM-SS
+  optional string date_end = 5;                                //!< конечная дата срока, в формате ISO yyyy-mm-ddTHH-MM-SS
+  optional string path = 6;                                    //!< путь к файлу на сервере
+  optional string satellite_name = 7;                          //!< название спутника
+  optional mappi.conf.InstrumentType instrument_type = 8;      //!< тип прибора
+  optional string instrument_name = 9;                         //!< название прибора
+  optional int32 channel_number = 10;                          //!< номер канала в приборе
+  optional string channel_alias = 11;                          //!< псевдоним канала (не надо задавать при запросе; возвращается для удобства при получении списка)
+  optional string projection = 12 [default = "SAT"] ;          //!< проекция ("SAT", "WGS84", "EPSG:3857" и т.д.)
+  optional string format = 13 [default = "bin"];               //!< формат данных: бинарные ("bin"), изображение ("png", "tiff" и т.д.)
+}
+
+message ThematicList {
+  repeated ThematicData themes = 1;     //!< список тематических обработок
+  optional bool result = 2;             //!< результат
+  optional string comment = 3;          //!< комментарий
+}
+
+
+//пока несколько базовых. можно расширить. или вообще вызвать gdalinfo и всё уложить в массив байт
+message GeotifHeader {
+  optional bool result   = 1;         //!< результат
+  optional string comment = 2;        //!< комментарий
+  required uint32 xsize  = 3;
+  required uint32 ysize  = 4;
+  required uint32 bands  = 5;
+  required float  up_left_x = 6;
+  required float  x_step = 7;
+  required float  up_left_y = 8;
+  required float  y_step = 9;
+
+}
+
+message Response {
+  optional bool result = 1;
+  optional string comment = 2;
+  optional int32 index = 3;     //!< индекс занесенной в базу данных записи (для сессий)
+}
+
+// Сервис полученных данных
+service SessionDataService {
+  rpc GetAvailableSessions( SessionData ) returns ( SessionList );   //!< получить список сессий, по которым имеются данные
+  rpc MarkSessionThematicDone( SessionData ) returns ( Response );   //!< установить флаг завершенности тематических обработок (флаг можно и снимать, устанавливая значение thematic_done в false)
+
+  rpc GetAvailablePretreatment( Pretreatment ) returns ( PretreatmentList ); //!< получить список имеющихся предварительных обработок, удовлетворящих заданным фильтрам
+
+  rpc GetAvailableThematic( ThematicData ) returns ( ThematicList ); //!< получить список имеющихся тематических обработок, удовлетворящих заданным фильтрам
+  rpc GetGeotiffInfo( ThematicData ) returns ( GeotifHeader );
+  rpc SaveThematic( ThematicData ) returns ( Response );             //!< созранить данные тематической обработки
+
+  rpc GetSession( SessionData ) returns ( SessionList ); //!< получить TLE-параметры по идентификатору сессии
+  rpc GetAvailableThematicTypes( Dummy ) returns ( ThematicList ); //<! получить список имеющих разных видов тематической обработки
+  rpc GetGrayscaleChannels( Dummy ) returns ( ThematicList ); //<! возвращает список псевдонимов каналов всех обработок типа grayscale
+
+  rpc SaveSession( SessionData ) returns ( Response );               //!< сохранить данные по сессии
+  rpc SavePretreatment( Pretreatment ) returns ( Response ); //!< сохранить данные предварительной обработки
+}

@@ -1,0 +1,7 @@
+qt5-default
+qtbase5-private-dev
+parsec-dev
+protobuf-compiler
+python3-protobuf
+libcgal-dev
+libboost-python-dev

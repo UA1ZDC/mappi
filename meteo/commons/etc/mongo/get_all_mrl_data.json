@@ -1,0 +1,10 @@
+{
+  "find": "radarmap",
+  "filter": {
+    "data_type":  { "$numberInt": @data_type@ },
+    "h1":  { "$numberInt": @h1@ },
+    "h2":  { "$numberInt": @h2@ },
+    "product":  { "$numberInt": @product@ },
+    "dt": @dt@
+  }
+}

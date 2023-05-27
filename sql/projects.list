@@ -1,0 +1,11 @@
+DEPS=(
+  cross-commons
+)
+
+DIRS=(
+  sql/proto
+  sql/nosql/libmongoc/libbson
+  sql/dbi
+  sql/nosql
+  sql/psql
+)

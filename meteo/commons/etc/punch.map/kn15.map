@@ -1,0 +1,13 @@
+name: "kn-15"
+title: "КН-15"
+data_type: kSynopType
+data {
+  template_name: "kn15"
+  source: kSurface
+  query_type: kLastValue
+  data_type: kHydroType
+  data_type: kHydroStation
+  data_type: kEndHydroType
+  type_level: 1
+  level: 0
+}

@@ -1,0 +1,8 @@
+{
+  "count": "conference_messages",
+  "query": { 
+    "mac" : { "$lte" : @mac@ },
+    "to" : @to@,
+    "unread":  { "$elemMatch" : { "$eq": @user@ }}    
+  }
+}

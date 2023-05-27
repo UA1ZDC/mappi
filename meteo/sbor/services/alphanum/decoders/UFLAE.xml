@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="UFLAE" text="Сведения о солнечных вспышках"  category="172">
+  <MessageSections>UFLAE\s*(\d{5}\s*\d{5})\s*((?:[\d/]{5}\s*)*)</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d)(\d\d)(\d\d)</GroupValues>
+    <Value number="1"  descrName="station_index" text="Индекс станции" />
+    <Value number="2"  descrName="J"  text="Год выпуска телеграммы" />
+    <Value number="3"  descrName="MM" text="Месяц выпуска телеграммы" />
+    <Value number="4"  descrName="YY" text="День выпуска телеграммы" />
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <GroupValues>([1-4])(\d\d)(\d\d)\s*([0-4])([7-9])(\d{3})\s*[67](\d\d)(\d\d)\s*((?:\s*[1-5/](?:////|\d{4}))+)\s*[89](\d\d)(\d\d)</GroupValues>
+      <Value number="1"  descrName="gQc" text="квадрант" />
+      <Value number="2"  descrName="gLo" text="расстояние до центрального меридиана в градусах (долгота)" />
+      <Value number="3"  descrName="gLa" text="гелиографическая широта в градусах" />
+      <Value number="4"  descrName="ge" text="балл вспышки по уточнённой площади в квадратных градусах" />
+      <Value number="5"  descrName="gb1" text="интенсивность (яркость) вспышки по эволюции" />
+      <Value number="6"  descrName="gSq" text="неисправленная площадь вспышки в миллионных долях солнечного диска" />
+      <!-- <Value number="7"  descrName="UNK" text="ключ наблюдения начала вспышки" /> -->
+      <Value number="8"  descrName="GG" text="часы начала или первого наблюдения вспышки" />
+      <Value number="9"  descrName="gg" text="минуты начала или первого наблюдения вспышки" />
+      <SubGroup number="0" text="" >
+	<item>
+	  <SubGroupValues>([1-5/])(?:////|(\d{2})(\d{2})())</SubGroupValues>
+	  <Value number="10" descrName="gVq" text="индикатор качества наблюдения" />
+	  <Value number="11" descrName="GG"   text="часы максимума вспышки" />
+	  <Value number="12" descrName="gg"   text="минуты максимума вспышки" />
+	  <Value number="4"  descrName="stat_sign" default="2" text="час максимума явления" />
+	</item>
+      </SubGroup>      
+      <!-- <Value number="13" descrName="UNK" text="ключ наблюдения окончания вспышки" /> -->
+      <Value number="14" descrName="GG" text="часы окончания или последнего наблюдения вспышки" />
+      <Value number="15" descrName="gg" text="минуты окончания или последнего наблюдения вспышки" />
+    </item>
+  </Section>
+</Message>

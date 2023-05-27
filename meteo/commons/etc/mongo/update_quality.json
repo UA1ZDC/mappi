@@ -1,0 +1,21 @@
+{
+  "update" : 'meteoreport',
+  "updates": [
+    {
+      "q" : {
+    "_id" : { "$in" : @id@ },
+    "param.descrname" : @descrname@
+      },
+      "u" : {
+    "$set" : {
+      "param.$.quality" : @quality@
+    },
+    "$bit" : {
+      "param.$.control" : { "or" : @control@ }
+    }
+      },
+      "upsert": false,
+      "multi" : true
+    }
+  ]
+}

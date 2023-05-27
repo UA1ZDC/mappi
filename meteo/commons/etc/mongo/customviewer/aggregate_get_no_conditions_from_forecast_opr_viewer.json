@@ -1,0 +1,10 @@
+{
+"aggregate" : "%1",
+    "pipeline" : [
+        { "$sort" : { %2 }},
+        { "$skip" : %3 },
+        { "$limit" : %4 }
+],
+"cursor": { "batchSize": 1 },
+"allowDiskUse": true
+}

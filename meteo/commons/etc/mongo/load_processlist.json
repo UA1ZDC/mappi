@@ -1,0 +1,8 @@
+{
+  "find": "processes",
+  "filter": {
+      "process_type": @process_type@,
+      "is_finished":  @is_finished@
+     },
+  "limit": 1
+}

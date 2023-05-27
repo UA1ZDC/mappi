@@ -1,0 +1,138 @@
+#ifndef MAPPI_UI_SCHEDULETABLE_SCHEDULETABLE_H
+#define MAPPI_UI_SCHEDULETABLE_SCHEDULETABLE_H
+
+#include "checksessiondata.h"
+
+#include <memory>
+
+#include <qwidget.h>
+
+#include <meteo/commons/rpc/rpc.h>
+#include <mappi/proto/schedule.pb.h>
+
+class QTableWidget;
+class QTableWidgetItem;
+
+namespace Ui {
+  class ScheduleTable;
+}
+
+namespace meteo {
+  namespace app {
+    class AppState_Proc;
+  }
+}
+
+namespace mappi {
+
+namespace schedule {
+  class Schedule;
+  class Session;
+}
+
+class ScheduleTable : public QWidget
+{
+  Q_OBJECT
+  using SessionState = CheckSessionData::SessionState;
+  using Session = schedule::Session;
+  using Schedule = schedule::Schedule;
+  enum Column {
+    kState    = 0,
+    kDate      = 1,
+    kTime      = 2,
+    kSatName  = 3,
+    kCulmin   = 4,
+    kDuration = 5,
+    kDirect   = 6,
+    kRevol    = 7,
+  };
+
+public:
+  explicit ScheduleTable(QWidget *parent = 0);
+  ~ScheduleTable();
+  void init();
+
+  Session getSession(const QString& satellite, int revol, int time_offset);
+  
+signals:
+  void changeSession(const Session& session);
+  void changeNear(std::shared_ptr<Session> near);
+
+private slots:
+  void slotInitScheduleChannel();
+  void slotConnectToSchedule();
+  void slotDisconnectedFromSchedule();
+
+  void slotInitAppManagerChannel();
+  void slotConnectToAppManager();
+  void slotDisconnectedFromAppManager();
+
+  void slotCheckSession();                          //!< Проверить готовность сессии
+  void slotFillSchedule();                          //!< Загрузить расписания
+  void slotChangedSchedule(int row, int col, int prevRow, int prevCol); //!< Сменить задание для визуализации
+  void slotScheduleDoubleClicked(int row, int col); //!< Обработать двойной клик по заданию
+  void toggleMissingSchedule(int index);            //!< Обработать клика по заголовку
+  void coloredRow(const SessionState& state);
+
+private:
+  void loadSettings();           //!< Загрузка настройки плагина
+  void saveSettings() const;     //!< Записать настройки плагина
+
+  void deleteScheduleChannel();
+  bool subscribeSchedule();
+  void callbackSchedule(conf::ScheduleResponse *reply);
+
+
+  void deleteAppManagerChannel();
+  bool subscribeAppManager();
+  void callbackAppManager(meteo::app::AppState_Proc *reply);
+
+  bool toggleAdopted(Session* session) const;     //!< Переключить задания в режим пропуск/получение
+
+  QString cellText(int row, int col) const;       //!< Текст ячейки в таблице ui_.scheduleTblWdg
+  int getSessionRow(const Session& session) const;//!< Строка с ближайшим сеансом
+
+private:
+  Ui::ScheduleTable*         ui_;
+  std::shared_ptr<Schedule>  sched_;              //!< Расписание
+  std::shared_ptr<Session>   near_;               //!< Ближайщая/текущая сессия
+  Session::stage_t           nearStage_;          //!< Состояние ближайщего сеанса перед срабатывание таймера
+
+  QPair<QString, ulong>      selectSession_;      //!< Выбранный сеанс
+
+  bool                       extendedMode_;       //!< Расширенный режим ( возможность просматривать принятые сеансы)
+  bool                       showComplitedSeans_; //!< Флаг показать/скрыть выполненые сеансы
+  bool                       loadedSettings_;     //!< Флаг были ли загружены настройки
+  bool                       receiverRunning_;
+  QTimer*                    updateTimer_;        //!< Таймер проверки начала сессии
+
+  meteo::rpc::Channel*              chSchedule_;         //!< Канал подписки на получение расписания
+  //  meteo::rpc::TController*          ctrlSchedule_;       //!< Контроллер подписки на получение расписания
+  //conf::ScheduleReply*       replySchedule_;
+
+  meteo::rpc::Channel*              chAppManager_;       //!< Канал подписки на получение расписания
+  //  meteo::rpc::TController*          ctrlAppManager_;     //!< Контроллер подписки на получение расписания
+  //meteo::app::AppState_Proc* replyAppManager_;
+  int timeOffset_  = 0; //!< Разница между реальным временем и виртуальным (для тестового приёма)
+
+private:
+  static void setBackgroundRow(QTableWidget *table, int row, const QBrush& color);
+
+  static void fillRow(QTableWidget* table, int row, const Session& session, int timeOffset);
+  static void insertRow(QTableWidget* table, const Session& session, int timeOffset);
+
+  static void fillCell(QTableWidgetItem *item, Column col, const Session &session, int timeOffset);
+  static QTableWidgetItem* createCell(Column col, const Session &session, int timeOffset);
+
+  static bool getReceiverServiceRunning();
+
+  static QPixmap getEyeIcon(bool active);             //!< Создать обычный / серый глаз
+  static QString getStateHeaderTooltip(bool active);  //!< Создать подсказку к заголовку столбца состояние сеанса
+
+  static QPixmap getDirectionIcon(conf::SatDirection direction);     //!< Значок ячейки "Направление движения"
+  static QString getDirectionTooltip(conf::SatDirection direction);  //!< Подсказка ячейки "Направление движения"
+};
+
+} //mappi
+
+#endif // MAPPI_UI_SCHEDULETABLE_SCHEDULETABLE_H

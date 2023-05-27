@@ -1,0 +1,3 @@
+SELECT * FROM meteo.stations WHERE
+station = ANY (@station@))
+station_type = ANY (@station_type@));

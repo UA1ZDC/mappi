@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/meteo/appclient">
+        <file>icons/connect.png</file>
+        <file>icons/desktop_disable.png</file>
+        <file>icons/desktop.png</file>
+        <file>icons/home.png</file>
+        <file>icons/ok.png</file>
+        <file>icons/process_error.png</file>
+        <file>icons/process_none.png</file>
+        <file>icons/process_ok.png</file>
+        <file>icons/process_warn.png</file>
+        <file>icons/readdata.png</file>
+        <file>icons/restart_green.png</file>
+        <file>icons/restart_red.png</file>
+        <file>icons/run_proc.png</file>
+        <file>icons/settings.png</file>
+        <file>icons/stop_proc.png</file>
+        <file>icons/table.png</file>
+        <file>icons/ledgreen.png</file>
+        <file>icons/ledgrey.png</file>
+        <file>icons/ledred.png</file>
+        <file>icons/ledyellow.png</file>
+        <file>icons/cancel.png</file>
+        <file>icons/find.png</file>
+        <file>icons/help.png</file>
+        <file>icons/server.png</file>
+        <file>icons/find_64.png</file>
+        <file>icons/find_32.png</file>
+        <file>icons/find_48.png</file>
+        <file>icons/connect_creating.png</file>
+        <file>icons/clear.png</file>
+        <file>icons/zoomin.png</file>
+        <file>icons/zoomout.png</file>
+    </qresource>
+</RCC>

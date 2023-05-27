@@ -1,0 +1,12 @@
+name: "meteosummary.map"
+title: "Метеосводка"
+formal {
+    template: "Meteosummary.odt"
+    name: "Метеосводка"
+    module_path: "meteosummary.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteosummary.png"
+}
+document {
+  doctype: kFormalDocument
+}

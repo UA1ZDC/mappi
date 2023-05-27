@@ -1,0 +1,1247 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<grib2products>
+
+  <!-- Analysis or forecast at a horizontal level or in a horizontal layer at a point in time.  (see Template 4.0) -->
+  <prod template="0" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+  </prod>  
+  
+  <!--Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time. (see Template 4.1)  -->
+  <prod template="1" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="2"  name="ensembleType" />
+    <val idx="36" size="1" pbnum="3"  name="perturbNum" />
+    <val idx="37" size="1" pbnum="4"  name="ensembleNum" />
+  </prod>  
+
+  <!--Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer at a point in time.  (see Template 4.2)  -->
+ <prod template="2" startIdx="10">
+   <val idx="10" pbnum="1"  name="pc" >
+     <val idx="10" size="1" pbnum="1"  name="category" />
+     <val idx="11" size="1" pbnum="2"  name="number" />
+     <val idx="12" size="1" pbnum="3"  name="processType" />
+     <val idx="13" size="1" pbnum="4"  name="backId" />
+     <val idx="14" size="1" pbnum="5"  name="id" />
+     <val idx="15" size="2" pbnum="6"  name="hours" />
+     <val idx="17" size="1" pbnum="7"  name="min" />
+     <val idx="19" size="4" pbnum="8"  type="custom"  subtype="time" name="forecastTime"  >
+       <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+     </val>
+     <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+     <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+     <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+     <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+   </val>
+   <val idx="35" size="1" pbnum="5"  name="derived" />
+   <val idx="36" size="1" pbnum="4"  name="ensembleNum" />
+ </prod>  
+
+  <!-- Derived forecasts based on a cluster of ensemble members over a rectangular area at a horizontal level or in a horizontal layer at a point in time (see Template 4.3)  -->
+ <prod template="3" startIdx="10">
+   <val idx="10" pbnum="1"  name="pc" >
+     <val idx="10" size="1" pbnum="1"  name="category" />
+     <val idx="11" size="1" pbnum="2"  name="number" />
+     <val idx="12" size="1" pbnum="3"  name="processType" />
+     <val idx="13" size="1" pbnum="4"  name="backId" />
+     <val idx="14" size="1" pbnum="5"  name="id" />
+     <val idx="15" size="2" pbnum="6"  name="hours" />
+     <val idx="17" size="1" pbnum="7"  name="min" />
+     <val idx="19" size="4" pbnum="8"  type="custom"  subtype="time" name="forecastTime"  >
+       <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+     </val>
+     <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+     <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+     <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+     <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+   </val>
+   <val idx="35" size="1" pbnum="2"  name="derived" />
+   <val idx="36" size="1" pbnum="3"  name="ensembleNum" />
+   <val idx="37" size="1" pbnum="4"  name="clusterId" />
+   <val idx="38" size="1" pbnum="5"  name="clusterNumHigh" />
+   <val idx="39" size="1" pbnum="6"  name="clusterNumLow" />
+   <val idx="40" size="1" pbnum="7"  name="clusterNum" />
+   <val idx="41" size="1" pbnum="8"  name="clusterMethod" />
+   <val idx="42" size="4" pbnum="9"  name="latN" />
+   <val idx="46" size="4" pbnum="10"  name="latS" />
+   <val idx="50" size="4" pbnum="11"  name="lonE" />
+   <val idx="54" size="4" pbnum="12"  name="lonW" />
+   <val idx="58" size="1" pbnum="13"  name="Nc" />
+   <val factor_idx="59" factor_size="1" value_idx="60" value_size="4" pbnum="14" type="scaled" name="deviation" />
+   <val factor_idx="64" factor_size="1" value_idx="65" value_size="4" pbnum="15" type="scaled" name="distance" />
+   <val idx="69" size="1" pbnum="16" field="repeated" cnt_pbnum="13" name="listNum" />
+ </prod>  
+
+
+  <!-- Derived forecasts based on a cluster of ensemble members over a circular area at a horizontal level or in a horizontal layer at a point in time (see Template 4.4)  -->
+ <prod template="4" startIdx="10">
+   <val idx="10" pbnum="1"  name="pc" >
+     <val idx="10" size="1" pbnum="1"  name="category" />
+     <val idx="11" size="1" pbnum="2"  name="number" />
+     <val idx="12" size="1" pbnum="3"  name="processType" />
+     <val idx="13" size="1" pbnum="4"  name="backId" />
+     <val idx="14" size="1" pbnum="5"  name="id" />
+     <val idx="15" size="2" pbnum="6"  name="hours" />
+     <val idx="17" size="1" pbnum="7"  name="min" />
+     <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+       <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+     </val>
+     <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+     <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+     <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+     <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+   </val>
+   <val idx="35" size="1" pbnum="2"  name="derived" />
+   <val idx="36" size="1" pbnum="3"  name="ensembleNum" />
+   <val idx="37" size="1" pbnum="4"  name="clusterId" />
+   <val idx="38" size="1" pbnum="5"  name="clusterNumHigh" />
+   <val idx="39" size="1" pbnum="6"  name="clusterNumLow" />
+   <val idx="40" size="1" pbnum="7"  name="clusterNum" />
+   <val idx="41" size="1" pbnum="8"  name="clusterMethod" />
+   <val idx="42" size="4" pbnum="17"  name="latC" />
+   <val idx="46" size="4" pbnum="18"  name="lonC" />
+   <val idx="50" size="4" pbnum="19"  name="rad" />
+   <val idx="54" size="1" pbnum="13"  name="Nc" />
+   <val factor_idx="55" factor_size="1" value_idx="56" value_size="4" pbnum="14" type="scaled" name="deviation" />
+   <val factor_idx="60" factor_size="1" value_idx="61" value_size="4" pbnum="15" type="scaled" name="distance" />
+   <val idx="65" size="1" pbnum="16" field="repeated" cnt_pbnum="13" name="listNum" />
+ </prod>  
+
+<!-- Probability forecasts at a horizontal level or in a horizontal layer at a point in time (see Template 4.5) -->
+ <prod template="5" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="2"  name="probabNum" />
+    <val idx="36" size="1" pbnum="3"  name="totalNum" />
+    <val idx="37" size="1" pbnum="4"  name="probabType" />
+    <val factor_idx="38" factor_size="1" value_idx="39" value_size="4" pbnum="5" type="scaled" name="lowLim" />
+    <val factor_idx="43" factor_size="1" value_idx="44" value_size="4" pbnum="6" type="scaled" name="upLim" />
+  </prod>  
+
+  <!-- Percentile forecasts at a horizontal lelevelor in a horizontal layer at a point in time (see Template 4.6) -->
+  <prod template="6" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="6"  name="percent" />
+  </prod> 
+
+  <!-- Analysis or forecast error at a horizontal level or in a horizontal layer at a point in time (see Template 4.7) -->
+  <prod template="7" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+  </prod>  
+
+  <!-- Average, Accumulation and/or Extreme values or other Statistically-processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval (see Template 4.8) -->
+  <prod template="8" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" pbnum="10"  name="ti" >
+      <val idx="35" size="2" pbnum="1"  name="endYear" />
+      <val idx="37" size="1" pbnum="2"  name="endMonth" />
+      <val idx="38" size="1" pbnum="3"  name="endDay" />
+      <val idx="39" size="1" pbnum="4"  name="endHour" />
+      <val idx="40" size="1" pbnum="5"  name="endMinute" />
+      <val idx="41" size="1" pbnum="6"  name="endSecond" />
+      <val idx="42" size="1" pbnum="7"  name="n" />
+      <val idx="43" size="4" pbnum="8"  name="missing" />
+      <val idx="47" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="47" size="1" pbnum="1" name="statProc" />
+	<val idx="48" size="1" pbnum="2" name="timeRange" />
+	<val idx="50" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="49" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="54" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="53" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>
+    </val>
+  </prod>  
+
+  <!-- Probability forecasts at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval (see Template 4.9) -->
+  <prod template="9" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="2"  name="probabNum" />
+    <val idx="36" size="1" pbnum="3"  name="totalNum" />
+    <val idx="37" size="1" pbnum="4"  name="probabType" />
+    <val factor_idx="38" factor_size="1" value_idx="39" value_size="4" pbnum="5" type="scaled" name="lowLim" />
+    <val factor_idx="43" factor_size="1" value_idx="44" value_size="4" pbnum="6" type="scaled" name="upLim" />
+    <val idx="48" pbnum="7"  name="ti" >
+      <val idx="48" size="2" pbnum="1"  name="endYear" />
+      <val idx="50" size="1" pbnum="2"  name="endMonth" />
+      <val idx="51" size="1" pbnum="3"  name="endDay" />
+      <val idx="52" size="1" pbnum="4"  name="endHour" />
+      <val idx="53" size="1" pbnum="5"  name="endMinute" />
+      <val idx="54" size="1" pbnum="6"  name="endSecond" />
+      <val idx="55" size="1" pbnum="7"  name="n" />
+      <val idx="56" size="4" pbnum="8"  name="missing" />
+      <val idx="60" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="60" size="1" pbnum="1" name="statProc" />
+	<val idx="61" size="1" pbnum="2" name="timeRange" />
+	<val idx="63" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="62" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="68" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="67" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>
+    </val>
+  </prod>  
+
+
+  <!-- Percentile forecasts at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval (see Template 4.10) -->
+  <prod template="10" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="6"  name="percent" />
+    <val idx="36" pbnum="10"  name="ti" >
+      <val idx="36" size="2" pbnum="1"  name="endYear" />
+      <val idx="38" size="1" pbnum="2"  name="endMonth" />
+      <val idx="39" size="1" pbnum="3"  name="endDay" />
+      <val idx="40" size="1" pbnum="4"  name="endHour" />
+      <val idx="41" size="1" pbnum="5"  name="endMinute" />
+      <val idx="42" size="1" pbnum="6"  name="endSecond" />
+      <val idx="43" size="1" pbnum="7"  name="n" />
+      <val idx="44" size="4" pbnum="8"  name="missing" />
+      <val idx="48" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="48" size="1" pbnum="1" name="statProc" />
+	<val idx="49" size="1" pbnum="2" name="timeRange" />
+	<val idx="51" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="50" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="56" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="55" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>    
+    </val>
+  </prod> 
+
+
+  <!-- Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval (see Template 4.11)  -->
+  <prod template="11" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="2"  name="ensembleType" />
+    <val idx="36" size="1" pbnum="3"  name="perturbNum" />
+    <val idx="37" size="1" pbnum="4"  name="ensembleNum" />
+    <val idx="38" pbnum="10"  name="ti" >
+      <val idx="38" size="2" pbnum="1"  name="endYear" />
+      <val idx="40" size="1" pbnum="2"  name="endMonth" />
+      <val idx="41" size="1" pbnum="3"  name="endDay" />
+      <val idx="42" size="1" pbnum="4"  name="endHour" />
+      <val idx="43" size="1" pbnum="5"  name="endMinute" />
+      <val idx="44" size="1" pbnum="6"  name="endSecond" />
+      <val idx="45" size="1" pbnum="7"  name="n" />
+      <val idx="46" size="4" pbnum="8"  name="missing" />
+      <val idx="50" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="50" size="1" pbnum="1" name="statProc" />
+	<val idx="51" size="1" pbnum="2" name="timeRange" />
+	<val idx="53" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="52" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="58" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="57" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>    
+    </val>
+  </prod> 
+
+
+  <!-- Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval  (see Template 4.12)  -->
+ <prod template="12" startIdx="10">
+   <val idx="10" pbnum="1"  name="pc" >
+     <val idx="10" size="1" pbnum="1"  name="category" />
+     <val idx="11" size="1" pbnum="2"  name="number" />
+     <val idx="12" size="1" pbnum="3"  name="processType" />
+     <val idx="13" size="1" pbnum="4"  name="backId" />
+     <val idx="14" size="1" pbnum="5"  name="id" />
+     <val idx="15" size="2" pbnum="6"  name="hours" />
+     <val idx="17" size="1" pbnum="7"  name="min" />
+     <val idx="19" size="4" pbnum="8"  type="custom"  subtype="time" name="forecastTime"  >
+       <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+     </val>
+     <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+     <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+     <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+     <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+   </val>
+   <val idx="35" size="1" pbnum="5"  name="derived" />
+   <val idx="36" size="1" pbnum="4"  name="ensembleNum" />
+   <val idx="37" pbnum="10"  name="ti" >
+     <val idx="37" size="2" pbnum="1"  name="endYear" />
+     <val idx="39" size="1" pbnum="2"  name="endMonth" />
+     <val idx="40" size="1" pbnum="3"  name="endDay" />
+     <val idx="41" size="1" pbnum="4"  name="endHour" />
+     <val idx="42" size="1" pbnum="5"  name="endMinute" />
+     <val idx="43" size="1" pbnum="6"  name="endSecond" />
+     <val idx="44" size="1" pbnum="7"  name="n" />
+     <val idx="45" size="4" pbnum="8"  name="missing" />
+     <val idx="49" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+       <val idx="49" size="1" pbnum="1" name="statProc" />
+       <val idx="50" size="1" pbnum="2" name="timeRange" />
+       <val idx="52" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	 <unit idx="51" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+       </val>
+       <val idx="57" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	 <unit idx="56" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+       </val>
+     </val>    
+   </val>  
+ </prod>  
+
+
+  <!-- Derived forecasts based on a cluster of ensemble members over a rectangular area at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval (see Template 4.13)  -->
+ <prod template="13" startIdx="10">
+   <val idx="10" pbnum="1"  name="pc" >
+     <val idx="10" size="1" pbnum="1"  name="category" />
+     <val idx="11" size="1" pbnum="2"  name="number" />
+     <val idx="12" size="1" pbnum="3"  name="processType" />
+     <val idx="13" size="1" pbnum="4"  name="backId" />
+     <val idx="14" size="1" pbnum="5"  name="id" />
+     <val idx="15" size="2" pbnum="6"  name="hours" />
+     <val idx="17" size="1" pbnum="7"  name="min" />
+     <val idx="19" size="4" pbnum="8"  type="custom"  subtype="time" name="forecastTime"  >
+       <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+     </val>
+     <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+     <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+     <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+     <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+   </val>
+   <val idx="35" size="1" pbnum="2"  name="derived" />
+   <val idx="36" size="1" pbnum="3"  name="ensembleNum" />
+   <val idx="37" size="1" pbnum="4"  name="clusterId" />
+   <val idx="38" size="1" pbnum="5"  name="clusterNumHigh" />
+   <val idx="39" size="1" pbnum="6"  name="clusterNumLow" />
+   <val idx="40" size="1" pbnum="7"  name="clusterNum" />
+   <val idx="41" size="1" pbnum="8"  name="clusterMethod" />
+   <val idx="42" size="4" pbnum="9"  name="latN" />
+   <val idx="46" size="4" pbnum="10"  name="latS" />
+   <val idx="50" size="4" pbnum="11"  name="lonE" />
+   <val idx="54" size="4" pbnum="12"  name="lonW" />
+   <val idx="58" size="1" pbnum="13"  name="Nc" />
+   <val factor_idx="59" factor_size="1" value_idx="60" value_size="4" pbnum="14" type="scaled" name="deviation" />
+   <val factor_idx="64" factor_size="1" value_idx="65" value_size="4" pbnum="15" type="scaled" name="distance" />
+   <val idx="69" pbnum="20"  name="ti" >
+     <val idx="69" size="2" pbnum="1"  name="endYear" />
+     <val idx="71" size="1" pbnum="2"  name="endMonth" />
+     <val idx="72" size="1" pbnum="3"  name="endDay" />
+     <val idx="73" size="1" pbnum="4"  name="endHour" />
+     <val idx="74" size="1" pbnum="5"  name="endMinute" />
+     <val idx="75" size="1" pbnum="6"  name="endSecond" />
+     <val idx="76" size="1" pbnum="7"  name="n" />
+     <val idx="77" size="4" pbnum="8"  name="missing" />
+     <val idx="81" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+       <val idx="81" size="1" pbnum="1" name="statProc" />
+       <val idx="82" size="1" pbnum="2" name="timeRange" />
+       <val idx="84" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	 <unit idx="83" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+       </val>
+       <val idx="89" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	 <unit idx="88" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+       </val>
+     </val>    
+   </val>  
+   <val idx="81" offset_pbnum="7" offset_size="12" size="1" pbnum="16" field="repeated" cnt_pbnum="13" name="listNum" />
+ </prod>  
+
+  <!-- Derived forecasts based on a cluster of ensemble members over a circular area at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval (see Template 4.14)  -->
+ <prod template="14" startIdx="10">
+   <val idx="10" pbnum="1"  name="pc" >
+     <val idx="10" size="1" pbnum="1"  name="category" />
+     <val idx="11" size="1" pbnum="2"  name="number" />
+     <val idx="12" size="1" pbnum="3"  name="processType" />
+     <val idx="13" size="1" pbnum="4"  name="backId" />
+     <val idx="14" size="1" pbnum="5"  name="id" />
+     <val idx="15" size="2" pbnum="6"  name="hours" />
+     <val idx="17" size="1" pbnum="7"  name="min" />
+     <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+       <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+     </val>
+     <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+     <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+     <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+     <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+   </val>
+   <val idx="35" size="1" pbnum="2"  name="derived" />
+   <val idx="36" size="1" pbnum="3"  name="ensembleNum" />
+   <val idx="37" size="1" pbnum="4"  name="clusterId" />
+   <val idx="38" size="1" pbnum="5"  name="clusterNumHigh" />
+   <val idx="39" size="1" pbnum="6"  name="clusterNumLow" />
+   <val idx="40" size="1" pbnum="7"  name="clusterNum" />
+   <val idx="41" size="1" pbnum="8"  name="clusterMethod" />
+   <val idx="42" size="4" pbnum="17"  name="latC" />
+   <val idx="46" size="4" pbnum="18"  name="lonC" />
+   <val idx="50" size="4" pbnum="19"  name="rad" />
+   <val idx="54" size="1" pbnum="13"  name="Nc" />
+   <val factor_idx="55" factor_size="1" value_idx="56" value_size="4" pbnum="14" type="scaled" name="deviation" />
+   <val factor_idx="60" factor_size="1" value_idx="61" value_size="4" pbnum="15" type="scaled" name="distance" />
+   <val idx="65" pbnum="20"  name="ti" >
+     <val idx="65" size="2" pbnum="1"  name="endYear" />
+     <val idx="67" size="1" pbnum="2"  name="endMonth" />
+     <val idx="68" size="1" pbnum="3"  name="endDay" />
+     <val idx="79" size="1" pbnum="4"  name="endHour" />
+     <val idx="70" size="1" pbnum="5"  name="endMinute" />
+     <val idx="71" size="1" pbnum="6"  name="endSecond" />
+     <val idx="72" size="1" pbnum="7"  name="n" />
+     <val idx="73" size="4" pbnum="8"  name="missing" />
+     <val idx="77" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+       <val idx="77" size="1" pbnum="1" name="statProc" />
+       <val idx="78" size="1" pbnum="2" name="timeRange" />
+       <val idx="80" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	 <unit idx="79" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+       </val>
+       <val idx="85" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	 <unit idx="84" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+       </val>
+     </val>    
+   </val> 
+   <val idx="77" size="1" pbnum="16" field="repeated" cnt_pbnum="13" name="listNum" />
+ </prod>
+
+  <!-- Average, Accumulation, Extreme values or Other statistically-processed values over values over a spatial area at horizontal level or in a horizontal layer at a point in time (see Template 4.15) -->
+  <prod template="15" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="7"  name="statProc" />
+    <val idx="36" size="1" pbnum="8"  name="spatialType" />
+    <val idx="37" size="1" pbnum="9"  name="spatialNum" />
+  </prod> 
+
+
+  <!-- Radar product (see Template 4.20) -->
+  <prod template="20" startIdx="10">
+    <val idx="10" size="1" pbnum="1"  name="category" />
+    <val idx="11" size="1" pbnum="2"  name="number" />
+    <val idx="12" size="1" pbnum="3"  name="processType" />
+    <val idx="13" size="1" pbnum="4"  name="numSites" />
+    <val idx="14" size="1" pbnum="5"  name="timeUnit" />
+    <val idx="15" size="4" pbnum="6"  name="lat" />
+    <val idx="19" size="4" pbnum="7"  name="lon" />
+    <val idx="23" size="2" pbnum="8"  name="el" />
+    <val idx="25" size="4" pbnum="9"  name="id_an" />
+    <val idx="29" size="2" pbnum="10"  name="id" />
+    <val idx="31" size="1" pbnum="11"  name="mode" />
+    <val idx="32" size="1" pbnum="12"  name="calibr" />
+    <val idx="33" size="1" pbnum="13"  name="qual" />
+    <val idx="34" size="1" pbnum="14"  name="filtr" />
+    <val idx="35" size="1" pbnum="15"  name="el_angle" />
+    <val idx="36" size="2" pbnum="16"  name="accum" />
+    <val idx="38" size="1" pbnum="17"  name="refl" />
+    <val idx="39" size="3" pbnum="18"  name="rangeSpacing" />
+    <val idx="42" size="2" pbnum="19"  name="anularSpacing" />
+  </prod>
+
+
+  <!-- Satellite Product (see Template 4.31) -->
+  <prod template="31" startIdx="10">
+    <val idx="10" size="1" pbnum="1"  name="category" />
+    <val idx="11" size="1" pbnum="2"  name="number" />
+    <val idx="12" size="1" pbnum="3"  name="processType" />
+    <val idx="13" size="1" pbnum="4"  name="backId" />
+    <val idx="14" size="1" pbnum="9"  name="nb" />
+    <val idx="15" size="11" pbnum="10" field="repeated" cnt_pbnum="9" name="sb">
+      <val idx="15" size="2" pbnum="1"  name="series" />
+      <val idx="17" size="2" pbnum="2"  name="number" />
+      <val idx="19" size="2" pbnum="3"  name="instrument" />
+      <val factor_idx="21" factor_size="1" value_idx="22" value_size="4" pbnum="4" type="scaled" name="waveNum" />
+    </val>
+  </prod>
+
+
+  <!-- Analysis or Forecast at a horizontal level or in a horizontal layer at a point in time for simulated (synthetic) satellite data (see Template 4.32) -->
+  <prod template="32" startIdx="10">
+    <val idx="10" size="1" pbnum="1"  name="category" />
+    <val idx="11" size="1" pbnum="2"  name="number" />
+    <val idx="12" size="1" pbnum="3"  name="processType" />
+    <val idx="13" size="1" pbnum="4"  name="backId" />
+    <val idx="14" size="1" pbnum="5"  name="id" />
+    <val idx="15" size="2" pbnum="6"  name="hours" />
+    <val idx="17" size="1" pbnum="7"  name="min" />
+    <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime" >
+      <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1" />
+    </val>
+    <val idx="23" size="1" pbnum="9"  name="nb" />
+    <val idx="24" size="11" pbnum="10" field="repeated" cnt_pbnum="9" name="sb">
+      <val idx="24" size="2" pbnum="1"  name="series" />
+      <val idx="26" size="2" pbnum="2"  name="number" />
+      <val idx="28" size="2" pbnum="3"  name="instrument" />
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="4" type="scaled" name="waveNum" />
+    </val>
+  </prod>
+  
+
+  <!-- Individual Ensemble Forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time for simulated (synthetic) satellite data (see Template 4.33) -->
+  <prod template="33" startIdx="10">
+    <val idx="10" size="1" pbnum="1"  name="category" />
+    <val idx="11" size="1" pbnum="2"  name="number" />
+    <val idx="12" size="1" pbnum="3"  name="processType" />
+    <val idx="13" size="1" pbnum="4"  name="backId" />
+    <val idx="14" size="1" pbnum="5"  name="id" />
+    <val idx="15" size="2" pbnum="6"  name="hours" />
+    <val idx="17" size="1" pbnum="7"  name="min" />
+    <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime" >
+      <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1" />
+    </val>
+    <val idx="23" size="1" pbnum="9"  name="nb" />
+    <val idx="24" size="11" pbnum="10" field="repeated" cnt_pbnum="9" name="sb">
+      <val idx="24" size="2" pbnum="1"  name="series" />
+      <val idx="26" size="2" pbnum="2"  name="number" />
+      <val idx="28" size="2" pbnum="3"  name="instrument" />
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="4" type="scaled" name="waveNum" />
+    </val>
+    <val idx="24" offset_pbnum="9" offset_size="11" size="1" pbnum="11"  name="ensembleType" />
+    <val idx="25" offset_pbnum="9" offset_size="11" size="1" pbnum="12"  name="perturbNum" />
+    <val idx="26" offset_pbnum="9" offset_size="11" size="1" pbnum="13"  name="ensembleNum" />
+  </prod>
+
+
+  <!-- Individual Ensemble Forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous interval for simulated (synthetic) satellite data (see Template 4.34) -->
+  <prod template="34" startIdx="10">
+    <val idx="10" size="1" pbnum="1"  name="category" />
+    <val idx="11" size="1" pbnum="2"  name="number" />
+    <val idx="12" size="1" pbnum="3"  name="processType" />
+    <val idx="13" size="1" pbnum="4"  name="backId" />
+    <val idx="14" size="1" pbnum="5"  name="id" />
+    <val idx="15" size="2" pbnum="6"  name="hours" />
+    <val idx="17" size="1" pbnum="7"  name="min" />
+    <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime" >
+      <unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1" />
+    </val>
+    <val idx="23" size="1" pbnum="9"  name="nb" />
+    <val idx="24" size="11" pbnum="10" field="repeated" cnt_pbnum="9" name="sb">
+      <val idx="24" size="2" pbnum="1"  name="series" />
+      <val idx="26" size="2" pbnum="2"  name="number" />
+      <val idx="28" size="2" pbnum="3"  name="instrument" />
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="4" type="scaled" name="waveNum" />
+    </val>
+    <val idx="24" offset_pbnum="9" offset_size="11" size="1" pbnum="11"  name="ensembleType" />
+    <val idx="25" offset_pbnum="9" offset_size="11" size="1" pbnum="12"  name="perturbNum" />
+    <val idx="26" offset_pbnum="9" offset_size="11" size="1" pbnum="13"  name="ensembleNum" />
+    <val idx="27" offset_pbnum="9" offset_size="11" pbnum="14" name="ti" >
+     <val idx="27" size="2" pbnum="1"  name="endYear" />
+     <val idx="29" size="1" pbnum="2"  name="endMonth" />
+     <val idx="30" size="1" pbnum="3"  name="endDay" />
+     <val idx="31" size="1" pbnum="4"  name="endHour" />
+     <val idx="32" size="1" pbnum="5"  name="endMinute" />
+     <val idx="33" size="1" pbnum="6"  name="endSecond" />
+     <val idx="34" size="1" pbnum="7"  name="n" />
+     <val idx="35" size="4" pbnum="8"  name="missing" />
+     <val idx="39" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+       <val idx="39" size="1" pbnum="1" name="statProc" />
+       <val idx="40" size="1" pbnum="2" name="timeRange" />
+       <val idx="42" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	 <unit idx="41" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+       </val>
+       <val idx="46" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	 <unit idx="47" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+       </val>
+     </val>    
+   </val> 
+  </prod>
+
+
+ <!-- Analysis or Forecast at a horizontal level or in a horizontal layer at a point in time for atmospheric chemical constituents (see Template 4.40) -->
+  <prod template="40" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="15"  name="chemType" />
+      <val idx="14" size="1" pbnum="3"  name="processType" />
+      <val idx="15" size="1" pbnum="4"  name="backId" />
+      <val idx="16" size="1" pbnum="5"  name="id" />
+      <val idx="17" size="2" pbnum="6"  name="hours" />
+      <val idx="19" size="1" pbnum="7"  name="min" />
+      <val idx="21" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="20" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="25" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="26" factor_size="1" value_idx="27" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="31" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="32" factor_size="1" value_idx="33" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+  </prod>  
+
+
+ <!-- Individual ensemble forecast, control and perturbed, at a horizontal level or
+in a horizontal layer at a point in time for atmospheric chemical constituents (see Template 4.41) -->
+  <prod template="41" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="15"  name="chemType" />
+      <val idx="14" size="1" pbnum="3"  name="processType" />
+      <val idx="15" size="1" pbnum="4"  name="backId" />
+      <val idx="16" size="1" pbnum="5"  name="id" />
+      <val idx="17" size="2" pbnum="6"  name="hours" />
+      <val idx="19" size="1" pbnum="7"  name="min" />
+      <val idx="21" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="20" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="25" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="26" factor_size="1" value_idx="27" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="31" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="32" factor_size="1" value_idx="33" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="37" size="1" pbnum="2"  name="ensembleType" />
+    <val idx="38" size="1" pbnum="3"  name="perturbNum" />
+    <val idx="39" size="1" pbnum="4"  name="ensembleNum" />
+  </prod>  
+
+
+  <!-- Average, Accumulation, and/or Extreme values or Other statistically-processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for atmospheric chemical constituents (see Template 4.42) -->
+  <prod template="42" startIdx="10">
+     <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="15"  name="chemType" />
+      <val idx="14" size="1" pbnum="3"  name="processType" />
+      <val idx="15" size="1" pbnum="4"  name="backId" />
+      <val idx="16" size="1" pbnum="5"  name="id" />
+      <val idx="17" size="2" pbnum="6"  name="hours" />
+      <val idx="19" size="1" pbnum="7"  name="min" />
+      <val idx="21" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="20" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="25" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="26" factor_size="1" value_idx="27" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="31" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="32" factor_size="1" value_idx="33" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="37" pbnum="10"  name="ti" >
+      <val idx="37" size="2" pbnum="1"  name="endYear" />
+      <val idx="39" size="1" pbnum="2"  name="endMonth" />
+      <val idx="40" size="1" pbnum="3"  name="endDay" />
+      <val idx="41" size="1" pbnum="4"  name="endHour" />
+      <val idx="42" size="1" pbnum="5"  name="endMinute" />
+      <val idx="43" size="1" pbnum="6"  name="endSecond" />
+      <val idx="44" size="1" pbnum="7"  name="n" />
+      <val idx="45" size="4" pbnum="8"  name="missing" />
+      <val idx="49" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="49" size="1" pbnum="1" name="statProc" />
+	<val idx="50" size="1" pbnum="2" name="timeRange" />
+	<val idx="52" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="51" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="57" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="56" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>
+    </val>
+  </prod>  
+
+
+  <!-- Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal ayer in a continuous or non-continuous time interval for atmospheric chemical constituents (see Template 4.43) -->
+  <prod template="43" startIdx="10">
+  <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="15"  name="chemType" />
+      <val idx="14" size="1" pbnum="3"  name="processType" />
+      <val idx="15" size="1" pbnum="4"  name="backId" />
+      <val idx="16" size="1" pbnum="5"  name="id" />
+      <val idx="17" size="2" pbnum="6"  name="hours" />
+      <val idx="19" size="1" pbnum="7"  name="min" />
+      <val idx="21" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="20" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="25" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="26" factor_size="1" value_idx="27" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="31" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="32" factor_size="1" value_idx="33" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="37" size="1" pbnum="2"  name="ensembleType" />
+    <val idx="38" size="1" pbnum="3"  name="perturbNum" />
+    <val idx="39" size="1" pbnum="4"  name="ensembleNum" />
+    <val idx="40" pbnum="10"  name="ti" >
+      <val idx="40" size="2" pbnum="1"  name="endYear" />
+      <val idx="42" size="1" pbnum="2"  name="endMonth" />
+      <val idx="43" size="1" pbnum="3"  name="endDay" />
+      <val idx="44" size="1" pbnum="4"  name="endHour" />
+      <val idx="45" size="1" pbnum="5"  name="endMinute" />
+      <val idx="46" size="1" pbnum="6"  name="endSecond" />
+      <val idx="47" size="1" pbnum="7"  name="n" />
+      <val idx="48" size="4" pbnum="8"  name="missing" />
+      <val idx="52" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="52" size="1" pbnum="1" name="statProc" />
+	<val idx="53" size="1" pbnum="2" name="timeRange" />
+	<val idx="55" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="54" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="60" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="59" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>    
+    </val>
+  </prod> 
+
+
+  <!-- Analysis or Forecast at a horizontal level or in a horizontal layer at a point in time for Aerosol (see Template 4.44) -->
+  <prod template="44" startIdx="10">
+    <val idx="10" pbnum="1" name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="16"  name="aerosolType" />
+      <val idx="14" size="1" pbnum="17"  name="intervalType" />
+      <val factor_idx="15" factor_size="1" value_idx="16" value_size="4" pbnum="18"  name="firstSize" />
+      <val factor_idx="20" factor_size="1" value_idx="21" value_size="4"  pbnum="19"  name="secSize" />
+      <val idx="25" size="1" pbnum="3"  name="processType" />
+      <val idx="26" size="1" pbnum="4"  name="backId" />
+      <val idx="27" size="1" pbnum="5"  name="id" />
+      <val idx="28" size="2" pbnum="6"  name="hours" />
+      <val idx="30" size="1" pbnum="7"  name="min" />
+      <val idx="32" size="2" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="31" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="34" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="35" factor_size="1" value_idx="36" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="40" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="41" factor_size="1" value_idx="42" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+  </prod>  
+
+  <!-- Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time for Aerosol (see Template 4.45)-->
+  <prod template="45" startIdx="10">
+    <val idx="10" pbnum="1" name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="16"  name="aerosolType" />
+      <val idx="14" size="1" pbnum="17"  name="intervalType" />
+      <val factor_idx="15" factor_size="1" value_idx="16" value_size="4" pbnum="18"  name="firstSize" />
+      <val factor_idx="20" factor_size="1" value_idx="21" value_size="4"  pbnum="19"  name="secSize" />
+      <val idx="25" size="1" pbnum="3"  name="processType" />
+      <val idx="26" size="1" pbnum="4"  name="backId" />
+      <val idx="27" size="1" pbnum="5"  name="id" />
+      <val idx="28" size="2" pbnum="6"  name="hours" />
+      <val idx="30" size="1" pbnum="7"  name="min" />
+      <val idx="32" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="31" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="36" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="37" factor_size="1" value_idx="37" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="42" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="43" factor_size="1" value_idx="44" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="48" size="1" pbnum="2"  name="ensembleType" />
+    <val idx="49" size="1" pbnum="3"  name="perturbNum" />
+    <val idx="50" size="1" pbnum="4"  name="ensembleNum" />
+  </prod>  
+
+
+<!-- Average, Accumulation, and/or Extreme values or Other statistically-processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for aerosol (see Template 4.46) -->
+  <prod template="46" startIdx="10">
+    <val idx="10" pbnum="1" name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="16"  name="aerosolType" />
+      <val idx="14" size="1" pbnum="17"  name="intervalType" />
+      <val factor_idx="15" factor_size="1" value_idx="16" value_size="4" pbnum="18"  name="firstSize" />
+      <val factor_idx="20" factor_size="1" value_idx="21" value_size="4"  pbnum="19"  name="secSize" />
+      <val idx="25" size="1" pbnum="3"  name="processType" />
+      <val idx="26" size="1" pbnum="4"  name="backId" />
+      <val idx="27" size="1" pbnum="5"  name="id" />
+      <val idx="28" size="2" pbnum="6"  name="hours" />
+      <val idx="30" size="1" pbnum="7"  name="min" />
+      <val idx="32" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="31" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="36" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="37" factor_size="1" value_idx="37" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="42" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="43" factor_size="1" value_idx="44" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="48" pbnum="7"  name="ti" >
+      <val idx="48" size="2" pbnum="1"  name="endYear" />
+      <val idx="50" size="1" pbnum="2"  name="endMonth" />
+      <val idx="51" size="1" pbnum="3"  name="endDay" />
+      <val idx="52" size="1" pbnum="4"  name="endHour" />
+      <val idx="53" size="1" pbnum="5"  name="endMinute" />
+      <val idx="54" size="1" pbnum="6"  name="endSecond" />
+      <val idx="55" size="1" pbnum="7"  name="n" />
+      <val idx="56" size="4" pbnum="8"  name="missing" />
+      <val idx="60" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="60" size="1" pbnum="1" name="statProc" />
+	<val idx="61" size="1" pbnum="2" name="timeRange" />
+	<val idx="63" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="62" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="68" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="67" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>
+    </val>
+  </prod>  
+
+  <!--  Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for aerosol (see Template 4.47) -->
+   <prod template="47" startIdx="10">
+    <val idx="10" pbnum="1" name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="16"  name="aerosolType" />
+      <val idx="14" size="1" pbnum="17"  name="intervalType" />
+      <val factor_idx="15" factor_size="1" value_idx="16" value_size="4" pbnum="18"  name="firstSize" />
+      <val factor_idx="20" factor_size="1" value_idx="21" value_size="4"  pbnum="19"  name="secSize" />
+      <val idx="25" size="1" pbnum="3"  name="processType" />
+      <val idx="26" size="1" pbnum="4"  name="backId" />
+      <val idx="27" size="1" pbnum="5"  name="id" />
+      <val idx="28" size="2" pbnum="6"  name="hours" />
+      <val idx="30" size="1" pbnum="7"  name="min" />
+      <val idx="32" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="31" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="36" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="37" factor_size="1" value_idx="37" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="42" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="43" factor_size="1" value_idx="44" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="48" size="1" pbnum="2"  name="ensembleType" />
+    <val idx="49" size="1" pbnum="3"  name="perturbNum" />
+    <val idx="50" size="1" pbnum="4"  name="ensembleNum" />
+    <val idx="51" pbnum="10"  name="ti" >
+      <val idx="51" size="2" pbnum="1"  name="endYear" />
+      <val idx="53" size="1" pbnum="2"  name="endMonth" />
+      <val idx="54" size="1" pbnum="3"  name="endDay" />
+      <val idx="55" size="1" pbnum="4"  name="endHour" />
+      <val idx="56" size="1" pbnum="5"  name="endMinute" />
+      <val idx="57" size="1" pbnum="6"  name="endSecond" />
+      <val idx="58" size="1" pbnum="7"  name="n" />
+      <val idx="59" size="4" pbnum="8"  name="missing" />
+      <val idx="63" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="63" size="1" pbnum="1" name="statProc" />
+	<val idx="64" size="1" pbnum="2" name="timeRange" />
+	<val idx="66" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="65" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="71" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="70" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>    
+    </val>
+   </prod>
+
+
+  <!-- Analysis or Forecast at a horizontal level or in a horizontal layer at a point in time for Optical Properties of Aerosol (see Template 4.48) -->
+  <prod template="48" startIdx="10">
+    <val idx="10" pbnum="1" name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="2" pbnum="16"  name="aerosolType" />
+      <val idx="14" size="1" pbnum="17"  name="intervalType" />
+      <val factor_idx="15" factor_size="1" value_idx="16" value_size="4" pbnum="18"  name="firstSize" />
+      <val factor_idx="20" factor_size="1" value_idx="21" value_size="4"  pbnum="19"  name="secSize" />
+      <val idx="25" size="1" pbnum="20"  name="intervalType" />
+      <val factor_idx="25" factor_size="1" value_idx="27" value_size="4" pbnum="21"  name="firstWave" />
+      <val factor_idx="31" factor_size="1" value_idx="32" value_size="4"  pbnum="22"  name="secWave" />
+      <val idx="36" size="1" pbnum="3"  name="processType" />
+      <val idx="37" size="1" pbnum="4"  name="backId" />
+      <val idx="38" size="1" pbnum="5"  name="id" />
+      <val idx="39" size="2" pbnum="6"  name="hours" />
+      <val idx="41" size="1" pbnum="7"  name="min" />
+      <val idx="43" size="2" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="42" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="47" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="48" factor_size="1" value_idx="49" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="53" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="54" factor_size="1" value_idx="55" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+  </prod>  
+
+
+  <!-- Categorical forecasts at a horizonta level or in a horizontal layer at a point in time (see Template 4.51) -->
+   <prod template="51" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="2"  name="nc" />
+    <val idx="36" size="11" pbnum="3" field="repeated" cnt_pbnum="2" name="fc">
+      <val idx="36" size="1" pbnum="1"  name="code" />
+      <val idx="37" size="1" pbnum="2"  name="intervalType" />
+      <val factor_idx="38" factor_size="1" value_idx="39" value_size="4" pbnum="3" type="scaled" name="firstLim" />
+      <val factor_idx="43" factor_size="1" value_idx="44" value_size="4" pbnum="4" type="scaled" name="secondLim" />
+    </val>
+  </prod>  
+
+  <!-- Partitioned parameters at a horizontal level or horizontal layer at a point in time (see Template 4.53) -->
+  <prod template="53" startIdx="10">
+    <val idx="10" size="1" pbnum="1"  name="category" />
+    <val idx="11" size="1" pbnum="2"  name="number" />
+    <val idx="12" size="1" pbnum="13"  name="ptn" />
+    <val idx="13" size="1" pbnum="14"  name="np" />
+    <val idx="14" size="2" pbnum="15"  name="pList" field="repeated" cnt_pbnum="14"/>
+    <val idx="14" offset_pbnum="14" offset_size="2" size="1" pbnum="16"  name="pNum" />
+    <val idx="16" offset_pbnum="14" offset_size="2" ize="1" pbnum="3"  name="processType" />
+    <val idx="17" offset_pbnum="14" offset_size="2" ize="1" pbnum="4"  name="backId" />
+    <val idx="18" offset_pbnum="14" offset_size="2" size="1" pbnum="5"  name="id" />
+    <val idx="19" offset_pbnum="14" offset_size="2" size="2" pbnum="6"  name="hours" />
+    <val idx="21" offset_pbnum="14" offset_size="2" size="1" pbnum="7"  name="min" />
+    <val idx="23" offset_pbnum="14" offset_size="2" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+      <unit idx="22" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+    </val>	
+    <val idx="27" offset_pbnum="14" offset_size="2" size="1" pbnum="9"  name="surf1_type"/>
+    <val factor_idx="28" offset_pbnum="14" offset_size="2" factor_size="1" value_idx="29" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+    <val idx="33" offset_pbnum="14" offset_size="2" size="1" pbnum="11"  name="surf2_type"/>
+    <val factor_idx="34" offset_pbnum="14" offset_size="2" factor_size="1" value_idx="35" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+  </prod>  
+
+
+  <!-- Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time for partitioned parameters (see Template 4.54)-->
+  <prod template="54" startIdx="10">
+    <val idx="10" size="1" pbnum="1"  name="category" />
+    <val idx="11" size="1" pbnum="2"  name="number" />
+    <val idx="12" size="1" pbnum="13"  name="ptn" />
+    <val idx="13" size="1" pbnum="14"  name="np" />
+    <val idx="14" size="2" pbnum="15"  name="pList" field="repeated" cnt_pbnum="14"/>
+    <val idx="14" offset_pbnum="14" offset_size="2" size="1" pbnum="16"  name="pNum" />
+    <val idx="16" offset_pbnum="14" offset_size="2" ize="1" pbnum="3"  name="processType" />
+    <val idx="17" offset_pbnum="14" offset_size="2" ize="1" pbnum="4"  name="backId" />
+    <val idx="18" offset_pbnum="14" offset_size="2" size="1" pbnum="5"  name="id" />
+    <val idx="19" offset_pbnum="14" offset_size="2" size="2" pbnum="6"  name="hours" />
+    <val idx="21" offset_pbnum="14" offset_size="2" size="1" pbnum="7"  name="min" />
+    <val idx="23" offset_pbnum="14" offset_size="2" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+      <unit idx="22" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+    </val>	
+    <val idx="27" offset_pbnum="14" offset_size="2" size="1" pbnum="9"  name="surf1_type"/>
+    <val factor_idx="28" offset_pbnum="14" offset_size="2" factor_size="1" value_idx="29" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+    <val idx="33" offset_pbnum="14" offset_size="2" size="1" pbnum="11"  name="surf2_type"/>
+    <val factor_idx="34" offset_pbnum="14" offset_size="2" factor_size="1" value_idx="35" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    <val idx="39" offset_pbnum="14" offset_size="2" size="1" pbnum="17" name="ensembleType"/>
+    <val idx="40" offset_pbnum="14" offset_size="2" size="1" pbnum="18" name="perturbNum"/>
+    <val idx="41" offset_pbnum="14" offset_size="2" size="1" pbnum="19" name="ensembleNum"/>
+  </prod>  
+  
+
+  <!-- Individual ensemble reforecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time (see Template 4.60) -->
+  <prod template="60" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="2"  name="ensembleType" />
+    <val idx="36" size="1" pbnum="3"  name="perturbNum" />
+    <val idx="37" size="1" pbnum="4"  name="ensembleNum" />
+    <val idx="38" size="2" pbnum="5"  name="modelYear" />
+    <val idx="40" size="1" pbnum="6"  name="modelMonth" />
+    <val idx="41" size="1" pbnum="7"  name="modelDay" />
+    <val idx="42" size="1" pbnum="8"  name="modelHour" />
+    <val idx="43" size="1" pbnum="9"  name="modelMin" />
+    <val idx="44" size="1" pbnum="10"  name="modelSec" />
+  </prod>  
+
+  <!-- Individual ensemble reforecast, control and perturbed, at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval (see Template 4.61) -->
+  <prod template="61" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="2"  name="ensembleType" />
+    <val idx="36" size="1" pbnum="3"  name="perturbNum" />
+    <val idx="37" size="1" pbnum="4"  name="ensembleNum" />
+    <val idx="38" size="2" pbnum="5"  name="modelYear" />
+    <val idx="40" size="1" pbnum="6"  name="modelMonth" />
+    <val idx="41" size="1" pbnum="7"  name="modelDay" />
+    <val idx="42" size="1" pbnum="8"  name="modelHour" />
+    <val idx="43" size="1" pbnum="9"  name="modelMin" />
+    <val idx="44" size="1" pbnum="10"  name="modelSec" />
+    <val idx="45" pbnum="11"  name="ti" >
+      <val idx="45" size="2" pbnum="1"  name="endYear" />
+      <val idx="47" size="1" pbnum="2"  name="endMonth" />
+      <val idx="48" size="1" pbnum="3"  name="endDay" />
+      <val idx="49" size="1" pbnum="4"  name="endHour" />
+      <val idx="50" size="1" pbnum="5"  name="endMinute" />
+      <val idx="51" size="1" pbnum="6"  name="endSecond" />
+      <val idx="52" size="1" pbnum="7"  name="n" />
+      <val idx="53" size="4" pbnum="8"  name="missing" />
+      <val idx="57" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="57" size="1" pbnum="1" name="statProc" />
+	<val idx="58" size="1" pbnum="2" name="timeRange" />
+	<val idx="60" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="59" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="65" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="64" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>
+    </val>
+  </prod>  
+
+  <!-- Categorical forecasts at a horizontal level or in a horizontal layer in a continuous or non continuous time interval (see Template 4.91) -->
+   <prod template="91" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+      <val idx="23" size="1" pbnum="9"  name="surf1_type"/>
+      <val factor_idx="24" factor_size="1" value_idx="25" value_size="4" pbnum="10"  type="scaled" name="surf_1"/>
+      <val idx="29" size="1" pbnum="11"  name="surf2_type"/>
+      <val factor_idx="30" factor_size="1" value_idx="31" value_size="4" pbnum="12"  type="scaled" name="surf_2"/>
+    </val>
+    <val idx="35" size="1" pbnum="2"  name="nc" />
+    <val idx="36" size="12" pbnum="3" field="repeated" cnt_pbnum="2" name="fc">
+      <val idx="36" size="1" pbnum="1"  name="code" />
+      <val idx="37" size="1" pbnum="2"  name="intervalType" />
+      <val factor_idx="38" factor_size="1" value_idx="39" value_size="4" pbnum="3" type="scaled" name="firstLim" />
+      <val factor_idx="43" factor_size="1" value_idx="44" value_size="4" pbnum="4" type="scaled" name="secondLim" />
+    </val>
+    <val idx="48" offset_pbnum="2" offset_size="12" pbnum="7" name="ti" >
+      <val idx="48" size="2" pbnum="1" name="endYear" />
+      <val idx="50" size="1" pbnum="2" name="endMonth" />
+      <val idx="51" size="1" pbnum="3" name="endDay" />
+      <val idx="52" size="1" pbnum="4" name="endHour" />
+      <val idx="53" size="1" pbnum="5" name="endMinute" />
+      <val idx="54" size="1" pbnum="6" name="endSecond" />
+      <val idx="55" size="1" pbnum="7" name="n" />
+      <val idx="56" size="4" pbnum="8" name="missing" />
+      <val idx="60" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="60" size="1" pbnum="1" name="statProc" />
+	<val idx="61" size="1" pbnum="2" name="timeRange" />
+	<val idx="63" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="62" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="68" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="67" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>
+    </val>
+  </prod>  
+
+
+  <!-- CCITT IA5 character string (see Template 4.254) -->
+  <prod template="254" startIdx="10">
+    <val idx="10" size="1" pbnum="1"  name="category" />
+    <val idx="11" size="1" pbnum="2"  name="number" />
+    <val idx="12" size="1" pbnum="13"  name="ptn" />
+  </prod>
+
+  <!-- Analysis or forecast at a horizontal level or in a horizontal layer at a point in time.  (see Template 4.1000) -->
+  <prod template="1000" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+    </val>
+  </prod>  
+
+  <!--Cross-section of averaged or otherwise statistically-processed analysis or forecast over a range of time  (see Template 4.1001) -->
+  <prod template="1001" startIdx="10">
+    <val idx="10" pbnum="1"  name="pc" >
+      <val idx="10" size="1" pbnum="1"  name="category" />
+      <val idx="11" size="1" pbnum="2"  name="number" />
+      <val idx="12" size="1" pbnum="3"  name="processType" />
+      <val idx="13" size="1" pbnum="4"  name="backId" />
+      <val idx="14" size="1" pbnum="5"  name="id" />
+      <val idx="15" size="2" pbnum="6"  name="hours" />
+      <val idx="17" size="1" pbnum="7"  name="min" />
+      <val idx="19" size="4" pbnum="8"  type="custom" subtype="time" name="forecastTime"  >
+	<unit idx="18" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+      </val>	
+    </val>
+    <val idx="23" pbnum="10"  name="ti" >
+      <val idx="23" size="4" pbnum="8"  name="missing" />
+      <val idx="27" size="12" pbnum="9" field="repeated" cnt_pbnum="7" name="tr">
+	<val idx="27" size="1" pbnum="1" name="statProc" />
+	<val idx="28" size="1" pbnum="2" name="timeRange" />
+	<val idx="30" size="4" pbnum="3" type="custom" subtype="time" name="timeLength" >
+	  <unit idx="29" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+	<val idx="35" size="4" pbnum="4" type="custom" subtype="time" name="succesTime" >
+	  <unit idx="34" factorcnt="14" factor="60, 3600, 86400, 2592000, 31536000, 315360000, 946080000, 3153600000, 1, 1, 10800, 21600, 43200, 1"/>
+	</val>
+      </val>
+    </val>
+  </prod>  
+
+
+</grib2products>

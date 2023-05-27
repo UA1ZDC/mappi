@@ -1,0 +1,6 @@
+ { "find" : "weather_document",
+  "filter" : {
+    "job_template" : "%1",
+    "dt" : "%2"
+    }
+}

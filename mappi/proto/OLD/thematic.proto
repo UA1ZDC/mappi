@@ -1,0 +1,61 @@
+syntax = "proto2";
+
+import "map_isoline.proto";
+
+package mappi.proto;
+
+import "satellite.proto";
+
+
+//! Тематические обработки
+enum ThemType {
+  kThemUnk = 0;
+  kGrayScale = 1;               //!< Оттенки серого
+  kFalseColor = 2;              //!< Псевдоцвета
+  kIndex8 = 3;                  //!< Индексная 8 бит
+  kIndex16 = 4;                 //!< Индексная 16 бит
+  kIndex24 = 5;                 //!< Индексная 24 бита
+  kIndex32 = 6;                 //!< Индексная 32 бита
+  kDayMicrophisicsColor = 7;
+  kCloudsColor = 8;
+  kNaturalColor = 9;
+  kNightMicrophysicsColor = 10;
+}
+
+message ThematicChannel {
+  required string satellite = 1;                        //!< Название спутника
+  required mappi.conf.InstrumentType instrument = 2;    //!< Тип прибора
+  required string channel = 3;                          //!< Номер канала
+}
+
+//!< Переменная участвующая в тематической обработке
+message ThematicVariable {
+  required string name = 1;             //!< Имя переменной
+  repeated ThematicChannel channel = 2; //!< Канал
+}
+
+//!< Описание тематической обработки
+message ThematicProc {
+  required string name = 1;             //!< Уникальное название тематической обработки
+  required bool enabled = 2;            //!< Включить/отключить обработку
+  required ThemType type = 3;           //!< Тип выходной картинки
+  required string red = 4;              //!< Математическое представление для красной компоненты в rgb или для greyscale/ndvi
+  optional string green = 5;            //!< Математическое представление для зеленой компоненты в rgb
+  optional string blue = 6;             //!< Математическое представление для синей компоненты в rgb
+  repeated ThematicVariable vars = 7;   //!< Список переменных
+  optional string description = 8;      //!< Описание
+}
+
+//!< Массив тематических обработок
+message ThematicProcs {
+  repeated ThematicProc thematics = 1;
+}
+
+message ThematicPalette {
+  optional string name  = 1;                    //!< Название тематической обработки
+  repeated meteo.map.proto.ColorGrad color = 2; //!< Палитра
+}
+
+message ThematicPalettes {
+  repeated ThematicPalette palette = 1;
+}

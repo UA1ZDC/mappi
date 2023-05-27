@@ -1,0 +1,851 @@
+code: "kn-02"
+name: "КН-02"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/kn-02.template"
+wind: true
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 12
+  testqual: 0
+  id {
+    descr: 11001
+    name: "dd"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 0
+  testqual: 0
+  id {
+    descr: 11002
+    name: "ff"
+    parent: "wind"
+  }
+}
+rule {
+  pos {
+    x: -21
+    y: -10
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 23.34
+  id {
+    descr: 12101
+    name: "T"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -21
+    y: -24
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4294128420
+    minuscolor: 4280035572
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: -1.66
+  id {
+    descr: 22043
+    name: "Tw"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -25
+    y: 7
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4294128420
+    minuscolor: 4294128420
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+  }
+  testval: 12.34
+  id {
+    descr: 22021
+    name: "Hwa"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -34
+    y: 20
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 3
+  id {
+    descr: 22011
+    name: "Pwa"
+    description: ""
+  }
+  visible: true
+}
+rule {
+  pos {
+    x: -45
+    y: 0
+  }
+  align: kLeftCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0.05
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "30"
+      label: ""
+    }
+    symbol {
+      minval: 0.05
+      maxval: 0.19
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "31"
+      label: ""
+    }
+    symbol {
+      minval: 0.2
+      maxval: 0.49
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "32"
+      label: ""
+    }
+    symbol {
+      minval: 0.5
+      maxval: 0.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "33"
+      label: ""
+    }
+    symbol {
+      minval: 1
+      maxval: 1.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "34"
+    }
+    symbol {
+      minval: 2
+      maxval: 3.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "35"
+    }
+    symbol {
+      minval: 4
+      maxval: 9.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "36"
+    }
+    symbol {
+      minval: 10
+      maxval: 19.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "37"
+    }
+    symbol {
+      minval: 20
+      maxval: 49.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "38"
+    }
+    symbol {
+      minval: 50
+      maxval: 100
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "39"
+    }
+    codedigit: true
+  }
+  testval: 0.34
+  id {
+    descr: 20058
+    name: "Vs24"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -25
+    y: -1
+  }
+  align: kLeftCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "20"
+    }
+    symbol {
+      minval: 1
+      maxval: 1.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292282928
+      patternba: "24"
+    }
+    symbol {
+      minval: 2
+      maxval: 2.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292282928
+      patternba: "41"
+    }
+    symbol {
+      minval: 3
+      maxval: 3.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "26"
+    }
+    symbol {
+      minval: 4
+      maxval: 4.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4280203344
+      patternba: "57"
+    }
+    symbol {
+      minval: 5
+      maxval: 5.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4280203344
+      patternba: "61"
+    }
+  }
+  testval: 3.34
+  id {
+    descr: 5520025
+    name: "Ws"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -4
+    y: -2
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 5
+  id {
+    descr: 220034
+    name: "Ni"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 4
+    y: -2
+  }
+  align: kTopRight
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 9
+  id {
+    descr: 320034
+    name: "PP"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -4
+    y: 2
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 7
+  id {
+    descr: 120034
+    name: "Nf"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 4
+    y: 2
+  }
+  align: kBottomRight
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 9
+  id {
+    descr: 5502006
+    name: "LLLL"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -10
+    y: 23
+  }
+  align: kBottomCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12
+  id {
+    descr: 5502008
+    name: "SS1"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 11
+    y: 34
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    codedigit: true
+  }
+  testval: 5
+  id {
+    descr: 5502009
+    name: "Ff"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -21
+    y: 20
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 6.34
+  id {
+    descr: 22002
+    name: "dw2"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 21
+    y: 12
+  }
+  align: kRightCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 9
+  id {
+    descr: 5502016
+    name: "A0"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 29
+    y: 12
+  }
+  align: kRightCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 8
+  id {
+    descr: 5502017
+    name: "A2"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 38
+    y: 12
+  }
+  align: kRightCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 6
+  id {
+    descr: 5502018
+    name: "A3"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 47
+    y: 12
+  }
+  align: kRightCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 3
+  id {
+    descr: 5502019
+    name: "A5"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+datatype: kSurface
+center: kCircle
+crisscross: true
+radius: 20
+windfont {
+  family: ""
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+draw_bad_dd: false
+flow: false

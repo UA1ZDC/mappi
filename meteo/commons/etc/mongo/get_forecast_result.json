@@ -1,0 +1,31 @@
+{
+"aggregate": "forecast",
+"pipeline": [
+{
+"$match" : {
+    "station_info.station" : @station@,
+    "dt" : {
+        "$gte" : @start_dt@,
+        "$lte" : @end_dt@
+    }
+}
+},
+{
+"$unwind" : { "path" : "$param"}
+},
+{
+ "$match" : { "param.method" : { "$eq" : @method@  }
+}
+},
+{
+    "$sort" : {
+        "dt_end" : 1
+    }
+},
+{
+    "$limit" : 100
+}
+],
+ "allowDiskUse" : false,
+  "cursor": { "batchSize": 1 }
+}

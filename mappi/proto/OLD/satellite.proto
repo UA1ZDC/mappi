@@ -1,0 +1,152 @@
+syntax = "proto2";
+
+package mappi.conf;
+
+/*!
+  \brief  Параметры спутниковых приборов
+*/
+
+//! Тип прибора
+enum InstrumentType
+{
+  kInstrUnk = 0;
+  kAvhrr3 = 1;
+  kMsu = 2;
+  kVirr = 3;
+  kMsuMr = 4;
+  kMtvza = 5;
+  kMhs = 6;
+  kAmsuA1 = 7;
+  kAmsuA2 = 8;
+  kMsuGs = 9;
+  kAvhrr3Cadu = 10;
+}
+
+//! Тип кадра
+enum FrameType
+{
+  kFrameUnk = -1;
+  kHrpt = 0;
+  kChrpt = 1;
+  kMhrpt = 2;
+  kCadu = 3;
+  kVcdu = 4;
+  kAip = 5;
+  kVcduElectro = 6;
+}
+
+//! Режим приёма данных
+enum RecvMode {
+  kRateUnk = -1;
+  kLowRate = 0;
+  kHiRate = 1;
+}
+
+//! Направление сканирования
+enum ScanDirection {
+  kLeftToRight = 0;     //!< Слева направо
+  kRigthToLeft = 1;     //!< Справа налево
+}
+
+//! Уровень обработки поступающих данных
+enum DataLevel {
+  kUnkLevel = 0;
+  kManchesterLevel = 1;         //! Необходимо снятие манчестера
+  kManchesterInvertLevel = 2;   //! Необходимо снятие манчестера с инвертированием битов
+  kDeframerLevel = 3;           //!< Необходим побитовый поиск синхростроки
+  kDeframerIvertLevel = 4;      //!< Необходимо инвертирование битов и побитовый поиск синхростроки
+  kFrameLevel = 5;              //!< Последовательность полных кадров
+}
+
+//! Канал прибора
+message Channel {
+  required int32  number = 1;   //!< Номер канала
+  required string alias  = 2;   //!< Псевдоним канала
+  optional int32 samples = 3;   //!< Число точек в строке
+}
+
+//! Параметры прибора
+message Instrument {
+  required string name = 1;                     //!< Название прибора
+  optional string description = 2;              //!< Описание прибора
+  required InstrumentType type = 3;             //!< Тип прибора
+  required int32 chan_cnt = 4;                  //!< Число каналов
+  optional int32 samples = 5;                   //!< Число точек в строке
+  required float scan_angle = 6;                //!< Угол сканирования, градусы
+  required float fovstep = 7;                   //!< Шаг угла сканирования, градусы
+  required float fov = 8;                       //!< Размер области сканирования в надире, км
+  required ScanDirection direction = 9;         //!< Направление сканирования
+  optional float velocity = 10;                 //!< Скорость передачи данных прибора
+  optional int32 rt_thin = 11 [default = 4];    //!< Коэффициент уменьшения изображения для отображения при приёме
+  required string dir = 12;                     //!< Папка для хранения данных прибора
+  repeated Channel channel = 13;                //!< Каналы прибора
+}
+
+message InstrCollect {
+  repeated Instrument instrs = 1; //!< Список приборов
+}
+
+//! Положение данных в кадре
+message InstrSection {
+  required int32 start = 1;     //!< Смещение до начала данных в кадре
+  required int32 size = 2;      //!< Размер данных в кадре
+}
+
+message InstrFormat {
+  required RecvMode mode = 1;           //!< Режим приёма данных
+  required FrameType frame = 2;         //!< Тип кадра
+  optional int32 id = 3;                //!< Идентификатор в родительском кадре
+  repeated InstrSection sect = 4;       //!< Положение данных в кадре
+}
+
+//! Структура данных прибора (AVHRR в HRPT, MHS внутри TIP)
+message InstrFrame {
+  required InstrumentType type = 1;     //!< Тип прибора
+  repeated InstrFormat format = 2;
+}
+
+//! Описание кадра в кадре (TIP внутри HRPT, VCDU в CADU)
+message Frame {
+  optional string name = 1;                     //!< Название формата кадра
+  required FrameType type = 2;                  //!< Тип формата кадра
+  optional float velocity = 3;                  //!< Скорость передачи, кадров/сек
+  required int32 header_start = 4;              //!< Смещение до заголовка, байт
+  required int32 size = 5;                      //!< Размер кадра, байт
+  optional FrameType frame = 7;                 //!< Тип формата родительского кадра
+  optional int32 wordsize = 8 [default = 8];    //!< Размер слова, бит
+  optional int32 sync_thr = 9 [default = 1];    //!< Порог для установления нахождения синхропоследовательности
+  optional int32 resync_thr = 10 [default = 5]; //!< Порог для установления потери синхропоследовательности
+  optional uint64 syncraw = 11;                 //!< Синхропоследовательность в сыром потоке
+  optional uint64 syncmask = 12;                //!< Маска для выделения синхропоследовательности
+  optional string sync = 13;                    //!< Синхропоследовательность (с учетом размера слова)
+  optional bool interim = 14 [default = false]; //!< Формат сохраняющий промежуточные данные на диск, продолжает обработку после парсинга всего файла
+}
+
+message FrameCollect {
+  repeated Frame frame = 1;
+  repeated InstrFrame instr = 2;
+}
+
+//! Предварительная обработка данных прибора
+message PretrInstr {
+  required InstrumentType type = 1;     //!< Тип прибора
+  required bool realtime = 2;           //!< true - данные прибора отображаются в окне приёма
+  optional bool calibrate = 4;          //!< Калибровка
+  optional bool geom = 5;               //!< Геометрическая коррекция
+  optional bool filtr = 6;              //!< Фильтрация
+  optional bool missing = 7;            //!< Восстановление пропущенных строк
+}
+
+//! Предварительная обработка спутника
+message PretrSat {
+  required string name = 1;             //!< Название спутника
+  required RecvMode mode = 2;           //!< Режим приёма по умолчанию
+  required DataLevel level = 3;         //!< Уровень обработки поступающих данных
+  optional string coef = 4;             //!< Файл с коэффициентами для калибровки
+  repeated PretrInstr instr = 5;        //!< Параметры для обработки данных прибора
+}
+
+//! Предварительная обработка
+message Pretreatment {
+  repeated PretrSat satellite = 1;      //!< Спутники
+}

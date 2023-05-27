@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+import "map_isoline.proto";
+
+package meteo.map.proto;
+
+//! Параметры отображения вида радиолокационных измерений
+message RadarColor {
+  optional int32        descr           = 1;
+  optional string       name            = 2;
+  optional string       punch_id        = 4;
+  repeated ColorGrad    gradient        = 5;
+  optional int32        step            = 6;
+  optional string       description     = 7;
+  optional int32        empty_value     = 8[default = 0];
+}
+
+//! Все параметры отображения вида радиолокационных измерений
+message RadarColors {
+  repeated RadarColor color = 1;
+}

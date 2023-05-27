@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package meteo.map.exportmap;
+
+//! Путь для сохранения файлов
+message ExportPath {
+  required string path   = 1; //!< Путь по умолчанию для сохранения/загрузки файлов (sxf, bmp)
+  optional string loadpath   = 2; //!< Путь по умолчанию для поиска служебных файлов (классификатора)
+  optional bool save_fs = 3 [default = true]; //!< Сохранять в файловую систему
+  optional bool save_db = 4 [default = true]; //!< Сохранять в БД
+};

@@ -1,0 +1,10 @@
+{  
+  "_id.station" : "%1",
+  "_id.station_type" : "%2",  
+  "_id.descrname" : { "$in" : "%3" },
+  "month" : "%4",
+  "$and" : [
+    { "_id.date" : { "$gte" : "%5" } },
+    { "_id.date" : { "$lte" : "%6" } }
+  ]
+}

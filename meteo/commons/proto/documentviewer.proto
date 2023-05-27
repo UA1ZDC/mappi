@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+package meteo.proto;
+
+import "meteo.proto";
+import "customviewer.proto";
+
+enum PlayButtonState {
+kPlaySceneAndMap = 0;
+kPlaySceneOnly = 1;
+kPlayMapOnly = 2;
+};
+
+message HoverWidgetSettings {
+  optional PlayButtonState default_play_button_state = 1;
+};
+
+message SavedFaxPinning {
+  optional string name = 1;
+  optional int32 type = 2;
+  repeated meteo.GeoPointPb geo = 3;
+  repeated meteo.Point image = 4;
+
+  repeated int32 columns = 5;
+  repeated ConditionProto conditions = 6;
+
+};
+
+message AllSavedPinnings {
+  repeated SavedFaxPinning pinnings = 1;
+};
+
+

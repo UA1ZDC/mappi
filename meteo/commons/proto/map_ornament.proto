@@ -1,0 +1,37 @@
+syntax = "proto2";
+
+import "meteo.proto";
+
+package meteo.map.proto;
+
+enum Mirror {
+  kNoMirror     = 0;
+  kMirrorH      = 1;
+  kMirrorV      = 2;
+  kMirrorBoth   = 3;
+}
+
+//! Параметры оранмента линии
+message Ornament {
+  message Bit { //!< Параметры элемента орнамента
+    optional string     pixname         = 1;                            //!< идентификатор изображения в библиотеке картинок
+    optional int32      step            = 2 [default = 0];              //!< пропуск в пикселах после элемента 
+    optional bool       colorized       = 3 [default = true];           //!< признак окрашивания элемент в соответствии с цветом
+    optional uint32     color           = 4;                            //!< цвет орнамента
+    optional Size       size            = 5;                            //!< размер изображения
+    optional Mirror     mirror          = 6 [default = kNoMirror];      //!< параметры отражения изображения
+  }
+
+  optional string       name            = 1;                            //!< идентификатор орнамента
+  optional string       title           = 2;                            //!< наименование орнамента
+  repeated Bit          bit             = 3;                            //!< элементы орнамента
+  optional bool         skelet          = 4 [default = true];           //!< отображать линию или только орнамент
+  optional Mirror       mirror          = 5 [default = kNoMirror];      //!< параметры отражения изображения
+  optional int32        pnt_index       = 6;                            //!< номер точки скелета, к которой привязан орнамент
+}
+
+message Ornaments {
+  repeated Ornament     ornament        = 1;
+  optional bool         result          = 2;
+  optional string       comment         = 3;
+}

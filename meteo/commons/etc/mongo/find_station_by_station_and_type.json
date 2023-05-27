@@ -1,0 +1,7 @@
+{
+  "find" : "stations",
+  "filter": {
+    "station": { "$in" : @station@ },
+    "station_type" : { "$in" : @station_type@ }
+  }
+}

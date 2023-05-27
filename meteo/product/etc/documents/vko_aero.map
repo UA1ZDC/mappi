@@ -1,0 +1,11 @@
+name: "vko_aero.map"
+title: "Климатическая характеристика (аэрология)"
+formal {
+    template: "vko_aero.odt"
+    name: "Климатическая характеристика (аэрология)"
+    module_path: "vko_aero.py"
+    format: kOdt
+}
+document {
+  doctype: kFormalDocument
+}

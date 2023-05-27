@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Для чтения из bufr в TMeteoData -->
+<!-- Получившиеся дескрипторы должны согласовываться с таковыми в цифро-буквенном коде -->
+<!-- b_descr - при необходимости всегда заменить номер дескриптора (до добавления группы) -->
+<!-- signgroup_descr - номер группы в зависимости от значения дескриптора -->
+
+
+<bufr_descriptor>
+
+  <sequence>
+   
+    <!-- Приземные данные. Суша-->
+    <descr num="307022" bufr_category="0" data_type="7"/> <!-- ГНСС -->
+    <descr num="307073" bufr_category="0" data_type="12"/> <!-- CLIMAT -->
+    <descr num="307078" bufr_category="0" data_type="12"/> 
+    <descr num="307079" bufr_category="0" data_type ="2"/> <!-- SYNOP или береговая станция -->
+    <descr num="307080" bufr_category="0" data_type ="1"/> <!-- SYNOP -->
+    <descr num="307081" bufr_category="0" data_type ="1"/>
+    <descr num="307082" bufr_category="0" data_type ="1"/>
+    <descr num="307083" bufr_category="0" data_type ="1"/>
+    <descr num="307084" bufr_category="0" data_type ="1"/>
+    <descr num="307086" bufr_category="0" data_type ="1"/>
+    <descr num="307089" bufr_category="0" data_type ="1"/>
+    <descr num="307090" bufr_category="0" data_type ="21"/> <!-- SYNOP MOBILE-->
+    <descr num="307091" bufr_category="0" data_type ="1"/>  <!-- Приземные за час -->
+    <descr num="307096" bufr_category="0" data_type ="1"/>  <!-- SYNOP + за час -->
+    <descr num="307101" bufr_category="0" data_type ="5"/> <!-- снег -->
+    <descr num="307182" bufr_category="0" data_type ="1"/>
+
+    <!-- Приземные данные. Море -->
+    <descr num="308004" bufr_category="1" data_type="22"/>  <!-- с судна -->
+    <descr num="308009" bufr_category="1" data_type="22"/>  
+    <descr num="308010" bufr_category="1" data_type="23"/>  <!-- FM62 (TRACKOB) -->
+    <descr num="308011" bufr_category="1" data_type="556"/>  <!-- CLIMAT SHIP -->             <!-- не обрабатываются -->
+    <descr num="308012" bufr_category="1" data_type="556"/>  <!-- CLIMAT SHIP -->             <!-- не обрабатываются -->
+    <descr num="308013" bufr_category="1" data_type="556"/>  <!-- CLIMAT SHIP -->             <!-- не обрабатываются -->
+    <descr num="308021" bufr_category="1" data_type="556"/>  <!-- CLIMAT SHIP -->             <!-- не обрабатываются -->
+    <descr num="308022" bufr_category="1" data_type="556"/>  <!-- CLIMAT SHIP -->             <!-- не обрабатываются -->
+    <descr num="308023" bufr_category="1" data_type="556"/>  <!-- CLIMAT SHIP -->             <!-- не обрабатываются -->
+    
+    <!-- Вертикальное зондирование (не спутник) -->
+    <descr num="309050" bufr_category="2" data_type = "86"/> <!-- TEMP (SHIP, MOBILE), PILOT (SHIP, MOBILE) -->
+    <descr num="309051" bufr_category="2" data_type = "86"/>
+    <descr num="309052" bufr_category="2" data_type = "86"/>
+    <descr num="309071" bufr_category="2" data_type = "86"/>
+    <descr num="309053" bufr_category="2" data_type = "86"/> <!-- TEMP DROP -->
+    <descr num="311012" bufr_category="2" data_type = "191"/> <!-- airplane -->
+
+    <!-- Вертикальное зондирование (спутник) -->
+    <descr num="310026" bufr_category="3" data_type = "222"/> <!-- GNSS -->
+
+    <!-- Аэрология по одному уровню (не спутник) -->
+    <!-- 307021 bufr_category="4"  data_type="41" -->
+    <!-- ни разу не видела -->
+    <descr num="307051" bufr_category="4" data_type="41"/> <!-- METAR/SPECI (+TREND) -->
+    <descr num="307056" bufr_category="4" data_type="51"/> <!-- TAF -->
+    
+    <descr num="311010" bufr_category="4" data_type="191"/>  <!-- AMDAR -->
+    <descr num="311005" bufr_category="4" data_type="191"/>  <!-- AMDAR -->
+    <descr num="311006" bufr_category="4" data_type="191"/>  <!-- AMDAR -->
+    
+    <!-- Радиолокационные данные -->    
+    <descr num="316026" bufr_category="6" data_type="141"/>  <!-- Тропич шторм -->
+    <descr num="316027" bufr_category="6" data_type="141"/>  <!-- Тропич шторм -->
+    <!-- 316036 (sigmet) -->
+    <descr num="316050" bufr_category="6" data_type="141"/>  <!-- Тропич шторм (RADOB ч.А)-->
+    <descr num="316052" bufr_category="6" data_type="141"/>  <!-- Тропич шторм (SAREP)-->
+
+    <!-- Приземные (спутник) -->
+    <descr num="312061" bufr_category="12" data_type = "231"/> <!-- скаттерометр -->
+    <descr num="312071" bufr_category="12" data_type = "232"/> <!-- альтиметр -->
+    <descr num="340010" bufr_category="12" data_type = "233"/> <!-- альтиметр, радиометр -->
+    
+    
+    <!-- Океанографические данные -->
+    <descr num="306030"  bufr_category="31" data_type="124"/> <!-- цунами -->
+  </sequence>
+  
+<!-- - - - - - - - - - -->
+
+
+<!-- 152 - радар, в некоторых refl_hor -->
+<d_descrtype>
+  <descr bufr_category="0"  X="02" prior="1" data_type="6"/>
+  <descr bufr_category="0"  X="05" prior="2" data_type="100"/>
+  <descr bufr_category="0"  X="07" prior="1" data_type="6"/>
+  <descr bufr_category="1"  X="08" prior="1" data_type="22"/>
+  <descr bufr_category="1"  X="15" prior="1" data_type="125"/>
+  <descr bufr_category="1"  X="02" prior="2" data_type="22"/>
+  <descr bufr_category="2"  X="03" prior="2" data_type="87"/>
+  <descr bufr_category="2"  X="09" prior="1" data_type="87"/>
+  <descr bufr_category="2"  X="21" prior="1" data_type="66"/>
+  <descr bufr_category="4"  X="07" prior="1" data_type="40"/>
+  <descr bufr_category="4"  X="11" prior="1" data_type="211"/>
+  <!-- <descr bufr_category="7"         prior="0" data_type="202"/> -->
+  <descr bufr_category="31" X="06" prior="2" data_type="125"/>
+  <descr bufr_category="31" X="15" prior="1" data_type="125"/>
+
+</d_descrtype>
+
+<b_descrtype>
+  <descr bufr_category="2"  X="21" prior="1" data_type="66"/> 
+  <descr bufr_category="6"  X="11" prior="2" data_type="152"/>
+  <descr bufr_category="6"  X="21" prior="1" data_type="152"/> 
+  <descr bufr_category="6"  X="29" prior="0" data_type="150"/> <!-- радар на карте -->
+  <!-- <descr bufr_category="7"         prior="0" data_type="202"/> -->  <!-- в коде -->
+</b_descrtype>
+
+<!--  -->
+
+
+
+<!-- ###################################################### -->
+
+<b_descr>
+  <descr num="01006">01011</descr>
+  <descr num="04007">04006</descr>
+  <descr num="01019">01015</descr>
+  <descr num="01026">01027</descr>
+  <descr num="04065">04015</descr>
+  <descr num="04066">04016</descr>
+  <descr num="05002">05001</descr>
+  <descr num="05016">05015</descr>
+  <descr num="06002">06001</descr>
+  <descr num="06012">06011</descr>
+  <descr num="07063">07062</descr>
+  <descr num="11031">11030</descr>
+  <descr num="11042">11040</descr>
+  <descr num="11083">11002</descr>
+  <descr num="11084">11002</descr>
+  <descr num="11085">11041</descr>
+  <descr num="11086">11041</descr>
+  <descr num="12001">12101</descr>
+  <descr num="12007">12107</descr>
+  <descr num="12023">12101</descr>
+  <descr num="12024">12103</descr>
+  <descr num="12071">12112</descr>
+  <descr num="12122">12113</descr>
+  <descr num="12130">12030</descr>
+  <descr num="20091">20002</descr>
+  <descr num="20092">20013</descr>
+  <descr num="22042">22043</descr>
+  <descr num="22045">22043</descr>
+  <descr num="22049">22043</descr>
+  <descr num="22064">22062</descr>
+</b_descr>
+
+
+<!-- ###################################################### -->
+
+
+<signgroup_descr>
+  <!--  значения бит и номера групп; если стоит несколько бит, дублируется значение в несколько групп -->
+  <descr num="008042">-1,07; 17,01; 16,06; 15,02; 14,03; 13,04; 12,04; 11,05; 4,07; 3,07; 1,07</descr>
+</signgroup_descr>
+
+
+</bufr_descriptor>
+
+
+
+

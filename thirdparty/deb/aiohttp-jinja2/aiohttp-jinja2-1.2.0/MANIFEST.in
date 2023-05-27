@@ -1,0 +1,12 @@
+include CHANGES.txt
+include LICENSE
+include README.rst
+include Makefile
+include requirements-dev.txt
+include pytest.ini
+include .coveragerc
+graft aiohttp_jinja2
+graft docs
+graft examples
+graft tests
+global-exclude *.pyc

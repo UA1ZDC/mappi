@@ -1,0 +1,9 @@
+name: "kn-04grib"
+title: "GRIB (аэрология)"
+data_type: kAeroType
+data {
+  source: kGribSource
+  template_name: "gribair"
+  data_type: kAeroFix
+  type_level: 100
+}

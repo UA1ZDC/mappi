@@ -1,0 +1,4 @@
+{  
+  "find" : "users",
+  "filter" : { "_id" : @id@ }
+}

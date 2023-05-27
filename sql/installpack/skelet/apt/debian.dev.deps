@@ -1,0 +1,6 @@
+libsnappy-dev
+libicu-dev
+libssl-dev
+postgresql-server-dev-all
+postgresql
+postgis

@@ -1,0 +1,15 @@
+{ "find" : "grib",
+  "filter" : {
+    "dt": { "$gte": @start_dt@, "$lt": @end_dt@ },
+    "descr":  { "$in":  @descr@  },
+    "levelType": @levelType@ ,
+    "levelValue": @levelValue@ ,
+    "center": @center@ ,
+    "hour": @hour@ ,
+    "procType": @procType@,
+    "analysed" : {"$in" : [ null, false ] },
+    "error" : { "$ne" : true }
+    },
+    "sort" : { "hour" : -1 },
+    "limit" : 1
+}

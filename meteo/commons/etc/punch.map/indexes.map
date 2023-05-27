@@ -1,0 +1,10 @@
+name: "indexes"
+title: "Индексы неустойчивости"
+data_type: kAeroType
+data {
+  source: kSurface
+  template_name: "indexes"
+  data_type: kAeroFix
+  type_level: 1
+  level : 0
+}

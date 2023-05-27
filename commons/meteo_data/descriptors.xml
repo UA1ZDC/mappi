@@ -1,0 +1,1182 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Соответсвтие названий величин дескрипторам и их единицы измерения -->
+<!-- name нельзя менять бездумно, к нему привязка в коде и в andescriptors.xml, и в контроле, и может где ещё -->
+<!-- group - ANY - номер может встретиться в любой группе -->
+<!-- num - связан с номерами колонок в БД. Дескрипторы BUFR приводятся к этим же номерам (bufrtransfrom.h) -->
+<!-- unit - обозначение принятое в BUFR-таблицах -->
+<!-- single="true" значит д.б. в единственном экземпляре, будет заменять значение, если уже было -->
+<!-- additional - дополнительные названия, для удобства получения значений величин относящихся к одному дескриптору -->
+
+
+<!-- 22076 -->
+<!-- 22078  -->
+
+
+<descriptors>
+  <complex>
+    <!-- fx может быть привязан к другим метеовеличинам (W1) и за свой срок -->
+    <descr name="wind"  descr="7700001" childs="dd, ff, u, v, ww, ww2"/>
+    <!-- N идёт отдельно -->
+    <!-- <descr name="cloud" descr="7700002" childs="C, Nh, h, hgr, Dp, Na" /> -->
+    <descr name="cloud" descr="7700002" childs="C, Nh, h, Dp, Na" />
+    <descr name="Ptend" descr="7700003" childs="a, p" />
+    <descr name="stream" descr="7700004" childs="d0d0, c0c0" />
+    <descr name="wlevel" descr="7700005" childs="X, HHHH, QQQ" />
+  </complex>
+  
+  <additional>
+    <descr name="CL" 	inname="C" code="30,39" description="Облака нижнего яруса"/>
+    <descr name="CM"	inname="C" code="20,29" description="Облака среднего яруса" />
+    <descr name="CH"	inname="C" code="10,19" description="Облака верхнего яруса" />
+    <descr name="Cn"	inname="C" code="0,9"   description="Отдельные облачные слои или массы" />
+
+    <!-- <descr name="SS_24" inname="SSS"  idx="0" description="Продолжительность солнечного сияния за сутки,ч" /> -->
+    <!-- <descr name="SS_1"  inname="SSS"  idx="1" description="Продолжительность солнечного сияния за прошедший час,ч" /> -->
+
+    <!-- <descr name="DL" 	inname="Dp" idx="0" description="Истинное направление, откуда перемещаются облака CL" /> -->
+    <!-- <descr name="DM" 	inname="Dp" idx="1" description="Истинное направление, откуда перемещаются облака CM" /> -->
+    <!-- <descr name="DH" 	inname="Dp" idx="2" description="Истинное направление, откуда перемещаются облака CH" /> -->
+
+    <descr name="S6" inname="Sf"  code="91,98" description="Гололедно-изморозевые отложения" />
+    <descr name="Tw27" inname="Sf"  code="60,69" description="Изменение температуры, связанное с гололедом или изморозью" />
+    <descr name="Z0" inname="Sf"  code="80,89" description="Оптические явления" />
+    <descr name="StElmo" inname="Sf"  code="90,90" description="Огни Святого Эльмы" />
+
+    <descr name="E"  inname="Ef"  code="0,9"    description="Состояние поверхности почвы без снега или измеримого ледяного покрова" />
+    <descr name="E_" inname="Ef"  code="10,19"	description="Состояние поверхности почвы со снегом или измеримым  ледяным покровом" />
+
+    <descr name="Hw1s" inname="Hw1"  idx="0" description="Высота зыби 1 системы" />
+    <descr name="Hw2s" inname="Hw1"  idx="1" description="Высота зыби 2 системы" />
+    <descr name="dw1s" inname="dw1"  idx="0" description="Направление перемещения зыби 1 системы" />
+    <descr name="dw2s" inname="dw1"  idx="1" description="Направление перемещения зыби 2 системы" />
+    <descr name="Pw1s" inname="Pw1"  idx="0" description="Период зыби 1 системы" />
+    <descr name="Pw2s" inname="Pw1"  idx="1" description="Период зыби 2 системы" />
+    
+  </additional>
+  
+
+  <descr name="category" num="00000" 	    		  unit="NO" unit_ru="NO" description="Категория данных" />
+  <descr name="product"	 num="00002"	  single="true"	  unit="NO" unit_ru="NO" description="Номер (дескриптор) метеопараметра" />
+  <descr name="ii_tlg"	 num="00006"	        	unit="NO" unit_ru="NO" description="Уникальный номер телеграммы с одной станции за одно время" />
+  <descr name="station_type" num="00012"        unit="NO" unit_ru="NO" description="Тип станции" />
+  <!-- тип уровня как в GRIBv1 -->
+  <descr name="level_type" num="00010"      single="true"   unit="NO" unit_ru="NO" description="Тип уровня" />
+
+  <descr name="station"  num="01015" 	    		  unit="NO" unit_ru="NO" description="Название станции или поста" />
+  <descr name="station_short"  num="01018"		  unit="NO" unit_ru="NO" description="Краткое название станции или поста" />
+  <descr name="station_long"   num="01019"		  unit="NO" unit_ru="NO" description="Полное название станции или поста" />
+  <descr name="II"  num="01001"	       single="true"	  unit="NO" unit_ru="NO" description="Номер большого географического района" />
+  <descr name="iii" num="01002"	       single="true"	  unit="NO" unit_ru="NO" description="Номер станции" />
+  <descr name="station_index" num="00007"   single="true" unit="NO" unit_ru="NO" description="Полный номер станции (IIiii)" />
+  <descr name="buoy"   num="00008"   single="true" unit="NO" unit_ru="NO" description="Полный номер буя (A1bwnb)" />
+  <descr name="center" num="01031"   single="true" unit="NO" unit_ru="NO" description="Центр поставщик/производитель" />
+
+  <!-- weather -->
+  <descr name="P"   num="10051" 	    		  unit="hPa" unit_ru="гПа" description="Давление, приведенное к уровню моря" />
+  <descr name="P0"  num="10004" 	    		  unit="hPa" unit_ru="гПа" description="Давление на уровне станции" />
+  <descr name="Ps"  num="10004" group="55"    		  unit="hPa" unit_ru="гПа" description="Давление на особом уровне, бескоординатное" />
+  <descr name="T"   num="12101" 	    		  unit="C"   unit_ru="°С" description="Температура воздуха" />
+  <descr name="Tvi"  num="12107" 	    		  unit="C"   unit_ru="°С" description="Виртуальная температура" />
+  <!-- D - введенный дескриптор -->
+  <descr name="D"   num="12108"                           unit="C"   unit_ru="°С" description="Дефицит точки росы" />
+
+  <descr name="Td"  num="12103" 	    		  unit="C"   unit_ru="°С" description="Температура точки росы" />
+  <descr name="p"   num="10061" 	    		  unit="hPa" unit_ru="гПа/3 ч" description="Барическая тенденция" />
+  <descr name="a"   num="10063" 	    		  unit="NO"  unit_ru="NO" description="Характеристика бар.тенденции" />
+  <descr name="R"   num="13011"             		  unit="mm"  unit_ru="мм" description="Количество осадков" />
+  <descr name="V"   num="20001"             		  unit="m"   unit_ru="м" description="Видимость" />
+  <!-- H  ? -->
+  <descr name="N"   num="20010"   		  unit="%"   unit_ru="%" description="Общая облачность" />
+  <descr name="w"   num="20003"   		  unit="NO"  unit_ru="NO" description="Текущая погода" />
+  <descr name="W1"  num="20004"	 		  unit="NO"  unit_ru="NO" description="Прошедшая погода" />
+  <descr name="W2"  num="20005"	 		  unit="NO"  unit_ru="NO" description="Прошедшая погода" />
+  <descr name="Nh"  num="20011"	 	      unit="num"  unit_ru="балл" description="Количество облаков" />
+  <descr name="C"   num="20012"               unit="NO"  unit_ru="NO" description="Форма облачности" />
+  <descr name="dd"  num="11001" 	      unit="deg" unit_ru="°" description="Направление ветра" />
+  <descr name="ff"  num="11002" 	      single="true" unit="m/s" unit_ru="м/с" description="Скорость ветра" />
+  <descr name="u"   num="11003" 	      unit="m/s" unit_ru="м/с" description="Ветер, компонент u" />
+  <descr name="v"   num="11004" 	      unit="m/s" unit_ru="м/с" description="Ветер, компонент v" />
+  <descr name="ww"  num="11006" 	      unit="m/s" unit_ru="м/с" description="Ветер, компонент w" />
+  <descr name="ww2" num="11005" 	      unit="Pa/s" unit_ru="Па/с" description="Вертикальная скорость" />
+  <descr name="dd10m" num="11011" 	      unit="deg" unit_ru="°" description="Направление ветра на высоте 10 м" />
+  <descr name="ff10m" num="11012" 	      unit="m/s" unit_ru="м/с" description="Скорость ветра на высоте 10 м" />
+
+
+  <!-- water -->
+  <descr name="Ds"  num="01012" 	   		  unit="deg"  unit_ru="°" description="Направление смещения судна" />
+  <descr name="vs"  num="01013" 	   		  unit="km/h" unit_ru="км/ч" description="Средняя скорость судна" />
+
+  <descr name="Is"  num="20033" 	   		  unit="NO"   unit_ru="NO" description="Обледенение судов" />
+  <descr name="Es"  num="20031" 	   		  unit="cm"   unit_ru="см" description="Толщина льда" />
+  <descr name="Rs"  num="20032" 	   		  unit="NO"   unit_ru="NO" description="Скорость нарастания льда" />
+  <descr name="ci"  num="20034"				  unit="NO"   unit_ru="NO" description="Сплоченность льда" />
+  <descr name="Si"  num="20037"				  unit="NO"   unit_ru="NO" description="Стадия развития льда" />
+  <descr name="bi"  num="20035"				  unit="NO"   unit_ru="NO" description="Лед материкового происхождения" />
+  <descr name="Di"  num="20038" 	   		  unit="deg"  unit_ru="°" description="Пеленг основной кромки льда" />
+  <descr name="zi"  num="20036" 	   		  unit="NO"   unit_ru="NO" description="Ледовая обстановка" />
+
+  <descr name="Tw"  num="22043" 	   		  unit="C"    unit_ru="°С" description="Температура моря" />
+  
+  <descr name="Pwa" num="22011" 	   		  unit="s"    unit_ru="с" description="Период волн" />
+  <descr name="Hwa" num="22021" 	   		  unit="m"    unit_ru="м" description="Высота волн" />
+  <descr name="Pw"  num="22012" 	   		  unit="s"    unit_ru="с" description="Период ветровых волн" />
+  <descr name="Hw"  num="22022" 	   		  unit="m"    unit_ru="м" description="Высота ветровых волн" />
+  <descr name="dw1" num="22003" 	   		  unit="deg"  unit_ru="°" description="Направление перемещения зыби" />
+  <descr name="Pw1" num="22013" 	   		  unit="s"    unit_ru="с" description="Период зыби" />
+  <descr name="Hw1" num="22023" 	   		  unit="m"    unit_ru="м" description="Высота зыби" />
+  
+  <descr name="Hws" num="22070" 	   		  unit="m"    unit_ru="м" description="Высота значительной волны" />
+  <descr name="whmax" num="22073" 	   		  unit="m"    unit_ru="м" description="Максимальная высота волны" />
+  <descr name="wvper" num="22074" 	   		  unit="s"    unit_ru="с" description="Средний период волны" />
+  <descr name="wvl"   num="22075" 	   		  unit="m"    unit_ru="м" description="Средняя длина волны" />
+  <descr name="wvh"   num="22073" group="02"   		  unit="m"    unit_ru="м" description="Средняя высота волны" />
+  
+  <descr name="wvd"   num="22077" 	   		  unit="deg"    unit_ru="°" description="Направление распространения доминирующей волны" />
+  
+
+  <descr name="vw"  num="22031" group="01"   		  unit="cm/s"  unit_ru="см/с" description="Течение, компонент v" />
+  <descr name="uw"  num="22031" group="02"   		  unit="cm/s"  unit_ru="см/с" description="Течение, компонент u" />
+  <descr name="dmw" num="22003" group="01"   		  unit="deg"  unit_ru="°" description="Смешанное волнение, направление" />
+  <descr name="Pmw" num="22013" group="01"   		  unit="s"    unit_ru="с" description="Смешанное волнение, период" />
+  <descr name="Hmw" num="22023" group="01"   		  unit="m"    unit_ru="м" description="Смешанное волнение, высота" />
+  <descr name="Lw"  num="22012" group="01"	          unit="m"    unit_ru="м" description="Длина ветровых волн (расстояние между двумя гребнями)" />
+  <descr name="Paw" num="22074"  group="01"	   	  unit="s"    unit_ru="с" description="Волнение преобладающее: период" />
+  <descr name="Haw" num="22073"  group="01"	   	  unit="m"    unit_ru="м" description="Волнение преобладающее: высота" />
+
+  
+  <descr name="thwa" num="26021" group="22" 	   	  unit="NO"   unit_ru="NO" description="Количество дней в году с высотой волны 3 м и более, сут." />
+  
+  <descr name="Tx"  num="12111" 	 		  unit="C" unit_ru="°С" description="Макс температура воздуха" />
+  <descr name="Tn"  num="12112"			          unit="C" unit_ru="°С" description="Мин температура воздуха" />
+  <descr name="R24" num="13023"	  	    		  unit="mm" unit_ru="мм" description="Количество осадков за 24 ч" />
+  <descr name="Tg"  num="12113"	  	    		  unit="C"  unit_ru="°С" description="Температура поверхности земли (минимальная)" /> 
+  <!-- <descr name="Ccum" num="20012" group="05"		  unit="NO" unit_ru="NO" description="Значительные конвективные облака" /> -->
+  <descr name="N_" num="20011"	 group="03"		  unit="NO" unit_ru="NO" description="Количество облаков, основание которых расположено ниже уровня станции" />
+
+  <descr name="national"  num="00003" 	      		  unit="NO" unit_ru="NO" description="Национальные данные" />
+
+  <descr name="JJJ"    num="04001" 	    unit="NO"  unit_ru="NO" description="Год" />
+  <descr name="MM"     num="04002"	    unit="NO"  unit_ru="NO" description="Месяц года" />
+  <descr name="YY"     num="04003"	    unit="NO"  unit_ru="NO" description="День месяца" />
+  <descr name="GG"     num="04004"	    unit="h"   unit_ru="ч" description="Час" />
+  <descr name="gg"     num="04005"	    unit="min" unit_ru="мин" description="Срок наблюдения" />
+  <descr name="sec"    num="04006"	    unit="s"   unit_ru="с" description="Срок наблюдения" />
+  <descr name="diff_utc" num="04004" group="55"   single="true" unit="h"   unit_ru="ч" description="Разница времени с UTC" />
+  <descr name="JJJp"    num="04021" 	      		      unit="NO"	 unit_ru="NO" description="Период" />
+  <descr name="MMp"	num="04022"			      unit="NO"	 unit_ru="NO" description="Период" />
+  <descr name="YYp"	num="04023"			      unit="NO"	 unit_ru="NO" description="Период" />
+  <descr name="GGp"	num="04024"	      		      unit="h"	 unit_ru="ч" description="Период" />
+  <descr name="ggp"	num="04025"	      		      unit="min" unit_ru="мин" description="Период" />
+  <descr name="secp"	num="04026"	      		      unit="s"	 unit_ru="с" description="Период" />
+  <descr name="JJJi"	num="04011"	      		      unit="a"	 unit_ru="г." description="Временной инкремент" />
+  <descr name="MMi"	num="04012"	      		      unit="mon" unit_ru="мес." description="Временной инкремент" />
+  <descr name="YYi"	num="04013"	      		      unit="d"	 unit_ru="сут" description="Временной инкремент" />
+  <descr name="GGi"	num="04014"	      		      unit="h"	 unit_ru="ч" description="Временной инкремент" />
+  <descr name="ggi"	num="04015"	      		      unit="min" unit_ru="мин" description="Временной инкремент" />
+  <descr name="seci"	num="04016"	      		      unit="s"	 unit_ru="с" description="Временной инкремент" />
+  <descr name="pmin"	num="04032"	      		      unit="min" unit_ru="мин" description="Продолжительность времени" />
+
+
+  <descr name="iw"     num="02002" 	    single="true" unit="NO" unit_ru="NO" description="Указатель источника данных и единиц скорости ветра" />
+  <descr name="iR"     num="00001"			  unit="NO" unit_ru="NO" description="Указатель включения или пропуска данных об осадках" />
+  <descr name="ix"     num="02001"			  unit="NO" unit_ru="NO" description="Указатель типа станции" />
+  <descr name="ims"    num="70000" group="01"		  unit="NO" unit_ru="NO" description="Указатель горной станции" />
+  <descr name="h"      num="20013"  		  unit="m" unit_ru="м" description="Высота нижней границы облачности" />
+  <!-- <descr name="hgr"    num="20013" group="01" 		  unit="m" unit_ru="м" description="Высота нижней границы облачности" /> -->
+  <descr name="U"      num="13003" 	      		  unit="%" unit_ru="%" description="Относительная влажность воздуха" />
+  <descr name="Ua"     num="13005" 	      		  unit="kg m-3" unit_ru="кг м^-3" description="Плотность пара" />
+  <descr name="hh"     num="10009" 	      		  unit="gpm" unit_ru="гп. м" description="Геопотенциальная высота" />
+  <descr name="Phi"    num="10008" 	      		  unit="m2 s-2" unit_ru="м^2 c^-2" description="Геопотенциал" />
+  <descr name="Tb"     num="12102" 	      		  unit="C" unit_ru="°С" description="Температура по смоченному термометру" />
+  <descr name="Ef"      num="20062" 	      		  unit="NO" unit_ru="NO" description="Состояние поверхности почвы" />
+  <descr name="Tg_"    num="12120" 	      		  unit="C" unit_ru="°С" description="Температура поверхности земли" />
+  <descr name="sss"    num="13013" 	      		  unit="cm" unit_ru="см" description="Высота снежного покрова" />
+  <descr name="sssw"   num="13014" 	      		  unit="kg m-2 s-1" unit_ru="кг м^-2 c^-1" description="Дождь/эквивалент воды в снеге (интенсивность)" />
+  <descr name="EEE"    num="13033" 	      		  unit="mm" unit_ru="мм" description="Величина испарения или эвапотранспирации" />
+  <descr name="iE"     num="02004" 	      		  unit="NO" unit_ru="NO" description=" Указатель типа прибора для измерения испарения или вида сельскохозяйственной культуры, по которой сообщаются данные об эвапотранспирации" />
+  <descr name="dT"     num="12049"  		  unit="C" unit_ru="°С" description="Величина изменения температуры" />
+  <descr name="SSS"    num="14031"  		  unit="h" unit_ru="ч" description="Продолжительность солнечного сияния" />
+
+  <descr name="F4"	 num="14002" unit="kJ m-2" unit_ru="кДж/м&#178;" description="Длинноволновая радиация за период" />
+  <descr name="F6"	 num="14004" unit="kJ m-2" unit_ru="кДж/м&#178;" description="Коротковолновая радиация за период" />
+  <descr name="F0"	 num="14016" unit="kJ m-2" unit_ru="кДж/м&#178;" description="Остаточная радиация за период" />
+  <descr name="F2"	 num="14028" unit="kJ m-2" unit_ru="кДж/м&#178;" description="Суммарная солнечная радиация за период" />
+  <descr name="F3"	 num="14029" unit="kJ m-2" unit_ru="кДж/м&#178;" description="Рассеянная солнечная радиация за период" />
+  <descr name="F407"	 num="14014" unit="kJ m-2" unit_ru="кДж/м&#178;" description="Остаточной коротковолновой радиации за период" />
+  <descr name="F408"	 num="14030" unit="kJ m-2" unit_ru="кДж/м&#178;" description="Прямая солнечная радиация за период" />
+
+  <descr name="F"	 num="14035"            unit="W m-2"  unit_ru="Вт/м&#178;" description="Поток солнечной радиации" />
+  <descr name="Dp"     num="20054" 	unit="deg"    unit_ru="°" description="Истинное направление, откуда перемещаются облака CL" />
+  <descr name="Da"     	 num="05021"  unit="deg"    unit_ru="°" description="Направление наблюдения" />
+  <descr name="el"	 num="07021"  unit="deg"    unit_ru="°" description="Угол превышения" />
+  <descr name="p24"    	 num="10062" 		single="true" unit="hPa" unit_ru="гПа" description="изменений приземного давления за последние 24 часа" />
+  <descr name="tt00"   	 num="04024" group="92" unit="h"   unit_ru="ч" description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt01"   	 num="04024" group="93" unit="h"   unit_ru="ч" description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt02"   	 num="04024" group="94" unit="h"   unit_ru="ч" description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt03"   	 num="04024" group="95" unit="h"   unit_ru="ч" description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt04"   	 num="04024" group="96" unit="h"   unit_ru="ч" description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt05"   	 num="04024" group="97" unit="h"   unit_ru="ч" description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt06"   	 num="04024" group="98" unit="h"   unit_ru="ч" description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt07"   	 num="04024" group="99" unit="h"   unit_ru="ч" description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="Rt09"   	 num="13057"		unit="h"   unit_ru="ч" description="Время начала или окончания осадков, передаваемых посредством RRR" />
+  <descr name="dc09"   	 num="13056"		unit="h"   unit_ru="ч" description="Продолжительность и характер осадков, передаваемых посредством RRR" />
+  <descr name="fx"   	 num="11041"            single="true" unit="m/s" unit_ru="м/с" description="Максимальная скорость ветра при порыве" />
+  <descr name="fn"	 num="11041" group="55"	single="true" unit="m/s" unit_ru="м/с" description="Минимальная скорость ветра, средний ветер за период" />
+  <descr name="tt16"   	 num="04024" group="90"	unit="h"   unit_ru="ч" description="Время резко выраженного сдвига направления ветра по часовой стрелке"  />
+  <descr name="tt17"	 num="04024" group="91"	unit="h"   unit_ru="ч" description="Время резко выраженного сдвига направления ветра против часовой стрелки"  />
+  <descr name="Dp18"   	 num="20054" group="94" unit="deg" unit_ru="°" description="Истинное направление, откуда приближается указанное явление" />
+  <descr name="Mw19"   	 num="11111" group="55" unit="NO"  unit_ru="NO" description="Водяной(ые) смерч(и), торнадо, вихри, пыльные вихри" />
+  <descr name="Da19"   	 num="05021" group="96" unit="deg" unit_ru="°" description="Истинное направление, в котором видны орографические облака или облака с вертикальным развитием" />
+  <descr name="S"      	 num="22061" 		single="true" unit="NO"  unit_ru="NO" description="Состояние моря" />
+  <descr name="Fx"     	 num="11040" 		unit="m/s" unit_ru="м/с" description="Максимальная скорость ветра, средний ветер за период" />
+  <descr name="Vs_22"  	 num="20058" group="96" unit="m"   unit_ru="м" description="Видимость в месте посадки гидросамолетов" />
+  <descr name="Vs24"   	 num="20058" 		unit="m"   unit_ru="м" description="Видимость" />
+  <descr name="Tw25"     num="22041" 		unit="C"   unit_ru="°С" description="Температура воды на курортах в сезон" />
+  <descr name="S026"     num="20063" group="94" unit="NO" unit_ru="NO" description="Иней или окрашенные осадки" />
+  <descr name="i026"	 num="20024" group="94" unit="NO" unit_ru="NO" description="Иней или окрашенные осадки. Интенсивность" />
+  <descr name="Sf"	 num="20063"		unit="NO" unit_ru="NO" description="Особые явления" />
+  <descr name="S7"	 num="20068"		unit="NO" unit_ru="NO" description="Характер и состояние снежного покрова" />
+  <descr name="S7_"	 num="20069"		unit="NO" unit_ru="NO" description="Характер и состояние снежного покрова" />
+  <descr name="S8"	 num="20063" group="95" unit="NO" unit_ru="NO" description="Позёмок"  />
+  <descr name="S8_"	 num="20040"            unit="NO" unit_ru="NO" description="Эволюция позёмка"  />
+  <descr name="RR30"     num="13011" group="96" unit="mm" unit_ru="мм" description="Количество осадков" />
+  <descr name="ss"       num="13012" 		unit="mm" unit_ru="мм" description="Высота свежевыпавшего снега" />
+  <descr name="RR32"     num="20066" 		single="true" unit="mm" unit_ru="мм" description="Максимальный диаметр градин" />
+  <descr name="RR33"     num="13016" 		unit="mm" unit_ru="мм" description="Водный эквивалент твердых осадков на поверхности земли" />
+  <descr name="RR34"     num="20067" group="91" unit="mm" unit_ru="мм" description="Диаметр отложения при гололеде" />
+  <descr name="RR35"     num="20067" group="92" unit="mm" unit_ru="мм" description="Диаметр изморозевого отложения" />
+  <descr name="RR36"     num="20067" group="93" unit="mm" unit_ru="мм" description="Диаметр смешанного отложения" />
+  <descr name="RR37"     num="20067" group="94" unit="mm" unit_ru="мм" description="Диаметр отложения мокрого снега" />
+  <descr name="nn38"     num="13114" 		unit="mm/h" unit_ru="мм/ч" description="Скорость нарастания отложения на поверхности при гололеде" />
+  <descr name="hghg39"   num="07002" group="96" unit="m" unit_ru="м" description="Высота над поверхностью земли, на которой наблюдается диаметр отложений, в метрах, сообщаемый в предыдущей группе 9SPSPspsp" />
+  <descr name="C40"      num="20012" group="97" unit="NO" unit_ru="NO" description="Род облаков" />
+  <descr name="n340"	 num="20137" group="97" unit="NO" unit_ru="NO" description="Эволюция облаков" />
+  <descr name="C41"	 num="20012" group="98" unit="NO" unit_ru="NO" description="Род облаков" />
+  <descr name="Dp41"     num="20054" group="98" unit="deg" unit_ru="°" description="Направление, откуда движутся облака" />
+  <descr name="C42"      num="20012" group="99" unit="NO" unit_ru="NO" description="Род облаков" />
+  <descr name="Da42"     num="05021" group="99" unit="deg" unit_ru="°" description="Местоположение максимальной концентрации облаков" />
+  <descr name="CL43"     num="20012" group="80" unit="NO" unit_ru="NO" description="Род облаков" />
+  <descr name="Dp43"     num="20054" group="80" unit="deg" unit_ru="°" description="Направление, откуда движутся облака нижнего яруса" />
+  <descr name="CL44"     num="20012" group="81" unit="NO" unit_ru="NO" description="Род облаков" />
+  <descr name="Da44"     num="05021" group="81" unit="deg" unit_ru="°" description="Местоположение максимальной концентрации низких облаков" />
+  <descr name="htht45"   num="20014" group="91" unit="m" unit_ru="м" description="Высота вершин самых низких облаков" />
+  <descr name="Cc46"     num="20063" group="82" unit="NO" unit_ru="NO" description="Окрашивание и/или конвергенция облаков, связанных с тропическим возмущением" />
+  <descr name="Da46"     num="05021" group="82" unit="deg" unit_ru="°" description="Направление окрашивания и/или конвергенции облаков" />
+  <descr name="C47"      num="20012" group="83" unit="NO" unit_ru="NO" description="Род облаков" />
+  <descr name="e_"       num="07021" group="83" unit="deg" unit_ru="°" description="Угол возвышения вершины явления над горизонтом" />
+  <descr name="C048"     num="20136" group="84" unit="NO" unit_ru="NO" description="Орографические облака" />
+  <descr name="Da48"     num="05021" group="84" unit="deg" unit_ru="°" description="Истинное направление" />
+  <descr name="Ca49"     num="20136" group="85" unit="NO" unit_ru="NO" description="Облака вертикального развития" />
+  <descr name="Da49"     num="05021" group="85" unit="deg" unit_ru="°" description="Истинное направление" />
+  <descr name="Nm50"     num="20136" 		unit="NO" unit_ru="NO" description="Условия облачности над горами и перевалами" />
+  <descr name="n350"	 num="20137"		unit="NO" unit_ru="NO" description="Эволюция облачности" />
+  <descr name="Nv51"	 num="20008" group="91" unit="NO" unit_ru="NO" description="Условия облачности, наблюдаемые с более высокого уровня" />
+  <descr name="n451"	 num="20137" group="91" unit="NO" unit_ru="NO" description="Эволюция облачности, наблюдаемой со станции, расположенной на более высоком уровне" />
+  <!-- 1 - очень низкая нижняя граница облаков над горизонтом (10); 3 - возвышение менее 30 градусов (30) ; 7 - возвышение более 30 градусов (70) -->
+  <descr name="Eh58"    num="07021" group="86" unit="deg" unit_ru="°" description="Местоположение максимальной концентрации облаков" />
+  <descr name="Da58"    num="05021" group="86" unit="deg" unit_ru="°" description="Местоположение максимальной концентрации облаков" />
+  <descr name="vp59"    num="20057" group="86" unit="m/s" unit_ru="м/с" description="Скорость и направление, откуда движутся облака" />
+  <descr name="Dp59"    num="20054" group="86" unit="deg" unit_ru="°" description="Скорость и направление, откуда движутся облака" />
+
+  <descr name="ww62"    num="20003" group="85" unit="NO" unit_ru="NO" description="Погода в предшествующий час" />
+  <descr name="ww64"	num="20003" group="86" unit="NO" unit_ru="NO" description="Погода для усиления W1 и/или W2" />
+  <descr name="ww66"	num="20003" group="87" unit="NO" unit_ru="NO" description="Метеорологическое явление, происходящее в срок или в период, указанный соответствующей(ими) группой(ами) времени 9SPSPspsp" />
+
+
+  <descr name="Da696"   num="05021" group="69" unit="deg" unit_ru="°" description="Дождь на станции, не связанный с отдаленной грозой, направление Da" />
+  <descr name="Da697"	num="05021" group="80" unit="deg" unit_ru="°" description="Снег на станции, не связанный с отдаленной грозой, направление Da" />
+  <descr name="Da698"   num="05021" group="79" unit="deg" unit_ru="°" description="Ливень на станции, не связанный с отдаленной грозой, направление Da" />
+  <descr name="Eh70"	num="07021" group="78" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Da70"    num="05021" group="78" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Eh71"	num="07021" group="77" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Da71"    num="05021" group="77" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Eh72"	num="07021" group="76" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Da72"	num="05021" group="76" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Eh73"	num="07021" group="75" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Da73"	num="05021" group="75" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Eh74"	num="07021" group="74" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="Da74"    num="05021" group="74" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="vp75"    num="20057" group="78" unit="m/s" unit_ru="м/с" description="Местоположение и перемещение явления" />
+  <descr name="Dp75"    num="20054" group="78" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="vp76"    num="20057" group="77" unit="m/s" unit_ru="м/с" description="Местоположение и перемещение явления" />
+  <descr name="Dp76"    num="20054" group="77" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="vp77"    num="20057" group="76" unit="m/s" unit_ru="м/с" description="Местоположение и перемещение явления" />
+  <descr name="Dp77"    num="20054" group="76" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="vp78"    num="20057" group="75" unit="m/s" unit_ru="м/с" description="Местоположение и перемещение явления" />
+  <descr name="Dp78"    num="20054" group="75" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+  <descr name="vp79"    num="20057" group="74" unit="m/s" unit_ru="м/с" description="Местоположение и перемещение явления" />
+  <descr name="Dp79"    num="20054" group="74" unit="deg" unit_ru="°" description="Местоположение и перемещение явления" />
+
+  <descr name="VsVs80"  num="20058" group="91" unit="m" unit_ru="м" description="Видимость по направлению к морю,м" />
+  <descr name="VV81"    num="20001" group="92" unit="m" unit_ru="м" description="Видимость на СВ" />
+  <descr name="VV82"    num="20001" group="93" unit="m" unit_ru="м" description="Видимость на В" />
+  <descr name="VV83"    num="20001" group="94" unit="m" unit_ru="м" description="Видимость на ЮВ" />
+  <descr name="VV84"    num="20001" group="95" unit="m" unit_ru="м" description="Видимость на Ю" />
+  <descr name="VV85"    num="20001" group="96" unit="m" unit_ru="м" description="Видимость на ЮЗ" />
+  <descr name="VV86"    num="20001" group="97" unit="m" unit_ru="м" description="Видимость на З" />
+  <descr name="VV87"    num="20001" group="98" unit="m" unit_ru="м" description="Видимость на СЗ" />
+  <descr name="VV88"    num="20001" group="99" unit="m" unit_ru="м" description="Видимость на С" />
+  <descr name="Vb89"    num="20007" group="88" unit="m" unit_ru="м" description="Изменение видимости в течение часа, предшествовавшего сроку наблюдения" />
+  <descr name="Da89"    num="05021" group="88" unit="deg" unit_ru="°" description="Направление изменения видимости" />
+  <descr name="iS"      num="20024" 	       unit="NO" unit_ru="NO" description="Интенсивность" />
+  <descr name="A91"     num="20063" group="99" unit="NO" unit_ru="NO" description="Мираж" />
+  <descr name="Da91"    num="05021" group="89" unit="deg" unit_ru="°" description="Мираж,направление" />
+  <descr name="Nt92"    num="20063" group="80" unit="NO" unit_ru="NO" description="Конденсационные следы" />
+  <descr name="tw92"    num="04024" group="80" unit="h" unit_ru="ч" description="Время начала явления до срока наблюдения" />
+  <descr name="Cs"      num="20090"            unit="NO" unit_ru="NO" description="Особые облака" />
+  <descr name="Da93"	num="05021" group="70" unit="NO" unit_ru="NO" description="Облака особых видов" />
+  <descr name="A394"	num="20063" group="71" unit="NO" unit_ru="NO" description="Ухудшение освещенности в дневное время" />
+  <descr name="Da94"    num="05021" group="71" unit="deg" unit_ru="°" description="Ухудшение освещенности в дневное время" />
+  <descr name="Tv"      num="12049" group="01"       single="true" unit="C" unit_ru="°С" description="Внезапное изменение температуры воздуха" />
+  <descr name="Uv"	num="13003" group="99" single="true" unit="%" unit_ru="%" description="Внезапное измнение относительной влажности" />
+  <!-- <descr name="C'"      num="20012" group="03" unit="NO" unit_ru="NO" description="Род облаков, основание которых находится ниже уровня станции" /> -->
+  <descr name="h_"    num="20014"  unit="m" unit_ru="м" description="Высота верхней границы облаков" />
+  <descr name="Ct"      num="20017"  unit="NO" unit_ru="NO" description="Описание вершин облаков, основание которых находится ниже уровня станции" />
+
+  <!-- FM20 -->
+  <descr name="Wr"   num="20999" unit="NO"  unit_ru="NO" description="Данные о наиболее опасном явлении (тип облачности)" />
+  <descr name="He"   num="21021" unit="km"  unit_ru="км" description="Наибольшая высота радиоэха" />
+  <descr name="Ie"   num="20024" group = "01" unit="mm6 m-3" unit_ru="мм^6/м&#179;" description="Интенсивность эха" />
+  <descr name="NeNe" num="05999" unit="NO"  unit_ru="NO" description="Номер квадрата 60х60 км" />
+  <!-- <descr name="De"   num="20054" unit="deg" unit_ru="°" description="Истинное направление, куда перемещается система радиоэха" /> -->
+  <descr name="ae"   num="19999" unit="NO"  unit_ru="NO" description="Тенденция изменения системы радиоэха" />
+  <descr name="Ac"   num="19101" unit="NO"  unit_ru="NO" description="Точность местонахождения центра или «глаза» тропического циклона" />
+  <descr name="Sc"   num="19102" unit="NO"  unit_ru="NO" description="Форма и четкость определения «глаза» тропического циклона" />
+  <descr name="Rw"   num="02160" unit="mm"  unit_ru="мм" description="Длина волны радиолокатора" />
+  <descr name="Wc"   num="19103" unit="km"  unit_ru="км" description="Диаметр или длина большой оси «глаза» тропического циклона" />
+  <descr name="ac"   num="19104" unit="NO"  unit_ru="NO" description="Изменение характера «глаза» в течение 30 минут, предшествовавших сроку наблюдения" />
+  <descr name="rt"   num="19105" unit="km"  unit_ru="км" description="Расстояние между концом наблюдаемой наиболее удаленной спиральной полосы и центром тропического циклона" />
+  <descr name="fe"   num="21014" unit="km/h" unit_ru="км/ч" description="Средняя доплеровская (радиальная)  скорость" />
+  <descr name="te"   num="19100" unit="NO"  unit_ru="NO" description="Интервал времени, за который рассчитывалось перемещение центра или «глаза» тропического циклона" />
+  <descr name="dsds" num="19005" unit="deg" unit_ru="°" description="Направление перемещения синоптической характеристики" />
+  <descr name="fsfs" num="19006" unit="m/s" unit_ru="м/с" description="Скорость перемещения синоптической характеристики" />
+  <descr name="meteo_sign" num="08005" unit="NO" unit_ru="NO" description="Значимость приземного синоптического образования" />
+
+  <descr name="T2m" num="12004" unit="C" unit_ru="°С" description="Температура воздуха на высоте 2 м" />
+  <descr name="proj" num="29001" unit="NO" unit_ru="NO" description="Тип проекции" />
+  <descr name="pict" num="30031" unit="NO" unit_ru="NO" description="Тип изображения" />
+  <descr name="cols" num="30021" unit="NO" unit_ru="NO" description="Количество элементов изображения в строке" />
+  <descr name="rows" num="30022" unit="NO" unit_ru="NO" description="Количество элементов изображения в колонке" />
+  <descr name="pixel1" num="05033" unit="m" unit_ru="м" description="Размер элемента изображения на горизонтали – 1" />
+  <descr name="pixel2" num="06033" unit="m" unit_ru="м" description="Размер элемента изображения на горизонтали – 2" />
+  <descr name="layers" num="10040" unit="NO" unit_ru="NO" description="Число восстановленных слоев" />
+  <descr name="dimension"   num="08007" unit="NO" unit_ru="NO" description="Значимость размера" />
+  <descr name="vertic_sign" num="08001" unit="NO" unit_ru="NO" description="Значимость вертикального зондирования" />
+  
+  <descr name="ip"          num="08004" unit="NO" unit_ru="NO" description="Фаза полета воздушного судна" />
+  
+
+  <!-- <descr name=""	     num="11042"  unit=""  unit_ru="" description="" /> -->
+  <descr name="ddx"	     num="11043"  unit="deg"  unit_ru="°" description="Направление ветра при максимальном порыве" />
+  <descr name="iTS"	     num="02038"  unit="NO"  unit_ru="NO" description="Метод измерения температуры и/или солености воды" />
+  <descr name="iT"	     num="02039"  unit="NO"  unit_ru="NO" description="Метод измерения по смоченному термометру" />
+  <descr name="dW"	     num="22001"  unit="deg"  unit_ru="°" description="Направление волн" />
+  <descr name="h_water"	     num="07033"  unit="m"  unit_ru="м" description="Высота датчика над поверхностью воды" />
+
+
+  <!-- FM-35 -->
+  <descr name="D____D"  num="01011" 	       	 unit="NO" unit_ru="NO" description="Радиопозывной сигнал судна, состоящий из трех (или более) буквенно-цифровых знаков" />
+  <descr name="A1"	num="01003"	       	 unit="NO" unit_ru="NO" description=" Район региональной ассоциации ВМО, где размещены буй, буровая уста­нов­ка или платформа для добычи нефти и газа" />
+  <descr name="bw"	num="01004"	       	 unit="NO" unit_ru="NO" description=" Подрайон, входящий в район, обозначенный A1" />
+  <descr name="nb"      num="01005" 	       	 unit="NO" unit_ru="NO" description="Тип и порядковый номер буя" />
+  <descr name="La"      num="05001" 	       	 unit="deg" unit_ru="°" description="Широта" />
+  <descr name="dLa"     num="05011" 	       	 unit="deg" unit_ru="°" description="Увеличение широты" />
+  <descr name="Qc"      num="02070" 	       	 unit="NO" unit_ru="NO" description="Квадрант земного шара" />
+  <descr name="Lo"       num="06001" 	       	 unit="deg" unit_ru="°" description="Долгота" />
+  <descr name="dLo"     num="06011" 	       	 unit="deg" unit_ru="°" description="Увеличение долготы" />
+  <descr name="MMM"  	 num="05020" 	       	 unit="NO" unit_ru="NO" description="Номер квадрата Марсдена, в котором расположена станция в срок наблюдения" />
+  <descr name="ULa"  	 num="05003" 	       	 unit="deg" unit_ru="°" description="Разряд единиц в сообщаемой широте" />
+  <descr name="ULo"  	 num="05004" 	       	 unit="deg" unit_ru="°" description="Разряд единиц в сообщаемой долготе" />
+  <descr name="h0h0h0h0" num="07001" 	       	 unit="m" unit_ru="м" description="Превышение подвижной наземной станции,м" />
+  <descr name="im"       num="33024" 	       	 unit="NO" unit_ru="NO" description="Указатель единиц измерения превышения и доверительный уровень точности измерения превышения" />
+  <descr name="Id"       num="07004"  group="91" single="true" unit="hPa" unit_ru="гПа" description="Давление последнего стандартного уровняс данными о ветре" />
+  <descr name="P1"      num="07004"   unit="hPa" unit_ru="гПа" description="Давление на уровне" />
+  <descr name="vbvb"	 num="11061"   single="true" unit="m/s" unit_ru="м/с" description="Абсолютная величина векторной разности ветра между максимальным ветром и ветром на 1 км ниже него" />
+  <descr name="vava"	 num="11062"   single="true" unit="m/s" unit_ru="м/с" description="Абсолютная величина векторной разности ветра между максимальным ветром и ветром на 1 км выше него" />
+  <descr name="sr"	 num="02013"  		 single="true" unit="NO" unit_ru="NO" description="Коррекция солнечной и инфракрасной радиации" />
+  <descr name="rara"	 num="02011"		 single="true" unit="NO" unit_ru="NO" description="Используемые радиозонд/система зондирования" />
+  <descr name="sasa"	 num="02014"		 single="true" unit="NO" unit_ru="NO" description="Используемый метод слежения/состояние системы" />
+  <descr name="a4"       num="02003" 		 unit="NO"  unit_ru="NO" description="Тип используемого измерительного оборудования" />
+  <descr name="GG_7"     num="04004"  group="07" unit="h"   unit_ru="ч" description="Фактический срок наблюдений, ч" />
+  <descr name="gg_7"     num="04005"  group="07" unit="min" unit_ru="мин" description="Срок наблюдения, минут" />  
+
+  <!-- особые точки -->
+  <descr name="nn1"  num="07036" group="00" unit="NO"  unit_ru="NO" description="Номер уровня для температуры" />
+
+  <descr name="h0_station"   num="07030" unit="m"  unit_ru="м" description="Высота площадки станции над средним уровнем моря" />
+  <descr name="h0_barometer" num="07031" unit="m"  unit_ru="м" description="Высота барометра над средним уровнем моря" />
+  <descr name="h0"	     num="07002" unit="m"  unit_ru="м" description="Высота" />
+  <descr name="hmsl"	     num="07007" unit="m"  unit_ru="м" description="Высота над УМ" />
+  <descr name="dh"	     num="07005" unit="m"  unit_ru="м" description="Увеличение высоты" />
+  <descr name="ha"	     num="07006" unit="m"  unit_ru="м" description="Высота над станцией" />
+  <descr name="h_sensor"     num="07032" unit="m"  unit_ru="м" description="Высота датчика на поверхностью" />
+  <descr name="hgpm"	     num="07009" unit="gpm"  unit_ru="гп. м" description="Геопотенциальная высота" />
+  <descr name="Pd"	     num="07065" unit="hPa"  unit_ru="гПа" description="Давление воды" />
+
+  <descr name="stat_sign" num="08023" group="ANY" unit="NO" unit_ru="NO" description="Данные первого порядка" />
+  <descr name="tf_sign"	  num="08039" group="ANY" unit="NO" unit_ru="NO" description="Значимость времени (авиационный прогноз)" />
+  <descr name="t_sign"	  num="08021" group="ANY" unit="NO" unit_ru="NO" description="Значимость времени" />
+  <descr name="v_sign"	  num="08002" group="ANY" unit="NO" unit_ru="NO" description="Вертикальная значимость" />
+  <descr name="t_disp"	  num="04086" group="ANY" unit="s"  unit_ru="с" description="Долговременный период или смещение" />
+  <descr name="z_sign"	  num="08042" group="ANY" unit="NO"  unit_ru="NO" description="Значимость продленного вертикального зондирования" />
+  <descr name="La_disp"	  num="05015" group="ANY" unit="deg"  unit_ru="°" description="Сдвиг по широте" />
+  <descr name="Lo_disp"	  num="06015" group="ANY" unit="deg"  unit_ru="°" description="Сдвиг по долготе" />
+  <descr name="st_sign"	  num="08019" group="ANY" unit="NO"  unit_ru="NO" description="Определитель для указателя центра" />
+  <descr name="syn_sign"  num="08011" group="ANY" unit="NO"  unit_ru="NO" description="Метеорологическая характеристика" />
+  <descr name="attr"      num="33041" group="ANY" unit="NO"  unit_ru="NO" description="Атрибут значения" />
+  <descr name="limType"   num="33042" group="ANY" unit="NO"  unit_ru="NO" description="Тип предела" />
+
+
+  <descr name="z_sn"	     num="01081" group="ANY"  unit="NO"	 unit_ru="NO" description="Серийный номер радиозонда" />
+  <descr name="z_an"	     num="01082" group="ANY"  unit="NO"	 unit_ru="NO" description="Номер подъема радиозонда"	 />
+  <descr name="z_hz"	     num="02067" group="ANY"  unit="Hz"	 unit_ru="Гц" description="Рабочая частота радиозонда" />
+  <descr name="type_P"	     num="02095" group="ANY"  unit="NO"	 unit_ru="NO" description="Тип датчика давления" />
+  <descr name="type_T"	     num="02096" group="ANY"  unit="NO"	 unit_ru="NO" description="Тип датчика температуры" />
+  <descr name="type_U"	     num="02097" group="ANY"  unit="NO"	 unit_ru="NO" description="Тип датчика влажности" />
+  <descr name="soft"	     num="25061" group="ANY"  unit="NO"  unit_ru="NO" description="Идентификация программного обеспечения и номер версии"/>
+  <descr name="antenna"	     num="02101" group="ANY" unit="NO"  unit_ru="NO" description="Тип антенны" />
+  <descr name="beam"	     num="02106" group="ANY" unit="deg"  unit_ru="°" description="Ширина луча в 3 дБ" />
+  <descr name="freq_av"	     num="02121" group="ANY" unit="Hz"  unit_ru="Гц" description="Средняя частота" />
+  <descr name="gate"	     num="25001" group="ANY" unit="m"  unit_ru="м" description="Длительность строб-импульса" />
+  <descr name="speed_est"    num="25020" group="ANY" unit="NO"  unit_ru="NO" description="Оценка средней скорости" />
+  <descr name="text"	     num="00004" group="55" unit="NO"  unit_ru="NO" description="Любой текст" />
+  <descr name="sn"	     num="01086" group="ANY"  unit="NO"	 unit_ru="NO" description="Серийный номер" />
+
+  <descr name="E_T"	     num="02005"  unit="C"  unit_ru="°С" description="Приземная ошибка температуры" />
+  <descr name="E_U"	     num="02006"  unit="%"  unit_ru="%" description="Приземная ошибка влажности" />
+
+  <!-- <descr name="nP1A"	     num="00009" group="06" unit="NO"  unit_ru="NO" description="Количество поверхностей, по которым сообщаются данные о ветре" /> -->
+  <!-- <descr name="nP1C"	     num="00009" group="16" unit="NO"  unit_ru="NO" description="Количество поверхностей, по которым сообщаются данные о ветре" /> -->
+
+  <!-- FM15, FM51 -->
+  <descr name="status"    num="08079"	unit="NO" unit_ru="NO" description="Статус продукции" />
+  <descr name="CCCC"      num="01063"	unit="NO" unit_ru="NO" description="Указатель ИКАО местоположения" />
+  <!-- <descr name="ff_10m"	 num="11002" group="08" unit="m/s" unit_ru="м/с" description="Скорость ветра в м/с за 10 мин" /> -->
+  <descr name="dn"	 num="11016"  unit="degree true" unit_ru="°" description="Экстремальное направление переменного ветра против часовой стрелки" />
+  <descr name="dx"	 num="11017"  unit="degree true" unit_ru="°" description="Экстремальное направление переменного ветра по часовой стрелке" />
+  <descr name="VV"	  num="20060"	unit="m" unit_ru="м" description="Горизонтальная видимость у поверхности" />
+  <descr name="VNVN"      num="20059"	unit="m" unit_ru="м" description="Минимальная горизонтальная видимость у поверхности" />
+  <descr name="DR"	  num="01064"	unit="NO"  unit_ru="NO" description="Указатель ВПП" />
+  <descr name="VRVR"      num="20061"	unit="m"   unit_ru="м" description="Визуальная дальность видимости на взлетно-посадочной полосе, в метрах" />
+  <descr name="i"	  num="20018"	unit="NO"  unit_ru="NO" description="Тенденция дальности видимости на ВПП" />
+  <descr name="w_w_"	  num="20019"	unit="NO"  unit_ru="NO" description="Особые явления текущей и прогнозируемой погоды" />
+  <!-- w_tr передаваемые текстом -->
+  <descr name="w_tr"	  num="20019"   group="55" unit="NO"  unit_ru="NO" description="Явления погоды" />
+  <descr name="PQNH"      num="10052"	unit="hPa" unit_ru="гПа" description="Величина QNH" />
+  <!-- <descr name="PQFE"      num="10004" group="01"  unit="hPa" unit_ru="гПа" description="Величина QFE (на ВПП)" /> -->
+  <descr name="ER"	  num="20086"	unit="NO"  unit_ru="NO" description="Отложения на ВПП" />
+  <descr name="CR"	  num="20087"	unit="NO"  unit_ru="NO" description="Степень загрязнения ВПП" />
+  <descr name="eReR"	  num="20088"	unit="m"   unit_ru="м" description="Высота отложения" />
+  <descr name="BR"	  num="20089"   unit="NO"  unit_ru="NO" description="Коэффициент трения/торможения" />
+  <descr name="ERCReRBR"  num="20085"   unit="NO"  unit_ru="NO" description="Общее состояние ВПП" />
+  <descr name="hv"        num="20002"  		  unit="m" unit_ru="м" description="Вертикальная видимость" />
+  <descr name="Nsw"       num="20009"  		  unit="NO" unit_ru="NO" description="Общий указатель погоды" />
+  <descr name="iff"       num="08054"  single="true"  unit="NO" unit_ru="NO" description="Описатель скорости ветра или порывов ветра" />
+
+  <descr name="TT"   	  num="08017"	unit="NO" unit_ru="NO" description="Описатель времени, когда ожидается изменение прогноза" />
+  <descr name="Y1Y1"	  num="04003"	group="02" unit="NO" unit_ru="NO" description="День месяца, начало периода годности прогноза" />
+  <descr name="G1G1"	  num="04004"	group="02" unit="h" unit_ru="ч" description="Время начала периода действия прогноза" />
+  <descr name="g1g1"      num="04005"   group="02" unit="min" unit_ru="мин" description="Минута начала периода действия прогноза" />
+  <descr name="Y2Y2"	  num="04003"	group="03" unit="NO" unit_ru="NO" description="День месяца, конец периода годности прогноза" />
+  <descr name="G2G2"	  num="04004"	group="03" unit="h" unit_ru="ч" description="Время окончания периода действия прогноза" />
+  <descr name="g2g2"      num="04005"   group="03" unit="min" unit_ru="мин" description="Минута окончания периода действия прогноза" />
+  <descr name="Tf"        num="12023"	           unit="C" unit_ru="°С" description="Прогнозируемая температура" />
+  <!-- <descr name="YFYF_max"  num="04003"	group="04" unit="NO" unit_ru="NO" description="Действительный день месяца (МСВ) прогноза температуры" /> -->
+  <!-- <descr name="GFGF_max"  num="04004"	group="04" unit="h" unit_ru="ч" description="Время действия прогноза температуры" /> -->
+  <!-- <descr name="TFTF_min"  num="12023"	group="05" unit="C" unit_ru="°С" description="Прогнозируемая температура" /> -->
+  <!-- <descr name="YFYF_min"  num="04003"	group="05" unit="NO" unit_ru="NO" description="Действительный день месяца (МСВ) прогноза температуры" /> -->
+  <!-- <descr name="GFGF_min"  num="04004"	group="05" unit="h" unit_ru="ч" description="Время действия прогноза температуры" /> -->
+  <descr name="C2C2"	  num="33045"	unit="%" unit_ru="%" description="Вероятность" />
+  <!-- <descr name="YeYe"	  num="04003"	group="06" unit="NO" unit_ru="NO" description="День месяца (МСВ) окончания прогнозируемого изменения" /> -->
+  <!-- <descr name="GeGe"	  num="04004"	group="06" unit="h" unit_ru="ч" description="Срок окончания действия прогноза на период, который начался в GG, до ближайшего целого часа МСВ" /> -->
+  <descr name="TTTTT"	  num="08016"  unit="NO" unit_ru="NO" description="Описатель изменения прогноза трендового типа или прогноза по аэродрому" />
+  
+  <descr name="Tfc"       num="12101" group="03"	  unit="C"   unit_ru="°С" description="Прогнозируемая температура воздуха в 3-х часовом интервале" />
+  <descr name="Pqnh_fc"      num="10052" group="03"	unit="hPa" unit_ru="гПа" description="Прогнозируемая величина QNH  в 3-х часовом интервале(установка высотомера, уровень моря)" />
+
+  
+  <descr name="Ic"	  num="20041"  unit="NO" unit_ru="NO" description="Тип обледенения" />
+  <descr name="Icn"	  num="20042"  unit="NO" unit_ru="NO" description="Наличие обледенения" />
+  <descr name="hi"	  num="11032"  group="08"  unit="m" unit_ru="м" description="Высота нижней границы слоя обледенения" />
+  <descr name="tL"	  num="11900"  group="08"  unit="m" unit_ru="м" description="Толщина слоя обледенения" />
+  <descr name="B"	  num="11030"  unit="NO" unit_ru="NO" description="Степень турбулентности" />
+  <descr name="hB"	  num="11032"  unit="m" unit_ru="м" description="Высота нижней границы турбулентности" />
+  <descr name="tB"	  num="11900"  group="55" unit="m" unit_ru="м" description="Толщина слоя турбулентности" />
+  <descr name="ff_w"	  num="11034"             unit="m/s" unit_ru="м/с" description="Скорость вертикальных порывов ветра" />
+  
+  <descr name="h_share"  num="07006"  group="17" unit="m"   unit_ru="м" description="Сдвиг ветра, высота над станцией" />
+  <descr name="dd_share" num="11001"  group="17" unit="deg" unit_ru="°" description="Сдвиг ветра, направление" />
+  <descr name="ff_share" num="11002"  group="17" unit="m/s" unit_ru="м/с" description="Cдвиг ветра, скорость" />
+  <descr name="nns"      num="01023"  		 unit="NO" unit_ru="NO" description="Номер последовательности" />
+  <descr name="nn"       num="01037"  		 unit="NO" unit_ru="NO" description="Ежедневный порядковый номер сообщения" />
+  <descr name="nn_cnl"	 num="01037" group="01"	 unit="NO" unit_ru="NO" description="Номер отмененного сообщения" />
+  <descr name="C2C2C2C2" num="01063"  group="01" unit="NO" unit_ru="NO" description="Индекс ОМС, подготовившего сообщение" />
+  <descr name="fl_lev"	     num="07010"         unit="m"  unit_ru="м" description="Эшелон полета" />
+    <descr name="h_hi"	     num="07002" group="03" unit="m"  unit_ru="м" description="Высота, верхняя граница" /> <!-- вернул, потому что непонятно как наносить вернюю границу облака-->
+
+  <descr name="syn_name"     num="01022"     unit="NO"  unit_ru="NO" description="Тип явления, название вулкана" />
+  <descr name="storm_name"     num="01027"     unit="NO"  unit_ru="NO" description="Название шторма, используемое ВМО" />
+  <!-- <descr name="La_v"	     num="05001" group="01" unit="deg" unit_ru="°" description="Местоположение вулкана, широта" /> -->
+  <!-- <descr name="Lo_v"	     num="06001" group="01" unit="deg" unit_ru="°" description="Местоположение вулкана, долгота" /> -->
+  <descr name="h_v"	     num="07002" group="01" unit="m" unit_ru="м" description="Местоположение вулкана, высота" />
+
+  <descr name="refl_hor"     num="21001"  unit="dB"  unit_ru="дБ" description="Горизонтальная отражательная способность" />
+  <descr name="refl_diff"    num="21003"  unit="dB"  unit_ru="дБ" description="Дифференциальная отражательная способность" />
+  <descr name="phen"	     num="21022"  unit="NO"  unit_ru="NO" description="Явления (доп. национальный дескриптор с таблицей)" />
+  <descr name="rain"	     num="21036"  unit="mm/h"  unit_ru="мм/ч" description="Интенсивность дождя" />
+  <descr name="R1"	     num="13019"  unit="mm"  unit_ru="мм" description="Осадки за последний час" />
+  <descr name="R3"	     num="13020"  unit="mm"  unit_ru="мм" description="Осадки за последние 3 часа" />
+  <descr name="R6"	     num="13021"  unit="mm"  unit_ru="мм" description="Осадки за последние 6 часов" />
+  <descr name="R12"	     num="13022"  unit="mm"  unit_ru="мм" description="Осадки за последние 12 часов" />
+  <descr name="precip"	     num="13055"  unit="mm/h"  unit_ru="мм/ч" description="Интенсивность осадков" />
+
+  <descr name="R2"	     num="13024"  unit="mm"  unit_ru="мм" description="Осадки за последние 2 часа" />
+  <descr name="R48"	     num="13025"  unit="mm"  unit_ru="мм" description="Осадки за последние 48 часов" />
+
+  <descr name="wind_enh"	     num="25021"  unit="NO"  unit_ru="NO" description="Расширение расчета ветра" />
+  <descr name="velw"	     num="21017"  unit="m/s"  unit_ru="м/с" description="Средняя доплеровская (радиальная) скорость" />
+
+  <!-- SIGMET -->
+  <descr name="region"	     num="05001" group="02"  unit="NO"  unit_ru="NO" description="Регион (формат SIGMET)" />
+  <!-- <descr name="sig_type"     num="08016"  group="60" unit="NO"	unit_ru="NO" description="Наблюдается или прогнозируется" /> -->
+  <!-- <descr name="sig_dd"	     num="11001"  group="60" unit="NO"	unit_ru="NO" description="Направление явления" /> -->
+  <!-- <descr name="sig_ff"	     num="11002"  group="60" unit="NO"  unit_ru="NO" description="Скорость явления" /> -->
+  <descr name="syni"	     num="20028"  unit="NO"	unit_ru="NO" description="Ожидаемое измненение в интенсивности" />
+  <descr name="sig_fl"	     num="07002"  group="60" unit="NO"	unit_ru="NO" description="Эшелон" />
+  <descr name="sig_length"   num="05000"  group="60" unit="NO"  unit_ru="NO" description="Протяженность" />
+  <descr name="La_c"	     num="05001"  group="60" unit="NO"	unit_ru="NO" description="Местоположение центра, широта" />
+  <descr name="Lo_c"	     num="06001"  group="60" unit="NO"	unit_ru="NO" description="Местоположение центра, долгота" />
+  <descr name="synf"	     num="08011"  group="55" unit="NO"	unit_ru="NO" description="Явления погоды представляющие опасность для LLF" />
+
+  <!-- GAMET -->
+  <descr name="Pn"	     num="10010"  	     unit="hPa"	unit_ru="гПа" description="Минимальное давление, приведенное к среднему уровню моря по стандартной атмосфере" />
+  <descr name="Pnr"	     num="10010"  group="01" unit="hPa"	unit_ru="гПа" description="Минимальное давление, приведенное к среднему уровню моря по реальной атмосфере" />
+  <descr name="height_base"  num="00011"  unit="NO"  unit_ru="NO" description="Уровень относительно моря или поверхности" />
+  <descr name="Na"           num="20008"  unit="NO"  unit_ru="NO" description="Распределение облачности для авиации" />
+
+  <descr name="syn_type"     num="19001"  unit="NO"  unit_ru="NO" description="Тип синоптической характеристики" />
+
+  <descr name="sign_pnt"     num="08040"  unit="NO"  unit_ru="NO" description="Особые точки" />
+  <descr name="hh0"     num="10002"  unit="NO"  unit_ru="NO" description="Высота" />
+
+  <descr name="CwCw"     num="20003"  group="01" unit="NO"  unit_ru="NO" description="Опасное природное или неблагоприятное гидрометеорологическое явление" />
+
+  <!-- SIGWX  -->
+  <descr name="meval"	     num="02041"  unit="NO"  unit_ru="NO"  description="Метод оценки сводок" />
+  <descr name="storm"	     num="01025"  unit="NO"  unit_ru="NO"  description="Указатель шторма" />
+  <descr name="radius"	     num="19002"  unit="m"   unit_ru="м"   description="Эффективный радиус синоптической характеристики" />
+  <descr name="fflim"	     num="19003"  unit="m/s" unit_ru="м/с" description="Порог скорости ветра" />
+  <descr name="radiuslim"	     num="19009"  unit="m"   unit_ru="м" description="Эффективный радиус относительно скорости ветра выше пороговой величины (большие штормы)" />
+
+
+  <!-- grib -->
+  <descr name="hpbl"     num="10095" group="55" unit="m"   unit_ru="m"  description="Высота планетарного пограничного слоя" />
+  <descr name="vort"	 num="11021" group="01" unit="/s"  unit_ru="/c" description="Абсолютная завихренность" />
+  <descr name="Epot"  	 num="12101" group="01" unit="C"   unit_ru="°С" description="Псевдоадиабатическая потенциальная температура" />
+  
+  <descr name="Rlarge"   num="13011" group="55" unit="mm"  unit_ru="мм" description="Крупномасштабные осадки (неконвективные)" />
+  <descr name="sssR"     num="13011" group="56" unit="mm"  unit_ru="мм" description="Водный эквивалент накопленного снежного покрова" />
+  <descr name="sssConv"  num="13011" group="57" unit="mm"  unit_ru="мм" description="Конвективный снег" />
+  <descr name="sssSum"   num="13011" group="58" unit="mm"  unit_ru="мм" description="Суммарное количество осадков в виде снега" />
+  <descr name="melt"	 num="13011" group="59" unit="mm"  unit_ru="мм" description="Таяние снега" />
+  <descr name="snol"     num="13011" group="60" unit="mm"  unit_ru="мм" description="Крупномасштабный снег" />
+  
+  <descr name="lswp"     num="13011" group="61" unit="mm"  unit_ru="мм" description="Крупномасштабные дождевые осадки (неконвективные)" />
+  <descr name="cwp"      num="13011" group="62" unit="mm"  unit_ru="мм" description="Конвективные осадки в виде воды" />
+  
+  <descr name="soilw"    num="13111" group="55" unit="NO"  unit_ru="NO" description="Объемное содержание влаги в почве" />
+  <descr name="acpcp"    num="13023" group="10" unit="mm"  unit_ru="мм" description="Конвективные осадки" />
+
+  <descr name="lcdc"  	 num="20051"            unit="%"   unit_ru="%"  description="Количество нижних облаков" />
+  <descr name="mcdc"  	 num="20052"            unit="%"   unit_ru="%"  description="Количество облаков среднего яруса" />
+  <descr name="hcdc"  	 num="20053"            unit="%"   unit_ru="%"  description="Количество высоких облаков" />
+  <descr name="rough"    num="20067" group="55" unit="m"   unit_ru="м"  description="Шероховатость поверхности" />
+
+  <descr name="gustx"    num="11112" 		unit="m/s" unit_ru="м/с" description="Максимальная скорость ветра" />  
+
+ 
+  <!-- sat -->
+  <descr name="sat"	     num="01007"  unit="NO"  unit_ru="NO" description="Идентификатор спутника" />
+  <descr name="instr"	     num="02019"  unit="NO"  unit_ru="NO" description="Спутниковый прибор" />
+  <descr name="O3"	     num="15001"  unit="DU"  unit_ru="е.Д." description="Общее содержание озона" />
+  <descr name="Tskin"	     num="12061"  unit="K"  unit_ru="К" description="Температура поверхностного слоя" />
+  <descr name="BT"	     num="12063"  unit="K"  unit_ru="К" description="Яркостная температура" />
+  
+  <descr name="Acloud"	     num="14026"  unit="%"  unit_ru="%" description="Альбедо на вершинах облаков" />
+  <descr name="Thcloud"	     num="13093"  unit="NO"  unit_ru="NO" description="Оптическая толщина облаков" />
+  <descr name="bend"	     num="15037"  unit="Radians"  unit_ru="рад" description="Угол изгиба" />
+  <descr name="refract"	     num="15036"  unit="N-units"  unit_ru="Единицы N" description="Атмосферная преломляющая способность" />
+  <descr name="q"	     num="13001"  unit="kg kg-1"  unit_ru="кг·кг^-1" description="Удельная влажность" />
+  <descr name="mixing"	     num="13002"  unit="kg kg-1"  unit_ru="кг·кг^-1" description="Отношение смеси" />
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+
+
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+
+  <!-- дескрипторы дальше -->
+
+  <descr name="UNK" num="55555" group="55" unit="NO" unit_ru="NO" description="need to know" />
+  <descr name="FHI" num="55112" group="55" unit="C" unit_ru="°С" description="Индекс пожарной опасности" />
+
+  <descr name="sun_alpha"    num="07022"  unit="deg"  unit_ru="°" description="Высота солнца" />
+  <descr name="T_sn"	     num="12064"  unit="C"    unit_ru="°С" description="Температура прибора" />
+  <descr name="trans"	     num="20192" group="55"  unit="%"  unit_ru="%" description="Световой коэффициент направленного пропускания" />
+  <descr name="lr"	     num="20127"  unit="km"   unit_ru="км" description="Молния - расстояние от станции" />
+  <descr name="ld"	     num="20128"  unit="deg" unit_ru="°" description="Молния - направление от станции" />
+  <descr name="lf"	     num="20126" group="55"  unit="NO"  unit_ru="NO" description="Количество грозовых разрядов" />
+  <descr name="lfsum"	     num="20126" group="56"  unit="NO"  unit_ru="NO" description="Общее количество молниевых разрядов" />
+  <descr name="noise"	     num="20193" group="55"  unit="NO"  unit_ru="NO" description="Уровень теневого шума" />
+  <descr name="ffn"	     num="22044" group="55"  unit="m/s"  unit_ru="м/с" description="Средняя скорость звука по трем каналам" />
+  <descr name="dffn"	     num="22044" group="56"  unit="m/s"  unit_ru="м/с" description="Максимальное отклонение скорости по одному каналу от средней по трем" />
+
+
+  <descr name="TFPhp"        num="19156" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр (Huber-Pock, Kress, 1989)" />
+  <descr name="TFPrc"        num="19157" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр (Renard, Clark, 1965)" />
+  <descr name="TFPja"        num="19158" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр (Japan Meteorological Agency, 1988)" />
+  <descr name="TFPh"         num="19159" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр (Hewson, 1997)" />
+
+  <descr name="TFPrckm"        num="19160" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр, км (Renard, Clark, 1965)" />
+  <descr name="TFPjakm"        num="19161" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр, км (Japan Meteorological Agency, 1988)" />
+  <descr name="TFPh6"          num="19162" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр (Hewson f6, 1997)" />
+  <descr name="TFPh6m1"        num="19163" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр,(Hewson f6_M1, 1997)" />
+  <descr name="TFPh6m2"        num="19164" group="55" unit="NO" unit_ru="NO" description="Фронтальный параметр (Hewson f6_M2, 1997)" />
+
+  
+  <!-- POLUS -->
+  <!-- <descr name="phse" num="00021" group="55" unit="h" unit_ru="" description="Час конца измерений" /> -->
+  <!-- <descr name="pmse" num="00022" group="55" unit="min" unit_ru="" description="Минуты конца измерений" /> -->
+  <!-- <descr name="psse" num="00023" group="55" unit="s" unit_ru="" description="Секунды конца измерений" /> -->
+  <!-- <descr name="pcloud" num="00024" group="55" unit="NO" unit_ru="" description="Код облачности" /> -->
+  <!-- <descr name="ptfs" num="00025" group="55" unit="s" unit_ru="" description="Время от начала измерений" /> -->
+  
+  <!-- AMIS_bil -->
+  <descr name="i_light" num="50001" group="55" unit="cd" unit_ru="кд" description="Интенсивность искусственного освещения" />
+  <descr name="nat_light" num="50002" group="55" unit="NO" unit_ru="NO" description="Естественное освещение ВПП (Н – ночь, Д – день, С – сумерки)" />
+  <descr name="artif_light" num="50003" group="55" unit="NO" unit_ru="NO" description="Тип искусственного освещения ВПП (ОМИ – огни малой интенсивности, ОВИ – огни высокой интенсивности)" />
+
+  <!-- AMI2 = АМИИС-2000 -->
+  <descr name="h50"	num="20013" group="55" unit="m"  unit_ru="м" description="ВНГО, измеренная вблизи БПРМ со стороны захода на посадку с магнитным курсом посадки 50°" />
+  <descr name="h230"	num="20013" group="56" unit="m"  unit_ru="м" description="ВНГО, измеренная вблизи БПРМ со стороны захода на посадку с магнитным курсом посадки 230°" />
+  <descr name="V50"	num="20001" group="55" unit="m"  unit_ru="м" description="МДВ, измеренная вблизи порога ВПП с магнитным курсом посадки 50°" />
+  <descr name="V230"	num="20001" group="56" unit="m"  unit_ru="м" description="МДВ, измеренная вблизи порога ВПП с магнитным курсом посадки 230°" />
+  <descr name="Vkta"	num="20001" group="57" unit="m"  unit_ru="м" description="МДВ, измеренная вблизи контрольной точки аэродрома" />
+  <descr name="w_ami"	num="70003" group="55" unit="NO" unit_ru="NO" description="Явления" />
+  <descr name="w_ami1"	num="70003" group="56" unit="NO" unit_ru="NO" description="1 - гроза" />
+  <!-- <descr name="ff_p"	num="11002" group="04" unit="m/s" unit_ru="м/с" description="Скорость ветра за 3 с, м/с" /> -->
+  
+
+  <!-- AMC2_1  -->
+
+  <descr name="T_10m"	     num="12101" group="08" unit="C"    unit_ru="°С" description="Срeдняя температура(10 мин)" />
+  <descr name="U_10m"	     num="13003" group="08" unit="%"	unit_ru="%" description="Срeдняя влажность(10 мин)" />
+  <descr name="P0_10m"	     num="10004" group="08" unit="hPa"  unit_ru="гПа" description="Срeднее давление(10 мин)"  />
+  <descr name="VV_3m"	     num="20001" group="10" unit="m"	unit_ru="м" description="Срeдняя МДВ(3 мин)" />
+  <descr name="hs_3m"	     num="20013" group="10" unit="m"	unit_ru="м" description="Срeдняя ВНГО(3 мин)" />
+  <descr name="hs_10m"	     num="20013" group="08" unit="m"    unit_ru="м" description="Средняя ВНГО (10 мин)" />
+  <descr name="Ev"	     num="15056" group="66" unit="hPa"    unit_ru="гПа" description="Упругость водяного пара" />
+
+  <descr name="ff_3s"	     num="11002" group="10"  unit="m/s"  unit_ru="м/с" description="Средняя скорость ветра за 3 сек" />
+  <descr name="ff_2m"	     num="11002" group="09"  unit="m/s"  unit_ru="м/с" description="Средняя скорость ветра за 2 мин" />
+  <descr name="fm_3s"	     num="11041" group="09"  unit="m/s"  unit_ru="м/с" description="Максимальная скорость ветра за 3 сек" />  
+  <descr name="fm_2m"        num="11002" group="12"  unit="m/s" unit_ru="м/с" description="Максимальная скорость ветра за 2 мин"/>
+  <!-- <descr name="fm_10m"       num="11002" group="11"  unit="m/s"  unit_ru="м/с" description="Максимальная скорость ветра за 10 мин" /> -->
+  <descr name="dd_3s"	     num="11001" group="10"  unit="deg"  unit_ru="°" description="Среднее направление за 3 сек" />
+  <descr name="dd_2m"	     num="11001" group="09"  unit="deg"  unit_ru="°" description="Среднее направление за 2 мин" />
+  <!-- <descr name="dd_10m"	     num="11001" group="08"  unit="deg"  unit_ru="°" description="Среднее направление за 10 мин" /> -->
+
+  <descr name="Fx_go"        num="11112"  group="20"		unit="m/s" unit_ru="м/с" description="Максимальная сила ветра на уровне 2 (порыв)" />
+  <descr name="ff_3s_go"     num="11002" group="20"  unit="m/s"  unit_ru="м/с" description="Средняя скорость ветра за 3 секунды на уровне 2" />
+  <descr name="ff_2m_go"     num="11002" group="29"  unit="m/s"  unit_ru="м/с" description="Средняя скорость ветра за 2 минуты на уровне 2" />
+  <descr name="ff_10m_go"    num="11002" group="28"  unit="m/s" unit_ru="м/с" description="Средняя скорость ветра за 10 мин уровене 2, м/с" />
+  <descr name="fm_3s_go"	 num="11041" group="20" unit="m/s" unit_ru="м/с" description="Максимальная скорость ветра за 3 секунды на уровне 2" />  
+  <descr name="fm_2m_go"     num="11002" group="22"  unit="m/s" unit_ru="м/с" description="Максимальная скорость ветра за 2 мин на уровне 2, м/с"/>
+  <descr name="fm_10m_go"    num="11002" group="21"  unit="m/s"  unit_ru="м/с" description="Максимальная скорость ветра за 10 мин на уровне 2, м/с" />
+  <descr name="dd_3s_go"     num="11001" group="20"  unit="deg"  unit_ru="°" description="Среднее направление за 3 сек на уровне 2" />
+  <descr name="dd_2m_go"     num="11001" group="29"  unit="deg"  unit_ru="°" description="Среднее направление за 2 мин на уровне 2" />
+  <descr name="dd_10m_go"    num="11001" group="28"  unit="deg"  unit_ru="°" description="Среднее направление за 10 мин на уровне 2" />
+  <descr name="T_go"   num="12101" group="20"	     unit="C"   unit_ru="°С" description="Температура воздуха на уровне 2,C" />
+
+  <descr name="ff_3s_3"	    num="11002" group="30" unit="m/s"   unit_ru="м/с" description="Средняя скорость ветра за 3 c на уровне 3" />
+  <descr name="dd_3s_3"     num="11001"   group="30" unit="deg" unit_ru="°" description="Среднее направление на 3 сек на уровне 3" />
+  <descr name="Fx_3"        num="11112"  group="30"  unit="m/s" unit_ru="м/с" description="Максимальная сила ветра на уровне 3 (порыв)" />
+  <descr name="fm_3s_3"	    num="11041"  group="30" unit="m/s"  unit_ru="м/с" description="Максимальная скорость ветра за 3 сек на уровне 3" />  
+  <descr name="ff_2m_3"	    num="11002" group="39"  unit="m/s"  unit_ru="м/с" description="Средняя скорость ветра за 2 минуты на уровне 2 на уровне 3" />
+  <descr name="ff_10m_3"    num="11002" group="38"  unit="m/s"  unit_ru="м/с" description="Средняя скорость ветра за 10 мин на уровне 3" />
+  <descr name="fm_2m_3"     num="11002" group="32"  unit="m/s"  unit_ru="м/с" description="Максимальная скорость ветра за 3 сек на уровне 3"/>
+  <descr name="fm_10m_3"    num="11002" group="31"  unit="m/s"  unit_ru="м/с" description="Максимальная скорость ветра за 10 мин на уровне 3" />
+  <descr name="dd_2m_3"	    num="11001" group="39"  unit="deg" unit_ru="°" description="Среднее направление за 2 мин на уровне 3" />
+  <descr name="dd_10m_3"    num="11001" group="38"  unit="deg" unit_ru="°" description="Среднее направление за 10 мин на уровне 3" />
+  <descr name="T_3"   num="12101" group="30"	     unit="C"   unit_ru="°С" description="Температура воздуха на уровне 3" />
+
+  <descr name="dd_1s"	     num="11001" group="11"  unit="deg"  unit_ru="°" description="Среднее направление за 1 сек" />
+  <descr name="ff_1s"	     num="11002" group="11"  unit="m/s"  unit_ru="м/с" description="Средняя скорость ветра за 1 сек" />
+  <descr name="dd_5s"	     num="11001" group="15"  unit="deg"  unit_ru="°" description="Среднее направление за 5 сек" />
+  <descr name="ff_5s"	     num="11002" group="15"  unit="m/s"  unit_ru="м/с" description="Средняя скорость ветра за 5 сек" />
+
+
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+  <!-- <descr name=""	     num=""  unit=""  unit_ru="" description="" /> -->
+
+
+  <descr name="Ts"	     num="12030"  unit="C"  unit_ru="°С" description="Температура почвы" />
+  <descr name="zs"	     num="7061"   unit="m"  unit_ru="м" description="Глубина от поверхности земли" />
+
+  <!-- MAWS -->
+  <descr name="Hc"	     num="12190" group="55"  unit="С"  unit_ru="°С" description="Охлаждение ветром" />
+
+
+  <!-- прогноз для байконура -->
+  <descr name="f_Tx" num="12111" 	 group="70" 	  unit="C" unit_ru="°С" description="Максимальная температура воздуха" />
+  <descr name="f_Tn" num="12112" 	 group="70" 	  unit="C" unit_ru="°С" description="Минимальная температура воздуха" />
+  <descr name="f_V"  num="20001"         group="70"	  unit="m" unit_ru="м" description="Горизонтальная видимость" />
+  <descr name="f_w_w_"	  num="20019"	 group="70"       unit="NO"  unit_ru="NO" description="Особые явления текущей и прогнозируемой погоды" />
+  <descr name="f_dd"  num="11001" 	 group="70"       unit="deg" unit_ru="°" description="Истинное направление, откуда дует (или будет дуть) ветер" />
+  <descr name="f_ff"  num="11002" 	 group="70"       unit="m/s" unit_ru="м/с" description="Скорость ветра" />
+
+  <descr name="f_dd1Wind"	 num="11001" group="75" unit="deg" unit_ru="°" description="Истинное направление откуда дует ветер" />
+  <descr name="f_ff1Wind"	 num="11002" group="75" unit="m/s" unit_ru="м/с" description="Скорость ветра на уровнях" />
+
+  <descr name="mS"   num="04080" group="01" unit="NO" unit_ru="NO" description="Период усреднения для солености" />
+  <descr name="mT"   num="04080" group="02" unit="NO" unit_ru="NO" description="Период усреднения для температуры моря" />
+  <descr name="mc"   num="04080" group="03" unit="NO" unit_ru="NO" description="Период усреднения для скорости и направления поверхностного морского течения" />
+  <descr name="ic"   num="02042"	 unit="NO" unit_ru="NO" description="Указатель единиц скорости поверхностного морского течения" />
+  <descr name="S0S0"  num="22059"  unit="0/00" unit_ru="&#8240;" description="Соленость" />
+  <descr name="d0d0"  num="22005" unit="deg" unit_ru="°" description="Истинное направление, в котором движется поверхностное морское течение" />
+  <descr name="c0c0"  num="22032" unit="m/s" unit_ru="м/с" description="Скорость течения на поверхности моря в м/с" />
+
+  <descr name="P0_avg"  num="10004" group="10" unit="hPa" unit_ru="гПа" description="Среднемесячное давление на уровне станции" />
+  <descr name="P_avg"   num="10051" group="10" unit="hPa" unit_ru="гПа" description="Среднемесячное давление на уровне моря или средний месячный геопотенциал для уровня станции" />
+  <descr name="T_avg"   num="12101" group="10" unit="C" unit_ru="°С" description="Среднемесячная температура воздуха" />
+  <descr name="st"	num="12051" unit="C" unit_ru="°С" description="Среднеквадратичное отклонение среднесуточных величин относительно среднемесячной температуры воздуха" />
+  <descr name="Tx_avg"	num="12118" unit="C" unit_ru="°С" description="Максимальная среднесуточная температура воздуха за месяц" />
+  <descr name="Tn_avg"	num="12119" unit="C" unit_ru="°С" description="Минимальная среднесуточная температура воздуха за месяц" />
+  <descr name="e_avg"   num="13004" unit="hPa" unit_ru="гПа" description="Среднемесячная упругость водяного пара" />
+  <descr name="R_mon"   num="13060" unit="mm" unit_ru="мм" description="Суммарное количество осадков за месяц" />
+  <descr name="Rd"      num="13051" unit="NO" unit_ru="NO" description="Группа повторяемости, в пределы которой попадает R1R1R1R1" />
+  <descr name="nr"      num="04053" unit="NO" unit_ru="NO" description="Количество дней в месяце с осадками, равными или больше 1 мм" />
+  <descr name="SS_mon"  num="14032" unit="h" unit_ru="ч" description="Общая продолжительность солнечного сияния за месяц с точностью до ближайшего часа" />
+  <descr name="pS"      num="14033" unit="%" unit_ru="%" description="Процент общей продолжительности солнечного сияния по отношению к норме" />
+  <descr name="mp"      num="08020" group="01"   unit="NO" unit_ru="NO" description="Количество дней с отсутствием данных о давлении" />
+  <descr name="mTmT"	  num="08020" group="02" unit="NO" unit_ru="NO" description="Количество дней с отсутствием данных о температуре воздуха" />
+  <descr name="mTx"	num="08020" group="03"	 unit="NO" unit_ru="NO" description="Количество дней с отсутствием данных о максимальной суточной температуре воздуха" />
+  <descr name="mTn"     num="08020" group="04"  unit="NO" unit_ru="NO" description="Количество дней с отсутствием данных о минимальной суточной температуре воздуха" />
+  <descr name="me"	num="08020" group="05"	unit="NO" unit_ru="NO" description="Количество дней с отсутствием данных о давлении водяного пара" />
+  <descr name="mR"	num="08020" group="06"	unit="NO" unit_ru="NO" description="Количество дней с отсутствием данных об осадках" />
+  <descr name="mSmS"      num="08020" group="07"  unit="NO" unit_ru="NO" description="Количество дней с отсутствием данных о продолжительности солнечного сияния" />
+  
+  <descr name="hwc"        num="22182"              unit="m" unit_ru="м" description="Высота водного столба" />
+  
+  <!-- кн-02-->
+  <descr name="Ws"          num="20025" group="55"  unit="NO" unit_ru="NO" description="Явления" />
+  <descr name="dw2"         num="22002" 	    unit="deg"  unit_ru="°" description="Направление ветровых волн" />
+  <descr name="hshshs"      num="22036"             unit="cm" unit_ru="см" description="Высота прилива по отношению к локальному нулю графика" />
+  <descr name="hshshs_MIN"  num="22036" group="01"  unit="cm" unit_ru="см" description="Минимальный уровень моря по отношению к локальному нулю графика" />
+  <descr name="hshshs_MAX"  num="22036" group="02"  unit="cm" unit_ru="см" description="Максимальный уровень по отношению к локальному нулю графика" />
+  <descr name="Hwa_MAX" num="22021" 	group="01"  unit="m"    unit_ru="м" description="Максимальная высота волн" />
+  <descr name="Hn"      num="22021" 	group="02"  unit="m"    unit_ru="м" description="Высота прибойных волн" />
+  <descr name="Nf"      num="20034" 	group="01"  unit="NO"    unit_ru="балл" description="Количество припая" />
+  <descr name="q1"      num="13115" 	group="01"  unit="cm"    unit_ru="см" description="Толщина припая" />
+  <descr name="q1n"     num="13115" 	group="02"  unit="cm"    unit_ru="см" description="Толщина припая, минимальная" />
+  <descr name="Ni"      num="20034" 	group="02"  unit="NO"    unit_ru="балл" description="Количество дрейфующего льда" />
+  <descr name="PP"      num="20034" 	group="03"  unit="NO"    unit_ru="балл" description="Преобладающая сплоченность дрейфующего льда" />
+  <descr name="T24"     num="12101" 	    group="09"	unit="C"   unit_ru="°С" description="Средняя температура воздуха за сутки" />
+  <descr name="Tw24"    num="22043" 	   	group="01"	unit="C"    unit_ru="°С" description="Средняя температура поверхности моря за сутки" />
+  
+  
+  <descr name="pp"      num="02000" group="55" unit="NO"    unit_ru="NO" description="Указатель объекта наблюдения" />
+  <descr name="ib"      num="02001" group="55" unit="NO"    unit_ru="NO" description="Способ определения высоты волн" />
+  <descr name="B1"      num="02002" group="55" unit="m"    unit_ru="м" description="Ширина зоны прибоя" />
+  <descr name="b"       num="02003" group="55" unit="m"	   unit_ru="м" description="Ширина зоны наката" />
+  <descr name="ah"	   num="02004" group="55" unit="NO"    unit_ru="NO" description="Характеристика изменения уровня моря за последние 6 часов" />
+  <descr name="Q"	num="02005" group="55" unit="NO"    unit_ru="NO" description="Указатель места определения припайного льда" />
+  <descr name="LLLL"    num="02006" group="55" unit="m"	   unit_ru="м" description="Ширина припая по створу" />
+  <descr name="Hs"	num="02007" group="55" unit="cm"    unit_ru="см" description="Высота снега на припае" />
+  <descr name="Nw"	num="20034" group="55" unit="NO"    unit_ru="балл" description="Количество чистой воды" />
+  <descr name="Dw"      num="22002" group="55" unit="deg"    unit_ru="°" description="Направление в котором наблюдается чистая вода" />
+  <descr name="Di1"	 num="22002" group="56"	unit="deg"    unit_ru="°" description="Направление в котором наблюдается дрейфующий лед" />
+  <descr name="SS1"	 num="02008" group="55" unit="NO"    unit_ru="NO" description="Преобладающий возрастной вид дрейфующего льда" />
+  <descr name="Ff"	num="02009"  group="55" unit="NO"    unit_ru="NO" description="Преобладающая форма дрейфующего льда" />
+  <descr name="Xp"	num="02010"  group="55" unit="NO"    unit_ru="балл" description="Степень торосистости припая" />
+  <descr name="Xf"	num="02011"  group="55" unit="NO"    unit_ru="NO" description="Характер торосистости припая" />
+  <descr name="hp"     num="02012"  group="55" unit="m"	    unit_ru="м" description="Средняя высота торосов" />
+  <descr name="Zf"	num="02013" group="55" unit="NO"    unit_ru="NO" description="Характеристика термической разрушенности припая" />
+  <descr name="Xi"	num="02014" group="55" unit="NO"    unit_ru="балл" description="Степень торосистости дрейфующего льда" />
+  <descr name="Xn"	num="02011" group="56" unit="NO"    unit_ru="NO" description="Характер торосистости дрейфующего льда" />
+  <descr name="Zi"	num="02013" group="56" unit="NO"    unit_ru="NO" description="Характеристика термической разрушенности дрейфующего льда" />
+  <descr name="Fn"	num="02015" group="55" unit="NO"    unit_ru="балл" description="Степень сжатия дрейфующего льда" />
+  <descr name="Fd"	num="22032" group="55" unit="NO"    unit_ru="NO" description="Скорость дрейфа льда" />
+  <descr name="Dd"	num="22005" group="5" unit="deg"    unit_ru="°" description="Направление дрейфа льда" />
+  <descr name="A0"	num="02016" group="55" unit="NO"    unit_ru="NO" description="Сведения о процессах льдообразования" />
+  <descr name="A2"	num="02017" group="55" unit="NO"    unit_ru="NO" description="Характерные особенности состояния и распределения дрейфующих льдов" />
+  <descr name="A3"	num="02018" group="55" unit="NO"    unit_ru="NO" description="Особые виды и формы льда" />
+  <descr name="A5"	num="02019" group="55" unit="NO"    unit_ru="NO" description="Сведения о подвижках и взломах льда" />
+  
+  <!-- кн-05-->
+  <descr name="k1"	num="05001" group="55" unit="NO"    unit_ru="NO" description="Указатель способа представления значений температуры воды" />
+  <descr name="k2"	num="02033"  unit="NO"    unit_ru="NO" description="Метод измерения солености" />
+  <descr name="zn"	num="07062"  unit="m"    unit_ru="м" description="Глубина горизонта" />
+  <!-- <descr name="TnTn"    num="22042"   unit="C"    unit_ru="°С" description="Температура воды на горизонте" /> -->
+  <descr name="Sn"	num="22062"  unit="0/00"    unit_ru="&#8240;" description="Соленость воды на горизонте" />
+  <descr name="znD"	num="22063" group="01" unit="m"    unit_ru="м" description="Глубина у дна" />
+  <descr name="TnTnD"   num="22042" group="01"  unit="C"    unit_ru="°С" description="Температура воды у дна" />
+  <descr name="SnD"	num="22062" group="01" unit="0/00"    unit_ru="&#8240;" description="Соленость воды у дна" />
+  <descr name="k34"	num="02031"  unit="NO"    unit_ru="NO" description="Продолжительность и время измерения течения" />
+  <descr name="dndn"	num="22004" unit="deg"    unit_ru="°" description="Направление течения на горизонте" />
+  <descr name="cncn"    num="22031"   unit="sm/s" unit_ru="cм/с" description="Скорость течения на горизонте" />
+  <descr name="Zd"	num="22063"  unit="m"    unit_ru="м" description="Глубина в месте производства наблюдений" />
+  <descr name="zz"	num="22063" group="06" single="true" unit="NO" unit_ru="NO" description="Сотни метров горизонта" />
+  
+  <!--КН-06-->
+  <descr name="k5"	num="02030"   unit="NO"    unit_ru="NO" description="Указатель метода измерения течения" />
+  
+  <!--FM18-->
+  <descr name="Ql"	num="33020"   unit="NO"    unit_ru="NO" description="Указатель контроля качества" />
+  <!-- <descr name="Ql"	num="33020"   unit="NO"    unit_ru="NO" description="Указатель контроля качества для местоположения" /> -->
+  <!-- <descr name="Qt"	num="33020"   unit="NO"    unit_ru="NO" description="Указатель контроля качества для времени" /> -->
+  <descr name="QA"	num="33027"   unit="NO"    unit_ru="NO" description="Класс качества определения местоположения" />
+  <!-- <descr name="Qd"	num="33020"   unit="NO"    unit_ru="NO" description="Указатель контроля качества" /> -->
+  <descr name="Qx"	num="00000"  group="55"  unit="NO"    unit_ru="NO" description="Указатель положения группы" />
+  <!-- <descr name="Qd1"	num="33020"   unit="NO"    unit_ru="NO" description="Указатель контроля качества для профиля температуры/солености" /> -->
+  <!-- <descr name="Qd2"	num="33020"   unit="NO"    unit_ru="NO" description="Указатель контроля качества для профиля течений" /> -->
+  <descr name="k6"	num="02040"   unit="NO"    unit_ru="NO" description="Метод исключения скорости и движения судна или буя из измерения скорости течения" />
+  <descr name="QP"	num="33021"   unit="NO"    unit_ru="NO" description="Качество измерения давления" />
+  <descr name="Q2"	num="05002"  group="55"  unit="NO"    unit_ru="NO" description="Качество вспомогательного параметра (второе слово в первом блоке данных с датчика терминальной передающей платформы АРГОС)" />
+  <!-- <descr name="QTW"	num="33021"   unit="NO"    unit_ru="NO" description="Качество измерения температуры поверхности воды" /> -->
+  <descr name="Q4"	num="05002"  group="56"  unit="NO"    unit_ru="NO" description="Качество измерений температуры воздуха" />
+  <descr name="QN"	num="33022"   unit="NO"    unit_ru="NO" description="Качество передачи данных с буя на спутник" />
+  <descr name="QL"	num="33023"   unit="NO"    unit_ru="NO" description="Качество определения местоположения" />
+  <descr name="Qz"	num="05003"  group="55"  unit="NO"    unit_ru="NO" description="Указатель корректировки значений глубины (указание на то, откорректированы или нет значения выбранной глубины с использованием гидростатического давления)" />
+  <descr name="Zh"	num="02168"   unit="kPa"    unit_ru="кПа" description="Гидростатическое давление на нижнем конце троса" />
+  <descr name="Zc"	num="05000"  group="55"  unit="m"    unit_ru="м" description="Длина троса в метрах (гирлянда терморезисторов)" />
+  <descr name="BtBt"	num="02149"   unit="NO"    unit_ru="NO" description="Тип буя" />
+  <descr name="XtXt"	num="02034"   unit="NO"    unit_ru="NO" description="Тип плавучего якоря" />
+  <descr name="AN"	   num="02169"   unit="NO"    unit_ru="NO" description="Тип анемометра" />
+  <descr name="VBVB"   num="01014"   unit="cm/s"    unit_ru="см/с" description="Скорость дрейфа платформы" />
+  <descr name="dBdB"   num="01012"   group="01"  unit="deg"    unit_ru="°" description="Направление дрейфа буя" />
+  <descr name="ZdZdZd"   num="05000"   group="56"  unit="m"    unit_ru="м" description="Длина троса, к которому прикреплен якорь, в метрах" />
+  
+  <!--IONFO-->
+  <descr name="e"    num="66601"   group="55"  unit="NO"   unit_ru="NO" description="Ожидаемое состояние критических частот слоя F2 для соответствующего дня периода прогноза" />
+  <descr name="s"    num="66602"   group="55"  unit="NO"   unit_ru="NO" description="Ожидаемое состояние спорадического слоя Es для соответствующего дня периода прогноза" />
+  <descr name="pD"   num="66603"   group="55"  unit="NO"   unit_ru="NO" description="Прогноз полного поглощения в слое D для соответствующего дня периода прогноза" />
+  <descr name="d"    num="66604"   group="55"  unit="NO"   unit_ru="NO" description="Прогноз диффузности слоя F2 для соответствующего дня периода прогноза" />
+  <descr name="aM"   num="66605"   group="55"  unit="NO"   unit_ru="NO" description="Качественная ценка геомагнитной возмущенности для соответствующего дня периода прогноза" />
+  <!-- IONKA -->
+  <descr name="fF2"   num="66606"   group="55"  unit="MHz"  unit_ru="МГц" description="Критическая частота слоя F2" />
+  <descr name="hF2"   num="66607"   group="55"  unit="km"   unit_ru="км"  description="Минимальная высота слоя F2" />
+  <descr name="kMF2"  num="66608"   group="55"  unit="NO"   unit_ru="NO"  description="Коэффициент М3000 F2" />
+  <descr name="tF"    num="66609"   group="55"  unit="NO"   unit_ru="NO"  description="Тип диффузности в области F" />
+  <descr name="fmin"  num="66610"   group="55"  unit="MHz"  unit_ru="МГц" description="Минимальная частота отражения" />
+  <descr name="fEs"   num="66611"   group="55"  unit="MHz"  unit_ru="МГц" description="Критическая частота образования Es" />
+  <descr name="hEs"   num="66612"   group="55"  unit="km"   unit_ru="км"  description="Минимальная высота образования Es" />
+  <descr name="fF1"   num="66613"   group="55"  unit="MHz"  unit_ru="МГц" description="Критическая частота слоя F1" />
+  <descr name="hF1"   num="66614"   group="55"  unit="km"   unit_ru="км" description="Минимальная высота слоя F1" />
+  <descr name="kMF1"  num="66615"   group="55"  unit="NO"   unit_ru="NO" description="Коэффициент М3000 F1" />
+  <descr name="hmF2"  num="66616"   group="55"  unit="km"   unit_ru="км" description="Действующая высота максимума электронной концентрации («пораболического») слоя F2" />
+  <descr name="fE"    num="66617"   group="55"  unit="MHz"  unit_ru="МГц" description="Критическая частота слоя Е" />
+  <descr name="hE"    num="66618"   group="55"  unit="km"   unit_ru="км" description="Минимальная высота слоя Е" />
+  <descr name="fbEs"  num="66619"   group="55"  unit="Mhz"  unit_ru="МГц" description="Частота экранировки спорадическим образованием" />
+  <descr name="tEs"   num="66620"   group="55"  unit="NO"   unit_ru="NO" description="Тип ES" />
+  <descr name="fmF"   num="66621"   group="55"  unit="MHz"  unit_ru="МГц" description="Предельная частота отражения от области F" />
+  
+  <!-- IONEX -->
+  <descr name="system"  num="02033" group="55"  unit="NO"  unit_ru="NO" description="Спутниковая система или теоретическая модель" />
+  <!-- <descr name="agency"  num="01015" group="55"  unit="NO"  unit_ru="NO" description="Агентство" /> -->
+  <descr name="func"    num="03001" group="55"  unit="NO"  unit_ru="NO" description="Используемая функция" />
+  <descr name="observ"  num="03002" group="55"  unit="NO"  unit_ru="NO" description="Спецификация наблюдения" />
+  <descr name="earth"   num="10034"             unit="km"  unit_ru="км" description="Радиус Земли" />
+  <descr name="stCnt"   num="08001" group="55"  unit="NO"  unit_ru="NO" description="Количество станций" />
+  <descr name="satCnt"  num="08002" group="55"  unit="NO"  unit_ru="NO" description="Количество спутников" />
+  <descr name="exp"     num="03003" group="55"  unit="NO"  unit_ru="NO" description="Экспонента для значений" />
+  <descr name="dcb"     num="03004" group="55"  unit="ns"  unit_ru="нс" description="Дифференциальное отклонение" />
+  <descr name="rms"     num="03005" group="55"  unit="NO"  unit_ru="NO" description="СКО" />
+  <descr name="prn"     num="03006" group="55"  unit="NO"  unit_ru="NO" description="Номер последовательности" />
+  
+  <!--КН-19 ДЕКАДА-->
+  <descr name="Nd"   num="19000"   group="55"  unit="NO"    unit_ru="NO" description="Номер декады" />
+  
+  <!--КН-24 СНЕГ-->
+  <descr name="sssp"    num="13013" group="01"	      		  unit="cm" unit_ru="см" description="Высота снежного покрова, поле" />
+  <descr name="sssf"    num="13013" group="02"	      		  unit="cm" unit_ru="см" description="Высота снежного покрова, лес" />
+  <descr name="Klp"   num="24000"   group="55"  unit="NO"    unit_ru="балл" description="Степень покрытости ледяной коркой поверхности почвы, поле" />
+  <descr name="Klf"   num="24000"   group="56"  unit="NO"    unit_ru="балл" description="Степень покрытости ледяной коркой поверхности почвы, лес" />
+  <descr name="dd_icep"   num="13117"   group="01"  unit="g/cm3"    unit_ru="г/см&#179;" description="Средняя плотность снега, поле" />
+  <descr name="dd_icef"   num="13117"   group="02"  unit="g/cm3"    unit_ru="г/см&#179;" description="Средняя плотность снега, лес" />
+  <descr name="LLp"   num="24002"   group="55"  unit="mm"    unit_ru="мм" description="Толщина ледяной корки, поле" />
+  <descr name="LLf"   num="24002"   group="56"	unit="mm"    unit_ru="мм" description="Толщина ледяной корки, лес" />
+  <descr name="Rsp"   num="24003"   group="55"  unit="mm"    unit_ru="мм" description="Общий запас воды в снежном покрове и ледяной корке, поле" />
+  <descr name="Rsf"   num="24003"   group="56"  unit="mm"    unit_ru="мм" description="Общий запас воды в снежном покрове и ледяной корке, лес" />
+  <descr name="E1p"   num="24004"   group="55"  unit="NO"    unit_ru="NO" description="Состояние поверхности почвы, поле" />
+  <descr name="E1f"   num="24004"   group="56"  unit="NO"    unit_ru="NO" description="Состояние поверхности почвы, лес" />
+  <descr name="MM1p"     num="04002" 	 group="07"   single="true" unit="NO"  unit_ru="NO" description="Месяц образования снежного покрова, поле" />
+  <descr name="YY1p"	 num="04003"	 group="07"   single="true" unit="NO"  unit_ru="NO" description="День образования снежного покрова, поле" />
+  <descr name="MM2p"	 num="04002"	 group="08"   single="true" unit="NO"  unit_ru="NO" description="Месяц схода снежного покрова, поле" />
+  <descr name="YY2p"     num="04003" 	 group="08"   single="true" unit="NO"  unit_ru="NO" description="День схода снежного покрова, поле" />
+  <descr name="MM1f"	 num="04002"	 group="09"   single="true" unit="NO"  unit_ru="NO" description="Месяц образования снежного покрова, лес" />
+  <descr name="YY1f"	 num="04003"	 group="09"   single="true" unit="NO"  unit_ru="NO" description="День образования снежного покрова, лес" />
+  <descr name="MM2f"     num="04002" 	 group="10"   single="true" unit="NO"  unit_ru="NO" description="Месяц схода снежного покрова, лес" />
+  <descr name="YY2f"     num="04003" 	 group="10"   single="true" unit="NO"  unit_ru="NO" description="День схода снежного покрова, лес" />
+
+  
+  <!--СЛОЙ-->
+  <!-- <descr name="Tns"   num="19001"   group="55"  unit="NO"    unit_ru="NO" description="Слой" /> -->
+  <!-- <descr name="dds"   num="11001"   group="14"  unit="deg"     unit_ru="°" description="Направление ветра" /> -->
+  <!-- <descr name="ffs"   num="11002"   group="14"  unit="m/s" unit_ru="м/с" description="Скорость ветра" /> -->
+  
+  <!--МЕТЕО-11-44-->
+  <descr name="NN44"   num="44000"   group="55"  unit="NO"    unit_ru="NO" description="Номер метеостанции" />
+  <!-- <descr name="hhb"   num="44001"   group="55"  unit="m"    unit_ru="м" description="Высота над уровнем моря" /> -->
+  <descr name="ttb"   num="44002"   group="55"  unit="C"    unit_ru="°С" description="Баллистическое отклонение температуры воздуха в слое от поверхности земли до стандартной высоты" />
+  <descr name="ddb"   num="44003"   group="55"  unit="deg"    unit_ru="°" description="Дирекционный угол направления баллистического ветра в слое от поверхности земли до стандартной высоты" />
+  <descr name="ffb"   num="44004"   group="55"  unit="m/s"    unit_ru="м/с" description="Скорость баллистического ветра в слое от поверхности земли до стандартной высоты" />
+  <descr name="dtableP"   num="44005"   group="55"  unit="mm"    unit_ru="мм" description="Отклонение наземного давления атмосферы от табличного на уровне метеостанции на момент окончания зондирования атмосферы" />
+  <descr name="dtableT"   num="44006"   group="55"  unit="C"    unit_ru="°С" description="Отклонение наземной виртуальной температуры от табличной на уровне метеостанции на момент окончания зондирования атмосферы" />
+  <descr name="dp_dh"   num="44007"   group="55"  unit="%"    unit_ru="%" description="Среднее отклонение плотности воздуха в слое от поверхности земли до стандартной высоты" />
+  <descr name="dt_dh"   num="44008"   group="55"  unit="C"    unit_ru="°С" description="Среднее отклонение температуры воздуха от табличной в слое атмосферы" />
+  <descr name="hF_max"   num="44001"   group="56"  unit="m"    unit_ru="м" description="Достигнутая высота температурного зондирования" />
+  <descr name="hT_max"   num="44001"   group="57"  unit="m"    unit_ru="м" description="Достигнутая высота температурного зондирования" />
+  
+  <!--КН-15-->
+  <descr name="EE"   	 num="15002"   group="55"  unit="NO"    unit_ru="NO" description="Характеристика ледовых явлений" />
+  <descr name="QQQ"	 num="15006"   group="66"  unit="m3/s"  unit_ru="м&#179;/с" description="Расход воды" />
+  <descr name="X"	 num="15014"   group="55"  unit="NO"  unit_ru="NO" description="Тенденция уровня или расхода воды" />
+  <descr name="A1Ci"	 num="01003"   group="55"  unit="NO"  unit_ru="NO" description="Регион, страна" />
+  
+  <descr name="n"       num="00000"   group="56"  unit="NO"    unit_ru="NO" description="Указатель" />
+  <descr name="HHHH"    num="15000"   group="55"  unit="cm"    unit_ru="см" description="Уровень воды" />
+  <descr name="HiHiHiK" num="15001"   group="55"  unit="cm"    unit_ru="см" description="Изменение уровня воды" />
+  <descr name="HHHHL"   num="13000"   group="55"  unit="NO"    unit_ru="NO" description="Состояние уровня воды" />
+  <descr name="HHHH20"  num="15000"   group="56"  unit="cm"    unit_ru="см" description="Уровень воды за 20-часовой срок наблюдений предшествующих суток" />
+  <descr name="HHHH20L" num="13000"   group="56"  unit="NO"    unit_ru="NO" description="Состояние уровня воды за последние 20 часов" />
+  <descr name="HHHHvb"  num="15000"   group="60"  unit="cm"    unit_ru="см" description="Уровень воды верхнего бьефа" />
+  <descr name="HHHHs"	 num="15000"   group="61"  unit="cm"	unit_ru="см" description="Средний уровень водохранилища в срок наблюдений см" />
+  <descr name="HHHHks"	 num="15000"   group="62"  unit="cm"	unit_ru="см" description="Средний уровень водохранилища на конец предшествующих суток" />
+  <descr name="HHHHnb"	 num="15000"   group="63"  unit="cm"	unit_ru="см" description="Уровень воды нижнего бьефа" />
+  <descr name="HHHHv"	 num="15000"   group="64"  unit="cm"	unit_ru="см" description="Высший за предшествующие сутки уровень воды нижнего бьефа" />
+  <descr name="HHHHn"	 num="15000"   group="65"  unit="cm"	unit_ru="см" description="Низший за предшествующие сутки уровень воды нижнего бьефа" />
+
+  <descr name="tt"   	 num="22043"   group="02"  unit="C"     unit_ru="°С" description="Температура воды" />
+  <descr name="E3"   	 num="15002"   group="56"  unit="NO"    unit_ru="NO" description="Наличие шуги под слоем льда" />
+  <descr name="ieie"	 num="15003"   group="55"  unit="NO"	unit_ru="балл" description="Интенсивность ледовых явлений" />
+  <descr name="CC"	 num="15004"   group="55"  unit="NO"	unit_ru="NO" description="Характеристика состояния водного объекта" />
+  <descr name="icic"    num="15005"   group="55"  unit="NO"    unit_ru="балл" description="Интенсивность явлений" />
+  <descr name="DDD"     num="13115"               unit="cm"    unit_ru="см" description="Толщина льда" />
+  <descr name="S1"	 num="02007"   group="56"  unit="cm"    unit_ru="см" description="Толщина снега на льду" />
+  <descr name="kQQQ"	 num="15006"   group="55"  unit="m3/s"  unit_ru="м&#179;/с" description="Ежедневный расход воды" />
+  <descr name="dc"	 num="15007"   group="55"  unit="NO"    unit_ru="NO" description="Продолжительность осадков" />
+  <descr name="TiTi"	 num="15008"   group="55"  unit="NO"    unit_ru="NO" description="Период наблюдения" />
+  <descr name="MIDHHHH"   num="15000" group="57"  unit="cm"    unit_ru="см" description="Средний уровень воды за срок наблюдения" />
+  <descr name="MINHHHH"   num="15000"  group="58" unit="cm"    unit_ru="см" description="Минимальный  уровень воды за срок наблюдения" />
+  <descr name="MAXHHHH"   num="15000"  group="59" unit="cm"    unit_ru="см" description="Максимальный уровень воды за срок наблюдения" />
+  <descr name="MIDkQQQ"   num="15006"  group="56" unit="m3/s"  unit_ru="м&#179;/с" description="Средний расход воды за период наблюдения" />
+  <descr name="MINkQQQ"   num="15006"	group="57" unit="m3/s"	unit_ru="м&#179;/с" description="Минимальный расход воды за период наблюдения" />
+  <descr name="MAXkQQQ"   num="15006"	group="58" unit="m3/s"	unit_ru="м&#179;/с" description="Максимальный расход воды за период наблюдения" />
+  <descr name="YYM"       num="04003" 	group="11"   single="true" unit="NO"  unit_ru="NO" description="День прохождения наивысшего уровня (расхода) воды" />
+  <descr name="GGM"       num="04004" 	group="11"   single="true" unit="h"   unit_ru="ч" description="Фактический срок прохождения наивысшего уровня (расхода) воды с точностью до ближайшего целого часа" />
+  <descr name="kVVVs"	num="15009" group="55" unit="M m2"    unit_ru="млн м&#179;" description="Объем воды в водохранилище по среднему уровню в срок наблюдений" />
+  <descr name="kVVVks"	num="15009" group="56" unit="M m2"    unit_ru="млн м&#179;" description="Объем воды в водохранилище по среднему уровню на конец предшествующих суток" />
+  <descr name="kQQQo"	num="15006" group="59" unit="m3/s"    unit_ru="м&#179;/с" description="Общий приток воды в срок наблюдений" />
+  <descr name="kQQQb"	num="15006" group="60" unit="m3/s"    unit_ru="м&#179;/с" description="Боковой приток воды в срок наблюдений" />
+  <descr name="kQQQa"	num="15006" group="61" unit="m3/s"    unit_ru="м&#179;/с" description="Приток воды к акватории водохранилища" />
+  <descr name="kQQQo1"	num="15006" group="62" unit="m3/s"    unit_ru="м&#179;/с" description="Общий приток воды, средний за предшествующие сутки" />
+  <descr name="kQQQb1"	num="15006" group="63" unit="m3/s"    unit_ru="м&#179;/с" description="Боковой приток воды, средний за предшествующие сутки" />
+  <descr name="kQQQa1"	num="15006" group="64" unit="m3/s"    unit_ru="м&#179;/с" description="Приток воды к акватории водохранилища, средний за предшествующие сутки" />
+  <descr name="kQQQsb"	num="15006" group="65" unit="m3/s"    unit_ru="м&#179;/с" description="Сброс воды через гидроузел" />
+  <descr name="kFFF"	num="15010" group="55" unit="m2"    unit_ru="м&#178;" description="Площадь живого сечения реки" />
+  <descr name="hhhh"	num="15011" group="55" unit="cm"    unit_ru="см" description="Максимальная глубина на гидростворе" />
+  <descr name="Cw"	num="15012" group="55" unit="NO"    unit_ru="NO" description="Характеристика поверхности водоема" />
+  <descr name="alarm"	num="15013" group="55" unit="NO"    unit_ru="NO" description="Сообщение" />
+
+ 
+  <!-- КН-21  -->
+  <descr name="B0"	num="21000" group="55" unit="NO"    unit_ru="NO" description="Номер телеграммы" />
+  <descr name="snT0T0_avg"	num="21001" group="55" unit="C"    unit_ru="°С" description="Отклонение средней за декаду температуры" />
+  <descr name="u30u30"	num="21002" group="55" unit="NO"    unit_ru="NO" description="Число случаев за декаду с влажностью ниже 30%" />
+  
+  
+  <descr name="KpKpKp"	num="21020" group="55" unit="NO"    unit_ru="NO" description="С/х культура, растение" />
+  <descr name="WWW10"	num="21021" group="55" unit="mm"    unit_ru="мм" description="Запасы влаги 0-100" />
+  <descr name="WWW5"	num="21022" group="55" unit="mm"    unit_ru="мм" description="Запасы влаги 0-50" />
+  <descr name="WW2"	num="21023" group="55" unit="mm"    unit_ru="мм" description="Запасы влаги 0-20" />
+  <descr name="WW1"	num="21024" group="55" unit="mm"    unit_ru="мм" description="Запасы влаги 0-10" />
+  <descr name="WW0"	num="21025" group="55" unit="mm"    unit_ru="мм" description="Запасы влаги 0-5" />
+  <descr name="Pr"	num="21026" group="55" unit="NO"    unit_ru="NO" description="Предшественник" />
+  
+  
+  <descr name="YR01"  num="04053" group="01" unit="NO" unit_ru="NO" description="Количество дней в месяце с осадками в 0.1 мм или более" />
+  <descr name="Wvko"  num="20023" group="55" unit="NO" unit_ru="NO" description="Опасные явления, климат" />
+  <descr name="ff_jet"  num="11002" 	  group="55" unit="m/s" unit_ru="м/с" description="Скорость струйного течения" />
+  <descr name="ffx_jet"  num="11040" 	  group="55" unit="m/s" unit_ru="м/с" description="Максимальная скорость струйного течения" />
+
+  <descr name="YbYb"    num="04001" group="02" unit="NO" unit_ru="NO" description="Год, начинающий период, к которому относится информация" />
+  <!-- <descr name="YcYc"    num="04001" group="02" unit="NO" unit_ru="NO" description="Год, заканчивающий период, к которому относится информация" /> -->
+  <descr name="yPyP"    num="04021" group="01" unit="NO" unit_ru="NO" description="Количество неучтенных лет при расчете нормы давления в периоде, за который представляется информация" />
+  <descr name="yTyT"	num="04021" group="02" unit="NO" unit_ru="NO" description="Количество лет, не учтенных при расчете нормы средней температуры воздуха, периоде, за который представляется информация" />
+  <descr name="yTxyTx"	num="04021" group="03" unit="NO" unit_ru="NO" description="Количество лет, не учтенных при расчете нормы средней экстремальной температуры воздуха, в периоде, за который представляется информация" />
+  <descr name="yeye"    num="04021" group="04" unit="NO" unit_ru="NO" description="Количество лет, не учтенных при расчете нормы давления водяного пара, в периоде,за который представляется информация" />
+  <descr name="yRyR"	num="04021" group="05" unit="NO" unit_ru="NO" description="Количество лет, не учтенных при вычислении нормы осадков, в периоде, за который представляется информация" />
+  <descr name="ySyS"	num="04021" group="06" unit="NO" unit_ru="NO" description="Количество лет, не учтенных при вычислении нормы продолжительности солнечного сияния, в периоде, за который представляется информация" />
+  <descr name="T25T25"	num="04023" group="01" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда максимальная температура воздуха равнялась или была выше 25 °C" />
+  <descr name="T30T30"	num="04023" group="02" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда максимальная температура воздуха была равна или превышала 30 °C" />
+  <descr name="T35T35"	num="04023" group="03" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда максимальная температура воздуха была равна или превышала 35 °C" />
+  <descr name="T40T40"	num="04023" group="04" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда максимальная температура воздуха была равна или превышала 40 °C" />
+  <descr name="Tn0Tn0"	num="04023" group="05" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда минимальная температура была ниже 0 °C" />
+  <descr name="Tx0Tx0"	num="04023" group="06" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда максимальная температура воздуха была ниже 0 °C" />
+  <descr name="R01R01"	num="04053" group="07" unit="NO" unit_ru="NO" description="Количество дней в месяце с осадками в 1,0 мм или более" />
+  <descr name="R05R05"	num="04023" group="08" unit="NO" unit_ru="NO" description="Количество дней в месяце с осадками в 5,0 мм или более" />
+  <descr name="R10R10"	num="04023" group="09" unit="NO" unit_ru="NO" description="Количество дней в месяце с осадками в 10,0 мм или более" />
+  <descr name="R50R50"	num="04023" group="10" unit="NO" unit_ru="NO" description="Количество дней в месяце с осадками в 50,0 мм или более" />
+  <descr name="R100R100"  num="04023" group="11" unit="NO" unit_ru="NO" description="Количество дней в месяце с осадками в 100,0 мм или более" />
+  <descr name="R150R150"  num="04023" group="12" unit="NO" unit_ru="NO" description="Количество дней в месяце с осадками в 150,0 мм или более" />
+  <descr name="s00s00"  num="04023" group="13" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда высота снежного покрова была более 0 см" />
+  <descr name="s01s01"	num="04023" group="14" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда высота снежного покрова составляла более 1 см" />
+  <descr name="s10s10"	num="04023" group="15" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда высота снежного покрова составляла более 10 см" />
+  <descr name="s50s50"	num="04023" group="16" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда высота снежного покрова составляла более 50 см" />
+  <descr name="f10f10"	num="04023" group="17" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда наблюденная или зарегистрированная скорость ветра была равна или превышала 10 метров в секунду или 20 узлов" />
+  <descr name="f20f20"	num="04023" group="18" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда наблюденная или зарегистрированная скорость ветра была равна или превышала 20 метров в секунду или 40 узлов" />
+  <descr name="f30f30"	num="04023" group="19" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда наблюденная или зарегистрированная скорость ветра была равна или превышала 30 метров в секунду или 60 узлов" />
+  <descr name="V1V1"  num="04023" group="20" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда наблюденная или зарегистрированная видимость независимо от продолжительности наблюдательного периода составляла менее 50 метров" />
+  <descr name="V2V2"  num="04023" group="21" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда наблюденная или зарегистрированная видимость независимо от продолжительности наблюдательного периода составляла менее 100 метров" />
+  <descr name="V3V3"  num="04023" group="22" unit="NO" unit_ru="NO" description="Количество дней в месяце, когда наблюденная или зарегистрированная видимость независимо от продолжительности наблюдательного периода составляла менее 100 метров" />
+
+  <descr name="snTxdTxdTxd"  num="12052" group="01" unit="C"   unit_ru="°С" description="Самая высокая среднесуточная температура воздуха за месяц" />
+  <descr name="yxyx"         num="04003" group="30" unit="NO"  unit_ru="NO" description="День, когда наблюдалась самая высокая среднесуточная температура воздуха за месяц" />
+  <descr name="snTndTndTnd"  num="12053" group="01" unit="C"   unit_ru="°С" description="Самая низкая среднесуточная температура воздуха за месяц, в десятых долях градуса" />
+  <descr name="ynyn"         num="04003" group="31" unit="NO"  unit_ru="NO" description="День, когда наблюдалась самая низкая среднесуточная температура воздуха за месяц" />
+  <descr name="snTaxTaxTax"  num="12011" group="01" unit="C"   unit_ru="°С" description="Самая высокая температура воздуха за месяц" />
+  <descr name="yaxyax"       num="04003" group="32" unit="NO"  unit_ru="NO" description="День, когда наблюдалась самая высокая температура воздуха за месяц" />
+  <descr name="snTanTanTan"  num="12012" group="01" unit="C"   unit_ru="°С" description="Самая низкая температура воздуха за месяц" />
+  <descr name="yanyan"       num="04003" group="33" unit="NO"  unit_ru="NO" description="День, когда наблюдалась самая низкая темература воздуха за месяц" />
+  <descr name="RxRxRxRx"     num="13011" group="01" unit="mm"  unit_ru="мм" description="Самое высокое суточное количество осадков за месяц" />
+  <descr name="yryr"         num="04003" group="34" unit="NO"  unit_ru="NO" description="День, когда выпало наибольшее суточное количество осадков за месяц" />
+  <descr name="fxfxfx"       num="11041" group="01" unit="m/s" unit_ru="м/с" description="Самая высокая скорость порыва ветра в течении месяца" />
+  <descr name="yfxyfx"       num="04003" group="35" unit="NO"  unit_ru="NO" description="День, когда наблюдалась или регистрировалась самая высокая скорость ветра за месяц" />
+  <descr name="DtsDts"       num="04023" group="23" unit="NO"  unit_ru="NO" description="Количество дней в месяце, когда наблюдалась(лись) гроза(ы)" />
+  <descr name="DgrDgr"       num="04023" group="24" unit="NO"  unit_ru="NO" description="Количество дней в месяце, когда выпадал град" />
+  <descr name="iy"           num="02051" 	    unit="NO"  unit_ru="NO" description="Указатель для определения типа отсчета. (Кодовая таблица 1857)" />
+  <descr name="GxGx"         num="04051" 	    unit="NO"  unit_ru="NO" description="Основной срок ежедневного отсчета в МСВ (в часах) максимальной экстремальной температуры" />
+  <descr name="GnGn"         num="04052" 	    unit="NO"  unit_ru="NO" description="Основной срок ежедневного отсчета в МСВ (в часах) минимального экстремального значения температуры" />
+  <descr name="K"            num="13044"            unit="C"   unit_ru="°С" description="Степень конвективной неустойчивости" />
+
+  <descr name="ki"          num="20195"	     group="55"	     unit="K"	 unit_ru="К" description="K index (число Вайтинга)" />
+  <descr name="vti"	    num="20196"	     group="55"	     unit="K"	 unit_ru="К" description="Vertical index" />
+  <descr name="cti"	    num="20197"	     group="55"	     unit="K"	 unit_ru="К" description="Сross index" />
+  <descr name="tti"	    num="20198"	     group="55"	     unit="K"	 unit_ru="К" description="Total index" />
+  <descr name="sweat"	    num="20199"	     group="55"	     unit="NO"	 unit_ru="NO" description="SWEAT index" />
+  
+  <descr name="gAk"         num="55001"      group="55"      unit="NO"   unit_ru="NO" description="Ак-индекс" />
+  <descr name="gAp"         num="55002"      group="55"      unit="NO"   unit_ru="NO" description="Индекс геомагнитной возмущённости Ар " />
+  <descr name="gk"          num="55003"      group="55"      unit="NO"   unit_ru="NO" description="К-индекс" />
+  <descr name="gH"          num="55004"      group="55"      unit="gamma"   unit_ru="гаммы" description="минимум Н–компоненты" />
+  <descr name="gSyn"        num="55005"      group="55"      unit="NO"   unit_ru="NO" description="Явление (магнитометрические наблюдения)" />
+  <descr name="gd"          num="55006"      group="55"      unit="NO"   unit_ru="NO" description="Индекс кольцевого тока" />
+  <descr name="gsn"         num="55007"      group="55"      unit="NO"   unit_ru="NO" description="Количество суббурь" />
+  <descr name="ggr"         num="55008"      group="55"      unit="L"    unit_ru="L" description="Граница зоны устойчивого захвата электронов с Ее>1Мэв на ночной стороне магнитосферы" />
+  <descr name="gF"          num="55009"      group="55"      unit="10-22Вт/(м2 с)"   unit_ru="10^-22 Вт/(м&#178;*с)" description="Плотность потока радиоизлучения Солнца" />
+  <descr name="gFp"         num="55010"      group="55"      unit="%"    unit_ru="%" description="Плотность потока радиоизлучения Солнца (в % возрастании над предвсплесковым уровнем)" />
+  <descr name="gfreq"       num="55011"      group="55"      unit="MHz"   unit_ru="МГц" description="Частота измерения" />
+  <descr name="gSynf"       num="55012"      group="55"      unit="NO"   unit_ru="NO" description="Тип события (радиоизлучение)" />
+  <descr name="gdist"       num="55013"      group="55"      unit="%"   unit_ru="%" description="Расстояние всплеска до центра сканирования в процентах от радиуса фотосферы" />
+  <descr name="gp"          num="55014"      group="55"      unit="MeV"   unit_ru="Мэв" description="признак регистратора протонов" />
+  <descr name="gpi"         num="55015"      group="55"      unit="ch/(cm2 s)"   unit_ru="част/(см2∙с)" description="интенсивность протонов" />
+  <descr name="go1"         num="55016"      group="55"      unit="NO"   unit_ru="NO" description="Использование при прогнозе наземных наблюдений за Солнцем" />
+  <descr name="go2"         num="55017"      group="55"      unit="NO"   unit_ru="NO" description="Использование при прогнозе данных спутниковых измерений" />  
+  <descr name="go3"         num="55018"      group="55"      unit="NO"   unit_ru="NO" description="Использование при прогнозе данных о магнитном поле Земли" /> 
+  <descr name="gS"          num="55019"      group="55"      unit="NO"   unit_ru="NO" description="Прогноз вспышечной активности Солнца в целом" />
+  <descr name="gM"          num="55020"      group="55"      unit="NO"   unit_ru="NO" description="Прогноз геомагнитного поля" />
+  <descr name="gP"          num="55021"      group="55"      unit="NO"   unit_ru="NO" description="Прогноз протонных событий" />
+  <descr name="gc"          num="55022"      group="55"      unit="NO"   unit_ru="NO" description="Рентгеновский класс события" />
+  <descr name="gci"         num="55023"      group="55"      unit="NO"   unit_ru="NO" description="Интенсивность рентгеновского события" />
+  <descr name="ge"          num="55024"      group="55"      unit="NO"   unit_ru="NO" description="Оптический балл вспышки" />
+  <descr name="gb"          num="55025"      group="55"      unit="NO"   unit_ru="NO" description="Признак яркости вспышки" />
+  <descr name="gFa"         num="55026"      group="55"      unit="NO"   unit_ru="NO" description="Всплеск" />
+  <descr name="grwc"        num="55027"      group="55"      unit="NO"   unit_ru="NO" description="Номер области по нумерации регионального центра RWC" />
+  <descr name="gw"          num="55028"      group="55"      unit="NO"   unit_ru="NO" description="Относительное число солнечных пятен (число Вольфа)" />
+  <descr name="gFcnt"       num="55029"      group="55"      unit="NO"   unit_ru="NO" description="Количество значительных всплесков плотности потока радиоизлучения Солнца" />
+  <descr name="gic"         num="55030"      group="55"      unit="NO"   unit_ru="NO" description="Средняя интенсивность космических лучей" />
+  <descr name="gcSyn"       num="55031"      group="55"      unit="NO"   unit_ru="NO" description="Признак события в потоках космических лучей" />
+  <descr name="gMcnt"       num="55032"      group="55"      unit="NO"   unit_ru="NO" description="Количество рентгеновских вспышек класса М" />
+  <descr name="gXcnt"       num="55033"      group="55"      unit="NO"   unit_ru="NO" description="Количество рентгеновских вспышек класса Х" />
+  <descr name="ggamma"      num="55034"      group="55"      unit="NO"   unit_ru="NO" description="Фоновое значение х-лучей" />
+  <descr name="gncnt"       num="55035"      group="55"      unit="NO"   unit_ru="NO" description="Количество новых групп пятен" />
+  <descr name="gacnt"       num="55036"      group="55"      unit="NO"   unit_ru="NO" description="Общее количество активных областей на видимом диске Солнца" />
+  <descr name="gSq"         num="55037"      group="55"      unit="NO"   unit_ru="NO" description="Общая площадь групп пятен в миллионных долях солнечной полусферы" />
+  
+  <descr name="gflcnt"      num="55038"      group="55"      unit="NO"   unit_ru="NO" description="Количество субвспышек" />
+  <descr name="gCc"         num="55039"      group="55"      unit="NO"   unit_ru="NO" description="Цюрихский класс группы" />
+  <descr name="gsh"         num="55040"      group="55"      unit="NO"   unit_ru="NO" description="Тип полутени у самого большого пятна в группе" />
+  <descr name="gdstr"       num="55041"      group="55"      unit="NO"   unit_ru="NO" description="Компактность центральных пятен" />
+  <descr name="gm"          num="55042"      group="55"      unit="NO"   unit_ru="NO" description="Магнитная классификация группы пятен" />
+  <descr name="gscnt"       num="55043"      group="55"      unit="NO"   unit_ru="NO" description="Общее число пятен в группе" />
+  <descr name="gPC"         num="55044"      group="55"      unit="%"    unit_ru="%"  description="Вероятность рентгеновских вспышек класса C" />
+  <descr name="gPM"         num="55045"      group="55"      unit="%"    unit_ru="%"  description="Вероятность рентгеновских вспышек класса M" />
+  <descr name="gPX"         num="55046"      group="55"      unit="%"    unit_ru="%"  description="Вероятность рентгеновских вспышек класса X" />
+  <descr name="gPp"         num="55047"      group="55"      unit="%"    unit_ru="%"  description="Вероятность протонных вспышек" />
+  <descr name="gir"         num="55048"      group="55"      unit="NO"   unit_ru="NO" description="Способ измерения риометром" />
+  <descr name="git"         num="55049"      group="55"      unit="NO"   unit_ru="NO" description="Тип явления (измерения ионосферного поглощения)" />
+  <descr name="gia"         num="55050"      group="55"      unit="dB"   unit_ru="дБ" description="Число дБ максимума поглощения за час до времени “КК”" />
+  <descr name="gif"         num="55051"      group="55"      unit="NO"   unit_ru="NO" description="Задержка фазы в градусах" />
+  <descr name="gis"         num="55052"      group="55"      unit="NO"   unit_ru="NO" description="Тип явления (внезапные ионосферные возмущения)" />
+  <descr name="gii"         num="55053"      group="55"      unit="NO"   unit_ru="NO" description="Показатель интенсивности явления" />
+  <descr name="gqt"         num="55054"      group="55"      unit="NO"   unit_ru="NO" description="Показатель качества наблюдений и надёжность времени" />
+  <descr name="gVq"         num="55055"      group="55"      unit="NO"   unit_ru="NO" description="Качество наблюдения" />
+  <descr name="gHs"         num="55056"      group="55"      unit="NO"   unit_ru="NO" description="Продольный размер Нα-флоккулов" />
+  <descr name="gHb"         num="55057"      group="55"      unit="NO"   unit_ru="NO" description="Яркость Нα по 5-бальной шкале" />
+  <descr name="gHa"         num="55058"      group="55"      unit="NO"   unit_ru="NO" description="Описание яркой Нα-структуры" />
+  <descr name="gHf"         num="55059"      group="55"      unit="NO"   unit_ru="NO" description="Положение тёмного волокна относительно фотосферных пятен" />
+  <descr name="gss"         num="55060"      group="55"      unit="NO"   unit_ru="NO" description="Размер солнечного диска, используемый при наблюдениях" />
+  <descr name="ggs"         num="55061"      group="55"      unit="NO"   unit_ru="NO" description="Относительный размер головного пятна и плотность рассеяния солнечных пятен" />
+  <descr name="gst"         num="55062"      group="55"      unit="NO"   unit_ru="NO" description="Признак пятна" />
+  <descr name="gsd"         num="55063"      group="55"      unit="deg"  unit_ru="°"  description="Диаметр тени основного пятна" />
+  <descr name="gsp"         num="55064"      group="55"      unit="NO"   unit_ru="NO" description="Полярность магнитного поля основного пятна" />
+  <descr name="gsc"         num="55065"      group="55"      unit="NO"   unit_ru="NO" description="Конфигурация пятна" />
+  <descr name="grr"         num="55066"      group="55"      unit="deg"  unit_ru="°"  description="Расстояние по долготе между внешними краями основных пятен" />
+  <descr name="gri"         num="55067"      group="55"      unit="deg"  unit_ru="°"  description="Кратчайшее расстояние между внутренними краями ближайших пятен противоположной полярности" />
+  <descr name="gmp"         num="55068"      group="55"      unit="NO"   unit_ru="NO" description="Ориентация нейтральной линии магнитного поля" />
+  <descr name="gpol"        num="55069"      group="55"      unit="NO"   unit_ru="NO" description="Описание полярностей" />
+  <descr name="gmp1"        num="55070"      group="55"      unit="NO"   unit_ru="NO" description="Тип конфигурации и данные об ориентации нейтральной линии" />
+  <descr name="gdw"         num="55071"      group="55"      unit="deg"  unit_ru="°"  description="Диаметр западного пятна" />
+  <descr name="gde"         num="55072"      group="55"      unit="deg"  unit_ru="°"  description="Диаметр восточного пятна" />
+  <descr name="gnH"         num="55073"      group="55"      unit="G"    unit_ru="Гс" description="Напряжённость магнитного поля северной поляризации" />
+  <descr name="gsH"         num="55074"      group="55"      unit="G"    unit_ru="Гс" description="Напряжённость магнитного поля южной поляризации" />
+  <descr name="gdH"         num="55075"      group="55"      unit="NO"   unit_ru="NO" description="Оценка величины градиента магнитного поля" />
+  <descr name="grv"         num="55076"      group="55"      unit="deg"  unit_ru="°"  description="Расстояние по широте между внешними краями основных пятен" />
+
+  <descr name="hostname"  num="990000"  unit="NO"    unit_ru="NO" description="IP адрес станции" />
+  <descr name="port"  num="990001"  unit="NO"    unit_ru="NO" description="Порт станции" />
+  <descr name="station_status"  num="999000"  unit="NO"    unit_ru="NO" description="Статус" />
+  <descr name="speed_qual"  num="999001"  unit="NO"    unit_ru="Кб/с" description="Качество связи" />
+
+  <!-- <descr name=""            num="55077"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55078"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55079"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55080"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+
+  <!-- <descr name=""            num="55081"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55082"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55083"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55084"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55085"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55086"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55087"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55088"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55089"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+  <!-- <descr name=""            num="55090"      group="55"      unit="NO"   unit_ru="NO" description="" /> -->
+
+</descriptors>

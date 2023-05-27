@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+message Question {
+  repeated string question = 1;
+}
+
+message Answer {
+  repeated string answer = 1;
+}
+
+service AnswerService {
+  rpc getAnswer ( Question ) returns ( Answer );
+  rpc getMultiAnswer ( Question ) returns ( stream Answer );
+}

@@ -1,0 +1,69 @@
+syntax = "proto2";
+option cc_generic_services = true;
+package mappi.conf;
+
+import "common.proto";
+import "satellite.proto";
+import "schedule.proto";
+
+
+//! параметры работы с dump file в demo mode
+message DumpParam {
+  required string file = 1;     //!< имя dump file
+  required float bitrate = 2;   //!< Kbit\sec скорость потока
+  required uint32 balancer = 3; //!< количество пакетов в секунду, позволяет сбалансировать нагрузку (размер пакета - bit_rate/balancer)
+}
+
+//! параметры приёмника для спутника
+message ReceiverParam {
+  required RateMode mode = 1;   //!< скорость приёма (для конкретного режима)
+  required float freq = 2;      //!< частота
+  required float gain = 3;      //!< усиление
+  required float rate = 4;      //!< частота дискретизации
+
+  optional DumpParam dump = 5;
+}
+
+//! варианты реализации логики работы (движка) приёмника
+enum ReceiverEngine {
+  kUdpEngine = 0;       //!< udp
+  kSubEngine = 1;       //!< запуск внешнего приложения в дочернем процессе (gnu radio)
+}
+
+//! настройки udp движка
+message UdpEngineConf {
+  required string host = 1;
+  required uint32 port = 2;
+}
+
+//! настройки для движка дочернего процесса
+message SubEngineConf {
+  required string app = 1; // имя приложения
+}
+
+//! настройки приёмника
+message ReceiverConf {
+  required RateMode mode = 1;           //!< скорость приёма (глобально)
+  required bool apch = 2;               //!< АПЧ
+  required string raw_file = 3;         //!< имя файл для сохранения raw потока
+
+  required ReceiverEngine engine = 4;   //!< текущий движок
+  optional UdpEngineConf udp = 5;
+  optional SubEngineConf sub_process = 6;
+}
+
+//! ответ приёмника
+message ReceiverResponse {
+  required bool apch = 1;               //!< текущее состояние АПЧ
+  required ReceiverParam param = 2;     //!< текущие параметры
+  required ServiceState state = 3;      //!< текущее состояние
+
+  required bool result = 4;
+  optional string comment = 5;
+}
+
+service ReceiverService {
+  rpc AcceptSession(SessionBundle) returns (ReceiverResponse);  //!< запрос на приём сеанса
+  rpc ServiceMode(ServiceRequest) returns (ReceiverResponse);   //!< переход в\из сервисный режим
+  rpc HealthCheck(Dummy) returns (ReceiverResponse);            //!< запрос текущего состояния
+}

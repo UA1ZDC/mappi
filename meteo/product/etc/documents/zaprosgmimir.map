@@ -1,0 +1,12 @@
+name: "zaprosgmimir.map"
+title: "Заявка на получение ГМИ от Росгидромета в мирное время"
+formal {
+    template: "zaprosgmimir.odt"
+    name: "Заявка на получение ГМИ от Росгидромета в мирное время"
+    module_path: "zaprosgmimir.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="TENMN" text="Усредненный за 90 дней F10.7 - плотности потока радиоизлучения Солнца, Оттава"  category="178">
+  <MessageSections>TENMN\s*((?:\d{5}\s*){2})</MessageSections>
+  <Section number="1" text="" >
+    <GroupValues>\s*()(\d)(\d{2})(\d\d)\s*(\d{2})()()()()(\d{3})\s*</GroupValues>
+    <Value number="1"  descrName="station"  default="Оттава" text="центр" />
+    <Value number="1"  descrName="J"   text="цифра года выпуска телеграммы" />
+    <Value number="2"  descrName="MM"  text="месяц выпуска телеграммы"  />
+    <Value number="3"  descrName="YY"  text="день  выпуска телеграммы" />
+    <Value number="4"  descrName="YY"  num="0" text="день начала усреднения"  />
+    <Value number="5"  descrName="GGp" num="0" default="0" text="период усреднения"  />
+    <Value number="5"  descrName="GGpl" num="0" default="2160" text="период усреднения"  />
+    <Value number="5"  descrName="stat_sign" num="0" default="4" text="среднее значение"  />
+    <Value number="5"  descrName="gfreq" num="0" default="2802" text="частота"  />
+    <Value number="6"  descrName="gF" num="0" text="F10.7"  />
+  </Section>
+</Message>

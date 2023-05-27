@@ -1,0 +1,35 @@
+syntax = "proto2";
+
+package meteo.cron;
+
+//! Параметры запуска приложения
+message RunApp {
+  optional string timesheet     = 1; //!< расписание
+  optional string path          = 2; //!< полный путь к приложению
+  optional string name          = 3; //!< название задачи
+  repeated Arg    arg           = 4; //!< аргументы приложения
+
+  message Arg {
+    optional string key         = 1;
+    optional string value       = 2;
+  }
+}
+
+//! Параметры запуска приложения
+message RunItem {
+  optional string path          = 1; //!< полный путь к приложению
+  repeated RunApp.Arg    arg    = 2; //!< аргументы приложения
+}
+
+//! Задание для последовательного запуска списка приложений
+message RunAppList {
+  optional string timesheet     = 1; //!< расписание
+  optional string name          = 2; //!< название задачи
+  repeated RunItem app          = 3; //!< список прилжения для запуска
+}
+
+//! Настройки приложения
+message Settings {
+  repeated RunApp       run_app       = 1;
+  repeated RunAppList   run_app_list  = 2;
+}

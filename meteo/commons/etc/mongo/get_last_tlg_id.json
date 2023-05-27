@@ -1,0 +1,7 @@
+{ "find": "msg",
+  "projection": { "_id": 1 },
+  "sort": {
+    "_id": -1
+  },
+  "limit": 1
+}

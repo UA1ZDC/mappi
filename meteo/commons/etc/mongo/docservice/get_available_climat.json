@@ -1,0 +1,4 @@
+{
+  "find" : "fs.files",
+  "filter" : {"filename" : { "$regex" : "^climat*", "$options" : "i"} }
+}

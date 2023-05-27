@@ -1,0 +1,292 @@
+code: "P_ex"
+name: "Давление"
+path: "/home/aleks/build_dir//share/meteo//punch/P_ex.template"
+wind: false
+rule {
+  pos {
+    x: 1
+    y: 1
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 10210050
+      maxval: 10210052
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "41"
+    }
+    symbol {
+      minval: -10210052
+      maxval: -10210050
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "42"
+    }
+    symbol {
+      minval: 110060
+      maxval: 110062
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292282928
+      patternba: "46"
+    }
+    symbol {
+      minval: -110062
+      maxval: -110060
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4282719924
+      patternba: "45"
+    }
+    symbol {
+      minval: 15010008
+      maxval: 15010010
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4280035572
+      patternba: "43"
+    }
+    symbol {
+      minval: -15010010
+      maxval: -15010008
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292282928
+      patternba: "44"
+    }
+    symbol {
+      minval: 110050
+      maxval: 110052
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "41"
+    }
+    symbol {
+      minval: -10010010
+      maxval: -10010008
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "42"
+    }
+    symbol {
+      minval: -110052
+      maxval: -110050
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "42"
+    }
+    symbol {
+      minval: 10010008
+      maxval: 10010010
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "41"
+    }
+    symbol {
+      minval: -10110052
+      maxval: -10110050
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "42"
+      label: ""
+    }
+    symbol {
+      minval: 10110050
+      maxval: 10110052
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "41"
+      label: ""
+    }
+  }
+  testval: 70.34
+  id {
+    descr: 7062
+    name: "zn"
+    description: ""
+  }
+  visible: true
+}
+rule {
+  pos {
+    x: 11
+    y: 9
+  }
+  align: kBottomRight
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 5521024
+    name: "WW1"
+    description: ""
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 12
+  testqual: 0
+  id {
+    descr: 11001
+    name: "dd"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 0
+  testqual: 0
+  id {
+    descr: 11002
+    name: "ff"
+    parent: "wind"
+  }
+}
+datatype: kSpecial
+center: kNoCenter
+crisscross: false
+radius: 3
+windfont {
+  family: ""
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}

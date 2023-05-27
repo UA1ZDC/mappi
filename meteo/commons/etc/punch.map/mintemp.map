@@ -1,0 +1,22 @@
+name: "mintemp.map"
+title: "Минимальная температура "
+spline_koef: 2
+data {
+  mode: kPuanson
+  level: 0
+  type_level: 1
+  template_name: "minTemp"
+  query_type: kMinimumValue
+  data_type: kSynopType
+  data_type: kSynopFix
+  data_type: kSynopCoast
+  data_type: kSynopWarep
+  data_type: kSynopSnow
+  data_type: kSynopArtillery
+  data_type: kSynopMonth
+  data_type: kSynopDecade
+  data_type: kHydroType
+  data_type: kHydroStation
+  data_type: kSynopMobSea
+  data_type: kSynopMobShip
+}

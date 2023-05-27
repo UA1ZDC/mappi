@@ -1,0 +1,13 @@
+{
+   "update": @collection@,
+   "updates": [
+      { "q": { @collectionGridFsField@ : @fieldValue@ },
+        "u": {
+        "$set": { "fs_duplicate" : true }
+        },
+        "upsert": false,
+        "multi": true
+        }
+   ]
+}
+

@@ -1,0 +1,14 @@
+{
+  "find": "mlmodel",
+  "filter": {
+      "descr":        @descr@,
+      "level_type":   @level_type@,
+      "level":        @level@,
+      "hour":         @hour@,
+      "center":       @center@,
+      "model":        @model@,
+      "mlmodel_type": @mlmodel_type@,
+      "location" :    @location@
+     },
+  "limit": 1
+}

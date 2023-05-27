@@ -1,0 +1,60 @@
+syntax = "proto2";
+
+package meteo.settings.proto;
+
+enum ServiceCode {
+  kDiagnostic                           = 0;
+  kMsgCenter                            = 1;
+  kMsgNotify                            = 2;
+  kAlphanum                             = 3;
+  kBufr                                 = 4;
+  kGrib                                 = 5;
+  kFax                                  = 6;
+  kDataControl                          = 7;
+  kSrcData                              = 8;
+  kObanal                               = 9;
+  kField                                = 10;
+  kWrb                                  = 11;
+  kMap                                  = 12;
+  kForecastData                         = 13;
+  kSprinf                               = 14;
+  kStationBin                           = 15;
+  kAeroDiagram                          = 16;
+  kNodeCenter                           = 17;
+  kUserCenter                           = 18;
+  kClimat                               = 19;
+  kGphAlphanum                          = 20;
+  kSrcDataLocal                         = 21;
+  kSchedule                             = 22;
+  kRecvStream                           = 23;	// TODO убрать
+  kFile                                 = 24;
+  kSrcDataParent                        = 25;
+  kInterTaskService                     = 26;
+  kInterMessagesService                 = 27;
+  kCustomViewerService                  = 28;
+  kThematic                             = 29;
+  kPretreatment                         = 30;
+  kPlayback                             = 31;
+  kReceiver                             = 32;
+  kAntenna                              = 33;
+  kCliwareAlphanum                      = 34;
+};
+
+message Service {
+  optional int32        port            = 1;    //!< Порт для подключения к службе
+  optional string       name            = 2;    //!< Имя службы
+  optional string       title           = 3;    //!< Пользовательское наименование
+  optional ServiceCode  code            = 4;    //!< Код службы
+  optional string       host            = 5;    //!< Имя хоста или ip-адрес (устанавливается из ServiceMachine::host)
+  optional int32        default_timeout = 6;    //!< Таймаут ожидания выполнения удаленного вызова (устанавливается из ServiceMachine::default_timeout)
+}
+
+message ServiceMachine {
+  optional string  host                 = 1 [default = "localhost"];    //!< ip-адрес или имя хоста ЭВМ со службами
+  optional int32   default_timeout      = 2;    //!< Общий для ЭВМ таймаут ожидания выполнения удаленного вызова
+  repeated Service serv                 = 3;    //!< Сервисы, установленные на ЭВМ
+}
+
+message ServiceMachines {
+  repeated ServiceMachine machine       = 1;    //!< Группа ЭВМ, входящих в состав изделия
+}

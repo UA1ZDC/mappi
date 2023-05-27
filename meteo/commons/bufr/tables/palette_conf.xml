@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="KOI8-R"?>
+<palette>
+
+<toz descr="15001" name="Общее содержание озона" aname="Сод. озон" edizm=" Доб" font="24" kolpal="11" align="3" colortab="1" isadd="1" koladd="2">
+
+<add index="0" minval="0" maxval="139" value="100" R="255" G="255" B="255" >
+</add>
+
+<add index="10" minval="500" maxval="900" value="500" R="5" G="255" B="5" >
+</add>
+
+<minval z0="100" dz="40"/>
+<maxval z0="139" dz="40"/>
+<value z0="100" dz="40"/>
+<R z0="255" dz="-25"/>
+<G z0="255" dz="0"/>
+<B z0="255" dz="-25"/>
+
+</toz>
+
+<wind descr="00000" name="Поле ветра" aname="Ветер" edizm=" " font="24" kolpal="3" align="3" colortab="0" isadd="1" koladd="3">
+
+<add index="0" minval="0" maxval="500" value="Выше 500 mb" R="255" G="0" B="0" >
+</add>
+
+<add index="1" minval="500" maxval="850" value="850-500 mb" R="0" G="0" B="255" >
+</add>
+
+<add index="2" minval="850" maxval="1850" value="до 850 mb" R="0" G="255" B="0" >
+</add>
+
+<minval z0="0" dz="0"/>
+<maxval z0="0" dz="0"/>
+<value z0="0" dz="0"/>
+<R z0="0" dz="0"/>
+<G z0="0" dz="0"/>
+<B z0="0" dz="0"/>
+
+</wind>
+
+<cesr descr="20012" name="Облачный анализ" aname="Тип облачности" edizm=" " font="24" kolpal="4" align="3" colortab="0" isadd="1" koladd="4">
+
+<add index="0" minval="11" maxval="19" value="Верхний ярус" R="0" G="0" B="255" >
+</add>
+
+<add index="1" minval="3" maxval="4" value="Средний ярус" R="0" G="255" B="0" >
+</add>
+
+<add index="2" minval="5" maxval="9" value="Нижний ярус" R="255" G="0" B="0" >
+</add>
+
+<add index="3" minval="39" maxval="100" value="Не определено" R="255" G="255" B="0" >
+</add>
+
+<minval z0="0" dz="0"/>
+<maxval z0="0" dz="0"/>
+<value z0="0" dz="0"/>
+<R z0="0" dz="0"/>
+<G z0="0" dz="0"/>
+<B z0="0" dz="0"/>
+
+</cesr>
+
+<asr descr="20081" name="Облачный анализ" aname="Кол-во облачности" edizm="%" font="24" kolpal="11" align="3" colortab="1" isadd="1" koladd="2">
+
+<add index="0" minval="0" maxval="0" value="0" R="255" G="255" B="255" >
+</add>
+
+<add index="10" minval="91" maxval="200" value="100" R="5" G="5" B="255" >
+</add>
+
+<minval z0="-9" dz="10"/>
+<maxval z0="0" dz="10"/>
+<value z0="0" dz="10"/>
+<R z0="255" dz="-25"/>
+<G z0="255" dz="-25"/>
+<B z0="255" dz="0"/>
+
+</asr>
+
+<giiKI descr="13044" name="Поле индекса неустойчивости KI" aname="Значение индекса KI" edizm=" " font="24" kolpal="9" align="3" colortab="1" isadd="1" koladd="2">
+
+<add index="0" minval="60" maxval="150" value="80" R="255" G="0" B="0" >
+</add>
+
+<add index="8" minval="-150" maxval="-81" value="-80" R="255" G="232" B="232" >
+</add>
+
+<minval z0="60" dz="-20"/>
+<maxval z0="79" dz="-20"/>
+<value z0="80" dz="-20"/>
+<R z0="255" dz="0"/>
+<G z0="0" dz="29"/>
+<B z0="0" dz="29"/>
+
+</giiKI>
+
+<giiKO descr="13045" name="Поле индекса неустойчивости KO" aname="Значение индекса KO" edizm=" " font="24" kolpal="9" align="3" colortab="1" isadd="1" koladd="2">
+
+<add index="0" minval="60" maxval="150" value="80" R="255" G="0" B="0" >
+</add>
+
+<add index="8" minval="-150" maxval="-81" value="-80" R="255" G="232" B="232" >
+</add>
+
+<minval z0="60" dz="-20"/>
+<maxval z0="79" dz="-20"/>
+<value z0="80" dz="-20"/>
+<R z0="255" dz="0"/>
+<G z0="0" dz="29"/>
+<B z0="0" dz="29"/>
+
+</giiKO>
+
+<giiLI descr="13042" name="Поле индекса неустойчивости LI" aname="Значение индекса LI" edizm=" " font="24" kolpal="9" align="3" colortab="1" isadd="1" koladd="2">
+
+<add index="0" minval="60" maxval="150" value="80" R="255" G="0" B="0" >
+</add>
+
+<add index="8" minval="-150" maxval="-81" value="-80" R="255" G="232" B="232" >
+</add>
+
+<minval z0="60" dz="-20"/>
+<maxval z0="79" dz="-20"/>
+<value z0="80" dz="-20"/>
+<R z0="255" dz="0"/>
+<G z0="0" dz="29"/>
+<B z0="0" dz="29"/>
+
+</giiLI>
+
+<claBot descr="20051" name="Облачный анализ" aname="Кол-во облаков 0-2 км" edizm="%" font="24" kolpal="11" align="3" colortab="1" isadd="1" koladd="2">
+
+<add index="0" minval="0" maxval="0" value="0" R="255" G="255" B="255" >
+</add>
+
+<add index="10" minval="91" maxval="200" value="100" R="5" G="5" B="255" >
+</add>
+
+<minval z0="-9" dz="10"/>
+<maxval z0="0" dz="10"/>
+<value z0="0" dz="10"/>
+<R z0="255" dz="-25"/>
+<G z0="255" dz="-25"/>
+<B z0="255" dz="0"/>
+
+</claBot>
+
+<claMid descr="20052" name="Облачный анализ" aname="Кол-во облаков 2-6 км" edizm="%" font="24" kolpal="11" align="3" colortab="1" isadd="1" koladd="2">
+
+<add index="0" minval="0" maxval="0" value="0" R="255" G="255" B="255" >
+</add>
+
+<add index="10" minval="91" maxval="200" value="100" R="5" G="5" B="255" >
+</add>
+
+<minval z0="-9" dz="10"/>
+<maxval z0="0" dz="10"/>
+<value z0="0" dz="10"/>
+<R z0="255" dz="-25"/>
+<G z0="255" dz="-25"/>
+<B z0="255" dz="0"/>
+
+</claMid>
+
+<claTop descr="20053" name="Облачный анализ" aname="Кол-во облаков >6 км" edizm="%" font="24" kolpal="11" align="3" colortab="1" isadd="1" koladd="2">
+
+<add index="0" minval="0" maxval="0" value="0" R="255" G="255" B="255" >
+</add>
+
+<add index="10" minval="91" maxval="200" value="100" R="5" G="5" B="255" >
+</add>
+
+<minval z0="-9" dz="10"/>
+<maxval z0="0" dz="10"/>
+<value z0="0" dz="10"/>
+<R z0="255" dz="-25"/>
+<G z0="255" dz="-25"/>
+<B z0="255" dz="0"/>
+
+</claTop>
+
+<th descr="13003" name="Относительная влажность" aname="Отн. влажность" edizm="%" font="24" kolpal="11" align="3" colortab="1" isadd="1" koladd="1">
+
+<add index="10" minval="150" maxval="109" value="100" R="5" G="255" B="5" >
+</add>
+
+<minval z0="0" dz="10"/>
+<maxval z0="9" dz="10"/>
+<value z0="0" dz="10"/>
+<R z0="255" dz="-25"/>
+<G z0="255" dz="0"/>
+<B z0="255" dz="-25"/>
+
+</th>
+
+<rad descr="12072" name="Излучение" aname="Излучение" edizm=" " font="24" kolpal="12" align="3" colortab="1" isadd="1" koladd="7">
+
+<add index="0" minval="0" maxval="229" value="220" R="0" G="0" B="255" >
+</add>
+
+<add index="6" minval="280" maxval="289" value="280" R="255" G="230" B="255" >
+</add>
+
+<add index="7" minval="290" maxval="299" value="290" R="255" G="-60" B="-60" >
+</add>
+
+<add index="8" minval="300" maxval="309" value="300" R="255" G="-105" B="-105" >
+</add>
+
+<add index="9" minval="310" maxval="319" value="310" R="255" G="-150" B="-150" >
+</add>
+
+<add index="10" minval="320" maxval="329" value="320" R="255" G="-195" B="-195" >
+</add>
+
+<add index="11" minval="330" maxval="500" value="330" R="255" G="-240" B="-240" >
+</add>
+
+<minval z0="220" dz="10"/>
+<maxval z0="229" dz="10"/>
+<value z0="220" dz="10"/>
+<R z0="" dz="45"/>
+<G z0="0" dz="45"/>
+<B z0="255" dz="0"/>
+
+</rad>
+
+<srad descr="12075" name="Спектральное излучение" aname="Спектральное излучение" edizm=" " font="24" kolpal="12" align="3" colortab="1" isadd="1" koladd="7">
+
+<add index="0" minval="0" maxval="229" value="220" R="0" G="0" B="255" >
+</add>
+
+<add index="6" minval="280" maxval="289" value="280" R="255" G="230" B="255" >
+</add>
+
+<add index="7" minval="290" maxval="299" value="290" R="255" G="-60" B="-60" >
+</add>
+
+<add index="8" minval="300" maxval="309" value="300" R="255" G="-105" B="-105" >
+</add>
+
+<add index="9" minval="310" maxval="319" value="310" R="255" G="-150" B="-150" >
+</add>
+
+<add index="10" minval="320" maxval="329" value="320" R="255" G="-195" B="-195" >
+</add>
+
+<add index="11" minval="330" maxval="500" value="330" R="255" G="-240" B="-240" >
+</add>
+
+<minval z0="220" dz="10"/>
+<maxval z0="229" dz="10"/>
+<value z0="220" dz="10"/>
+<R z0="" dz="45"/>
+<G z0="0" dz="45"/>
+<B z0="255" dz="0"/>
+
+</srad>
+
+<bright descr="12063" name="Яркостная температура" aname="Яркостная температура" edizm=" " font="24" kolpal="12" align="3" colortab="1" isadd="1" koladd="7">
+
+<add index="0" minval="0" maxval="229" value="220" R="0" G="0" B="255" >
+</add>
+
+<add index="6" minval="280" maxval="289" value="280" R="255" G="230" B="255" >
+</add>
+
+<add index="7" minval="290" maxval="299" value="290" R="255" G="-60" B="-60" >
+</add>
+
+<add index="8" minval="300" maxval="309" value="300" R="255" G="-105" B="-105" >
+</add>
+
+<add index="9" minval="310" maxval="319" value="310" R="255" G="-150" B="-150" >
+</add>
+
+<add index="10" minval="320" maxval="329" value="320" R="255" G="-195" B="-195" >
+</add>
+
+<add index="11" minval="330" maxval="500" value="330" R="255" G="-240" B="-240" >
+</add>
+
+<minval z0="220" dz="10"/>
+<maxval z0="229" dz="10"/>
+<value z0="220" dz="10"/>
+<R z0="" dz="45"/>
+<G z0="0" dz="45"/>
+<B z0="255" dz="0"/>
+
+</bright>
+
+<temp descr="12001" name="Температура" aname="Температура" edizm=" " font="24" kolpal="12" align="3" colortab="1" isadd="1" koladd="7">
+
+<add index="0" minval="0" maxval="229" value="220" R="0" G="0" B="255" >
+</add>
+
+<add index="6" minval="280" maxval="289" value="280" R="255" G="230" B="255" >
+</add>
+
+<add index="7" minval="290" maxval="299" value="290" R="255" G="-60" B="-60" >
+</add>
+
+<add index="8" minval="300" maxval="309" value="300" R="255" G="-105" B="-105" >
+</add>
+
+<add index="9" minval="310" maxval="319" value="310" R="255" G="-150" B="-150" >
+</add>
+
+<add index="10" minval="320" maxval="329" value="320" R="255" G="-195" B="-195" >
+</add>
+
+<add index="11" minval="330" maxval="500" value="330" R="255" G="-240" B="-240" >
+</add>
+
+<minval z0="220" dz="10"/>
+<maxval z0="229" dz="10"/>
+<value z0="220" dz="10"/>
+<R z0="" dz="45"/>
+<G z0="0" dz="45"/>
+<B z0="255" dz="0"/>
+
+</temp>
+
+</palette>
+
+

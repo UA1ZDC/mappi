@@ -1,0 +1,8 @@
+{
+  "find" : "user_settings",
+  "filter": { 
+  	"user_login":   @user_login@,
+  	"setting_type": @setting_type@
+  }
+}
+

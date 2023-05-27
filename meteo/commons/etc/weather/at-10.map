@@ -1,0 +1,22 @@
+name: "at-10.map"
+title: "АТ-10"
+spline_koef: 2
+data {
+  mode: kIsoline
+  template_name: "10009"
+  level: 10
+  type_level: 100
+}
+data {
+  mode: kIsoline
+  template_name: "12101"
+  level: 10
+  type_level: 100
+}
+data {
+  mode: kPuanson
+  template_name: "kn04"
+  level: 10
+  type_level: 100
+  data_type: kAeroFix
+}

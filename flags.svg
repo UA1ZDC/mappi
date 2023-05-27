@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="flags.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="293.20831"
+     inkscape:cy="838.66392"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1540"
+     inkscape:window-height="912"
+     inkscape:window-x="1941"
+     inkscape:window-y="30"
+     inkscape:window-maximized="0"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815" />
+    <sodipodi:guide
+       position="95.249998,105.83334"
+       orientation="0,1"
+       id="guide17"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="115.09375,201.08333"
+       orientation="1,0"
+       id="guide19"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       id="rect16"
+       width="41.936459"
+       height="41.936459"
+       x="18.917704"
+       y="61.917713"
+       style="fill:#008080;stroke-width:0.16788022"
+       inkscape:export-xdpi="77.526817"
+       inkscape:export-ydpi="77.526817"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flagrect_red.png" />
+    <rect
+       style="fill:#b20000;fill-opacity:1;stroke:#270000;stroke-width:0.768;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect817"
+       width="31.749996"
+       height="19.719831"
+       x="67.46875"
+       y="49.614582"
+       inkscape:export-xdpi="77.822868"
+       inkscape:export-ydpi="77.822868"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flagrect_red.png" />
+    <rect
+       style="fill:#b20000;fill-opacity:1;stroke:#190000;stroke-width:0.765;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect819"
+       width="2.6458333"
+       height="41.010418"
+       x="67.46875"
+       y="49.614582"
+       inkscape:export-xdpi="77.822868"
+       inkscape:export-ydpi="77.822868"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flagrect_red.png" />
+    <rect
+       style="fill:#0000b2;fill-opacity:1;stroke:#00001e;stroke-width:0.76848477;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect817-3"
+       width="31.770039"
+       height="19.732281"
+       x="137.55995"
+       y="49.323933"
+       inkscape:export-xdpi="77.526817"
+       inkscape:export-ydpi="77.526817"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flagrect_blue.png" />
+    <rect
+       style="fill:#0000b2;fill-opacity:1;stroke:#00001e;stroke-width:0.76548296;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect819-6"
+       width="2.6475036"
+       height="41.036308"
+       x="137.55995"
+       y="49.323933"
+       inkscape:export-xdpi="77.526817"
+       inkscape:export-ydpi="77.526817"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flagrect_blue.png" />
+    <path
+       style="fill:#b20000;fill-opacity:1;stroke:#270000;stroke-width:0.765;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 67.46875,109.14583 h 31.749999 l -9.260416,10.58334 9.260416,9.26041 H 67.46875 v -19.84375"
+       id="path865"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-xdpi="77.52681"
+       inkscape:export-ydpi="77.52681"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flag_red.png" />
+    <rect
+       style="fill:#b20000;fill-opacity:1;stroke:#190000;stroke-width:0.765;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect819-5"
+       width="2.6458333"
+       height="41.010418"
+       x="67.46875"
+       y="109.14583"
+       inkscape:export-xdpi="77.52681"
+       inkscape:export-ydpi="77.52681"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flag_red.png" />
+    <path
+       style="fill:#0000b2;fill-opacity:1;stroke:#00001e;stroke-width:0.765;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 133.61459,106.49999 h 31.75 l -9.26042,10.58334 9.26042,9.26041 h -31.75 v -19.84375"
+       id="path865-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flag_blue.png"
+       inkscape:export-xdpi="77"
+       inkscape:export-ydpi="77" />
+    <rect
+       style="fill:#0000b2;fill-opacity:1;stroke:#00001e;stroke-width:0.765;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect819-5-3"
+       width="2.6458333"
+       height="41.010418"
+       x="133.61459"
+       y="106.49998"
+       inkscape:export-filename="/home/maria/src/meteo/commons/etc/icons/geopixmap/citymark/flag_blue.png"
+       inkscape:export-xdpi="77"
+       inkscape:export-ydpi="77" />
+  </g>
+</svg>

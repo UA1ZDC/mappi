@@ -1,0 +1,19 @@
+{ "$group" : {
+  "_id" : {
+    "descrname" : "$_id.descrname",
+    "month" : { "$month" : "$_id.date" },   
+    "year"  : { "$year" : "$_id.date"} 
+  },
+  "value" : {
+    "$push" :  "$value"
+  },
+  "day" : {
+    "$push" : { "$dayOfYear" : "$_id.date"}
+  }
+}},
+{ "$sort" : { 
+  "_id.descrname" : 1,
+  "_id.month" : 1 ,
+  "_id.year" : 1
+}}
+

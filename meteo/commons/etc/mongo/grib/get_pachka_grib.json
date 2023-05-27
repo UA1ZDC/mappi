@@ -1,0 +1,22 @@
+{
+"aggregate": "grib", "pipeline": [
+{ "$group": { "_id": { "descr" :"$descr"
+                  ,"center":"$center" 
+                  ,"subcenter":"$subcenter" 
+                  ,"dt": "$dt" 
+                  , "levelType": "$levelType" 
+                  , "levelValue": "$levelValue" 
+                  , "procType": "$procType" 
+                  , "dt1": "$dt1" 
+                  , "dt2": "$dt2"
+                  , "hour" : "$hour" 
+                  , "timeRange" : "$timeRange" 
+ }
+ , "ids": { "$addToSet" : { "id" : "$_id", "path": "$path"  }}
+ }
+ },
+{ "$sort" : { "_id.hour" : -1 } },
+{ "$limit" : 1}
+ ]
+ ,"cursor":{}
+}

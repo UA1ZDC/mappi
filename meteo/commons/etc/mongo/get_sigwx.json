@@ -1,0 +1,12 @@
+
+{
+  "find": "flight_wx",
+  "filter": {
+    "dt"       : @dt@,
+    "dt_beg"   : @start_dt@,
+    "dt_end"   : @end_dt@,
+    "center"   : @center@,
+    "level_lo" : @level_lo@,
+    "level_hi" : @level_hi@
+  }
+}

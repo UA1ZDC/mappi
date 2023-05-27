@@ -1,0 +1,10 @@
+name: "kn-01voen"
+title: "КН-01"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "kn01voen"
+  data_type: kSynopFix
+  type_level: 1
+  level: 0
+}

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM42" text="AMDAR"  category="211">
+  <MessageSections>AMDAR\s*(\d{4})\s*(?:([\w/]{3}\s*\w+\s*\d{4}[NS]\s*\d{5}[EW]\s*\d{6}\s*[FA/][\d/]{3}\s*[PM]S[\d/]{3}\s*(?:(?:[PM]S)?[\d/]{3})?\s*(?:[\d/]{3}/[\d/]{3})?\s*TB[\d/]\s*(?:S[\d/]{3})?))?\s*(?:333\s*((?:F[\d/]{3})?\s*(?:VG[\d/]{3})?))?</MessageSections>
+  <Section number="0" text="раздел 1" >
+    <GroupValues>(\d\d)(\d\d)</GroupValues>
+    <Value number="1"  descrName="YY" text="День" />
+    <Value number="2"  descrName="GG" text="Час" />
+  </Section>
+  <Section number="1" text="раздел 2" >
+    <GroupValues>([\w/]{3}\s*\w+\s*\d{4}[NS]\s*\d{5}[EW]\s*\d{6})\s*([FA/][\d/]{3}\s*[PM]S[\d/]{3}\s*(?:(?:[PM]S)?[\d/]{3})?\s*(?:[\d/]{3}/[\d/]{3})?\s*TB[\d/]\s*(?:S[\d/]{3})?)</GroupValues>
+    <Group number="1" text="">
+      <GroupValues>(LVR|LVW|ASC|DES|UNS|///)\s*(\w+)\s*(\d{4}[NS])\s*(\d{5}[EW])\s*(\d\d)(\d\d)(\d\d)</GroupValues>
+      <Value number="0"  descrName="ipipip" text="Указатель фазы полета и типа наблюдения" />
+      <Value number="1"  descrName="D____D" text="Указатель самолёта" />
+      <Value number="2"  descrName="LaLaLaLa"   text="Широта в градусах и минутах с направлением" />
+      <Value number="3"  descrName="LoLoLoLoLo" text="Долгота в градусах и минутах с направлением" />
+      <Value number="4"  descrName="YY" text="день" />
+      <Value number="5"  descrName="GG" text="час" />
+      <Value number="6"  descrName="gg" text="минута" />
+    </Group>
+    <Group number="1" text="">
+      <item>
+      <GroupValues>()([FA/][\d/]{3})\s*([PM]S[\d/]{3})\s*(?:([PM]S[\d/]{3})|([\d/]{3}))?(?:([\d/]{3})/([\d/]{3}))?\s*TB([\d/])\s*(?:S([\d/])([\d/])([\d/]))?</GroupValues>
+      <Value number="0"  descrName="level_type"  default="103" text="Тип уровня"/>
+      <Value number="1"  descrName="Shhihihi" text="Барометрическая высота, сотни футов" />
+      <Value number="2"  descrName="ssTaTaTa" text="Температура воздуха, в десятых долях градуса Цельсия" />
+      <Value number="3"  descrName="ssTdTdTd" text="Температура точки росы, в десятых долях градуса Цельсия" />
+      <Value number="3"  descrName="UUU"      text="Относительная влажность воздуха в процентах" />
+      <Value number="4"  descrName="dd_10m"   text="Истинное направление, откуда дует ветер, в целых градусах" />
+      <Value number="5"  descrName="ff_10_kt" text="Скорость ветра, в узлах, на уровне, указанном hIhIhI" />
+      <Value number="6"  descrName="Ba"   text="Турбулентность" />
+      <Value number="7"  descrName="UNK"  text="Тип навигационной системы" />
+      <Value number="8"  descrName="UNK"  text="Тип используемой системы" />
+      <Value number="9"  descrName="UNK"  text="Точность температуры" />
+      </item>
+    </Group>
+  </Section>
+  <Section number="2" text="раздел 3" >
+    <item>
+      <GroupValues>()(?:F([\d/]{3}))?\s*(?:VG([\d/]{3}))?</GroupValues>
+      <Value number="0" descrName="level_type"  default="103" text="Тип уровня"/>
+      <Value number="1"  descrName="hdhdhd" text="Эшелон полета, в сотнях футов" />
+      <Value number="2"  descrName="fgfgfg" text="Максимальный вычисленный эквивалент вертикального порыва ветра, в десятых долях метра в секунду" />
+    </item>
+  </Section>
+</Message>

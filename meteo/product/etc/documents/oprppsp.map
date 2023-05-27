@@ -1,0 +1,12 @@
+name: "oprppsp.map"
+title: "Данные по оправдываемости прогнозов погоды и штормовых предупреждений"
+formal {
+    template: "oprppsp.odt"
+    name: "Данные по оправдываемости прогнозов погоды и штормовых предупреждений"
+    module_path: "oprppsp.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding = KOI8-R
+Type = Application
+Name = ELK MAPPI
+Name[ru] = ELK םבנני
+Comment = MAPPI
+Comment[ru] = םבנני
+Exec = /usr/local/bin/elk-mappi
+Icon = /usr/local/share/mappi/icons/sat.png
+Categories = Application;Utility;System;

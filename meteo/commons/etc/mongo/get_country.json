@@ -1,0 +1,4 @@
+{
+  "find": "countries",
+  "filter": { "priority": @priority@ }
+}

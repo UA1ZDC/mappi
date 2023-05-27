@@ -1,0 +1,76 @@
+code: "windtemp"
+name: "Ветер и температура"
+path: "/home/aleks/build_dir//share/meteo//punch/windtemp.template"
+wind: true
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 138
+  testqual: 0
+  id {
+    descr: 11001
+    name: "dd"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 0
+  testqual: 0
+  id {
+    descr: 11002
+    name: "ff"
+  }
+}
+rule {
+  pos {
+    x: 11
+    y: -15
+  }
+  align: kCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kBoth
+    pluscolor: 4294901760
+    minuscolor: 4278190335
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: -12.34
+  id {
+    descr: 12101
+    name: "T"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+datatype: kSurface
+center: kCircle
+crisscross: false
+radius: 5
+windfont {
+  family: "helvetica"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}

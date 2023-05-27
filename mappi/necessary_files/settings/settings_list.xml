@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <recieverPoint filepath="resiver_point.xml" rightsId="3" text="Пункт приёма" service_id="resiver_point"/>
+  <!--settingsitem filepath="paths.xml" rightsId="3" hidden="true" text="Каталоги" service_id="paths"/-->
+  <paths filepath="_paths.xml" rightsId="3" text="Каталоги" service_id="_paths"/>
+  <spaceships filepath="spaceships.xml" rightsId="3" text="Космические аппараты" service_id="spaceships"/>
+  <processing filepath="processing.xml" rightsId="3" text="Первичная обработка" service_id="processing"/>
+  <them_proc filepath="them_proc.xml" rightsId="3" text="Тематическая обработка" service_id="them_proc"/>
+  <devices filepath="devices.xml" rightsId="3" text="Приборы спутника" service_id="devices"/>
+  <appearance filepath="appearance.xml" rightsId="3" text="Внешний вид" service_id="appearance"/>
+  <meteolog filepath="" rightsId="3" text="Журналирование" service_id="meteolog"/>
+  <users filepath="widget@users" text="Пользователи" service_id="users"/>
+</body>

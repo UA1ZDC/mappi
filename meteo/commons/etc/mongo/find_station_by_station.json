@@ -1,0 +1,4 @@
+{
+      "find" : "stations",
+      "filter": { "station": @station@, "data_type" : @data_type@ }
+}

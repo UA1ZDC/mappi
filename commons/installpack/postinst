@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ ! -d /opt/pak/var/meteo/localfs/ ]
+then
+  mkdir -p /opt/pak/var/meteo/localfs/  
+fi
+
+chown -R vgmdaemon:vgmdaemon /opt/pak/var/meteo/localfs/

@@ -1,0 +1,49 @@
+# --- meteo.app.conf
+autostart_msgcenter=true
+autostart_filestream=false
+autostart_ftpstream=true
+autostart_tcpstream_bcm=true
+autostart_tcpstream_ipv=true
+autostart_tcpstream_ling=true
+autostart_tcpstream_dev_lomo=true
+autostart_send_service=true
+autostart_alphanum=true
+autostart_bufr=true
+autostart_grib=true
+autostart_sprinf=true
+autostart_srcdata=true
+autostart_fieldata=true
+autostart_cron=true
+autostart_cleaner=true
+autostart_forecast=true
+autostart_climatdata=true
+autostart_ftploader=true
+autostart_out_grib=false
+autostart_curstate=true
+
+data_path=/home/vgmdaemon/stend/ukaz/
+obanal_data_path=/home/vgmdaemon/obanal/
+tlg_path=/home/vgmdaemon/stend/ukaz/telegrams
+
+db_host=localhost
+db_port=5432
+services_host=localhost
+
+# --- msgstream.conf
+filestream_path=/home/vgmdaemon/stend/ukaz/tlg_in
+filestream_test_path=/home/vgmdaemon/dist-test/meteo
+ftpstream_path=ukaz_tlg
+
+grib_path_out=/home/vgmdaemon/stend/ukaz/grib_out
+
+# --- wrf.conf
+wrf_path=/opt/wrf/
+geogdata_path=/var/opt/wrf/WPS_GEOG
+
+# --- ungrib.conf
+ungrib_path_out=/home/vgmdaemon/stend/wrf/grib
+gfs_grib_path=/home/vgmdaemon/stend/wrf/downloads
+jmagsm_grib_path=/home/vgmdaemon/stend/ukaz/jma_grib1
+
+# --- ftploader.conf
+ftploader_download_path=/home/vgmdaemon/stend/wrf/downloads/gfs/

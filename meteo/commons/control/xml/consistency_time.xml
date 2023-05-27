@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- атрибут max включается при проверке, min нет -->
+<control>
+  <category name="level_type" num="1,2,3"/> <!--приземные данные-->
+  <group> 
+    <phys>
+      <match name="time" max="1"/>
+      <val name="T"  min="4" />
+      <val name="Td" min="4" />
+      <val name="p"  min="3" />
+    </phys>
+    <phys>
+      <match name="time" max="2"/>
+      <val name="T"  min="7" />
+      <val name="Td" min="6" />
+      <val name="p"  min="6" />
+    </phys>
+    <phys>
+      <match name="time" max="3"/>
+      <val name="T"  min="9" />
+      <val name="Td" min="8" />
+      <val name="p"  min="9" />
+    </phys>
+    <phys>
+      <match name="time" max="6"/>
+      <val name="T"  min="15" />
+      <val name="Td" min="12" />
+      <val name="p"  min="18" />
+    </phys>
+    <phys>
+      <match name="time" max="12"/>
+      <val name="T"  min="25" />
+      <val name="Td" min="20" />
+      <val name="p"  min="36" />
+    </phys>
+  </group>
+
+  <group>
+    <tend>
+      <match name="time" max="3"/>
+      <val name="P" min="1.5" />
+      <val name="P0" min="0.5" />
+    </tend>
+    <tend>
+      <match name="time" max="6" />
+      <val name="P" min="2.5"    />
+      <val name="P0" min="1.5" />
+    </tend>
+  </group>
+
+</control>

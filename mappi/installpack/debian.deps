@@ -1,0 +1,5 @@
+qt5-default
+g++
+postgresql
+postgresql-server-dev-9.3
+qtscript5-dev

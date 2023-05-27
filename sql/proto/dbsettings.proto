@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package meteo.settings;
+
+enum DbDriver {
+  kMongo        = 1;
+  kPsql         = 2;
+}
+
+message DbConnection {
+  required string conn_name                     = 1;  //!< идентификатор соединения
+  optional string human_name                    = 2;  //!< человекопонятное название БД
+  required string name                          = 3;  //!< имя БД
+  required string host                          = 4 [default = "localhost"];  //!< ip-адрес сервера БД
+  optional int32  port                          = 5 [default = 5432]; //!< Порт
+  optional string login                         = 6 [default = "root"];   //!< Имя пользователя
+  optional string password                      = 7;  //!< Пароль
+  optional string userdb                        = 8 [default = "admin"]; //! БД, в которой зарегистрирован пользователь
+  optional DbDriver dbdriver                    = 9 [default = kMongo];
+}
+
+message DbSettings {
+  repeated DbConnection db_connection           = 1;
+  optional DbDriver     dbdriver                = 2 [default = kMongo];
+}

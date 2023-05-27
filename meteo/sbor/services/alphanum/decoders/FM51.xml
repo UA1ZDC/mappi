@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM51" text="TAF"  category="51">
+  <MessageSections>\s*TAF\s*(?:COR)?(?:AMD)?(\s*\w{4}(?:\s*\d{6}Z)?)\s*(?:([\w/]{9})?\s*(?:((?:CNL|NIL).*)|((?:\s*(?!BY)[\S]+)+)(?:\s*BY.*)?))</MessageSections>
+  <Section number="0" text="" >
+    <SectionGroups>\s*(\w{4})\s*(?:(\d{6})Z)?</SectionGroups>
+    <Group number="1" text="">
+      <GroupValues>\s*(\w{4})</GroupValues>
+      <Value number="1"  descrName="CCCC"/>
+    </Group>
+    <Group number="2" text="">
+      <GroupValues>()([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="0"  descrName="tf_sign" default="0" />
+      <Value number="1"  descrName="YY"/>
+      <Value number="2"  descrName="GG"/>
+      <Value number="3"  descrName="gg"/>
+    </Group>
+  </Section>
+  <Section number="1" text="" >
+    <SectionGroups>()([\d/]{2})([\d/]{2})/()([\d/]{2})([\d/]{2})</SectionGroups>
+    <Value number="0"  descrName="tf_sign" default="1" />
+    <Value number="1"  descrName="YY" />
+    <Value number="2"  descrName="GG" />
+    <Value number="3"  descrName="tf_sign" default="2"  />
+    <Value number="4"  descrName="YY" />
+    <Value number="5"  descrName="GG" />
+  </Section>
+  <Section number="1" text="" >
+    <SectionGroups>(?:NIL|(CNL))(.*)</SectionGroups>
+    <Group number="1" text="Отмена прогноза">
+      <GroupValues>(CNL)</GroupValues>
+      <Value number="1"  descrName="status" text="Статус: отмена"/>
+    </Group>
+    <Group number="2" text="Национальные данные">
+      <GroupValues>(.*)</GroupValues>
+      <Value number="1"  descrName="national"/>
+    </Group>
+  </Section>
+  <Section number="2" text="" >
+    <SectionGroups>(\s*[\w/]{5,10}(?:KT|MPS))\s*(?:(CAVOK)|(?:([\d/]{4}|P?(?:[\d]\s)?\d{1,2}(?:/\d)?SM)?\s*(NSW|(?:[-+]?\s*[A-Za-z/]{2}(?:[A-Za-z]{2})?(?:[A-Za-z]{2})?(?:\s|$|/(?=[-\w])))*)\s*((?:\s*(?:(?:(?:[\w/]{3}[\d/]{3}\s*(?:TCU|CB|TCU/CB)?(?:\s|$))*)(?:\s*VCNTY)?|(?:VV[\w/]{3})|NSC|NCD|SKC))*)))\s*(WS[\d]{3}/[\w]{5}(?:KT|MPS))?((?:\s*6\d{5})*)?((?:\s*5\d{5})*)?\s*(QNH\d{4}INS)?\s*((?:T[XN]?[\w/]{5,8}Z\s*){0,4})?\s*((?:FM[\d/]{6}|BECMG|TEMPO|PROB|INTER)(?:\s*(?!QNH\s|QFE|RMK|AMD|AUTOMATED|T\s|Q\s)[\S]+)+)?(\s*(?:QNH|QFE|RMK|AMD|AUTOMATED|T\s|Q\s).*)?</SectionGroups>
+    <Group number="1" text="">
+      <GroupValues>\s*([\d/\w]{3})(?:(P)?([\d/]{2})G?(P)?([\d/]{2})?KT)?(?:(P)?([\d/]{2})G?(P)?([\d/]{2})?MPS)?</GroupValues> 
+      <Value number="1"  descrName="dd_10m"/>
+      <Value number="2"  descrName="iff"      innum="0" text="Описатель скорости ветра или порывов ветра" />
+      <Value number="3"	 descrName="ff_10_kt" innum="0" />
+      <Value number="4"  descrName="iff"      innum="1" text="Описатель скорости ветра или порывов ветра" />
+      <Value number="5"	 descrName="fmfm_10_kt" innum="1" />
+      <Value number="6"  descrName="iff"       innum="0" text="Описатель скорости ветра или порывов ветра" />
+      <Value number="7"	 descrName="ff_10_mps" innum="0" />
+      <Value number="8"  descrName="iff"       innum="1" text="Описатель скорости ветра или порывов ветра" />
+      <Value number="9"	 descrName="fmfm_10_mps" innum="1" />
+    </Group>
+    <Group number="1_1" text="">
+      <GroupValues>\s*(CAVOK)</GroupValues>
+      <Value number="1"   descrName="Nsw" text="Общий указатель погоды" />
+    </Group>
+    <Group number="2" text="">
+      <GroupValues>\s*([\d/]{4}|P?(?:[\d]\s)?\d{1,2}(?:/\d)?SM)</GroupValues>
+      <Value number="1"  descrName="VVVV"/>
+    </Group>
+    <Group number="2_1" text="">
+      <GroupValues>[\s*/]?([+-]?\s*[\w]{2,6})/?</GroupValues>
+      <Value number="1"  descrName="w_w_"/>
+    </Group>
+    <Group number="3" text="">
+      <GroupValues>\s*(VV[\d/]{3})\s*|\s*(NCD|NSC|SKC|(?:[A-Za-z/]{3}[\d/]{3}[\w/]{0,3}))\s*</GroupValues>
+      <SubGroup number="1" text="">
+	<GroupValues>\s*VV([\d/]{3})</GroupValues>
+	<Value number="1"   descrName="hv" text="Прогнозируемая вертикальная видимость" />
+      </SubGroup>
+      <SubGroup number="2" text="">
+	<item>
+	  <GroupValues>\s*([\w/]{3})([\d/]{3})?\s*(TCU|CB|TCU/CB)?</GroupValues>
+	  <Value number="1"   descrName="NsNsNs" text="Категория облачности" />
+	  <Value number="2"   descrName="hshshs" text="Высота основания облачного слоя или массы или наблюдаемая или прогнозируемая вертикальная видимость" />
+	  <Value number="3"   descrName="Ccum"  text="Значительные конвективные облака" />
+	</item>
+      </SubGroup>
+    </Group>
+    <Group number="3_0" text="">
+      <GroupValues>WS([\d]{3})/([\w]{3})([\d]{2})KT</GroupValues>
+      <Value number="1"  descrName="h_share"/>
+      <Value number="2"  descrName="dd_share"/>
+      <Value number="3"	 descrName="ff_share"/>
+    </Group>
+    <Group number="3_1" text="Прогнозируемое обледенение">
+      <GroupValues>6(\d)(\d\d\d)(\d)</GroupValues>
+      <Value number="1"   descrName="Ic"  text="Тип прогнозируемого обледенения" />
+      <Value number="2"   descrName="hihihi"  text="Высота нижней границы слоя обледенения" />
+      <Value number="3"   descrName="tL"  text="Толщина слоя обледенения" />
+    </Group>
+    <Group number="3_2" text="Прогнозируемая турбулентность">
+      <GroupValues>5(\w)(\d\d\d)(\d)</GroupValues>
+      <Value number="1"   descrName="B"  text="Тип прогнозируемой турбулентности" />
+      <Value number="2"   descrName="hBhBhB"  text="Высота нижней границы турбулентности" />
+      <Value number="3"   descrName="tB"  text="Толщина слоя турбулентности" />
+    </Group>
+    <Group number="3_3" text="">
+      <GroupValues>QNH(\d{4})INS</GroupValues>
+      <Value number="1"   descrName="PHPHPHPH_A"  text="Величина QNH, дюйм ртутного столба" />
+    </Group>
+    <Group number="4" text="">
+      <GroupValues>(?:TX?()()(M?[\d/]{2})/([\d/]{2})?([\d/]{2})Z)?\s*(?:()()TN?(M?[\d/]{2})/([\d/]{2})?([\d/]{2})Z)?</GroupValues>
+      <Value number="0"  descrName="tf_sign"   default="3" innum="6"/>
+      <Value number="1"  descrName="stat_sign" default="3" innum="6" />
+      <Value number="2"  descrName="TFTF_max" innum="6"/>
+      <Value number="3"	 descrName="YY" innum="6"/>
+      <Value number="4"	 descrName="GG" innum="6"/>
+      <Value number="5"  descrName="tf_sign"   default="4" innum="7"/>
+      <Value number="1"  descrName="stat_sign" default="2" innum="7"/>
+      <Value number="7"	 descrName="TFTF_min" innum="7"/>
+      <Value number="8"	 descrName="YY" innum="7"/>
+      <Value number="9"	 descrName="GG" innum="7"/>
+    </Group>
+    <Group number="41" text="">
+      <item category="54">
+      <GroupValues>(FM\s*[\d/]{6}|(?:(?:BECMG|TEMPO|INTER|(?:PROB\s*(?:\d\d)\s*(?:BECMG|TEMPO)?))\s*(?:[\d/]{4}\s*/\s*[\d/]{4})?))(\s*[\w/]{5,10}(?:KT|MPS))?\s*(WS[\d]{3}/[\w]{5}(?:KT|MPS))?\s*(?:(CAVOK)|(?:(?:([\d/]{4}|P?(?:[\d]\s)?\d{1,2}(?:/\d)?SM))?(\s*NSW|(?:\s*[-+]?\s*[A-Za-z/]{2}(?:[A-Za-z]{2})?(?:[A-Za-z]{2})?(?:\s|$|/(?=[-\w])))*)((?:\s*(?:(?:(?:[/A-za-z]{3}[\d/]{3}\s*(?:TCU|CB|TCU/CB)?(?:\s|$))*)(?:\s*VCNTY)?|(?:VV[\w/]{3})|NSC|NCD|SKC))*)))\s*((?:\s*6\d{5})*)?((?:\s*5\d{5})*)?\s*(QNH\d{4}INS)?\s*((?:T[XN]?[\w/]{5,8}Z\s*){0,4})?</GroupValues>
+      <Group number="1" text="">
+	<GroupValues>\s*([\w]{2}\s*[\d/]{6})|(?:PROB\s*(\d\d)\s*)?(\D{5})?\s*([\d]{4}\s*/\s*\d{4})?</GroupValues>
+	<SubGroup number="1" text="">
+	  <SubGroupValues>\s*()([\w]{2})\s*([\d/]{2})([\d/]{2})([\d/]{2})</SubGroupValues>
+	  <Value number="0"  descrName="tf_sign" default="5" />
+	  <Value number="1"   descrName="TTTTT"/>
+	  <Value number="2"   descrName="YY"/>
+	  <Value number="3"   descrName="GG"/>
+	  <Value number="4"   descrName="gg"/>
+	</SubGroup>
+	<SubGroup number="1" text="">
+	  <SubGroupValues>(\d\d)</SubGroupValues>
+	  <Value number="6"   descrName="C2C2"/>
+	</SubGroup>
+	<SubGroup number="1" text="">
+	  <SubGroupValues>(\D{5})</SubGroupValues>
+	  <Value number="5"   descrName="TTTTT"/>
+	</SubGroup>
+	<SubGroup number="1" text="">
+	  <SubGroupValues>()([\d/]{2})([\d/]{2})\s*/\s*()([\d/]{2})([\d/]{2})</SubGroupValues>
+	  <Value number="0"  descrName="tf_sign" default="5" />
+	  <Value number="7"   descrName="YY" />
+	  <Value number="8"   descrName="GG" />
+	  <Value number="0"  descrName="tf_sign" default="6" />
+	  <Value number="9"   descrName="YY" />
+	  <Value number="10"  descrName="GG" />
+	</SubGroup>
+      </Group>
+      <Group number="2" text="">
+	<GroupValues>\s*([\d/\w]{3})(?:(P)?([\d/]{2})G?(P)?([\d/]{2})?KT)?(?:(P)?([\d/]{2})G?(P)?([\d/]{2})?MPS)?</GroupValues> 
+	<Value number="1"  descrName="dd_10m"/>
+	<Value number="2"  descrName="iff"      innum="2" text="Описатель скорости ветра или порывов ветра" />
+	<Value number="3"  descrName="ff_10_kt" innum="2" />
+	<Value number="4"  descrName="iff"      innum="3" text="Описатель скорости ветра или порывов ветра" />
+	<Value number="5"  descrName="fmfm_10_kt" innum="3" />
+	<Value number="6"  descrName="iff"       innum="2" text="Описатель скорости ветра или порывов ветра" />
+	<Value number="7"  descrName="ff_10_mps" innum="2" />
+	<Value number="8"  descrName="iff"       innum="3" text="Описатель скорости ветра или порывов ветра" />
+	<Value number="9"  descrName="fmfm_10_mps" innum="3" />
+    </Group>
+   <Group number="3_0" text="">
+      <GroupValues>WS([\d]{3})/([\w]{3})([\d]{2})KT</GroupValues>
+      <Value number="1"  descrName="h_share"/>
+      <Value number="2"  descrName="dd_share"/>
+      <Value number="3"	 descrName="ff_share"/>
+    </Group>
+    <Group number="3_1" text="">
+      <GroupValues>\s*(CAVOK)</GroupValues>
+      <Value number="1"   descrName="Nsw" text="Общий указатель погоды" />
+    </Group>
+    <Group number="3" text="">
+      <GroupValues>\s*([\d/]{4}|P?(?:[\d]\s)?\d{1,2}(?:/\d)?SM)</GroupValues>
+      <Value number="1"  descrName="VVVV"/>
+    </Group>
+    <Group number="4" text=""> 
+      <GroupValues>[\s*/]?(NSW|[-+]?\s*[\w]{2,6})/?</GroupValues>
+      <Value number="1"  descrName="w_w_"/>
+    </Group>
+    <Group number="5" text="">
+      <GroupValues>\s*(VV[\d/]{3})\s*|\s*(NCD|NSC|SKC|(?:[A-Za-z/]{3}[\d/]{3}\s*(?:TCU|CB|TCU/CB)?\s*(?:VCNTY)?))\s*</GroupValues>
+      <SubGroup number="1" text="">
+	<GroupValues>\s*VV([\d/]{3})</GroupValues>
+	<Value number="1"   descrName="hv" text="Прогнозируемая вертикальная видимость" />
+      </SubGroup>
+      <SubGroup number="2" text="">
+	<item>
+	  <GroupValues>\s*([\w/]{3})([\d/]{3})?\s*(TCU|CB|TCU/CB(?:\s*VCNTY)?)?</GroupValues>
+	  <Value number="1"   descrName="NsNsNs" text="Категория облачности" />
+	  <Value number="2"   descrName="hshshs" text="Высота основания облачного слоя или массы или наблюдаемая или прогнозируемая вертикальная видимость" />
+	  <Value number="3"   descrName="Ccum"  text="Значительные конвективные облака" />
+	</item>
+      </SubGroup>
+    </Group>
+     <Group number="3_1" text="Прогнозируемое обледенение">
+      <GroupValues>6(\d)(\d\d\d)(\d)</GroupValues>
+      <Value number="1"   descrName="Ic"  text="Тип прогнозируемого обледенения" />
+      <Value number="2"   descrName="hihihi"  text="Высота нижней границы слоя обледенения" />
+      <Value number="3"   descrName="tL"  text="Толщина слоя обледенения" />
+    </Group>
+    <Group number="3_2" text="Прогнозируемая турбулентность">
+      <GroupValues>5(\w)(\d\d\d)(\d)</GroupValues>
+      <Value number="1"   descrName="B"  text="Тип прогнозируемой турбулентности" />
+      <Value number="2"   descrName="hBhBhB"  text="Высота нижней границы турбулентности" />
+      <Value number="3"   descrName="tB"  text="Толщина слоя турбулентности" />
+    </Group>
+    <Group number="5_1" text="">
+      <GroupValues>QNH(\d{4})INS</GroupValues>
+      <Value number="1"   descrName="PHPHPHPH_A"  text="Величина QNH, дюйм ртутного столба" />
+    </Group>
+    <Group number="6" text="">
+      <GroupValues>(?:TX?()()(M?[\d/]{2})/([\d/]{2})([\d/]{2})?Z)?\s*(?:TN?()()(M?[\d/]{2})/([\d/]{2})([\d/]{2})?Z)?</GroupValues>
+      <Value number="0"  descrName="tf_sign"   default="3" innum="6"/>
+      <Value number="1"  descrName="stat_sign" default="3" innum="6" />
+      <Value number="1"  descrName="TFTF_max" innum="6"/>
+      <Value number="2"	 descrName="YY" innum="6"/>
+      <Value number="3"	 descrName="GG" innum="6"/>
+      <Value number="5"  descrName="tf_sign"   default="4" innum="7"/>
+      <Value number="1"  descrName="stat_sign" default="2" innum="7"/>
+      <Value number="4"	 descrName="TFTF_min" innum="7"/>
+      <Value number="5"	 descrName="YY" innum="7"/>
+      <Value number="6"	 descrName="GG" innum="7"/>
+    </Group>
+  </item>
+    </Group>			     
+    <Group number="8" text="">
+      <GroupValues>((?:\s*(?:QFE|QNH)\s*\d{3,4}){0,2})?\s*(FALL\s*\d+)?\s*(AMD(?:\s*(?!RMK|AUTOMATED|\sT\s|\sQ\s)[\S]+)*)?(\s*AUTOMATED(?:\s*(?!T\s|Q\s|RMK)[\S]+)*)?\s*(RMK(?:\s*(?!T\s|Q\s)[\S]+)*)?(T\s(?:\d{2}(?:\s|$)){3,4})?(\s*Q\s(?:\d{4}(?:\s|$)){3,4})?</GroupValues>
+      <Group number="7" text="QFE/QNH">
+	<SubGroupValues>\s*QFE\s*(\d{3,4})|QNH\s*(\d{3,4})</SubGroupValues>
+	<SubGroup number="0" text="QFE">
+	  <GroupValues>(\d{3,4})</GroupValues>
+	  <Value number="1" descrName="Pf_qfe" text="Давлене на уровне порога ВПП"/>
+	</SubGroup>
+	<SubGroup number="1" text="QNH">
+	  <SubGroupValues>(\d{3,4})</SubGroupValues>
+	  <Value number="1" descrName="Pf_qnh" text="Величина QNH"/>
+	</SubGroup>
+      </Group>
+      <Group number="8" text="">
+	<GroupValues>\s*(.*)</GroupValues>
+	<Value number="1" descrName="national" text="REGIONAL/NATIONAL SETTINGS INFO"/>
+      </Group>
+      <Group number="9" text="AMD">
+	<GroupValues>\s*(.*)</GroupValues>
+	<Value number="1" descrName="national" text="REGIONAL/NATIONAL SETTINGS INFO"/>
+      </Group>
+      <Group number="10" text="AUTOMATED">
+	<GroupValues>\s*(.*)</GroupValues>
+	<Value number="1" descrName="national" text="REGIONAL/NATIONAL SETTINGS INFO"/>
+      </Group>
+      <Group number="11" text="RMK">
+	<GroupValues>\s*(.*)</GroupValues>
+      <Value number="1" descrName="national" text="REGIONAL/NATIONAL SETTINGS INFO"/>
+      </Group>
+      <Group number="12" text="T">
+	<GroupValues>\s*(\d\d)</GroupValues>
+      <Value number="1" descrName="Tfc" text="REGIONAL/NATIONAL SETTINGS INFO"/>
+      </Group>
+      <Group number="13" text="Q">
+	<GroupValues>\s*(\d\d\d\d)</GroupValues>
+      <Value number="1" descrName="Pqnh_fc" text="REGIONAL/NATIONAL SETTINGS INFO"/>
+      </Group>
+    </Group>
+  </Section>
+</Message>

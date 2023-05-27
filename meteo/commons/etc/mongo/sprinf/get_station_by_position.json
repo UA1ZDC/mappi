@@ -1,0 +1,19 @@
+{
+  "aggregate" : "stations",
+  "pipeline" : 
+  [
+  {"$geoNear" : {    
+        "near": { "type": "Point", "coordinates" : @coordinates@ },
+        "distanceField" : "dist.calculated",
+        "maxDistance" : @maxdistance@,
+        "spherical": "true",
+        "num": 99999
+        }
+  },
+  {"$match" : {
+        "station_type" : @stationtype@
+        }
+  }
+  ],
+  "cursor":{"batchSize":1}
+}

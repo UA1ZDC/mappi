@@ -1,0 +1,30 @@
+{
+   "find": "tasks",
+   "filter": {
+    "_id" : @id@, 
+    "name": @name@,
+    "text": @text@,
+    "date_start": { "$gte" : @dtStart@ },
+    "date_end" : { "$lte" : @dtEnd@ },
+    "labor": @labor@,
+    "basics": @basics@,
+    "owner" : @owner@,
+    "parent": @parent@,
+    "control": @control@,
+    "completion": @completion@,
+    "stage": { 
+      "$elemMatch" : {
+        "contestant" : @contestant@,        
+        "result" : {
+          "$exists" : @exists@,
+          "$elemMatch" : {
+            "result" : @result@        
+          }
+        },
+        "date_received" : {
+          "$exists" : @dateExists@
+        }        
+      }
+    }
+  }
+}

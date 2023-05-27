@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item complex="true" valueSrc="" source="this" textItem="" text="">
+    <item valueSrc="algs" complex="true" templateFile="themTemplate.xml" hideOnDel="true" chiefFile="them_proc.xml" source="this" type="7" text="Тематические обработки" buttonName="Выбрать"/>
+  </item>
+</body>

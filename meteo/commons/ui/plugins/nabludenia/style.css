@@ -1,0 +1,8 @@
+QToolButton {
+  background-color: white;
+  border: 1px solid rgb(255,255,255);
+  image: url(:/meteo/icons/tools/plus.png);
+}
+QToolButton:checked {
+  image: url(:/meteo/icons/tools/minus.png);
+}

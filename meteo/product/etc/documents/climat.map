@@ -1,0 +1,11 @@
+name: "climat.map"
+title: "Климатическое описание"
+formal {
+    template: "ClimatO_forma.odt"
+    name: "Климатическое описание"
+    format: kOdt
+    icon_path: ":product/icons/climat.png"
+}
+document {
+  doctype: kFormalDocument
+}

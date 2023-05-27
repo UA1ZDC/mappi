@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package meteo;
+
+import "surface.proto";
+
+//! тип данных есимо
+enum EsimoType {
+  kEsUnk   = 0;
+  kEsMeteo = 1; //!< метеопараметры
+  kEsGrid  = 2; //!< поля
+  kEsGrib  = 3; //!< GRIB
+  kEsLink  = 4; //!< ссылки
+  kEsImg   = 5; //!< изображения
+  kEsNews  = 6; //!< тексты новостей
+};
+
+//! параметры усвоения (соответствие id ответа параметрам усвоения)
+message EsimoObjectConf {
+  required string id = 1; //!< id ответа
+  required EsimoType estype = 2; //!< тип ответа есимо
+  optional meteo.surf.DataType datatype = 3; //!< тип данных
+  optional int32 net_type = 4; //!< тип сетки из obanal_struct.h. Если NO_TYPE, определить по шагу между координатами
+};
+
+
+message EsimoConf {
+  repeated EsimoObjectConf esimo = 1;
+};

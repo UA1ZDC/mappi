@@ -1,0 +1,293 @@
+code: "kn15dLevel"
+name: "Изменение уровня воды за сутки"
+path: "/home/viktor/build_dir//share/meteo//punch/kn15dLevel.template"
+wind: false
+rule {
+  pos {
+    x: 19
+    y: 14
+  }
+  align: kRightCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4292282928
+    minuscolor: 4280035572
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 75.34
+  id {
+    descr: 5515001
+    name: "HiHiHiK"
+    description: ""
+  }
+  visible: false
+}
+rule {
+  pos {
+    x: 0
+    y: -7
+  }
+  align: kBottomCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0.01
+      maxval: 1000
+      font {
+        family: "wthrNew1"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4280035572
+      patternba: "e296b2"
+      label: ""
+    }
+  }
+  testval: 4.34
+  id {
+    descr: 5515001
+    name: "HiHiHiK"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: 1
+  }
+  align: kTopCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: -1000
+      maxval: -0.01
+      font {
+        family: "wthrNew1"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4280035572
+      patternba: "e296bc"
+      label: ""
+    }
+  }
+  testval: -0.66
+  id {
+    descr: 5515001
+    name: "HiHiHiK"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: -4
+  }
+  align: kLeftCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0
+      font {
+        family: "wthrNew1"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4280035572
+      patternba: "e296ba"
+      label: ""
+    }
+  }
+  testval: 0
+  id {
+    descr: 5515001
+    name: "HiHiHiK"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 7
+    y: 0
+  }
+  align: kRightCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  testval: 12.34
+  id {
+    descr: 5515000
+    name: "HHHH"
+    description: ""
+    parent: "wlevel"
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: -7
+  }
+  align: kBottomCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 1.99
+      font {
+        family: "helvetica Bold"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: ""
+    }
+    symbol {
+      minval: 2
+      maxval: 2.99
+      font {
+        family: "wthrNew1"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294631736
+      patternba: "e296b2"
+      label: ""
+    }
+    symbol {
+      minval: 3
+      maxval: 3.99
+      font {
+        family: "wthrNew1"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294810624
+      patternba: "e296b2"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4.99
+      font {
+        family: "wthrNew1"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "e296b2"
+      label: ""
+    }
+  }
+  testval: 3.34
+  id {
+    descr: 5515001
+    name: "HiHiHiK"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+datatype: kSurface
+center: kCircle
+crisscross: false
+radius: 3
+windfont {
+  family: "helvetica"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}

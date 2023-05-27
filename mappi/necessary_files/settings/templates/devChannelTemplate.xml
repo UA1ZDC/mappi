@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item valueSrc="devChannel" source="this" textItem="" text="">
+    <item soure="this" text="Диаппазон частот канала">
+      <item valueSrc="minWaveLength" type="0" source="this" text="Нижняя граница FIXME" textItem="100" />
+      <item valueSrc="maxWaveLenght" type="0" source="this" text="Верхняя граница FIXME" textItem="100" />
+    </item>
+    <item soure="this" text="Диапазон некалиброванных данных">
+      <item valueSrc="minChanCount" type="0" source="this" text="Минимум FIXME" textItem="100" />
+      <item valueSrc="maxChanCount" type="0" source="this" text="Максимум FIXME" textItem="100" />
+    </item>
+    <item soure="this" text="Диапазон калиброванных данных">
+      <item valueSrc="minChanValue" type="0" source="this" text="Минимум FIXME" textItem="100" />
+      <item valueSrc="maxChanValue" type="0" source="this" text="Максимум FIXME" textItem="100" />
+    </item>
+
+    <item valueSrc="chanDataType" type="1" values="float;ushort;etc.;" source="this" text="Тип данных" textItem="0" />
+  </item>
+</body>

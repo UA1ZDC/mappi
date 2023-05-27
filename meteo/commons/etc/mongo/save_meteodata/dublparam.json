@@ -1,0 +1,21 @@
+{
+  "q": {
+    "_id" : @id@,
+    "param.descrname" : @descrname@,
+    "param.descr" : @descr@
+  },
+  "u": {
+    "$addToSet" : {
+      "param.$.dubl" : {
+    "value" : @value@,
+    "code" :  @code@,
+    "quality" :  @quality@,
+    "control" :  @control@,
+    "tlgid" :    @tlgid@,
+    "dt_write" : @dt_write@,
+    "uuid"   :  @uuid@
+      }
+    }
+  },
+  "upsert": false
+}

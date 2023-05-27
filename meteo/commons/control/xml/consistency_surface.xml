@@ -1,0 +1,1059 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- n - номер выражения в документации, rule= сквозная нумерация в файле  -->
+<!-- qual -->
+<!-- 4 <=> control::DOUBTFUL -->
+<!-- 5 <=> control::MISTAKEN -->
+<!-- 6 <=> control::NO_OBSERVE -->
+<!-- 7 <=> control::SPECIAL_VALUE -->
+
+<!-- str - список допустимых строковых значений через ',' -->
+<!-- num - список допустимых числовых значений через ',' -->
+<!-- segment - список через ';' допустимых диапазонов [min, max] -->
+<!-- min - минимальная граница (если значение больше min, то попадает в интервал) -->
+<!-- max - макс граница (, max) -->
+
+
+<!-- ww, W1, W2 - для автоматической и с персоналом phys разные наборы -->
+
+<control>
+  <!-- TODO q,r,s -->
+
+  <category name="level_type" num="1,2,3"/> <!--приземные данные-->
+
+  <!-- убираем отсутствующие явления из записи в БД -->
+  <group>
+    <check name="w,W1,W2" qual="6"/>
+    <expression rule="0" n="0">
+      <val name="w" type="phys" segment="508,511" />
+    </expression>
+  </group>
+
+  <!--  -->
+  <group>
+    <check name="sss" qual="5"/>
+    <expression rule="503" n="0_1">
+      <val name="sss" type="phys" max="-2" min="999" />
+      <val name="sss" type="phys" num="-1,-2" negation="true" />
+    </expression>
+  </group>
+ 
+  <group>
+    <check name="U" qual="5"/>
+    <expression rule="500" n="0_3">
+      <val name="U" type="phys" min="100"/>
+    </expression>
+  </group>
+
+<!-- одно значение без другого не имеет смысла -->
+  <group>
+    <check name="dd,ff" qual="5"/>
+    <expression rule="508" n="0_4">
+      <val name="dd" type="valid" />
+    </expression>
+    <expression rule="508" n="0_4">
+      <val name="ff" type="valid" />
+    </expression>
+  </group>
+
+  <!-- специализированные значения -->
+  <group>
+    <check name="R24" qual="7"/>
+    <expression rule="501" n="0_4">
+      <val name="R24" type="phys" num="999.9,-0.1" />
+    </expression>
+  </group>
+  <group>
+    <check name="R" qual="7"/>
+    <expression rule="501" n="0_4">
+      <val name="R" type="phys" num="999.9,-0.1" />
+    </expression>
+  </group>
+  <group>
+    <check name="N" qual="7"/>
+    <expression rule="502" n="0_5">
+      <val name="N" type="phys" num="113" />
+    </expression>
+  </group>
+
+  <group>
+    <check name="sss" qual="7"/>
+    <expression rule="504" n="0_2">
+      <val name="sss" type="phys" num="999,997,998,-1,-2" />
+    </expression>
+  </group>
+
+  <group>
+    <check name="Di" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Di" type="phys" num="0" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Di" type="code" num="9" />
+    </expression>
+  </group>
+
+  <group>
+    <check name="Ds" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Ds" type="phys" num="0" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Ds" type="code" num="9" />
+    </expression>
+  </group>
+  <group>
+    <check name="Dp" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Dp" type="phys" num="0,500,501" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Dp" type="code" num="9" />
+    </expression>
+  </group>
+  <!-- TODO проверить D, зачем здесь -->
+  <group>
+    <check name="D" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="D" type="phys" num="0" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="D" type="code" num="9" />
+    </expression>
+  </group>
+  <group>
+    <check name="Da" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Da" type="phys" num="0" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Da" type="code" num="9" />
+    </expression>
+  </group>
+  <group>
+    <check name="Dp18" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Dp18" type="phys" num="0, 500, 501" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Dp18" type="code" num="9" />
+    </expression>
+  </group>
+  <group>
+    <check name="Da19" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Da19" type="phys" num="0" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Da19" type="code" num="9" />
+    </expression>
+  </group>
+  <group>
+    <check name="Dw" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Dw" type="phys" num="0" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Dw" type="code" num="9" />
+    </expression>
+  </group>
+  <group>
+    <check name="Di1" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Di1" type="phys" num="0" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Di1" type="code" num="9" />
+    </expression>
+  </group>
+  <group>
+    <check name="Dd" qual="7"/>
+    <expression rule="505" n="0_6">
+      <val name="Dd" type="phys" num="0" />
+    </expression>
+    <expression rule="506" n="0_7">
+      <val name="Dd" type="code" num="9" />
+    </expression>
+  </group>
+
+  <group>
+    <check name="dw1" qual="7"/>
+    <expression rule="507" n="0_8">
+      <val name="dw1" type="phys" num="0" />
+    </expression>
+  </group>
+  <group>
+    <check name="dd" qual="7"/>
+    <expression rule="507" n="0_8">
+      <val name="dd" type="phys" num="0" />
+    </expression>
+  </group>
+  <group>
+    <check name="dndn" qual="7"/>
+    <expression rule="507" n="0_8">
+      <val name="dndn" type="phys" num="0" />
+    </expression>
+  </group>
+  <!-- <group> -->
+  <!--   <check name="dds" qual="7"/> -->
+  <!--   <expression rule="507" n="0_8">  -->
+  <!--     <val name="dds" type="phys" num="0" /> -->
+  <!--   </expression> -->
+  <!-- </group> -->
+  <group>
+    <check name="dsds" qual="7"/>
+    <expression rule="507" n="0_8">
+      <val name="dsds" type="phys" num="0" />
+    </expression>
+  </group>
+  <group>
+    <check name="d0d0" qual="7"/>
+    <expression rule="507" n="0_8">
+      <val name="d0d0" type="phys" num="0" />
+    </expression>
+  </group>
+  
+  <!--a-->
+  <group>
+    <check name="dd,ff" qual="5"/>
+    <expression rule="1" n="1">
+      <val name="dd"   type="code" num="0" />
+      <val name="ff" type="code" num="0"  negation="true"/>
+    </expression>
+    <expression rule="2" n="2">
+      <val name="dd"   type="code" num="0" negation="true"/>
+      <val name="ff" type="code" num="0"/>
+    </expression>
+    <expression rule="3" n="3">
+      <val name="dd"   type="code" num="99" />
+      <val name="ff" type="phys" num="0,5" min="5"/>
+    </expression>
+  </group>
+
+<!--b-->
+  <group>
+    <check name="V,w" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="4" n="1">
+      <val name="w" type="phys" segment="42,49"/>
+      <val name="V" type="phys" min="999"/>
+      <!-- <val name="V" type="code" segment="10,89;94,99"/> -->
+    </expression>
+    <expression rule="5" n="2">
+      <val name="w" type="phys" num="10"/>
+      <val name="V" type="phys" max="1000"/>
+      <!-- <val name="V" type="code" segment="00,09;90,93"/> -->
+    </expression>
+    <expression rule="6" n="3">
+      <val name="w" type="phys" num="5,40" segment="0,3;10,16;20,29"/>
+      <val name="V" type="phys" max="1000"/>
+      <!-- <val name="V" type="code" max="10"/> -->
+    </expression>
+    <expression rule="7" n="4">
+      <val name="w" type="phys" segment="0,3"/>
+      <val name="V" type="phys" max="10000"/>
+      <!-- <val name="V" type="code" segment="0,59;90,96"/> -->
+    </expression>
+    <expression rule="8" n="5">
+      <val name="w" type="phys" segment="4,7;38,39"/>
+      <val name="V" type="phys" min="9999" />
+      <!-- <val name="V" type="code" segment="60,89;97,99"/> -->
+    </expression>
+    <expression rule="9" n="6">
+      <val name="w" type="phys" num="11,12,28,40"/>
+      <val name="V" type="phys" max="1000"/>
+      <!-- <val name="V" type="code" segment="0,9;90,93"/> -->
+    </expression>
+  </group>
+
+  <group>
+   <check name="V,w" qual="5"/> 
+    <match name ="ix" type="phys" num="0"/>
+    <expression rule="10" n="1">
+      <val name="w" type="phys" num="105" segment="129,135"/>
+      <val name="V" type="phys" min="999"/>
+      <!-- <val name="V" type="code" segment="10,89;94,99"/> -->
+    </expression>
+    <expression rule="11" n="2">
+      <val name="w" type="phys" segment="100,104;106,117;119,128"/>
+      <val name="V" type="phys" max="1000"/>
+      <!-- <val name="V" type="code" max="10"/> -->
+    </expression>
+    <expression rule="12" n="3">
+      <val name="w" type="phys" segment="100,103"/>
+      <val name="V" type="phys" max="10000"/>
+      <!-- <val name="V" type="code" segment="0,60;90,96"/> -->
+    </expression>
+    <expression rule="13" n="4">
+      <val name="w" type="phys" num="110,120"/>
+      <val name="V" type="phys" max="1000"/>
+      <!-- <val name="V" type="code" segment="0,9;90,93"/> -->
+    </expression>
+  </group>
+
+  <!--c-->
+  <group>
+    <check name="V,h" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="14" n="1">
+      <val name="h" type="phys" max="100"/>
+      <val name="V" type="phys" min="19999"/>
+      <!-- <val name="h" type="code" segment="0,1"/> -->
+      <!-- <val name="V" type="code" segment="70,89;98,99"/> -->
+    </expression>
+  </group>
+
+  <!--d-->
+  <group>
+    <check name="N,Nh,h,C" qual="5"/> <!--N,Nh,Ns,h,CL,CM,CH,C-->
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="15" n="1">
+      <val name="N" sub="Nh" type="code" max="0"/>
+    </expression>
+    <expression rule="16" n="2_1">
+      <val name="Nh" type="phys" num="0"/>
+      <val name="CL" type="phys" num="30" negation="true" />
+    </expression>
+    <expression rule="17" n="2_2">
+      <val name="Nh" type="phys" num="0"/>
+      <val name="CM" type="phys" num="20" negation="true" />
+    </expression>
+    <expression rule="18" n="2_3">
+      <val name="Nh" type="phys" num="0"/>
+      <val name="h"  type="phys" max="2500" />
+    </expression>
+    <expression rule="19" n="3">
+      <val name="Nh" type="phys" segment="1,10"/>
+      <val name="CL" type="phys" num="30"/>
+      <val name="CM" type="phys" num="20"/>
+    </expression>
+    <expression rule="20" n="4">
+      <val name="Nh" type="phys" num="9" />
+      <val name="CL" type="phys" min="30" num="30" />
+    </expression>
+    <expression rule="21" n="4_1">
+      <val name="Nh" type="phys" num="9" />
+      <val name="CM" type="phys" min="20" num="20" />
+    </expression>
+    <expression rule="22" n="4_2">
+      <val name="Nh" type="phys" num="9" />
+      <val name="CH" type="phys" min="10" num="10" />
+    </expression>
+    <expression rule="23" n="5">
+      <val name="Nh" type="phys" num="9"/>
+      <val name="h"  type="phys" min="50" num="50" />
+    </expression>
+    <expression rule="24" n="6">
+      <val name="N"  type="phys" num="0"/>
+      <val name="CH" type="phys" min="10" />
+    </expression>
+    <expression rule="25" n="6_1">
+      <val name="N"  type="phys" num="0"/>
+      <val name="CM" type="phys" min="20" />
+    </expression>
+    <expression rule="26" n="6_2">
+      <val name="N"  type="phys" num="0"/>
+      <val name="CL" type="phys" min="30" />
+    </expression>
+    <expression rule="27" n="7">
+      <val name="N"  type="phys" min="0"/>
+      <val name="Nh" type="phys" num="0"/>
+      <val name="CH" type="phys" num="10" />
+    </expression>
+    <expression rule="28" n="8">
+      <val name="N"  type="code" segment="1,8"/>
+      <val name="Nh" type="code" str="/"/>
+    </expression>
+    <expression rule="28" n="8_1">
+      <val name="N"  type="phys" min="1"/>
+      <val name="Nh" type="phys" num="15"/>
+    </expression>
+    <expression rule="29" n="9">
+      <val name="Nh" type="phys" segment="1,8"/>
+      <val name="CL" type="phys" num="30" />
+      <val name="CM" type="phys" num="20" />
+    </expression>
+    <expression rule="30" n="9_1">
+      <val name="Nh" type="code" segment="1,8"/>
+      <val name="CL" type="code" str="/" />
+    </expression>
+    <expression rule="30" n="9_2">
+      <val name="Nh" type="phys" segment="1,8"/>
+      <val name="C" type="phys" num="62" />
+    </expression>
+    <expression rule="31" n="10">
+      <val name="Nh" type="phys" num="8"/>
+      <val name="CL" type="phys" segment="30,39" />
+      <val name="CM" type="phys" min="20" num="20,21" />
+    </expression>
+    <expression rule="32" n="10_1">
+      <val name="Nh" type="phys" num="8"/>
+      <val name="CL" type="phys" segment="30,39" />
+      <val name="CH" type="phys" min="10" num="10" />
+    </expression>
+    <expression rule="321" n="11">
+      <val name="Nh" type="phys" num="8"/>
+      <val name="CL" type="phys" num="30" />
+      <val name="CH" type="phys" min="10" num="10" />
+    </expression>
+    <expression rule="33" n="12">
+      <val name="Nh" type="code" num="0"/>
+      <val name="CH" type="code" num="0" str="/" />
+    </expression>
+    <expression rule="33" n="12_1">
+      <val name="Nh" type="phys" num="0"/>
+      <val name="CH" type="phys" num="60" str="/" />
+    </expression>
+    <expression rule="34" n="13">
+      <val name="N" type="phys" segment="0,113" />
+      <val name="Nh" type="phys" num="0" />
+      <val name="CL" type="phys" num="30" />
+      <val name="CM" type="phys" num="20" />
+      <val name="CH" type="phys" num="10" />
+    </expression>
+    <!-- 14 ниже -->
+    <!-- 15 ниже -->
+    <expression rule="35" n="16">
+      <val name="N" type="phys" num="113" />
+      <val name="Nh" type="phys" segment="0,8" />
+    </expression>
+    <!-- 17 ниже -->
+    <expression rule="36" n="18">
+      <val name="CL" type="code" num="0" />
+      <val name="CH" type="code" num="0" />
+      <val name="Nh" sub="N" type="code" num="0" negation="true" />
+    </expression>
+    <expression rule="37" n="19">
+      <val name="CM" type="code" num="0" />
+      <val name="CH" type="code" num="0" />
+      <val name="Nh" sub="N" type="code" num="0" negation="true" />
+    </expression>
+    <expression rule="38" n="20">
+      <val name="CL" type="code" min="0"/>
+      <val name="Nh" type="code" num="0" str="/" />
+    </expression>
+    <expression rule="38" n="20_1">
+      <val name="CL" type="phys" min="30"/>
+      <val name="Nh" type="phys" num="0,15" />
+    </expression>
+    <expression rule="39" n="21">
+      <val name="CM" type="code" min="0" />
+      <val name="Nh" type="code" num="0" str="/" />
+    </expression>
+    <expression rule="39" n="21_1">
+      <val name="CM" type="phys" min="20" />
+      <val name="Nh" type="phys" num="0,15" />
+    </expression>
+    <expression rule="40" n="22">
+      <val name="CL" type="code" num="0" />
+      <val name="CM" type="code" str="/"  />
+    </expression>
+    <expression rule="40" n="22_1">
+      <val name="CL" type="phys" num="30" />
+      <val name="CM" type="phys" num="61" />
+    </expression>
+    <expression rule="41" n="23">
+      <val name="CM" type="code" num="0" />
+      <val name="CH" type="code" str="/"  />
+    </expression>
+    <expression rule="41" n="23_1">
+      <val name="CM" type="phys" num="20" />
+      <val name="CH" type="phys" num="60"  />
+    </expression>
+    <expression rule="42" n="24">
+      <val name="CM" type="code" str="/"  />
+      <val name="CH" type="code" str="/" negation="true" />
+    </expression>
+    <expression rule="42" n="24">
+      <val name="CM" type="phys" num="61"  />
+      <val name="CH" type="phys" num="60" negation="true" />
+    </expression>
+    <expression rule="43" n="25">
+      <val name="CL" type="phys" num="62"/>
+      <val name="Cn" type="phys" min="6" num="6" />
+    </expression>
+    <!-- <expression rule="44" n="26"> -->
+    <!--   <val name="CL" type="code" min="0" /> -->
+    <!--   <val name="Cn" type="code" max="6" index="0"/> -->
+    <!-- </expression> -->
+    <expression rule="45" n="27">
+      <val name="CL" type="phys" num="33,39"/>
+      <val name="Cn" type="phys" num="9" negation="true" />
+    </expression>
+    <expression rule="46" n="28">
+      <val name="CL" type="phys" num="33,39" negation="true" />
+      <val name="Cn" type="phys" num="9" />
+    </expression>
+    <expression rule="47" n="29">
+      <val name="CM" type="code" num="0" str="/"  />
+      <val name="Cn" type="phys" segment="3,5" />
+    </expression>
+    <expression rule="47" n="29_1">
+      <val name="CM" type="phys" num="0,61"  />
+      <val name="Cn" type="phys" segment="3,5" />
+    </expression>
+    <expression rule="48" n="30">
+      <val name="CM" type="phys" num="21,22" />
+      <val name="Cn" type="phys" num="3" />
+    </expression>
+    <expression rule="49" n="31">
+      <val name="CM" type="phys" num="28" segment="23,26"/>
+      <val name="Cn" type="phys" segment="4,5" />
+    </expression>
+    <expression rule="50" n="32">
+      <val name="CH" type="phys" segment="11,14" />
+      <val name="Cn" type="phys" num="2" />
+    </expression>
+    <expression rule="51" n="33">
+      <val name="CH" type="phys" segment="17,18" />
+      <val name="Cn" type="phys" num="0" />
+    </expression>
+    <expression rule="52" n="34">
+      <val name="CH" type="phys" segment="10,18" />
+      <val name="Cn" type="phys" num="1" />
+    </expression>
+    <expression rule="53" n="35">
+      <val name="CH" type="phys" num="17" />
+      <val name="N"  type="phys" num="100" negation="true" />
+    </expression>
+
+    <!-- 36 ниже -->
+    <!-- 37 ниже -->
+    <!-- 38 ниже -->
+  
+    <!-- <expression rule="54" n="39"> -->
+    <!--   <val name="Ns" type="code" num="1,8" /> -->
+    <!--   <val name="Cn" type="code" str="/" /> -->
+    <!-- </expression> -->
+    <expression rule="55" n="40">
+      <val name="Cn" type="phys" segment="0,2" />
+      <val name="CH" type="code" num="0" str="/" />
+    </expression>
+    <expression rule="55" n="40_1">
+      <val name="Cn" type="phys" segment="0,2" />
+      <val name="CH" type="phys" num="10,60" />
+    </expression>
+    <expression rule="56" n="41">
+      <val name="Cn" type="phys" segment="3,4" />
+      <val name="CM" type="code" num="0" str="/" />
+    </expression>
+    <expression rule="56" n="41_1">
+      <val name="Cn" type="phys" segment="3,4" />
+      <val name="CM" type="phys" num="20,61" />
+    </expression>
+    <expression rule="57" n="42">
+      <val name="Cn" type="phys" num="5" />
+      <val name="CM" type="phys" num="22,27" negation="true"/>
+    </expression>
+    <!-- <expression rule="58" n="43"> -->
+    <!--   <val name="CL" type="code" min="0" /> -->
+    <!--   <val name="Nh" sub="Ns" type="code" max="0" /> -->
+    <!--   <val name="Cn" type="phys" min="6" num="6" /> -->
+    <!-- </expression> -->
+    <!-- <expression rule="59" n="44"> -->
+    <!--   <val name="CL" type="code" num="0" /> -->
+    <!--   <val name="Nh" sub="Ns" type="code" max="0" /> -->
+    <!--   <val name="Cn" type="phys" segment="3,5" /> -->
+    <!-- </expression> -->
+  </group>
+
+  <group>
+    <!-- ix = 1-4, 5-7 -->
+   <check name="N,Nh,h,C" qual="5"/>
+    <expression rule="60" n="1">
+      <val name="N" type="code" str="/" />
+      <val name="h" type="code" str="/" negation="true"/>
+    </expression>
+    <expression rule="61" n="14">
+      <val name="N" type="code" num="0" />
+      <val name="h" type="code" num="9" negation="true" />
+    </expression>
+    <expression rule="62" n="15">
+      <val name="N" type="code" num="9" />
+      <val name="h" type="code" str="/" negation="true" />
+    </expression>
+    <!-- <expression rule="63" n="17"> -->
+    <!--   <val name="N" type="code" num="9" /> -->
+    <!--   <val name="Ns" type="code" num="9" negation="true" /> -->
+    <!-- </expression> -->
+    <!-- <expression rule="64" n="36"> -->
+    <!--   <val name="Ns" type="code" num="9" /> -->
+    <!--   <val name="Cn" type="code" str="/" negation="true" /> -->
+    <!-- </expression> -->
+    <!-- <expression rule="65" n="37"> -->
+    <!--   <val name="Ns" type="code" num="9" /> -->
+    <!--   <val name="N" type="code" num="9" negation="true" /> -->
+    <!-- </expression> -->
+    <!-- <expression rule="66" n="38"> -->
+    <!--   <val name="Ns" sub="N" type="code" min="0" /> -->
+    <!-- </expression> -->
+    <!-- <expression rule="67" n="45"> -->
+    <!--   <val name="Cn" type="code" num="9" negation="true" /> -->
+    <!--   <val name="Ns" type="code" max="1" index="0" /> -->
+    <!-- </expression> -->
+    <!-- <expression rule="68" n="46"> -->
+    <!--   <val name="Cn" type="code" num="9" negation="true" /> -->
+    <!--   <val name="Ns" type="code" max="3" index="1" /> -->
+    <!-- </expression> -->
+    <!-- <expression rule="69" n="47"> -->
+    <!--   <val name="Cn" type="code" num="9" negation="true" /> -->
+    <!--   <val name="Ns" type="code" max="5" index="2" /> -->
+    <!-- </expression> -->
+    <!-- <expression rule="70" n="48"> -->
+    <!--   <val name="hs" sub="hs" type="code" max="0" index="1" subindex="0"/> -->
+    <!-- </expression> -->
+    <!-- <expression rule="71" n="49"> -->
+    <!--   <val name="hs" sub="hs" type="code" max="0" index="2" subindex="1"/> -->
+    <!-- </expression> -->
+
+  </group>
+
+  <!--e-->
+  <group>
+    <check name="N,Nh,w" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="72" n="1">
+      <val name="N" type="phys" num="113"/>
+      <val name="w" type="phys" max="16" segment="19,28" num="36,37,40,41,42,44,46,48"/>
+    </expression>
+    <expression rule="73" n="2">
+      <val name="N" type="phys" num="113" negation="true"/>
+      <val name="w" type="phys" num="43,45,47,49"/>
+    </expression>
+    <expression rule="74" n="3">
+      <val name="N" type="phys" num="0"/>
+      <val name="w" type="phys" num="3" segment="14,17;80,99"/>
+    </expression>
+    <expression rule="75" n="4">
+      <val name="N" type="phys" max="60"/>
+      <val name="w" type="phys" segment="50,59"/>
+    </expression>
+    <expression rule="76" n="5">
+      <val name="N" type="phys" max="40"/>
+      <val name="w" type="code" segment="60,69;72,75;77,79"/>
+    </expression>
+    <expression rule="77" n="6">
+      <val name="Nh" type="phys" num="0"/>
+      <val name="w"  type="phys" segment="50,75;77,99"/>
+    </expression>
+    <expression rule="78" n="7">
+      <val name="Cn" type="phys" num="9" negation="true"/>
+      <val name="w"  type="phys" segment="95,99"/>
+    </expression>
+  </group>
+
+  <group>
+    <check name="N,Nh,w" qual="4"/>
+    <match name ="ix" type="phys" num="0"/>
+    <expression rule="79" n="1">
+      <val name="N" type="phys" num="113"/>
+      <val name="w" type="phys" segment="100,124" />
+    </expression>
+    <expression rule="80" n="2">
+      <val name="N" type="phys" num="0"/>
+      <val name="w" type="phys" num="103,118" segment="140,149"/>
+    </expression>
+    <expression rule="81" n="3">
+      <val name="N" type="phys" segment="1,40"/>
+      <val name="w" type="phys" segment="150,169;172,176"/>
+    </expression>
+  </group>
+
+
+  <!--f-->
+  <group>
+    <check name="T,w" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="82" n="1">
+      <val name="T" type="phys" min="5"/>
+      <val name="w" type="phys" segment="70,79;85,88"/>
+    </expression>
+    <expression rule="83" n="2">
+      <val name="T" type="phys" max="-2"/>
+      <val name="w" type="phys" segment="50,55;58,65;80,82"/>
+    </expression>
+    <expression rule="84" n="3">
+      <val name="T" type="phys" min="12"/>
+      <val name="w" type="phys" segment="68,69;83,84"/>
+    </expression>
+    <expression rule="85" n="4">
+      <val name="T" type="phys" max="-5"/>
+      <val name="w" type="phys" segment="68,69;83,84"/>
+    </expression>
+    <expression rule="86" n="5">
+      <val name="T" type="phys" min="3"/>
+      <val name="w" type="phys" segment="56,57;66,67"/>
+    </expression>
+    <expression rule="87" n="6">
+      <val name="T" type="phys" max="-10"/>
+      <val name="w" type="phys" segment="56,57;66,67"/>
+    </expression>
+    <expression rule="88" n="7">
+      <val name="T" type="phys" min="3"/>
+      <val name="w" type="phys" segment="48,49"/>
+    </expression>
+  </group>
+
+ <group>
+    <check name="T,w" qual="4"/>
+    <match name ="ix" type="phys" num="0"/>
+    <expression rule="89" n="1">
+      <val name="T" type="phys" min="5"/>
+      <val name="w" type="phys" segment="145,146;170,179;185,187"/>
+    </expression>
+    <expression rule="90" n="2">
+      <val name="T" type="phys" max="-2"/>
+      <val name="w" type="phys" segment="143,144;150,153;157,163;181,184"/>
+    </expression>
+    <expression rule="91" n="3">
+      <val name="T" type="phys" min="3"/>
+      <val name="w" type="phys" segment="147,148;154,156;164,166"/>
+    </expression>
+    <expression rule="92" n="4">
+      <val name="T" type="phys" max="-10"/>
+      <val name="w" type="phys" segment="147,148;154,156;164,166"/>
+    </expression>
+    <expression rule="93" n="5">
+      <val name="T" type="phys" min="3"/>
+      <val name="w" type="phys" num="135"/>
+    </expression>
+  </group>
+
+  <!--g-->
+  <group>
+    <check name="T,Td" qual="4"/>
+    <expression rule="94" n="1">
+      <val name="Td" sub="T" type="phys" min="0"/>
+    </expression>
+  </group>
+
+  <group>
+    <check name="T,Td" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="95" n="1">
+      <val name="T" sub="Td" type="phys" min="5"/>
+      <val name="w" type="phys" segment="40,49"/>
+    </expression>
+  </group>
+
+  <group>
+    <check name="T,Td" qual="4"/>
+    <match name ="ix" type="phys" num="0"/>
+    <expression rule="96" n="1">
+      <val name="T" sub="Td" type="phys" min="5"/>
+      <val name="w" type="phys" segment="130,135"/>
+    </expression>
+  </group>
+
+  <!--h-->
+  <!-- часть правил изменены, чтоб учесть передачу величин в bufr (в т.ч. имеющих отрицательное значение) -->
+  <group>
+    <check name="a,p" qual="5"/>
+    <expression rule="97" n="1">
+      <val name="a" type="code" str="/" />
+      <val name="p" type="code" min="0" num="0" />
+    </expression>
+    <expression rule="98" n="2">
+      <val name="a" type="code" min="0" num="0" />
+      <val name="p" type="code" str="/" />
+    </expression>
+    <expression rule="99" n="3">
+      <val name="a" type="phys" num="4" />
+      <val name="p" type="phys" num="0" negation="true" />
+    </expression>
+    <expression rule="100" n="4">
+      <val name="a" type="phys" segment="1,3" />
+      <val name="p" type="phys" max="0" num="0" />
+    </expression>
+    <expression rule="101" n="5">
+      <val name="a" type="phys" segment="6,8" />
+      <val name="p" type="phys" min="0" num="0" />
+    </expression>
+  </group>
+
+  <!--i-->
+  <group>
+    <check name="w,W1,W2" qual="5"/>
+    <expression rule="102" n="1">
+      <val name="w"  type="code" segment="0,3" />
+      <val name="W1" type="code" segment="0,2" />
+    </expression>
+  </group>
+
+  <!--j-->
+  <group>
+    <check name="W1,W2" qual="5"/>
+    <expression rule="103" n="1">
+      <val name="W1" sub="W2" type="phys" max="0"/>
+    </expression>
+    <expression rule="104" n="2">
+      <val name="W1" type="code" segment="0,2"/>
+      <val name="W1" sub="W2" type="phys" num="0" negation="true"/>
+    </expression>
+    <!-- ...  -->
+  </group>
+
+
+  <!--k-->
+  <group>
+   <check name="W2,N" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="105" n="1">
+      <val name="W2" type="phys" num="0"/>
+      <val name="N"  type="phys" segment="60,100"/>
+    </expression>
+    <expression rule="106" n="2">
+      <val name="W2" type="phys" num="2"/>
+      <val name="N"  type="phys" segment="0,50"/>
+    </expression>
+  </group>
+
+  <group>
+   <check name="W2,N" qual="5"/>
+    <match name ="ix" type="phys" num="0"/>
+    <expression rule="107" n="1">
+      <val name="W2" type="phys" num="10"/>
+      <val name="N"  type="phys" segment="60,100"/>
+    </expression>
+    <expression rule="108" n="2">
+      <val name="W2" type="phys" num="12"/>
+      <val name="N"  type="phys" segment="0,50"/>
+    </expression>
+  </group>
+
+  <!--l-->
+  <group>
+    <check name="w,ff" qual="4"/>
+    <expression rule="109" n="1">
+      <val name="w"  type="phys" segment="31,35" num="37,39,98" />
+      <val name="ff" type="phys" max="10"/>
+    </expression>
+  </group>
+
+  <group>
+    <check name="w,ff" qual="5"/>
+    <expression rule="110" n="1">
+      <val name="w"  type="phys" segment="127,129" />
+      <val name="ff" type="phys" max="10"/>
+    </expression>
+  </group>
+
+  <!--m-->
+  <group>
+   <check name="T,Tn,Tx" qual="5"/> <!--T,Tn,Tx-->
+    <expression rule="111" n="1">
+      <val name="T" sub="Tn" type="phys" max="0"/>
+    </expression>
+    <expression rule="112" n="2">
+      <val name="T" sub="Tx" type="phys" min="0"/>
+    </expression>
+  </group>
+
+  <!--n-->
+  <group>
+   <check name="R,W1,W2" qual="5"/> <!--RRR,W1,W2-->
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="113" n="1">
+      <val name="W1" type="phys" segment="5,8" />
+      <val name="R" type="phys" num="0"/>
+    </expression>
+    <expression rule="114" n="2">
+      <val name="W1" type="phys" num="9"/>
+      <val name="W2" type="phys" segment="5,8" />
+      <val name="R"  type="phys" num="0" />
+    </expression>
+  </group>
+
+ <group>
+   <check name="R,W1,W2" qual="5"/> <!--RRR,W1,W2-->
+    <match name ="ix" type="phys" num="0"/>
+    <expression rule="115" n="1">
+      <val name="W1" type="phys" segment="14,18" />
+      <val name="R"  type="phys" num="0"/>
+    </expression>
+    <expression rule="116" n="2">
+      <val name="W1" type="phys" num="19"/>
+      <val name="W2" type="phys" segment="14,18" />
+      <val name="R"  type="phys" num="0" />
+    </expression>
+  </group>
+
+  <!--o-->
+  <group>
+   <check name="iR,R" qual="5"/>
+    <expression rule="117" n="1">
+      <val name="iR" type="code" segment="0,2 "/>
+      <val name="R"  type="code"  str="///"/>
+    </expression>
+    <expression rule="118" n="2">
+      <val name="iR" type="code" num="3" />
+      <val name="R"  type="code" num="0" str="///" negation="true"/>
+    </expression>
+    <expression rule="119" n="3">
+      <val name="iR" type="code" num="4"/>
+      <val name="R"  type="code" str="///"/>
+    </expression>
+  </group>
+
+  <!--p-->
+  <group>
+   <check name="ix,W1,W2" qual="5"/>
+    <expression rule="120" n="1">
+      <val name="ix" type="code" num="1,4" />
+      <val name="w" type="code" segment="0,99" negation="true"/>
+    </expression>
+    <expression rule="121" n="2">
+      <val name="ix" type="code" num="2,3" />
+      <val name="w" type="code" segment="0,99"/>
+    </expression>
+    <expression rule="122" n="3">
+      <val name="ix" type="code" num="7" />
+      <val name="w" type="code" segment="0,99" negation="true"/>
+    </expression>
+    <expression rule="123" n="4">
+      <val name="ix" type="code" num="5,6" />
+      <val name="w" type="code" segment="0,99"/>
+    </expression>
+  </group>
+
+  <!--q-->
+  <!-- <group> -->
+   <!-- <check name="124" qual=""/> --> <!---->
+  <!--   <match name ="ix" type="code" segment="1,4"/> -->
+  <!--   <expression rule="" n="1"> -->
+  <!--     <val name="" type="" /> -->
+  <!--     <val name="" type="" /> -->
+  <!--   </expression> -->
+  <!-- </group> -->
+
+  <!--r-->
+  <group>
+    <check name="Ef,Tg,sss" qual="4"/> <!-- E, E'-->
+    <expression rule="125" n="2">
+      <val name="Ef" type="phys" num="14"/>
+      <val name="Tg" type="phys" min="0"/>
+    </expression>
+    <expression rule="126" n="3">
+      <val name="Ef" type="phys" num="10"/>
+      <val name="Tg" type="phys" min="3"/>
+    </expression>
+    <expression rule="127" n="4">
+      <val name="Ef" type="phys" segment="15,18"/>
+      <val name="Tg" type="phys" min="0"/>
+    </expression>
+    <expression rule="128" n="5">
+      <val name="Ef" type="phys" num="10" />
+      <val name="tR" type="phys" segment="-2,-1"/>
+      <val name="R" type="phys" min="3"/>
+    </expression>
+    <expression rule="129" n="6">
+      <val name="Ef" type="phys" segment="0,9"/>
+      <val name="sss" type="phys" min="0"/>
+    </expression>
+    <expression rule="130" n="7">
+      <val name="Ef" type="phys" num="11,15" />
+      <val name="sss" type="phys" num="998" negation="true"/>
+    </expression>
+    <expression rule="131" n="8">
+      <val name="Ef" type="phys" segment="2,4;6,8"/>
+      <val name="sss" type="phys" num="998"/>
+    </expression>
+    <!-- <expression rule="132" n="10"> -->
+    <!--   <val name="E'" type="code" num="5" /> -->
+    <!--   <val name="SpSp" type="code" num="35,37" /> TODO- -->
+    <!-- </expression> -->
+  </group>
+  <group>
+    <check name="Ef,Tg,sss" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="133" n="9">
+      <val name="Ef" type="phys" num="19"/>
+      <val name="sss" type="phys" max="15"/>
+    </expression>
+  </group>
+ 
+  <!--s-->
+  <group>
+    <check name="Mw19,Da19" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="135" n="1">
+      <val name="w" type="code" num="8" />
+      <val name="Mw19" type="code" max="6" num="6" str="/"/>
+    </expression>
+    <expression rule="136" n="2">
+      <val name="w" type="code" num="19" />
+      <val name="Mw19" type="code" max="7" num="7" str="/" />
+    </expression>
+  </group>
+
+  <group>
+    <check name="S8,S8'" qual="4"/>
+    <match name ="ix" type="phys" num="1"/>
+    <expression rule="137" n="3">
+      <val name="w"   type="code" mum="38" />
+      <val name="S8"  type="code" num="8" negation="true" />
+    </expression>
+    <expression rule="138" n="4">
+      <val name="w"   type="code" num="39" />
+      <val name="S8"  type="code" num="9" negation="true" />
+    </expression>
+    <expression rule="139" n="5">
+      <val name="S8'" type="phys" num="0" />
+      <val name="w"   type="phys" segment="36,39" />
+    </expression>
+    <expression rule="140" n="6">
+      <val name="S8'" type="phys" num="5" />
+      <val name="w"   type="phys" segment="38,39" />
+    </expression>
+    <expression rule="141" n="7">
+      <val name="S8'" type="phys" min="1" />
+      <val name="w"   type="phys" segment="0,16;18,35;40,69,79,84" />
+    </expression>
+    <expression rule="142" n="8">
+      <val name="S8"  type="code" segment="8,9" />
+      <val name="S8'" type="code" str="/" />
+    </expression>
+  </group>
+  
+  <group>
+    <check name="RR32" qual="4"/>
+     <match name ="ix" type="phys" num="1"/>
+    <expression rule="143" n="9">
+      <val name="RR32" type="phys" min="0"/>
+      <val name="W1"   type="phys" max="8" />
+      <val name="w"    type="phys" num="27" negation="true" />
+    </expression>
+  </group>
+
+  <!-- <group> -->
+  <!--    <check name="" qual="4"/> -->
+  <!--    <match name ="ix" type="code" segment="1,4"/> -->
+  <!--   <expression rule="144" n="10"> -->
+  <!--     <val name="w" type="code" segment="48,49"/> -->
+  <!--     <val name="SpSp" type="code" num="35,36" negation="true"/> -->
+  <!--   </expression> -->
+  <!--   <expression rule="145" n="11"> -->
+  <!--     <val name="w" type="code" segment="56,57;66,67" /> -->
+  <!--     <val name="SpSp" type="code" num="34,36" /> -->
+  <!--   </expression> -->
+
+  <!-- <group> -->
+  <!--   <check name="" qual="4"/> -->
+  <!--   <match name ="ix" type="code" segment="1,4"/> -->
+  <!--   <expression rule="146" n="12"> -->
+  <!--     <val name="ss" type="code" min="5" /> -->
+  <!--     <val name="w" type="code" segment="0,18;18,21;28,35;41,67;80,82;91,92" num="25,98"/> -->
+  <!--     <val name="W1" type="code" max="6" num="6" /> -->
+  <!--   </expression> -->
+  <!-- </group> -->
+
+  <!-- <group> -->
+  <!--  <check name="" qual="4"/>  -->
+  <!--   <match name ="ix" type="code" segment="5,7"/> -->
+  <!--   <expression rule="147" n="1"> -->
+  <!--     <val name="w" type="code" segment="47,48;54,56;64,66" /> -->
+  <!--     <val name="SpSp" type="code" num="34,36" negate="true" /> -->
+  <!--   </expression> -->
+  <!-- </group> -->
+
+
+</control>

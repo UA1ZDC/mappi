@@ -1,0 +1,52 @@
+syntax = "proto2";
+
+package meteo.menu;
+
+enum MenuCommand {
+  kExitCmd         = 0;
+}
+
+enum WidgetType{
+  Single = 0;
+  Multi  = 1;
+}
+
+message MenuItem{
+  required string id           = 1;
+  required string title        = 2;
+  optional string window_title = 3;
+  optional string handler      = 4;
+  optional string ico          = 5;
+  optional string tooltip      = 6;
+  optional string app          = 7;
+  optional int32 position      = 8;
+  repeated string arg          = 9;
+  optional bool disabled       = 10 [default = true];
+  optional string options      = 11;
+  optional string appsu        = 12;
+  optional string argsu        = 13;
+  optional MenuCommand cmd     = 14;
+  optional bool dockwidget     = 15 [default = false];
+  optional string plugin       = 16;
+  optional WidgetType type     = 17 [default = Single];
+  optional bool mdi            = 18 [default = false];
+  optional bool hidden         = 19 [default = false];
+  optional bool separator      = 20;
+  repeated MenuItem menu       = 21;
+}
+
+message MenuConfig {
+  repeated MenuItem menu      = 1;
+}
+
+message Toolbar {
+  required string id          = 1;
+  required string title       = 2;
+  optional bool checked       = 3 [default = false];
+  repeated string action      = 4;
+}
+
+message ToolbarConfig {
+  repeated Toolbar toolbar      = 1;
+}
+

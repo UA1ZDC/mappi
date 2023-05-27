@@ -1,0 +1,81 @@
+syntax = "proto2";
+
+package meteo.tablo;
+
+enum Operation {
+  kRange    = 1;
+  kMore     = 2;
+  kLess     = 3;
+  kEqual    = 4;
+  kNotEqual = 5;
+  kCifrCode = 6;
+  kNoOperation  = 100;
+};
+
+enum Color {
+  kGreen    = 8;
+  kYellow   = 12;
+  kRed      = 99;
+  kNoColor  = 100;
+};
+
+message Presets {
+  repeated Settings preset      = 1; //!< пользовательские предустановки метеотабло
+}
+
+message Settings {
+  repeated Place  places        = 1; //!< список пунктов
+  repeated Column columns       = 2; //!< список колонок
+  optional bytes  header_state  = 3; //!< сериализованные параметры колонок (размер,сортировка и др.)
+  optional bytes  geometry      = 4; //!< сериализованные размеры окна
+  repeated ColorAlert alert     = 5; //!< список параметров цветового оповещения
+  optional int32  radius_meter  = 6 [default = 5000]; //!<
+  optional int32  alpha         = 7 [default = 0];    //!< прозрачность в процентах
+  optional int32  max_dist_meter  = 8 [default = 50]; //!<
+  optional string name          = 9; //!< наименование шаблона настроек (для предустановок)
+  optional bool   sorting       = 10 [default = false]; //!< сортировка включена
+};
+
+message Place {
+  optional string id    = 1;  //!< CCCC или индекс станции
+  optional string name  = 2;  //!< название пункта
+  optional int32  data_type = 3; //!< тип данных
+};
+
+message Column {
+  optional string meteo_descr = 1; //!< название метеопараметра
+}
+
+//! Параметры цветового оповещения.
+message ColorAlert {
+  optional string     descrname  = 1; //!< название метеопараметра
+  repeated Condition  condition  = 2; //!<
+  optional bool       enabled    = 3 [default = true]; //!<
+};
+
+message Condition {
+  optional Color      color      = 1 [default = kNoColor];      //!<
+  optional Operation  operation  = 2 [default = kNoOperation];  //!<
+  optional double     operand_a  = 3; //!<
+  optional double     operand_b  = 4; //!<
+  optional string     operandCode = 5;
+};
+
+// Параметры для терминального метеотабло
+message TrackedStation {
+  optional string    station_index         = 1;
+  optional int32     station_type          = 2;
+}
+
+message Subscriber {
+  optional string     ip_address           = 1;
+  optional string     login                = 2;
+  optional string     password             = 3;
+  repeated TrackedStation tracked_station  = 4; //!< список станций для абонента
+  optional int32      update_interval      = 5; //!< интервал обновления (в секундах)
+};
+
+message Subscribers {
+  repeated Subscriber subscriber           = 1;
+}
+// Параметры для терминального метеотабло END

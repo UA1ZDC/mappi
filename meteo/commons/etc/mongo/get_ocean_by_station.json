@@ -1,0 +1,22 @@
+{ "aggregate": "meteoreport",
+  "pipeline": [
+    { "$unwind": "$param" },
+    { "$match": {
+      "dt": @dt@,
+      "station": @station@,
+      "station_type": 6,
+      "param.descrname": { "$in": [ "Sn", "Tw" ] }
+    } },
+    { "$group": {
+      "_id": { "level": "$level" },
+      "level": { "$first": "$level"},
+      "documents": {"$push": { "descrname": "$param.descrname",
+                   "value": "$param.value",
+                   "quality" : "$param.quality",
+                   "code" : "$param.code"  } }
+    } }
+  ],
+  "cursor": { "batchSize": 1 }
+}
+
+

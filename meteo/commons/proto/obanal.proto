@@ -1,0 +1,33 @@
+syntax = "proto2";
+package meteo.obanalsettings;
+
+//! Типы метеоданных
+enum DataType {
+  kSurface     =  0;    //!< анализ приземных данных
+  kAero        =  60;   //!< анализ аэрологических данных
+  kRadar       =  150;  //!< анализ радиолокационных данных
+  kOcean       =  120;  //!< анализ морских данных
+  kGrib        =  400;  //!< анализ GRIB
+};
+  
+//! Параметры запуска
+message Params {
+  required DataType type   = 1 [default = kSurface]; //!< тип данных (DataType)
+  repeated int32 descr     = 2; //!< дескриптор для метеопараметра
+  repeated int32 center    = 3; //!< идентификатор метеоцентра/станции
+  repeated int32 level     = 4; //!< уровень - мб или м
+  optional string dt_begin = 5; //!< анализировать данные за период: с (Qt::ISODate)
+  optional string dt_end   = 6; //!< по (Qt::ISODate)
+  optional int32 hour      = 7; //!< срок прогноза (для GRIB)
+}
+//! Параметры задания для приложения obanal
+message Task {
+  required int32 uid       = 1; //!< идентификатор
+  required Params params   = 2; //!< аргументы приложения
+}
+
+//! Очередь заданий для obanal
+message Settings {
+  repeated Task task   = 1; //!< задание
+}
+

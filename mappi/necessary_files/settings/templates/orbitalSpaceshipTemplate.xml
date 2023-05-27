@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item valueSrc="orbitalSsh" source="this" textItem="" text="">
+    <item maxValue="9999" valueSrc="orbitalSshFrequencyApt" type="9" minValue="0" source="this" textItem="1000" text="APT Частота (МГц)"/>
+    <item maxValue="9999" valueSrc="orbitalSshFrequencyHrpt" type="9" minValue="0" source="this" textItem="1000" text="HRPT Частота (МГц)"/>
+    <item maxValue="360" valueSrc="orbitalSshObservationAngle" type="9" minValue="0" source="this" textItem="12" text="Угол обзора (град.)"/>
+    <item valueSrc="orbitalSshPreferRoutine" type="1" values="HRPT;LRPT;" source="this" textItem="0" text="Предпочтительный режим приема"/>
+    <item source="this" textItem="" text="-----------------------------------------------" />
+  </item>
+</body>

@@ -1,0 +1,16 @@
+2596b422a59842f8629d76cd63ca9ded  usr/lib/python3/dist-packages/yarl-1.5.1.egg-info/PKG-INFO
+68b329da9893e34099c7d8ad5cb9c940  usr/lib/python3/dist-packages/yarl-1.5.1.egg-info/dependency_links.txt
+1e640d1d32c5b0c4b047dd14ae53bead  usr/lib/python3/dist-packages/yarl-1.5.1.egg-info/requires.txt
+27964b21b4567dc07a0f989ae2cbaa05  usr/lib/python3/dist-packages/yarl-1.5.1.egg-info/top_level.txt
+5cc8941e594dd863e71767bb96541937  usr/lib/python3/dist-packages/yarl/__init__.py
+7195e851c305612142da38c38de4d0cc  usr/lib/python3/dist-packages/yarl/__init__.pyi
+30252ecffa2869cacc801c3621a4625a  usr/lib/python3/dist-packages/yarl/_quoting.py
+30bb1a8c6f62342ba8bc9ee5f2fe317e  usr/lib/python3/dist-packages/yarl/_quoting_c.c
+8666f7d6cc8bdebff07607e5e2e00f9d  usr/lib/python3/dist-packages/yarl/_quoting_c.cpython-35m-x86_64-linux-gnu.so
+1893d23f721bda983bf523358cf70826  usr/lib/python3/dist-packages/yarl/_quoting_c.pyi
+b1c35558218a4227a3db3c07a63ead88  usr/lib/python3/dist-packages/yarl/_quoting_c.pyx
+ed94b3551ffa9e4262db89eb834e5580  usr/lib/python3/dist-packages/yarl/_quoting_py.py
+ad2e8303223a1d5eff0cff1ee34f9908  usr/lib/python3/dist-packages/yarl/_url.py
+24dd98e2038c096e7b60811d7ed3ce37  usr/lib/python3/dist-packages/yarl/py.typed
+f1e56642ba71bab7383f367a0a5d3560  usr/share/doc/yarl/changelog.gz
+b334fc90d45983db318f54fd5bf6c90b  usr/share/doc/yarl/copyright

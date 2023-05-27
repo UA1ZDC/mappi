@@ -1,0 +1,10 @@
+Package: python3-yarl
+Version: 1.5.1
+Architecture: amd64
+Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>
+Installed-Size: 668
+Depends: python3 (<< 3.6), python3 (>= 3.5~), python3-idna, python3-multidict, python3:any (>= 3.5~), libc6 (>= 2.14), typing-extensions, python3-idna
+Section: python
+Priority: optional
+Description: Yet another URL library
+ Summary: Yet another URL library

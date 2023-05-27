@@ -1,0 +1,12 @@
+name: "layer.map"
+title: "Бюллетень Слой"
+formal {
+    template: "Layer.odt"
+    name: "Бюллетень Слой"
+    module_path: "layer.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

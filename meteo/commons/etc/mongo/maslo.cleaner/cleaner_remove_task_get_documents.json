@@ -1,0 +1,13 @@
+{
+  "find": @collection@,
+  "filter" : {
+    @dtField@ : { "$lt" : @enddt@ },
+    @dtWriteField@ : { "$lt" : @storeDt@ }
+  },
+  "projection": {
+    "_id": 1,
+    @dtField@: 1,
+    @gridField@: 1,
+    @dtWriteField@ : 1
+  }
+}

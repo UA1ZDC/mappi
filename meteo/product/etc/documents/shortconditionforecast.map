@@ -1,0 +1,12 @@
+name: "shortconditionforecast.map"
+title: "Краткосрочный прогноз гидрометеорологических условий по району до 36 часов"
+formal {
+    template: "short-hydromet-36h.odt"
+    name: "Краткосрочный прогноз гидрометеорологических условий по району до 36 часов"
+    module_path: "shortgmi36h.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteosummary.png"
+}
+document {
+  doctype: kFormalDocument
+}

@@ -1,0 +1,10 @@
+name: "kn-01speci"
+title: "КН-01 (Только SPECI)"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "kn01"
+  data_type: kAirportSpecType
+  type_level: 1
+  level: 0
+}

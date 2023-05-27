@@ -1,0 +1,10 @@
+{
+  "delete": "up_down_loads.parts",
+  "deletes": [
+    { "q" : {
+      "upload_id" : "%1"
+    },
+    "limit" : 0
+  }
+  ]
+}

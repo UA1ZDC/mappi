@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<grib2represent>
+  <!-- Grid Point Data - Simple Packing (see Template 5.0) -->
+  <repr template="0" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+      <val idx="21" size="1" pbnum="5"  name="type" />
+    </val>
+  </repr>
+
+  <!-- Matrix Value at Grid Point - Simple Packing (see Template 5.1) -->
+  <repr template="1" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+      <val idx="21" size="1" pbnum="5"  name="type" />
+    </val>
+    <val idx="22" size="1" pbnum="2"  name="map" />
+    <val idx="23" size="4" pbnum="3"  name="num" />
+    <val idx="27" size="4" pbnum="4"  name="nr" />
+    <val idx="29" size="4" pbnum="5"  name="nc" />
+    <val idx="31" size="1" pbnum="6"  name="dim2" />
+    <val idx="32" size="1" pbnum="7"  name="nc1" />
+    <val idx="33" size="1" pbnum="8"  name="dim2" />
+    <val idx="34" size="1" pbnum="9"  name="nc2" />
+    <val idx="35" size="1" pbnum="10"  name="phys1" />
+    <val idx="36" size="1" pbnum="11"  name="phys2" />
+    <val idx="37" size="4" pbnum="12"  field="repeated" cnt_pbnum="7" name="coef1" />
+    <val idx="37" offset_pbnum="7" offset_size="4" size="4" pbnum="13"  field="repeated" cnt_pbnum="9" name="coef2" />
+  </repr>
+
+  <!--Grid Point Data - Complex Packing (see Template 5.2)  -->
+  <repr template="2" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+      <val idx="21" size="1" pbnum="5"  name="type" />
+    </val>
+    <val idx="22" size="1" pbnum="2"  name="method" />
+    <val idx="23" size="1" pbnum="3"  name="missing" />
+    <val idx="24" size="4" pbnum="4"  name="prime" />
+    <val idx="28" size="4" pbnum="5"  name="second" />
+    <val idx="32" size="4" pbnum="6"  name="ng" />
+    <val idx="36" size="1" pbnum="7"  name="r_w" />
+    <val idx="37" size="1" pbnum="8"  name="bits_w" />
+    <val idx="38" size="4" pbnum="9"  name="r_l" />
+    <val idx="42" size="1" pbnum="10"  name="inc_l" />
+    <val idx="43" size="4" pbnum="11"  name="last_l" />
+    <val idx="47" size="1" pbnum="12"  name="bits_l" />
+  </repr>
+
+  <!-- Grid Point Data - Complex Packing and Spatial Differencing (see Template 5.3) -->
+  <repr template="3" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+      <val idx="21" size="1" pbnum="5"  name="type" />
+    </val>
+    <val idx="22" size="1" pbnum="2"  name="method" />
+    <val idx="23" size="1" pbnum="3"  name="missing" />
+    <val idx="24" size="4" pbnum="4"  name="prime" />
+    <val idx="28" size="4" pbnum="5"  name="second" />
+    <val idx="32" size="4" pbnum="6"  name="ng" />
+    <val idx="36" size="1" pbnum="7"  name="r_w" />
+    <val idx="37" size="1" pbnum="8"  name="bits_w" />
+    <val idx="38" size="4" pbnum="9"  name="r_l" />
+    <val idx="42" size="1" pbnum="10"  name="inc_l" />
+    <val idx="43" size="4" pbnum="11"  name="last_l" />
+    <val idx="47" size="1" pbnum="12"  name="bits_l" />
+    <val idx="48" size="1" pbnum="13"  name="order" />
+    <val idx="49" size="1" pbnum="14"  name="octets" />
+  </repr>
+
+  <!-- Grid Point Data - IEEE Floating Point Data (see Template 5.4) -->
+  <repr template="4" startIdx="12" >
+    <val idx="12" size="4" pbnum="1"  name="prec" />
+  </repr>
+
+  <!-- Grid Point Data - JPEG2000 Compression (see Template 5.40) -->
+  <repr template="40" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+      <val idx="21" size="1" pbnum="5"  name="type" />
+    </val>
+    <val idx="22" size="1" pbnum="2"  name="compress" />
+    <val idx="23" size="1" pbnum="3"  name="ratio" />
+  </repr>
+
+  <!-- Grid Point Data - PNG Compression (see Template 5.41) -->
+  <repr template="41" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+      <val idx="21" size="1" pbnum="5"  name="type" />
+    </val>
+  </repr>
+
+  <!-- Spectral Data - Simple Packing (see Template 5.50)  -->
+  <repr template="50" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+    </val>
+    <val idx="21" size="4" pbnum="2"  name="rp" />
+  </repr>
+
+  <!-- Spectral Data - Complex Packing (see Template 5.51) -->
+  <repr template="51" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+    </val>
+    <val idx="21" size="4" pbnum="3"  name="p" />
+    <val idx="25" size="2" pbnum="4"  name="js" />
+    <val idx="27" size="2" pbnum="5"  name="ks" />
+    <val idx="29" size="2" pbnum="6"  name="ms" />
+    <val idx="31" size="4" pbnum="7"  name="ts" />
+    <val idx="35" size="1" pbnum="8"  name="prec" />
+  </repr>
+
+  <!-- Grid Point Data - Simple Packing With Logarithm Pre-processing (see Template 5.61) -->
+  <repr template="61" startIdx="12" >
+    <val idx="12" pbnum="1"  name="pd" >
+      <val idx="12" size="4" pbnum="1"  name="r" />
+      <val idx="16" size="2" pbnum="2"  name="e" />
+      <val idx="18" size="2" pbnum="3"  name="d" />
+      <val idx="20" size="1" pbnum="4"  name="bits" />
+    </val>
+    <val idx="21" size="4" pbnum="2"  name="ln_b" />
+  </repr>
+
+  <!-- Run Length Packing With Level Values (see Template 5.200) -->
+  <repr template="200" startIdx="12" >
+    <val idx="12" size="1" pbnum="1"  name="bits" />
+    <val idx="13" size="2" pbnum="2"  name="mv" />
+    <val idx="15" size="3" pbnum="3"  name="mvl" />
+    <val idx="17" size="1" pbnum="4"  name="d" />
+    <val idx="18" size="2" pbnum="5"  name="scale" />
+  </repr>
+</grib2represent>

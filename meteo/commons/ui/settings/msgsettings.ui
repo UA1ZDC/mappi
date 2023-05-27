@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MsgSettings</class>
+ <widget class="QWidget" name="MsgSettings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1048</width>
+    <height>633</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Настройка регистрации и светографической индикации событий</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_4">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="msgGroupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tbl">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>23</width>
+          <height>23</height>
+         </size>
+        </property>
+        <property name="showGrid">
+         <bool>true</bool>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderHighlightSections">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>30</number>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderMinimumSectionSize">
+         <number>30</number>
+        </attribute>
+        <attribute name="verticalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <row>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Тип сообщений</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Регистрация</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Индикация</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string>Отладочные</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../commons/etc/meteo.icons.qrc">
+           <normaloff>:/meteo/icons/map/bug-off.png</normaloff>:/meteo/icons/map/bug-off.png</iconset>
+         </property>
+        </item>
+        <item row="1" column="0">
+         <property name="text">
+          <string>Информационные</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../commons/etc/meteo.icons.qrc">
+           <normaloff>:/meteo/icons/information_message.png</normaloff>:/meteo/icons/information_message.png</iconset>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string>Предупреждения</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../commons/etc/meteo.icons.qrc">
+           <normaloff>:/meteo/icons/warning_message.png</normaloff>:/meteo/icons/warning_message.png</iconset>
+         </property>
+        </item>
+        <item row="3" column="0">
+         <property name="text">
+          <string>Ошибки</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../commons/etc/meteo.icons.qrc">
+           <normaloff>:/meteo/icons/error_message.png</normaloff>:/meteo/icons/error_message.png</iconset>
+         </property>
+        </item>
+        <item row="4" column="0">
+         <property name="text">
+          <string>Критические ошибки </string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../commons/etc/meteo.icons.qrc">
+           <normaloff>:/meteo/icons/critical_message.png</normaloff>:/meteo/icons/critical_message.png</iconset>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../../commons/etc/meteo.icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

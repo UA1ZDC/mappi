@@ -1,0 +1,19 @@
+{
+   "update": "user.app.settings",
+   "updates": [
+     { "q": { 
+          "login"   : @login@,
+          "proto" : @proto@
+         },
+       "u": { 
+        "$set" : {
+          "login"   : @login@,
+          "proto" : @proto@,
+          "param" : @param@
+          }         
+       },
+      "upsert": true,
+      "multi": false
+    }
+ ]
+}

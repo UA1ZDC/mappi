@@ -1,0 +1,49 @@
+{
+  "update": "msg",
+  "updates": [{
+    "q": { "_id": @id@ },
+    "u": { "$setOnInsert": {
+             "_id": @id@,
+             "t1"            : @t1@,
+             "t2"            : @t2@,
+             "a1"            : @a1@,
+             "a2"            : @a2@,
+             "ii"            : @ii@,
+             "cccc"          : @cccc@,
+             "dddd"          : @dddd@,
+             "bbb"           : @bbb@,
+             "yygggg"        : @yygggg@,
+             "dt"            : @dt@,
+             "msg_dt"        : @msg_dt@,
+             "md5"           : { "$binary": @md5@, "$type": "5" },
+             "decoded"       : false,
+             "external"      : @external@,
+             "prior"         : @prior@,
+             "bin"           : @bin@,
+             "format"        : @format@,
+             "type"          : @type@,
+             "map_name"      : @map_name@,
+             "job_name"      : @job_name@,
+             "size"          : @size@,
+             "file_id"       : @file_id@,
+             "globalfile_id" : @globalfile_id@,
+             "addr_tlg"      : @addr_tlg@,
+             "confirm_tlg"   : @confirm_tlg@,
+             "route"         : [
+             {
+               "src": @src@,
+               "dst": @dst@
+             }
+             ],
+             "cor_number"   : @cor_number@,
+             "dup" : -1
+         }
+    },
+    "upsert": true
+  },
+  {
+    "q":{ "_id": @id@ },
+    "u":{ "$inc": { "dup": 1 } }
+  }
+  ]
+}

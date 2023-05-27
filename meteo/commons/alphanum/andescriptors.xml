@@ -1,0 +1,1533 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Для чтения из буквенно-цифровых кодов в TMeteoData -->
+<!-- outname внешнее имя из descriptors.xml, для получения номера при сохранении -->
+<!-- type способ преобразования кодового значения в число (type=1 - табличное преобразование; type=2 - функция в коде)-->
+<!-- mul умножение величины на казанное значение -->
+<!-- add добавление к величине указанного значения -->
+<!-- outname == "COMPLEX" - значение является частью БЦК, требующей обработки в коде -->
+<!-- см. внизу пояснения -->
+
+<andescriptors>
+  <descr name="category"   outname="category" regexp="[0-9]" description="Категория данных" />
+  <descr name="station"    outname="station"  regexp="[\w\s-]+" description="Название станции или поста" />
+  <descr name="station_tr" outname="station"  regexp="[\S]+" type="4" description="Название станции или поста" />
+  <descr name="national"   outname="national" regexp=".*"    type="2" description="Data for national use" />
+  <descr name="level_type" outname="level_type"  regexp="[0-9]{1,3}"  description="Тип уровня" />
+  <descr name="dt"         outname="COMPLEX"  regexp="[\d:.T\s-]+" type="3"    description="Дата/время" />
+  <!-- FM12,13 -->
+  <descr name="YY"    outname="YY"   regexp="[0-35-8]?[0-9]"  description="День месяца" />
+  <descr name="GG"    outname="GG"   regexp="[0-2]?[0-9]"     description="Фактический срок наблюдений с точностью до ближайшего целого часа МСВ" />
+  <descr name="gg"    outname="gg"   regexp="[0-5]?[0-9]"     description="Срок наблюдения, минут" />
+  <descr name="g"     outname="gg"   regexp="[0-9]"  mul="10"  description="Срок наблюдения, десятки минут" />
+  <descr name="gg_d"   outname="gg"   regexp="[0-9]"  mul="6"  description="Срок наблюдения, десяые доли часа" />
+  <descr name="iw"    outname="iw"   regexp="[0-4]"	   description="Указатель источника данных и единиц скорости ветра" />
+  <descr name="II"    outname="II"   regexp="[\d]{2}"	   description="Номер большого географического района" />
+  <descr name="iii"   outname="iii"   regexp="[\d]{3}"	   description="Номер станции" />
+  <descr name="iR"    outname="iR"   regexp="[0-46-8]"	   description="Указатель включения или пропуска данных об осадках" />
+  <descr name="ims"   outname="ims"  regexp="[\d]"        description="Указатель горной станции " />
+  <descr name="ix"    outname="ix"   regexp="[1-7]" type="1" description="Указатель типа станции " >
+    <table val="3; 1; 1; 1; 0; 0; 0; 0" />
+  </descr>
+  <descr name="h"     outname="h"   regexp="[\d]" type="1"  description="Высота основания самых низких видимых облаков над поверхностью земли,м" >
+    <table val="0; 50; 100; 200; 300; 600; 1000; 1500; 2000; 2500" />
+  </descr>
+  <!-- h и hgr, чтоб отличать высоту, измеренную инструментально и наносить правильное значение на пуансон (правило про h и hshs) -->
+  <descr name="hgr"     outname="h"   regexp="[\d]" type="1"  description="Высота основания самых низких видимых облаков над поверхностью земли,м" >
+    <table val="0; 50; 100; 200; 300; 600; 1000; 1500; 2000; 2500" />
+  </descr>
+  <descr name="VV"    outname="V"     regexp="[\d]{2}" type="2" description="Горизонтальная видимость,м" />
+  <descr name="Vgmc"  outname="V"     regexp="[\d.]+" type="2" description="Горизонтальная видимость,м или км" />
+  <descr name="N"     outname="N"     regexp="[0-9/]"   type="1"  description="Общая облачность, %" >
+    <table val="0.; 10.; 25.; 40.; 50.; 60.; 75.; 90.; 100.; 113" />
+  </descr>
+  <descr name="Nb"   outname="N"     regexp="1?[0-9/]"   type="1"  description="Общая облачность, %" >
+    <table val="0; 10; 20; 30; 40; 50; 60; 70; 80; 90; 100; 113" />
+  </descr> 
+  <descr name="dd"    	 outname="dd"  regexp="[0-39][\d]"  type="2" description="Истинное направление, откуда дует (или будет дуть) ветер,градусы" />
+  <descr name="ff"	 outname="ff"  regexp="[\d]{2}"  type="2"   description="Скорость ветра,iw" />
+  <descr name="fff"	 outname="ff"  regexp="[\d]{3}"	 type="2"    description="Скорость ветра,iw" />
+  <descr name="snTTT"	 outname="T"   regexp="[01][\d]{3}"  type="2" description="Температура воздуха,C" />
+  <descr name="snTdTdTd" outname="Td"  regexp="[01][\d]{3}"  type="2" description="Температура точки росы,C" />
+  <descr name="UUU"	 outname="U"   regexp="[01][\d]{2}"	      description="Относительная влажность воздуха,%" />
+  <descr name="UU"	 outname="U"   regexp="[\d]{2}"	     type="2" description="Относительная влажность воздуха,%" />
+  <descr name="P0P0P0P0" outname="P0"  regexp="[0-9][\d]{3}" type="2" description="Давление на уровне станции,гПа" />
+  <descr name="PPPP"	 outname="P"   regexp="[0-9][\d]{3}" type="2" description="Давление, приведенное к среднему уровню моря,гПа" />
+  <descr name="a3"	 outname="P1"  regexp="[12578]"	     type="1" description="Стандартная изобарическая поверхность, по которой сообщается геопотенциал,гПа" >
+    <table val="1,1000; 2,925; 5,500; 7,700; 8,850" />
+  </descr>
+  <descr name="hhh"   outname="hh"    regexp="[\d]{3}"	    description="Геопотенциал согласованных стандартных изобарических поверхностей,гпм" />
+  <descr name="a"    outname="a"    regexp="[0-8]"	    description="Характеристика барической тенденции в течение трех часов, предшествовавших сроку наблюдения" />
+  <descr name="ppp"  outname="p"    regexp="[\d]{3}" type="2"	    description="Величина барической тенденциине станции за три часа, предшествовавших сроку наблюдения" />
+  <descr name="RRR"  outname="R"    regexp="[\d]{3}" type="2" 	  description="Количество осадков, выпавших за период, предшествовавший сроку наблюдения и указанный посредством tR" />
+  <descr name="tR"   outname="GGp"      regexp="[0-9]"   type="1"  description="Продолжительность периода, за который сообщается количество осадков, закончившегося ко времени передачи сводки,ч" >
+    <table val="0;-6;-12;-18;-24;-1;-2;-3;-9;-15" />
+  </descr>
+  <descr name="ww" outname="w" 	   regexp="[\d]{2}" type="2"  description="Текущая погода" />
+  <descr name="W1" outname="W1" 	   regexp="[\d]" type="2"    description="Прошедшая погода" />
+  <descr name="W2" outname="W2" 	   regexp="[\d]" type="2"    description="Прошедшая погода" />
+  <descr name="Nh" outname="Nh" 	   regexp="[0-9]" type="1" description="Количество всех наблюдающихся облаков CL или CM, октеты" >
+    <table val="0; 1; 3; 4; 5; 6; 8; 9; 10; -9999" />
+  </descr>
+  <descr name="Nh_b" outname="Nh" 	   regexp="1?[0-9]" description="Количество всех наблюдающихся облаков CL или CM, баллы" />
+  <descr name="CL" outname="C" add="30"  regexp="[\d]"  description="Слоисто-кучевые, слоистые, кучевые и кучево-дождевые облака" />
+  <descr name="CM" outname="C" add="20"  regexp="[\d]"  description="Высококучевые, высокослоистые и слоисто-дождевые облака" />
+  <descr name="CH" outname="C" add="10"  regexp="[\d]"  description="Перистые, перисто-кучевые и перисто-слоистые облака" />
+
+  <!-- Section 222 -->
+  <descr name="Ds" outname="Ds"      regexp="[0-9]" type="1"	    description="Истинное направление результирующего смещения судна в течение трех часов, предшествовавших сроку наблюдения" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="vs" outname="vs"      regexp="[0-9]" type="1"	    description="Средняя скорость судна в течение трех часов, предшествовавших сроку наблюдения,км/ч" >
+    <table val="0.; 5.; 15.; 24.; 33.; 42.; 52.; 61.; 70.; 80." />
+  </descr>
+  <descr name="ssTwTwTw" outname="Tw"  regexp="[0-7][\d]{3}" type="2" description="Температура поверхности моря,C" />
+  <descr name="PwaPwa"	 outname="Pwa"  regexp="[0-9]{2}"	    description="Период волн,с" />
+  <descr name="HwaHwa"	 outname="Hwa"  regexp="[0-9]{2}" mul="0.5"  description="Высота волн,м" />
+  <descr name="PwPw"	 outname="Pw"  regexp="[0-9]{2}"	    description="Период ветровых волн,с" />
+  <descr name="dw1dw1"	 outname="dw1"  regexp="[0-9]{2}" type="2"  description="Истинное направление откуда перемещается зыбь" />
+  <descr name="dw2dw2"	 outname="dw1"  regexp="[0-9]{2}" type="2"  description="Истинное направление откуда перемещается зыбь" />
+  <descr name="Pw1Pw1"	 outname="Pw1"  regexp="[0-9]{2}"	    description="Период зыби, в секундах" />
+  <descr name="Hw1Hw1"	 outname="Hw1"  regexp="[0-9]{2}" mul="0.5"  description="Высота зыби,м" />
+  <descr name="Pw2Pw2"	 outname="Pw1"  regexp="[0-9]{2}"	    description="Период зыби, в секундах" />
+  <descr name="Hw2Hw2"	 outname="Hw1"  regexp="[0-9]{2}" mul="0.5"  description="Высота зыби,м" />
+  <descr name="Is"	 outname="Is"  regexp="[1-5]"	    description="Обледенение судов,причина" />
+  <descr name="EsEs"	 outname="Es"  regexp="[\d]{2}"	    description="Толщина льда, отложившегося на судне, см" />
+  <descr name="Rs"	 outname="Rs"  regexp="[0-4]"	    description=" Скорость обледенения судов" />
+  <descr name="HwaHwaHwa" outname="Hwa"  regexp="[0-9]{3}" mul="0.1"	description="Высота волн,м" />
+  <descr name="swTbTbTb"  outname="Tb"  regexp="[0-7][\d]{3}" type="2" description="Температура по смоченному термометру,С" />
+  <descr name="ci" outname="ci"  regexp="[\d]" description="Сплоченность или распределение морского льда" />
+  <descr name="Si" outname="Si"  regexp="[\d]" description="Стадия развития льда" />
+  <descr name="bi" outname="bi"  regexp="[\d]" description="Лед материкового происхождения" />
+  <descr name="Di" outname="Di"  regexp="[0-9]" type="1" description="Истинный пеленг основной кромки льда" >
+    <table val="0,0; 1,45; 2,90; 3,135; 4,180; 5,225; 6,270; 7,315; 8,360; 9,-9999" />
+  </descr>
+  <descr name="zi" outname="zi"  regexp="[\d]" description="Ледовая обстановка" />
+  <!-- Section 333 -->
+  <descr name="E"        outname="Ef"  regexp="[0-9]"	     description="Состояние поверхности почвы без снега или измеримого ледяного покрова" />
+  <descr name="snTg_Tg_" outname="Tg_"  regexp="[01][\d]{2}" type="2" description="Температура поверхности земли" />
+  <descr name="snTxTxTx" outname="Tx"  regexp="[01][\d]{3}" type="2"  description="Максимальная температура воздуха,C" />
+  <descr name="snTnTnTn" outname="Tn"  regexp="[01][\d]{3}" type="2"  description="Минимальная температура воздуха,C" />
+  <descr name="snTnTn" outname="Tn"    regexp="[01][\d]{2}" type="2"  description="Минимальная температура воздуха за ночь,C" />
+  <descr name="snTgTg"	 outname="Tg"  regexp="[01][\d]{2}" type="2" description="Минимальная температура грунта за предыдущую ночь, C" />
+  <descr name="E_"	 outname="Ef"  regexp="[0-9]" add="10"	description="Состояние поверхности почвы со снегом или измеримым ледяным покровом" />
+  <descr name="sss"	 outname="sss"  regexp="[\d]{3}" 	description="Общая высота снежного покрова, см" />
+  <descr name="EEE"	 outname="EEE"  regexp="[\d]{3}" mul="0.1" description="Величина испарения или эвапотранспирации в течение предшествующих 24 часов,мм" />
+  <descr name="iE"	 outname="iE"  regexp="[\d]"	 description=" Указатель типа прибора для измерения испарения или вида сельскохозяйственной культуры, по которой сообщаются данные об эвапотранспирации" />
+  <descr name="g0"	 outname="GGp"  regexp="[0-5]"    mul="0.1"  description="Период времени между сроком наблюдения и временем изменения температуры,ч" />
+  <descr name="sndT"	 outname="dT"  regexp="[01][\d]" type="2"	  description="Величина изменения температуры" />
+  <descr name="SSS"	 outname="SSS"  regexp="[\d]{3}"	 mul="0.1"  description="Продолжительность солнечного сияния,ч" />
+
+  <descr name="F24F24F24F240"   outname="F0"   regexp="[\d]{4}" mul="10"  description="Положительная остаточная радиация, измеренная за предыдущие 24 часа, в Дж.см-2" />
+  <descr name="F24F24F24F241"	outname="F0"   regexp="[\d]{4}" mul="-10" description="Отрицательная остаточная радиация, измеренная за предыдущие 24 часа, в Дж.см-2" />
+  <descr name="F24F24F24F242"	outname="F2"   regexp="[\d]{4}" mul="10"  description="Суммарная солнечная радиация, измеренная за предыдущие 24 часа, в Дж.см-2" />
+  <descr name="F24F24F24F243"	outname="F3"	 regexp="[\d]{4}"  mul="10"  description="рассеянная солнечная радиация, измеренная за предыдущие 24 часа, в Дж.см-2" />
+  <descr name="F24F24F24F244"	outname="F4"	 regexp="[\d]{4}"  mul="10"  description="нисходящая длинноволновая радиация, измеренная за предыдущие 24 часа, в Дж.см-2" />
+  <descr name="F24F24F24F245"	outname="F4"   regexp="[\d]{4}" mul="-10" description="восходящая длинноволновая радиация, измеренная за предыдущие 24 часа, в Дж.см-2" />
+  <descr name="F24F24F24F24507" outname="F407" regexp="[\d]{4}" mul="10"  description="остаточной коротковолновой радиации за предшествующие 24 часа, в Дж.см-2" />
+  <descr name="F24F24F24F24508" outname="F408" regexp="[\d]{4}" mul="10"  description="прямой солнечной радиации за предшествующие 24 часа, в Дж.см-2" />
+  <descr name="F24F24F24F246"	outname="F6"   regexp="[\d]{4}" mul="10"  description="коротковолновая радиация измеренная за предыдущие 24 часа, в Дж.см-2" />
+
+  <descr name="SS"    	outname="SSS"  regexp="[\d]{2}"  mul="0.1" description="Продолжительность солнечного сияния за прошедший час,ч" />
+  <descr name="FFFF0"	outname="F0"  regexp="[\d]{4}"  description="положительная остаточная радиация, измеренная за предыдущий час, в кДж.м-2" />
+  <descr name="FFFF1"	outname="F0"  regexp="[\d]{4}" mul="-1"	 description="отрицательная остаточная радиация, измеренная за предыдущий час, в кДж.м-2" />
+  <descr name="FFFF2"	outname="F2"  regexp="[\d]{4}"	description="суммарная солнечная радиация, измеренная за предыдущий час, в кДж.м-2" />
+  <descr name="FFFF3"	outname="F3"  regexp="[\d]{4}"	description="рассеянная солнечная радиация, измеренная за предыдущий час,в кДж.м-2" />
+  <descr name="FFFF4"	outname="F4"  regexp="[\d]{4}"	description="нисходящая длинноволновая радиация, измеренная за предыдущий час, в кДж.м-2" />
+  <descr name="FFFF407" outname="F407" regexp="[\d]{4}"	description="остаточная коротковолновая радиация за предшествующий час, в кДж.м-2" />
+  <descr name="FFFF408" outname="F408" regexp="[\d]{4}"	description="прямая солнечная радиация за предшествующий час, в кДж.м -2" />
+  <descr name="FFFF5"	outname="F4"  regexp="[\d]{4}" mul="-1"	description="восходящая длинноволновая радиация, измеренная за предыдущий час, в кДж.м-2 кДж.м" />
+  <descr name="FFFF6"	outname="F6"  regexp="[\d]{4}"	description="коротковолновая радиация, измеренная за предыдущий час, в кДж.м-2" />
+  <descr name="DL" outname="Dp"  regexp="[0-9]"	type="1" description="Истинное направление, откуда перемещаются облака CL." >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="DM" outname="Dp"  regexp="[0-9]"	type="1" description="Истинное направление, откуда перемещаются облака CM." >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="DH" outname="Dp"  regexp="[0-9]"	 type="1" description="Истинное направление, откуда перемещаются облака CH." >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="C"  outname="C"  regexp="[0-9]"	 description="Род облаков" />
+  <descr name="Da" outname="Da"  regexp="[0-9]"	type="1"  description="Истинное направление, в котором видны орографические облака или облака с вертикальным развитием" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="eC" outname="el"  regexp="[1-9]" type="1"  description="Угол возвышения вершины облака, обозначаемого C" >
+    <table val="0,-9999; 1,45.; 2, 30.; 3,20.; 4,15.; 5,12.; 6,9.; 7,7.; 8,6.; 9,5." />
+  </descr>
+  <descr name="p24p24p240"   outname="p24"   regexp="[\d]{3}"  mul="0.1"   description="позитивных или нулевых изменений приземного давления за последние 24 часа,гПа" />
+  <descr name="p24p24p241"   outname="p24"   regexp="[\d]{3}"  mul="-0.1"  description="отрицательных изменений приземного давления за последние 24 часа,гПа" />
+  <descr name="RRR333"	     outname="R"  regexp="[\d]{3}" type="2"  description="Количество осадков, выпавших за период, предшествовавший сроку наблюдения и указанный посредством tR333" />
+  <descr name="tR333"	     outname="GGp"   regexp="[1-9]"  type="1"  description="Продолжительность периода, за который сообщается количество осадков, закончившегося ко времени передачи сводки,ч" >
+    <table val="0;-6;-12;-18;-24;-1;-2;-3;-9;-15" />
+  </descr>
+  <descr name="R24R24R24R24" outname="R24"    regexp="[\d]{4}"  mul="0.1" description="Суммарное количество осадков за 24-часовой период, заканчивающийся в срок наблюдения,мм" />
+  <descr name="R24R24R24" outname="R24"    regexp="[\d]{3}"  description="Суммарное количество осадков за 24-часовой период, заканчивающийся в срок наблюдения,мм" />
+  <descr name="Ns"    outname="Nh"   regexp="[0-9]"  type="1" description="Количество отдельных облачных слоев или масс, род которых указывается посредством C333" >
+    <table val="0;1;3;4;5;6;8;9;10;-9999" />
+  </descr>
+  <descr name="C333"  outname="C"   regexp="[0-9]"  description="Род облаков" />
+  <descr name="hshs_f"  outname="h"   regexp="[\d]{2}" type="3"  description="Высота основания облачного слоя или массы, род которых указывается посредством C333, первая группа, м" />
+  <descr name="hshs"  outname="h"   regexp="[\d]{2}" type="2"  description="Высота основания облачного слоя или массы, род которых указывается посредством C333,м" />
+  <descr name="htht"  outname="h_"   regexp="[\d]{2}"  type="2"  description="Высота верхней границы облачности, измеренная инструментально" />
+  <descr name="tt00"  outname="tt00"  regexp="[\d]{2}" type="2"	 description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt01"  outname="tt01"  regexp="[\d]{2}" type="2"	 description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt02"  outname="tt02"  regexp="[\d]{2}" type="2"	 description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt03"  outname="tt03"  regexp="[\d]{2}" type="2"	 description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt04"  outname="tt04"  regexp="[\d]{2}" type="2"	 description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt05"  outname="tt05"  regexp="[\d]{2}" type="2"	 description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt06"  outname="tt06"  regexp="[\d]{2}" type="2"	 description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="tt07"  outname="tt07"  regexp="[\d]{2}" type="2"	 description="Время и изменчивость для групп 7wwW1W2 или 9SpSpspsp" />
+  <descr name="Rt09"  outname="Rt09"  regexp="[1-8]"    type="1" description="Время начала или окончания осадков, передаваемых посредством RRR" >
+    <table val="1,0; 2,1; 3,2; 4,3; 5,4; 6,5; 7,6; 8,12" />
+  </descr>
+  <descr name="dc09"  outname="dc09"  regexp="[0-7]"    description="Продолжительность и характер осадков, передаваемых посредством RRR" >
+    <table val="0.; 1.; 3.; 6.; 0.; 1.; 3.; 6." />
+  </descr>
+  <descr name="ff10"  outname="fx"   regexp="[\d]{2}"  description="Максимальная скорость ветра при порыве" />
+  <descr name="fff10" outname="fx"   regexp="[\d]{3}"  description="Максимальная скорость ветра при порыве" />
+  <descr name="ff11"  outname="fx"   regexp="[\d]{2}"  description="Максимальная скорость ветра при порыве" />
+  <descr name="fff11" outname="fx"   regexp="[\d]{3}"  description="Максимальная скорость ветра при порыве" />
+  <descr name="ff12"  outname="Fx"   regexp="[\d]{2}"  description="Максимальная скорость ветра, средний ветер за период" />
+  <descr name="fff12" outname="Fx"   regexp="[\d]{3}"  description="Максимальная скорость ветра, средний ветер за период" />
+  <!-- <descr name="ff13"  outname="ff13" regexp="[\d]{2}"  description="Ветер и шквал" /> -->
+  <!-- <descr name="fff13" outname="ff13" regexp="[\d]{3}"  description="Ветер и шквал" /> -->
+  <descr name="ff14"  outname="fn" regexp="[\d]{2}"  description="Минимальная скорость ветра, средний ветер за период" />
+  <descr name="fff14" outname="fn" regexp="[\d]{3}"  description="Минимальная скорость ветра, средний ветер за период" />
+  <!-- <descr name="dd15"  outname="dd15" regexp="[0-3,9][\d]"  mul="10" description="Направление ветра" /> -->
+  <descr name="tt16"  outname="tt16"   regexp="[\d]{2}"   type="2" description="Время резко выраженного сдвига направления ветра по часовой стрелке"  />
+  <descr name="tt17"  outname="tt17"   regexp="[\d]{2}"   type="2" description="Время резко выраженного сдвига направления ветра против часовой стрелки"  />
+  <descr name="sq18"  outname="Sf"     regexp="[\d]"  add="50"  description="Характер и/или тип шквала" />
+  <descr name="Dp18"  outname="Dp18"   regexp="[0-9]" type="1"  description="Истинное направление, откуда приближается указанное явление" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Mw19"  outname="Mw19"   regexp="[\d]"   description=" Водяной(ые) смерч(и), торнадо, вихри, пыльные вихри" />
+  <descr name="Da19"  outname="Da19"   regexp="[0-9]" type="1"  description=" Истинное направление, в котором видны орографические облака или облака с вертикальным развитием" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="S20"   outname="S"   regexp="[\d]" type="1" description="Состояние моря" >
+    <table val="0.; 0.1; 0.5; 1.25; 2.5; 4.;  6.; 9.; 14.; 15." />
+  </descr>
+  <descr name="Fx20"  outname="Fx"   regexp="[0-9]" type="1"   description="Максимальная сила ветра (Fx ≤ 9 по шкале Бофорта)" >
+    <table val="0.2; 1.5; 3.3; 5.4; 7.9; 10.7; 13.8; 17.1; 20.7; 24.4" />
+  </descr>
+  <descr name="S21"   outname="S"   regexp="[\d]" type="1" description="Состояние моря" >
+    <table val="0.; 0.1; 0.5; 1.25; 2.5; 4.; 6.; 9.; 14.; 15." />
+  </descr>
+  <descr name="Fx21"  outname="Fx"   regexp="[0-2]" type="1"   description="Максимальная сила ветра (Fx > 9 по шкале Бофорта)" >
+    <table val="28.4; 32.6; 35.0" />
+  </descr>
+  <descr name="S_22"  outname="S"   regexp="[\d]" type="1"  description="Состояние моря в месте посадки гидросамолетов" >
+    <table val="0.; 0.1; 0.5; 1.25; 2.5; 4.; 6.; 9.; 14.; 15." />
+  </descr>
+  <descr name="Vs_22" outname="Vs_22"   regexp="[\d]" type="1"    description="видимость в месте посадки гидросамолетов" >
+    <table val="10.; 50.; 200.;	500.; 1000.; 2000.; 4000.; 10000.; 20000.; 50000." />
+  </descr>
+  <descr name="S_23"  outname="S"   regexp="[\d]" type="1"  description="Состояние моря в месте посадки гидросамолетов" >
+    <table val="0.; 0.1; 0.5; 1.25; 2.5; 4.; 6.; 9.; 14.; 15." />
+  </descr>
+  <descr name="S23"   outname="S"  regexp="[\d]"  type="1" description="Состояние моря" >
+    <table val="0.; 0.1; 0.5; 1.25; 2.5; 4.; 6.; 9.; 14.; 15." />
+  </descr>
+  <descr name="S24"   outname="S"   regexp="[\d]" type="1"  description="Состояние моря" >
+    <table val="0.; 0.1; 0.5; 1.25; 2.5; 4.; 6.; 9.; 14.; 15." />
+  </descr>
+  <descr name="Vs24"  outname="Vs24"   regexp="[\d]" type="1"    description="Видимость по направлению к морю " >
+    <table val="10.; 50.; 200.;	500.; 1000.; 2000.; 4000.; 10000.; 20000.; 50000." />
+  </descr>
+  <descr name="TwTw25" outname="Tw25"  regexp="[\d]{2}"   description="Температура воды на курортах в сезон" />
+  <descr name="S026"   outname="S026"  regexp="[0-3]"  description="Иней или окрашенные осадки" />
+  <descr name="i026"   outname="i026"  regexp="[0-2]"  type="1" description="Иней или окрашенные осадки. Интенсивность" >
+    <table val="1;2;3" />
+  </descr>
+  <descr name="S627"   outname="Sf"  regexp="[0-7]" add="91" description="Гололедно-изморозевые отложения" />
+  <descr name="Tw27"   outname="Sf"  regexp="[0-9]" add="60" description="Гололедно-изморозевые отложения" />
+  <descr name="S728"   outname="S7"  regexp="[0-8]" description="Характер и состояние снежного покрова" />
+  <descr name="S7_28"  outname="S7'" regexp="[0-8]" description="Характер и состояние снежного покрова" />
+  <descr name="S829"   outname="S8"  regexp="[\d]"   description="Поземок"  />
+  <descr name="S8_29"  outname="S8'" regexp="[0-7]" description="Эволюция позёмка" />
+
+  <descr name="RR30"   outname="RR30"  regexp="[\d]{2}" type="2" description="Количество осадков" />
+  <descr name="ss31"   outname="ss"    regexp="[\d]{2}" type="2" description="Высота свежевыпавшего снега" />
+  <descr name="RR32"   outname="RR32"  regexp="[\d]{2}" type="2" description="Максимальный диаметр градин" />
+  <descr name="RR33"   outname="RR33"  regexp="[\d]{2}" type="2" description="Водный эквивалент твердых осадков на поверхности земли" />
+  <descr name="RR34"   outname="RR34"  regexp="[\d]{2}" type="2"  description="Диаметр отложения при гололеде" />
+  <descr name="RR35"   outname="RR35"  regexp="[\d]{2}" type="2"  description="Диаметр изморозевого отложения" />
+  <descr name="RR36"   outname="RR36"  regexp="[\d]{2}" type="2"  description="Диаметр смешанного отложения" />
+  <descr name="RR37"   outname="RR37"  regexp="[\d]{2}" type="2"  description="Диаметр отложения мокрого снега" />
+  <descr name="nn38"   outname="nn38"  regexp="[\d]{2}" description="Скорость нарастания отложения на поверхности при гололеде, в мм.ч-1" />
+  <descr name="hghg39" outname="hghg39"  regexp="[\d]{2}"  description="Высота над поверхностью земли, на которой наблюдается диаметр отложений, в метрах, сообщаемый в предыдущей группе 9SPSPspsp" />
+  <descr name="nn39"   outname="RR32"  regexp="[\d]{2}" mul="0.01" description="Максимальный диаметр градин" />
+  <descr name="C40"    outname="C40"  regexp="[\d]"  description="Род облаков" />
+  <descr name="n340"   outname="n340"  regexp="[\d]"  description="Эволюция облаков" />
+  <descr name="C41"    outname="C41"  regexp="[\d]"  description="Род облаков" />
+  <descr name="Dp41"   outname="Dp41"  regexp="[0-9]" type="1"   description="Направление, откуда движутся облака" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="C42"    outname="C42"  regexp="[\d]"    description="Род облаков" />
+  <descr name="Da42"   outname="Da42"  regexp="[0-9]" type="1"   description="Местоположение максимальной концентрации облаков" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="CL43"   outname="CL43"  regexp="[\d]"    description="Род облаков" />
+  <descr name="Dp43"   outname="Dp43"  regexp="[0-9]" type="1"   description="Направление, откуда движутся облака нижнего яруса" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="CL44"   outname="CL44"  regexp="[\d]"    description="Род облаков" />
+  <descr name="Da44"   outname="Da44"  regexp="[0-9]" type="1"   description="Местоположение максимальной концентрации низких облаков" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="htht45" outname="htht45"  regexp="[\d]{2}"  type="2" description="Высота вершин самых низких облаков" />
+  <descr name="Cc46"   outname="Cc46"  regexp="[1-8]" add="30"  description="Окрашивание и/или конвергенция облаков, связанных с тропическим возмущением" />
+  <descr name="Da46"   outname="Da46"  regexp="[0-9]"  type="1"   description="Направление окрашивания и/или конвергенции облаков" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="C47"    outname="C47"  regexp="[\d]"    description="Род облаков" />
+  <descr name="e_47"   outname="e'"   regexp="[0-9]" type="1"    description="Угол возвышения вершины явления над горизонтом" >
+    <table val="-9999; 45.; 30.; 20.; 15.; 12.; 9.;  7.;  6.;  5." />
+  </descr>
+  <descr name="C048"   outname="C048"  regexp="[1-9]"  add="10" description="Орографические облака" />
+  <descr name="Da48"   outname="Da48"  regexp="[0-9]" type="1"   description="Истинное направление" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Ca49"   outname="Ca49"  regexp="[0-7]"  description="Облака вертикального развития" />
+  <descr name="Da49"   outname="Da49"  regexp="[0-9]" type="1"  description="Истинное направление" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Nm50"   outname="Nm50"  regexp="[\d]" add="20"   description="Условия облачности над горами и перевалами" />
+  <descr name="n350"   outname="n350"  regexp="[\d]"    description="Эволюция облачности" />
+  <descr name="Nv51"   outname="Nv51"  regexp="[\d]" add="40"  description="Условия облачности, наблюдаемые с более высокого уровня" />
+  <descr name="n451"   outname="n451"  regexp="[\d]"  description="Эволюция облачности, наблюдаемой со станции,  расположенной на более высоком уровне" />
+  <!-- 1 - очень низкая нижняя граница облаков над горизонтом (10); 3 - возвышение менее 30 градусов (30) ; 7 - возвышение более 30 градусов (70) -->
+  <descr name="Eh58"   outname="Eh58"   regexp="[137]" mul="10"    description="Местоположение максимальной концентрации облаков" />
+  <descr name="Da58"   outname="Da58"  regexp="[0-9]"  description="Местоположение максимальной концентрации облаков" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="vp59"   outname="vp59"  regexp="[\d]" type="1"  description="Скорость и направление, откуда движутся облака" >
+    <table val="2.; 7.; 12.; 17.; 22.; 27.; 32.; 38.; 43.; 47." />
+  </descr>
+  <descr name="Dp59"   outname="Dp59"  regexp="[0-9]" type="1"  description="Скорость и направление, откуда движутся облака" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="ww60"   outname="w"   regexp="[\d]{2}" description="Текущая погода и прошедшая погода" />
+  <descr name="w1w161" outname="w"  add="200" regexp="[\d]{2}" description="Текущая погода и прошедшая погода" />
+
+  <descr name="ww62"   outname="ww62"   regexp="[\d]{2}" description="Текущая погода и прошедшая погода" />
+  <descr name="w1w163" outname="ww62" add="200" regexp="[\d]{2}" description="Текущая погода и прошедшая погода" />
+
+  <descr name="ww64"   outname="ww64"   regexp="[\d]{2}" description="Погода для усиления W1 и/или W2" />
+  <descr name="w1w165" outname="ww64" add="200" regexp="[\d]{2}" description="Погода для усиления W1 и/или W2" />
+
+  <descr name="ww66"   outname="ww66"   regexp="[\d]{2}"  description="Метеорологическое явление, происходящее в срок или в период, указанный соответствующей(ими) группой(ами) времени 9SPSPspsp" />
+  <descr name="w1w167" outname="ww66" add="200" regexp="[\d]{2}"  description="Метеорологическое явление, происходящее в срок или в период, указанный соответствующей(ими) группой(ами) времени 9SPSPspsp" />
+
+  <descr name="Da696"  outname="Da696"  regexp="[0-9]" type="1"  description="Дождь на станции, не связанный с отдаленной грозой, направление Da" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Da697"  outname="Da697"  regexp="[0-9]" type="1"  description="Снег на станции, не связанный с отдаленной грозой, направление Da" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Da698"  outname="Da698"  regexp="[0-9]" type="1"  description="Ливень на станции, не связанный с отдаленной грозой, направление Da" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Eh70"   outname="Eh70"   regexp="[137]" mul="10"    description="Местоположение и перемещение явления" />
+  <descr name="Da70"   outname="Da70"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Eh71"   outname="Eh71"   regexp="[137]" mul="10"     description="Местоположение и перемещение явления" />
+  <descr name="Da71"   outname="Da71"  regexp="[0-9]"     description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Eh72"   outname="Eh72"   regexp="[137]" mul="10"    description="Местоположение и перемещение явления" />
+  <descr name="Da72"   outname="Da72"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Eh73"   outname="Eh73"   regexp="[137]" mul="10"     description="Местоположение и перемещение явления" />
+  <descr name="Da73"   outname="Da73"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Eh74"   outname="Eh74"   regexp="[137]" mul="10"     description="Местоположение и перемещение явления" />
+  <descr name="Da74"   outname="Da74"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="vp75"   outname="vp75"  regexp="[\d]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="2.; 7.; 12.; 17.; 22.; 27.; 32.; 38.; 43.; 47." />
+  </descr>
+  <descr name="Dp75"   outname="Dp75"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="vp76"   outname="vp76"  regexp="[\d]"  type="1"   description="Местоположение и перемещение явления" >
+    <table val="2.; 7.; 12.; 17.; 22.; 27.; 32.; 38.; 43.; 47." />
+  </descr>
+  <descr name="Dp76"   outname="Dp76"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="vp77"   outname="vp77"  regexp="[\d]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="2.; 7.; 12.; 17.; 22.; 27.; 32.; 38.; 43.; 47." />
+  </descr>
+  <descr name="Dp77"   outname="Dp77"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="vp78"   outname="vp78"  regexp="[\d]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="2.; 7.; 12.; 17.; 22.; 27.; 32.; 38.; 43.; 47." />
+  </descr>
+  <descr name="Dp78"   outname="Dp78"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="vp79"   outname="vp79"  regexp="[\d]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="2.; 7.; 12.; 17.; 22.; 27.; 32.; 38.; 43.; 47." />
+  </descr>
+  <descr name="Dp79"   outname="Dp79"  regexp="[0-9]" type="1"    description="Местоположение и перемещение явления" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="VsVs80" outname="VsVs80"  regexp="[\d]{2}" type="2"  description="Видимость по направлению к морю,м" />
+  <descr name="VV81"   outname="VV81"  regexp="[\d]{2}" type="2"  description="Видимость на СВ,м" />
+  <descr name="VV82"   outname="VV82"  regexp="[\d]{2}" type="2"  description="Видимость на В,м" />
+  <descr name="VV83"   outname="VV83"  regexp="[\d]{2}" type="2"  description="Видимость на ЮВ,м" />
+  <descr name="VV84"   outname="VV84"  regexp="[\d]{2}" type="2"  description="Видимость на Ю,м" />
+  <descr name="VV85"   outname="VV85"  regexp="[\d]{2}" type="2"  description="Видимость на ЮЗ,м" />
+  <descr name="VV86"   outname="VV86"  regexp="[\d]{2}" type="2"  description="Видимость на З,м" />
+  <descr name="VV87"   outname="VV87"  regexp="[\d]{2}" type="2"  description="Видимость на СЗ,м" />
+  <descr name="VV88"   outname="VV88"  regexp="[\d]{2}" type="2"  description="Видимость на С,м" />
+  <descr name="Vb89"   outname="Vb89"  regexp="[\d]"    description="Изменение видимости в течение часа, предшествовавшего сроку наблюдения,м" />
+  <descr name="Da89"   outname="Da89"  regexp="[0-9]" type="1"   description="Направление изменения видимости" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="Z090"   outname="Sf"  regexp="[\d]" add="80" description="Оптические явления" />
+  <descr name="i090"   outname="iS"  regexp="[0-2]" add="1" description="Интенсивность" />
+  <descr name="A91"    outname="A91"  regexp="[0-8]" add="10" description="Мираж" />
+  <descr name="Da91"   outname="Da91"  regexp="[0-9]" type="1"  description="Мираж,направление" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="StElmo91" outname="Sf"  regexp="90" description="Огни Святого Эльмы" />
+  <descr name="Nt92"     outname="Nt92"  regexp="[5-9]" add="30"    description="Конденсационные следы" />
+  <descr name="tw92"     outname="tw92"  regexp="[\d]" type="1"   description="Время начала явления до срока наблюдения" >
+    <table val="0; -0.5; -1; -1.5; -2; -2.5; -3; -3.5; -4; -5;" />
+  </descr>
+  <descr name="CS93"   outname="Cs"  regexp="[1-5]"  description="Облака особых видов" />
+  <descr name="Da93"   outname="Da93"  regexp="[0-9]" type="1"   description="Направление, облака особых видов" >
+    <table val="0,0; 0.; 45.; 90.; 135.; 180.; 225.; 270.; 315.; 0.; -9999" />
+  </descr>
+  <descr name="A394"   outname="A394"  regexp="[0-2]"  add="20"  description="Ухудшение освещенности в дневное время" />
+  <descr name="Da94"   outname="Da94"  regexp="[0-9]" type="1"   description="Ухудшение освещенности в дневное время" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="nn95"   outname="Pn"  regexp="[\d]{2}" description="Самое низкое атмосферное давление,среднему уровню моря, за период, охват" />
+  <descr name="TvTv96" outname="Tv"  regexp="[\d]" description="Внезапное возрастание температуры воздуха, C" />
+  <descr name="TvTv97" outname="Tv"  regexp="[\d]" mul="-1" description="Внезапное снижение температуры воздуха, C" />
+  <descr name="UvUv98" outname="Uv"  regexp="[\d]"          description="Внезапное возрастание относительной влажности, %" />
+  <descr name="UvUv99" outname="Uv"  regexp="[\d]" mul="-1" description="Внезапное падение относительной влажности, %" />
+  <descr name="N_"     outname="N_"  regexp="[0-9]"   description="Количество облаков, основание которых расположено ниже уровня станции" />
+  <descr name="C_"     outname="C"     regexp="[\d]"               description="Род облаков, основание которых находится ниже уровня станции" />
+  <descr name="H_H_"   outname="h_"   regexp="[\d]{2}" mul="100"  description="Высота верхней границы облаков, сообщаемых посредством C'" />
+  <descr name="Ct"     outname="Ct"     regexp="[\d]"               description="Описание вершин облаков, основание которых находится ниже уровня станции" />
+  <descr name="D____D" outname="D____D" regexp="[\w]{3,}" description="Радиопозывной сигнал судна, состоящий из трех (или более) буквенно-цифровых знаков" />
+  <descr name="A1"     outname="A1"     regexp="[1-7]"  description=" Район региональной ассоциации ВМО, где размещены буй, буровая уста­нов­ка или платформа для добычи нефти и газа" />
+  <descr name="bw"     outname="bw"     regexp="[\d]"   description=" Подрайон, входящий в район, обозначенный A1" />
+  <descr name="nbnbnb" outname="nb" regexp="[\d]{3}"  description="Тип и порядковый номер буя" />
+
+  <!-- FM13,14,36,37,38 -->
+  <descr name="LaLaLa"   outname="La"  regexp="[\d]{3}" mul="0.1" description="Широта" />
+  <descr name="Qc"       outname="Qc"  regexp="[1357]" description="Квадрант земного шара" />
+  <descr name="LoLoLoLo" outname="Lo"  regexp="[01][\d]{3}" mul="0.1" description="Долгота" />
+  <!-- FM14,36,37,38 -->
+  <descr name="MMM" outname="MMM"  regexp="[\d]{3}" description="Номер квадрата Марсдена, в котором расположена станция в срок наблюдения" />
+  <descr name="ULa" outname="ULa"  regexp="[\d]"    description="Разряд единиц в сообщаемой широте" />
+  <descr name="ULo" outname="ULo"  regexp="[\d]"    description="Разряд единиц в сообщаемой долготе" />
+  <!-- FM14,38 -->
+  <descr name="h0h0h0h0" outname="h0h0h0h0"  regexp="[\d]{4}" type="2" description="Превышение подвижной наземной станции,м" />
+  <descr name="im" outname="im"  regexp="[1-8]" description="Указатель единиц измерения превышения и доверительный уровень точности измерения превышения" />
+
+  <descr name="v_sign" outname="v_sign"  regexp="[\d]{1,2}"  description="Вертикальная значимость" />
+
+  <!-- FM20 -->
+  <descr name="Wr"  outname="Wr" regexp="[\d]"            description="Данные о наиболее опасном явлении (тип облачности)" />
+  <descr name="He"  outname="He" regexp="[0-9]" type="1"  description="Наибольшая высота радиоэха" >
+    <table val="0; 2; 4; 6; 8; 10; 12; 14; 16; 18" />
+  </descr>
+  <descr name="Ie"  outname="Ie" regexp="[0-9]" type="1"  description="Интенсивность эха" >
+    <table val="0; 0; 23.1; 23.1; 941; 941; 37100; 37100; 500000; 500000"/>
+  </descr>
+  <descr name="NeNe" outname="NeNe" regexp="[\d]{2}"   description="Номер квадрата 60х60 км" />
+  <descr name="De"  outname="Dp" regexp="[\d]" type="1"   description="Истинное направление, куда перемещается система радиоэха" >
+    <table val="0,0; 1,45.; 2,90.; 3,135.; 4,180.; 5,225.; 6,270.; 7,315.; 8,360.; 9,-9999" />
+  </descr>
+  <descr name="ae"  outname="ae" regexp="[\d]"         description="Тенденция изменения системы радиоэха" />
+  <descr name="Ac"  outname="Ac" regexp="[\d]"         description="Точность местонахождения центра или «глаза» тропического циклона" />
+  <descr name="Sc"  outname="Sc" regexp="[\d]"         description="Форма и четкость определения «глаза» тропического циклона" />
+  <descr name="Rw"  outname="Rw" regexp="[135789]" type="1"  description="Длина волны радиолокатора">
+    <table val="1,10; 3,20; 5,40; 7,60; 8,90; 9,110" />
+  </descr>
+  <descr name="Wc"  outname="Wc" regexp="[\d]"  type="1" description="Диаметр или длина большой оси «глаза» тропического циклона" >
+    <table val="0; 5; 10; 15; 20; 25; 30; 35; 40; 50" />
+  </descr>
+  <descr name="ac"  outname="ac" regexp="[\d]"        description="Изменение характера «глаза» в течение 30 минут, предшествовавших сроку наблюдения" />
+  <descr name="rt"  outname="rt" regexp="[0-7]" type="1" description="Расстояние между концом наблюдаемой наиболее удаленной спиральной полосы и центром тропического циклона" >
+    <table val="0; 100; 200; 300; 400; 500; 600; 800" />
+  </descr>
+  <descr name="fe"   outname="fe" regexp="[\d]" mul="10" description="Скорость перемещения системы радиоэха" />
+  <descr name="te"   outname="te" regexp="[3-9]"  description="Интервал времени, за который рассчитывалось перемещение центра или «глаза» тропического циклона" />
+  <descr name="dsds" outname="dsds" regexp="[\d]{2}" type="2" description="Истинное направление, в десятках градусов, в котором перемещаются тропический циклон или облачная система" />
+  <descr name="fsfs" outname="fsfs" regexp="[\d]{2}" mul="0.514" description="Скорость перемещения системы, фронта или области, в узлах" />
+
+  <descr name="fx12" outname="fx"  regexp="[\d]{2}"  description="Скорость ветра, м/с" />
+  
+  <!-- FM35 -->
+  <!--Part A -->
+  <descr name="IdA"     outname="Id"       regexp="[0-57-9]"   description="Давление последней стандартной изобарической поверхности, по которой сообщаются данные о ветре" >
+    <table val="0,1000.; 1,100.; 2,200.; 3,300.; 4,400.; 5,500.; 7,700.; 8,850.; 9,925." />
+  </descr>
+  <descr name="P0P0P0"  outname="P0"   regexp="[\d]{3}"   type="2"  description="Давление на установленных уровнях" />
+  <descr name="T0T0Ta0" outname="T"   regexp="[\d]{3}"   type="2"  description="Температуры воздуха на установленных уровнях,С" />
+  <descr name="D0D0"	outname="D"   regexp="[\d]{2}"   type="2"  description="Дефицит точки росы" />
+  <descr name="d0d0f"	outname="dd"   regexp="[\d]{2}5?" type="2"  description="Истинное направление откуда дует ветер на установленных уровнях, начиная с земной поверхности" />
+  <descr name="f0f0f0"	outname="ff"   regexp="[\d]{2,3}" type="2"  description="Скорость ветра" />
+  <descr name="PtPtPtA" outname="P1"  regexp="[\d]{3}"   type="2"  description="Давление на уровне тропопаузы" />
+  <descr name="PmPmPmA" outname="P1"	regexp="[\d]{3}"   type="2"  description="Давление на уровне максимального ветра" />
+  <descr name="P1P1A"	outname="P1"   regexp="[\d]{2}"   type="1"  description="Давление на стандартных изобарических поверхностях" >
+    <table val="0,1000.; 10,100.; 15,150.; 20,200.; 25,250.; 30,300.; 40,400.; 50,500.; 70,700.; 85,850.; 92,925." />
+  </descr>
+  <descr name="P1P1h1h1h1A" outname="hh"  regexp="[\d]{5}" type="2" description="Геопотенциал стандартных изобарических поверхностей" />
+  <descr name="T1T1Ta1A" outname="T" 	regexp="[\d]{3}"   type="2"  description="Температура на установленных уровнях" />
+  <descr name="D1D1A"	 outname="D" 	regexp="[\d]{2}"   type="2"  description="Дефицит точки росы на уровнях" />
+  <descr name="d1d1fA"	 outname="dd" 	regexp="[\d]{2}5?" type="2"  description="Истинное направление откуда дует ветер на установленных уровнях" />
+  <descr name="f1f1f1A"	 outname="ff" 	regexp="[\d]{2,3}" type="2"  description="Скорость ветра на уровнях" />
+  <descr name="TtTtTatA" outname="T" regexp="[\d]{3}"   type="2" description="Температура воздуха на уровне тропопаузы" />
+  <descr name="DtDtA"	 outname="D"	regexp="[\d]{2}"   type="2" description="Дефицит точки росы на уровне тропопаузы" />
+  <descr name="dtdtfA"	 outname="dd"	regexp="[\d]{2}5?" type="2" description="Истинное направление откуда дует ветер на уровне тропопаузы" />
+  <descr name="ftftftA"	 outname="ff"	regexp="[\d]{2,3}" type="2" description="Скорость ветра на уровне тропопаузы" />
+  <descr name="HmHmHmA"  outname="hh" regexp="[\d]{4}"   mul="10" description="Геопотенциал уровня максимального ветра" />
+  <descr name="dmdmfA"	 outname="dd"	regexp="[\d]{2}5?" type="2" description="Истинное направление, откуда дует максимальный ветер" />
+  <descr name="fmfmfmA"	 outname="ff"	regexp="[\d]{2,3}" type="2" description="Максимальная скорость ветра" />
+  <descr name="vbvbA"	 outname="vbvb" regexp="[\d]{2}"   type="2" description="Абсолютная величина векторной разности ветра между максимальным ветром и ветром на 1 км ниже него в единицах, указываемых посредством YY" />
+  <descr name="vavaA"	 outname="vava" regexp="[\d]{2}"   type="2" description="Абсолютная величина векторной разности ветра между максимальным ветром и ветром на 1 км выше него в единицах, указываемых посредством YY" />
+  <descr name="srA"	 outname="sr"	regexp="[\d]"	   description="Коррекция солнечной и инфракрасной радиации" />
+  <descr name="raraA"	 outname="rara" regexp="[\d]{2}"   description="Используемые радиозонд/система зондирования" />
+  <descr name="sasaA"	 outname="sasa" regexp="[\d]{2}"   description="Используемый метод слежения/состояние системы" />
+  <descr name="GG_7"	 outname="GG_7" regexp="[\d]{,2}"   description="Время запуска, ч" />
+  <descr name="gg_7"	 outname="gg_7" regexp="[\d]{2}"   description="Время запуска, м" />
+  <!-- Part C -->
+  <descr name="IdC"     outname="Id"  	 regexp="[12357]" mul="10" description="давления последней стандартной изобарической поверхности, по которой сообщаются данные о ветре" />
+  <descr name="PtPtPtC" outname="P1"	 regexp="[\d]{3}" type="2" description="Давление на уровне тропопаузы" />
+  <descr name="PmPmPmC" outname="P1"	 regexp="[\d]{3}" type="2" description="Давление на уровне максимального ветра" />
+  <descr name="P1P1C"	outname="P1"	 regexp="[\d]{2}"   description="Давление на стандартных изобарических поверхностях" />
+  <descr name="P1P1h1h1h1C" outname="hh"  regexp="[\d]{5}"  type="2" description="Геопотенциал на уровнях" />
+  <descr name="T1T1Ta1C"    outname="T"  regexp="[\d]{3}"  type="2" description="Температура на уровнях" />
+  <descr name="D1D1C"	 outname="D"	 regexp="[\d]{2}"   type="2" description="Дефицит точки росы на уровнях" />
+  <descr name="d1d1fC"	 outname="dd"	 regexp="[\d]{2}5?" type="2" description="Истинное направление откуда дует ветер на установленных уровнях" />
+  <descr name="f1f1f1C"	 outname="ff"	 regexp="[\d]{2,3}" type="2" description="Скорость ветра на уровнях" />
+  <descr name="TtTtTatC" outname="T"	 regexp="[\d]{3}"   type="2" description="Температура воздуха на уровне тропопаузы" />
+  <descr name="DtDtC"	 outname="D" regexp="[\d]{2}"   type="2" description="Дефицит точки росы на уровне тропопаузы" />
+  <descr name="dtdtfC"	 outname="dd" regexp="[\d]{2}5?" type="2" description="Истинное направление откуда дует ветер на уровне тропопаузы" />
+  <descr name="ftftftC"	 outname="ff"	 regexp="[\d]{2,3}" type="2" description="Скорость ветра на уровне тропопаузы" />
+  <descr name="HmHmHmC"  outname="hh" regexp="[\d]{4}"   mul="10" description="Геопотенциал уровня максимального ветра" />
+  <descr name="dmdmfC"	 outname="dd"	 regexp="[\d]{2}5?" type="2" description="Истинное направление, откуда дует максимальный ветер" />
+  <descr name="fmfmfmC"	 outname="ff"	 regexp="[\d]{2,3}" type="2" description="Максимальная скорость ветра" />
+  <descr name="vbvbC"	 outname="vbvb"	 regexp="[\d]{2}"   type="2" description="Абсолютная величина векторной разности ветра между максимальным ветром и ветром на 1 км ниже него в единицах, указываемых посредством YY" />
+  <descr name="vavaC"	 outname="vava"	 regexp="[\d]{2}"   type="2" description="Абсолютная величина векторной разности ветра между максимальным ветром и ветром на 1 км выше него в единицах, указываемых посредством YY" />
+  <descr name="srC"	 outname="sr" 	 regexp="[\d]"	   description="Коррекция солнечной и инфракрасной радиации" />
+  <descr name="raraC"	 outname="rara"	 regexp="[\d]{2}"  description="Используемые радиозонд/система зондирования" />
+  <descr name="sasaC"	 outname="sasa"	 regexp="[\d]{2}"  description="Используемый метод слежения/состояние системы" />
+  <!-- Part B особые точки -->
+  <descr name="a4"          outname="a4"	regexp="[\d]"	     description="Тип используемого измерительного оборудования" />
+  <descr name="P1P1P1TempB" outname="P1"	regexp="[\d]{3}"   type="2"   description="Уровень для температуры" />
+  <descr name="P1P1P1WindB" outname="P1"	regexp="[\d]{3}"   type="2"   description="Уровень для ветра" />
+  <descr name="T1T1Ta1B"    outname="T"	regexp="[\d]{3}"   type="2"   description="Температура на уровне, С" />
+  <descr name="D1D1B"	    outname="D"	regexp="[\d]{2}"   type="2"   description="Дефицит точки росы" />
+  <descr name="d1d1fB"	    outname="dd"	regexp="[\d]{2}5?" type="2"   description="Истинное направление откуда дует ветер" />
+  <descr name="f1f1f1B"	    outname="ff"	regexp="[\d]{2,3}" type="2"   description="Скорость ветра на уровнях" />
+  <descr name="n1n1TempB"   outname="nns"	regexp="[\d]{2}"   type="2"   description="Номер уровня для температуры" />
+  <descr name="n1n1WindB"   outname="nns"	regexp="[\d]{2}"   type="2"   description="Номер уровня для ветра" />
+  <!-- Part D особые точки -->
+  <descr name="P1P1P1TempD" outname="P1"	regexp="[\d]{3}"   mul="0.1"  description="Уровень для температуры" />
+  <descr name="P1P1P1WindD" outname="P1"	regexp="[\d]{3}"   mul="0.1"  description="Уровень для ветра" />
+  <descr name="T1T1Ta1D"    outname="T"	regexp="[\d]{3}"   type="2"   description="Температура на уровне, С" />
+  <descr name="D1D1D"	    outname="D"	regexp="[\d]{2}"   type="2"   description="Дефицит точки росы" />
+  <descr name="d1d1fD"	    outname="dd"	regexp="[\d]{2}5?" type="2"   description="Истинное направление откуда дует ветер" />
+  <descr name="f1f1f1D"	    outname="ff"	regexp="[\d]{2,3}" type="2"   description="Скорость ветра на уровнях" />
+  <descr name="n1n1TempD"   outname="nns"	regexp="[\d]{2}"   type="2"   description="Номер уровня для температуры" />
+  <descr name="n1n1WindD"   outname="nns"	regexp="[\d]{2}"   type="2"   description="Номер уровня для ветра" />
+
+  <!-- <descr name="n_seqA"	outname="nP1A" 	 regexp="\d"   description="Количество поверхностей, по которым сообщаются данные о ветре" /> -->
+  <!-- <descr name="n_seqC"	outname="nP1C" 	 regexp="\d"   description="Количество поверхностей, по которым сообщаются данные о ветре" /> -->
+  <descr name="P1_seqA"	outname="COMPLEX" regexp=".*" type="3" description="Давление на стандартных изобарических поверхностях (PP1)" />
+  <descr name="P1_seqC"	outname="COMPLEX" regexp=".*" type="3" description="Давление на стандартных изобарических поверхностях (PP1h)" />
+  <descr name="wind_pilot"  outname="COMPLEX"	regexp=".*"   type="3"   description="Ветер по уровням (парсится в коде)" />
+
+  <descr name="MM"  	   outname="MM"	       	 regexp="[01]?[\d]" description="Месяц года" />
+  <descr name="J"	   outname="JJJ"	 regexp="[\d]" description="Цифра года" />
+  <descr name="JJ"	   outname="JJJ"	 regexp="[\d]{2}" description="Разряды десятков и единиц года" />
+  <descr name="JJJ"	   outname="JJJ"	 regexp="[\d]{3}" description="Разряды сотен, десятков и единиц года" />
+  <descr name="JJJJ"	   outname="JJJ"	 regexp="[\d]{4}" description="Год" />
+  <descr name="LaLaLaLa"   outname="La"	 regexp="[\d]{4}\w?" type="2" description="Широта, в градусах и минутах" />
+  <descr name="LoLoLoLoLo" outname="Lo"	 regexp="[\d]{5}\w?" type="2" description="Долгота, в градусах и минутах" />
+  <descr name="La_gms"     outname="La"	 regexp=".*" type="2" description="Широта, в градусах, минутах, секундах: N0 0'0''" />
+  <descr name="Lo_gms"     outname="Lo"	 regexp=".*" type="2" description="Долгота, в градусах, минутах, секундах: E0 0'0''" />
+
+
+  <!-- FM15, FM51 -->
+  <descr name="CCCC"      outname="CCCC"   	regexp="[\w]{4}" description="Указатель ИКАО местоположения" />
+  <descr name="dd_10m"	  outname="dd"	regexp="[0-3Vp]?[\dRe]?[\dBr]" description="Истинное направление ветра в градусах, усредненное за 10 мин" />
+  <descr name="dd_tr"     outname="dd"  regexp="[\S]+" type="3" description="Направление ветра в градусах" />
+  <descr name="ff_10_kt"  outname="ff" mul="0.514"  regexp="[\d]{2,3}" description="Скорость ветра в узлах, усредненная за 10 мин" />
+  <descr name="fmfm_10_kt"  outname="fx"   mul="0.514"  regexp="[\d]{2}" description="Максимальная скорость ветра в узлах, усредненное за 10 мин" />
+  <descr name="ff_10_mps"   outname="ff"	regexp="[\d]{2}" description="Скорость ветра в м/с, усредненное за 10 мин" />
+  <descr name="fmfm_10_mps" outname="fx" 	regexp="[\d]{2}" description="Максимальная скорость ветра в м/с, усредненное за 10 мин" />
+
+  <descr name="dndndn"	 outname="dn"	regexp="[0-3][\d]{2}" description="Экстремальное направление переменного ветра против часовой стрелки" />
+  <descr name="dxdxdx"	 outname="dx"	regexp="[0-3][\d]{2}" description="Экстремальное направление переменного ветра по часовой стрелке" />
+  <descr name="VVVV"	 outname="VV"		regexp="[\w/\s]{3,8}" type="2" description="Горизонтальная видимость у поверхности" />
+  <descr name="attr"	 outname="attr"  regexp="[PM]" type="1"  description="Тип предела" >
+    <table val="P,2; M,1" />
+  </descr>
+
+  <descr name="VNVNVNVN" outname="VNVN"		regexp="[\d]{4}" description="Минимальная горизонтальная видимость у поверхности" />
+  <descr name="Dv"	 outname="Da"		regexp="[\w]{1,3}" type="1" description="Направление наблюдения" >
+    <table val="N,360; NE,45; E,90; SE,135; S,180; SW,225; W,270; NW,315; NDV,-9999" />
+  </descr>
+  <descr name="DRDR"	 outname="DR"		regexp="(R?[\w]{2}[LCR]?)|(ALL RWY)" description="Указатель ВПП" />
+  <descr name="VRVRVRVR" outname="VRVR"		regexp="[\d]{4}" description="Визуальная дальность видимости на взлетно-посадочной полосе, в метрах" />
+  <descr name="VRVRVRVR_ft" outname="VRVR"	regexp="[\d]{4}" mul="0.3048" description="Визуальная дальность видимости на взлетно-посадочной полосе, футы" />
+  <descr name="i"	 outname="i"		regexp="[UDN]" description="Тенденция дальности видимости на ВПП" />
+  <descr name="w_w_"	 outname="w_w_"		regexp="([+-]?\s*[\w]{2,6}\s*)+" description="Особые явления текущей и прогнозируемой погоды" />
+  <descr name="w_w_tr"	 outname="w_tr"		regexp="\w+"     type="4" description="Особые явления текущей и прогнозируемой погоды" />
+  <descr name="hshshs"	 outname="h"		regexp="[\d]{3}" mul="30" description="Высота основания облачного слоя или массы" />
+  <descr name="qhshshs"	 outname="h"		regexp="[\d]{3}" type="3" description="Высота основания облачного слоя или массы" />
+  <descr name="hv"	 outname="hv"		regexp="[\d]{3}" mul="30" description="Наблюдаемая или прогнозируемая вертикальная видимость" />
+  <descr name="NsNsNs"	 outname="Nh"		regexp="[\w]{3}" type="2" description="Категория облачности" />
+  <descr name="Nsw"	 outname="Nsw"		regexp="[\w]{3,5}" type="2" description="Общий указатель погоды" />
+  <!-- <descr name="Ccum"	 outname="C"            regexp="CB|TCU|TCU/CB\w*" type="3" description="Значительные конвективные облака" /> -->
+  <descr name="Ccum"	 outname="COMPLEX"      regexp="(?:CB|TCU|TCU/CB\w*)" type="3" description="Значительные конвективные облака" />
+  
+  <descr name="T_T_"	 outname="T"		regexp="[M01]?[\d]{2}" type="2" description="Температура воздуха" />
+  <descr name="T_dT_d"	 outname="Td"		regexp="M?[\d]{2}" type="2" description="Температура точки росы" />
+  <descr name="PHPHPHPH" outname="PQNH"		regexp="[01][\d]{3}" description="Величина QNH" />
+  <descr name="PHPHPHPH_A" outname="PQNH"	regexp="[\d]{4}" mul="0.33863782"  description="Величина QNH, дюйм ртутного столба" />
+  <descr name="TsTs"	 outname="Tw"		regexp="M?[\d]{2}" type="2" description="Температура поверхности моря" />
+  <descr name="S_"	 outname="S"		regexp="[\d]" description="Состояние водной поверхности в месте посадки гидросамолётов" />
+  <descr name="ER"	 outname="ER"		regexp="[\d]" description="Отложения на ВПП" />
+  <descr name="CR"	 outname="CR"		regexp="[\d]" description="Степень загрязнения ВПП" />
+  <descr name="eReR"	 outname="eReR"		regexp="[\d]{2}" type="2" description="Высота отложения" />
+  <descr name="BRBR"	 outname="BR"	        regexp="([\d]{2})" mul="0.01" description="Коэффициент трения/торможения" />
+  <descr name="ERCReReBRBR" outname="ERCReRBR"  regexp="[\w/]{4,6}" type="1" description="Общее состояние ВПП" >
+    <table val="SNOCLO,1; CLRD,0" />
+  </descr>
+  <descr name="SC"	 outname="BR"	        regexp="([\d]{2})" mul="0.01" description="Коэффициент трения/торможения" />
+  <descr name="iff"	 outname="iff"		regexp="P?" type="1" description="Описатель скорости ветра или порывов ветра" >
+    <table val="P,1" />
+  </descr>
+  <descr name="TT"   	 outname="TT"	  	regexp="(FM|TL|AT)" type="1" description="Описатель времени, когда ожидается изменение прогноза" >
+    <table val="FM,0;TL,1;AT,2" />
+  </descr>
+  <descr name="Y1Y1"	 outname="Y1Y1"	  	regexp="[0-3][0-9]" description="День месяца, начало периода годности прогноза" />
+  <descr name="G1G1"	 outname="G1G1"	  	regexp="[0-2][0-9]" description="Время начала периода действия прогноза, ч" />
+  <descr name="g1g1"	 outname="g1g1"	  	regexp="[0-5][0-9]" description="Время начала периода действия прогноза" />
+  <descr name="Y2Y2"	 outname="Y2Y2"	  	regexp="[0-3][0-9]" description="День месяца, конец периода годности прогноза" />
+  <descr name="G2G2"	 outname="G2G2"	  	regexp="[0-2][0-9]" description="Время окончания периода действия прогноза, ч" />
+  <descr name="g2g2"	 outname="g2g2"	  	regexp="[0-5][0-9]" description="Время окончания периода действия прогноза" />
+  <descr name="TFTF_max" outname="Tf"	regexp="M?[\d]{2}" type="2" description="Прогнозируемая температура" />
+  <!-- <descr name="YFYF_max" outname="YFYF_max"	regexp="[0-3][0-9]" description="Действительный день месяца (МСВ) прогноза температуры" /> -->
+  <!-- <descr name="GFGF_max" outname="GFGF_max"	regexp="[0-2][0-9]" description="Время действия прогноза температуры" /> -->
+  <descr name="TFTF_min" outname="Tf"	regexp="M?[\d]{2}" type="2" description="Прогнозируемая температура" />
+  <!-- <descr name="YFYF_min" outname="YFYF_min"	regexp="[0-3][0-9]" description="Действительный день месяца (МСВ) прогноза температуры" /> -->
+  <!-- <descr name="GFGF_min" outname="GFGF_min"	regexp="[0-2][0-9]" description="Время действия прогноза температуры" /> -->
+  <descr name="C2C2"	 outname="C2C2"	  	regexp="[0-4][0]" description="Вероятность" />
+  <!-- <descr name="YeYe"	 outname="YeYe"	  	regexp="[0-3][0-9]" description="День месяца (МСВ) окончания прогнозируемого изменения" /> -->
+  <!-- <descr name="GeGe"	 outname="GeGe"	  	regexp="[0-2][0-9]" description="Срок окончания действия прогноза на период, который начался в GG, до ближайшего целого часа МСВ, ч" /> -->
+  <descr name="TTTTT"	 outname="TTTTT"     regexp="(BECMG|TEMPO|INTER|FM|NOSIG)" type="1" description="Описатель изменения прогноза трендового типа или прогноза по аэродрому" >
+    <table val=" NOSIG,0; BECMG,1; TEMPO,2; FM,3; INTER,4" />
+  </descr>
+  <descr name="t_sign"  outname="t_sign"   regexp="[\d]{1,2}" description="Значимость времени" />
+  <descr name="tf_sign"  outname="tf_sign"   regexp="[\d]{1,2}" description="Значимость времени (авиационный прогноз)" />
+  <descr name="stat_sign"  outname="stat_sign"   regexp="[\d]{1,2}" description="Данные первого порядка" />
+
+  <descr name="Tfc"      outname="Tfc"	regexp="[\d]{2}" description="Прогнозируемая температура в 3-х часовом интервале" />
+  <descr name="Pqnh_fc"  outname="Pqnh_fc"	regexp="[01][\d]{3}" description="Прогнозируемая величина QNH в 3-х часовом интервале" />
+
+  <descr name="Ic"	 outname="Ic"     regexp="\d"              description="Тип прогнозируемого обледенения" />
+  <descr name="hihihi"	 outname="hi"     regexp="\d{3}" mul="30"  description="Высота нижней границы слоя обледенения" />
+  <descr name="tL"	 outname="tL"     regexp="\d"    mul="300" description="Толщина слоя обледенения" />
+  <!-- турбулентность приводится к значениям дескриптора 11030 BUFR -->
+  <descr name="B"	 outname="B"      regexp="\d"              type="1" description="Тип прогнозируемой турбулентности" >
+    <table val="8; 9; 6; 6; 2; 2; 7; 7; 3; 3" />
+  </descr>
+  <descr name="hBhBhB"	 outname="hB"     regexp="\d{3}" mul="30"  description="Высота нижней границы турбулентности" />
+  <descr name="tB"	 outname="tB"     regexp="\d"    mul="300" description="Толщина слоя турбулентности" />
+
+  <descr name="h_share"	  outname="h_share"  regexp="\d{3}" mul="30.48"  description="Сдвиг ветра, высота над станцией в футах" />
+  <descr name="dd_share"  outname="dd_share" regexp="[0-3V]?[\dR][\dB]"  description="Сдвиг ветра, направление" />
+  <descr name="ff_share"  outname="ff_share" regexp="[\d]{2}" mul="0.514" description="Cдвиг ветра, скорость в узлах" />
+
+  <descr name="nn"	  outname="nn"  regexp="[\w-]*\s*\d{1,2}"  description="Ежедневный порядковый номер сообщения" />
+  <descr name="C2C2C2C2"  outname="C2C2C2C2"  regexp="\w{4}"  description="Индекс ОМС, подготовившего сообщение" />
+  <descr name="h_lo"	  outname="fl_lev"  regexp="[\w\d]{1,4}"  description="Нижняя граница, м" />
+  <descr name="h_hi"	  outname="fl_lev"  regexp="\d{3,4}"  description="Верхняя граница, м" />
+  <descr name="limType"	  outname="limType"  regexp="TOP|ABV|TOP\s*ABV" type="1"  description="Тип предела" >
+    <table val="TOP,3; ABV, 0; TOP ABV, 1" />
+  </descr>
+
+  <descr name="status"	  outname="status"  regexp="\w+" type="2" description="Статус продукции (отмена, коррекция)" />
+  <descr name="nn_cnl"	  outname="nn_cnl"  regexp="\w?\d{1,2}"  description="Номер отмененного сообщения" />
+  <descr name="volcano"	  outname="syn_name"  regexp="(?:\w+\s*){1,2}"  description="Наименование вулкана" />
+  <descr name="La_v"	  outname="La"  regexp="[NS]\d{2,4}" type="2" description="Местоположение вулкана, широта" />
+  <descr name="Lo_v"	  outname="Lo"  regexp="[EW]\d{2,5}" type="2"  description="Местоположение вулкана, долгота" />
+  <descr name="h_v"	  outname="h_v"    regexp="\d+"  description="Высота вулкана, м" />
+  <descr name="h_v_ft"	  outname="h_v"    regexp="\d+" mul="0.3048" description="Высота вулкана, футы" />
+
+  <descr name="region"	  outname="COMPLEX"  regexp=".*" type="3" description="Регион (формат SIGMET)" />
+  <descr name="fmfm"      outname="fx"    regexp="[\d]{2}" description="Максимальная скорость ветра в м/с" />
+
+  <descr name="La_reg"    outname="La"  regexp="[NS]?\d{2,4}[NS]?" type="2" description="Местоположение вулкана, широта" />
+  <descr name="Lo_reg"	  outname="Lo"  regexp="[EW]?\d{2,5}[EW]?" type="2"  description="Местоположение вулкана, долгота" />
+
+  <descr name="text"       outname="text"     regexp=".*"  description="Произвольный текст" />
+
+  <!-- SIGMET -->
+  <descr name="st_sign"   outname="st_sign"  regexp="FIR|UIR|CTA|FIR/UIR" type="1" description="Метеорологическая характеристика" >
+    <table val="FIR,2; UIR,3; CTA,4; FIR/UIR,2" />
+  </descr>
+  <descr name="syn_sign"  outname="syn_sign" regexp=".*" description="Метеорологическая характеристика" />
+  <!-- <descr name="sig"       outname="sig"      regexp=".*"  description="Идентификатор явления" /> -->
+  <descr name="sig_type"  outname="t_sign"   regexp="OBS|FCST|OBS/FCST"  type="1" description="Наблюдается или прогнозируется" >
+    <table val="OBS,0; FCST,4; OBS/FCST,0" />
+  </descr>
+  <descr name="sig_dd"    outname="dsds"  regexp="[\w]{1,4}" type="1"  description="Направление явления" >
+    <table val="N,360; NNE,22.5; NE,45; ENE,67.5; E,90; ESE,112.5; SE,135; SSE,157.5; S,180; SSW,202.5; SW,225; WSW,247.5; W,270; WNW,292.5; NW,315; NNW,337.5; STNR,0; QS,0" />
+  </descr>
+  <descr name="sig_ff"    outname="fsfs"  regexp="\d{1,3}" mul="0,277778" description="Скорость явления, км/ч" />
+  <descr name="sig_i"     outname="syni"  regexp="INTSF|WKN|NC" type="1"  description="Измненение интенсивности явления" >
+    <table val="NC,0; WKN,1; INTSF,2" />
+  </descr>
+  <descr name="sig_fl"    outname="sig_fl"  regexp=".*"  description="Эшелон" />
+  <descr name="sig_length"  outname="sig_length"  regexp=".*"  description="Протяженность" />
+  <descr name="La_c"	  outname="La_c"  regexp="[NS]\d{2,4}" type="2" description="Местоположение центра, широта" />
+  <descr name="Lo_c"	  outname="Lo_c"  regexp="[EW]\d{2,5}" type="2"  description="Местоположение центра, долгота" />
+  <descr name="synf"      outname="synf"  regexp=".*"  description="Явления погоды представляющие опасность для LLF" />
+  <!--  -->
+
+  <!-- GAMET -->
+  <descr name="hcumlo"	  outname="h"   regexp="\d{2,4}" description="Высота над станцией, нижняя граница, м" />
+  <descr name="hcumlo_ft" outname="h"   regexp="\d{3,5}" mul="0.3048"  description="Высота над станцией, нижняя граница, футы" />
+  <descr name="hcumhi"	  outname="h'"  regexp="\d{2,4}|XXX" description="Высота над станцией, верхняя граница, м" />
+  <descr name="hcumhi_ft" outname="h'"  regexp="\d{3,5}|XXX" mul="0.3048"  description="Высота над станцией, верхняя граница, футы" />
+  <descr name="Ic_g"	 outname="Ic"   regexp="MOD|SEV" type="1"     description="Тип обледенения" >  
+    <table val="MOD,4; SEV,7" />
+  </descr>
+  <descr name="iB"	 outname="B"   regexp="MOD|SEV"  type="1" description="Тип турбулентности" >
+    <table val="MOD,10; SEV,11" />
+  </descr>
+  <descr name="imnt"	 outname="iS"   regexp="MOD|SEV" type="1"     description="Интенсивность" >  
+    <table val="MOD,2; SEV,3" />
+  </descr>
+  <descr name="height_base" outname="height_base"  regexp="AMSL|AGL" description="Высота над уровнем моря или земли" />
+  <descr name="h0m"	    outname="h0"     regexp="\d{3,4}|SFC"  description="Высота, м" />
+  <descr name="h0ft"	    outname="h0"     regexp="\d{4,5}|SFC" mul="0.3048"  description="Высота, футы" />
+  <descr name="ff_kmh"      outname="ff"     regexp="[\d]{2}" description="Скорость ветра, км/ч" />
+  <descr name="fmfm_kmh"    outname="fx"     regexp="[\d]{2}" description="Максимальная скорость ветра, км/ч" />
+  <descr name="Tpms"	    outname="T"	     regexp="[MP]S\d{2}" type="2" description="Температура воздуха" />
+  <descr name="Pn"          outname="Pn"     regexp="\d{3,4}" description="Минимальное давление, приведенное к среднему уровню моря по стандартной атмосфере, гПа" />
+  <descr name="Pn_mm"       outname="Pn"     regexp="\d{3}" mul="1.33322" description="Минимальное давление, приведенное к среднему уровню моря по стандартной атмосфере, мм.рт.ст" />
+  <descr name="Pnr"         outname="Pnr"    regexp="\d{3,4}" description="Минимальное давление, приведенное к среднему уровню моря по реальной атмосфере, гПа" />
+  <descr name="Pnr_mm"      outname="Pnr"    regexp="\d{3}" mul="1.33322" description="Минимальное давление, приведенное к среднему уровню моря по реальной атмосфере, мм.рт.ст" />
+  <descr name="Hwa"	 outname="Hwa"  regexp="[0-9]{1,2}" description="Высота волн,м" />
+
+  <descr name="mS"	   outname="mS"		 regexp="[0-3,9]"  description="Период усреднения для солености" />
+  <descr name="mT"	   outname="mT"		 regexp="[0-3,9]"  description="Период усреднения для температуры моря" />
+  <descr name="mc"	   outname="mc"		 regexp="[0-3,9]"  description="Период усреднения для скорости и направления поверхностного морского течения" />
+  <descr name="ic"	   outname="ic"		 regexp="[019]"	  description="Указатель единиц скорости поверхностного морского течения" />
+  <descr name="snTwTwTw"   outname="Tw"		 regexp="[01][\d]{3}" type="2" description="Температура поверхности моря, в десятых долях градуса Цельсия" />
+  <descr name="S0S0S0S0"   outname="S0S0"	 regexp="[\d]{4}"    mul="0.01" description="Соленость в сотых долях промиля (‰)" />
+  <descr name="d0d0"	   outname="d0d0"	 regexp="[0-39][\d]" type="2" description="Истинное направление, в котором движется поверхностное морское течение" />
+  <descr name="c0c0"	   outname="c0c0"	 regexp="[\d]{2}"    type="2"	 description="Скорость течения на поверхности моря в десятых долях ic" />
+
+  <descr name="Na"	  outname="Na"  regexp="ISOL|OCNL|FRQ|OBSC|EMBD" type="1" description="Распределение облачности для авиации" > 
+    <table  val="ISOL,8; OCNL,10; FRQ,12; OBSC,15; EMBD,16" />
+  </descr>
+  <descr name="Ca"	 outname="C"            regexp="[\w]{2,3}" type="1" description="Форма облачности" >
+    <table val="AC,3; AS,4; CB,9; CU,8; NS,5; SC,6; ST,7; TCU,32" />
+  </descr>
+  <descr name="Ce"	 outname="C"            regexp="[\w]{2,3}" type="1" description="Форма облачности" >
+    <table val="AC,28; AF,12; AN,16; AS,22; CB,39; CI,11; CS,16; CU,32; CU2,38; FN,37; FS,37; NF,37; NS,36; SC,35; SF,37; ST,36; nn,59; NN,59" />
+  </descr>
+
+  <!-- WAREP -->
+  <descr name="ttt"   outname="GGp"    regexp="[0-9]{3}"  description="Продолжительность явления,ч" />
+  <descr name="tt906" outname="GGp"    regexp="[0-9]{2}" type="2"  description="Продолжительность явления,ч" />
+  <descr name="CwCw"  outname="CwCw"   regexp="[0-9]{2}"  description="Опасное природное или неблагоприятное гидрометеорологическое явление" />
+
+
+  <!-- <descr name=""	  outname=""  regexp=""  description="" /> -->
+  <!-- <descr name=""	  outname=""  regexp=""  description="" /> -->
+
+  <descr name="P0P0P0P0_avg" outname="P0_avg"	         regexp="[\d]{4}" type="2" description="Среднемесячное давление на уровне станции, гПа" />
+  <descr name="PPPP_avg"     outname="P_avg"		 regexp="[\d]{4}" type="2" description="Среднемесячное давление на уровне моря, в десятых долях гектопаскаля, или средний месячный геопотенциал в гпм для уровня станции" />
+  <descr name="snTTT_avg"    outname="T_avg"	 regexp="[01][\d]{3}" type="2" description="Среднемесячная температура воздуха" />
+  <descr name="ststst"	     outname="st"		 regexp="[\d]{3}" mul="0.1" description="Среднеквадратичное отклонение среднесуточных величин относительно среднемесячной температуры воздуха, в десятых долях градуса Цельсия" />
+  <descr name="snTxTxTx_avg" outname="Tx_avg"	 regexp="[01][\d]{3}" type="2" description="Максимальная среднесуточная температура воздуха за месяц, в десятых долях градуса" />
+  <descr name="snTnTnTn_avg" outname="Tn_avg"	 regexp="[01][\d]{3}" type="2" description="Минимальная среднесуточная температура воздуха за месяц, в десятых долях градуса" />
+  <descr name="eee_avg"	     outname="e_avg"		 regexp="[\d]{3}" mul="0.1" description="Среднемесячная упругость водяного пара, в десятых долях гектопаскаля" />
+  <descr name="R1R1R1R1"     outname="R_mon"		 regexp="[\d]{4}" type="2" description="Суммарное количество осадков за месяц" />
+  <descr name="Rd"	     outname="Rd"		 regexp="[0-6]" description="Группа повторяемости, в пределы которой попадает R1R1R1R1" />
+  <descr name="nrnr"	     outname="nr"		 regexp="[0-3][0-9]" description="Количество дней в месяце с осадками, равными или больше 1 мм" />
+  <descr name="S1S1S1"	     outname="SS_mon"		 regexp="[\d]{3}" description="Общая продолжительность солнечного сияния за месяц с точностью до ближайшего часа" />
+  <descr name="pSpSpS"	     outname="pS"		 regexp="[\d]{3}" description="Процент общей продолжительности солнечного сияния по отношению к норме" />
+  <descr name="mpmp"	     outname="mp"		 regexp="[0-3-][\d]" description="Количество дней с отсутствием данных о давлении" />
+  <descr name="mTmT"	     outname="mTmT"		 regexp="[0-3-][\d]" description="Количество дней с отсутствием данных о температуре воздуха" />
+  <descr name="mTx"	     outname="mTx"		 regexp="[\d-]" description="Количество дней с отсутствием данных о максимальной суточной температуре воздуха" />
+  <descr name="mTn"	     outname="mTn"		 regexp="[\d-]" description="Количество дней с отсутствием данных о минимальной суточной температуре воздуха" />
+  <descr name="meme"	     outname="me"		 regexp="[0-3][\d]" description="Количество дней с отсутствием данных о давлении водяного пара" />
+  <descr name="mRmR"	     outname="mR"		 regexp="[0-3][\d]" description="Количество дней с отсутствием данных об осадках" />
+  <descr name="mSmS"	     outname="mSmS"	   	 regexp="[0-3][\d]" description="Количество дней с отсутствием данных о продолжительности солнечного сияния" />
+
+
+  <descr name="YbYb"   	 outname="JJJ"	     regexp="[\d]{2}" description="Год, начинающий период, к которому относится информация" />
+  <descr name="YcYc"	 outname="JJJ"	     regexp="[\d]{2}" description="Год, заканчивающий период, к которому относится информация" />
+  <descr name="yPyP"	 outname="yPyP"	     regexp="[\d]{2}" description="Количество неучтенных лет при расчете нормы давления в периоде, за который представляется информация" />
+  <descr name="yTyT"	 outname="yTyT"	     regexp="[\d]{2}" description="Количество лет, не учтенных при расчете нормы средней температуры воздуха, периоде, за который представляется информация" />
+  <descr name="yTxyTx"	 outname="yTxyTx"    regexp="[\d]{2}" description="Количество лет, не учтенных при расчете нормы средней экстремальной температуры воздуха, в периоде, за который представляется информация" />
+  <descr name="yeye"	 outname="yeye"	     regexp="[\d]{2}" description="Количество лет, не учтенных при расчете нормы давления водяного пара, в периоде,за который представляется информация" />
+  <descr name="yRyR"	 outname="yRyR"	     regexp="[\d]{2}" description="Количество лет, не учтенных при вычислении нормы осадков, в периоде, за который представляется информация" />
+  <descr name="ySyS"	 outname="ySyS"	     regexp="[\d]{2}" description="Количество лет, не учтенных при вычислении нормы продолжительности солнечного сияния, в периоде, за который представляется информация" />
+  <descr name="T25T25"	 outname="T25T25"    regexp="[0-3][\d]" description="Количество дней в месяце, когда максимальная температура воздуха равнялась или была выше 25 °C" />
+  <descr name="T30T30"	 outname="T30T30"    regexp="[0-3][\d]" description="Количество дней в месяце, когда максимальная температура воздуха была равна или превышала 30 °C" />
+  <descr name="T35T35"	 outname="T35T35"    regexp="[0-3][\d]" description="Количество дней в месяце, когда максимальная температура воздуха была равна или превышала 35 °C" />
+  <descr name="T40T40"	 outname="T40T40"    regexp="[0-3][\d]" description="Количество дней в месяце, когда максимальная температура воздуха была равна или превышала 40 °C" />
+  <descr name="Tn0Tn0"	 outname="Tn0Tn0"    regexp="[0-3][\d]" description="Количество дней в месяце, когда минимальная температура была ниже 0 °C" />
+  <descr name="Tx0Tx0"	 outname="Tx0Tx0"    regexp="[0-3][\d]" description="Количество дней в месяце, когда максимальная температура воздуха была ниже 0 °C" />
+  <descr name="R01R01"	 outname="R01R01"    regexp="[0-3][\d]" description="Количество дней в месяце с осадками в 1,0 мм или более" />
+  <descr name="R05R05"	 outname="R05R05"    regexp="[0-3][\d]" description="Количество дней в месяце с осадками в 5,0 мм или более" />
+  <descr name="R10R10"	 outname="R10R10"    regexp="[0-3][\d]" description="Количество дней в месяце с осадками в 10,0 мм или более" />
+  <descr name="R50R50"	 outname="R50R50"    regexp="[0-3][\d]" description="Количество дней в месяце с осадками в 50,0 мм или более" />
+  <descr name="R100R100" outname="R100R100"  regexp="[0-3][\d]" description="Количество дней в месяце с осадками в 100,0 мм или более" />
+  <descr name="R150R150" outname="R150R150"  regexp="[0-3][\d]" description="Количество дней в месяце с осадками в 150,0 мм или более" />
+  <descr name="s00s00"	 outname="s00s00"    regexp="[0-3][\d]" description="Количество дней в месяце, когда высота снежного покрова была более 0 см" />
+  <descr name="s01s01"	 outname="s01s01"    regexp="[0-3][\d]" description="Количество дней в месяце, когда высота снежного покрова составляла более 1 см" />
+  <descr name="s10s10"	 outname="s10s10"    regexp="[0-3][\d]" description="Количество дней в месяце, когда высота снежного покрова составляла более 10 см" />
+  <descr name="s50s50"	 outname="s50s50"    regexp="[0-3][\d]" description="Количество дней в месяце, когда высота снежного покрова составляла более 50 см" />
+  <descr name="f10f10"	 outname="f10f10"    regexp="[0-3][\d]" description="Количество дней в месяце, когда наблюденная или зарегистрированная скорость ветра была равна или превышала 10 метров в секунду или 20 узлов" />
+  <descr name="f20f20"	 outname="f20f20"    regexp="[0-3][\d]" description="Количество дней в месяце, когда наблюденная или зарегистрированная скорость ветра была равна или превышала 20 метров в секунду или 40 узлов" />
+  <descr name="f30f30"	 outname="f30f30"    regexp="[0-3][\d]" description="Количество дней в месяце, когда наблюденная или зарегистрированная скорость ветра была равна или превышала 30 метров в секунду или 60 узлов" />
+  <descr name="V1V1"	 outname="V1V1"	     regexp="[0-3][\d]" description="Количество дней в месяце, когда наблюденная или зарегистрированная видимость независимо от продолжительности наблюдательного периода составляла менее 50 метров" />
+  <descr name="V2V2"	 outname="V2V2"	     regexp="[0-3][\d]" description="Количество дней в месяце, когда наблюденная или зарегистрированная видимость независимо от продолжительности наблюдательного периода составляла менее 100 метров" />
+  <descr name="V3V3"	 outname="V3V3"	     regexp="[0-3][\d]" description="Количество дней в месяце, когда наблюденная или зарегистрированная видимость независимо от продолжительности наблюдательного периода составляла менее 100 метров" />
+
+  <descr name="snTxdTxdTxd" outname="snTxdTxdTxd"  regexp="[01][\d]{3}" type="2" description="Самая высокая среднесуточная температура воздуха за месяц" />
+  <descr name="yxyx"	    outname="yxyx"	   regexp="[0-3][\d]" description="День, когда наблюдалась самая высокая температура воздуха за месяц" />
+  <descr name="snTndTndTnd" outname="snTndTndTnd"  regexp="[01][\d]{3}" type="2" description="Самая низкая среднесуточная температура воздуха за месяц, в десятых долях градуса" />
+  <descr name="ynyn"	    outname="ynyn"	   regexp="[0-3][\d]" description="День, когда наблюдалась самая низкая температура воздуха за месяц" />
+  <descr name="snTaxTaxTax" outname="snTaxTaxTax"  regexp="[01][\d]{3}" type="2" description="Самая высокая температура воздуха за месяц" />
+  <descr name="yaxyax"	    outname="yaxyax"	   regexp="[0-3][\d]" description="День, когда наблюдалась самая высокая температура воздуха за месяц" />
+  <descr name="snTanTanTan" outname="snTanTanTan"  regexp="[01][\d]{3}" type="2" description="Самая низкая температура воздуха за месяц" />
+  <descr name="yanyan"	    outname="yanyan"	   regexp="[0-3][\d]" description="День, когда наблюдалась самая низкая темература воздуха за месяц" />
+  <descr name="RxRxRxRx"    outname="RxRxRxRx"	   regexp="[\d]{4}" mul="0.1" description="Самое высокое суточное количество осадков за месяц" />
+  <descr name="yryr"	    outname="yryr"	   regexp="[0-3][\d]" description="День, когда выпало наибольшее суточное количество осадков за месяц" />
+  <descr name="fxfxfx"	    outname="fxfxfx"	   regexp="[\d]{3}" description="Самая высокая скорость порыва ветра в течении месяца" />
+  <descr name="yfxyfx"	    outname="yfxyfx"	   regexp="[0-3][\d]" description="День, когда наблюдалась или регистрировалась самая высокая скорость ветра за месяц" />
+  <descr name="DtsDts"	    outname="DtsDts"	   regexp="[0-3][\d]" description="Количество дней в месяце, когда наблюдалась(лись) гроза(ы)" />
+  <descr name="DgrDgr"	    outname="DgrDgr"	   regexp="[0-3][\d]" description="Количество дней в месяце, когда выпадал град" />
+  <descr name="iy"	    outname="iy"	   regexp="[1-3]" description="Указатель для определения типа отсчета. (Кодовая таблица 1857)" />
+  <descr name="GxGx"	    outname="GxGx"	   regexp="[\d]{2}" description="Основной срок ежедневного отсчета в МСВ (в часах) максимальной экстремальной температуры" />
+  <descr name="GnGn"	    outname="GnGn"	   regexp="[\d]{2}" description="Основной срок ежедневного отсчета в МСВ (в часах) минимального экстремального значения температуры" />
+
+  <!-- FM42 -->
+  <descr name="ipipip"       outname="ip"  regexp="\w{3}"  type="1" description="Указатель фазы полета и типа наблюдения" >
+    <table val="UNS,2; LVR,3; LVW,4; ASC,5; DES,6" />
+  </descr>
+  <descr name="Shhihihi"     outname="ha"  regexp="[FA]\d{3}"   type="2" description="Барометрическая высота, сотни футов" />
+  <descr name="ssTaTaTa"     outname="T"   regexp="[PM]S\d{3}"  type="2" description="Температура воздуха, в десятых долях градуса Цельсия" />
+  <descr name="ssTdTdTd"     outname="Td"  regexp="[PM]S\d{3}"  type="2" description="Температура точки росы, в десятых долях градуса Цельсия" />
+  <descr name="Ba"           outname="B"   regexp="[0-3]"       type="1" description="Тип турбулентности" >
+    <table val="8; 9; 10; 11"/>
+  </descr>
+  <descr name="hdhdhd"       outname="ha" mul="30.48"   regexp="\d{3}" description="Эшелон полета, в сотнях футов" />
+  <descr name="fgfgfg"       outname="ff_w"  mul="0.1" regexp="\d{3}" description="Максимальный вычисленный эквивалент вертикального порыва ветра, в десятых долях метра в секунду" />
+
+  <!-- FM65 -->
+  <descr name="HsHsHsHs"  outname="Hws"     mul="0.01"  regexp="\d{4}" description="Высота значительной волны, в сантиметрах" />
+  <descr name="HmHmHmHm"  outname="Hwa_MAX" mul="0.01"  regexp="\d{4}" description="Максимальная высота волны, в сантиметрах" />
+  <descr name="dd_dd"     outname="dW"      regexp="\d{2}" description="Истинное направление, откуда поступает доминирующая волна" />
+
+  
+  <!-- Указчик -->
+  <descr name="station_index"  outname="station_index"  regexp="\d+"   description="Индекс станции" />
+  <descr name="hv_"	 outname="hv"  regexp="[\d]{3,5}" description="Вертикальная видимость" />
+  <descr name="sn"       outname="sn"  regexp="\d+"       description="Серийный номер" />
+
+  <!-- Байконур -->
+
+  <descr name="sec" outname="sec" regexp="[0-6]?[\d]" description="Секунда измерения" />
+
+  <descr name="diff_utc"    outname="diff_utc"  regexp="[+-]?[\d]{1,2}"     description="Разница с UTC, час" />
+
+
+  <descr name="ggh"   outname="gg"  regexp="\d" mul="6" description="Минута измерения, в десятых долях часа" />
+  
+  <descr name="JJJJp" outname="JJJp" regexp="-?[\d]{4}" description="Год  измерения" />
+  <descr name="MMp"   outname="MMp"  regexp="-?[01]?[\d]" description="Месяц  измерения" />
+  <descr name="YYp"   outname="YYp"  regexp="-?[0-35-8]?[0-9]" description="День  измерения" />
+  <descr name="GGpl"   outname="GGp" regexp="-?\d+" description="День  измерения" />
+  <descr name="GGp"   outname="GGp"  regexp="-?[0-2]?[0-9]" description="Час  измерения" />
+  <descr name="ggp"   outname="ggp"  regexp="-?[0-5]?[0-9]" description="Минута  измерения" />
+  <descr name="secp"  outname="secp" regexp="-?[0-6]?[\d]" description="Секунда  измерения" />
+
+  <descr name="GGi"   outname="GGi"  regexp="-?[0-2]?[0-9]" description="Временной инкремент, час" />
+  <descr name="seci"  outname="seci" regexp="-?[\d.]+" description="Временной инкремент, секунда" />
+
+
+  <!-- MARLA -->
+  <descr name="sun_alpha" outname="sun_alpha" regexp="[\d]{,3}"   	    description="Высота солнца" />
+  <descr name="E_T" 	  outname="E_T"       regexp="[\d.]{,4}"  	    description="Приземная ошибка температуры" />
+  <descr name="E_U" 	  outname="E_U"       regexp="[\d.]{,4}"  	    description="Приземная ошибка влажности" />
+  <descr name="HH_akm"    outname="hh"      regexp="[\d.]+"   mul="1000"  description="Высота уровня, по которому сообщаются данные, м" />
+  <descr name="P_a" 	  outname="P"       regexp="[\d.]+"   	    description="Давление на уровне" />
+  <descr name="U_a" 	  outname="U"       regexp="-?[\d.]+" 	    description="Влажность на уровне" />
+  <descr name="T_a"       outname="T"       regexp="-?[\d.]+" description="Temperature, degrees" />
+  <descr name="D_a"      outname="D"      regexp="-?[\d.]+" description="Дефицит точки росы, degrees" />
+  <descr name="vertic_sign"  outname="vertic_sign" regexp=".{,6}" description="Значимость вертикального зондирования" />
+
+  <!-- POLUS  -->
+  <descr name="II_s"    outname="II"   regexp="[\d]{,2}"   description="Номер большого географического района" />
+  <!-- <descr name="ptfs" outname="ptfs"	regexp="[\d.]{,8}" description="Время от начала измерений" /> -->
+  
+  <!-- AMIS_bil -->
+  <descr name="i_light"   outname="i_light"   regexp="[\d-]{3}"   description="Интенсивность искусственного освещения" />
+  <descr name="nat_light"      outname="nat_light"   regexp="\D{1,2}"   description="Естественное освещение ВПП (Н – ночь, Д – день, С – сумерки)" />
+  <descr name="artif_light"    outname="artif_light"   regexp="\D\D\D|[\D]{6}"   description="Тип искусственного освещения ВПП (ОМИ – огни малой интенсивности, ОВИ – огни высокой интенсивности)" />
+  <descr name="VRVR"    outname="VRVR"   regexp="[\d]{4}"   description="RVR на рабочем курсе посадки" />
+
+  <!-- AMI2 = АМИИС-2000 -->
+  <descr name="U_ami"    outname="U" regexp="[\d]{2}"     description="Влажность" />
+  <descr name="w_light" outname="w_ami1" regexp="[\d]"     description="1 - гроза" />
+  <descr name="w_ami" outname="w_ami" regexp="[0-7]{1,3}" description="Явление" />
+  <descr name="h50"   outname="h50"   regexp="[\d]{1,4}" mul="10" description="ВНГО, измеренная вблизи БПРМ со стороны захода на посадку с магнитным курсом посадки 50°, десятки метров"/>    
+  <descr name="h230"  outname="h230"  regexp="[\d]{1,4}" mul="10" description="ВНГО, измеренная вблизи БПРМ со стороны захода на посадку с магнитным курсом посадки 230°, десятки метров"/>
+  <descr name="V50"   outname="V50"   regexp="[\d]{1,4}" mul="10" description="МДВ, измеренная вблизи порога ВПП с магнитным курсом посадки 50°, десятки метров"/>
+  <descr name="V230"  outname="V230"  regexp="[\d]{1,4}" mul="10" description="МДВ, измеренная вблизи порога ВПП с магнитным курсом посадки 230°, десятки метров" />
+  <descr name="Vkta"  outname="Vkta"  regexp="[\d]{1,4}" mul="10" description="МДВ, измеренная вблизи контрольной точки аэродрома, десятки метров" />
+  <descr name="V_ami" outname="V"     regexp="[\d]{1,4}" mul="10" description="МДВ на рабочем курсе посадки, десятки метров" />
+  <descr name="P_ami" outname="P0"     regexp="[\d]{1,4}"  mul="1.33322"  description="Давление, из мм.рт.ст в гПа" />
+  <descr name="ff_p"  outname="ff_3s"  regexp="[\d.]+"    description="Скорость ветра, м/с" />
+
+
+  <!-- AMC2_1  -->
+  <descr name="Tf"    outname="T"  regexp="-?[\d.]+" description="Температура" />
+  <descr name="Uf"    outname="U"  regexp="[\d.]+" description="Влажность" />
+  <descr name="Pf_mm"  outname="P0" mul="1.33322" regexp="[\d.]+" description="Давление, из мм.рт.ст в гПа" />
+  <descr name="VVf"   outname="V"  regexp="[\d.]+" description="Метеорологическая дальность видимости" />
+  <descr name="hsf"   outname="h" regexp="[\d.]+" description="ВНГО" />
+  <descr name="T_10m"  outname="T_10m"  regexp="[\d.-]+" description="Ср.Температура(10 мин)" />
+  <descr name="U_10m"  outname="U_10m"  regexp="[\d.]+"  description="Ср.Влажность(10 мин)" />
+  <descr name="P0mm_10m"  outname="P0_10m"  regexp="[\d.]+" mul="1.33322" description="Ср.Давление(10 мин, из мм.рт.ст в гПа)" />
+  <descr name="VV_1"  outname="V"  regexp="[\d.]+"  description="Видимость за 1 мин" />
+  <descr name="VV_3m"  outname="VV_3m"  regexp="[\d.]+"  description="Ср. МДВ(3 мин)" />
+  <!-- <descr name="VV_10m"  outname="VV_10m"  regexp="[\d.]+"  description="Видимость за 10 мин" /> -->
+  <descr name="hs_3m"  outname="hs_3m"  regexp="[\d.]+"  description="Ср. ВНГО (3 мин)" />
+  <descr name="hs_10m" outname="hs_10m"  regexp="[\d.]+" description="ВНГОмин" />
+
+  <descr name="Ev" outname="Ev"  regexp="[\d.]+" description="Упругость водяного пара, гПа" />
+
+  <descr name="ff_3s"    outname="ff_3s"   regexp="[\d.]+" description="Speed_3sec" />
+  <descr name="ff_2m"    outname="ff_2m"   regexp="[\d.]+" description="Speed_2min" />
+  <descr name="ff_10m"   outname="ff"  regexp="[\d.]+" description="Speed_10min" />
+  <descr name="fm_2m"    outname="fm_2m"    regexp="[\d.]+" description="Speed max 2min "/>
+  <descr name="fm_10m"   outname="fx"   regexp="[\d.]+" description="Speed max 10min" />
+  <descr name="dd_3s"  	 outname="dd_3s" regexp="[\d]{1,3}" description="Direction_3sec" />
+  <descr name="dd_2m"  	 outname="dd_2m" regexp="[\d]{1,3}" description="Direction_2min" />
+
+
+  <!-- второй датчик -->
+  <descr name="ff_3s_2"    outname="ff_3s_go"   regexp="[\d.]+" description="Speed_3sec" />
+  <descr name="ff_2m_2"	   outname="ff_2m_go"	regexp="[\d.]+" description="Speed_2min" />
+  <descr name="ff_10m_2"   outname="ff_10m_go"	regexp="[\d.]+" description="Speed_10min" />
+  <descr name="fm_2m_2"	   outname="fm_2m_go"	regexp="[\d.]+" description="Speed max 2min "/>
+  <descr name="fm_10m_2"   outname="fm_10m_go"	regexp="[\d.]+" description="Speed max 10min" />
+  <descr name="dd_3s_2"    outname="dd_3s_go"   regexp="[\d]{1,3}"  description="Direction_3sec" />
+  <descr name="dd_2m_2"    outname="dd_2m_go"   regexp="[\d]{1,3}"  description="Direction_2min" />
+  <descr name="dd_10m_2"   outname="dd_10m_go"  regexp="[\d]{1,3}"  description="Direction_10min" />
+  <descr name="Tf_2"       outname="T_go"       regexp="-?[\d.]+" description="Температура" />
+
+  <descr name="Tdf"      outname="Td"      regexp="-?[\d.]+" description="Дефицит точки росы" />
+  <descr name="P0f"      outname="P0"      regexp="[\d.]+" description="Давление, гПа" />
+  <descr name="Pf_qfe"   outname="P"    regexp="[\d.]+" description="Давление QFE (на ВПП), гПа" />
+  <descr name="Pf_qnh"   outname="PQNH"    regexp="[\d.]+" description="Давление QNH (к уровню моря), гПа" />
+
+
+  <!-- MAWS -->
+
+  <descr name="Tsf" outname="Ts" regexp="-?[\d.]+"  description="Температура почвы" />
+  <descr name="wawa" outname="w" regexp="[\d.]+" add="100" description="Текущая погода, сообщаемая с автоматической метеостанции" />
+  <descr name="mHc" outname="Hc" regexp="[\d.]+" description="Охлаждение ветром" />
+
+
+  <!-- VPTK -->
+   <descr name="ddd"      outname="dd"      regexp="[\d]{1,3}" description="Direction"/>
+   <descr name="fm"       outname="fm_3s"     regexp="[\d.]+" description="Speed max"/>
+   <descr name="fx"       outname="Fx"  regexp="[\d.]+" description="Rush1"/>       
+ 
+   <descr name="ff_p_2"  outname="ff_3s_go"  regexp="[\d.]+"    description="Скорость ветра, м/с" />
+   <descr name="ddd_2"   outname="dd_3s_go"      regexp="[\d]{1,3}" description="Direction"/>
+   <descr name="fm_2"    outname="fm_3s_go"     regexp="[\d.]+" description="Speed max"/>
+   <descr name="fx_2"    outname="Fx_go"  regexp="[\d.]+" description="Rush1"/>       
+
+   <descr name="ddd_3"      outname="dd_3s_3"      regexp="[\d]{,3}" description="Direction"/>
+   <descr name="fm_3"       outname="fm_3s_3"     regexp="[\d.]+" description="Speed max"/>
+   <descr name="fx_3"       outname="Fx_3"      regexp="[\d.]+" description="Rush1"/>       
+   <descr name="ff_p_3"     outname="ff_3s_3"    regexp="[\d.]+"    description="Скорость ветра, м/с" />
+   <descr name="ff_2m_3"    outname="ff_2m_3"   regexp="[\d.]+" description="Speed_2min" />
+   <descr name="ff_10m_3"   outname="ff_10m_3"  regexp="[\d.]+" description="Speed_10min" />
+   <descr name="fm_2m_3"    outname="fm_2m_3"   regexp="[\d.]+" description="Speed max 2min "/>
+   <descr name="fm_10m_3"   outname="fm_10m_3"  regexp="[\d.]+" description="Speed max 10min" />
+   <descr name="dd_2m_3"    outname="dd_2m_3"   regexp="[\d]{1,3}"  description="Direction_2min" />
+   <descr name="dd_10m_3"   outname="dd_10m_3"  regexp="[\d]{1,3}"  description="Direction_10min" />
+   <descr name="Tf_3"       outname="T_3"       regexp="-?[\d.]+" description="Температура" />
+
+  <!-- KAPL -->
+  <descr name="h0_station"   outname="h0_station"  regexp="[\d.]+" description="Высота станции, м"/>       
+  <descr name="Rf"   outname="R"  regexp="[\d.]+" description="Количество осадков, мм"/>       
+
+  <!-- PLV3 -->
+  <descr name="HH"    outname="hh"    regexp="[\d]{1,3}" description="Высота уровня, по которому сообщаются данные, м" />
+  <descr name="dd_a"  outname="dd"  regexp="-?[\d.]+" description="Напрваление на уровне" />
+  <descr name="d_w_a" outname="ww" regexp="-?[\d.E-]+" description="Вертикальная скорость ветра на уровне" />
+  <descr name="ff_a"  outname="ff"  regexp="-?[\d.]+" description="Горизонтальная скорость ветра на уровне" />
+
+  <!-- PIRM -->
+  <descr name="T_pirm" outname="T"  regexp="-?[\d]{,2}" description="Temperature, degrees" />
+  <descr name="F_pirm" outname="F"  regexp="[\d.]{,8}" description="Power of solar radiation, W/m2" />
+
+  <!-- IPV  -->
+  <descr name="ff_1s"    outname="ff_1s"   regexp="[\d.]+" description="Скорость за 1 сек, м/с"/>
+  <descr name="dd_1s"    outname="dd_1s"   regexp="[\d]{1,3}"  description="Направление за 1 сек" />
+  <descr name="ff_5s"    outname="ff_5s"   regexp="[\d.]+" description="Скорость за 5 сек, м/с"/>
+  <descr name="dd_5s"    outname="dd_5s"   regexp="[\d]{1,3}"  description="Направление за 5 сек" />
+
+
+  <descr name="UNK"   outname="UNK"   regexp=".*" description="unknown" />
+
+  <!-- <descr name="" outname=""  regexp="" description="" /> -->
+  <!-- <descr name="" outname=""  regexp="" description="" /> -->
+  <!-- <descr name="" outname="EMPTY"  regexp="" description="" /> -->
+  <!-- <descr name="" outname="EMPTY"  regexp="" description="" /> -->
+
+  <descr name="NN44" outname="station_index" regexp="[\d]{2}" description="условный номер метеостанции (от 00 до 99)" />
+  <descr name="bbbb" outname="h0_station" regexp="[\d]{4}"  type="2" description="высота расположения метеостанции над уровнем моря (в метрах)" />
+  <descr name="pppp0" outname="P0" regexp="[\d]{4}" description="атмосферное давление на уровне метеостанции (в миллибарах)" />
+  <descr name="tt0" outname="T" regexp="[\d]{2}"  type="2" description="приземная температура воздуха (в градусах)" />
+  <descr name="hhb" outname="hmsl" regexp="[\d]{2}"  mul="1000"  description="высота поверхности" />
+  <descr name="ttb" outname="ttb" regexp="[\d]{2}"  type="2" description="баллистическое отклонение температуры воздуха в слое от поверхности земли до стандартной высоты (в градусах)" />
+  <descr name="ddb" outname="ddb" regexp="[\d]{3}" description="дирекционный угол направления баллистического ветра (откуда дует) в слое от поверхности земли до стандартной высоты (в градусах)" />
+  <descr name="ffb" outname="ffb" regexp="[\d]{2}" description="скорость баллистического ветра в том же слое" />
+  
+  <descr name="dtableP" outname="dtableP" regexp="[\d]{3}" type="2" description="отклонение наземного давления атмосферы от табличного на уровне метеостанции на момент окончания зондирования атмосферы (в миллиметрах ртутного столбае" />
+  <descr name="dtableT" outname="dtableT" regexp="[\d]{2}" type="2" description="— отклонение наземной виртуальной температуры от табличной на уровне метеостанции на момент окончания зондирования атмосферы (в градусах)" />
+  
+  <descr name="hh_mh" outname="hmsl" regexp="[\d]{2}" mul="100" description="02, 04, 08, 12 и т. д. до 80 включительно — стандартные высоты над уровнем моря в сотнях метров" />
+  <descr name="dp_dh" outname="dp_dh" regexp="[\d]{2}" description="– ПП — среднее отклонение плотности воздуха в слое от поверхности земли до соответствующей стандартной высоты (в процентах)" />
+
+  <descr name="dt_dh" outname="dt_dh" regexp="[\d]{2}" type="2" description="– ТТ — среднее отклонение температуры воздуха от табличной в слое атмосферы (в градусах)" />
+  <descr name="dd_dh" outname="ddb" regexp="[\d]{2}" mul="6" description="– НН — дирекционный угол направления среднего ветра (откуда дует) в слое атмосферы от поверхности до стандартной высоты (в больших делениях угломера)" />
+  <descr name="df_dh" outname="ffb" regexp="[\d]{2}" description="– СС — скорость ветра в том же слое (в метрах в секунду)" />
+  
+  <descr name="hF_max" outname="hF_max" regexp="[\d]{2}" mul="1000" description="– BtBt — достигнутая высота температурного зондирования  " />
+  <descr name="hT_max" outname="hT_max" regexp="[\d]{2}"  mul="1000" description="–– BbBb — достигнутая высота ветрового зондирования" />
+  
+  <!--КН-02-->
+  <descr name="pp" outname="pp" regexp="[\d]{2}" description="указатель объекта наблюдения" />
+  <descr name="ff1"	 outname="ff"  regexp="[\d]{2}"   description="Скорость ветра, м/с" />
+  <descr name="fxfx"	 outname="fx"  regexp="[\d]{2}"   description="максимальная скорость ветра при порывах, м/с" />
+  <descr name="Ws" outname="Ws" regexp="[\d]" description="явление погоды ухудшающее видимость в сторону моря" />
+  <descr name="ib" outname="ib" regexp="[\d]" description="способ определения высоты волн" />
+  <descr name="//HwaHwaHwa//" outname="Hwa_MAX"  regexp="[0-9]{3}" mul="0.1"	description="Максимальная высота волн,м" />
+  <descr name="Dw1"	 outname="dw2"  regexp="[\d]" type="1"	  description="Истинное направление откуда перемещаются ветровые волны" >
+    <table val="0; 45; 90; 135; 180; 225; 270; 315; 360; -9999" />
+  </descr>
+  <descr name="Dw2"	 outname="dw1"  regexp="[\d]" type="1"	  description="Истинное направление откуда перемещается зыбь" >
+    <table val="0; 45; 90; 135; 180; 225; 270; 315; 360; -9999" />
+  </descr>
+  <descr name="B1"	 outname="B1"  regexp="[\d]" type="1"	  description="Ширина зоны прибоя? м" >
+    <table val="0; 1; 6; 11; 16; 26; 51; 101; 201; 300;" />
+  </descr>
+  <descr name="b"	 outname="b"  regexp="[\d]" type="1"	  description="Ширина зоны наката, м" >
+    <table val="0; 1; 3; 5; 7; 9; 11; 16; 21; 30;" />
+  </descr>
+  <descr name="HnHn"	 outname="Hn"  regexp="[0-9]{2}" mul="0.5"  description="Высота прибойных волн,м" />
+  <descr name="ah"	 outname="ah"  regexp="[\d]"  description="характеристика изменения уровня моря" />
+  <descr name="snhshshs" outname="hshshs"  regexp="[01][\d]{3}" type="2" description="уровень моря, см" />
+  <descr name="/snhshshs/" outname="hshshs_MIN"  regexp="[01][\d]{3}" type="2" description="минимальный уровень моря за прошедшие сутки, см" />
+  <descr name="//snhshshs//" outname="hshshs_MAX"  regexp="[01][\d]{3}" type="2" description="максимальный уровень моря за прошедшие сутки, см" />
+  <descr name="Q" outname="Q"  regexp="[0123]"  description="указатель места определения припайного льда" />
+  <descr name="NfNf" outname="Nf"  regexp="[\d]{2}" type="1" description="количество припая в баллах" >
+    <table val="0,0; 1,0.5; 10,1; 20,2; 30,3; 40,4; 50,5; 60,6; 70,7; 80,8; 90,9; 91,9.5; 92,10" />
+  </descr>
+  <descr name="LLLL"	 outname="LLLL"  regexp="[\d]{4}" mul="10"  description="ширина припая по створу, м" />
+  <descr name="qqq" outname="q1"  regexp="[\d]{3}" description="толщина припая в сантиметрах" />
+  <descr name="HsHsHs" outname="Hs"  regexp="[\d]{3}"  description="высота снега на припае в сантиметрах" />
+  <descr name="NwNw" outname="Nw"  regexp="[\d]{2}" type="1" description="количество чистой воды в баллах" >
+    <table val="0,0; 1,0.5; 10,1; 20,2; 30,3; 40,4; 50,5; 60,6; 70,7; 80,8; 90,9; 91,9.5; 92,10" />
+  </descr>
+  <descr name="Dw"	 outname="Dw"  regexp="[\d]" type="1"	  description="направление в котором наблюдается чистая вода" >
+    <table val="0; 45; 90; 135; 180; 225; 270; 315; 360; -9999" />
+  </descr>
+  <descr name="NiNi" outname="Ni"  regexp="[\d]{2}" type="1" description="количество дрейфующего льда в баллах" >
+    <table val="0,0; 1,0.5; 10,1; 20,2; 30,3; 40,4; 50,5; 60,6; 70,7; 80,8; 90,9; 91,9.5; 92,10" />
+  </descr>
+  <descr name="Di1"	 outname="Di1"  regexp="[\d]" type="1"	  description="направление в котором наблюдается дрейфующий лед" >
+    <table val="0; 45; 90; 135; 180; 225; 270; 315; 360; -9999" /> 
+  </descr>
+  <descr name="PP" outname="PP"  regexp="[\d]{2}" type="1" description="преобладающая сплоченность дрейфующего льда в баллах" >
+    <table val="0,0; 1,0.5; 10,1; 12,2; 13,2; 20,2; 23,3; 24,3; 30,3; 34,4; 35,4; 40,4; 45,5; 46,5; 50,5; 56,6; 57,6; 60,6; 67,7; 68,7; 70,7; 78,8; 79,8; 80,8; 81,9; 89,9; 90,9; 91,10; 92,10" />
+  </descr>
+  <descr name="SS1" outname="SS1"  regexp="[\d]{2}"  description="преобладающий возрастной вид дрейфующего льда" />
+  <descr name="F" outname="Ff"  regexp="[\d]"  description="преобладающая форма дрейфующего льда" />  
+  <descr name="Xp"	 outname="Xp"  regexp="[\d]" 	  description="степень торосистости припая в баллах" />
+  <descr name="Xf"	 outname="Xf"  regexp="[\d]" 	  description="характер торосистости припая" />
+  <descr name="hphp" outname="hp"  regexp="[\d]{2}" mul="0.1"	description="средняя высота торосов,м" />
+  <descr name="Zf"	 outname="Zf"  regexp="[\d]" 	  description="характеристика термической разрушенности припая" />
+  <descr name="Xi"	 outname="Xi"  regexp="[\d]" 	  description="степень торосистости дрейфующего льда в баллах" />
+  <descr name="Xn"	 outname="Xn"  regexp="[\d]" 	  description="характер торосистости дрейфующего льда" />
+  <descr name="Zi"	 outname="Zi"  regexp="[\d]" 	  description="характеристика термической разрушенности дрейфующего льда" />
+  <descr name="Fn"	 outname="Fn"  regexp="[\d]" 	  description="степень сжатия дрейфующего льда в баллах" />
+  <descr name="Fd"	 outname="Fd"  regexp="[\d]" 	  description="скорость дрейфа льда" />
+  <descr name="Dd"	 outname="Dd"  regexp="[\d]" type="1"	  description="направление дрейфа льда" >
+    <table val="0; 45; 90; 135; 180; 225; 270; 315; 360; -9999" />
+  </descr>
+  <descr name="A0"	 outname="A0"  regexp="[\d]" 	  description="сведения о процессах льдообразования" />  
+  <descr name="A2"	 outname="A2"  regexp="[\d]" 	  description="характерные особенности состояния и распределения дрейфующих льдов" />    
+  <descr name="A3"	 outname="A3"  regexp="[\d]" 	  description="особые виды и формы льда" />   
+  <descr name="A4"	 outname="A3"  regexp="[\d]" 	  description="особые виды и формы льда" />
+  <descr name="A5"	 outname="A5"  regexp="[\d]" 	  description="сведения о подвижках и взломах льда" />
+  <descr name="snTTT24"	 outname="T24"   regexp="[01][\d]{3}"  type="2" description="средняя температура воздуха за сутки,C" />
+  <descr name="snTwTwTw24" outname="Tw24"   regexp="[01][\d]{3}"  type="2" description="средняя температура поверхности моря,C" />
+   
+  <!--КН-05-->
+  <descr name="iu"	 outname="iw"  regexp="[\d]" type="1" description="Указатель единиц измерения скорости ветра и используемого прибора" >
+    <table val="0; 3; 1; 4" />							    
+  </descr>
+  <descr name="ff2"	 outname="ff"  regexp="[\d]{2}"  type="2"   description="Скорость ветра,iu" />
+  <descr name="k1"	 outname="k1"  regexp="[\d]" 	  description="Указатель способа представления значений температуры воды" />
+  <descr name="k2"	 outname="k2"  regexp="[\d]" 	  description="Метод измерения солености" />
+  <descr name="zn"	 outname="zn"  regexp="[\d]{4}"  description="Глубина характерного горизонта, м" />
+  <descr name="TnTn"	outname="Tw"  regexp="[\d]{4}"  type="2"  description="Температура воды на характерных горизонтах с точностью до сотых долей градуса Цельсия" />
+  <descr name="Sn"	outname="Sn"  regexp="[\d]{4}"  mul="0.01"  description="Соленость воды на характерных горизонтах с точностью до сотых долей промилле" />
+  <descr name="znD"	 outname="znD"  regexp="[\d]{4}" 	  description="Глубина у дна, м" />
+  <descr name="TnTnD"	outname="TnTnD"  regexp="[\d]{4}"  type="2"  description="Температура воды у дна с точностью до сотых долей градуса Цельсия" />
+  <descr name="SnD"	outname="SnD"  regexp="[\d]{4}"  mul="0.01"  description="Соленость воды у дна с точностью до сотых долей промилле" />
+  <descr name="k4"	 outname="k34"  regexp="[\d]" 	add="10"  description="Период измерения течения дрейфовым методом" />
+  <descr name="k3"	 outname="k34"  regexp="[\d]" 	  description="Продолжительность и время измерения течения векторным методом" />
+  <descr name="dndn"     outname="dndn"  regexp="[0-39][\d]" type="2" description="Истинное направление течения (куда направлено) на характерных горизонтах,градусы" />
+  <descr name="cncn"     outname="cncn"  regexp="[\d]{3}"  description="Скорость течения в метрах в секунду на характерных горизонтах" />
+  <descr name="Zd"	 outname="Zd"  regexp="[\d]{4}" 	  description="Глубина в месте производства наблюдений, м" />
+  
+  <!--КН-06-->
+  <descr name="zn1"	 outname="zn"  regexp="[\d]{2}" type="2" description="Глубина характерного горизонта + сотни метров, м" />
+  <descr name="TnTnTn"	outname="Tw"  regexp="[\d]{3}"  type="2"  description="Температура воды на характерных горизонтах с точностью до десятых долей градуса Цельсия" />
+  <descr name="zz"	 outname="zz"  regexp="[\d]{2}" mul="100" description="Сотни метров характерного горизонта" /> 
+  <descr name="TnTnTnD"	outname="TnTnD"  regexp="[\d]{3}"  type="2"  description="Температура воды у дна с точностью до десятых долей градуса Цельсия" />
+  <descr name="zn1D"	 outname="znD"  regexp="[\d]{2}" type="2" description="Глубина у дна, м" />
+  <descr name="k5"	 outname="k5"  regexp="[\d]" 	  description="Указатель метода измерения течения" />
+  <descr name="VcVc"	 outname="c0c0"  regexp="[\d]{2}" mul="0.2" description="Скорость течения на поверхности моря в м/с" /> 
+  
+  <!--FM18-->
+  <descr name="LaLaLaLaLa"   outname="La"	 regexp="[\d/]{5}" type="2" description="Широта, в тысячных долях градуса" />
+  <descr name="LoLoLoLoLoLo" outname="Lo"  regexp="[01][\d/]{5}" type="2" description="Долгота, в тысячных долях градуса" />
+  <descr name="Ql"	 outname="Ql"  regexp="[\d]" 	  description="Указатель контроля качества для местоположения" />
+  <descr name="Qt"	 outname="Ql"  regexp="[\d]" 	  description="Указатель контроля качества для времени" />
+  <descr name="QA"	 outname="QA"  regexp="[\d]" 	  description="Класс качества определения местоположения" />
+  <descr name="Qd"	 outname="Ql"  regexp="[\d]" 	  description="Указатель контроля качества" />
+  <descr name="Qx"	 outname="Qx"  regexp="[\d]" 	  description="Указатель положения группы" />
+  <descr name="PwaPwaPwa"	 outname="Pwa"  regexp="[0-9]{3}"	mul="0.1"     description="Период волн, в десятых долях секунды" />
+  <descr name="Qd1"	 outname="Ql"  regexp="[\d]"	  description="Указатель контроля качества для профиля температуры/солености" />
+  <descr name="Qd2"	 outname="Ql"  regexp="[\d]"	  description="Указатель контроля качества для профиля течений" />
+  <descr name="k6"	 outname="k6"  regexp="[\d]"	  description="Метод исключения скорости и движения судна или буя из измерения скорости течения" />
+  <descr name="QP"	 outname="QP"  regexp="[\d]"	  description="Качество измерения давления" />
+  <descr name="Q2"	 outname="Q2"  regexp="[\d]"	  description="Качество вспомогательного параметра (второе слово в первом блоке данных с датчика терминальной передающей платформы АРГОС)" />
+  <descr name="QTW"	 outname="QP"  regexp="[\d]"	  description="Качество измерения температуры поверхности воды" />
+  <descr name="Q4"	 outname="Q4"  regexp="[\d]"	  description="Качество измерений температуры воздуха" />
+  <descr name="QN"	 outname="QN"  regexp="[\d]"	  description="Качество передачи данных с буя на спутник" />
+  <descr name="QL"	 outname="QL"  regexp="[\d]"	  description="Качество определения местоположения" />
+  <descr name="Qz"	 outname="Qz"  regexp="[\d]"	  description="Указатель корректировки значений глубины (указание на то, откорректированы или нет значения выбранной глубины с использованием гидростатического давления)" />
+  <descr name="Zh"	 outname="Zh"  regexp="[\d]{4}"   description="Гидростатическое давление на нижнем конце троса, кПа" />
+  <descr name="Zc"	 outname="Zc"  regexp="[\d]{4}"   description="Длина троса в метрах (гирлянда терморезисторов)" />
+  <descr name="BtBt"	 outname="BtBt"  regexp="[\d]{2}"   description="Тип буя" />
+  <descr name="XtXt"	 outname="XtXt"  regexp="[\d]{2}"   description="Тип плавучего якоря" />
+  <descr name="AhAhAh"	 outname="ha"  regexp="[\d]{3}"  mul="0.1"  description="Высота анемометра (высота над станцией), м" />
+  <descr name="AN"	 outname="AN"  regexp="[\d]"   description="Тип анемометра" />
+  <descr name="VBVB"	 outname="VBVB"  regexp="[\d]{2}"   description="Скорость дрейфа буя, см/с" />
+  <descr name="dBdB"	 outname="dBdB"  regexp="[\d]{2}"   description="Направление дрейфа буя" />
+  <descr name="ViViViVi" outname="national"  regexp="[\d]{4}"   description="Информация о техническом состоянии буя" />
+  <descr name="ZdZdZd"	   outname="ZdZdZd"  regexp="[\d]{4}"   description="Длина троса, к которому прикреплен якорь, в метрах" />
+  
+  <!--IONFO-->
+  <descr name="nnnnn"	   outname="station_index"  regexp="[\d]{5}"   description="Индекс гелиогеофизической станции" />
+  <descr name="e"	   outname="e"  regexp="[\d]"   description="Ожидаемое состояние критических частот слоя F2 для соответствующего дня периода прогноза" />
+  <descr name="s"	   outname="s"  regexp="[\d]"   description="Ожидаемое состояние спорадического слоя Es для соответствующего дня периода прогноза" />
+  <descr name="p"	   outname="pD" regexp="[\d]"   description="Прогноз полного поглощения в слое D для соответствующего дня периода прогноза" />
+  <descr name="d"	   outname="d"  regexp="[\d]"   description="Прогноз диффузности слоя F2 для соответствующего дня периода прогноза" />
+  <descr name="aM"	   outname="aM" regexp="[\d]"   description="Качественная ценка геомагнитной возмущенности для соответствующего дня периода прогноза" />
+  <!-- IONKA -->
+  <descr name="fF2"    outname="fF2" 	 regexp="\d{,3}" mul="0.1" description="Критическая частота слоя F2 в десятых долях МГц" />
+  <descr name="hF2"    outname="hF2"	 regexp="\d{,2}" mul="10" description="Минимальная высота слоя F2, только сотни и десятки км" />
+  <descr name="kMF2"   outname="kMF2"	 regexp="\d{,2}" description="Коэффициент М3000 F2" />
+  <descr name="tF"     outname="tF"	 regexp="\d"     description="Тип диффузности в области F" />
+  <descr name="fmin"   outname="fmin"	 regexp="\d{,2}" mul="0.1" description="Минимальная частота отражения в десятых долях МГц" />
+  <descr name="fEs"    outname="fEs"	 regexp="\d{,3}" mul="0.1" description="Критическая частота образования Es в десятых долях МГц" />
+  <descr name="hEs"    outname="hEs"	 regexp="\d{,2}" add="100" description="Минимальная высота образования Es, только десятки и единицы км – превышение над уровнем в 100 км" />
+  <descr name="fF1"    outname="fF1"	 regexp="\d{,3}" mul="0.1" description="Критическая частота слоя F1 в десятых долях МГц" />
+  <descr name="hF1"    outname="hF1"	 regexp="\d{,2}" add="100" description="Минимальная высота слоя F1, только сотни и десятки км" />
+  <descr name="kMF1"   outname="kMF1"	 regexp="\d{,2}" description="Коэффициент М3000 F1" />
+  <descr name="hmF2"   outname="hmF2"	 regexp="\d{,3}" description="Действующая высота максимума электронной концентрации («пораболического») слоя F2 в км" />
+  <descr name="fE"     outname="fE"	 regexp="\d{,3}" mul="0.1" description="Критическая частота слоя Е в десятых долях МГц" />
+  <descr name="hE"     outname="hE"	 regexp="\d{,2}" add="100" description="Минимальная высота слоя Е, только десятци и единицы км – превышение надо уровнем в 100 км" />
+  <descr name="fbEs"   outname="fbEs"	 regexp="\d{,3}" mul="0.1" description="Частота экранировки спорадическим образованием в десятых долях МГц" />
+  <descr name="tEs"    outname="tEs"	 regexp="\d"     description="Тип ES" />
+  <descr name="fmF"    outname="fmF"	 regexp="\d{,3}" mul="0.1" description="Предельная частота отражения от области F (fx1)" />
+  
+  <!-- IONEX -->  
+  <descr name="system"	   outname="system"  regexp="[\w\s]+"	    description="Satellite system or theoretical model" />
+  <descr name="agency"	   outname="station"  regexp="[\w\s-]+"	    description="agency" />
+  <descr name="func"	   outname="func"    regexp="\w+"	    description="function" />
+  <descr name="el"	   outname="el"	     regexp="\d+(?:.\d)?"   description="minimum elevation angle in degrees" />
+  <descr name="observ"	   outname="observ"  regexp="[\w\s]*"	    description="specification of the observable" />
+  <descr name="stCnt"	   outname="stCnt"   regexp="\d{1,6}"	    description="number of contributing stations" />
+  <descr name="satCnt"	   outname="satCnt"  regexp="\d{1,6}"	    description="number of contributing satellites" />
+  <descr name="earth"	   outname="earth"   regexp="\d+(?:.\d)?"   description="mean earth radius" />
+  <descr name="dim"	   outname="dimension"     regexp="\d"	    description="map dimension" />
+  <descr name="dh"	   outname="dh"	     regexp="-?\d+(?:.\d)?" mul="1000" description="height increment, km" />
+  <descr name="dLa"	   outname="dLa"     regexp="-?\d+(?:.\d)?" description="lat increment, градусы" />
+  <descr name="dLo"	   outname="dLo"     regexp="-?\d+(?:.\d)?" description="lon increment, градусы" />
+  <descr name="exp"	   outname="exp"     regexp="-?\d{1,6}"    description="exponent defining the unit of the values" />
+  <descr name="prn"	   outname="prn"     regexp="\w?\d{1,2}"    description="pseudo random number" />
+  <descr name="dcb"	   outname="dcb"     regexp="-?\d+(?:.\d+)?" description="differential code bias" />
+  <descr name="rms"	   outname="rms"     regexp="-?\d+(?:.\d+)?" description="RMS error in nanoseconds" />
+  <descr name="h0"	   outname="h0"     regexp="-?\d+(?:.\d)?" mul="1000" description="Высота, км" />
+  <descr name="La"	   outname="La"     regexp="-?\d+(?:.\d)?" description="Широта, градусы" />
+  <descr name="Lo"	   outname="Lo"     regexp="-?\d+(?:.\d)?" description="Долгота, градусы" />
+
+  <!--КН-19 ДЕКАДА-->
+  <descr name="Nd"	  outname="Nd"  regexp="[\d]"   description="Номер декады" />
+  
+  <!--КН-24 СНЕГ-->
+  <descr name="sssp"	 outname="sssp"  regexp="[\d]{3}" description="Средняя высота снежного покрова в поле" />
+  <descr name="Klp"	  outname="Klp"  regexp="[\d]"   description="Степень покрытости ледяной коркой поверхности почвы в поле"/>
+  <descr name="dd_iceP"	  outname="dd_icep"  regexp="[\d]{2}" mul="0.01"  description="Средняя плотность снега в поле"/>
+  <descr name="LLP"	  outname="LLp"  regexp="[\d]{2}"   description="Средняя толщина ледяной корки в поле"/>
+  <descr name="RsP"	  outname="Rsp"	 regexp="[\d]{3}"   description="Общий запас воды в снежном покрове в поле"/>
+  <descr name="E1P"	  outname="E1p"	 regexp="[\d]"	 description="Состояние поверхности почвы в поле"/>
+  <descr name="sssf"	 outname="sssf"  regexp="[\d]{3}" description="Средняя высота снежного покрова в лесу" />
+  <descr name="Klf"	  outname="Klf"  regexp="[\d]"   description="Степень покрытости ледяной коркой поверхности почвы в лесу"/>
+  <descr name="dd_iceF"	  outname="dd_icef"  regexp="[\d]{2}"  mul="0.01"   description="Средняя плотность снега в лесу"/>
+  <descr name="LLF"	  outname="LLf"  regexp="[\d]{2}"   description="Средняя толщина ледяной корки в лесу"/>
+  <descr name="RsF"	  outname="Rsf"	 regexp="[\d]{3}"   description="Общий запас воды в снежном покрове в лесу"/>
+  <descr name="E1F"	  outname="E1f"	 regexp="[\d]"	 description="Состояние поверхности почвы в лесу"/>
+  <descr name="YY1P"    outname="YY1p"   regexp="[0-35-8]?[0-9]"  description="День образованя снежного покова в поле" />
+  <descr name="MM1P"    outname="MM1p"	       	 regexp="[01]?[\d]" description="Месяц образованя снежного покова в поле" />
+  <descr name="YY1F"    outname="YY1f"   regexp="[0-35-8]?[0-9]"  description="День образованя снежного покова в лесу" />
+  <descr name="MM1F"    outname="MM1f"  regexp="[01]?[\d]" description="Месяц образованя снежного покова в лесу" />
+  <descr name="YY2P"    outname="YY2p"   regexp="[0-35-8]?[0-9]"  description="День схода снежного покова в поле" />
+  <descr name="MM2P"    outname="MM2p"   regexp="[01]?[\d]" description="Месяц схода снежного покова в поле" />
+  <descr name="YY2F"    outname="YY2f"   regexp="[0-35-8]?[0-9]"  description="День схода снежного покова в лесу" />
+  <descr name="MM2F"    outname="MM2f"  regexp="[01]?[\d]" description="Месяц схода снежного покова в лесу" />
+  
+  <!--СЛОЙ-->
+   <descr name="Tns"	 outname="h0"  regexp="[1-7]" type="1"  description="Слой" >
+     <table val="0; 1500; 3000; 6000; 12000; 18000; 24000; 30000" />
+   </descr>
+  <!-- <descr name="ff1s"	 outname="ff"  regexp="[\d]{2}"   description="Скорость ветра  в слое, м/с" /> -->
+  <!-- <descr name="dds"    	 outname="dd"  regexp="[0-39][\d]"  type="2" description="Истинное направление, откуда дует (или будет дуть) ветер в слое,градусы" /> -->
+  
+  <!--КН-15-->
+  <descr name="A1Ci"     outname="A1Ci" regexp="[\d]{2}" description="Регион, страна" />
+  <descr name="BBiH"     outname="station_index" regexp="[\d]{5}" type="2" description="Указатель бассейна + станции внутри бассейна" />
+  <descr name="RRRR"     outname="R"   regexp="[\d]{4}" type="2" description="Сумма осадков/суммарный водный эквивалент" />
+  <descr name="QQQ"	 outname="QQQ" regexp="[\d]{4}" type="2"  description="Расход воды" />
+  <descr name="E1E1"	 outname="EE"  regexp="[\d]{2}"  add="100"  description="Характеристика ледовых явлений" />
+  <descr name="E3"	 outname="E3"  regexp="[0-3]"  description="Наличие шуги под слоем льда" />
+  <descr name="X"	 outname="X"   regexp="[0-2/]"  description="Тенденция" />
+  <descr name="tp"       outname="GGp" regexp="[0-9]"   type="1"  description="Продолжительность периода, за который сообщается количество осадков,ч" >
+    <table val="1;2;3;6;12;24;48" />
+  </descr>
+  <descr name="S2"	 outname="S1"   regexp="\d{2}"  description="Толщина снега на льду, см" />
+  
+  <descr name="n"	 outname="n"  regexp="[\d]"   description="Указатель" />
+  <descr name="HHHH"	 outname="HHHH"  regexp="[\d]{4}" type="2"  description="Уровень воды над нулем поста в срок наблюдения, в см" />
+  <descr name="HiHiHiK"	 outname="HiHiHiK"  regexp="[\d]{4}"  type="2" description="Изменение уровня воды, в см" />
+  <!-- <descr name="HHHHL"    outname="HHHHL"    regexp="[\d]{1}"  type="2" description="Состояние уровня воды" /> -->
+  <descr name="HHHH20"	 outname="HHHH20"  regexp="[\d]{4}" type="2"  description="Уровень воды за 20-часовой срок наблюдений предшествующих суток, в см" />
+  <!-- <descr name="HHHH20L"    outname="HHHHL"    regexp="[\d]{1}"  type="2" description="Состояние уровня воды за последние 20 часов" /> -->
+  <descr name="tt"	 outname="tt"  regexp="[\d]{2}"  mul="0.1"  description="Температура воды" />
+  <descr name="TTt"	 outname="T"   regexp="[\d]{2}"  type="2"  description="Температура воздуха" />
+  <descr name="EE"	 outname="EE"  regexp="[\d]{2}"  description="Характеристика ледовых явлений" />
+  <descr name="ieie"	 outname="ieie" regexp="[\d]{2}"  description="Интенсивность ледовых явлений в баллах" />
+  <descr name="CC"	 outname="CC"   regexp="[\d]{2}"  description="Характеристика состояния водного объекта" />
+  <descr name="icic"	 outname="ieie" regexp="[\d]{2}"  description="Интенсивность явлений в баллах" />
+  <descr name="DDD"	 outname="DDD"  regexp="[\d]{3}" description="Толщина льда" />
+  <descr name="S1"	 outname="S1"   regexp="[\d]"  description="Толщина снега на льду" >
+    <table val="0;3;7;13;17;23;30;40;60;100" />
+  </descr>
+  
+  <descr name="kQQQ"	 outname="kQQQ" regexp="[\d]{4}" type="2"  description="Ежедневный расход воды" />
+  <descr name="RRR24"	 outname="R24"  regexp="[\d]{3}"  type="2"  description="Количество осадков, в мм" />
+  <descr name="dc"	 outname="dc"   regexp="[\d]"   description="Продолжительность осадков" />
+  <descr name="TiTi"	 outname="TiTi" regexp="[\d]{2}"   description="Период наблюдения" />
+  <descr name="MIDHHHH"	 outname="MIDHHHH"  regexp="[\d]{4}"  type="2"  description="Средний уровень воды за срок наблюдения, в см" />
+  <descr name="MINHHHH"	 outname="MINHHHH"  regexp="[\d]{4}"  type="2"  description="Минимальный	 уровень воды за срок наблюдения, в см" />
+  <descr name="MAXHHHH"	 outname="MAXHHHH"  regexp="[\d]{4}"  type="2"  description="Максимальный уровень воды за срок наблюдения, в см" />
+  <descr name="MIDkQQQ"	 outname="MIDkQQQ"  regexp="[\d]{4}"  type="2"	description="Средний расход воды за период наблюдения" />
+  <descr name="MINkQQQ"	 outname="MINkQQQ"  regexp="[\d]{4}"  type="2"	description="Минимальный расход воды за период наблюдения" />
+  <descr name="MAXkQQQ"	 outname="MAXkQQQ"  regexp="[\d]{4}"  type="2"	description="Максимальный расход воды за период наблюдения" />
+  <descr name="YYM"    outname="YYM"   regexp="[0-35-8]?[0-9]"  description="День прохождения наивысшего уровня (расхода) воды" />
+  <descr name="GGM"    outname="GGM"   regexp="[0-2]?[0-9]"     description="Фактический срок прохождения наивысшего уровня (расхода) воды с точностью до ближайшего целого часа" />
+  <descr name="HHHHvb"	 outname="HHHHvb"  regexp="[\d]{4}" type="2"  description="Уровень воды верхнего бьефа, в см" />
+  <descr name="HHHHs"	 outname="HHHHs"   regexp="[\d]{4}" type="2"  description="Средний уровень водохранилища в срок наблюдений, в см" />
+  <descr name="HHHHks"	 outname="HHHHks"  regexp="[\d]{4}" type="2"  description="Средний уровень водохранилища на конец предшествующих суток, в см" />
+  <descr name="HHHHnb"	 outname="HHHHnb"  regexp="[\d]{4}" type="2"  description="Уровень воды нижнего бьефа, в см" />
+  <descr name="HHHHv"	 outname="HHHHv"   regexp="[\d]{4}" type="2"  description="Высший за предшествующие сутки уровень воды нижнего бьефа, в см" />
+  <descr name="HHHHn"	 outname="HHHHn"   regexp="[\d]{4}" type="2"  description="Низший за предшествующие сутки уровень воды нижнего бьефа, в см" />
+  <descr name="kVVVs"	 outname="kVVVs"   regexp="[\d]{4}"  type="2"  description="Объем воды в водохранилище по среднему уровню в срок наблюдений" />
+  <descr name="kVVVks"	 outname="kVVVks"  regexp="[\d]{4}"  type="2"  description="Объем воды в водохранилище по среднему уровню на конец предшествующих суток" />
+  <descr name="kQQQo"	 outname="kQQQo"  regexp="[\d]{4}"  type="2"  description="Общий приток воды в срок наблюдений" />
+  <descr name="kQQQb"	 outname="kQQQb"  regexp="[\d]{4}"  type="2"  description="Боковой приток воды в срок наблюдений" />
+  <descr name="kQQQa"	 outname="kQQQa"  regexp="[\d]{4}"  type="2"  description="Приток воды к акватории водохранилища" />
+  <descr name="kQQQo1"	 outname="kQQQo1"  regexp="[\d]{4}"  type="2"  description="Общий приток воды, средний за предшествующие сутки" />
+  <descr name="kQQQb1"	 outname="kQQQb1"  regexp="[\d]{4}"  type="2"  description="Боковой приток воды, средний за предшествующие сутки" />
+  <descr name="kQQQa1"	 outname="kQQQa1"  regexp="[\d]{4}"  type="2"  description="Приток воды к акватории водохранилища, средний за предшествующие сутки" />
+  <descr name="kQQQsb"	 outname="kQQQsb"  regexp="[\d]{4}"  type="2"  description="Сброс воды через гидроузел" />
+  <descr name="kFFF"	 outname="kFFF"  regexp="[\d]{4}"  type="2"  description="Площадь живого сечения реки" />
+  <descr name="hhhh"	 outname="hhhh"  regexp="[\d]{4}"   description="Максимальная глубина на гидростворе" />
+  <descr name="dd1"	 outname="dd"  regexp="[\d]{2}" type="1"	  description="направление ветра" >
+    <table val="0; 45; 90; 135; 180; 225; 270; 315; 360; -9999" />
+  </descr>
+  <descr name="HwHw" outname="Hw"  regexp="[0-9]{2}" mul="0.1"	description="Высота ветровых волн,м" />
+  <descr name="Cw" outname="Cw"  regexp="[\d]" description="Характеристика поверхности водоема" />
+  <descr name="RRR1"	 outname="R"  regexp="[\d]{3}"  type="2"  description="Количество осадков, мм" />
+  <descr name="alarm"	 outname="alarm"  regexp=".*"  description="Сообщение" />
+  
+  <!--КН-21-->
+  <descr name="B0"	 outname="B0"  regexp="[\d]"  description="Номер телеграммы" />
+  <descr name="snT0T0_avg" outname="snT0T0_avg"	 regexp="[01][\d]{2}" type="2" description="Отклонение средней за декаду температуры" />
+  <descr name="snTxTx_avg" outname="Tx_avg"	 regexp="[01][\d]{2}" type="2" description="Максимальная среднесуточная температура воздуха за месяц, в градусах" />
+  <descr name="snTnTn_avg" outname="Tn_avg"	 regexp="[01][\d]{2}" type="2" description="Минимальная среднесуточная температура воздуха за месяц, в  градусах" />
+  <descr name="u30u30" outname="u30u30"	 regexp="[\d]"  description="Число случаев за декаду с влажностью ниже 30%" />
+  
+  
+  <descr name="KpKpKp" outname="KpKpKp"	 regexp="[\d]{3}"  description="С/х культура, растение" />
+  <descr name="WWW10" outname="WWW10"	 regexp="[\d]{3}"  description="Запасы продуктивной влаги 0-100см" />
+  <descr name="WWW5" outname="WWW5"	 regexp="[\d]{3}"  description="Запасы продуктивной влаги 0-50см" />
+  <descr name="WW2" outname="WW2"	 regexp="[\d]{2}"  description="Запасы продуктивной влаги 0-20см" />
+  <descr name="WW1" outname="WW1"	 regexp="[\d]{2}"  description="Запасы продуктивной влаги 0-10см" />
+  <descr name="WW0" outname="WW0"	 regexp="[\d]{2}"  description="Запасы продуктивной влаги 0-5см" />
+  <descr name="Pr" outname="Pr"	 regexp="[\d]{2}"  description="Предшественник" />
+  
+  <!-- MKLM -->
+  <descr name="ff_3s_cm"  outname="ff_3s"    regexp="[\d]+"   mul="0.01" description="Скорость ветра, см/с" />
+  <descr name="P0_int" 	  outname="P0"       regexp="\d{1,4}"  	         description="Давление на уровне станции, целая часть, гПа" />
+  <descr name="P0_fract"  outname="COMPLEX"  regexp="\d{1,2}" type="3"   description="Давление на уровне станции, дробная часть, сотые гПа" />
+  <descr name="dd_3s_"    outname="dd_3s"    regexp="[\d]+"   mul="0.01" description="Направление ветра, град" />
+  <descr name="ww_cm"     outname="ww"       regexp="-?[\d]+"              description="Мгновенное значение вертикальной составляющей скорости ветра, см/с" />
+  <descr name="ffn"       outname="ffn"      regexp="[\d]+"   mul="0.01" description="Средняя скорость звука по трем каналам, м/с" />
+  <descr name="dffn"      outname="dffn"     regexp="[\d]+"   mul="0.01" description="Максимальное отклонение скорости по одному каналу от средней по трем, см/с" />
+  <descr name="T_hn"      outname="T"      regexp="-?[\d]+" mul="0.01"  description="Мгновенное значение температуры воздуха, C" />
+  <descr name="U_hn"      outname="U"      regexp="[\d]+" mul="0.01"  description="Мгновенное значение влажности воздуха, %" />
+  <descr name="R_th"      outname="R"      regexp="[\d]+" mul="0.001"  description="Количество осадков, мм" />
+  <descr name="sss_mm"    outname="sss"    regexp="[\d]+" mul="0.1"  description="Высота снежного покрова, см" />
+  <descr name="h_sensor"  outname="h_sensor" regexp="\d+" mul="0.001"  description="Высота установки датчика, мм" />
+  <descr name="h0_mm"     outname="hh0"     regexp="\d+" mul="0.001"  description="Высота до поверхности, мм" />
+  <descr name="T_sn"      outname="T_sn"   regexp="-?\d+" mul="0.01"  description="Температура прибора, С*100" />
+  <descr name="trans"	  outname="trans"  regexp="\d+" mul="0.01"  description="Световой коэффициент направленного пропускания, %*100" />
+  <descr name="lr"	  outname="lr"	   regexp="\d+" description="Молния - расстояние от станции" />
+  <descr name="ld"	  outname="ld"	   regexp="\d+" description="Молния - направление от станции" />
+  <descr name="lf"	  outname="lf"	   regexp="\d+" description="Количество грозовых разрядов" />
+  <descr name="lfsum"	  outname="lfsum"  regexp="\d+" description="Общее количество молниевых разрядов" />
+  <descr name="noise"	  outname="noise"  regexp="\d+" description="Уровень теневого шума" />
+
+  <descr name="nns"    outname="nns"	regexp="\d+" description="Номер" />
+  <descr name="gAk"    outname="gAk"	regexp="\d{3}" description="Ак-индекс" />
+  <descr name="gAp"    outname="gAp"	regexp="\d{3}" description="Индекс геомагнитной возмущённости Ар" />
+  <descr name="gk"     outname="gk"	regexp="[\d/]" description="К-индекс" />
+  <descr name="gk_p"   outname="gk"	regexp="[\d/\s]+" type="2" description="К-индекс" />
+  <descr name="gH"     outname="gH"	regexp="\d{1,5}" description="минимум Н–компоненты, в гаммах" />
+  <descr name="gSyn"   outname="gSyn"	regexp="[1-8]" description="Явление (магнитометрические наблюдения)" />
+  <descr name="gd"     outname="gd"	regexp="[0-9]" description="Индекс кольцевого тока" />
+  <descr name="gsn"    outname="gsn"	regexp="\d"    description="Количество суббурь" />
+  <descr name="ggr"    outname="ggr"	regexp="\d" mul="0.1" description="Граница зоны устойчивого захвата электронов с Ее>1Мэв на ночной стороне магнитосферы, в L" />
+  <descr name="gfreq"  outname="gfreq"  regexp="\d+" description="Частота, МГц" />
+  <descr name="gF"     outname="gF"     regexp="\d{3,5}" description="плотность потока радиоизлучения Солнца в потоковых единицах 10^-22Вт/(м2*с)" />
+  <descr name="gFp"    outname="gFp"    regexp="\d{4}" description="плотность потока радиоизлучения Солнца в %" />
+  <descr name="gFf"    outname="gF"     regexp="\d{3}" type="2" description="фоновое значение плотности потока" />
+  <descr name="gSynf"  outname="gSynf"  regexp="[1-6]" description="тип события" />
+  <descr name="gDa"    outname="Da"     regexp="[78]"  type="1" description="местоположение источника" >
+    <table val="7,90; 8,270" />
+  </descr>
+  <descr name="gdist"  outname="gdist"  regexp="\d{3}" description="расстояние всплеска до центра сканирования в процентах от радиуса фотосферы" />
+  <descr name="gQc"    outname="Qc"     regexp="[1-4]" type="1" description="квадрант, где наблюдался источник" >
+    <table val="1,1; 2,3; 3,5; 4,7" />
+  </descr>
+  <descr name="gLa"    outname="La"   regexp="\d{2}" description="расстояние к северу или югу от N-S диаметра в градусах" />
+  <descr name="gLo"    outname="Lo"   regexp="\d{2}" description="расстояние к востоку или западу от диаметра E-W  в градусах" />
+  <descr name="gp"     outname="gp"   regexp="\d"    description="признак регистратора протонов" />
+  <descr name="gpi"    outname="gpi"  regexp="\d{4}" type="2" description="интенсивность протонов" />  
+  <descr name="go1"    outname="go1"   regexp="[0-69]"   description="Использование при прогнозе наземных наблюдений за Солнцем" />
+  <descr name="go2"    outname="go2"   regexp="[0-69]"   description="Использование при прогнозе данных спутниковых измерений" />
+  <descr name="go3"    outname="go3"   regexp="[0-3]"    description="Использование при прогнозе данных о магнитном поле Земли" />
+  <descr name="gS"     outname="gS"    regexp="[0-9]"  description="Прогноз вспышечной активности Солнца в целом" />
+  <descr name="gM"     outname="gM"    regexp="[0-47-9]" description="Прогноз геомагнитного поля" />
+  <descr name="gP"     outname="gP"    regexp="[0-27-9]" description="Прогноз протонных событий" />
+  <descr name="gc"     outname="gc"    regexp="\d"     description="рентгеновский класс события" />
+  <descr name="gci"    outname="gci"   regexp="\d{2}" mul="0.1" description="интенсивность рентгеновского события" />
+  <descr name="ge"     outname="ge"    regexp="\d"     description="оптический балл вспышки" />
+  <descr name="gb"     outname="gb"    regexp="\d"     description="признак яркости вспышки" />
+  <descr name="gFa"    outname="gFa"   regexp="\d"     description="всплеск" />
+  <descr name="gF_st"  outname="gF"    regexp="\d{4}" type="2"  description="плотность потока" />
+  <descr name="grwc"   outname="grwc"  regexp="\d{4}"  description="номер области по нумерации регионального центра RWC" />
+  <descr name="gw"     outname="gw"    regexp="\d{3,4}"     description="относительное число солнечных пятен (число Вольфа)" />
+  <descr name="gFcnt"  outname="gFcnt" regexp="\d"     description="количество значительных всплесков плотности потока радиоизлучения Солнца" />
+  <descr name="gic"    outname="gic"   regexp="\d{3}" type="2" description="средняя интенсивность космических лучей" />
+  <descr name="gcSyn"  outname="gcSyn" regexp="[0-6]"  description="признак события в потоках космических лучей" />
+  <descr name="gMcnt"  outname="gMcnt" regexp="\d{2}"  description="количество рентгеновских вспышек класса М" />
+  <descr name="gXcnt"  outname="gXcnt" regexp="\d{2}"  description="количество рентгеновских вспышек класса Х" />
+  <descr name="ggamma" outname="ggamma" regexp="\d{4}" type="2" description="фоновое значение х-лучей" />
+  <descr name="gpi1"   outname="gpi"    regexp="\d{4}" type="2" description="поток частиц" />
+  <descr name="gncnt"  outname="gncnt"  regexp="\d{2}" description="количество новых групп пятен" />
+  <descr name="gacnt"  outname="gacnt"  regexp="\d{2}" description="общее количество активных областей на видимом диске Солнца" />
+  <descr name="gSq"    outname="gSq"    regexp="\d{3,4}" description="общая площадь групп пятен в миллионных долях солнечной полусферы" />
+  <descr name="gflcnt" outname="gflcnt" regexp="\d{1,2}" description="Количество субвспышек" />
+  <descr name="gCc"    outname="gCc"    regexp="\d"      description="Цюрихский класс группы" />
+  <descr name="gsh"    outname="gsh"    regexp="[0-5]"   description="Тип полутени у самого большого пятна в группе" />
+  <descr name="gdstr"  outname="gdstr"  regexp="[0-3]"   description="компактность центральных пятен" />
+  <descr name="gm"     outname="gm"     regexp="[1-7]"   description="магнитная классификация группы пятен" />
+  <descr name="gscnt"  outname="gscnt"  regexp="\d{2,4}" description="общее число пятен в группе" />
+  <descr name="gPC"    outname="gPC"    regexp="[\d]" type="1" description="вероятность рентгеновских вспышек класса C с точностью до 10%" >
+    <table val="5; 15; 25; 35; 45; 55; 65; 75; 85; 95" />
+  </descr>
+  <descr name="gPM"    outname="gPM"    regexp="[\d]" type="1" description="вероятность рентгеновских вспышек класса M" >
+    <table val="5; 15; 25; 35; 45; 55; 65; 75; 85; 95" />
+  </descr>
+  <descr name="gPX"    outname="gPX"    regexp="[\d]" type="1" description="вероятность рентгеновских вспышек класса X" >
+    <table val="5; 15; 25; 35; 45; 55; 65; 75; 85; 95" />
+  </descr>
+  <descr name="gPp"    outname="gPp"    regexp="[\d]" type="1" description="вероятность протонных вспышек" >
+    <table val="5; 15; 25; 35; 45; 55; 65; 75; 85; 95" />
+  </descr>
+  <descr name="gir"    outname="gir"  regexp="\d"    	description="способ измерения риометром" />
+  <descr name="git"    outname="git"  regexp="[1-7]" 	description="Тип явления (измерения ионосферного поглощения)" />
+  <descr name="gia"    outname="gia"  regexp="\d{2}" 	description="число дБ максимума поглощения за час до времени “КК”" />
+  <descr name="gif"    outname="gif"  regexp="\d{3}" 	description="задержка фазы в градусах" />
+  <descr name="gis"    outname="gis"  regexp="\d"    	description="Тип явления (внезапные ионосферные возмущения)" />
+  <descr name="gii"    outname="gii"  regexp="[0-37-9]" description="Показатель интенсивности явления" />
+  <descr name="gqt"    outname="gqt"  regexp="[0-35-8]" description="Показатель качества наблюдений и надёжность времени" />
+  <descr name="gVq"    outname="gVq"  regexp="[1-5]" description="качество наблюдения" />
+  <descr name="gSqd"   outname="gSq"  regexp="\d{3}" mul="10" description="площадь группы в десятках миллионных долей солнечной полусферы" />
+  <descr name="gHs"    outname="gHs"  regexp="\d{2}" description="продольный размер Нα-флоккулов" />
+  <descr name="gHb"    outname="gHb"  regexp="[1-5]" description="яркость Нα по 5-бальной шкале" />
+  <descr name="gHa"    outname="gHa"  regexp="[1-5]" description="описание яркой Нα-структуры" />
+  <descr name="gHf"    outname="gHf"  regexp="[1-5]" description="положение тёмного волокна относительно фотосферных пятен" />
+  <descr name="gss"    outname="gss"  regexp="\d"    description="размер солнечного диска, используемый при наблюдениях" />
+  <descr name="ggs"    outname="ggs"  regexp="\d"    description="относительный размер головного пятна и плотность рассеяния солнечных пятен" />
+  <descr name="gb1"    outname="gb"    regexp="\d" type="1" description="интенсивность (яркость) вспышки по эволюции" >
+    <table val="7,0; 8,1; 9,2"/>
+  </descr>
+  <descr name="gst"    outname="gst"  regexp="\d" description="признак пятна" />
+  <descr name="gsd"    outname="gsd"  regexp="\d" description="диаметр тени основного пятна в градусах" />
+  <descr name="gsp"    outname="gsp"  regexp="[1-3]" description="полярность магнитного поля основного пятна" />
+  <descr name="gsc"    outname="gsc"  regexp="[0-2]" description="конфигурация пятна" />
+  <descr name="grr"    outname="grr"  regexp="\d{2}" description="расстояние по долготе между внешними краями основных пятен" />
+  <descr name="grv"    outname="grv"  regexp="\d{2}" description="расстояние по широте между внешними краями основных пятен" />
+  <descr name="gri"    outname="gri"  regexp="\d{1,2}" description="кратчайшее расстояние (в градусах) между внутренними краями ближайших пятен противоположной полярности" />
+  <descr name="gmp"    outname="gmp"  regexp="[1-6]" description="ориентация нейтральной линии магнитного поля" />
+  <descr name="gpol"   outname="gpol" regexp="[1-5]" description="описание полярностей" />
+  <descr name="gmp1"   outname="gmp1" regexp="[1-6]" description="тип конфигурации и данные об ориентации нейтральной линии" />
+  <descr name="gdw"    outname="gdw"  regexp="\d" description="диаметр западного пятна (западной тени в DELTA конфигурации) в градусах" />
+  <descr name="gde"    outname="gde"  regexp="\d" description="диаметр восточного пятна (восточной тени в DELTA конфигурации) в градусах" />
+  <descr name="gnH"    outname="gnH"  regexp="\d{2}" mul="100" description="напряжённость магнитного поля северной поляризации" />
+  <descr name="gsH"    outname="gsH"  regexp="\d{2}" mul="100" description="напряжённость магнитного поля южной поляризации" />
+  <descr name="gdH"    outname="gdH"  regexp="[1-3]" description="оценка величины градиента магнитного поля" />
+  <!-- <descr name=""       outname=""    regexp="" description="" /> -->
+  <!-- <descr name=""       outname=""    regexp="" description="" /> -->
+  <!-- <descr name=""       outname=""    regexp="" description="" /> -->
+  <!-- <descr name=""       outname=""    regexp="" description="" /> -->
+  <!-- <descr name=""       outname=""    regexp="" description="" /> -->
+  <!-- <descr name=""       outname=""    regexp="" description="" /> -->
+
+</andescriptors>
+<!-- (?!99)[0-9]{2} -->
+
+
+<!-- Возможные наборы значений с одним дескриптором -->
+
+<!-- М.б. несколько равноправных значений -->
+<!-- dw1 (dw1dw1, dw2dw2)  -->
+<!-- Pw1 (Pw1Pw1, Pw2Pw2)  -->
+<!-- Hw1 (Hw1Hw1, Hw2Hw2)  -->
+<!-- Hwa (HwaHwa, HwaHwaHwa) -->
+<!-- R (RRR, RRR333)  -->
+<!-- tR (tR, tR333)  -->
+<!-- w (ww, ww60, w1w161) -->
+<!-- ww62 (ww62 - w1w163)  -->
+<!-- ww64 (ww64 - w1w165)  -->
+<!-- ww66 (ww66 - w1w167)  -->
+
+<!-- Смысл разный, значения идут по порядку (индекс в TMeteoData) -->
+<!-- CLMH (CL, CM, CH) -->
+<!-- DLMH (DL, DM, DH) (в bufr порядок дескриптором 08002) -->
+<!-- SSS (SSS, SS) (в bufr порядок дескриптором 14031) -->
+
+<!-- Несколько значений (уровни): -->
+<!-- PP1 (P1P1A, P1P1C) -->
+<!-- hh1 (P1P1h1h1h1A, P1P1h1h1h1C) -->
+<!-- TT1 (T1T1Ta1A, T1T1Ta1C) -->
+<!-- DD1 (D1D1A, D1D1C) -->
+<!-- dd1 (d1d1fA, d1d1fC) -->
+<!-- ff1 (f1f1f1A, f1f1f1C) -->
+<!-- P1P1TempB (P1P1P1TempB, P1P1P1TempD) -->
+<!-- P1P1WindB (P1P1P1WindB, P1P1P1WindD) -->
+<!-- T1T1B (T1T1Ta1B, T1T1Ta1D) -->
+<!-- D1D1B (D1D1B, D1D1D) -->
+<!-- d1d1B (d1d1fB, d1d1fD) -->
+<!-- f1f1B (f1f1f1B, f1f1f1D) -->
+<!-- n1n1TempB (n1n1TempB, n1n1TempD) -->
+<!-- n1n1WindB (n1n1WindB, n1n1WindD) -->
+<!-- NeNe - номера квадратов от 00 до 99 -->
+<!-- - - - - - - - - - - - - - - - - - -->
+
+
+<!-- Повторяющиеся имена дескрипторов, которые д.б. в результате в единственном экземпляре -->
+
+<!-- В телеграмме может быть только один: -->
+<!-- F24_0 (F24F24F24F240, F24F24F24F241) -->
+<!-- F24_4 (F24F24F24F244, F24F24F24F245) -->
+<!-- F0 (FFFF0, FFFF1) -->
+<!-- F4 (FFFF4, FFFF5)  -->
+<!-- p24 (p24p24p240, p24p24p241) -->
+<!-- S' (S_22, S_23, S_)   -->
+<!-- S (S20, S21, S23, S24)  -->
+<!-- RR32 (RR32, nn39) -->
+<!-- Tv (TvTv96, TvTv97) -->
+<!-- Uv (UvUv98, UvUv99)  -->
+<!-- La (LaLaLa, LaLaLaLa) -->
+<!-- Lo (LoLoLoLo, LoLoLoLoLo) -->
+
+
+<!-- Замена первого вторым: -->
+<!-- ff, fff -->
+<!-- ff10, fff10 -->
+<!-- ff11, fff11 -->
+<!-- ff12, fff12 -->
+<!-- ff13, fff13 -->
+<!-- ff14, fff14 -->
+<!-- Id (IdA, IdC) -->
+
+<!-- Несколько значений про одно и то же: -->
+<!-- PtPt (PtPtPtA, PtPtPtC) -->
+<!-- PmPm (PmPmPmA, PmPmPmC) -->
+<!-- TtTt (TtTtTatA, TtTtTatC) -->
+<!-- DtDt (DttA,D DtDtC) -->
+<!-- dtdt (dtdtfA, dtdtfC) -->
+<!-- ftft (ftftftA, ftftftC) -->
+<!-- dmdm (dmdmfA, dmdmfC) -->
+<!-- fmfm (fmfmfmA, fmfmfmC) -->
+<!-- vbvb (vbvbA, vbvbC) -->
+<!-- vava (vavaA, vavaC) -->
+<!-- sr   (srA, srC) -->
+<!-- rara (raraA, raraC) -->
+<!-- sasa (sasaA, sasaC) -->
+
+<!-- - - - - - - - - - - - - - - - - - -->
+
+

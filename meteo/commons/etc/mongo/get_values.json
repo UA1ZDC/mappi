@@ -1,0 +1,31 @@
+{
+  "aggregate": "meteoreport",
+  "pipeline": [
+    { "$match": {
+      "location": {"$exists": true},
+      "param.descrname": @descrname@,
+      "dt":  @dt@,
+      "data_type": { "$in": @data_type@},
+      "level": @level@,
+      "level_type": @level_type@
+     }
+    },
+    { "$project" : {
+       "_id": 1,
+       "location":1,
+       "param":1
+     }
+    },
+    { "$unwind" : "$param" },
+    { "$group": {
+        "_id": {
+           "_id": "$_id",
+           "location": "$location"
+        },
+        "param":{"$push": "$param"}
+      }
+    }
+  ],
+   "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}

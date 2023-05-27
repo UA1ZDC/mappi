@@ -1,0 +1,114 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+import "surface.proto";
+import "sigwx.proto";
+import "msgparser.proto";
+import "msgcenter.proto";
+
+
+package meteo.surf;
+
+//! Ответ на запрос
+message DataReply {
+  repeated bytes meteodata                = 1;  //!< метео данные
+  optional bool  result                   = 2;  //!< результат выполнения запроса
+  optional string comment                 = 3;
+  repeated MeteoDataProto meteodata_proto = 4;
+  optional string request_id              = 5;  //!< идентификатор запроса, устанавливается при выполнении запроса к вышестоящему сервису
+  optional string date_start              = 6;  //!< дата начала интервала, за который получены данные
+  optional string date_end                = 7;  //!< дата окончания интервала, за который получены данные
+  optional double value                   = 8;  //!< значение
+
+}
+
+//! Сервис
+service SurfaceService {
+    //
+    // Сохранение данных
+    //
+
+    rpc SaveMsg( tlg.MessageNew ) returns ( SaveMsgReply );
+
+    rpc SetDecode( meteo.msgcenter.DecodeRequest ) returns ( meteo.msgcenter.Dummy );
+
+    //
+    // Получение данных
+    //
+    rpc GetDataCount( DataRequest ) returns ( CountDataReply );
+    rpc GetAvailableStations( DataRequest ) returns ( StationsDataReply ); //!< Станции с доступными данными по времени и типу данных
+    rpc GetAvailableZond( DataRequest ) returns ( StationsDataReply ); //!< Станции с доступными зондами
+
+    rpc GetAvailableSigwx( DataRequest ) returns ( SigwxDescResponse );
+
+    rpc GetSigwx( SigwxDesc ) returns ( sigwx.SigWx );
+
+    rpc GetGmiSenderStations( DataRequest ) returns ( StationsDataReply );
+//    rpc GetSrcDataCount( DataRequest ) returns ( CountDataReply ); //!< Запрос на получение данных
+
+    rpc RemoveGribDataAnalysed( SimpleDataRequest ) returns ( SimpleDataReply ); //!< Запрос на получение данных
+
+    rpc GetTZondOnStation( DataRequest ) returns ( TZondValueReply ); //!< Запрос на получение данных
+
+    rpc GetZondDataOnStation( DataRequest ) returns ( ZondValueReply ); //!< Запрос на получение данных
+
+   // rpc GetZondDataOnLevel( DataRequest ) returns ( ManyZondValueReply ); //!< Запрос на получение данных
+    rpc GetZondDates( DataRequest ) returns ( DateReply );
+
+    rpc GetOceanDataOnPoint( DataRequest ) returns ( DataReply ); //!< Запрос на получение данных
+    rpc GetOceanByDt( DataRequest ) returns ( DataReply ); //!< Океан по дате/времени
+    rpc GetAvailableOcean( DataRequest ) returns ( OceanAvailableReply ); //!< Доступные данные по дате/времени и дескриптору
+    rpc GetOceanById( SimpleDataRequest ) returns ( DataReply ); //!< Океан по id
+
+    rpc GetAvailableSynMobSea( DataRequest ) returns ( OceanAvailableReply ); //!< Доступные данные по дате/времени и дескриптору (синоптические морские подвижные станции)
+
+    //rpc GetOceanDataOnLevel( DataRequest ) returns ( ManyOceanValueReply ); //!< Запрос на получение данных
+
+    rpc GetValueOnStation( DataRequest ) returns ( ValueReply ); //!< Запрос на получение данных
+    rpc GetMeteoDataOnStation( DataRequest ) returns ( DataReply ); //!< Запрос на получение данных
+
+    //! Запрос на получение данных выбранного типа данных по выбранному уровню для всех или одной станции, для всех или одного дескриптора
+    rpc GetMeteoData( DataRequest ) returns ( DataReply );
+    rpc GetMeteoDataFromGrib( GribDataRequest ) returns ( DataReply );
+    rpc GetMeteoDataByDay( DataRequest ) returns ( DataReply );
+    rpc GetMeteoDataMeteotablo( DataRequest ) returns ( DataReply );
+
+    //! С восстановлением иерархии, по индексу, дате, типу данных
+    rpc GetMeteoDataTree( DataRequest ) returns ( DataReply );
+
+    rpc GetMrlDataOnAllStation( DataRequest ) returns ( ManyMrlValueReply ); //!< Запрос на получение данных МРЛ
+
+    rpc GetNotAnalysedGribData( EmptyDataRequest ) returns ( GribDataReply ); //!< Запрос на получение данных Grib
+    rpc GetGribData( GribDataRequest ) returns ( GribDataReply ); //!< Запрос на получение данных Grib
+    //rpc GetGribAvailable( DataRequest ) returns ( GribDataAvailableReply ); //!< Запрос на получение данных Grib
+    rpc GetAvailableGrib( DataRequest ) returns ( GribDataAvailableReply ); //!< Запрос на получение данных Grib
+
+//     rpc GetTlgData( TlgDataRequest ) returns ( DataReply ); //!< Запрос на получение раскодированных данных телеграммы
+//
+//     rpc GetTlgCoord( TlgCoordRequest ) returns ( CoordReply ); //!< Запрос на получение координат станций телеграмм
+
+    rpc GetAvailableRadar( DataRequest ) returns ( DataDescResponse ); //!< Запрос доступных данных
+
+    rpc GetAvailableGeophysMap( DataRequest ) returns ( GeophysMapAvailableReply ); //!< Доступные данные по дате/времени и типу
+    rpc GetGeophysById( SimpleDataRequest ) returns ( DataReply ); //!< Геофизическая карта по id
+
+    rpc UpdateMeteoData( UpdateDataRequest ) returns ( Value ); //!< Запрос на изменение данных
+    rpc AddMeteoData( DataReply ) returns ( SimpleDataReply );  //!< Запрос на добавление данных
+
+    rpc GetDtsForPeriod( DataRequest ) returns ( DataReply ); //!< Запрос на получение всех сроков, по которым есть данные за заданный период
+
+    rpc GetDataCover( DataRequest ) returns ( DataReply ); //!< Запрос на получение полноту данных (отношение количества станций с пришедшими данными к работающим станциям)
+
+    //
+    // Подписки на получение данных
+    //
+
+    rpc GetMsgMulti( meteo.msgcenter.DistributeMsgRequest ) returns ( stream meteo.tlg.MessageNew );
+    rpc GetDataMulti( DataRequest ) returns ( stream DataReply );
+    rpc GetCurStateMulti( CurStateRequest ) returns ( stream DataReply );
+
+
+
+}

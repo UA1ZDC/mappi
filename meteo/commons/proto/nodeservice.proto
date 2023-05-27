@@ -1,0 +1,83 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+import "meteo.proto";
+import "locsettings.proto";
+
+package meteo.nodeservice;
+
+enum NodeStatus {
+  kUnknow          = 0;  //!< неопределено
+  kWorking         = 1;  //!< работает
+  kNotWorking      = 2;  //!< не работает
+  kNodeNotAccept       = 3;  //!< не подтверждено
+  kNodeAccept          = 4;  //!<  подтверждено
+  kNodeAcceptUpdate    = 5;  //!<  подтверждено с изменением Названия станции
+}
+
+
+enum  NodeMessageType{
+  kAddToParrent            = 0;  //!< Добавить станцию к узлу с подтверждением
+  kAddToParrentNoAccept    = 1;  //!< Добавить станцию к узлу без подтверждения - в ответе должна быть карта сети
+  kGetNodeMap              = 2;  //!< Получить карту сети
+  kNodeMap                 = 3;  //!< Карта сети
+  kAccept                  = 4;  //!< подтверждение запроса на подключение к сети
+  kNotAccept               = 5;  //!< неподтверждение запроса на подключение к сети
+  kUpdateNodeMap           = 6;  //!< Обновить карту сети
+  kAcceptUpdate            = 7;  //!< подтверждение запроса на подключение к сети c изменением имени
+}
+
+//!
+message NodeMessage {
+  optional  NodeMessageType type = 1; //!< тип NodeMessage
+  optional  string          uid  = 2; //!< подписчик
+  //repeated  Node            nodes  = 20;//!< Описание станции с подключенными абонентами
+  optional  Node            node  = 20;//!< Описание станции с подключенными абонентами
+  optional  Node            local_node  = 21;//!< Описание станции локальной
+  optional string           notice = 30;//!< Примечания
+}
+
+message NodeMessages {
+  optional  NodeMessageType type = 1; //!< тип NodeMessage
+  optional  string          uid  = 2; //!< подписчик
+  repeated  Node            nodes  = 20;//!< Описание станции с подключенными абонентами
+}
+
+message AcceptNodeMessage {
+  optional Node                     node  = 1; //!<запрашиваемое имя
+  optional string                   new_station_name  = 2; //!<подтвержденное имя
+}
+
+message Node {
+  optional string                     station  = 1;//!<nameGMS
+  optional string                     name_ru  = 2;//!<humanName
+  optional meteo.GeoPointPb           location = 3;//!<координаты с высотой
+  optional string                     country  = 4;//!<страна
+  optional string                     cccc     = 5;//!<nameGMS
+  optional string                     host     = 6;
+  optional int32                      port     = 7;
+  optional NodeStatus                 status   = 8;//!<статус станции
+  optional double                     quality  = 9;//!<качество (скорость Кб/с) канала c вышестоящим узлом
+  optional meteo.settings.NodeType    type     = 10 [default = kStation]; //<!тип станции (стационарная/мобильная станция)
+  //optional string                   punch_name = 11; //<!имя пуансона для нанесения значка (стационарная/мобильная станция и проч)
+  //repeated Node                     parrent  = 20;//!< вышестоящие узлы
+  repeated Node                       childs   = 21;//!< подключенные абоненты
+}
+
+
+message DummyResponse {
+  optional bool  result = 1;
+}
+
+//! Сервис NodeService обеспечивает приём, распределение и передачу сообщений о сети.
+service NodeService {
+  rpc ConnectToNodeMap( NodeMessage ) returns (stream NodeMessage );
+  rpc GetNodeMap( NodeMessage ) returns ( NodeMessage );
+  rpc GetLocalNodeMap( NodeMessage ) returns ( NodeMessage );
+  rpc AcceptConnection( AcceptNodeMessage ) returns ( NodeMessage );
+  rpc GetUnprocessedRequests( NodeMessage ) returns (NodeMessages );
+  rpc SubscribeUnprocessedRequests( NodeMessage ) returns (stream NodeMessage );
+  rpc UpdateNodeMap( NodeMessage ) returns ( DummyResponse );
+  rpc SubscribeNodeMap( NodeMessage ) returns ( stream NodeMessage );
+}

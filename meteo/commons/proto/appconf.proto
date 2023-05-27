@@ -1,0 +1,456 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+import "state.proto";
+import "weather.proto";
+import "pogodainput.proto";
+import "sprinf.proto";
+import "customviewer.proto";
+
+package meteo.app;
+
+
+enum RestartPolicy {       //!< Возможные состояния автоперезапуска
+  NO_RESTART      = 0;     //!< Приложение не требует автоматического перезапуска
+  ALWAYS          = 1;     //!< Приложение перезапускается всегда, даже если завершено пользователем
+  UNLESS_STOPPED  = 2;     //!< Приложение перезапускается, если не завершено из менеджера
+  ON_FAILURE      = 3;     //!< Приложение перезапускается, если код выхода не равен 0
+}
+
+//! Параметры приложения
+message Application {  
+  optional string id             = 1;    //!< Идентификатор приложения
+  optional string title          = 2;    //!< Наименование приложения
+  optional string comment        = 3;    //!< Дополнительный коментарий (всплывающая подсказка)
+  optional bytes  icon           = 4;    //!< Пиктограмма приложения (картинка, а не путь к ней)
+  optional string path           = 5;    //!< Путь к приложению
+  repeated string arg            = 6;    //!< Аргументы приложения
+//  repeated Env   env  = 7;       //!< Переменные среды
+  repeated string env            = 7;    //!< Переменные среды
+  optional bool autostart        = 8 [default = false];        //!< Запускать автоматически
+  optional bool visible          = 9 [default = true];         //!< Видимость элемента
+  optional string workdir        = 11;                         //!< Рабочий каталог для запуска приложений
+  optional bool preset           = 12 [default = false];       //!< Приложение является предустановленным
+  optional string sponame        = 13;    //!< Имя СПО, к которому относится сервис
+  optional RestartPolicy restart = 14 [default = ON_FAILURE]; //!< Автоперезапуск
+}
+//! Параметры всех приложений
+message AppConfig {
+  repeated Application app      = 1;                   //!< Список приложений
+  optional int32       sendsecs = 2 [default = 1];     //!< Период оповещения подписчиков
+}
+
+//! Состояние приложений
+message AppState {
+  enum ProcState {                       //!< Возможные состояния приложения
+    PROC_STOPPED                = 0;     //!< Приложение выполняется
+    PROC_RUNNING                = 1;     //!< Приложение остановлено
+  }
+
+  message Proc {                         //!< Полное состояние процесса
+    optional ProcState state    = 1;     //!< Запущен/не запущен
+    optional int64 id           = 2;     //!< Уникальный идентификатор процесса
+    optional Application app    = 3;     //!< Параметры процесса
+    optional OperationStatus status = 4; //!< Рабочее состояние
+    optional string startdt       = 5;
+    optional string stopdt        = 6;
+  }
+
+  repeated Proc procs                     = 1;     //!< Контейнер состояний приложений
+  optional OperationStatus manager_status = 2;
+}
+
+//! Запрос-подписка вывода приложения
+message AppOutRequest {
+  required int64 id             = 1;     //!< Идентификатор экземпляра приложения
+}
+
+//! Ответ на запрос вывода приложения
+message AppOutReply {
+  required int64 id             = 1;     //!< Идентификатор экземпляра приложения
+  repeated string logstring     = 2;     //!< Вывод приложения
+}
+
+message UserPermissions {
+  enum InterContactMode {
+    kHierarchical = 0; //!< Контакт доступен только соседям по иерархии(подчиненные, начальники, подчиненные начальника)
+    kPublic       = 1; //!< Контакт доступен всем пользователям в системе
+  }
+
+  optional InterContactMode inter_contact_mode = 1 [default = kHierarchical];
+}
+
+message Role {
+  optional int32  id   = 1;
+  optional string name = 2;
+}
+
+message RoleResponse {
+  repeated Role   list    = 1;
+  optional bool   result  = 2 [default = false];
+  optional string comment = 3;
+}
+
+message Rank {
+  optional int32  id   = 1;
+  optional string name = 2;
+}
+
+message RankResponse {
+  repeated Rank list      = 1;
+  optional bool result    = 2 [default = false];
+  optional string comment = 3;
+}
+
+message Department {
+  optional int32  id   = 1;
+  optional string name = 2;
+}
+
+message DepartmentResponse {
+  repeated Department list    = 1;
+  optional bool       result  = 2 [default = false];
+  optional string     comment = 3;
+}
+
+message User {
+  enum GenderType {
+    Male   = 1;
+    Female = 2;
+  }
+
+  optional int32           id          = 1;                     //!< Уникальный ID в БД
+  required string          username    = 2;                     //!< Логин
+  optional string          password    = 3;                     //!< Пароль
+  optional string          name        = 4;                     //!< Имя
+  optional string          surname     = 5;                     //!< Фамилия
+  optional string          patron      = 6;                     //!< Отчество
+  optional GenderType      gender      = 7 [default = Male];    //!< Пол
+  optional string          birthdate   = 8;                     //!< Дата рождения, Qt::ISODate
+  optional string          avatar      = 9;                     //!< Изображение в профиле
+  optional Role            role        = 10;                    //!< Роль в системе
+  optional Rank            rank        = 11;                    //!< Воинское звание
+  optional Department      department  = 12;                    //!< Структурное подразделение
+  optional string          homedir     = 13;                    //!< Домашняя директория
+  optional bool            block       = 14;                    //!< Флаг блокировки
+  optional UserPermissions permissions = 15;                    //!< Доступные права
+}
+
+message UserRequest {
+  optional User user = 1;
+}
+
+message UserResponse {
+  repeated User   list    = 1;
+  optional bool   result  = 2 [default = false];
+  optional string comment = 3;
+}
+
+message UserAuthRequest {
+  required string username = 1;
+  required string password = 2;
+}
+
+message UserAuthResponse {
+  optional bool   status  = 1 [default = false]; // True - пользователю разрешен доступ в систему, False - пользователю доступ в систему запрещен
+  required bool   result  = 2 [default = false]; // True - запрос выполнен успешно, False - при выполнении запроса произошли ошибки в системе
+  optional string comment = 3;
+}
+
+message DefaultResponce {
+  optional bool   result  = 1; //!< Результат выполнения операции
+  optional string comment = 2; //!< Комментарий
+}
+
+enum AppointmentType {
+  kAssigmenFree = 1; //<! Свободный токен может забирать любой пользователь, если этот токен уже не занят
+  kAssigmenByOwner = 2; //<! Свободный токен может назначить пользователю только его владелец или администратор
+}
+
+message UserAppointment {
+  optional string id = 1; //!< Уникальный идентификатор
+  optional string name = 2; //!< Имя
+  optional string owner = 3; //!< Владелец
+  optional AppointmentType  type = 4; //!<Тип должности
+  repeated string users = 5; //!< Список пользователей, имеющих возможность получить эту должность
+  optional string currentUser = 6; //!< ID текущего исполнителя
+  optional string dtBegin = 7; //!< Дата и время начала исполнения должности
+}
+
+message UserAppointmentListRequest {
+  repeated string id = 1;     //!< Список ID исполняемых обязанностей
+  optional string login = 2;  //!< Логин пользователя
+}
+
+message UserAppointmentsResponce {
+  repeated UserAppointment appointment = 1; //!< Список должностных лиц
+  optional bool result = 2; //!< Результат выполнения операции
+  optional string comment = 3; //!< Комментарий
+}
+
+// параметры передающиеся в сохраненных пользователем настройках
+message WeatherSettingItem {
+  optional string station      = 1; //!< номер станции, для которой сохраняются настройки
+  optional string station_type = 2; //!< тип станции аэропорт, станция, аэродром
+  optional int32  position      = 3; //!< позиция в сортировке
+  optional bool   visible        = 4; //!< показывать или нет
+  optional int32  ump_height    = 5; //!< ВНГО для УМП
+  optional int32  ump_visible   = 6; //!< видимость в УМП
+}
+
+message WeatherSetting {
+  required string user_login           = 1; //!< Login пользователя
+  optional string setting_type         = 2; //!< тип настроек - погода 
+  repeated WeatherSettingItem settings = 3; //!< сами настройки для каждой станции
+}
+
+message WeatherSettingResponce {
+  optional WeatherSetting settings = 1; //!< Настройки пользователя
+  optional bool result             = 2; //!< Результат выполнения операции
+  optional string comment          = 3; //!< Комментарий
+}
+
+message Position {
+  optional string id = 1;
+  optional string name = 2;
+  optional string parent_position = 3;
+  optional string current_login = 4;
+}
+
+message PositionCreateRequest {
+  optional string name = 1;
+  optional string parent_position = 2;
+  optional string current_login = 3;
+}
+
+message PositionCreateResponce {
+  optional bool result = 1;
+  optional string comment = 2;
+  optional string created_id = 3;
+}
+
+message PositionsListRequest {
+}
+
+message PositionsListResponce {
+  optional bool result = 1;
+  optional string comment = 2;
+  repeated Position list = 3;
+}
+
+message PositionEditRequest {
+  optional string id = 1;
+  optional string name = 2;
+  optional string parent_position = 3;
+  optional string current_login = 4;
+}
+
+message PositionEditResponce {
+  optional bool result = 1;
+  optional string comment = 2;
+}
+
+message PositionDeleteRequest {
+  optional string id = 1;
+}
+
+message PositionDeleteResponce {
+  optional bool result = 1;
+  optional string comment = 2;
+}
+
+message EntityIcon {
+  optional string name     = 1;//!< название изображения
+  optional string id       = 2;//!< идентификатор изображения в базе
+  optional bytes icon      = 3;//!< изображение
+  optional bool result     = 4;//!< результат запроса пользователской директории
+  optional string comment  = 5;//!< комментарий
+}
+
+message DocumentsFolder {
+  repeated FolderEntity entities = 1; //!< сущности в абстрактной директории
+}
+
+message FolderEntity {
+  optional string title            = 1;
+  
+  optional string map              = 2;
+  optional DocumentsFolder folder  = 3;
+  optional meteo.map.proto.Job job = 4;
+  optional bool delimiter          = 5 [ default = true ];
+  
+  optional int32 position          = 6;
+  optional string icon             = 7;//!< идентификатор файла изображения
+  
+  optional bool result             = 8;//!< результат запроса пользователской директории
+  optional string comment          = 9;//!< комментарий
+  
+  optional bool server             = 10 [ default = false ]; //!< каталог на сервере
+  optional string regexp           = 11; //!< регулярное выражение для шаблона файлов серверного каталога
+  optional DateFormat date_format  = 12; //!< формат даты для файлов серверного каталога
+  optional int32 length            = 13; //!< длина имени файла
+}
+
+message DateFormat {
+  optional DateFormatElement year   = 1;
+  optional DateFormatElement month  = 2;
+  optional DateFormatElement day    = 3;
+  optional DateFormatElement hour   = 4;
+  optional DateFormatElement minute = 5;
+}
+
+message DateFormatElement {
+  optional int32 index          = 1; //!< положение элемента в строке
+  optional string regexp        = 2; //!< регулярное выражение
+  optional string format_string = 3; //!< строка типа %y для формирования даты на стороне backend
+}
+
+message UserPogodaInputStation
+{
+  optional string login = 1; //логин пользователя
+  optional PogodaInputSts param = 2; //Данные по станциям
+}
+
+message UserPogodaInputStationsLoadRequest
+{
+  repeated string login = 1; //Логины пользователей, для которых следует загрузить данные
+}
+
+message UserPogodaInputStationsSaveRequest
+{
+  repeated UserPogodaInputStation data = 1; //Параметры
+}
+
+message PogodaInputStationsLoadResponce
+{
+  repeated UserPogodaInputStation data = 1;
+  optional bool result = 2;
+  optional string comment = 3;
+}
+
+message PogodaInputStationsSaveResponce
+{
+  optional bool result = 1;
+  optional string comment = 2;
+}
+
+message Range {
+  optional int32  min    = 1;
+  optional int32  max    = 2;
+  optional string equals = 3;
+  optional string color  = 4;
+}
+
+message Rule {
+  optional string descrname = 1;
+  repeated Range  ranges    = 2;
+}
+
+message SetStation {
+  optional string name = 1;
+  repeated sprinf.Station  stations = 2;
+  repeated Rule            rules    = 3;
+}
+
+message UserSetStations {
+  optional string       login    = 1;
+  repeated SetStation   stations = 2;
+  optional bool         result   = 3;
+}
+
+message MsgViewerUserSettingsSaveRequest {
+  optional string username = 1;
+  optional meteo.proto.CustomViewerUserConfig config = 2;
+}
+
+message MsgViewerUserSettingsLoadRequest {
+  optional string username = 1;
+}
+
+//Кастомные пользовательские настройки (это может быть набор аэропортов для метеотабло и т.д.)
+message CustomSettings {
+  optional string login         = 1; //!< логин пользователя
+  optional string name          = 2; //!< уникальный идентифкатор набора настроек
+  optional bytes  params        = 3; //!< настройки
+  optional bool   result        = 4; //!< индикатор успешного выполнения rpc-метода
+  optional string comment       = 5; //!< пояснение результата выполнения rpc-метода
+}
+
+//Результат выполнения rpc-метода
+message Result {
+  optional bool         result  = 1; //!< индикатор успешного выполнения rpc-метода
+  optional string       comment = 2; //!< пояснение результата выполнения rpc-метода
+}
+
+//! Сервис контроля и диагностики
+service ControlService {
+  rpc GetProcList( Dummy ) returns ( AppState ); //!< Запрос на получение состояния всех приложений, входящих в состав ПК
+
+  rpc StartProc( AppState.Proc ) returns ( Dummy ); //!< Запуск экземпляра приложения
+  rpc StopProc( AppState.Proc ) returns ( Dummy );  //!< Останов экземпляра приложения
+
+  rpc ProcState( AppState.Proc ) returns ( AppState.Proc );  //!< Запрос состояния экземпляра приложения
+
+  rpc ProcChanged( Dummy ) returns ( stream AppState.Proc );  //!< Подписка на изменение состояния экземпляра приложения
+
+  rpc GetAppOut( AppOutRequest ) returns ( stream AppOutReply ); //!< Подписка на вывод приложения
+
+  rpc SetOperaionStatus( OperationStatus ) returns ( Dummy ); //!< Передать рабочее состояние процесса
+
+  //! authsubsystem
+  rpc AuthUser( UserAuthRequest ) returns ( UserAuthResponse ); //!< Аудентификация пользователя
+  rpc NewUser( UserRequest ) returns ( UserResponse );          //!< Добавить пользователя в БД и ОС и установить для него пароль
+  rpc AddUser( UserRequest ) returns ( UserResponse );          //!< Добавить пользователя в БД. Пароль не устанавливается.
+  rpc RegisterUser( UserRequest ) returns ( UserResponse );     //!< Добавить пользователя в ОС и установить для него пароль.
+  rpc UpdateUser( UserRequest ) returns ( UserResponse );       //!< Обновить данные пользователя
+  rpc BlockUser( UserRequest ) returns ( UserResponse );        //!< Заблокировать пользователя
+  rpc UnlockUser( UserRequest ) returns ( UserResponse );       //!< Разблокировать пользователя
+  rpc HomeDirUser( UserRequest ) returns ( UserResponse );      //!< Получить домашнюю директорию пользователя
+  // работа с БД
+  rpc CheckUser( UserRequest ) returns ( UserResponse );        //!< Проверить наличие пользователя
+  rpc UserList( Dummy ) returns ( UserResponse );               //!< Получить пользователей
+  rpc RoleList( Dummy ) returns ( RoleResponse );               //!< Получить список ролей
+  rpc RankList( Dummy ) returns ( RankResponse );               //!< Получить список рангов
+  rpc PutRank( Rank ) returns ( DefaultResponce );              //!< Добавить\обновить ранг
+  rpc DepartmentList( Dummy ) returns ( DepartmentResponse );   //!< Получить список подразделений
+  rpc PutDepartment( Department ) returns ( DefaultResponce );  //!< Добавить\обновить подразделение
+
+  rpc UserAppointmentsLoad( Dummy )  returns ( UserAppointmentsResponce ); //!< Получить список должностных лиц
+  rpc UserAppointmentAdd( UserAppointment ) returns ( DefaultResponce );   //!< Добавить должностное лицо
+  rpc UserAppointmentSetUserList( UserAppointment ) returns ( DefaultResponce );   // Установить список пользователей, которые могут занимать данное должностное лицо
+  rpc UserAppointmentSetCurrentUser( UserAppointment ) returns ( DefaultResponce );   //!< Выбрать текущего пользователя для должностного лица
+  rpc UserAppointmentUnsetCurrentUser( UserAppointment ) returns ( DefaultResponce ); //!< Убрать текущего пользователя с должностного лица
+  rpc UserAppointmentDataUpdate( UserAppointment ) returns ( DefaultResponce ); //!< Обновить информацию о должностном лице
+  rpc UserAppointmentSetList( UserAppointmentListRequest ) returns ( DefaultResponce ); //!< Установить список должностей, которые может занимать пользователь
+  rpc UserAppointmentsGetList( UserAppointment ) returns ( UserAppointmentsResponce ); //!< Получить список должностей, которые может занимать пользователь
+  rpc UserAppointmentsGetCurrent( UserAppointment ) returns ( UserAppointmentsResponce ); //!< Получить текущую должность пользователя
+
+  rpc PositionCreate( PositionCreateRequest ) returns ( PositionCreateResponce );
+  rpc PositionsList( PositionsListRequest ) returns ( PositionsListResponce );
+  rpc PositionEdit( PositionEditRequest ) returns ( PositionEditResponce );
+  rpc PositionDelete( PositionDeleteRequest ) returns ( PositionDeleteResponce );
+
+  rpc UserWeatherSetting(WeatherSetting) returns ( WeatherSettingResponce ); //!< Получение настроек погоды для пользователя
+  rpc UserSaveWeatherSetting(WeatherSetting) returns ( DefaultResponce ); //!< Сохранение настройек погоды для пользователя
+
+  rpc SavePreset( FolderEntity ) returns ( DefaultResponce ); //сохранить пользовательские настройки
+  rpc GetPreset( FolderEntity ) returns ( FolderEntity ); //получить пользовательские настройки
+
+  //Пользовательские установки карт погоды на сайте
+  rpc SaveIcon( EntityIcon ) returns ( DefaultResponce ); //загрузить изображения сущности
+  rpc GetIcon( EntityIcon ) returns ( EntityIcon ); //получить изображения для сущности
+
+  rpc UserPogodaInputStsSave(UserPogodaInputStationsSaveRequest) returns (PogodaInputStationsSaveResponce);
+  rpc UserPogodaInputStsLoad(UserPogodaInputStationsLoadRequest) returns (PogodaInputStationsLoadResponce);
+  rpc SaveUserSetStations(UserSetStations) returns (DefaultResponce);
+  rpc GetUserSetStations(UserSetStations) returns (UserSetStations);
+
+  rpc msgviewerUserSettingsSave(MsgViewerUserSettingsSaveRequest) returns (Dummy);
+  rpc msgviewerUserSettingsLoad(MsgViewerUserSettingsLoadRequest) returns (meteo.proto.CustomViewerUserConfig);
+
+  rpc SaveCustomPreset( CustomSettings ) returns ( Result );
+  rpc LoadCustomPreset( CustomSettings ) returns ( CustomSettings );
+}
+

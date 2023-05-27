@@ -1,0 +1,12 @@
+{
+  "findAndModify": "conference_messages",
+  "query": { "_id" : @id@ },
+  "update": {
+    "$pull" : {
+      "delivery" : @login@,
+      "unread" : @login@
+    }
+  },
+  "new": true,
+  "upsert": false
+}

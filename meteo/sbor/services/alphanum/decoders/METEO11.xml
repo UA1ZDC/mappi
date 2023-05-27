@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="METEO11" text="METEO11" category="65">
+  <MessageSections>^(?:\s*М[еЕ][тТ][еЕ][оО])?((?:\s*[\-/]){0,2}(?:\s*11\s*[\d/]{2})(?:\s*[\-/]){0,2}(?:\s*[\d/]{5}))((?:\s*[\-/]){0,2}(?:\s*[\d/]{4})(?:\s*[\-/]){0,2}(?:\s*[\d/]{5})(?:\s*[\-/]){0,2})((?:\s*[\-/]){0,2}(?:\s*02[\d/]{,2})(?:\s*[\-/]){0,2}(?:\s*[\d/]{6})(?:\s*[\-/]){0,2}(?:\s*[\-/]){0,2}(?:\s*04[\d/]{,2})(?:\s*[\-/]){0,2}(?:\s*[\d/]{6})(?:\s*[\-/]){0,2}(?:\s*08[\d/]{,2})(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*12[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*16[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*20[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*24[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*30[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*40[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*50[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*60[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*80[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*10[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*12[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*14[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*18[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*22[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*26[\d/]{,2})?(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?(?:\s*[\-/]{0,1}){0,2}(?:\s*30[\d/]{,2})?(?:\s*[\-/]{0,1}){1,2}(?:\s*[\d/]{6})?)(?:(?:\s*[\-/]{0,1}){0,2}(\s*\d{4}))?</MessageSections> 
+  <Section number="1" text="ALL SECTION">
+    <SectionGroups>(?:\s*[\-/]{1})?(\s*11\s*[\d/]{2})(?:\s*[\-/]{1})?(\s*[\d/]{5})</SectionGroups>
+    <Group number="1" text="mumber of station">
+      <GroupValues>\s*11\s*([\d]{2})</GroupValues>
+      <Value number="1"  descrName="NN44" text="Условный номер станции" />
+    </Group>
+    <Group number="2" text="Day,hour, min">
+      <GroupValues>\s*([0-3]{1}[0-9]{1})([0-2]{1}[0-9]{1})([0-5]{1})</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+      <Value number="2"  descrName="GG" text="hour"/>
+      <Value number="3"  descrName="g" text="min"/>
+    </Group>
+  </Section>
+  <Section number="2" text="stations">  
+    <SectionGroups>(?:\s*[\-/]{1})?(\s*[\d/]{4})(?:\s*[\-/]{1})?(\s*[\d/]{5})(?:\s*[\-/]{1}){0,2}</SectionGroups>
+    <Group number="1" text="">
+      <GroupValues>\s*([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="bbbb" text="h of station"/>
+    </Group>
+    <Group number="2" text="">
+      <GroupValues>\s*([\d/]{3})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="dtableP" text=""/>
+      <Value number="2"  descrName="dtableT" text=""/>
+    </Group>
+  </Section>
+  <Section number="3" text="data at h - * 100m ">  
+    <SectionGroups>(?:\s*[\-/]){0,2}(\s*02[\d/]{,2}(?:\s*[\-/]){0,2}\s*[\d/]{6})(?:\s*[\-/]){0,2}(\s*04[\d/]{,2}(?:\s*[\-/]){0,2}\s*[\d/]{6})(?:\s*[\-/]){0,2}(\s*08[\d/]{,2}(?:\s*[\-/]){0,2}\s*[\d/]{6})?(?:\s*[\-/]){0,2}(\s*12[\d/]{,2}(?:\s*[\-/]){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]){0,2}(\s*16[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*20[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*24[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*30[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*40[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*50[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*60[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*80[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*10[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*12[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*14[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*18[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*22[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*26[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}(\s*30[\d/]{,2}(?:\s*[\-/]{0,1}){0,2}(?:\s*[\d/]{6})?)?(?:\s*[\-/]{0,1}){0,2}</SectionGroups>
+    <Group number="1" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="3" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="5" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="7" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="9" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="11" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="13" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="15" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="17" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="19" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="21" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="23" text="">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hh_mh" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="25" text="">
+      <item>
+	<GroupValues>\s*(10)([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hhb" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="27" text="">
+      <item>
+	<GroupValues>\s*(12)([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hhb" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="29" text="">
+      <item>
+	<GroupValues>\s*(14)([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hhb" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="31" text="">
+      <item>
+	<GroupValues>\s*(18)([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hhb" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="33" text="">
+      <item>
+	<GroupValues>\s*(22)([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hhb" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="35" text="">
+      <item>
+	<GroupValues>\s*(26)([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hhb" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+    <Group number="37" text="">
+      <item>
+	<GroupValues>\s*(30)([\d/]{2})?(?:\s*[\-/]){0,2}\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="hhb" />
+	<Value number="2"  descrName="dp_dh" />
+	<Value number="1"  descrName="dt_dh" />
+	<Value number="2"  descrName="dd_dh" />
+	<Value number="3"  descrName="df_dh" />
+      </item>
+    </Group>
+  </Section>
+  <Section number="3" text="ALL SECTION">
+    <item>
+      <SectionGroups>\s*(\d{2})(\d{2})</SectionGroups>
+      <Value number="1"  descrName="hF_max" text=""/>
+      <Value number="2"  descrName="hT_max" text=""/>
+    </item>
+  </Section>
+</Message>
+
+
+
+

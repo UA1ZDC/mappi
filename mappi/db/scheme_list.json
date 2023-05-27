@@ -1,0 +1,48 @@
+{
+  "database": [
+    { "name": "mappidb",
+      "scheme": [
+        { "name": "meteo",
+          "table": [
+            { "name": "site",                    "scheme": "true", "data": "true" },
+            { "name": "satellite",               "scheme": "true", "data": "true" },
+            { "name": "thematic_type",           "scheme": "true", "data": "true" },
+            { "name": "channel",                 "scheme": "true", "data": "true" },
+            { "name": "instrument",              "scheme": "true", "data": "true" },
+            { "name": "instrument_channel",      "scheme": "true", "data": "true" },
+
+            { "name": "session",                 "scheme": "true", "data": "false" },
+            { "name": "pretreatment",            "scheme": "true", "data": "false" },
+            { "name": "thematic",                "scheme": "true", "data": "false" },
+
+            { "name": "instrument_channel_view", "scheme": "true", "data": "false" },
+            { "name": "site_view",               "scheme": "true", "data": "false" },
+            { "name": "session_view",            "scheme": "true", "data": "false" },
+            { "name": "thematic_view",           "scheme": "true", "data": "false" },
+            { "name": "raw_thematic_view",       "scheme": "true", "data": "false" },
+            { "name": "pretreatment_view",       "scheme": "true", "data": "false" },
+            { "name": "raw_pretreatment_view",   "scheme": "true", "data": "false" }
+          ]
+        },
+        { "name": "global" }
+      ]
+    },
+
+    { "name": "meteotemplate",
+      "scheme": [
+        { "name": "global" }
+      ]
+    },
+
+    { "name": "journaldb",
+      "template": "meteotemplate",
+      "scheme": [
+        { "name": "meteo",
+           "table": [
+             { "name": "journal", "scheme": "true", "data": "false" }
+          ]
+        }
+      ]
+    }
+  ]
+}

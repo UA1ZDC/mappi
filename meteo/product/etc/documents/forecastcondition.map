@@ -1,0 +1,12 @@
+name: "forecastcondition.map"
+title: "Прогноз гидрометеорологических условий"
+formal {
+    template: "Condition.odt"
+    name: "Прогноз гидрометеорологических условий"
+    module_path: "condition.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteosummary.png"
+}
+document {
+  doctype: kFormalDocument
+}

@@ -1,0 +1,40 @@
+name: "surface.map"
+title: "Приземная карта погоды"
+spline_koef: 2
+data {
+    mode: kIsoline
+    level: 0
+    type_level: 1
+    template_name: "10051"
+    transparency: 0
+}
+data {
+    mode: kIsoline
+    level: 0
+    type_level: 101
+    template_name: "10051"
+    transparency: 0
+    net_type: 3
+}
+data {
+    mode: kIsoline
+    level: 0
+    type_level: 101
+    template_name: "10051"
+    transparency: 0
+    net_type: 4
+}
+data {
+  mode: kIsoline
+  level: 0
+  type_level: 1
+  template_name: "10061"
+  transparency: 0
+}
+data {
+  mode: kPuanson
+  level: 0
+  type_level: 1
+  template_name: "kn01"
+  data_type: kSynopFix
+}

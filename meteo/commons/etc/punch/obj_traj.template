@@ -1,0 +1,119 @@
+code: "obj_traj"
+name: "Скорость барического образования"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/obj_traj.template"
+wind: false
+rule {
+  pos {
+    x: 12
+    y: 18
+  }
+  align: kTopRight
+  type: kNumber
+  number {
+    intcount: 2
+    cutorder: kLower
+    fracount: 2
+    septype: kDot
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: true
+      strikeout: false
+    }
+  }
+  testval: 699
+  id {
+    descr: 204004
+    name: "G1G1"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: 28
+    y: 17
+  }
+  align: kBottomCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  testval: 6666
+  id {
+    descr: 13003
+    name: "U"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: 12
+    y: 18
+  }
+  align: kTopLeft
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "47"
+    }
+    symbol {
+      minval: 1
+      maxval: 1
+      font {
+        family: "Synop"
+        pointsize: 24
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4a"
+    }
+  }
+  testval: 0
+  id {
+    descr: 7062
+    name: "zn"
+    description: ""
+  }
+}
+datatype: kSpecial
+center: kNoCenter
+radius: 10

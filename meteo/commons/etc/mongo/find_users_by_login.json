@@ -1,0 +1,7 @@
+{ "find" : "users",
+  "filter" : {
+    "login" : {
+      "$in" : "%1" 
+    }
+  }
+}

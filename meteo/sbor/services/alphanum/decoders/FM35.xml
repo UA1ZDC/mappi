@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM35" text="TEMP"  category="61">
+  <MessageParts>\s*(TTAA(?:\s*[\d/]{5}){2}\s*99[\d/]{3}.*)|(TTBB\s*[\d/]{5}\s*[\d/]{5}.*)|(TTCC(?:\s*[\d/]{5}){2}\s*.*)|(TTDD\s*[\d/]{5}\s*[\d/]{5}.*)</MessageParts>
+  <Part name="A" text="UP TO AND INCLUDING THE 100-hPa SURFACE">
+    <PartSections>TTAA\s*((?:\s*[\d/]{5}){2})(\s*99[\d/]{3}(?:\s*[\d/]{5}){2}(?:\s*[0-57-9][025/][\d/]{3}(?:\s*(?!88)[\d/]{5})(?:\s*[0-3/][\d/]{4})?)*)(\s*88999|(?!\s*88999)(?:\s*88[\d/]{3}(?:(?:\s*[\d/]{5}){2})?)+)((?:\s*(?:77|66)(?:999|[\d/]{3}\s*[\d/]{5}\s*(?:4[\d/]{4})?))*)(\s*31313\s*(?:\s*[\d/]{5}){2}(?:\s*9[\d/]{4})?)?((?:\s*5[1-9]5[1-9]5(?:\s*(?!6[1-9]6[1-9]6)\S+)*){1,9})?((?:\s*6[1-9]6[1-9]6(?:\s*\S+)*){1,9})?</PartSections>
+    <Section number="1" text="IDENTIFICATION AND POSITION DATA" >
+      <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="DAY,HOUR, TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT">
+        <GroupValues>\s*([\d/]{2})([\d/]{2})([0-57-9/])</GroupValues>
+        <Value number="1" descrName="YY"  text="DAY"/>
+        <Value number="2" descrName="GG"  text="HOUR"/>
+        <Value number="3" descrName="IdA"  text="PRESSURE RELATIVE TO THE LAST STANDARD ISOBARIC SURFACE FOR WHICH THE WIND IS REPORTED PART A"/>
+      </Group>
+      <Group number="2" text="WMO STATION NUMBER">
+        <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+        <Value number="1"  descrName="II" />
+        <Value number="2"  descrName="iii" text="WMO STATION NUMBER" />
+      </Group>
+    </Section>
+    <Section number="2" text="DATA FOR STANDARD ISOBARIC SURFACES">
+      <SectionGroups>(\s*99[\d/]{3})(\s*[\d/]{5})(\s*[\d/]{5})((?:\s*[\d/]{5})*)</SectionGroups>
+      <Group number="1" text="PRESSURE AT SURFACE">
+        <GroupValues>\s*99([\d/]{3})</GroupValues>
+        <Value number="1" descrName="P0P0P0"  text="PRESSURE AT SURFACE"/>
+      </Group>
+      <Group number="2" text="TEMPERATURE AND DEW-POINT DEPRESSION AT STATION LEVEL">
+        <GroupValues>\s*([\d/]{3})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="T0T0Ta0"  text="TEMPERATURE AT STATION LEVEL"/>
+        <Value number="2" descrName="D0D0"  text="DEW-POINT DEPRESSION AT STATION LEVEL"/>
+      </Group>
+      <Group number="3" text="WIND AT STATION LEVEL">
+        <GroupValues>\s*([\d/]{2}|[\d/]{2}5)([\d/]{2,3})</GroupValues>
+        <Value number="1" descrName="d0d0f"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT SURFACE LEVEL"/>
+        <Value number="2" descrName="f0f0f0"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT STATION LEVEL"/>	
+      </Group>
+      <Group number="4" text="PRESSURE, TEMPERATURE, DEW-POINT DEPRESSION AND WIND AT STANDARD ISOBARIC SURFACES">
+	<item>
+	<GroupValues>\s*(?:()((00|92|85|70|50|40|30|25|20|15|10|07|05|03|02|01)[\d/]{3})\s*([\d/]{3})([\d/]{2})\s*(?:\s*([0-3/][\d/]|[0-3/][\d/]5)([\d/]{2,3}))?)(?=\s*$|(?:\s*(?:00|92|85|70|50|40|30|25|20|15|10|07|05|03|02|01)[\d/]{3}\s*[\d/]{5}\s*(?:[0-3/][\d/]{4})?)+)</GroupValues>
+	<Value number="0" descrName="level_type"  default="100" text="Тип уровня"/>
+        <Value number="1" descrName="P1P1h1h1h1A"  text="GEOPOTENTIAL OF THE STANDARD ISOBARIC SURFACES IN STANDARD GEOPOTENTIAL METRES (lt. 500 hPa) AND TENS OF STANDARD GEOPOTENTIAL METRES (gt.eq. 500 hPa)"/>
+        <Value number="2" descrName="P1P1A"  text="PRESSURE AT STANDARD ISOBARIC SURFACE"/>
+        <Value number="3" descrName="T1T1Ta1A"  text="TEMPERATURE AT STANDARD ISOBARIC SURFACE"/>
+        <Value number="4" descrName="D1D1A"  text="DEW-POINT DEPRESSION AT STANDARD ISOBARIC SURFACE"/>
+        <Value number="5" descrName="d1d1fA"  default="//" text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT SPECIFIED LEVELS"/>
+        <Value number="6" descrName="f1f1f1A" default="//"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT SPECIFIED LEVELS"/>
+	</item>
+      </Group>
+    </Section>
+    <Section number="3" text="DATA FOR TROPOPAUSE LEVEL(S)">
+      <item>
+	<SectionGroups>(\s*88[\d/]{3})(\s*[\d/]{5})?(\s*[\d/]{5})?</SectionGroups>
+	<Group number="1" text="PRESSURE AT THE TROPOPAUSE LEVEL">
+	  <GroupValues>\s*88()([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="7" text="Тип уровня"/>
+	  <Value number="1" descrName="PtPtPtA"  text="PRESSURE AT THE TROPOPAUSE LEVEL"/>
+	</Group>
+	<Group number="2" text="TEMPERATURE AND DEW-POINT DEPRESSION AT THE TROPOPAUSE LEVEL">
+	  <GroupValues>\s*([\d/]{3})([\d/]{2})</GroupValues>
+	  <Value number="1" descrName="TtTtTatA"  text="TEMPERATURE AT THE TROPOPAUSE LEVEL"/>
+	  <Value number="2" descrName="DtDtA"  text="DEW-POINT DEPRESSION AT THE TROPOPAUSE LEVEL"/>	
+	</Group>
+	<Group number="3" text="WIND AT THE TROPOPAUSE LEVEL">
+	  <GroupValues>\s*([\d/]{2}|[\d/]{2}5)([\d/]{2,3})</GroupValues>
+	  <Value number="1" descrName="dtdtfA"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT THE TROPOPAUSE LEVEL"/>
+	  <Value number="2" descrName="ftftftA"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT THE TROPOPAUSE LEVEL"/>	
+	</Group>
+      </item>
+    </Section>
+    <Section number="4" text="DATA FOR MAXIMUM WIND LEVEL(S) AND DATA FOR VERTICAL WIND SHEAR">
+      <item>
+	<SectionGroups>\s*(?:77|66)([\d/]{3})(\s*[\d/]{5})?(\s*4[\d/]{4})?</SectionGroups>
+	<Group number="1" text="PRESSURE AT THE MAXIMUM WIND LEVEL(S)">
+	  <GroupValues>()([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="6" text="Тип уровня"/>
+	  <Value number="1" descrName="PmPmPmA"  text="PRESSURE AT MAXIMUM WIND LEVEL"/>
+	</Group>
+	<Group number="2" text="WIND AT THE MAXIMUM WIND LEVEL(S)">
+	  <GroupValues>\s*([\d/]{2}|[\d/]{2}5)([\d/]{2,3})</GroupValues>
+	  <Value number="1" descrName="dmdmfA"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT MAXIMUM WIND LEVEL"/>
+	  <Value number="2" descrName="fmfmfmA"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT MAXIMUM WIND LEVEL"/>
+	</Group>
+	<Group number="3" text="VERTICAL WIND SHEAR">
+	  <GroupValues>\s*4([\d/]{2})([\d/]{2})</GroupValues>
+	  <Value number="1" descrName="vbvbA"  text="DIFFERENCE BETWEEN THE MAXIMUM WIND AND THE WIND BLOWING AT 1 KM BELOW THE LEVEL OF MAXIMUM WIND, IN UNITS INDICATED BY YY"/>
+	  <Value number="2" descrName="vavaA"  text="DIFFERENCE BETWEEN THE MAXIMUM WIND AND THE WIND BLOWING AT 1 KM ABOVE THE LEVEL OF MAXIMUM WIND, IN UNITS INDICATED BY YY"/>
+	</Group>
+      </item>
+    </Section>
+    <Section number="7" text="DATA ON SEA SURFACE TEMPERATURE AND SOUNDING SYSTEM">
+      <SectionGroups>\s*31313(\s*[\d/]{5})(\s*8[\d/]{4})(\s*9[\d/]{4})?</SectionGroups>
+      <Group number="1" text="SOUNDING SYSTEM DATA">
+        <GroupValues>\s*([\d/])([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="srA"    text="SOLAR AND INFRARED RADIATION CORRECTION"/>
+        <Value number="2" descrName="raraA"  text="RADIOSONDE/SOUNDING SYSTEM USED"/>
+        <Value number="3" descrName="sasaA"  text="TRACKING TECHNIQUE/STATUS OF SYSTEM USED"/>
+      </Group>
+      <Group number="2" text="HOUR, MIN">
+        <GroupValues>\s*8([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="GG_7"  text="HOUR"/>
+        <Value number="2" descrName="gg_7"  text="MIN"/>
+      </Group>
+      <Group number="3" text="SEA-SURFACE TEMPERATURE">
+        <GroupValues>\s*9([\d/]{4})</GroupValues>
+        <Value number="1" descrName="snTwTwTw"  text="SEA-SURFACE TEMPERATURE, IN TENTHS OF DEGREES CELSIUS"/>
+      </Group>
+    </Section>
+    <Section number="9" text="CODE GROUPS TO BE DEVELOPED REGIONALLY">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+    <Section number="10" text="CODE GROUPS TO BE DEVELOPED NATIONALLY">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+  </Part>
+  <Part name="B" text="UP TO AND INCLUDING THE 100-hPa SURFACE">
+    <PartSections>TTBB\s*((?:\s*[\d/]{5}){2})(\s*00[\d/]{3}\s*[\d/]{5})?((?:\s*(?:11|22|33|44|55|66|77|88|99|//)[\d/]{3}\s*[\d/]{5})*)(?:\s*21212((?:\s*(?:00|11|22|33|44|55|66|77|88|99|//)[\d/]{3}\s*[\d/]{5})*))?(\s*31313(?:\s*[\d/]{5}){2}(?:\s*9[\d/]{4})?)?(\s*41414\s*[\d/]{5})?((?:\s*5[1-9]5[1-9]5(?:\s*(?!6[1-9]6[1-9]6)\S+)*){1,9})?((?:\s*6[1-9]6[1-9]6(?:\s*\S+)*){1,9})?</PartSections>
+    <Section number="1" text="IDENTIFICATION AND POSITION DATA" >
+      <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="DAY,HOUR, TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT">
+	<GroupValues>\s*([\d]{2})([\d]{2})([\d/])</GroupValues>
+        <Value number="1" descrName="YY"  text="DAY"/>
+	<Value number="2" descrName="GG"  text="HOUR"/>
+        <Value number="3" descrName="a4"  text="TYPE OF MEASURING EQUIPMENT USED"/>
+      </Group>
+      <Group number="2" text="WMO STATION NUMBER">
+        <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+        <Value number="1"  descrName="II" />
+        <Value number="2"  descrName="iii" text="WMO STATION NUMBER" />
+      </Group>
+    </Section>
+    <Section number="5_0" text="DATA FOR SIGNIFICANT LEVELS, WITH RESPECT TO TEMPERATURE AND/OR RELATIVE HUMIDITY">
+      <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="PRESSURE AT SIGNIFICANT LEVEL(S)">
+	<GroupValues>\s*00([\d/]{3})</GroupValues>
+	<Value number="2" descrName="P0P0P0"  text="PRESSURE AT SIGNIFICANT LEVEL"/>
+      </Group>
+      <Group number="2" text="TEMPERATURE AND DEW-POINT DEPRESSION AT SIGNIFICANT LEVEL(S)">
+	<GroupValues>\s*([\d/]{3})([\d/]{2})</GroupValues>
+	<Value number="1" descrName="T0T0Ta0"  text="TEMPERATURE AT STATION LEVEL"/>
+        <Value number="2" descrName="D0D0"  text="DEW-POINT DEPRESSION AT STATION LEVEL"/>
+      </Group>
+    </Section>
+    <Section number="5" text="DATA FOR SIGNIFICANT LEVELS, WITH RESPECT TO TEMPERATURE AND/OR RELATIVE HUMIDITY">
+      <item>
+	<SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+	<Group number="1" text="PRESSURE AT SIGNIFICANT LEVEL(S)">
+	  <GroupValues>\s*()([\d/]{2})([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="100" text="Тип уровня"/>
+	  <Value number="1" descrName="n1n1TempB"    text="NUMBER OF SIGNIFICANT LEVEL, STARTING WITH STATION LEVEL"/>
+	  <Value number="2" descrName="P1P1P1TempB"  text="PRESSURE AT SIGNIFICANT LEVEL"/>
+	</Group>
+	<Group number="2" text="TEMPERATURE AND DEW-POINT DEPRESSION AT SIGNIFICANT LEVEL(S)">
+	  <GroupValues>\s*([\d/]{3})([\d/]{2})</GroupValues>
+	  <Value number="1" descrName="T1T1Ta1B"  text="TEMPERATURE AT SIGNIFICANT LEVEL"/>
+	  <Value number="2" descrName="D1D1B"     text="DEW-POINT DEPRESSION AT SIGNIFICANT LEVEL"/>
+	</Group>
+      </item>
+    </Section>
+    <Section number="6" text="DATA FOR SIGNIFICANT LEVELS, WITH RESPECT TO WIND">
+      <item>
+	<SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+	<Group number="1" text="PRESSURE AT SIGNIFICANT LEVEL(S)">
+	  <GroupValues>\s*()([\d/]{2})([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="100" text="Тип уровня"/>
+	  <Value number="1" descrName="n1n1WindB"  text="NUMBER OF SIGNIFICANT LEVEL, STARTING WITH STATION LEVEL"/>
+	  <Value number="2" descrName="P1P1P1WindB"   text="PRESSURE AT SIGNIFICANT LEVEL"/>
+	</Group>
+	<Group number="2" text="WIND AT SIGNIFICANT LEVEL(S)">
+	  <GroupValues>\s*([\d/]{2}|[\d/]{2}5)([\d/]{2,3})</GroupValues>
+	  <Value number="1" descrName="d1d1fB"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT SIGNIFICANT LEVEL"/>
+	  <Value number="2" descrName="f1f1f1B"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT SIGNIFICANT LEVEL"/>
+	</Group>
+      </item>
+    </Section>
+    <Section number="7" text="DATA ON SEA SURFACE TEMPERATURE AND SOUNDING SYSTEM">
+      <SectionGroups>\s*31313(\s*[\d/]{5})(\s*8[\d/]{4})(\s*9[\d/]{4})?</SectionGroups>
+      <Group number="1" text="SOUNDING SYSTEM DATA">
+        <GroupValues>\s*([\d/])([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="srA"    text="SOLAR AND INFRARED RADIATION CORRECTION"/>
+        <Value number="2" descrName="raraA"  text="RADIOSONDE/SOUNDING SYSTEM USED"/>
+        <Value number="3" descrName="sasaA"  text="TRACKING TECHNIQUE/STATUS OF SYSTEM USED"/>
+      </Group>
+      <Group number="2" text="HOUR, MIN">
+        <GroupValues>\s*8([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="GG_7"  text="HOUR"/>
+        <Value number="2" descrName="gg_7"  text="MIN"/>
+      </Group>
+      <Group number="3" text="SEA-SURFACE TEMPERATURE">
+        <GroupValues>\s*9([\d/]{4})</GroupValues>
+        <Value number="1" descrName="snTwTwTw"  text="SEA-SURFACE TEMPERATURE, IN TENTHS OF DEGREES CELSIUS"/>
+      </Group>
+    </Section>
+    <Section number="8" text="CLOUD DATA">
+      <SectionGroups>\s*41414(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="CLOUD DATA">
+	<item>
+	  <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	  <Value number="1" descrName="Nh"  text="CLOUD AMOUNT"/>
+	  <Value number="2" descrName="CL"  text="LOW CLOUD TYPE"/>
+	  <Value number="3" descrName="h"   text="HEIGHT OF BASE OF CLOUD"/>
+	  <Value number="4" descrName="CM"  text="MEDIUM CLOUD TYPE"/>
+	  <Value number="5" descrName="CH"  text="HIGH CLOUD TYPE"/>	
+	</item>
+      </Group>
+    </Section>
+    <Section number="9" text="CODE GROUPS TO BE DEVELOPED REGIONALLY">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+    <Section number="10" text="CODE GROUPS TO BE DEVELOPED NATIONALLY">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+  </Part>  
+  <Part name="C" text="ABOVE THE 100-hPa SURFACE">
+    <PartSections>TTCC\s*((?:\s*[\d/]{5}){2})((?:\s*(?:[12357]0|0[12357])[\d/]{3}(?:\s*(?!88)[\d/]{5})(?:\s*[0-3/][\d/]{4})?)*)(\s*88999|(?!\s*88999)(?:\s*88[\d/]{3}(?:(?:\s*[\d/]{5}){2})?)+)((?:\s*(?:77|66)[\d/]{3}(?:\s*[\d/]{5}){0,2})*)(\s*31313\s*(?:\s*[\d/]{5}){2}(?:\s*9[\d/]{4})?)?((?:\s*5[1-9]5[1-9]5(?:\s*(?!6[1-9]6[1-9]6)\S+)*){1,9})?((?:\s*6[1-9]6[1-9]6(?:\s*\S+)*){1,9})?</PartSections>
+    <Section number="1" text="IDENTIFICATION AND POSITION DATA" >
+      <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="DAY,HOUR, TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT">
+	<GroupValues>\s*([\d/]{2})([\d/]{2})([1-357/])</GroupValues>
+        <Value number="1" descrName="YY"  text="DAY"/>
+	<Value number="2" descrName="GG"  text="HOUR"/>
+	<Value number="3" descrName="IdC"  text="PRESSURE RELATIVE TO THE LAST STANDARD ISOBARIC SURFACE FOR WHICH THE WIND IS REPORTED PART C"/>
+      </Group>
+      <Group number="2" text="WMO STATION NUMBER">
+        <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+        <Value number="1"  descrName="II" />
+        <Value number="2"  descrName="iii" text="WMO STATION NUMBER" />
+      </Group>
+    </Section>
+    <Section number="2" text="DATA FOR STANDARD ISOBARIC SURFACES">
+      <SectionGroups>((?:\s*(?:[12357]0|0[12357])[\d/]{3}\s*[\d/]{5}(?:\s*[\d/]{5})?)*)</SectionGroups>
+      <Group number="1" text="PRESSURE, TEMPERATURE, DEW-POINT DEPRESSION AND WIND AT STANDARD ISOBARIC SURFACES">
+	<item>
+	  <!-- <GroupValues>\s*(([\d]{2})[\d/]{3})\s*([\d/]{3})([\d/]{2})(?:\s*([0-3/][\d/]|[0-3/][\d/]5)([\d/]{2,3}))?</GroupValues> -->
+	  <GroupValues>\s*()(?:((70|50|30|20|10|07|05|03|02|01)[\d/]{3})\s*([\d/]{3})([\d/]{2})\s*(?:\s*([0-3/][\d/]|[0-3/][\d/]5)([\d/]{2,3}))?)(?=\s*$|(?:\s*(?:70|50|30|20|10|07|05|03|02|01)[\d/]{3}\s*[\d/]{5}\s*(?:[0-3/][\d/]{4})?)+)</GroupValues>
+	  <Value number="0" descrName="level_type"  default="100" text="Тип уровня"/>
+	  <Value number="1" descrName="P1P1h1h1h1C"  text="GEOPOTENTIAL OF THE STANDARD ISOBARIC SURFACES IN STANDARD GEOPOTENTIAL METRES (lt. 500 hPa) AND TENS OF STANDARD GEOPOTENTIAL METRES (gt.eq. 500 hPa)"/>	
+	  <Value number="2" descrName="P1P1C"  text="PRESSURE AT STANDARD ISOBARIC SURFACE"/>
+	  <Value number="3" descrName="T1T1Ta1C"  text="TEMPERATURE AT STANDARD ISOBARIC SURFACE"/>
+	  <Value number="4" descrName="D1D1C"  default="//" text="DEW-POINT DEPRESSION AT STANDARD ISOBARIC SURFACE"/>
+	  <Value number="5" descrName="d1d1fC" default="//" text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT SPECIFIED LEVELS"/>
+	  <Value number="6" descrName="f1f1f1C"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT SPECIFIED LEVELS"/>
+	</item>
+      </Group>
+    </Section>
+    <Section number="3" text="DATA FOR TROPOPAUSE LEVEL(S)">
+      <item>
+	<SectionGroups>(\s*88[\d/]{3})(\s*[\d/]{5})?(\s*[\d/]{5})?</SectionGroups>
+	<Group number="1" text="PRESSURE AT THE TROPOPAUSE LEVEL">
+	  <GroupValues>\s*88()([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="7" text="Тип уровня"/>
+	  <Value number="1" descrName="PtPtPtC"  text="PRESSURE AT THE TROPOPAUSE LEVEL"/>
+	</Group>
+	<Group number="2" text="TEMPERATURE AND DEW-POINT DEPRESSION AT THE TROPOPAUSE LEVEL">
+	  <GroupValues>\s*([\d/]{3})([\d/]{2})</GroupValues>
+	  <Value number="1" descrName="TtTtTatC"  text="TEMPERATURE AT THE TROPOPAUSE LEVEL"/>
+	  <Value number="2" descrName="DtDtC"  text="DEW-POINT DEPRESSION AT THE TROPOPAUSE LEVEL"/>	
+	</Group>
+	<Group number="3" text="WIND AT THE TROPOPAUSE LEVEL">
+	  <GroupValues>\s*([\d/]{2}|[\d/]{2}5)([\d/]{2,3})</GroupValues>
+	  <Value number="1" descrName="dtdtfC"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT THE TROPOPAUSE LEVEL"/>
+	  <Value number="2" descrName="ftftftC"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT THE TROPOPAUSE LEVEL"/>	
+	</Group>
+      </item>
+    </Section>
+    <Section number="4" text="DATA FOR MAXIMUM WIND LEVEL(S) AND DATA FOR VERTICAL WIND SHEAR">
+      <item>
+	<SectionGroups>(\s*(?:77|66)[\d/]{3})(\s*[\d/]{5})?(\s*4[\d/]{4})?</SectionGroups>
+	<Group number="1" text="PRESSURE AT THE MAXIMUM WIND LEVEL(S)">
+	  <GroupValues>\s*()(?:77|66)([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="6" text="Тип уровня"/>
+	  <Value number="1" descrName="PmPmPmC"  text="PRESSURE AT MAXIMUM WIND LEVEL"/>
+	</Group>
+	<Group number="2" text="WIND AT THE MAXIMUM WIND LEVEL(S)">
+	  <GroupValues>\s*([\d/]{2}|[\d/]{2}5)([\d/]{2,3})</GroupValues>
+	  <Value number="1" descrName="dmdmfC"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT MAXIMUM WIND LEVEL"/>
+	  <Value number="2" descrName="fmfmfmC"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT MAXIMUM WIND LEVEL"/>
+	</Group>
+	<Group number="3" text="VERTICAL WIND SHEAR">
+	  <GroupValues>\s*4([\d/]{2})([\d/]{2})</GroupValues>
+	  <Value number="1" descrName="vbvbC"  text="DIFFERENCE BETWEEN THE MAXIMUM WIND AND THE WIND BLOWING AT 1 KM BELOW THE LEVEL OF MAXIMUM WIND, IN UNITS INDICATED BY YY"/>
+	  <Value number="2" descrName="vavaC"  text="DIFFERENCE BETWEEN THE MAXIMUM WIND AND THE WIND BLOWING AT 1 KM ABOVE THE LEVEL OF MAXIMUM WIND, IN UNITS INDICATED BY YY"/>
+	</Group>
+      </item>
+    </Section>
+    <Section number="7" text="DATA ON SEA SURFACE TEMPERATURE AND SOUNDING SYSTEM">
+      <SectionGroups>\s*31313(\s*[\d/]{5})(\s*8[\d/]{4})(\s*9[\d/]{4})?</SectionGroups>
+      <Group number="1" text="SOUNDING SYSTEM DATA">
+        <GroupValues>\s*([\d/])([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="srC"    text="SOLAR AND INFRARED RADIATION CORRECTION"/>
+        <Value number="2" descrName="raraC"  text="RADIOSONDE/SOUNDING SYSTEM USED"/>
+        <Value number="3" descrName="sasaC"  text="TRACKING TECHNIQUE/STATUS OF SYSTEM USED"/>
+      </Group>
+      <Group number="2" text="HOUR, MIN">
+        <GroupValues>\s*8([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="GG_7"  text="HOUR"/>
+        <Value number="2" descrName="gg_7"  text="MIN"/>
+      </Group>
+      <Group number="3" text="SEA-SURFACE TEMPERATURE">
+        <GroupValues>\s*9([\d/]{4})</GroupValues>
+        <Value number="1" descrName="snTwTwTw"  text="SEA-SURFACE TEMPERATURE, IN TENTHS OF DEGREES CELSIUS"/>
+      </Group>
+    </Section>
+    <Section number="9" text="CODE GROUPS TO BE DEVELOPED REGIONALLY">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+    <Section number="10" text="CODE GROUPS TO BE DEVELOPED NATIONALLY">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+  </Part>  
+  <Part name="D" text="ABOVE THE 100-hPa SURFACE">
+    <PartSections>TTDD\s*(\s*[\d/]{5}\s*[\d]{5})((?:\s*(?:00|11|22|33|44|55|66|77|88|99|//)[\d/]{3}\s*[\d/]{5})*)(?:\s*21212((?:\s*(?:00|11|22|33|44|55|66|77|88|99|//)[\d/]{3}\s*[\d/]{5})*))?(\s*31313\s*(?:\s*[\d/]{5}){2}(?:\s*9[\d/]{4})?)?((?:\s*5[1-9]5[1-9]5(?:\s*(?!6[1-9]6[1-9]6)\S+)*){1,9})?((?:\s*6[1-9]6[1-9]6(?:\s*\S+)*){1,9})?</PartSections>
+    <Section number="1" text="IDENTIFICATION AND POSITION DATA" >
+      <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+      <Group number="1" text="DAY,HOUR, TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT">
+	<GroupValues>\s*([\d/]{2})([\d/]{2})[\d/]</GroupValues>
+        <Value number="1" descrName="YY"  text="DAY"/>
+        <Value number="2" descrName="GG"  text="HOUR"/>
+      </Group>
+      <Group number="2" text="WMO STATION NUMBER">
+	<GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+        <Value number="1"  descrName="II" />
+        <Value number="2"  descrName="iii" text="WMO STATION NUMBER" />
+      </Group>
+    </Section>
+    <Section number="5" text="DATA FOR SIGNIFICANT LEVELS, WITH RESPECT TO TEMPERATURE AND/OR RELATIVE HUMIDITY">
+      <item>
+	<SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+	<Group number="1" text="PRESSURE AT SIGNIFICANT LEVEL(S)">
+	  <GroupValues>\s*()([\d/]{2})([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="100" text="Тип уровня"/>
+	  <Value number="1" descrName="n1n1TempD"  text="NUMBER OF SIGNIFICANT LEVEL, STARTING WITH STATION LEVEL"/>
+	  <Value number="2" descrName="P1P1P1TempD"  text="PRESSURE AT SIGNIFICANT LEVEL"/>
+	</Group>
+	<Group number="2" text="TEMPERATURE AND DEW-POINT DEPRESSION AT SIGNIFICANT LEVEL(S)">
+	  <GroupValues>\s*([\d/]{3})([\d/]{2})</GroupValues>
+	  <Value number="1" descrName="T1T1Ta1D"  text="TEMPERATURE AT SIGNIFICANT LEVEL"/>
+	  <Value number="2" descrName="D1D1D"  text="DEW-POINT DEPRESSION AT SIGNIFICANT LEVEL"/>
+	</Group>
+      </item>
+    </Section>
+    <Section number="6" text="DATA FOR SIGNIFICANT LEVELS, WITH RESPECT TO WIND">
+      <item>
+	<SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+	<Group number="1" text="PRESSURE AT SIGNIFICANT LEVEL(S)">
+	  <GroupValues>\s*()([\d/]{2})([\d/]{3})</GroupValues>
+	  <Value number="0" descrName="level_type"  default="100" text="Тип уровня"/>
+	  <Value number="1" descrName="n1n1WindD"  text="NUMBER OF SIGNIFICANT LEVEL, STARTING WITH STATION LEVEL"/>
+	  <Value number="2" descrName="P1P1P1WindD"  text="PRESSURE AT SIGNIFICANT LEVEL"/>
+	</Group>
+	<Group number="2" text="WIND AT SIGNIFICANT LEVEL(S)">
+	  <GroupValues>\s*([\d/]{2}|[\d/]{2}5)([\d/]{2,3})</GroupValues>
+	  <Value number="1" descrName="d1d1fD"  text="TRUE DIRECTION (ROUNDED OFF TO THE NEAREST 5 DEGREES), IN TENS OF DEGREES, FROM WHICH WIND IS BLOWING AT SIGNIFICANT LEVEL"/>
+	  <Value number="2" descrName="f1f1f1D"  text="WIND SPEED, IN METRES PER SECOND OR KNOTS AT SIGNIFICANT LEVEL"/>
+	</Group>
+      </item>
+    </Section>
+    <Section number="7" text="DATA ON SEA SURFACE TEMPERATURE AND SOUNDING SYSTEM">
+      <SectionGroups>\s*31313(\s*[\d/]{5})(\s*8[\d/]{4})(\s*9[\d/]{4})?</SectionGroups>
+      <Group number="1" text="SOUNDING SYSTEM DATA">
+        <GroupValues>\s*([\d/])([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="srA"  text="SOLAR AND INFRARED RADIATION CORRECTION"/>
+        <Value number="2" descrName="raraA"  text="RADIOSONDE/SOUNDING SYSTEM USED"/>
+        <Value number="3" descrName="sasaA"  text="TRACKING TECHNIQUE/STATUS OF SYSTEM USED"/>
+      </Group>
+      <Group number="2" text="HOUR, MIN">
+        <GroupValues>\s*8([\d/]{2})([\d/]{2})</GroupValues>
+        <Value number="1" descrName="GG_7"  text="HOUR"/>
+        <Value number="2" descrName="gg_7"  text="MIN"/>
+      </Group>
+      <Group number="3" text="SEA-SURFACE TEMPERATURE">
+        <GroupValues>\s*9([\d/]{4})</GroupValues>
+        <Value number="1" descrName="snTwTwTw"  text="SEA-SURFACE TEMPERATURE, IN TENTHS OF DEGREES CELSIUS"/>
+      </Group>
+    </Section>
+    <Section number="9" text="CODE GROUPS TO BE DEVELOPED REGIONALLY">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+    <Section number="10" text="CODE GROUPS TO BE DEVELOPED NATIONALLY">
+      <SectionGroups>(.*)</SectionGroups>
+      <Value number="1"  descrName="national" text="Data for national use"/>
+    </Section>
+  </Part>  
+</Message>
+    

@@ -1,0 +1,1360 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bufr_descriptor>
+
+<!-- Радиолокационные данные -->
+
+<!-- ******************** -->
+
+<!-- карты -->
+
+<!-- category 6 (отражательная способность) -->
+<sequence_rmap number="621" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021001"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021001"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 (baikonur)-->
+<sequence_rmap number="622" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021022"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021022"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 ()-->
+<sequence_rmap number="623" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="114000"></descr>
+  <descr num="031002"></descr>
+  <descr num="105000"></descr>
+  <descr num="031012"></descr>
+  <descr num="201135"></descr>
+  <descr num="202130"></descr>
+  <descr num="021021"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="105000"></descr>
+  <descr num="031002"></descr>
+  <descr num="201135"></descr>
+  <descr num="202130"></descr>
+  <descr num="021021"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 ()-->
+<sequence_rmap number="624" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021036"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021036"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 ()-->
+<sequence_rmap number="625" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013019"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="013019"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 ()-->
+<sequence_rmap number="626" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001019"></descr>
+  <descr num="205008"></descr>
+  <descr num="005002"></descr>
+  <descr num="006002"></descr>
+  <descr num="007001"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="114000"></descr>
+  <descr num="031002"></descr>
+  <descr num="105000"></descr>
+  <descr num="031012"></descr>
+  <descr num="201132"></descr>
+  <descr num="202129"></descr>
+  <descr num="021021"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="105000"></descr>
+  <descr num="031002"></descr>
+  <descr num="201132"></descr>
+  <descr num="202129"></descr>
+  <descr num="021021"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 ()-->
+<sequence_rmap number="627" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001019"></descr>
+  <descr num="205008"></descr>
+  <descr num="005002"></descr>
+  <descr num="006002"></descr>
+  <descr num="007001"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021001"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021001"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 () -->
+<sequence_rmap number="628" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001019"></descr>
+  <descr num="205008"></descr>
+  <descr num="005002"></descr>
+  <descr num="006002"></descr>
+  <descr num="007001"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021022"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021022"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>	    
+		    
+
+<!-- category 6 () -->
+<sequence_rmap number="629" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001019"></descr>
+  <descr num="205008"></descr>
+  <descr num="005002"></descr>
+  <descr num="006002"></descr>
+  <descr num="007001"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="114000"></descr>
+  <descr num="031002"></descr>
+  <descr num="105000"></descr>
+  <descr num="031012"></descr>
+  <descr num="201135"></descr>
+  <descr num="202130"></descr>
+  <descr num="021021"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="105000"></descr>
+  <descr num="031002"></descr>
+  <descr num="201135"></descr>
+  <descr num="202130"></descr>
+  <descr num="021021"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+
+<!-- category 6 -->
+<sequence_rmap number="630" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021001"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021001"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="631" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021003"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021003"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="632" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021022"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021022"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="633" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="114000"></descr>
+  <descr num="031002"></descr>
+  <descr num="105000"></descr>
+  <descr num="031012"></descr>
+  <descr num="201135"></descr>
+  <descr num="202130"></descr>
+  <descr num="021021"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="105000"></descr>
+  <descr num="031002"></descr>
+  <descr num="201135"></descr>
+  <descr num="202130"></descr>
+  <descr num="021021"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="634" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021036"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021036"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="635" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021036"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="636" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021001"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="105000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="637" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021014"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021014"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- note: два параметра -->
+<!-- category 6 -->
+<sequence_rmap number="638" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021014"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021003"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 -->
+<sequence_rmap number="639" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013019"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="013019"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<!-- note: 2 параметра -->
+<sequence_rmap number="640" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013019"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021022"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 -->
+<sequence_rmap number="641" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013020"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="013020"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 -->
+<!-- note: 2 параметра -->
+<sequence_rmap number="642" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021003"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021001"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 -->
+<sequence_rmap number="643" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013021"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="013021"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="644" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013022"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="013022"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="645" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013023"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="013023"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<!-- note: 2 параметра -->
+<sequence_rmap number="646" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013020"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021022"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="647" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001019"></descr>
+  <descr num="205008"></descr>
+  <descr num="005002"></descr>
+  <descr num="006002"></descr>
+  <descr num="007001"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="004032"></descr>
+  <descr num="008021"></descr>
+  <descr num="004001"></descr>
+  <descr num="004002"></descr>
+  <descr num="004003"></descr>
+  <descr num="004004"></descr>
+  <descr num="004005"></descr>
+  <descr num="004001"></descr>
+  <descr num="004002"></descr>
+  <descr num="004003"></descr>
+  <descr num="004004"></descr>
+  <descr num="004005"></descr>
+  <descr num="008021"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013019"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="013019"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 (осадки) -->
+<sequence_rmap number="648" station_type="150" >
+  <descr num="001018"></descr>
+  <descr num="001019"></descr>
+  <descr num="205008"></descr>
+  <descr num="005002"></descr>
+  <descr num="006002"></descr>
+  <descr num="007001"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="004032"></descr>
+  <descr num="008021"></descr>
+  <descr num="004001"></descr>
+  <descr num="004002"></descr>
+  <descr num="004003"></descr>
+  <descr num="004004"></descr>
+  <descr num="004005"></descr>
+  <descr num="004001"></descr>
+  <descr num="004002"></descr>
+  <descr num="004003"></descr>
+  <descr num="004004"></descr>
+  <descr num="004005"></descr>
+  <descr num="008021"></descr>
+  <descr num="008007"></descr>
+  <descr num="114000"></descr>
+  <descr num="031002"></descr>
+  <descr num="105000"></descr>
+  <descr num="031012"></descr>
+  <descr num="201135"></descr>
+  <descr num="202129"></descr>
+  <descr num="013055"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="105000"></descr>
+  <descr num="031002"></descr>
+  <descr num="201135"></descr>
+  <descr num="202129"></descr>
+  <descr num="013055"></descr>
+  <descr num="202000"></descr>
+  <descr num="201000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="649" station_type="300">
+  <descr num="301001"></descr>
+  <descr num="301011"></descr>
+  <descr num="301012"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="007007"></descr>
+  <descr num="011001"></descr>
+  <descr num="011002"></descr>
+  <descr num="313009"></descr>
+  <descr num="321193"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="650" station_type="300">
+  <descr num="301001"></descr>
+  <descr num="301011"></descr>
+  <descr num="301012"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="007007"></descr>
+  <descr num="011001"></descr>
+  <descr num="011002"></descr>
+  <descr num="313012"></descr>
+  <descr num="321193"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="651" station_type="300">
+  <descr num="301001"></descr>
+  <descr num="301011"></descr>
+  <descr num="301012"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="007007"></descr>
+  <descr num="011001"></descr>
+  <descr num="011002"></descr>
+  <descr num="313011"></descr>
+  <descr num="321193"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 -->
+<sequence_rmap number="652" station_type="300">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021003"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="105000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="653" station_type="300">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021022"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="654" station_type="300">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013019"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="655" station_type="300">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="007006"></descr>
+  <descr num="007006"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021014"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="105000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="666" station_type="300">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013020"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="667" station_type="500">
+  <descr num="208250"></descr>
+  <descr num="001099"></descr>
+  <descr num="208000"></descr>
+  <descr num="301001"></descr>
+  <descr num="301011"></descr>
+  <descr num="301013"></descr>
+  <descr num="208030"></descr>
+  <descr num="025061"></descr>
+  <descr num="208000"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="301023"></descr>
+  <descr num="029001"></descr>
+  <descr num="029204"></descr>
+  <descr num="029203"></descr>
+  <descr num="005001"></descr>
+  <descr num="029199"></descr>
+  <descr num="029200"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="029196"></descr>
+  <descr num="029195"></descr>
+  <descr num="208150"></descr>
+  <descr num="029205"></descr>
+  <descr num="208000"></descr>
+  <descr num="007002"></descr>
+  <descr num="007002"></descr>
+  <descr num="030031"></descr>
+  <descr num="029002"></descr>
+  <descr num="313009"></descr>
+  <descr num="321250"></descr>
+  <descr num="321193"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="668" station_type="500">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013021"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+
+<!-- category 6 -->
+<sequence_rmap number="669" station_type="500">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013022"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="670" station_type="500">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013021"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021022"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="671" station_type="500">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="021022"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021036"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+<!-- category 6 -->
+<sequence_rmap number="672" station_type="500">
+  <descr num="001018"></descr>
+  <descr num="001015"></descr>
+  <descr num="301024"></descr>
+  <descr num="012004"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="008001"></descr>
+  <descr num="007002"></descr>
+  <descr num="019005"></descr>
+  <descr num="019006"></descr>
+  <descr num="029001"></descr>
+  <descr num="030031"></descr>
+  <descr num="030021"></descr>
+  <descr num="030022"></descr>
+  <descr num="005033"></descr>
+  <descr num="006033"></descr>
+  <descr num="010040"></descr>
+  <descr num="008007"></descr>
+  <descr num="106000"></descr>
+  <descr num="031002"></descr>
+  <descr num="101000"></descr>
+  <descr num="031012"></descr>
+  <descr num="013019"></descr>
+  <descr num="101000"></descr>
+  <descr num="031002"></descr>
+  <descr num="021036"></descr>
+  <descr num="008007"></descr>
+</sequence_rmap>
+
+</bufr_descriptor>

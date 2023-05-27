@@ -1,0 +1,27 @@
+name: "sigwx.map"
+title: "Карта опасных явлений"
+spline_koef: 2
+data {
+  mode: kSigwx
+  source: kSurface
+  data_type: kFlightSigWx
+  type: kLayerSigwx
+  h1: 3050
+  h2: 13720
+}
+data {
+  mode: kSigwx
+  source: kSurface
+  data_type: kFlightSigWx
+  type: kLayerSigwx
+  h1: 7620
+  h2: 19200
+}
+data {
+  mode: kSigwx
+  source: kSurface
+  data_type: kFlightSigWx
+  type: kLayerSigwx
+  h1: 3050
+  h2: 19200
+}

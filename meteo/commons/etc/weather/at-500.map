@@ -1,0 +1,23 @@
+name: "at-500.map"
+title: "АТ-500"
+spline_koef: 2
+data {
+  mode: kIsoline
+  level: 500
+  type_level: 100
+  template_name: "10009"
+  transparency: 0
+}
+data {
+  mode: kIsoline
+  template_name: "12101"
+  level: 500
+  type_level: 100
+}
+data {
+  mode: kPuanson
+  level: 500
+  type_level: 100
+  template_name: "kn04"
+  data_type: kAeroFix
+}

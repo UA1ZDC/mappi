@@ -1,0 +1,116 @@
+syntax = "proto2";
+option cc_generic_services = true;
+
+// TODO оставлено для сборки проекта
+import "spo_options.proto";
+
+package mappi.conf;
+
+import "sprinf.proto";
+import "common.proto";
+import "satellite.proto";
+import "schedule.proto";
+import "antenna.proto";
+import "receiver.proto";
+
+
+//! пункт приёма
+message Site {
+  optional string name = 1;                     //!< наименование
+  optional meteo.sprinf.GeoPoint point = 2;     //!< координаты пункта
+  // TODO часовой пояс?
+}
+
+//! параметры приёма для спутника
+message ReceptionParam {
+  required string name = 1;             //!< название спутника
+  required SatType type = 2;            //!< тип орбиты
+  repeated ReceiverParam receiver = 3;  //!< параметры приёмника, могут повторяться в зависимости от режима приёма
+}
+
+//! структура файлового хранилища
+message FileStorage {
+  required string root = 1;     //!< корневая директория для хранения данных
+  required string tle = 2;      //!< директория с TLE файлами
+  required string session = 3;  //!< директория для хранения "сырых" необработанных сеансов
+  required string dump = 4;     //!< директория для хранения dump файлов, для демонстрационного режима
+}
+
+//! настройки приёма
+message Reception {
+  required Site site = 1;                               //!< пункт приёма
+  required ScheduleConf schedule = 2;                   //!< настройки расписания
+  repeated ReceptionParam satellite = 3;                //!< параметра приёма для спутника
+  required ReceiverConf receiver = 4;                   //!< настройки применика
+  repeated AntennaProfile antenna_profile = 5;          //!< параметры антенн
+  required AntennaConf antenna = 6;                     //!< настройки антенны
+  required FileStorage file_storage = 7;
+
+  optional bool demo_mode = 8 [default = false];        //!< демонстрационный режим работы
+}
+
+//! ответ сервиса приёма
+message ReceptionResponse {
+  required Session session = 1;
+  required TleItem tle = 2;
+  optional string demo_aos = 3;         //!< время начала сеанса для demo mode
+  required ServiceState state = 4;      //!< текущее состояние приёма
+
+  required bool result = 5;
+  optional string comment = 6;
+}
+
+
+// TODO оставлено для сборки проекта
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+enum SubscrType {
+  kDataSubscr    = 1;
+  kFileSubsr     = 2;
+  kAntennaSubscr = 3;
+}
+
+enum StatusSession {
+  kStart = 1;           //!< Первый пакет сессии приема
+  kContinue = 2;        //!< Средний пакет сессии приема
+  kEnd = 3;             //!< Крайний пакет сессии приема
+}
+
+message DataRequest {
+  required SubscrType subscr = 1;
+}
+
+message DataReply {
+  optional string file = 1;
+  optional int64 session_id = 2;
+  optional bytes data = 3;
+  optional StatusSession status = 4;    //!< Тип пакета { первый пакет, средний пакет, крайний пакет }
+}
+
+message DeviceStateReply {
+  // optional AntennaState antenna = 1;
+  optional string satellite = 2;        //!< Название спутника
+  optional uint64 revol = 3;            //!< Номер витка
+  optional int32 time_offset = 4;       //!< Разница между реальным временем и виртуальным (для тестового приёма)
+}
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+service ReceptionService {
+  rpc ServiceMode(ServiceRequest) returns (ReceptionResponse);  //!< переход в\из сервисный режим
+  rpc HealthCheck(Dummy) returns (ReceptionResponse);           //!< запрос текущего состояния
+
+  rpc Subscribe(Dummy) returns (stream ReceptionResponse);      //!< подписка на изменение состояния приема
+
+
+// TODO оставлено для сборки проекта
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  rpc GetDataMulti(DataRequest) returns (DataReply)  //!< Подписка на получение данных
+  {
+    option( spo.protobuf.multiresponse ) = true;
+  }
+
+  rpc GetDeviceStateMulti(DataRequest) returns (DeviceStateReply)  //!< Подписка на получение состояния железок
+  {
+    option( spo.protobuf.multiresponse ) = true;
+  }
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+}

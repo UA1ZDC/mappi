@@ -1,0 +1,11 @@
+name: "kn-01"
+title: "КН-01 (Росгидромет)"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "kn01"
+  data_type: kSynopFix
+  type_level: 1
+  level: 0
+}
+webpunchmap: true

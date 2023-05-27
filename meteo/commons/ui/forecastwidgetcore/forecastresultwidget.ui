@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ForecastResultWidget</class>
+ <widget class="QWidget" name="ForecastResultWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1025</width>
+    <height>443</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>ForecastWidget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="DateIntervalEdit" name="dateIntervalEdit">
+       <property name="isHorisontal" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="resetBtn">
+       <property name="text">
+        <string>Обновить</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTableWidget" name="frcstTypeTree">
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>Величина</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Время разработки</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Наименование метода</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Начало действия прогноза</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Окончание действия прогноза</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Результат</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Текст прогноза</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Фактическое значение</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Оправдался</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>DateIntervalEdit</class>
+   <extends>QWidget</extends>
+   <header location="global">meteo/commons/ui/custom/intervaledit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

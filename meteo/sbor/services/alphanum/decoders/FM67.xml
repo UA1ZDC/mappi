@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM67" text="HYDRA"  category="101">
+  <MessageSections>HHXX\s*(\d{3,4}\s*(?:000\d{2})?)\s*(?:((?:\s*\d{5,7}\s+(?:NIL\s*|\d{2}\s+(?:[\d/]{4,5}(?:\s*|$))*)*)*)|\s*\d{2}/\d{2}.*)</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{1,2})(\d{2})\s*(?:000(\d\d))?</GroupValues>
+    <Value number="1"  descrName="YY" text="День" />
+    <Value number="2"  descrName="GG" text="Час" />
+    <Value number="3"  descrName="A1Ci" text="Регион, страна" />
+  </Section>
+  <Section number="1" text="" >
+    <item category="101">
+      <GroupValues>(?:(\d{2}\d{3})|(\d{7}))(?:\s*NIL\s*)?(\s+22(?=[\s$])(?:(?!\s+[\d]{5,7}\s+(?:22|NIL)\s+)\s+[\d/]{5})*(?:\s+\d{4}(?=[\s$]))?)?(\s+33(?=[\s$])(?:(?!\s+[\d]{5,7}\s+(?:22|33|NIL)\s+)\s+[\d/]{5})*(?:\s+\d{4}(?=[\s$]))?)?(?:\s+44(?=[\s$])((?:(?!\s+[\d]{5,7}\s+(?:22|33|44|NIL)\s+)\s+[\d/]{5}))*)?(?:\s+55(?=[\s$])((?:(?!\s+[\d]{5,7}\s+(?:22|33|44|55|NIL)\s+)\s+[\d/]{5})*))?((?:\s+66\s+[\d/]{5}(?:(?!\s+[\d]{5,7}\s+(?:22|33|44|55|66|NIL)\s+)\s+[\d/]{5})?)*)(?:\s+77\s+[\d/]{5}\s*)*</GroupValues>
+      <Value number="1"  descrName="BBiH" text="Указатель бассейна + станции внутри бассейна" />
+      <Value number="1"  descrName="station_index" text="Регион, страна, бассейн, станция внутри бассейна" />
+      <Section number="1" text="22" >
+	<GroupValues>22\s*((?:[\d/]{5}\s*)*)(?:(\d{2})(\d{2}))?</GroupValues>
+	<SubSection number="1" text="" >
+	  <item>
+	    <GroupValues>([0-2/]\d{4})|(3\d{4})|(4\d{4})|(5\d{4})|(6\d{4})|(7\d{4})|(8\d{4})|(9\d{4})|[0-9/]////</GroupValues>
+	    <SubSection number="1" text="" >
+	      <GroupValues>([0-2/])(\d{4})</GroupValues>
+	      <Value number="1"  descrName="X" text="Тенденция" />
+	      <Value number="2"  descrName="HHHH" text="Уровень воды над нулем графика водомерной станции, в см" />
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>3(\d{4})()</GroupValues>
+	      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем графика водомерной станции, в см" />
+	      <Value number="2"  descrName="GGp" default="-3" text="Период" />	
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>4(\d{4})()</GroupValues>
+	      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем графика водомерной станции, в см" />
+	      <Value number="2"  descrName="GGp" default="-6" text="Период" />	
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>5(\d{4})()</GroupValues>
+	      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем графика водомерной станции, в см" />
+	      <Value number="2"  descrName="GGp" default="-12" text="Период" />	
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>6(\d{4})()</GroupValues>
+	      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем графика водомерной станции, в см" />
+	      <Value number="2"  descrName="YYp" default="-1" text="Период" />	
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>7(\d{4})()()()</GroupValues>
+	      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем графика водомерной станции, в см" />
+	      <Value number="2"  descrName="YYp" default="-1" text="Период" />
+	      <Value number="3"  descrName="YYp" default="0"  text="Период" />
+	      <Value number="4"  descrName="stat_sign" default="4" text="Средняя величина" />
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>8(\d{4})()()()</GroupValues>
+	      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем графика водомерной станции, в см" />
+	      <Value number="2"  descrName="YYp" default="-1" text="Период" />
+	      <Value number="3"  descrName="YYp" default="0"  text="Период" />
+	      <Value number="4"  descrName="stat_sign" default="2" text="Максимальная величина" />	  
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>9(\d{4})()()()</GroupValues>
+	      <Value number="1"  descrName="HHHH" text="Уровень воды над нулем графика водомерной станции, в см" />
+	      <Value number="2"  descrName="YYp" default="-1" text="Период" />
+	      <Value number="3"  descrName="YYp" default="0"  text="Период" />
+	      <Value number="4"  descrName="stat_sign" default="3" text="Минимальная величина" />
+	    </SubSection>
+	  </item>
+	</SubSection>
+	<Value number="3"  descrName="GG" text="Час" />
+	<Value number="4"  descrName="gg" text="Минута" />
+      </Section>
+      <Section number="1" text="33" >
+	<GroupValues>33\s*((?:[\d{5}]\s*)*)(?:(\d{2})(\d{2}))?</GroupValues>
+	<SubSection number="1" text="" >
+	  <item>
+	    <GroupValues>([0-2/]\d{4})|(3\d{4})|(4\d{4})|(5\d{4})|(6\d{4})|(7\d{4})|(8\d{4})|(9\d{4})|[0-9/]////</GroupValues>
+	    <SubSection number="1" text="" >
+	      <GroupValues>([0-2/])(\d{4})</GroupValues>
+	      <Value number="1"  descrName="X" text="Тенденция" />
+	      <Value number="2"  descrName="QQQ" text="Расход воды" />
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>3(\d{4})()</GroupValues>
+	      <Value number="1"  descrName="QQQ" text="Расход воды" />
+	      <Value number="2"  descrName="GGp" default="-3" text="Период" />	
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>4(\d{4})()</GroupValues>
+	      <Value number="1"  descrName="QQQ" text="Расход воды" />
+	      <Value number="2"  descrName="GGp" default="-6" text="Период" />	
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>5(\d{4})()</GroupValues>
+	      <Value number="1"  descrName="QQQ" text="Расход воды" />
+	      <Value number="2"  descrName="GGp" default="-12" text="Период" />	
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>6(\d{4})()</GroupValues>
+	      <Value number="1"  descrName="QQQ" text="Расход воды" />
+	      <Value number="2"  descrName="YYp" default="-1" text="Период" />	
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>7(\d{4})()()()</GroupValues>
+	      <Value number="1"  descrName="QQQ" text="Расход воды" />
+	      <Value number="2"  descrName="YYp" default="-1" text="Период" />
+	      <Value number="3"  descrName="YYp" default="0"  text="Период" />
+	      <Value number="4"  descrName="stat_sign" default="4" text="Средняя величина" />
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>8(\d{4})()()()</GroupValues>
+	      <Value number="1"  descrName="QQQ" text="Расход воды" />
+	      <Value number="2"  descrName="YYp" default="-1" text="Период" />
+	      <Value number="3"  descrName="YYp" default="0"  text="Период" />
+	      <Value number="4"  descrName="stat_sign" default="2" text="Максимальная величина" />	  
+	    </SubSection>
+	    <SubSection number="1" text="" >
+	      <GroupValues>9(\d{4})()()()</GroupValues>
+	      <Value number="1"  descrName="QQQ" text="Расход воды" />
+	      <Value number="2"  descrName="YYp" default="-1" text="Период" />
+	      <Value number="3"  descrName="YYp" default="0"  text="Период" />
+	      <Value number="4"  descrName="stat_sign" default="3" text="Минимальная величина" />
+	    </SubSection>
+	  </item>
+	</SubSection>
+	<Value number="3"  descrName="GG" text="Час" />
+	<Value number="4"  descrName="gg" text="Минута" />
+      </Section>
+      <Section number="1" text="44" >
+	<item>
+	  <GroupValues>([0-6])(\d{4})|(9\d{4})|(7\d{4})|(8\d{4})|(/\d{4})|/////</GroupValues>
+	  <Value number="1"  descrName="tp"   text="Период измерения" />
+	  <Value number="2"  descrName="RRRR" text="Суммарное количество осадков" />
+	  <Value number="3"  descrName="RRRR" text="Снегозапас во время измерения" />
+	  <SubSection number="1" text="" >
+	    <GroupValues>7(\d{4})()</GroupValues>
+	    <Value number="1"  descrName="RRRR" text="Суммарное количество осадков" />
+	    <Value number="2"  descrName="YYp" default="-10" text="Период" />
+	  </SubSection>
+	  <SubSection number="1" text="" >
+	    <GroupValues>8(\d{4})()</GroupValues>
+	    <Value number="1"  descrName="RRRR" text="Суммарное количество осадков" />
+	    <Value number="2"  descrName="MMp" default="-1" text="Период" />
+	  </SubSection>
+	  <SubSection number="1" text="" >
+	    <GroupValues>/(\d{4})()</GroupValues>
+	    <Value number="1"  descrName="RRRR" text="Эквивалентный запас воды в снежном покрове на почве" />
+	    <Value number="2"  descrName="YYp"  default="-1" text="Период" />
+	  </SubSection>
+	</item>
+      </Section>
+      <Section number="1" text="55" >
+	<item>
+	  <GroupValues>[15](\d{4})|2(\d{4})|3(\d{4})|4(\d{4})|([67]\d{4})|[\d/]////</GroupValues>
+	  <Value number="1"  descrName="snTTT"    text="Температура" />
+	  <Value number="2"  descrName="snTdTdTd" text="Точка росы" />
+	  <Value number="3"  descrName="snTnTnTn" text="Минимальная за сутки" />
+	  <Value number="4"  descrName="snTxTxTx" text="Максимальная за сутки" />
+	  <SubSection number="1" text="" >
+	    <GroupValues>()(?:6(\d{4})|7(\d{4}))</GroupValues>
+	    <Value number="0"  descrName="GGp"      default="-12" text="Период" />	
+	    <Value number="1"  descrName="snTTT"    text="Температура" />
+	    <Value number="2"  descrName="snTwTwTw" text="Температура воды" />
+	  </SubSection>
+	</item>
+      </Section>
+      <Section number="1" text="66" >
+	<item>
+	  <GroupValues>(\d\d)(\d\d)(\d)\s*(?:(\d{3})(\d{2}))?|/////\s*(?://///)?</GroupValues>
+	  <Value number="1"  descrName="E1E1" text="Ледовые явления" />
+	  <Value number="2"  descrName="E1E1" text="Ледовые явления" />
+	  <Value number="3"  descrName="E3"   text="Наличие шуги под слоем льда" />
+	  <Value number="4"  descrName="DDD"  text="Толщина льда, см" />
+	  <Value number="5"  descrName="S2"  text="Высота снежного покрова на льду, см" />
+	</item>
+      </Section>
+    </item>
+  </Section>
+</Message>

@@ -1,0 +1,5 @@
+{
+  "index" : @index@,
+  "regexp" : @regexp@,
+  "format_string" : @format_string@
+}

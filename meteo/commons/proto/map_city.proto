@@ -1,0 +1,75 @@
+syntax = "proto2";
+
+import "meteo.proto";
+
+package meteo.map.proto;
+
+enum CityMode {
+  Capital        = 0; //!< столица
+  RussianCapital = 1; //!< Москва
+  Regional       = 2; //!< областной центр
+  City           = 3; //!< город
+  Village        = 4; //!< село
+  Location       = 5; //!< свой пункт
+}
+
+enum CityMark {
+  kNoCityMark            = 0;
+  kCircleCityMark        = 1;
+  kCircleFilledCityMark  = 2;
+  kSquareCityMark        = 3;
+  kSquareFilledCityMark  = 4;
+  kStarCityMark          = 5;
+  kStarFilledCityMark    = 6;
+  kAirCityMark           = 7;
+  kFlagCityMark          = 8;
+  kFlagRedCityMark       = 9;
+  kFlagRectRedCityMark   = 10;
+  kFlagBlueCityMark      = 11;
+  kFlagRectBlueCityMark  = 12;
+}
+
+//! Параметры населенного пункта
+message CitySetting {
+  optional string               title           = 1; //!< наименование
+  optional GeoPointPb           geopoint        = 2; //!< координаты
+  optional CityMode             city_mode       = 3; //!< тип населенного пункта
+  optional int32                index           = 4; //!< индекс населенного пункта
+  optional DisplaySetting       display         = 5; //!< индивидуальные настройки отображения населенного пункта
+}
+
+message Cities {
+  repeated CitySetting  city_setting    = 1; //!< список параметров населенных пунктов
+  optional bool         result          = 2; //!< результат выполнения запроса на получение списка
+  optional string       comment         = 3; //!< примечание к результату выполнения запроса
+}
+
+//! DisplaySetting и DisplaySettings описывают файл, хранящий настройки отображения городов и типов городов на карте
+message DisplaySetting {
+  optional bool       is_default            = 1;
+  optional int32      city_index            = 2;
+  optional CityMode   city_mode             = 3;
+  optional int32      generalization_level  = 4;
+  optional int32      priority              = 5;
+  optional bool       visible               = 6;
+  optional Font       font                  = 7;
+  optional Pen        pen                   = 8;
+  optional Position   position              = 9;
+  optional bool       always_visible        = 10;
+  optional CityMark   city_mark             = 11;
+  optional double     city_scale            = 12; //!< Масштаб значка от 0.01 до 1
+}
+
+message DisplaySettings {
+  repeated  DisplaySetting  display_setting = 1;
+}
+
+//! Полный перечень настроек отображения населенных пунктов
+message CityDisplayConfig {
+  optional DisplaySetting       default_display         = 1; //!< параметры отображения населенного пункта по умолчанию
+  repeated DisplaySetting       display_mode            = 2; //!< параметры отображения для типов населенных пунктов
+  optional Cities               cities                  = 3; //!< полный набор населенных пунктов
+  optional bool                 result                  = 4; //!< результат выполнения запроса на получение параметров
+  optional string               comment                 = 5; //!< примечание к результату выполнения запроса
+
+}

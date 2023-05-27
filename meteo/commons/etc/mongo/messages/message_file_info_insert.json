@@ -1,0 +1,12 @@
+{
+  "insert": "message.info",
+  "documents": [
+    {
+      "_id" : "%1",
+      "md5" : "%2",
+      "mime" : "%3",
+      "author" : "%4"
+    }
+  ]
+}
+

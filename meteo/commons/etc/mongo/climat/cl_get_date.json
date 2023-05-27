@@ -1,0 +1,58 @@
+{
+  "aggregate" : @collection@,
+  "pipeline" : [
+    { "$addFields" : {
+      "month" : { "$month" : "$_id.date"}
+    } },
+    { "$match" : {  
+      "_id.station" :  @station@,
+      "_id.station_type" :  @station_type@,    
+      "_id.descrname" : { "$in" : @descrname@ },
+      "month" : @month@,
+      "$and" : [
+	{ "_id.date" : { "$gte" : @start_dt@ } },
+	{ "_id.date" : { "$lte" : @end_dt@ } }
+      ]
+    } },
+    { "$match" : {
+      "value" : { @condition@ : @vlimit@ }
+    }},
+    {
+      "$addFields" : { "month" : { "$month" : "$_id.date" } } 
+    },
+    { "$facet" : {
+      "first" : [
+	{
+	  "$match" : { "month" : { "$gt" : @month_start@ } }
+	},
+	{ "$group" : {
+	  "_id"  : { "year" : { "$year" : "$_id.date" } },
+	  "date" : { "$min" : "$_id.date" }
+	}},
+	{ "$project" :  {
+	  "_id"  : 0,
+	  "year" : "$_id.year",
+	  "date" : "$date" 
+	} }
+      ],
+      "last" : [
+	{
+	  "$match" : { "month" : { "$lt" : @month_end@ } }
+	},
+	{ "$group" : {
+	  "_id"    : { "year" : { "$year" : "$_id.date" } },
+	  "date"   : { "$max" : "$_id.date" }
+	}},
+	{ "$project" :  {
+	  "_id"  : 0,
+	  "year" : "$_id.year",
+	  "date" : "$date" 
+	} }
+      ]        
+    }}   
+    
+  ],  
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}
+  

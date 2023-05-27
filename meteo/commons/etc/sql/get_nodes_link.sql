@@ -1,0 +1,1 @@
+SELECT * FROM meteo.nodes_link;

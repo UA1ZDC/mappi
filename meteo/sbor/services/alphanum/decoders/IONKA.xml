@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="IONKA" text=""  category="164">
+  <MessageSections>(?:IONKA|ionka)\s*(\d{5}\s*\d{5}\s*\s*[\d/]{5})\s*((?:/\d{4}\s*(?:[\d/]{5}\s*){8}\s*)*)[\D]*</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d)(\d\d)(\d\d)\s*\s*\d/\d/\d</GroupValues>
+    <Value number="1"  descrName="station_index" text="Станция, IUWDS" />
+    <Value number="2"  descrName="J"  text="Цифра года" />
+    <Value number="3"  descrName="MM" text="Месяц" />
+    <Value number="4"  descrName="YY" text="День" />
+  </Section>
+  <Section number="1" text="" >
+    <item>
+    <GroupValues>\s*/(\d{2})(\d{2})\s*([\d/]{3})([\d/]{2})\s*([\d/]{2})(?:/|(\d))([\d/]{2})\s*([\d/]{3})([\d/]{2})\s*([\d/]{3})([\d/]{2})\s*([\d/]{2})([\d/]{3})\s*([\d/]{3})([\d/]{2})\s*([\d/]{3})(\d|/)/\s*([\d/]{3})//</GroupValues>
+    <Value number="1"  descrName="GG" text="Час" />
+    <Value number="2"  descrName="gg" text="Минута" />
+    <Section number="1" text="Слой F2 (fΩF2, h'F2)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="1"  descrName="fF2" text="Критическая частота в десятых долях МГц" />
+    </Section>
+    <Section number="2" text="Слой F2 (fΩF2, h'F2)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="2"  descrName="hF2" text="Минимальная высота, только сотни и десятки км" />
+    </Section>
+    <Section number="3" text="" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="1"  descrName="kMF2" text="Коэффициент М3000 F2" />
+    </Section>
+    <Section number="4" text="" >
+      <GroupValues>(\d)</GroupValues>
+      <Value number="2"  descrName="tF"   text="Тип диффузности в области F" />
+    </Section>
+    <Section number="5" text="" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="3"  descrName="fmin" text="Минимальная частота отражения в десятых долях МГц" />
+    </Section>
+    <Section number="6" text="Образование Es (fΩES, h'F2)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="1"  descrName="fEs" text="Критическая частота в десятых долях МГц" />
+    </Section>
+    <Section number="7" text="Образование Es (fΩES, h'F2)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="2"  descrName="hEs" text="Минимальная высота, только десятки и единицы км – превышение над уровнем в 100 км" />
+    </Section>
+    <Section number="8" text="Слой F1 (fΩE1, h'F1)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="1"  descrName="fF1" text="Критическая частота в десятых долях МГц" />
+    </Section>
+    <Section number="9" text="Слой F1 (fΩE1, h'F1)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="2"  descrName="hF1" text="Минимальная высота, только сотни и десятки км" />
+    </Section>
+    <Section number="10" text="" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="1"  descrName="kMF1" text="Коэффициент М3000 F1" />
+    </Section>
+    <Section number="11" text="" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="2"  descrName="hmF2" text="Действующая высота максимума электронной концентрации («пораболического») слоя F2 в км" />
+    </Section>
+    <Section number="12" text="Слой Е (fΩE, h'E)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="1"  descrName="fE" text="Критическая частота в десятых долях МГц" />
+    </Section>
+    <Section number="13" text="Слой Е (fΩE, h'E)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="2"  descrName="hE" text="Минимальная высота, только десятци и единицы км – превышение надо уровнем в 100 км" />
+    </Section>
+    <Section number="14" text="Образование Es (fΩES, h'F2)" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="1"  descrName="fbEs" text="Частота экранировки в десятых долях МГц" />
+    </Section>
+    <Section number="15" text="Образование Es (fΩES, h'F2)" >
+      <GroupValues>(\d)|/</GroupValues>
+      <Value number="2"  descrName="tEs" text="Тип ES" />
+    </Section>
+    <Section number="16" text="Область F" >
+      <GroupValues>/*(\d*)</GroupValues>
+      <Value number="1"  descrName="fmF" text="Предельная частота отражения от области F (fx1)" />
+    </Section>
+    </item>
+  </Section>
+</Message>

@@ -1,0 +1,17 @@
+{
+  "mapReduce": "surf_accumulation",
+  "map":    @map_func@,
+  "reduce": "function(key, values) { \
+               var max = -9999;   \
+               values.forEach(function(val) { \
+                 if (max < val) { \
+                   max = val; \
+                 }
+               });
+             return max;
+            }",
+  "out" : { "merge" : "@table@" },
+  "query": {
+    "_id.descrname" : { "$in" : @descrname@ }
+  }
+}

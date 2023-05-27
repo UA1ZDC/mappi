@@ -1,0 +1,21 @@
+{
+  "dt" : @dt@,
+  "year" : @year@,
+  "month" : @month@,
+  "station_type" : @station_type@,
+  "station" : @station@,
+  "station_ident" : {
+    "usaf" : @usaf@,
+    "wban" : @wban@,
+    "name" : @name@,
+    "call" : @call@
+  },
+  "data_type"  : @data_type@,
+  "level_type" : @level_type@,
+  "level" : @level@,
+  "location" : @location@,
+  "level_hi" : @level_hi@,
+  "param" : [
+    @param@
+  ]
+}

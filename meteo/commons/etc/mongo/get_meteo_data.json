@@ -1,0 +1,34 @@
+{
+  "aggregate": "meteoreport",
+  "pipeline": [
+    { "$match": { "dt": @start_dt@,
+                  "station_info.country": @country@,
+                  "station": { "$in": @station@},
+                  "data_type": { "$in": @data_type@ },
+                  "level_type": @level_type@,
+                  "level": @level@,
+                  "location": @location@
+                }
+    },
+    { "$unwind": "$param" },
+    { "$match": { "param.descrname": { "$in": @descrname@ } } },
+    { "$group": {
+        "_id": "$station",
+        "station": { "$first": "$station"},
+        "station_type": { "$first": "$station_type"},
+        "station_info": {"$first":"$station_info"},
+        "oid": { "$first": "$_id" },
+        "dt": { "$first": "$dt" },
+        "location": { "$first": "$location" },
+        "data_type": { "$first": "$data_type" },
+        "level_type": { "$first": "$level_type" },
+        "level": { "$first": "$level" },
+        "param": { "$addToSet": "$param" }
+      }
+    },
+    { "$sort": { "location.coordinates.0": 1 } }
+  ],
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+
+}

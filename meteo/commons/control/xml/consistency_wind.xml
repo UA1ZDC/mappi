@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<control>
+  <category name="level_type" num="100"/> <!--аэрологические данные-->
+  <group>  
+    <phys>
+      <table name="ff" nameLevel="P1" nameMatch="dd">
+	<match segment="0,29">
+	  <val level="100,100; 700,1000" max="100" />
+	  <val level="150,500"         max="120" />
+	  <val level="1,100" max="100" />
+	</match>
+	<match segment="30,39" >
+	  <val level="100,100; 700,1000" max="72"  />
+	  <val level="150,500"         max="110" />
+	  <val level="1,100" max="72"  />
+	</match>
+	<match segment="40,49" >
+	  <val level="100,100; 700,1000" max="61"  />
+	  <val level="150,500"         max="84"  />
+	  <val level="1,100" max="61"  />
+	</match>
+	<match segment="50,59" >
+	  <val level="100,100; 700,1000" max="57"  />
+	  <val level="150,500"         max="77"  />
+	  <val level="1,100" max="57"  />
+	</match>
+	<match segment="60,69" >
+	  <val level="100,100; 700,1000" max="53"  />
+	  <val level="150,500"         max="70"  />
+	  <val level="1,100" max="53"  />
+	</match>
+	<match segment="70,79" >
+	  <val level="100,100; 700,1000" max="49"  />
+	  <val level="150,500"         max="63"  />
+	  <val level="1,100" max="49"  />
+	</match>
+	<match segment="80,89" >
+	  <val level="100,100; 700,1000" max="46"  />
+	  <val level="150,500"         max="52"  />
+	  <val level="1,100" max="46"  />
+	</match>
+	<match segment="90,9999" >
+	  <val level="100,100; 700,1000" max="41"  />
+	  <val level="150,500"         max="50"  />
+	  <val level="1,100" max="41"  />
+	</match>
+      </table>
+    </phys>
+  </group>
+</control>

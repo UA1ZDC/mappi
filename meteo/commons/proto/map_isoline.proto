@@ -1,0 +1,62 @@
+syntax = "proto2";
+
+import "meteo.proto";
+
+package meteo.map.proto;
+
+message CitySettings{
+   required string title   = 1;
+   required bool visible   = 2 [default = false];
+   optional int32 priority = 3 [default = 14];;
+}
+
+//! параметры цвета для одного диапазона из серии
+message ColorGrad {
+  optional double               min_value    = 1 [default = 0];           //!< минимум
+  optional double               max_value    = 2 [default = 0];           //!< максимум (не установлен - значит == min_value)
+  optional uint32               min_color    = 3 [default = 0xFFFFFFFF ];   //!< цвет минимума
+  optional uint32               max_color    = 4 [default = 0xFFFFFFFF ];   //!< цвет максимума (не установлен - значит == min_color)
+  optional string               description  = 5 ;   //!< описание
+  optional string               punch_id     = 6; //!< id пуансона
+  optional int32                descr        = 7; //!< дескриптор
+  optional string               title        = 8 ;   //!< подпись
+}
+
+//! параметры палитры для уровня
+message LevelColor {
+  required int32                level      = 1;                         //!< уровень
+  optional int32                type_level = 2 [default = 100];         //!< тип уровня
+  optional double               step_iso   = 3 [default = 1];           //!< шаг (для построения изолиний)
+  optional double               step_grad  = 4 [default = 1];           //!< шаг для построения палитры
+  optional ColorGrad            color      = 5;                         //!< для изолиний
+  repeated ColorGrad            gradient   = 6;                         //!< для градиентной заливки
+  optional bool                 autostep   = 7 [default = false];
+}
+
+//! параметры поля Field (для meteo::map::Isoline и meteo::map::Gradient)
+message FieldColor {
+  required int32                descr      = 1;                         //!< метеорологический дескриптор
+  optional string               name       = 2 [default = ""];          //!< имя настройки
+  optional Font                 font       = 3;                         //!< параметры шрифта
+  optional Pen                  pen        = 4;                         //!< параметры пера
+  optional string               unit       = 5  [default = ""];         //!< единица измерения
+  repeated LevelColor           level      = 6;                         //!< параметры изолиний
+  optional ColorGrad            def_iso    = 8;                         //!< парметры изолиний для всех уровней
+  repeated ColorGrad            def_grad   = 9;                         //!< параметры заливки для всех уровней
+  optional double               step_iso   =10 [default = 1];           //!< шаг для построения изолиний
+  optional double               step_grad  =11 [default = 1];           //!< шаг (для автоматизации построения colorgrad)
+  optional string               format     =12 [default = "1'0'.1'.'"]; //!< формат надписи на изолинии
+  optional bool                 white_sea_under_gradient = 13 [default = true]; //!< управляет цветом океанов при наличии заливки
+}
+
+//! параметры всех полей (все дескрипторы)
+message FieldColors {
+  repeated FieldColor color = 1;                                        //!< параметры поля Field
+}
+message MapSettings {
+  repeated CitySettings    city_settings = 1;
+}
+
+message MapSettingsConfig{
+   required MapSettings settings = 1;
+}

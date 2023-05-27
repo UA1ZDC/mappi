@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item complex="true" valueSrc="" source="this" textItem="" text="">
+    <item valueSrc="PolynA0" type="0" source="this" textItem="0" text="a0" />
+    <item valueSrc="PolynA1" type="0" source="this" textItem="0" text="a1" />
+    <item valueSrc="PolynB0" type="0" source="this" textItem="0" text="b0" />
+    <item valueSrc="PolynB1" type="0" source="this" textItem="0" text="b1" />
+    <item valueSrc="PolynB2" type="0" source="this" textItem="0" text="b2" />
+    <item valueSrc="PolynC0" type="0" source="this" textItem="0" text="c0" />
+    <item valueSrc="PolynC1" type="0" source="this" textItem="0" text="c1" />
+    <item complex="true" valueSrc="themChannels" chiefFile="channels.xml" buttonName="Выбрать" type="7" source="this" text="Каналы тематической обработки" />
+  </item>
+</body>

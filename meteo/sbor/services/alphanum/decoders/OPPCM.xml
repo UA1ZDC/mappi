@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="OPPCM" text="потоках протонов в полярных шапках"  category="167">
+  <MessageSections>OPPCM\s*(\d{5})\s*((?:\d{5}\s*){4})</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>()(\d\d)(\d\d)(\d)</GroupValues>
+    <Value number="0"  descrName="station" default="Метеор" text="спутник" />
+    <Value number="1"  descrName="YY"  text="день наблюдения" />
+    <Value number="2"  descrName="GG"  text="час наблюдения" />
+    <Value number="3"  descrName="ggh" text="десятые доли часа" />
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <GroupValues>(\d)(\d{4})</GroupValues>
+      <Value number="1"  descrName="gp"  text="признак регистратора протонов" />
+      <Value number="2"  descrName="gpi" text="интенсивность протонов" />
+    </item>
+  </Section>
+</Message>

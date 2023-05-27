@@ -1,0 +1,93 @@
+syntax = "proto2";
+
+package meteo.prop;
+
+//! Тип запроса для объективного анализа (ОА)
+message Obanal {
+  enum Kind {
+    kHaos = 0;  //!< Выполнить ОА для TMeteoData
+    kRegular       = 1;//!< Выполнить ОА для GRIB
+    kReadDbKeys = 2;   //!< Получить ключи таблицы с данными ОА в соответствии с ServiceRequest::prop
+    kReadData   = 3;   //!< Получить данные ОА по ServiceRequest::prop или ServiceRequest::dbKey
+    kReadProperty = 4; //!< Получить ServiceRequest::prop или ServiceRequest::dbKey
+  }
+}
+//obanal - number воспринимает как findex
+
+//! Тип запроса для БД раскодированной информации
+message Primary {
+  enum Kind {
+    kGribProperty   = 0;  //!< Получить свойства данных GRIB
+    kGrib       = 1;  //!< Запрос данных GRIB
+    kPrimary  = 2;    //!< Запрос данных MeteoData
+  }
+}
+
+  //! Идентификация места получения данных
+  message Identification {
+    //! Координата
+    message Coordinate {
+      required double lat = 1; //!< Широта, радиан
+      required double lon = 2; //!< Долгота, радиан
+    }
+    
+    //! Регион
+    message Region {
+      required Coordinate left_up = 1;    //!< Левая верхняя точка
+      required Coordinate right_down = 2; //!< Правая нижняя точка
+    }
+     
+    //! Индекс станции
+    message Index {
+      required int32 II = 1;  //!< Номер большого района 
+      required int32 iii = 2; //!< Номер станции
+    }
+
+    optional Coordinate coord = 1; //!< Точная координата (не реализована. надо?)
+    optional Region reg = 2;    //!< Регион
+    optional Index station = 3; //!< Индекс станции
+    optional int32 center = 4;  //!< Номер центра-поставщика
+    optional string db_key = 5; //!< Ключ в таблице БД
+  }
+
+
+//! Описание метеоданных. Для запроса/ответа.
+message MeteoRequest {
+  //! Срок (пока по GRIB)
+  message HourType {
+    required int32 p1 = 1; //!< Первая точка времени
+    optional int32 p2 = 2; //!< Вторая точка времени
+    required int32 time_range = 3 [default = 0]; //!< Смысловое значение p1 и p2
+  }
+
+  message RequestKind {
+    optional Primary.Kind p_kind = 1; //!< Запрос к ПК паскодирования
+    optional Obanal.Kind  o_kind = 2; //!< Запрос к ПК объективного анализа
+  }
+
+  required RequestKind kind = 1;
+  
+  optional string dt      = 2; //!< Дата/время данных. Qt::ISODate
+  optional string from_dt = 3; //!< Начало периода выборки. Qt::ISODate
+  optional string to_dt   = 4; //!< Окончание периода выборки. Qt::ISODate
+  optional int32  limit   = 5; //!< Максимальное количество возвращаемых результатов
+
+  optional Identification ident = 6; //!< Идентификация места получения данных
+
+  optional int32 category   =  7; //!< Номер категории для первичных метеоданных
+
+  optional int32 level_type = 8;  //!< Тип уровная TODO для TMeteoData:1 - призменые данные; 0 - высотные; у GRIB для этого большая табличка
+  repeated int32 levels     = 9;  //!< Уровни в гПа
+  optional HourType hour    = 10; //!< Срок
+  optional int32 param      = 11; //!< Номер параметра
+}
+
+
+//! Описание метеоданных. Для передачи по подписке.
+message MeteoProperty {
+  optional string dt = 1;      //!< Дата/время в формате Qt::ISODate
+  optional string source = 2;  //!< Описание источника данных (ключ в таблице БД, имя файла, ...)
+  optional string file = 3;    //!< Название файла с данными для обработки
+  optional string kind = 4;    //!< Разновидность информации (для выбора способа обработка)
+}
+

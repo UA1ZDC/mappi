@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+package meteo.msgstream;
+
+//!
+message FormatBCM {
+  optional int32 f_10000 = 1;
+  optional int32 f_1000  = 2;
+  optional int32 f_100   = 3;
+  optional int32 f_10    = 4;
+  optional int32 f_1     = 5;
+  optional int32 f_01    = 6;
+}
+
+//!
+message FormatIPV {
+  optional int32 inst_speed   = 1;
+  optional int32 inst_angle   = 2;
+  optional int32 cur_speed    = 3;
+  optional int32 cur_angle    = 4;
+  optional int32 avg2m_speed  = 5;
+  optional int32 avg2m_angle  = 6;
+  optional int32 avg10m_speed = 7;
+  optional int32 avg10m_angle = 8;
+  optional int32 max_speed    = 9;
+  optional int32 max10_speed  = 10;
+}
+
+//!
+message FormatLing {
+  optional bytes vngo  = 1;
+}

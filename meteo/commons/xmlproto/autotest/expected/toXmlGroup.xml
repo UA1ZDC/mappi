@@ -1,0 +1,3 @@
+<settings id="100">
+  <db host="localhost" name="db_name"/>
+</settings>

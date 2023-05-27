@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item valueSrc="cloudMaskCond" source="this" text="Условие" complex="true">
+    <item type="0" valueSrc="snowNight" source="this" textItem="" text="Снег (ночь)" />
+    <item type="0" valueSrc="snowDay" source="this" textItem="" text="Снег (день)" />
+    <item type="0" valueSrc="iceNight" source="this" textItem="" text="Лёд (ночь)" />
+    <item type="0" valueSrc="iceDay" source="this" textItem="" text="Лёд (день)" />
+    <item type="0" valueSrc="overcastLandNight" source="this" textItem="" text="Облачность (ночь-суша)" />
+    <item type="0" valueSrc="overcastLandDay" source="this" textItem="" text="Облачность (день-суша)" />
+    <item type="0" valueSrc="overcastWaterNight" source="this" textItem="" text="Облачность (ночь-вода)" />
+    <item type="0" valueSrc="overcastWaterDay" source="this" textItem="" text="Облачность (день-вода)" />
+  </item>
+</body>

@@ -1,0 +1,5 @@
+{ "delete" : "grib", "deletes" : [
+  {
+    "q": { "_id" :  { "$in" : "%1" }},
+    "limit" : 0 }
+]}

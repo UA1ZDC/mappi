@@ -1,0 +1,9 @@
+{ "find" : "grib",
+  "filter" : {
+    "analysed" : false,
+    "error" : { "$ne" : true }
+    },
+    "sort" : { "hour" : -1 },
+    "limit" : 1
+}
+

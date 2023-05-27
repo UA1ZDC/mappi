@@ -1,0 +1,4 @@
+code: "OT"
+name: "OT500/1000"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/OT.template"
+datatype: kAero

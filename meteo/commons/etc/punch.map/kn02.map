@@ -1,0 +1,10 @@
+name: "kn-02"
+title: "КН-02"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "kn-02"
+  data_type: kSynopCoast
+  type_level: 1
+  level: 0
+}

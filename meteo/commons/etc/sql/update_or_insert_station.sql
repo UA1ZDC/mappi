@@ -1,0 +1,17 @@
+select * from meteo.update_station( @id@ ,
+                                    @cccc@,
+                                    @stationindex@,
+                                    @station@,
+                                    @nameru@,
+                                    @nameshort@,
+                                    @nameen@,
+                                    @stationtype@,
+                                    @location@,
+                                    @alt@,
+                                    @poima@,
+                                    @zatop@,
+                                    @dangerlevel@,
+                                    @direction@,
+                                    @country@,
+                                    @lastupdate@);
+

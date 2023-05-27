@@ -1,0 +1,54 @@
+syntax = "proto2";
+
+package meteo.msgparser;
+
+/*
+
+Пример описания протоструктуры и конфигурации сервисного пакета (tcp)
+для протокола SocketSpecial.
+
+// socketspecial.proto
+message SockSpec_ServicePacket {
+  required int32  type   = 1;
+  required int32  ijp    = 2;
+  required uint32 len    = 3;
+  required uint32 num    = 4;
+  required bytes  ahd    = 5;
+  required int32  prior  = 6;
+}
+
+// unimas_tcp.conf
+bin_format {
+  convert_byteorder: true
+  begin { hex_data: "01" path: "type" }
+  chunk { size: 3 } // skip 3 bytes
+  chunk { size: 4   path: "ijp" }
+  chunk { size: 2   path: "len" }
+  chunk { size: 2   path: "num" }
+  chunk { size: 12  path: "ahd" }
+  chunk { size: 1   path: "pri" }
+  chunk { size: 3 } // skip 3 bytes
+}
+
+*/
+
+//! Описание фармата блока бинарных данных
+message RawBinFormat {
+  repeated RawBinMarker begin = 1; //! маркеры начала блока данных
+  repeated RawBinMarker end   = 2; //! маркеры окончания блока данных
+  repeated RawBinChunk  chunk = 3; //! описание фрагментов
+}
+
+//! Описание одного фрагмента бинарного формата
+message RawBinChunk {
+  required int32  size  = 1; //!< размер в байтах
+  optional string path  = 2; //!< название поля протоструктуры (для вложенных полей список полей разделённых '.'),
+                             //!< куда будет записано значение
+}
+
+//! Описание последовательности байт, которая используется как вспомогательная информация при разборе.
+message RawBinMarker {
+  required bytes  hex_data  = 1; //!< последовательность байт в шеснадцатиричном формате (пример: "0D0A")
+  optional string path      = 2; //!< название поля протоструктуры (для вложенных полей список полей разделённых '.'),
+                                 //!< куда будет записано значение
+}

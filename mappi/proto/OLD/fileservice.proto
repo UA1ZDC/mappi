@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+import "spo_options.proto";
+
+package mappi.proto;
+
+
+message ExportRequest {
+  optional string path = 1;     //!< путь к требуемому файлу
+}
+
+message ExportResponse {
+  optional bool result = 1;     //!< флаг результата
+  optional string comment = 2;  //!< комментарий, текст ошибки, если есть
+
+  optional string receiver = 3;
+  optional string filename = 12;
+  optional int64 file_size = 4;
+  optional int32 complete = 5;
+
+  optional int64 chunk_num = 6;         // порядковый номер передаваемого куска файла
+  optional int64 chunk_size = 7;        // стандартный размер куска файла
+
+  optional bool start = 8;
+  optional bool finish = 9;
+
+  optional bytes data = 10;             // блок данных (кусок файла)
+  optional int64 data_size = 11;        // размер передаваемого блока данных
+}
+
+service FileService {
+  rpc ExportFile( ExportRequest ) returns ( ExportResponse )  //!< Выгрузить файл по пути на сервере
+  {
+    option( spo.protobuf.multiresponse ) = true;
+  }
+}

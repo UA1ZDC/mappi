@@ -1,0 +1,9 @@
+{
+  "count": "dialogs_messages",
+  "query": { 
+    "mac": { "$lte" : @mac@},
+    "from": @from@,
+    "to" : @to@,
+    "status" : { "$ne" : 4 }
+  }
+}

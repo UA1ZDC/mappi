@@ -1,0 +1,1 @@
+{ "$and": [ { "bufr_code": "%1", "values.code": "%2" } ] }

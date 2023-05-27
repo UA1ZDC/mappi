@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Draw</class>
+ <widget class="QDialog" name="Draw">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>403</width>
+    <height>146</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_4">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QRadioButton" name="singlebtn">
+       <property name="text">
+        <string>одинарная</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">secondgroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QRadioButton" name="dblbtn">
+       <property name="text">
+        <string>двойная</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">secondgroup</string>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="1" rowspan="3">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QRadioButton" name="solidbtn">
+       <property name="text">
+        <string>сплошная</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">firstgroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QRadioButton" name="dashbtn">
+       <property name="text">
+        <string>тире</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">firstgroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QRadioButton" name="dotbtn">
+       <property name="text">
+        <string>точка</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">firstgroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QRadioButton" name="dashdotbtn">
+       <property name="text">
+        <string>точка/тире</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">firstgroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QRadioButton" name="dashdotdotbtn">
+       <property name="text">
+        <string>точка/точка/тире</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">firstgroup</string>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="2" rowspan="3">
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <widget class="QRadioButton" name="lessarrow">
+       <property name="text">
+        <string>без стрелок</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">arrowgroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QRadioButton" name="beginarrow">
+       <property name="text">
+        <string>стрелка в начале</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">arrowgroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QRadioButton" name="endarrow">
+       <property name="text">
+        <string>стрелка в конце</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">arrowgroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QRadioButton" name="botharrow">
+       <property name="text">
+        <string>обе стрелки</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">arrowgroup</string>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QSpinBox" name="widthbox">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="closedbox">
+     <property name="text">
+      <string>замкнутый</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>68</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="secondgroup"/>
+  <buttongroup name="firstgroup"/>
+  <buttongroup name="arrowgroup"/>
+ </buttongroups>
+</ui>

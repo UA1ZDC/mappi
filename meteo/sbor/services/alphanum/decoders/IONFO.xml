@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="IONFO" text="IONFO" category="161">
+  <!--  <MessageSections>^\s*(?:FORECAST|ПРОГНОЗ)((?:\s*[\d/]{5}){2})(\s*(?:IONFO|ИОНФО)(?:(?:\s*[\d/]{5})\s*(?!IONES|IONDP|IONFF|MAGPO|ИОНЕС|ИОНДП|ИОНФФ|МАГПО))+(?:\s*[\d/]{5}))?(\s*(?:IONES|ИОНЕС)(?:(?:\s*[\d/]{5})\s*(?!IONDP|IONFF|MAGPO|ИОНДП|ИОНФФ|МАГПО))+(?:\s*[\d/]{5}))?(\s*(?:IONDP|ИОНДП)(?:(?:\s*[\d/]{5})\s*(?!|IONFF|MAGPO||ИОНФФ|МАГПО))+(?:\s*[\d/]{5}))?(\s*(?:IONFF|ИОНФФ)(?:(?:\s*[\d/]{5})\s*(?!MAGPO|МАГПО))+(?:\s*[\d/]{5}))?(\s*(?:MAGPO|МАГПО)(?:\s*[\d/]{5})+)?-->
+  <MessageSections>\s*(?:FORECAST|ПРОГНОЗ)((?:\s*[\d/]{5}){2})((?:\s*(?:IONFO|IONES|IONDP|IONFF|MAGPO|ИОНФО|ИОНЕС|ИОНДП|ИОНФФ|МАГПО)(?:(?:\s*[\d/]{5})?\s*(?!IONFO|IONES|IONDP|IONFF|MAGPO|ИОНФО|ИОНЕС|ИОНДП|ИОНФФ|МАГПО))+(?:\s*[\d/]{5})?)+)</MessageSections>
+  <USection number="1" text="DATA FOR REPORTING IDENTIFICATION"> <!--опознавательные данные-->
+    <USectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</USectionGroups>
+    <Group number="1" text="station number">
+      <GroupValues>\s*([\d/]{5})</GroupValues>
+          <Value number="1"  descrName="nnnnn" text="station number"/>
+        </Group>
+        <Group number="2" text="Период прогнозирования">
+          <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+          <Value number="1"  descrName="Y1Y1" text="Первая дата прогнозируемого периода"/>
+          <Value number="2"  descrName="Y2Y2" text="Последняя дата прогнозируемого периода"/>
+          <Value number="3"  descrName="MM" text="Месяц"/>
+        </Group>
+  </USection>
+  <USection number="2" text="DATA">
+  <USectionGroups>(\s*(?:IONFO|ИОНФО)(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?)|(\s*(?:IONES|ИОНЕС)(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?)|(\s*(?:IONDP|ИОНДП)(?:\s*[\d/]{5})(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?)|(\s*(?:IONFF|ИОНФФ)(?:\s*[\d/]{5})(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?)|(\s*(?:MAGPO|МАГПО)(?:\s*[\d/]{5})(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?(?:\s*[\d/]{5})?)</USectionGroups>
+  <Section number="2" text="IONFO|ИОНФО">
+    <SectionGroups>\s*(?:IONFO|ИОНФО)(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?</SectionGroups>
+        <Group number="1">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №1"/>
+          <Value number="2"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №2"/>
+          <Value number="3"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №3"/>
+          <Value number="4"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №4"/>
+          <Value number="5"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №5"/>
+        </Group>
+        <Group number="2">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №6"/>
+          <Value number="2"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №7"/>
+          <Value number="3"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №8"/>
+          <Value number="4"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №9"/>
+          <Value number="5"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №10"/>
+        </Group>
+        <Group number="3">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №11"/>
+          <Value number="2"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №12"/>
+          <Value number="3"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №13"/>
+          <Value number="4"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №14"/>
+          <Value number="5"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №15"/>
+        </Group>
+        <Group number="4">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №16"/>
+          <Value number="2"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №17"/>
+          <Value number="3"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №18"/>
+          <Value number="4"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №19"/>
+          <Value number="5"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №20"/>
+        </Group>
+        <Group number="5">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №21"/>
+          <Value number="2"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №22"/>
+          <Value number="3"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №23"/>
+          <Value number="4"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №24"/>
+          <Value number="5"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №25"/>
+        </Group>
+        <Group number="6">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №26"/>
+          <Value number="2"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №27"/>
+          <Value number="3"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №28"/>
+          <Value number="4"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №29"/>
+          <Value number="5"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №30"/>
+        </Group>
+        <Group number="7">
+          <GroupValues>\s*([\d/])</GroupValues>
+          <Value number="1"  descrName="e" text="Ожидаемое состояние критических частот слоя F2 для дня №31"/>
+        </Group>
+  </Section>
+  <Section number="3" text="IONES|ИОНЕС">
+    <SectionGroups>\s*(?:IONES|ИОНЕС)(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?</SectionGroups>
+        <Group number="1">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №1"/>
+          <Value number="2"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №2"/>
+          <Value number="3"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №3"/>
+          <Value number="4"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №4"/>
+          <Value number="5"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №5"/>
+        </Group>
+        <Group number="2">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №6"/>
+          <Value number="2"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №7"/>
+          <Value number="3"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №8"/>
+          <Value number="4"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №9"/>
+          <Value number="5"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №10"/>
+        </Group>
+        <Group number="3">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №11"/>
+          <Value number="2"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №12"/>
+          <Value number="3"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №13"/>
+          <Value number="4"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №14"/>
+          <Value number="5"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №15"/>
+        </Group>
+        <Group number="4">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №16"/>
+          <Value number="2"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №17"/>
+          <Value number="3"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №18"/>
+          <Value number="4"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №19"/>
+          <Value number="5"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №20"/>
+        </Group>
+        <Group number="5">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №21"/>
+          <Value number="2"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №22"/>
+          <Value number="3"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №23"/>
+          <Value number="4"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №24"/>
+          <Value number="5"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №25"/>
+        </Group>
+        <Group number="6">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №26"/>
+          <Value number="2"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №27"/>
+          <Value number="3"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №28"/>
+          <Value number="4"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №29"/>
+          <Value number="5"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №30"/>
+        </Group>
+        <Group number="7">
+          <GroupValues>\s*([\d/])</GroupValues>
+          <Value number="1"  descrName="s" text="Ожидаемое состояние спорадического слоя Es для дня №31"/>
+        </Group>
+  </Section>
+  <Section number="4" text="IONDP|ИОНДП">
+    <SectionGroups>\s*(?:IONDP|ИОНДП)(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?</SectionGroups>
+        <Group number="1">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="p" text="Прогноз полного поглощения в слое D для дня №1"/>
+          <Value number="2"  descrName="p" text="Прогноз полного поглощения в слое D для дня №2"/>
+          <Value number="3"  descrName="p" text="Прогноз полного поглощения в слое D для дня №3"/>
+          <Value number="4"  descrName="p" text="Прогноз полного поглощения в слое D для дня №4"/>
+          <Value number="5"  descrName="p" text="Прогноз полного поглощения в слое D для дня №5"/>
+        </Group>
+        <Group number="2">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="p" text="Прогноз полного поглощения в слое D для дня №6"/>
+          <Value number="2"  descrName="p" text="Прогноз полного поглощения в слое D для дня №7"/>
+          <Value number="3"  descrName="p" text="Прогноз полного поглощения в слое D для дня №8"/>
+          <Value number="4"  descrName="p" text="Прогноз полного поглощения в слое D для дня №9"/>
+          <Value number="5"  descrName="p" text="Прогноз полного поглощения в слое D для дня №10"/>
+        </Group>
+        <Group number="3">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="p" text="Прогноз полного поглощения в слое D для дня №11"/>
+          <Value number="2"  descrName="p" text="Прогноз полного поглощения в слое D для дня №12"/>
+          <Value number="3"  descrName="p" text="Прогноз полного поглощения в слое D для дня №13"/>
+          <Value number="4"  descrName="p" text="Прогноз полного поглощения в слое D для дня №14"/>
+          <Value number="5"  descrName="p" text="Прогноз полного поглощения в слое D для дня №15"/>
+        </Group>
+        <Group number="4">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="p" text="Прогноз полного поглощения в слое D для дня №16"/>
+          <Value number="2"  descrName="p" text="Прогноз полного поглощения в слое D для дня №17"/>
+          <Value number="3"  descrName="p" text="Прогноз полного поглощения в слое D для дня №18"/>
+          <Value number="4"  descrName="p" text="Прогноз полного поглощения в слое D для дня №19"/>
+          <Value number="5"  descrName="p" text="Прогноз полного поглощения в слое D для дня №20"/>
+        </Group>
+        <Group number="5">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="p" text="Прогноз полного поглощения в слое D для дня №21"/>
+          <Value number="2"  descrName="p" text="Прогноз полного поглощения в слое D для дня №22"/>
+          <Value number="3"  descrName="p" text="Прогноз полного поглощения в слое D для дня №23"/>
+          <Value number="4"  descrName="p" text="Прогноз полного поглощения в слое D для дня №24"/>
+          <Value number="5"  descrName="p" text="Прогноз полного поглощения в слое D для дня №25"/>
+        </Group>
+        <Group number="6">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="p" text="Прогноз полного поглощения в слое D для дня №26"/>
+          <Value number="2"  descrName="p" text="Прогноз полного поглощения в слое D для дня №27"/>
+          <Value number="3"  descrName="p" text="Прогноз полного поглощения в слое D для дня №28"/>
+          <Value number="4"  descrName="p" text="Прогноз полного поглощения в слое D для дня №29"/>
+          <Value number="5"  descrName="p" text="Прогноз полного поглощения в слое D для дня №30"/>
+        </Group>
+        <Group number="7">
+          <GroupValues>\s*([\d/])</GroupValues>
+          <Value number="1"  descrName="p" text="Прогноз полного поглощения в слое D для дня №31"/>
+        </Group>
+  </Section>
+  <Section number="5" text="IONFF|ИОНФФ">
+    <SectionGroups>\s*(?:IONFF|ИОНФФ)(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?</SectionGroups>
+        <Group number="1">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="d" text="Прогноз диффузности слоя F2 для дня №1"/>
+          <Value number="2"  descrName="d" text="Прогноз диффузности слоя F2 для дня №2"/>
+          <Value number="3"  descrName="d" text="Прогноз диффузности слоя F2 для дня №3"/>
+          <Value number="4"  descrName="d" text="Прогноз диффузности слоя F2 для дня №4"/>
+          <Value number="5"  descrName="d" text="Прогноз диффузности слоя F2 для дня №5"/>
+        </Group>
+        <Group number="2">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="d" text="Прогноз диффузности слоя F2 для дня №6"/>
+          <Value number="2"  descrName="d" text="Прогноз диффузности слоя F2 для дня №7"/>
+          <Value number="3"  descrName="d" text="Прогноз диффузности слоя F2 для дня №8"/>
+          <Value number="4"  descrName="d" text="Прогноз диффузности слоя F2 для дня №9"/>
+          <Value number="5"  descrName="d" text="Прогноз диффузности слоя F2 для дня №10"/>
+        </Group>
+        <Group number="3">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="d" text="Прогноз диффузности слоя F2 для дня №11"/>
+          <Value number="2"  descrName="d" text="Прогноз диффузности слоя F2 для дня №12"/>
+          <Value number="3"  descrName="d" text="Прогноз диффузности слоя F2 для дня №13"/>
+          <Value number="4"  descrName="d" text="Прогноз диффузности слоя F2 для дня №14"/>
+          <Value number="5"  descrName="d" text="Прогноз диффузности слоя F2 для дня №15"/>
+        </Group>
+        <Group number="4">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="d" text="Прогноз диффузности слоя F2 для дня №16"/>
+          <Value number="2"  descrName="d" text="Прогноз диффузности слоя F2 для дня №17"/>
+          <Value number="3"  descrName="d" text="Прогноз диффузности слоя F2 для дня №18"/>
+          <Value number="4"  descrName="d" text="Прогноз диффузности слоя F2 для дня №19"/>
+          <Value number="5"  descrName="d" text="Прогноз диффузности слоя F2 для дня №20"/>
+        </Group>
+        <Group number="5">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="d" text="Прогноз диффузности слоя F2 для дня №21"/>
+          <Value number="2"  descrName="d" text="Прогноз диффузности слоя F2 для дня №22"/>
+          <Value number="3"  descrName="d" text="Прогноз диффузности слоя F2 для дня №23"/>
+          <Value number="4"  descrName="d" text="Прогноз диффузности слоя F2 для дня №24"/>
+          <Value number="5"  descrName="d" text="Прогноз диффузности слоя F2 для дня №25"/>
+        </Group>
+        <Group number="6">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="d" text="Прогноз диффузности слоя F2 для дня №26"/>
+          <Value number="2"  descrName="d" text="Прогноз диффузности слоя F2 для дня №27"/>
+          <Value number="3"  descrName="d" text="Прогноз диффузности слоя F2 для дня №28"/>
+          <Value number="4"  descrName="d" text="Прогноз диффузности слоя F2 для дня №29"/>
+          <Value number="5"  descrName="d" text="Прогноз диффузности слоя F2 для дня №30"/>
+        </Group>
+        <Group number="7">
+          <GroupValues>\s*([\d/])</GroupValues>
+          <Value number="1"  descrName="d" text="Прогноз диффузности слоя F2 для дня №31"/>
+        </Group>
+  </Section>
+  <Section number="6" text="MAGPO|МАГПО">
+    <SectionGroups>\s*(?:MAGPO|МАГПО)(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?(\s*[\d/]{5})?</SectionGroups>
+        <Group number="1">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №1"/>
+          <Value number="2"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №2"/>
+          <Value number="3"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №3"/>
+          <Value number="4"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №4"/>
+          <Value number="5"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №5"/>
+        </Group>
+        <Group number="2">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №6"/>
+          <Value number="2"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №7"/>
+          <Value number="3"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №8"/>
+          <Value number="4"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №9"/>
+          <Value number="5"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №10"/>
+        </Group>
+        <Group number="3">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №11"/>
+          <Value number="2"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №12"/>
+          <Value number="3"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №13"/>
+          <Value number="4"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №14"/>
+          <Value number="5"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №15"/>
+        </Group>
+        <Group number="4">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №16"/>
+          <Value number="2"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №17"/>
+          <Value number="3"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №18"/>
+          <Value number="4"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №19"/>
+          <Value number="5"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №20"/>
+        </Group>
+        <Group number="5">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №21"/>
+          <Value number="2"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №22"/>
+          <Value number="3"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №23"/>
+          <Value number="4"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №24"/>
+          <Value number="5"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №25"/>
+        </Group>
+        <Group number="6">
+          <GroupValues>\s*([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №26"/>
+          <Value number="2"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №27"/>
+          <Value number="3"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №28"/>
+          <Value number="4"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №29"/>
+          <Value number="5"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №30"/>
+        </Group>
+        <Group number="7">
+          <GroupValues>\s*([\d/])</GroupValues>
+          <Value number="1"  descrName="aM" text="Качественная ценка геомагнитной возмущенности для дня №31"/>
+        </Group>
+  </Section>
+  </USection>
+  </Message>

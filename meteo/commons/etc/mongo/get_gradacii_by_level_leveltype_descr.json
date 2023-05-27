@@ -1,0 +1,6 @@
+{ "find" : "dopusk_opr",
+  "filter": { "descriptor" : @descriptor@,
+  "level" : { "$in" : [ @level@ ] },
+  "type_level" : { "$in" : [ @type_level@ ] },
+  "fhour" : @hour@ }
+}

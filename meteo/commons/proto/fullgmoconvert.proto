@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package meteo.settings;
+
+//! типы преобразования метеопараметров
+enum ConvertType {
+  kUnknown = 0; //!< неизвестный
+  kTd2D    = 1; //!< точка росы в дефицит
+  kU2D     = 2; //!< влажность в дефицит
+  kuv2ff   = 3;  //!< ветер в векторном виде в скорость и направление
+};
+
+//! настройки для преобразования метеопараметров
+message FullConvertParam {
+  required bool enable = 1; //!< true - использовать преобразование, false - нет
+  required int32  param  = 2; //!< номер параметра результата
+  repeated int32  args   = 3; //!< список аргументов (номера параметров) для функции преобразования
+  required ConvertType type = 4; //!< тип преобразования
+};
+
+message FullConvertList {
+  repeated FullConvertParam plist = 1; 
+};

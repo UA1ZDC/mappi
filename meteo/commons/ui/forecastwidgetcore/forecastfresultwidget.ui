@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ForecastFResultWidget</class>
+ <widget class="QWidget" name="ForecastFResultWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1025</width>
+    <height>443</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>ForecastWidget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Пункт</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_3"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Центр</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_2"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Величина</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Уровень</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_4"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Срок</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox_5"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="resetBtn">
+       <property name="text">
+        <string>Обновить</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTableWidget" name="frcstTypeTree">
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <column>
+      <property name="text">
+       <string>Пункт</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Центр</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Величина</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Уровень</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Модель</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Срок</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Разработано</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Оправдалось</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Точность</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

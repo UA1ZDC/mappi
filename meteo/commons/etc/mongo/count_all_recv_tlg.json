@@ -1,0 +1,7 @@
+{
+  "count" : "msg", 
+  "query" :  {
+    "dddd" : @param@,
+    "confirm_tlg" : false 
+  } 
+}

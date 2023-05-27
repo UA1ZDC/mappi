@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="AFAP" text="Ak и Ap индексы"  category="165">
+  <MessageSections>AFRED\s*((?:\d{5}\s*){3})|APFRD\s*((?:\d{5}\s*){4})|APMOS\s*((?:\d{5}\s*){4})</MessageSections>
+  <Section number="0" text="Предсказанное значение суточного Ак-индекса для ст.Фридериксбург" >
+    <GroupValues>()((?:\d{5}\s*){3})</GroupValues>
+    <Value number="0"  descrName="station" default="Фридериксбург" text="станция" />
+    <SubSection number="0" text="" >
+      <item>
+	<GroupValues>()(\d{3})(\d\d)\s*</GroupValues>
+	<Value number="0"  descrName="t_sign" default="4" text="Прогноз" />
+	<Value number="1"  descrName="gAk" text="Ak" />
+	<Value number="2"  descrName="YY" text="День Ak" />
+      </item>
+    </SubSection>
+  </Section>
+  <Section number="1" text="Фактическое и прогнозируемые значения суточного планетарного индекса геомагнитной возмущённости Ар" >
+    <GroupValues>()(\d)(\d\d)(\d\d)\s*(\d{3})(\d{2})\s*()(\d{3})(\d{2})\s*()(\d{3})(\d{2})</GroupValues>
+    <Value number="0"  descrName="station" default="Фридериксбург" text="станция" />    
+    <Value number="1"  descrName="J"   text="Год выпуска телеграммы" />
+    <Value number="2"  descrName="MM"  text="Месяц выпуска телеграммы" />
+    <Value number="3"  descrName="YY"  text="День выпуска телеграммы" />
+    <!-- <Value number="4"  descrName="t_sign" num="0" default="4" text="Прогноз" /> Вроде фактическое -->
+    <Value number="5"  descrName="gAp"    num="0" text="Ap" />
+    <Value number="6"  descrName="YY"     num="0" text="День Ap" />
+    <Value number="7"  descrName="t_sign" num="1" default="4" text="Прогноз" />
+    <Value number="8"  descrName="gAp"    num="1" text="Ap" />
+    <Value number="9"  descrName="YY"     num="1" text="День Ap" />
+    <Value number="10" descrName="t_sign" num="2" default="4" text="Прогноз" />
+    <Value number="11" descrName="gAp"    num="2" text="Ap" />
+    <Value number="12" descrName="YY"     num="2" text="День Ap" />
+  </Section>
+  <Section number="1" text="Фактическое и прогнозируемые значения суточного планетарного индекса геомагнитной возмущённости Ар" >
+    <GroupValues>()(\d)(\d\d)(\d\d)\s*(\d{3})(\d{2})\s*()(\d{3})(\d{2})\s*()(\d{3})(\d{2})</GroupValues>
+    <Value number="0"  descrName="station" default="Москва" text="станция" />    
+    <Value number="1"  descrName="J"   text="Год выпуска телеграммы" />
+    <Value number="2"  descrName="MM"  text="Месяц выпуска телеграммы" />
+    <Value number="3"  descrName="YY"  text="День выпуска телеграммы" />
+    <!-- <Value number="4"  descrName="t_sign" num="0" default="4" text="Прогноз"  Вроде фактическое/> -->
+    <Value number="5"  descrName="gAp"    num="0" text="Ap" />
+    <Value number="6"  descrName="YY"     num="0" text="День Ap" />
+    <Value number="7"  descrName="t_sign" num="1" default="4" text="Прогноз" />
+    <Value number="8"  descrName="gAp"    num="1" text="Ap" />
+    <Value number="9"  descrName="YY"     num="1" text="День Ap" />
+    <Value number="10" descrName="t_sign" num="2" default="4" text="Прогноз" />
+    <Value number="11" descrName="gAp"    num="2" text="Ap" />
+    <Value number="12" descrName="YY"     num="2" text="День Ap" />
+  </Section>
+</Message>

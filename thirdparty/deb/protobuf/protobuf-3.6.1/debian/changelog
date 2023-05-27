@@ -1,0 +1,648 @@
+protobuf (3.6.1-4~bpo9+1) stretch-backports; urgency=medium
+
+  * Rebuild for stretch-backports.
+
+ -- Pirate Praveen <praveen@debian.org>  Thu, 25 Oct 2018 11:27:54 +0530
+
+protobuf (3.6.1-4) unstable; urgency=medium
+
+  * Note that -dev package contains common proto files (closes: #842159).
+  * Allow Java warnings on stderr during autopkgtest.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Tue, 23 Oct 2018 14:33:32 +0000
+
+protobuf (3.6.1-3) unstable; urgency=medium
+
+  * Generate all Java source files (closes: #911404).
+  * Make package linux-only (closes: #837310).
+  * Update Standards-Version to 4.2.1 .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 20 Oct 2018 19:13:40 +0000
+
+protobuf (3.6.1-2) unstable; urgency=medium
+
+  * Fix linking with recent Google's C++ test framework.
+  * Upload to Sid.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Thu, 11 Oct 2018 15:15:45 +0000
+
+protobuf (3.6.1-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Builds with OpenJDK 10 (closes: #901518).
+  * Library transition from libproto*16 to libproto*17 .
+  * Extend Python 3.7 FTBFS fix.
+  * Update Standards-Version to 4.1.5 .
+
+  [ Michael Hudson-Doyle <michael.hudson@canonical.com> ]
+  * Backport patch to fix FTBFS with Python 3.7 (closes: #902597).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Tue, 14 Aug 2018 18:22:07 +0000
+
+protobuf (3.6.0.1-1) experimental; urgency=medium
+
+  * New major upstream release.
+  * Link with atomic on m68k, powerpcspe and sh4 architectures as well.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 11 Jun 2018 14:56:51 +0000
+
+protobuf (3.6.0~rc2-2) experimental; urgency=medium
+
+  * Build all Ruby files (closes: #900677).
+  * Explicitly link with atomic on armel, mips, mipsel and powerpc
+    architectures.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sun, 03 Jun 2018 15:52:16 +0000
+
+protobuf (3.6.0~rc2-1) experimental; urgency=medium
+
+  * New major upstream release candidate version.
+  * Make Ruby build dependencies architecture dependent.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Fri, 01 Jun 2018 13:00:39 +0000
+
+protobuf (3.6.0~rc1-1) experimental; urgency=medium
+
+  * New major upstream release candidate version.
+  * Library transition from libproto*15 to libproto*16 .
+  * Add ruby-google-protobuf package (closes: #855034).
+  * Update patches.
+  * Use packaged Google Test and Google Mock libraries.
+  * Update watch file.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Tue, 29 May 2018 22:00:11 +0000
+
+protobuf (3.5.2-2) experimental; urgency=medium
+
+  * Backport build fix for s390x architecture.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Fri, 27 Apr 2018 14:39:06 +0000
+
+protobuf (3.5.2-1) experimental; urgency=medium
+
+  * New upstream release (closes: #874498).
+  * Library transition from libproto*10 to libproto*15 .
+  * Make protobuf-compiler recommend libprotobuf-dev for basic upstream types
+    (closes: #842158).
+  * Take over maintainer responsibility.
+  * Disable Vcs-* fields for now.
+  * Update debhelper level to 11:
+    - don't specify parallel to debhelper.
+  * Update Standards-Version to 4.1.4 .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 25 Apr 2018 21:29:01 +0000
+
+protobuf (3.0.0-9.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+  [ Mattia Rizzolo ]
+  * Apply patch from Ubuntu to fix tests with Python 3.6.  Closes: #862805
+  * Add missing Build-Depends on python-six.
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS:
+    + Remove unneeded versioned Build-Depends on g++ (satisfied in oldstable).
+    + Remove unused Build-Depends on python-google-apputils.
+    + Build-Depend on python(3)-all-dev instead of python(3)-all +
+      libpython(3)-all-dev.
+    + Run generate_descriptor_proto.sh on a native build before performing
+      the actual cross build.
+    + Save the native protoc in debian/native_protoc/ and pass it to the
+      cross build via --with-protoc.
+    + Set up environment variables for cross building python extensions.
+    + Fix the loops used for the python(3) builds install and tests, to
+      actually build for all python versions and tests them all.
+    + Closes: #846343
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 16 Oct 2017 13:34:16 +0200
+
+protobuf (3.0.0-9) unstable; urgency=medium
+
+  * Backport upstream fix for Python 3 build failure (closes: #845686).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Fri, 25 Nov 2016 16:11:01 +0000
+
+protobuf (3.0.0-8) unstable; urgency=medium
+
+  [ Zhou Mo <cdluminate@gmail.com> ]
+  * Build python3-protobuf, thanks to Thomas Viehmann (closes: #836821).
+  * Add the missing B-D "libgtest-dev" (closes: #836826).
+  * Add "python3-six" to B-D, which is required by python3 test.
+
+  [ Bart Martens <bartm@debian.org> ]
+  * Generalize watch file.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Thu, 24 Nov 2016 17:33:28 +0000
+
+protobuf (3.0.0-7) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Bas Couwenberg ]
+  * Added patch by Srivats P to restore New*Callback into google::protobuf
+    namespace. Required for ostinato (#835435). (Closes: #836200).
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Fri, 02 Sep 2016 16:57:13 +1000
+
+protobuf (3.0.0-6) unstable; urgency=medium
+
+  * New "java-test-scope.patch" to set scope of "junit" and "easymock" to
+    "test" (Closes: #835514).
+    Thanks, Markus Koschany.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 27 Aug 2016 09:02:16 +1000
+
+protobuf (3.0.0-5) unstable; urgency=medium
+
+  * Team upload.
+  * Removed obsolete Conflicts/Replaces (Closes: #835385).
+    Thanks, Robert Edmonds.
+  * New patch to fix "EXPECT_DEATH" FTBFS on kFreeBSD (Closes: #835388).
+    Thanks, Bas Couwenberg.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Fri, 26 Aug 2016 08:36:08 +1000
+
+protobuf (3.0.0-4) unstable; urgency=low
+
+  * Team upload.
+  * Updated "libprotobuf-java.poms" (Closes: #835358).
+    Thanks, Markus Koschany.
+  * Added new patches to fix FTBFS on s390x and sparc64 (Closes: #835290).
+    Thanks, Aurelien Jarno; thanks Sebastiaan Couwenberg.
+  * New patch to fix FTBFS on Hurd (Closes: #835267).
+    Thanks, Sebastiaan Couwenberg.
+  * rules: removed "-O0" #796069 workaround for mips(el).
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Thu, 25 Aug 2016 11:28:07 +1000
+
+protobuf (3.0.0-3) unstable; urgency=low
+
+  [ Bas Couwenberg ]
+  * Added new patch to fix FTBFS "misleading indentation" (Closes: #835266).
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 24 Aug 2016 13:54:36 +1000
+
+protobuf (3.0.0-2) unstable; urgency=medium
+
+  * rules: invoke "generate_descriptor_proto.sh" to re-generate pre-built
+    .pb.go files if necessary.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 24 Aug 2016 13:19:43 +1000
+
+protobuf (3.0.0-1) unstable; urgency=low
+
+  * Team upload.
+
+  [ Dmitry Smirnov ]
+  * New upstream release [July 2016] (Closes: #795841, #811650).
+    - removed obsolete patches.
+  * Introduced "watch" file.
+  * copyright:
+    + full review & update;
+    + convert to copyright-format 1.0;
+  * Build-Depends += "google-mock".
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Mon, 22 Aug 2016 15:35:08 +1000
+
+protobuf (2.6.1-2) unstable; urgency=low
+
+  * Acknowledge NMUs, thanks Matthias Klose and Simon McVittie!
+
+  [ Robert Edmonds ]
+  * debian/control: Change Maintainer to the pkg-protobuf-devel list
+  * debian/control: Add Laszlo Boszormenyi as Uploader
+
+  [ Andrew Pollock ]
+  * Update Git repository location
+
+  [ Iustin Pop ]
+  * Standards version 3.9.8 (no changes needed)
+  * Update project home page (now on github)
+  * Update yet again Vcs-* URLs to point to secure URIs
+  * Update information about our the ezsetup-removal patch
+  * Apply BTS patch for fixing Sparc64 builds, thanks to David Matthew
+    Mattli (Closes: #805072)
+  * Don't fixup arch-dependent package dirs in indep builds
+    (Closes: #806096)
+  * Migrate from custom test scripts to autopkgtest
+
+ -- Iustin Pop <iustin@debian.org>  Sun, 08 May 2016 14:55:24 +0200
+
+protobuf (2.6.1-1.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Disable optimization on mips and mipsel so that the tests pass.
+    To keep the g++-5 transition moving, optimization is completely
+    disabled here; someone who knows better can be more selective
+    later. (Mitigates: #796069)
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 26 Aug 2015 21:37:58 +0100
+
+protobuf (2.6.1-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Restore maintainer address.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 06 Aug 2015 08:47:53 +0200
+
+protobuf (2.6.1-1.1) unstable; urgency=medium
+
+  * Non maintainer upload.
+  * Rename libprotobuf-lite9 to libprotobuf-lite9v5, triggered by the libstdc++6
+    ABI change. Addresses: #791246.
+  * Rename libprotobuf9 to libprotobuf9v5.
+  * Rename libprotoc9 to libprotoc9v5.
+  * Add Conflicts/Replaces for the old libraries.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 04 Aug 2015 20:33:36 +0200
+
+protobuf (2.6.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Robert Edmonds <edmonds@debian.org>  Fri, 24 Oct 2014 13:55:53 -0400
+
+protobuf (2.6.0-4) unstable; urgency=medium
+
+  * Merge post-2.6.0 fixes that were merged upstream. In particular,
+    protoc-generated code should now compile correctly when built with Clang.
+
+ -- Robert Edmonds <edmonds@debian.org>  Mon, 22 Sep 2014 16:52:50 -0400
+
+protobuf (2.6.0-3) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Thu, 11 Sep 2014 22:50:10 -0400
+
+protobuf (2.6.0-2) experimental; urgency=medium
+
+  * Compile the Java bindings only on architecture-independent builds.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Fri, 05 Sep 2014 19:32:39 -0400
+
+protobuf (2.6.0-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Upload to experimental.
+  * Switch to dh sequencer in debian/rules.
+  * Bump ABI version from 8 to 9.
+  * Drop all patches from debian/patches/:
+    - arm_optimization.diff
+        (Appears to be no longer needed.)
+    - disable-setuptools-download.diff
+        (Disable ez_setup entirely, rather than disabling the downloader
+        component inside ez_setup.)
+    - fix-ftbfs-gcc4.7-kfreebsd.patch
+        (Fixed upstream.)
+    - fix-ftbfs-upstream-issue-488.patch
+        (Fixed upstream.)
+    - revert_upstream_issue_388_about_rpath.diff
+        (Fixed upstream.)
+  * Use dh-autoreconf. (Closes: #725976.)
+  * Enable the new C++-based Python extension module shipped in 2.6.0.
+    See /usr/share/doc/python-protobuf/README.Debian for details.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Tue, 02 Sep 2014 16:57:20 -0400
+
+protobuf (2.5.0-9) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Officially take over primary maintainership of the package, per Iustin.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Wed, 05 Feb 2014 11:37:11 -0500
+
+protobuf (2.5.0-8) experimental; urgency=medium
+
+  * Revert debian/patches/fix-ftbfs-upstream-issue-488.patch to use the
+    version of this patch from 2.5.0-5.
+  * Build-Depend on g++ >= 4:4.7 to ensure that the *default* compiler is new
+    enough to support the gcc __atomic*() built-ins.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Mon, 03 Feb 2014 19:42:23 -0500
+
+protobuf (2.5.0-7) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Closes: #736801.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Wed, 29 Jan 2014 14:27:42 -0500
+
+protobuf (2.5.0-6) experimental; urgency=medium
+
+  * Use a different approach to fixing the FTBFS caused by upstream bug #488.
+  * Revert the Build-Depends on a specific gcc/g++ version.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sun, 26 Jan 2014 23:56:47 -0500
+
+protobuf (2.5.0-5) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Note that the experimental C++ backend in python-protobuf has been
+    disabled.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sat, 25 Jan 2014 16:57:43 -0500
+
+protobuf (2.5.0-4) experimental; urgency=medium
+
+  * Rewrite the platform detection logic in .../platform-macros.h to be more
+    tolerant of all Debian architectures.
+  * Switch from autotools-dev to dh-autoreconf.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sun, 12 Jan 2014 12:49:50 -0500
+
+protobuf (2.5.0-3) experimental; urgency=medium
+
+  * Fix FTBFS on mips, due to missing detection of that architecture in
+    .../platform-macros.h.
+  * Fix FTBFS on ia64, powerpc, and sparc, where the default gcc version is
+    too old to compile the new __atomic*() intrinsics, by Build-Depending on
+    gcc-4.8, g++-4.8.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sat, 11 Jan 2014 17:21:17 -0500
+
+protobuf (2.5.0-2) experimental; urgency=low
+
+  * Fix FTBFS on "unsupported" architectures due to upstream issue 488:
+    - https://code.google.com/p/protobuf/issues/detail?id=488
+    Patch from Stanislav Ochotnicky (Red Hat).
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sat, 19 Oct 2013 10:42:29 -0400
+
+protobuf (2.5.0-1) experimental; urgency=low
+
+  [ Micah Anderson ]
+  * New upstream version. (Closes: #704731.)
+  * Update debian/watch.
+  * Refresh patches.
+
+  [ Colin Watson ]
+  * Use the autotools-dev dh addon to update config.guess/config.sub for
+    arm64. (Closes: #725976.)
+
+  [ Steve Langasek ]
+  * Don't recommend protobuf-compiler from the bindings, it's not used and
+    this doesn't need to be pulled in at runtime. (Closes: #703628.)
+  * Mark protobuf-compiler Multi-Arch: foreign; the output of this command
+    is architecture-independent source, we don't need the version of the
+    compiler to match the target arch.
+  * Bump to debhelper compat 9, so that our libs get installed to the
+    multiarch locations.
+  * Mark the library packages Multi-Arch: same.
+  * Fix debian/rules to support cross-building of the python bindings.
+  * Build-depend on libpython-dev, not python-dev, for cross-build
+    compatibility.
+  * (Closes: #726083.)
+
+  [ Robert S. Edmonds ]
+  * Upload to experimental.
+  * Bump ABI version from 7 to 8.
+  * Bump Standards-Version to 3.9.4.
+  * Convert from python-support to dh-python.
+  * Drop support for python2.6.
+  * python-protobuf: switch back to the pure Python implementation, as
+    upstream appears to no longer be maintaining the current C++ based Python
+    binding. See the following upstream issues for details:
+    - https://code.google.com/p/protobuf/issues/detail?id=434
+    - https://code.google.com/p/protobuf/issues/detail?id=503
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Sat, 12 Oct 2013 18:32:37 -0400
+
+protobuf (2.4.1-3) unstable; urgency=low
+
+  * Add patch from Steven Chamberlain fixing build failures of the
+    embedded gtest copy on kFreeBSD (Closes: #675837)
+
+ -- Iustin Pop <iustin@debian.org>  Sun, 17 Jun 2012 18:29:37 +0200
+
+protobuf (2.4.1-2) unstable; urgency=low
+
+  [ Matthias Klose ]
+  * Work around build failure with GCC 4.7. Closes: #672094.
+
+  [ Jakub Adam ]
+  * Install libprotobuf-java without reference to parent POM
+    (Closes: #648672)
+
+  [ Iustin Pop ]
+  * libprotobuf-java:
+    - remove dependency on default-jre (Closes: #653115)
+    - revert the jar name change introduced in 2.4.1, due to the use of
+      maven helper (Closes: #648850)
+  * Bump priority of packages from extra to optional (Closes: #664744)
+  * Enable hardening flags (Closes: #673675)
+
+ -- Iustin Pop <iustin@debian.org>  Thu, 24 May 2012 01:27:26 +0200
+
+protobuf (2.4.1-1) unstable; urgency=low
+
+  [ Thomas Koch ]
+  * remove ant-wrapper, which worked around #491074
+  * patch: revert_upstream_issue_388_about_rpath
+  * publish maven artifacts (Closes: #644263)
+
+  [ Iustin Pop ]
+  * Fix (again) the pkg-test script
+  * Update section based on override disparities
+  * Imported Upstream version 2.4.1
+  * Modify debian/rules directly not via patches
+  * Drop .la files per ReleaseGoals/LAFileRemoval
+
+ -- Iustin Pop <iustin@debian.org>  Tue, 08 Nov 2011 07:56:58 +0900
+
+protobuf (2.4.0a-2) unstable; urgency=low
+
+  * Re-upload to unstable
+
+ -- Iustin Pop <iustin@debian.org>  Sat, 16 Apr 2011 20:18:28 +0200
+
+protobuf (2.4.0a-1) experimental; urgency=low
+
+  * New upstream version, uploading to experimental due to Python changes
+  * Fix "Missing depends on zlib1g-dev", thanks Fernando Tarlá Cardoso Lemos
+    (Closes: #608670)
+  * Re-enable parallel builds, but only for the C++ sources/tests
+  * Enable the C++-based implementation for the Python bindings
+
+ -- Iustin Pop <iustin@debian.org>  Wed, 16 Feb 2011 21:24:42 +0100
+
+protobuf (2.3.0-4) unstable; urgency=low
+
+  * Thanks to Peter Palfrader for finding the two bugs below:
+  * Disable setuptools auto-download in case of wrong dependencies, and
+    fix the current dependency version (Closes: #593269)
+  * Fix the python cleanup rule, by always running the individual steps
+    (Closes: #593268)
+
+ -- Iustin Pop <iustin@debian.org>  Wed, 18 Aug 2010 22:54:42 +0200
+
+protobuf (2.3.0-3) unstable; urgency=low
+
+  * Acknowledge NMU (thanks Giuseppe!)
+  * Update packaging to comply with policy 3.9.1 (.la files are still
+    shipped though)
+  * Updated watch file to account for code.google.com brokeness
+
+ -- Iustin Pop <iustin@debian.org>  Sat, 31 Jul 2010 17:47:24 -0400
+
+protobuf (2.3.0-2.1) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * Build-depends on on default-jdk and set JAVA_HOME to
+    /usr/lib/jvm/default-java (Closes: #587732)
+
+ -- Giuseppe Iuculano <iuculano@debian.org>  Sat, 10 Jul 2010 18:37:19 +0200
+
+protobuf (2.3.0-2) unstable; urgency=low
+
+  * Fix "FTBFS on armel (test-suite failure)" by disabling optimizations
+    of a troublesome function (idea taken from #580334) (Closes: #572923)
+  * Standards version 3.8.4 (no changes needed)
+  * Update my address to the @debian.org one
+
+ -- Iustin Pop <iustin@debian.org>  Mon, 24 May 2010 18:04:17 +0200
+
+protobuf (2.3.0-1) unstable; urgency=low
+
+  * New upstream version.
+  * Split out libprotobuf-lite from the libprotobuf package.
+  * Add CFLAGS specific to sh4; closes: #560322.
+
+ -- Robert S. Edmonds <edmonds@debian.org>  Mon, 25 Jan 2010 18:14:49 -0500
+
+protobuf (2.2.0a-1) unstable; urgency=low
+
+  * Acknowledge NMUs (thanks Dirk!)
+  * Convert the source format to 3.0 (quilt)
+
+ -- Iustin Pop <iusty@k1024.org>  Sun, 06 Dec 2009 16:27:40 +0100
+
+protobuf (2.2.0a-0.1) unstable; urgency=low
+
+  * Non-maintainer upload
+  * New upstream release made this evening correction major SONAME
+  * debian/control: Updated major version to 5 (Closes: #556563)
+  * debian/rules: Updated two links to use libproto*5
+  * debian/libprotobuf5.shlibs: Added
+  * debian/libprotoc5.shlibs: Added
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Wed, 18 Nov 2009 21:47:41 -0600
+
+protobuf (2.2.0-0.1) unstable; urgency=low
+
+  * Non-maintainer upload coordinated with maintainer
+  * New upstream release (Closes: #551931)
+
+  * debian/libprotobuf-install: Added 'usr/lib/pkgconfig/*' to have
+    pkg-config support files installed
+
+  * debian/control: Added (= ${binary:Version}) to Depends for -dev
+    packages for tighter link to underlying libraries [lintian warning]
+  * debian/control: Updated StandardVersion: to 3.8.3
+
+  * debian/control: Major version not incremented as upstream kept it at 4
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Sat, 14 Nov 2009 06:44:22 -0600
+
+protobuf (2.1.0-1) unstable; urgency=low
+
+  * New Upstream Version
+  * Fix "Please split out libprotoc.so.N out of the libprotobufN
+    package" (Closes: #524087)
+  * Update Standards Version to 3.8.2 (no changes needed, sections are already
+    correct and the rest doesn't affect this package)
+
+ -- Iustin Pop <iusty@k1024.org>  Wed, 24 Jun 2009 00:19:03 +0200
+
+protobuf (2.0.3-2.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS from -2.1: don't fail when we can't clean up the java build,
+    such as when openjdk isn't installed.
+  * Disable parallel builds, because libtool is made of fail (if binary-arch
+    and build-indep run concurrently, we relink a library while it's being
+    used; that doesn't work so well).
+
+ -- Julien Cristau <jcristau@debian.org>  Tue, 02 Jun 2009 16:19:00 +0200
+
+protobuf (2.0.3-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Medium urgency for RC bugfix.
+  * Fix building of test suites on ia64: use __clone2() instead of clone(),
+    which doesn't exist there (closes: #530606).  Patch by Sune Vuorela.
+  * Only build the java and python bindings when building the arch:all
+    packages.  Move openjdk to Build-Depends-Indep.  This should allow
+    building on hppa, which doesn't have openjdk.  Based on a patch by Sune
+    Vuorela (but any bugs are mine).
+
+ -- Julien Cristau <jcristau@debian.org>  Tue, 02 Jun 2009 14:45:32 +0200
+
+protobuf (2.0.3-2) unstable; urgency=low
+
+  * Fix the binary-arch/binary-common interaction by only calling
+    dh_pysupport when we are in arch-independent mode (DH_OPTIONS=-i)
+  * Remove the extraneous conflicts/replace with libprotobuf2/libprotobuf0
+    from libprotobuf3, as they share no files (and have different SONAMES)
+    (Closes: #523992)
+
+ -- Iustin Pop <iusty@k1024.org>  Tue, 14 Apr 2009 09:35:39 +0200
+
+protobuf (2.0.3-1) unstable; urgency=low
+
+  [ Ehren Kret ]
+  * New Upstream Version (Closes: #522470)
+  * Applied patch proposed in bug#503807 provided by
+    Torsten Werner <twerner@debian.org> (Closes: #503807)
+
+  [ Iustin Pop ]
+  * Policy version 3.8.1, added handling for the nocheck DEB_BUILD_OPTIONS flag
+  * Fix lintian warnings (copyright-with-old-dh-make-debian-copyright,
+    wrong-section-according-to-package-name)
+  * The new upstream version build successfully (and passes the
+    unittest) with gcc-snapshort, so marking bug#505411 as fixed
+    (Closes: #505411)
+
+ -- Iustin Pop <iusty@k1024.org>  Thu, 09 Apr 2009 15:01:36 +0200
+
+protobuf (2.0.2-1) unstable; urgency=low
+
+  * New Upstream Version (Closes: #501349)
+
+ -- Iustin Pop <iusty@k1024.org>  Tue, 07 Oct 2008 21:51:47 +0200
+
+protobuf (2.0.1-2) unstable; urgency=low
+
+  * Fix the java .jar symlink (Closes: #501490)
+
+ -- Iustin Pop <iusty@k1024.org>  Sat, 04 Oct 2008 17:05:01 +0200
+
+protobuf (2.0.1-1) unstable; urgency=low
+
+  * New Upstream Version (Closes: #499925)
+
+ -- Iustin Pop <iusty@k1024.org>  Sun, 28 Sep 2008 18:14:16 +0200
+
+protobuf (2.0.0~b-3) unstable; urgency=low
+
+  * Remove DM-Upload-Allowed for sponsoring
+
+ -- Iustin Pop <iusty@k1024.org>  Sun, 03 Aug 2008 11:01:44 +0200
+
+protobuf (2.0.0~b-2) unstable; urgency=low
+
+  * Mark the different license for some of the files, and fix the long
+    description (it contained UTF-8 chars), both thanks to Vincent Bernat
+    <bernat@debian.org>
+  * Cleanup debian/rules (removed commented out debhelper lines)
+  * Improve the java build process, as suggested by Matthew Johnson
+    <mjj29@debian.org>
+
+ -- Iustin Pop <iusty@k1024.org>  Sat, 02 Aug 2008 14:12:59 +0200
+
+protobuf (2.0.0~b-1) unstable; urgency=low
+
+  * Initial release (Closes: #489842)
+
+ -- Iustin Pop <iusty@k1024.org>  Tue, 08 Jul 2008 20:03:51 +0200

@@ -1,0 +1,13 @@
+syntax = "proto2";
+package meteo;
+
+//!
+message PogodaInputSts {
+  optional PogodaInputStation  enabled_inputs  = 1;
+}
+
+//! "Аэродромы, разрешенные для ввода"
+message PogodaInputStation {
+  repeated string address   = 1;//!< Список аэродромов
+}
+

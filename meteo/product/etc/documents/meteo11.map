@@ -1,0 +1,12 @@
+name: "meteo11.map"
+title: "Бюллетень Метео-11"
+formal {
+    template: "Meteo11.odt"
+    name: "Бюллетень Метео-11"
+    module_path: "meteo11.py"
+    format: kOdt
+    icon_path: ":product/icons/Meteo-11.png"
+}
+document {
+  doctype: kFormalDocument
+}

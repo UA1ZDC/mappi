@@ -1,0 +1,54 @@
+Description: fix linking with recent Google's C++ test framework
+ Need to link with libgtest_main.a as well.
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Last-Update: 2018-10-11
+
+---
+
+--- protobuf-3.6.1.orig/src/Makefile.am
++++ protobuf-3.6.1/src/Makefile.am
+@@ -700,7 +700,7 @@ check_PROGRAMS = protoc protobuf-test pr
+                  protobuf-lite-test test_plugin protobuf-lite-arena-test \
+                  no-warning-test $(GZCHECKPROGRAMS)
+ protobuf_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la libprotoc.la -lgtest \
+-                      -lgmock -lgmock_main
++                      -lgtest_main -lgmock -lgmock_main
+ protobuf_test_CPPFLAGS = -I$(GOOGLETEST_SRC_DIR)/include \
+                          -I$(GOOGLEMOCK_SRC_DIR)/include
+ # Disable optimization for tests unless the user explicitly asked for it,
+@@ -789,7 +789,7 @@ $(am_protobuf_test_OBJECTS): unittest_pr
+ 
+ # Run cpp_unittest again with PROTOBUF_TEST_NO_DESCRIPTORS defined.
+ protobuf_lazy_descriptor_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la \
+-                      libprotoc.la -lgtest -lgmock -lgmock_main
++                      libprotoc.la -lgtest -lgtest_main -lgmock -lgmock_main
+ protobuf_lazy_descriptor_test_CPPFLAGS = -I$(GOOGLEMOCK_SRC_DIR)/include \
+                                          -I$(GOOGLETEST_SRC_DIR)/include \
+                                          -DPROTOBUF_TEST_NO_DESCRIPTORS
+@@ -813,7 +813,7 @@ COMMON_LITE_TEST_SOURCES =
+ # full runtime and we want to make sure this test builds without full
+ # runtime.
+ protobuf_lite_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la     \
+-                           -lgtest -lgmock -lgmock_main
++                           -lgtest -lgtest_main -lgmock -lgmock_main
+ protobuf_lite_test_CPPFLAGS= -I$(GOOGLEMOCK_SRC_DIR)/include \
+                              -I$(GOOGLETEST_SRC_DIR)/include
+ protobuf_lite_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
+@@ -827,7 +827,7 @@ $(am_protobuf_lite_test_OBJECTS): unitte
+ # gtest when building the test internally our memory sanitizer doesn't detect
+ # memory leaks (don't know why).
+ protobuf_lite_arena_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la \
+-                                 -lgtest -lgmock -lgmock_main
++                                 -lgtest -lgtest_main -lgmock -lgmock_main
+ protobuf_lite_arena_test_CPPFLAGS = -I$(GOOGLEMOCK_SRC_DIR)/include  \
+                                     -I$(GOOGLETEST_SRC_DIR)/include
+ protobuf_lite_arena_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
+@@ -839,7 +839,7 @@ $(am_protobuf_lite_arena_test_OBJECTS):
+ 
+ # Test plugin binary.
+ test_plugin_LDADD = $(PTHREAD_LIBS) libprotobuf.la libprotoc.la \
+-                    -lgtest
++                    -lgtest -lgtest_main
+ test_plugin_CPPFLAGS = -I$(GOOGLETEST_SRC_DIR)/include
+ test_plugin_SOURCES =                                          \
+   google/protobuf/compiler/mock_code_generator.cc              \

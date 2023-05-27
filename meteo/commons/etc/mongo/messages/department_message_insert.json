@@ -1,0 +1,18 @@
+{
+  "findAndModify": "department_messages",
+  "query": { "_id" : { "$exists" : false } },
+  "update": { 
+    "$setOnInsert" : {
+      "mac" : @mac@,
+      "dt" : @dt@,
+      "from" : @from@ ,
+      "to" : @to@,
+      "text": @text@,
+      "files" : @files@,
+      "parent" : @parent@,
+      "from_user" : @user@
+    }
+  },
+  "new": true,
+  "upsert": true
+}

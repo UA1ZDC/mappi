@@ -1,0 +1,32 @@
+# search projects.cmake in these dirs
+DEPS=(
+  cross-commons
+  commons
+)
+
+DIRS=(
+  # commons/etc
+  # commons/textproto
+  # commons/proto
+  # commons/testhelper
+  # commons/defines
+  # commons/container
+  # commons/mathtools
+  # commons/funcs
+  # commons/coord_systems
+  # commons/geobasis  
+  # commons/geom
+  # commons/meteo_data
+  # commons/landmask
+  # commons/obanal
+  # commons/factory
+  # commons/xmlparser
+  # commons/settings
+  # commons/sun_moon
+  # commons/device/tport
+  sat-commons/satellite
+  # commons/ui/qcustomplot
+  # commons/proc_read
+)
+
+

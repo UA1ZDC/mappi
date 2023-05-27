@@ -1,0 +1,13 @@
+{
+  "find" : "department_messages",
+  "filter" : {
+    "mac": { "$lte" : @mac@},
+    "$or": [
+      { "from": @from@, "to" : @to@ },
+      { "from": @to@, "to" : @from@ }
+    ]
+  },
+  "limit" : 50,
+  "skip" : @skip@,
+  "sort" : { "dt" : -1 }
+}

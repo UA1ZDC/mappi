@@ -1,0 +1,74 @@
+#!/bin/sh
+
+#сборка исходников, тестирование, сборка пакетов. предполагается для всех платформ. 
+#можно вызывать другие скрипты, или сделать функции, или ничего не делать..
+
+if [ $# -lt 1 ]; then
+  echo "Usage: `basename $0` <project_name> [packet_name]"
+  exit 1
+fi
+
+packname=${2:-"$1"}
+
+cd $SRC/$1
+
+echo "Build project"
+
+cd $SRC
+. ./env-bash system
+sed -i 's/ *+= *debug$/ -= debug/g' ./include.pro 
+cd -
+
+BUILD=system
+
+if [ $QT_VERSION == "QT4" ]; then
+  if [ ! -x build.sh ];  then
+    echo "build.sh don't exist or not executable"
+    exit 1
+  fi
+  ./build.sh clean
+  rm -rf $BUILD_DIR
+  ./build.sh
+else
+  make clean-all
+  rm -rf $BUILD_DIR
+  make && make install     
+fi
+
+if [ $? -ne 0 ]; then
+  echo "Error: build"
+  exit 1
+fi
+
+#---
+
+echo "Testing"
+if [ $QT_VERSION == "QT4" ]; then
+  if [ ! -x utest.sh ];  then
+    echo "Warning: utest.sh don't exist or not executable"
+  # else
+  #  ./utest.sh FIXME у меня тест не сработал
+    # if [ $? -ne 0 ]; then
+    #   echo "Error: test"
+    #   exit 1
+    # fi  
+  fi
+fi
+
+echo "Build packets"
+if [ ! -x pack_rules ];  then
+  echo "Info: used default script. Create $BUILD_DIR/$packname.tar.bz2"
+  cd $BUILD_DIR
+  tar cvjf "$packname.tar.bz2" *
+  cd -
+else 
+  ./pack_rules
+fi
+
+if [ $? -ne 0 ]; then
+  echo "Error: build packets"
+  exit 1
+fi
+
+exit $?
+

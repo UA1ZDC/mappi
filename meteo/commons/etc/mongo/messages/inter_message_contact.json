@@ -1,0 +1,7 @@
+{
+  "type" : "%1",
+  "user_id" : "%2",
+  "conference_id" : "%3",
+  "appointment_id" : "%4"
+}
+

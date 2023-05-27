@@ -1,0 +1,15 @@
+QToolButton.ActionButton {
+  background-color: white; border: 1px solid rgb(56,123,248);  
+}
+
+QToolButton.ActionButton:checked {
+  background-color: #ffeba0;  
+}
+
+QPushButton#ckwButton, QPushButton#ackwButton{
+  background-color: white; border: 1px solid rgb(56,123,248);  
+}
+
+QToolButton#zoomInButton, QToolButton#zoomOutButton{
+  background-color: white; border: 1px solid rgb(56,123,248);  
+}

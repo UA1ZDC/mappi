@@ -1,0 +1,14 @@
+{
+   "update": @collection@,
+   "updates": [
+      { "q": { "_id" : @id@ },
+        "u": {
+        "$set": { "fs_error" : @fs_error@ },
+        "$addToSet" : { "fs_comment" : @fs_comment@ }
+        },
+        "upsert": false,
+        "multi": true
+        }
+   ]
+}
+

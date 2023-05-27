@@ -1,0 +1,28 @@
+{
+  "insert" :  "grib",
+  "documents": [
+    {
+      "edition"  : @edition@,
+      "dt_write" : @dt_write@,
+      "center" : @center@,
+      "subcenter" : @subcenter@,
+      "dt" : @dt@,
+      "product" : @product@,
+      "descr"   : @descr@,
+      "levelType"  : @levelType@,
+      "levelValue" : @levelValue@,
+      "procType"   : @procType@,
+      "timeRange"  : @timeRange@,
+      "dt1"  : @dt1@,
+      "dt2"  : @dt2@,
+      "hour" : @hour@,
+      "stepLat" : @stepLat@,
+      "stepLon" : @stepLon@,
+      "fileid"  : @fileid@,
+      "tlgid"   : @tlgid@,
+      "crc"     : @crc@,
+      "analysed" : false,
+      "error" : false
+    }
+  ]
+}

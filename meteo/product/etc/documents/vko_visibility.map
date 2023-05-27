@@ -1,0 +1,11 @@
+name: "vko_visibility.map"
+title: "Климатическая характеристика (видимость)"
+formal {
+    template: "vko_visibility.odt"
+    name: "Климатическая характеристика (видимость)"
+    module_path: "vko_surf_visibility.py"
+    format: kOdt
+}
+document {
+  doctype: kFormalDocument
+}

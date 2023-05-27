@@ -1,0 +1,12 @@
+{
+    "find" : "msg",
+    "filter" : {
+       "$and" : @filter@ 
+    },
+    "sort" :{
+      @sort_column@: @sort_order@
+    },
+    "skip" : @skip@,
+    "limit" : @limit@,
+    "batchSize": 1
+}

@@ -1,0 +1,64 @@
+#!/bin/bash
+# Список проектов для запуска автотестов должен соответствовать следующим правилам:
+# - одна строчка - один проектов
+# - формат: <email> <branch> <project> [user@host]
+
+export SRC=~/src.git
+. $SRC/env-bash
+
+project_list='/etc/autotest/projects.list'
+if [ $# -eq 1 ]; then
+  project_list=$1
+fi
+
+echo "Read project list from $project_list"
+
+# read
+index=0
+while read line; do
+  array[$index]="$line"
+  index=$(($index+1))
+done < $project_list
+
+export GIT_PULL_ATTEMPTS=100
+
+OLD_DIR=`pwd`
+cd $SRC
+
+for(( a=0; a < ${#array[*]}; a++ ))
+do
+  tag=''
+  # run  
+  email=`echo ${array[$a]} | awk '{print $1}'`
+  branch=`echo ${array[$a]} | awk '{print $2}'`
+  pro=`echo ${array[$a]} | awk '{print $3}'`
+  ssh=`echo ${array[$a]} | awk '{print $4}'`
+ 
+  branch_esc=`echo $branch | sed -e 's/[/]/./'`
+  pro_esc=`echo $pro | sed -e 's/[/]/./'`
+  out_file="/var/log/autotests/$branch_esc-$pro_esc-$(date +%Y.%m.%d_%H%M).log"
+  #RUNDIR=${0%/*}
+  RUNDIR=/home/builder/night-job
+  $RUNDIR/autotest $branch $pro $ssh >& $out_file
+  res_code=$?
+  if [[ $res_code == 2 ]]; then
+    tag='[fail]';
+  elif [[ $res_code == 4 ]]; then
+    tag='[crash]';
+  elif [[ $res_code == 6 ]]; then
+    tag='[crash][fail]';
+  fi
+  
+  # send mail
+  if [[ $res_code -ne 0 ]]; then
+    (echo "Subject:[autotest][$branch - $pro]$tag"; cat $out_file;) | /usr/sbin/sendmail $email
+#    mail="to:$email\nfrom:autotest@report\nsubject:[autotest][$branch - $pro]$tag\n"
+#    { echo -e $mail; cat $out_file; echo -e "\n\n"; } | /usr/sbin/sendmail -t  
+  else
+    cat $out_file;
+  fi
+done
+
+cd $OLD_DIR;
+
+unset GIT_PULL_ATTEMPTS

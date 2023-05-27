@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package meteo.anc;
+
+import "surface.proto";
+
+message StateName {
+  required string name = 1; //!< Название для отображения состояния
+  required meteo.surf.DataType type = 2; //!< Тип данных
+};
+
+//! Типы сводок, которые необходимо раскодировать (как в codeforms.xml)
+message DecodingTypes {
+  repeated string report = 1;
+  repeated StateName names = 2;
+};
+
+message AncSaveProp {
+  optional bool dubl = 1 [default = false];    //!< true - сохранять дубли метеоинфы
+  optional bool noname = 2 [default = false];  //!< true - сохранять параметры без имени
+  optional bool dtwrite = 3 [default = false]; //!< true - сохранять время записи переменной
+}

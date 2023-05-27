@@ -1,0 +1,7 @@
+#! /bin/sh -e
+
+dpkg-maintscript-helper dir_to_symlink \
+    /usr/src/gmock googletest/googlemock \
+    1.8.0-1 -- "$@"
+
+#DEBHELPER#

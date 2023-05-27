@@ -1,0 +1,424 @@
+code: "aerodrome"
+name: "Аэродромы"
+path: "/opt/maslo//share/meteo//punch/aerodrome.template"
+wind: false
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    postfix: "дымка"
+    zerohide: false
+  }
+  symbol {
+  }
+  testval: 90
+  id {
+    descr: 20003
+    name: "w"
+    description: ""
+  }
+  visible: false
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: true
+  }
+  symbol {
+  }
+  testval: 12.34
+  id {
+    descr: 20011
+    name: "Nh"
+    description: ""
+  }
+  visible: false
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    codedigit: false
+  }
+  testval: 12.34
+  id {
+    descr: 20010
+    name: "N"
+    description: ""
+  }
+  visible: false
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    codedigit: false
+  }
+  testval: 12.34
+  id {
+    descr: 20019
+    name: "w_w_"
+    description: ""
+  }
+  visible: false
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 2000
+      font {
+        family: "wths"
+        pointsize: 20
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292282928
+      patternba: "00"
+      label: ""
+    }
+    codedigit: false
+  }
+  testval: 12.34
+  id {
+    descr: 5520019
+    name: "w_tr"
+    description: ""
+  }
+  visible: false
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 100000
+      font {
+        family: "gms"
+        pointsize: 32
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4288088628
+      patternba: "58"
+      label: ""
+    }
+  }
+  testval: 1000
+  id {
+    descr: 11002
+    name: "ff"
+    description: ""
+    parent: "wind"
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: -1
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 100000
+      font {
+        family: "gms"
+        pointsize: 28
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4290772980
+      patternba: "58"
+      label: ""
+    }
+  }
+  testval: 1000
+  id {
+    descr: 11002
+    name: "ff"
+    description: ""
+    parent: "wind"
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: -1
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 1000.99
+      font {
+        family: "gms"
+        pointsize: 28
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294930544
+      patternba: "58"
+      label: ""
+    }
+    symbol {
+      minval: 1001
+      maxval: 3000.99
+      font {
+        family: "gms"
+        pointsize: 28
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294967167
+      patternba: "58"
+      label: ""
+    }
+  }
+  testval: 300
+  id {
+    descr: 20060
+    name: "V"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: -1
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+    zerohide: false
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 100.99
+      font {
+        family: "gms"
+        pointsize: 28
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294930544
+      patternba: "58"
+      label: ""
+    }
+    symbol {
+      minval: 101
+      maxval: 300.99
+      font {
+        family: "gms"
+        pointsize: 28
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294967167
+      patternba: "58"
+      label: ""
+    }
+    codedigit: false
+  }
+  testval: 100
+  id {
+    descr: 20013
+    name: "h"
+    description: ""
+  }
+  visible: true
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: -5
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 100000
+      font {
+        family: "gms"
+        pointsize: 15
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4288088628
+      patternba: "5a"
+      label: ""
+    }
+  }
+  testval: 12.34
+  id {
+    descr: 11002
+    name: "ff"
+    description: ""
+    parent: "wind"
+  }
+  y_plus_bad_dd: false
+}
+datatype: kSurface
+center: kNoCenter
+crisscross: false
+radius: 5
+windfont {
+  family: "Arial"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+flow: false

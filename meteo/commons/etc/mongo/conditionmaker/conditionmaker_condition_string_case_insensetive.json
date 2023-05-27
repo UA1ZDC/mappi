@@ -1,0 +1,4 @@
+{ @param@: {
+    "$regex": @regexp@,
+    "$options": "i"
+} }

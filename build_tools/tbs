@@ -1,0 +1,244 @@
+#!/bin/bash
+#
+# build system ver.2.0
+#
+
+. $SRC/termcolors.mk
+. $SRC/build_tools/bs.conf
+. $SRC/build_tools/lib.bs.sh
+
+#
+bs_G_LAST_ERROR=()
+# массив команд
+bs_COM_LIST=()
+# массив проектов
+bs_PRO_LIST=()
+# абсолютный путь к директории текущего проекта
+bs_PRO_DIR=`pwd`
+
+# Вывод общей спревки по системе сборки.
+function f_build_sh_help()
+{
+    echo ""
+    echo "Использование: tbs [команда [параметры],...] -- [проект,...]"
+    echo "Список команд: tbs list"
+    echo "Справка:       tbs help [проект] <команда>"
+    echo ""
+}
+
+# Возвращает абсолютный путь к скрипту для указанной команды.
+# note: Для проекта можно определить собственную команду (build, clean, ...).
+function f_find_run_script()
+{
+    if [[ -f $bs_PRO_DIR/build_tools/cmd_$1.sh ]]
+    then
+        echo $bs_PRO_DIR/build_tools/cmd_$1.sh
+    elif [[ -f $SRC/build_tools/cmd_$1.sh ]]
+    then
+        echo $SRC/build_tools/cmd_$1.sh
+    else
+        echo ""
+    fi
+}
+
+# Возвращает 0 если каждая команда, из переданного списка, может быть запущена на выполнение.
+function f_check_commands()
+{
+    bs_G_LAST_ERROR=()
+    for i in "${!1}"
+    do
+        if [[ "" != $(f_find_run_script $i) ]]
+        then
+            : echo "command: ${i}"
+        else
+            bs_G_LAST_ERROR+=("Ошибка: комманда '${i}' не найдена")
+        fi
+    done
+
+    if [[ ${#bs_G_LAST_ERROR[@]} != 0 ]]; then
+        return 1
+    fi
+}
+
+# Выводит сообщение об ошибке
+function f_print_last_error()
+{
+    for i in "${bs_G_LAST_ERROR[@]}"
+    do
+        echo -e $ct_red$i$c_def
+    done
+}
+
+# Запускает команду на выполнение.
+function f_run_commands()
+{
+    # если список команд пуст, добавляем команду по умолчанию
+    if [[ 0 == ${#bs_COM_LIST[@]} ]]; then
+        bs_COM_LIST=$bs_DEFAULT_COMMAND
+    fi
+
+    bs_G_LAST_ERROR=()
+    for i in ${!1}
+    do
+        local run=$(f_find_run_script $i)
+        if [[ "x" == "x$run" ]]
+        then
+            bs_G_LAST_ERROR+=("Ошибка: команда '${i}' не найдена")
+            return 1
+        fi
+
+        #echo "script: $run"
+        #echo "${bs_PRO_LIST[@]}" | tr ' ' '\n'
+        /bin/bash $run ${bs_build_OPTS[$i]} "${bs_PRO_LIST[@]}"
+        local run_res=$?
+        if [[ 0 != $run_res ]]; then
+            bs_G_LAST_ERROR+=("Выполнение команды '$i' завершилось с кодом $run_res")
+            return 1
+        fi
+    done
+}
+
+# Разбор аргументов командной строки
+declare -a bs_build_OPTS
+bs_HELP_OPTS=()
+bs_PARSE_STATE='wait_command'
+for i in "$@"
+do
+case $i in
+    -h|--help)
+        f_build_sh_help
+        exit 0
+    ;;
+    list) # Отобразить список команд доступных для текущего проекта
+        echo "Список команд:"
+        # TODO: в подробном режиме (--verbose) выводить информацию о пропущенных директориях
+
+        test -d $SRC/build_tools && find $SRC/build_tools -name 'cmd_*.sh' -exec /bin/bash {} --short-help \;
+
+        for d in `find $SRC -name 'projects.list' -exec dirname {} \; `
+        do
+            test -d $d/build_tools || continue
+
+            echo ""
+            echo -e ${ct_green}"---" $(f_project_path $d) ${c_def}
+
+            for c in `find $d/build_tools/ -name 'cmd_*.sh'`
+            do
+                /bin/bash $c --short-help
+            done
+        done
+        exit 0
+        shift
+    ;;
+    --)
+        bs_PARSE_STATE='wait_projects'
+        shift
+    ;;
+    help)
+        bs_PARSE_STATE='show_command_help'
+        bs_COM_LIST+=("${i}")
+        shift
+    ;;
+    --*|-*)
+        #echo "last command: $last_COM  option: $i"
+        if [[ 0 == ${#bs_COM_LIST[@]} ]]; then last_com=$bs_DEFAULT_COMMAND; else last_com=${bs_COM_LIST[-1]}; fi
+        bs_build_OPTS[$last_com]="${bs_build_OPTS[$last_com]} $i"
+        shift
+    ;;
+    *)
+        if [[ "wait_projects" == "$bs_PARSE_STATE" ]]; then
+            bs_PRO_LIST+=("${i}")
+        elif [[ "wait_command" == "$bs_PARSE_STATE" ]]; then
+            bs_COM_LIST+=("${i}")
+        elif [[ "show_command_help" == "$bs_PARSE_STATE" ]]; then
+            bs_HELP_OPTS+=("$i")
+        else
+            echo ""
+            echo -e $ct_red"Внутренняя ошибка: неверное значение переменной bs_PARSE_STATE='${bs_PARSE_STATE}'"$c_def
+            echo ""
+            exit 1
+        fi
+        shift
+    ;;
+esac
+done
+
+# Обработка команды help
+if [[ 0 != ${#bs_COM_LIST[@]} && "help" == "${bs_COM_LIST[0]}" ]]
+then
+
+    [[ 0 == ${#bs_HELP_OPTS[@]} ]] && exit 0
+
+    if [[ 1 == ${#bs_HELP_OPTS[@]} ]]
+    then
+        test -f "$SRC/build_tools/cmd_${bs_HELP_OPTS[0]}.sh"
+        if [[ 0 != $? ]]; then
+            echo -e $ct_red"Невозможно отобразить справку, команда '${bs_HELP_OPTS[0]}' не найдена"$c_def
+            exit 1
+        fi
+
+        /bin/bash "$SRC/build_tools/cmd_${bs_HELP_OPTS[0]}.sh" --help
+        exit 0
+    fi
+
+    if [[ ${#bs_HELP_OPTS[@]} > 1 ]]
+    then
+        test -f "$SRC/${bs_HELP_OPTS[0]}/build_tools/cmd_${bs_HELP_OPTS[1]}.sh"
+        if [[ 0 != $? ]]; then
+            echo -e $ct_red"Невозможно отобразить справку, команда '${bs_HELP_OPTS[1]}' не найдена"$c_def
+            exit 1
+        fi
+
+        /bin/bash "$SRC/${bs_HELP_OPTS[0]}/build_tools/cmd_${bs_HELP_OPTS[1]}.sh" --help
+        exit 0
+    fi
+
+    exit 0
+fi
+
+# если список команд пуст, добавляем команду по умолчанию
+if [[ 0 == ${#bs_COM_LIST[@]} ]]; then
+    bs_COM_LIST=$bs_DEFAULT_COMMAND
+fi
+
+# проверяем возможность выполнения всех команд
+f_check_commands bs_COM_LIST[@]
+if [[ 0 != $? ]]; then
+    f_print_last_error
+    exit 1
+fi
+
+# формируем начальный список проектов
+if [[ 0 == ${#bs_PRO_LIST[@]} ]]; then
+    # по умолчанию директория текущего проекта (директория запуска скрипта)
+    bs_PRO_LIST=$(f_project_path $bs_PRO_DIR);
+    if [[ 0 != $? ]]; then
+        bs_G_LAST_ERROR+=("Ошибка: не удалось определить директорию с исходным кодом для проекта '${bs_PRO_DIR}'")
+        f_print_last_error
+        exit 1
+    fi    
+fi
+
+# запуск команд на выполнение
+f_run_commands bs_COM_LIST[@]
+if [[ 0 != $? ]]; then
+    f_print_last_error
+    exit 1
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

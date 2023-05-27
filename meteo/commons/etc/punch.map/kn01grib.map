@@ -1,0 +1,10 @@
+name: "kn-01grib"
+title: "GRIB (приземные)"
+data_type: kSynopType
+data {
+  source: kGribSource
+  template_name: "grib"
+  data_type: kSynopFix
+  type_level: 1
+  level: 0
+}

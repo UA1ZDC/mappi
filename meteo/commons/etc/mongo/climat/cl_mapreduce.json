@@ -1,0 +1,11 @@
+{
+  "mapReduce": "surf_accumulation",
+  "map":    "%1",
+  "reduce": "%2",
+  "finalize" : "%3",
+  "out" : { "merge" : "%4" },
+  "query": {
+    "_id.descrname" : { "$in" : "%5" },
+    "%6" : false
+  }
+}

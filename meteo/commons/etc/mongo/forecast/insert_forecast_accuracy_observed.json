@@ -1,0 +1,24 @@
+{
+  "update": "forecast",
+  "updates" : [
+    {
+      "q" : {
+        "dt_beg" : { "$lte" : @start_dt@ },
+        "dt_end" : { "$gte" : @start_dt@ },
+        "level" : @level@,
+        "level_type" : @level_type@,
+        "station_info.station": @station@,
+        "param.descrname" : @descrname@
+      },
+      "u": {
+    "$addToSet" : {
+          "param.$.real" : {
+            "observ_value" : @value@,
+            "dt" :  @start_dt@
+          }
+        }
+      },
+      "upsert": false
+    }
+  ]
+}

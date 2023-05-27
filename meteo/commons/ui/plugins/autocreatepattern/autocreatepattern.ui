@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AutoCreatePattern</class>
+ <widget class="QDialog" name="AutoCreatePattern">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>576</width>
+    <height>84</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Создание шаблона</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1" colspan="3">
+    <widget class="QLineEdit" name="jobNameDlg"/>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="okbtn">
+     <property name="text">
+      <string>Принять</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="jobNameLabel">
+     <property name="text">
+      <string>Наименование задания:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>438</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="3">
+    <widget class="QPushButton" name="nobtn">
+     <property name="text">
+      <string>Отмена</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>okbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>AutoCreatePattern</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>509</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>350</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nobtn</sender>
+   <signal>clicked()</signal>
+   <receiver>AutoCreatePattern</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>635</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>350</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

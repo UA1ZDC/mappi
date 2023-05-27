@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Kn04</class>
+ <widget class="QWidget" name="Kn04">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1106</width>
+    <height>792</height>
+   </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="windowTitle">
+   <string>Создание телеграммы КН-04</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_5">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Индекс станции</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="IIiii"/>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_27">
+     <property name="text">
+      <string>Дата и срок наблюдения</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QDateTimeEdit" name="dt">
+     <property name="displayFormat">
+      <string>dd.MM.yy H:mm</string>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="QComboBox" name="part">
+     <item>
+      <property name="text">
+       <string>Часть A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Часть B</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Часть C</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Часть D</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>384</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="6">
+    <widget class="QPushButton" name="help">
+     <property name="text">
+      <string>Схема кода</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="7">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1072</width>
+        <height>703</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="1">
+            <widget class="QToolButton" name="removeBtn">
+             <property name="minimumSize">
+              <size>
+               <width>28</width>
+               <height>28</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>28</width>
+               <height>28</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Удалить</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/meteo/icons/tools/minus.png</normaloff>:/meteo/icons/tools/minus.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>658</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="0">
+            <widget class="QToolButton" name="addBtn">
+             <property name="minimumSize">
+              <size>
+               <width>28</width>
+               <height>28</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>28</width>
+               <height>28</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Добавить</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/meteo/icons/tools/plus.png</normaloff>:/meteo/icons/tools/plus.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QTableWidget" name="levels">
+             <property name="tabKeyNavigation">
+              <bool>false</bool>
+             </property>
+             <property name="selectionMode">
+              <enum>QAbstractItemView::NoSelection</enum>
+             </property>
+             <attribute name="horizontalHeaderStretchLastSection">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>25</number>
+             </attribute>
+             <column>
+              <property name="text">
+               <string>Тип</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Уровень, гПа</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Геопотенциал, м</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Температура, °C</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Дефицит, °C</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Направление ветра, °</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Скорость ветра, м/с</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="4" column="0">
+            <widget class="QGroupBox" name="shearMode2">
+             <property name="title">
+              <string>Сдвиг ветра (второй максимум)</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="topMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>4</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Ниже</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="vbvb2"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Выше</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="vava2"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QGroupBox" name="cloudsGroup">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="palette">
+              <palette>
+               <active>
+                <colorrole role="Base">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="Window">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </active>
+               <inactive>
+                <colorrole role="Base">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="Window">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </inactive>
+               <disabled>
+                <colorrole role="Base">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="Window">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </disabled>
+              </palette>
+             </property>
+             <property name="title">
+              <string>Облачность</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <property name="topMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>4</number>
+              </property>
+              <item row="3" column="1" colspan="3">
+               <widget class="QComboBox" name="CM">
+                <item>
+                 <property name="text">
+                  <string>Облаков нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As просвечивающие</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As не просвечивающие или Ns</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As просвечивающие не изменяющиеся</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As чечевицеобразные</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As распространяющиеся по небу</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As из Cu или Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ac вместе с As или без них</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ac башенками или хлопьями</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ac при хаотическом виде неба</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определены</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QSpinBox" name="Nh">
+                <property name="suffix">
+                 <string/>
+                </property>
+                <property name="maximum">
+                 <number>10</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_17">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;C&lt;span style=&quot; vertical-align:sub;&quot;&gt;M&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>ВНГО, м</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" colspan="3">
+               <widget class="QComboBox" name="CL">
+                <item>
+                 <property name="text">
+                  <string>Облаков нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cu плоские</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cu средние или мощные</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cb лысые</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sc из Cu или Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sc не из Cu или Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>St (кроме St плохой погоды)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>St fr. или Cu fr плохой погоды</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cu и Sc не из Cu или Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cb волосатые</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определены</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="4">
+               <widget class="QComboBox" name="cloudMode">
+                <item>
+                 <property name="text">
+                  <string>Облаков нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Небо не видно из-за метеорологических явлений</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Небо не видно по иным причинам</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Наблюдения не проводились</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Задать параметры</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QSpinBox" name="h">
+                <property name="maximum">
+                 <number>9999</number>
+                </property>
+                <property name="value">
+                 <number>2500</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_18">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;C&lt;span style=&quot; vertical-align:sub;&quot;&gt;H&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_16">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;C&lt;span style=&quot; vertical-align:sub;&quot;&gt;L&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="label_10">
+                <property name="text">
+                 <string>Нижняя, балл</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1" colspan="3">
+               <widget class="QComboBox" name="CH">
+                <item>
+                 <property name="text">
+                  <string>Облаков нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ci волокнистые не распр. по небу</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ci плотные или хлопьевидные</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ci плотные из Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ci волокнистые распр. по небу</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cs (иногда Ci) надвигающиеся (ниже 45°)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cs (иногда Ci) надвигающиеся (выше 45°)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cs покрывающие все небо</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cs не распр. по небу</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cc</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определены</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QGroupBox" name="shearMode">
+             <property name="title">
+              <string>Сдвиг ветра (максимум)</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="topMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>4</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Ниже</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="vbvb"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Выше</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="vava"/>
+              </item>
+             </layout>
+             <zorder>label_2</zorder>
+             <zorder>label_3</zorder>
+             <zorder>vbvb</zorder>
+             <zorder>vava</zorder>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string>Система зондирования</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <property name="topMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>4</number>
+              </property>
+              <item row="3" column="3">
+               <widget class="QSpinBox" name="sasa"/>
+              </item>
+              <item row="5" column="2" colspan="2">
+               <widget class="QTimeEdit" name="GGgg"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Коррекция радиации</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Время запуска</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Радиозонд</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QSpinBox" name="sr"/>
+              </item>
+              <item row="2" column="3">
+               <widget class="QSpinBox" name="rara"/>
+              </item>
+              <item row="3" column="1" colspan="2">
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Метод слежения (состояние)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" colspan="3">
+               <widget class="QComboBox" name="a4">
+                <item>
+                 <property name="text">
+                  <string>Прибор с датчиком давления</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Оптический теодолит</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Радиотеодолит</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Радиолокатор</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Прибор, в котором датчик давления отказал</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>VLF-Omega</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Loran-C</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Профилометр ветра</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Спутниковая навигация</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Зарезервировано</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QSplitter" name="splitter">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QTextEdit" name="codeView">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QTreeWidget" name="decodeView">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <column>
+           <property name="text">
+            <string>Название</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Код</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Цифра кода</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Значение</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Ед. изм.</string>
+           </property>
+          </column>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+      <zorder>splitter</zorder>
+      <zorder></zorder>
+     </widget>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="7">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="sendInMsg">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Отправка в ЦКС</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="accept">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Сохранить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" colspan="7">
+    <widget class="QFrame" name="frame_4">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_42">
+        <property name="text">
+         <string>Сокращенный заголовок телеграммы в формате ВМО:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;T&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;T&lt;span style=&quot; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="T1T2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frame">
+         <bool>false</bool>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;A&lt;span style=&quot; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="A1A2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_24">
+        <property name="text">
+         <string>ii</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="ii">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_37">
+        <property name="text">
+         <string>CCCC</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="CCCC">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>64</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="frame">
+         <bool>false</bool>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_40">
+        <property name="text">
+         <string>BBB</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="BBB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>612</width>
+          <height>17</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

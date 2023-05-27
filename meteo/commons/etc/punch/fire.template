@@ -1,0 +1,116 @@
+code: "fire"
+name: "Пожарная опасность"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/fire.template"
+wind: false
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 300
+      font {
+        family: "wthrNew0"
+        pointsize: 6
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278255360
+      patternba: "29"
+      label: ""
+    }
+    symbol {
+      minval: 300.01
+      maxval: 1000
+      font {
+        family: "wthrNew0"
+        pointsize: 6
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190335
+      patternba: "29"
+      label: ""
+    }
+    symbol {
+      minval: 1000.01
+      maxval: 4000
+      font {
+        family: "wthrNew0"
+        pointsize: 6
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294967040
+      patternba: "29"
+      label: ""
+    }
+    symbol {
+      minval: 4000.01
+      maxval: 12000
+      font {
+        family: "wthrNew0"
+        pointsize: 6
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "29"
+      label: ""
+    }
+    symbol {
+      minval: 1
+      maxval: 10000000
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4285857792
+      patternba: "29"
+      label: ""
+    }
+  }
+  testval: 7000
+  id {
+    descr: 5555112
+    name: "FHI"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+datatype: kSurface
+center: kNoCenter
+crisscross: false
+radius: 3
+windfont {
+  family: "helvetica"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}

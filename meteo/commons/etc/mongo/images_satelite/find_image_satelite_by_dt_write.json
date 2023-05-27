@@ -1,0 +1,4 @@
+{ "find" : "image_satelite", "filter" : {
+  "dt_write" : { "$lte" : "%1", "$gte" : "%2" }
+}
+}

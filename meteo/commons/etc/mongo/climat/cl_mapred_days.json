@@ -1,0 +1,30 @@
+{
+  "mapReduce": "surf_accumulation",
+  "map":    @map_func@,
+  "reduce": "function(key, values)  \
+             { \
+               var dates = []; \
+               values.forEach(function(val) { \
+                 var one = val['date'][0];    \
+                 if (!dates.includes(one)) {  \
+                   dates.push(one);           \
+                 }                            \
+               });                            \
+             return { date : dates };         \
+            }",
+  "finalize" : "function(key, reduced) \
+                { \
+                  var dates = []; \
+                  reduced.date.forEach(function(val) { \
+                    var one = val;  \
+                    if (!dates.includes(one)) { \
+                      dates.push(one); \
+                   } \
+                  });\
+                  return dates.length;
+                }",
+  "out" : { "merge" : "@tablename@" },
+  "query": {
+    "_id.descrname" : { "$in" : @descrname@ }
+  }
+}

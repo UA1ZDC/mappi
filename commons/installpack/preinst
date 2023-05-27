@@ -1,0 +1,165 @@
+#!/bin/bash --debug
+
+# Цвета
+ct_red="\e[31m"        #red
+ct_yel="\033[33;40m"   #yellow
+ct_green="\033[32;40m" #green
+ct_blue="\033[34;40m"  #blue
+
+c_def="\033[0m"         # default
+c_status=$ct_blue       # status
+c_ok=$ct_green          # ok
+c_err=$ct_red           # error
+c_wrn=$ct_yel           # warning
+
+EXIT_SUCCESS=0
+EXIT_FAILTURE=1
+
+# Функции логирования
+
+function f_error_log()
+{
+  echo -e "${c_err}[ ОШИБКА ]${c_def} ${@}"
+}
+
+function f_warning_log()
+{
+  echo -e "${c_wrn}[ ПРЕДУПРЕЖДЕНИЕ ]${c_def} ${@}"
+}
+
+function f_success_log()
+{
+  echo -e "${c_ok}[ УСПЕШНО ]${c_def} ${@}"
+}
+
+function f_status_log()
+{
+  echo -e "${c_status}[ ИНФОРМАЦИЯ ]${c_def} ${@}"
+}
+
+function f_create_vgmdaemon()
+{
+  if getent passwd | grep '^vgmdaemon:' &>/dev/null
+  then
+    f_status_log 'Создание пользователя не требуется'
+    return $EXIT_SUCCESS
+  else
+    f_status_log 'Создание пользователя vgmdaemon в системе'
+    if adduser --disabled-login --gecos ',,,' vgmdaemon
+    then
+      f_success_log 'Пользователь vgmdaemon успешно создан в системе'
+      return $EXIT_SUCCESS
+    else
+      f_error_log 'Пользователь vgmdaemon не создан.'
+      return EXIT_FAILTURE
+    fi
+  fi
+}
+
+function f_check_vgmdaemon_caps()
+{
+  if which pdpl-user &>/dev/null
+  then
+    if pdpl-user -i 0:0 -c 0x0:0x0 -i 63 vgmdaemon
+    then
+      f_success_log "Мандатные атрибуты пользователя vgmdaemon успешно установлены"
+    else
+      f_warning_log "Мандатные атрибуты пользователя vgmdaemon успешно установлены"
+    fi
+  else
+    f_warning_log 'Команда pdpl_user не найдена'
+  fi
+  
+  
+  if which usercaps &>/dev/null
+  then    
+    f_status_log 'Установка PARSEC привелегий для пользователя vgmdaemon'
+    if usercaps -m 0x10C vgmdaemon
+    then
+      f_success_log 'Установка PARSEC привелегий успешно завершена'
+    else
+      f_warning_log 'Привелегии PARSEC не установлены. Часть функций может работать неправильно'
+    fi
+  fi
+  return $EXIT_SUCCESS
+}
+
+function f_create_meteouser_group()
+{
+  if [[ `getent group |  grep '^meteouser:' | wc -l` != 1 ]]
+  then
+    f_status_log 'Создание группы meteouser'
+    if groupadd meteouser
+    then
+      f_success_log 'Группа meteouser успешно добавлена в систему'
+      return $EXIT_SUCCESS
+    else
+      f_error_log 'Не удалось создать группу meteouser в системе'
+      return EXIT_FAILTURE
+    fi
+  fi
+}
+
+function f_add_vgmdaemon_to_group()
+{
+  GROUP=$1
+  echo $GROUP
+  if ! getent group | grep $GROUP
+  then
+    f_warning_log "Группа $GROUP не обнаружена"
+    return $EXIT_SUCCESS
+  fi
+  if groups vgmdaemon | grep $GROUP &> /dev/null
+  then
+    f_status_log "Пользователь vgmdaemon уже является членом группы $GROUP"
+  else
+    f_status_log "Добавление пользователя vgmdaemon в группу $GROUP"
+    if addgroup  vgmdaemon $GROUP &> /dev/null
+    then
+      f_success_log "Пользователь vgmdaemon успешно добавлен в группу $GROUP"
+    else
+      f_warning_log "Не удалось добавить пользователя vgmdaemon в группу $GROUP"
+    fi
+  fi
+}
+
+function f_set_vgmdaemon_groups()
+{
+  f_add_vgmdaemon_to_group 'astra-admin' && f_add_vgmdaemon_to_group 'shadow' && f_add_vgmdaemon_to_group 'meteouser'
+  return $?
+}
+
+if [[ $1 == 'install' && -z $2 ]]
+then
+  #Чистая установка
+  f_create_vgmdaemon && f_check_vgmdaemon_caps && f_create_meteouser_group && f_set_vgmdaemon_groups
+  exit $?
+fi
+
+if [[ $1 == 'install' && ! -z $2 ]]
+then
+  #Повторная установка. Конфигурационные файлы остались на месте
+  #Если пользователь vgmdaemon существует - нет смысла проводить повторную конфигурацию
+  if getent passwd | grep '^vgmdaemon:' &>/dev/null
+  then
+    exit $EXIT_SUCCESS
+  fi
+  f_create_vgmdaemon && f_check_vgmdaemon_caps && f_create_meteouser_group && f_set_vgmdaemon_groups
+  exit $?
+fi
+
+if [[ $1 == 'upgrade' ]]
+then
+  #Обновление пакета.
+  exit $EXIT_SUCCESS
+fi
+
+if [[ $1 == 'abort-upgrade' ]]
+then
+  #Обновление пакета завалилось.
+  f_create_vgmdaemon && f_check_vgmdaemon_caps && f_create_meteouser_group && f_set_vgmdaemon_groups
+  exit $?
+fi
+
+exit $EXIT_FAILTURE
+

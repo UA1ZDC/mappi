@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ThematicEditor</class>
+ <widget class="QWidget" name="ThematicEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>506</width>
+    <height>462</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Редактор тематических обработок</string>
+  </property>
+  <layout class="QVBoxLayout" name="iThematicEditorVbox" stretch="1,1,6,1">
+   <item>
+    <widget class="QWidget" name="iNameWdg" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QHBoxLayout" name="iNameAndTypeHbox" stretch="1,1">
+      <item>
+       <layout class="QHBoxLayout" name="iNameHbox">
+        <item>
+         <widget class="QLabel" name="iNameLbl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Название:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="nameEdt"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="iTypeHbox">
+        <item>
+         <widget class="QLabel" name="iTypeLbl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Тип:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="typeCbox"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="iDescriptionWdg" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QHBoxLayout" name="iDescriptionHbox">
+      <item>
+       <widget class="QLabel" name="iDescriptionLbl">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>75</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Описание:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="descriptionEdt">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QWidget" name="iRedWdg" native="true">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <layout class="QHBoxLayout" name="iRedHbox">
+        <item>
+         <widget class="QLabel" name="redLbl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Красный:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="redExprWdg" native="true"/>
+        </item>
+        <item>
+         <widget class="QToolButton" name="redBtn">
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../../etc/mappi.qrc">
+            <normaloff>:/mappi/icons/edit-black.png</normaloff>:/mappi/icons/edit-black.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="greenWdg" native="true">
+       <layout class="QHBoxLayout" name="iGreenHbox">
+        <item>
+         <widget class="QLabel" name="iGreenLbl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Зелёный:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="greenExprWdg" native="true"/>
+        </item>
+        <item>
+         <widget class="QToolButton" name="greenBtn">
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../../etc/mappi.qrc">
+            <normaloff>:/mappi/icons/edit-black.png</normaloff>:/mappi/icons/edit-black.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="blueWdg" native="true">
+       <layout class="QHBoxLayout" name="iBlueHbox">
+        <item>
+         <widget class="QLabel" name="iBlueLbl">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Синий:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="blueExprWdg" native="true"/>
+        </item>
+        <item>
+         <widget class="QToolButton" name="blueBtn">
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../../etc/mappi.qrc">
+            <normaloff>:/mappi/icons/edit-black.png</normaloff>:/mappi/icons/edit-black.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QWidget" name="iControlsWdg" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QHBoxLayout" name="iControlHbox">
+      <item>
+       <spacer name="iControlsSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="saveBtn">
+        <property name="text">
+         <string>Сохранить</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancleBtn">
+        <property name="text">
+         <string>Отмена</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>nameEdt</tabstop>
+  <tabstop>typeCbox</tabstop>
+  <tabstop>descriptionEdt</tabstop>
+  <tabstop>redBtn</tabstop>
+  <tabstop>greenBtn</tabstop>
+  <tabstop>blueBtn</tabstop>
+  <tabstop>saveBtn</tabstop>
+  <tabstop>cancleBtn</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../../../etc/mappi.qrc"/>
+ </resources>
+ <connections/>
+</ui>

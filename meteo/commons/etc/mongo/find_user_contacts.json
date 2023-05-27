@@ -1,0 +1,18 @@
+{ "find" : "users",
+  "filter" : {
+    "$or" : [
+    
+    { "login" : {
+      "$in" : @login@ 
+      }
+    },
+    { "permissions" : {
+        "inter" : {
+            "contact_visibility" : @contact@
+        }
+      }
+    }
+    ]
+    
+  }
+}

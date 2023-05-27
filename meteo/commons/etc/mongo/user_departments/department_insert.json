@@ -1,0 +1,12 @@
+{
+  "findAndModify": "departments",
+  "query": { "name": @name@ },
+  "update": {
+      "$set" : { 
+          "name" : @name@ 
+       }
+   },
+   "upsert": true,
+   "multi": false
+}
+

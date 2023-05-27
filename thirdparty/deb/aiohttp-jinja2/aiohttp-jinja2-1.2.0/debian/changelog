@@ -1,0 +1,20 @@
+aiohttp-jinja2 (1.2.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Fixed typo in enhances field
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * Convert git repository from git-dpm to gbp layout
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Piotr Ożarowski ]
+  * New upstream release
+  * Standards-version bumped to 4.5.0 (no other changes needed)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Mon, 16 Mar 2020 12:05:45 +0100
+
+aiohttp-jinja2 (0.8.0-1) unstable; urgency=low
+
+  * Initial release (closes: 832977)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Sat, 30 Jul 2016 15:20:55 +0200

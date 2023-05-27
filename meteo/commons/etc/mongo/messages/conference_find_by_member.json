@@ -1,0 +1,10 @@
+{
+  "find" : "conferences",
+  "filter" : { 
+    "members" : { 
+      "$elemMatch" : { 
+        "$eq" : "%1" 
+      }
+    }
+  }
+}

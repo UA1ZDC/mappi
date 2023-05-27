@@ -1,0 +1,27 @@
+{
+  "aggregate": "meteoreport",
+  "pipeline": [
+    { "$match": {
+      "$and": [
+          { "dt" : { "$gte" : @date_start@ } },
+          { "dt" : { "$lte" : @date_end@ } }
+          ],
+      "data_type": { "$in": @data_type@ }
+     }
+    },
+    { "$project" : {
+       "station_type":1,
+       "station":1
+     }
+    },
+    { "$group": {
+        "_id": {
+           "station_type": "$station_type"
+        },
+      "station_type" : {"$first": "$station_type"},
+      "stations": {"$addToSet": "$station"}
+      }
+    }
+  ],
+  "cursor": { "batchSize": 1 }
+}

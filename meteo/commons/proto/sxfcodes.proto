@@ -1,0 +1,71 @@
+syntax = "proto2";
+
+package meteo.sxf;
+
+//! Коды семантик
+enum SemanticCode {
+  kAlphaSemantic = 31009;	//!< Прозрачность слоя
+  kShortLayerSemantic = 32810;	//!< Короткое название слоя (ключ)
+  kNameSemantic  = 32811;	//!< Название объекта
+  kUuidSemantic  = 32812;	//!< Идентификатор объекта
+  kddSemantic = 33000;		//!< Направление ветра
+  kffSemantic = 33001;		//!< Скорость ветра
+  kMeteoSemantic = 33002;	//!< Метеоданные
+  kLayerSemantic = 33003;	//!< Название слоя
+};
+
+enum ClassifType {
+  kUnkClassif = 0;
+  kWind = 1;
+  kWindShort = 2;
+  kNMeteo = 3;
+  kaMeteo = 4;
+  kCMeteo = 5;
+  kwMeteo = 6;
+  kW1Meteo = 7;
+  kW2Meteo = 8;
+  kSign = 9;
+};
+
+//! Характер локализации объекта
+enum Localization {
+  kLinear = 0;	//!< Линейный
+  kArea   = 1;	//!< Площадной
+  kPoint  = 2;	//!< Точечный 
+  kLabel  = 3;	//!< Подпись
+  kVector = 4;	//!< Векторный
+  kTempl  = 5;	//!< Шаблон подписи    
+};
+
+message FontCode {
+  required string family = 1 [default = ""]; //!< Название шрифта
+  required int32 namecode  = 2 [default = 6];  //!< Код для названия в классификаторе
+  required int32 fontcode  = 3 [default = 6];  //!< Код для шрифта в классификаторе
+};
+
+message ObjectCode {
+  required ClassifType type = 1; //!< Тип объекта
+  required Localization local = 2;  //!< Локализация в классификаторе
+  repeated int32 code  = 3;  //!< Код в классификаторе
+  repeated float value = 4; //!< Значение величины, может не быть, тогда д.б. text или code д.б. одно значение 
+  repeated string text = 5; //!< Значение величины, может не быть, тогда д.б. value или code д.б. одно значение
+};
+
+message OrnamentCode {
+  required string name = 1; //!< Название орнамента
+  required int32 code = 2; //!< Код в классификаторе
+};
+
+message ScaleMatch {
+  required int32 sxf = 1; 
+  required float map = 2;
+};
+
+//! Соответствие объектов карты кодам классификатора
+message SxfCodes {
+  required string rscfile  = 1;	//!< Классификатор с метеознаками
+  repeated FontCode fonts  = 2; //!< Шрифты
+  repeated ObjectCode objs = 3; //!< Объекты
+  repeated OrnamentCode ornament = 4; //!< Линии с орнаментом
+  repeated ScaleMatch scale = 5; //!< Соответствие масштаба нашей карты и sxf (для генерализации)
+};

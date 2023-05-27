@@ -1,0 +1,1 @@
+PRJ_DIR = '@PRJ_DIR@'

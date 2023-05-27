@@ -1,0 +1,845 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+//import "meteo.proto";
+import "tgrid.proto";
+import "tgribformat.proto";
+
+package meteo.surf;
+
+//! Типы данных предоставляемях метеостанциями (метеостанции таблица - sprinf.stations_types, типы данных - sprinf.gmi_types, и в xml раскодировщиков БЦК и BUFR)
+//! ВНИМАНИЕ!!!! АХТУНГ!!!! все эти типы не синхронизированы пока с таблицей gmi_types!!! Поставил заглушки, пометил ****
+
+
+enum DataType {
+  //Синоптические
+  //фиксированные станции (stations_synop)
+  kSynopType = 0;		//!< Любые приземные наблюдения (0-39)
+  kSynopFix = 1;		//!< Приземные наблюдения с фиксированной наземной станции (FM12)
+  kSynopCoast = 2;		//!< Приземные наблюдения с фиксированной береговой станции
+
+  kSynop3 = 3;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+
+  kSynopWarep = 4;		//!< Оперативная сводка об опасных гидрометеорологических явлениях (WAREP)
+  kSynopSnow = 5;		//!< Данные снегосъемки (КН-24)
+  kSynopBufr = 6;               //!< Другие приземные наблюдения из BUFR (synop полноценный и с частью данных; 10-минутные интервалы)
+  kSurfGnss  = 7;               //!< BUFR, данные наземных ГНСС
+  kSynop8 = 8;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop9 = 9;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop10 = 10;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop11 = 11;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+
+  kSynopMonth = 12;		//!< Месячные значения с наземной станции(FM71)
+  kSynopDecade = 13;		//!< Данные с наземной станции за декаду (КН-19, ДЕКАДА, агро)
+
+  kSynop14 = 14;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop15 = 15;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop16 = 16;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop17 = 17;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop18 = 18;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop19 = 19;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop20 = 20;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+
+
+
+  //мобильные станции (stations_synmob)
+  kSynopMob = 21;		//!< Приземные наблюдения с подвижной наземной станции (FM14)
+  kSynopMobSea = 22;		//!< Приземные наблюдения с морской станции (FM13)
+  kSynopMobShip = 23;		//!< Наблюдения за поверхностью моря по маршруту судна (FM62)
+  kSynop24 = 24;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop25 = 25;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop26 = 26;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop27 = 27;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop28 = 28;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop29 = 29;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop30 = 30;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop31 = 31;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop32 = 32;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop33 = 33;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop34 = 34;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop35 = 35;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop36 = 36;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop37 = 37;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  kSynop38 = 38;		//!< Приземные наблюдения (****добавил для совместимости с базой)
+  //агро
+  kEndSynopType = 39;
+
+  //Аэродромные (stations_airport)
+  kAirportType = 40;		//!< Любые аэродромные наблюдения (40-59)
+  kAirportRegType = 41;		//!< Регулярная сводка по аэродрому (FM15)
+  kAirportSpecType = 42;	//!< Специальная сводка по аэродрому (FM16)
+  kAirport43 = 43;		//!< сводка по аэродрому (****добавил для совместимости с базой)
+
+  kAirportAdWrng = 44;		//!< Предупреждения по аэродрому (AD WRNG)
+  kAirportWsWrng = 45;		//!< Предупреждения о сдвиге ветра по аэродрому (WS WRNG)
+  kAirportTextInfo = 46;        //!< Штормовое оповещение (АРМ-ВГМ)
+  kAirportTextWrng = 47;        //!< Штормовое предупреждение (АРМ-ВГМ)
+  kAirport48 = 48;		//!< сводка по аэродрому (****добавил для совместимости с базой)
+  kAirport49 = 49;		//!< сводка по аэродрому (****добавил для совместимости с базой)
+  kAirport50 = 50;		//!< сводка по аэродрому (****добавил для совместимости с базой)
+  kAirportFcst = 51;		//!< Прогноз по аэродрому (FM51)
+  kAirportTextFcst = 52;	//!< Текстовый прогноз по аэродрому (АРМ-ВГМ)
+  kAirportTrend = 53;		//!< Краткосрочный прогноз (TREND)
+  kAirportAmd = 54;		//!< Уточнение прогноза (FM51)
+  kAirport55 = 55;		//!< сводка по аэродрому (****добавил для совместимости с базой)
+  kAirport56 = 56;		//!< сводка по аэродрому (****добавил для совместимости с базой)
+  kAirport57 = 57;		//!< сводка по аэродрому (****добавил для совместимости с базой)
+  kAerodrome  = 58;             //!< Аэродромные (гмц)
+  kEndAirportType = 59;
+
+  //Аэрологические
+  //фиксированные станции (stations_aero)
+  kAeroType = 60;		//!< Любые аэрологические наблюдения (60-99)
+  kAeroFix = 61;		//!< Аэрологические наблюдения с фиксированной назменой станции (FM35)
+  kAeroArtillery = 62;		//!< Температурно-ветровое зондирование для артиллерии (Метео-44)
+  kAeroWind      = 63;		//!< Сводка данных о ветре на высотах с фиксированной наземной станции
+  kAero64      = 64;		//!< Сводка данных (****добавил для совместимости с базой)
+  kSynopArtillery = 65;		//!< Метеосредний (Метео11)
+  kProfiler       = 66;         //!< Профилометр ветра
+  kAero67      = 67;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero68      = 68;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero69      = 69;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero70      = 70;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAeroFixLayer = 71;		//!< Аэрологические наблюдения с фиксированной станции в слое (СЛОЙ)
+  //мобильные (stations_aeromob)
+  kAero72      = 72;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero73      = 73;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero74      = 74;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero75      = 75;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero76      = 76;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero77      = 77;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero78      = 78;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero79      = 79;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero80      = 80;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAeroMobSea = 81;		//!< Аэрологические наблюдения с морской станции (FM36)
+  kAeroMobAir = 82;		//!< Аэрологические наблюдения с зонда, сбрасываемого с аэростата-носителя или самолета (FM37)
+  kAeroMob = 83;		//!< Аэрологические наблюдения с подвижной назменой станции (FM38)
+  kAeroWindSea = 84;		//!< Сводка данных о ветре на высотах с морской станции (FM33)
+  kAeroWindMob = 85;		//!< Сводка данных о ветре на высотах с подвижной наземной станции (FM34)
+  kAeroBufr    = 86;		//!< Аэрологические данные. Фиксированная или подвижная или морская
+  kAeroUnk     = 87;            //!< Другие аэрологические последовательности в BUFR (для отладки и идентификации принадлежности)
+  kAero88      = 88;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero89      = 89;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero90      = 90;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero91      = 91;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero92      = 92;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero93      = 93;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero94      = 94;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero95      = 95;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero96      = 96;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero97      = 97;		//!< Сводка данных (****добавил для совместимости с базой)
+  kAero98      = 98;		//!< Сводка данных (****добавил для совместимости с базой)
+  kEndAeroType = 99;
+
+  //Гидрология (stations_hydro)
+  kHydroType = 100;		//!< Любые гидрологические наблюдения (100-119)
+  kHydroStation = 101;		//!< Сводка данных о гидрологическом наблюдении с гидрологической стнации (FM67, КН-15)
+  kHydro102      = 102;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro103      = 103;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro104      = 104;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro105      = 105;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro106      = 106;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro107      = 107;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro108      = 108;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro109      = 109;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro110      = 110;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro111      = 111;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro112      = 112;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro113      = 113;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro114      = 114;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro115      = 115;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro116      = 116;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro117      = 117;		//!< Сводка данных (****добавил для совместимости с базой)
+  kHydro118      = 118;		//!< Сводка данных (****добавил для совместимости с базой)
+  kEndHydroType = 119;
+
+  //Океан, глубины (stations_ocean)
+  kOceanType = 120;		//!< Любые океанологические наблюдения (120-139)
+  kOceanBuoy = 121;		//!< Наблюдения с буя (FM18)
+  KOceanBathy = 122;		//!< Батиметрические наблюдения (FM63, КН-06)
+  kOceanDepth = 123;		//!< Cводка данных с морской станции о температуре, солености и течении (FM64)
+  kOceanTsunami = 124;          //!< Измеритель волн цунами
+  kOceanBufr    = 125;          //!< Данные BUFR
+  kOcean126    = 126;          //!< Данные (****добавил для совместимости с базой)
+  kOcean127    = 127;          //!< Данные (****добавил для совместимости с базой)
+  kOcean128    = 128;          //!< Данные (****добавил для совместимости с базой)
+  kOcean129    = 129;          //!< Данные (****добавил для совместимости с базой)
+  kOcean130    = 130;          //!< Данные (****добавил для совместимости с базой)
+  kOcean131    = 131;          //!< Данные (****добавил для совместимости с базой)
+  kOcean132    = 132;          //!< Данные (****добавил для совместимости с базой)
+  kOcean133    = 133;          //!< Данные (****добавил для совместимости с базой)
+  kOcean134    = 134;          //!< Данные (****добавил для совместимости с базой)
+  kOcean135    = 135;          //!< Данные (****добавил для совместимости с базой)
+  kOcean136    = 136;          //!< Данные (****добавил для совместимости с базой)
+  kOcean137    = 137;          //!< Данные (****добавил для совместимости с базой)
+  kOcean138    = 138;          //!< Данные (****добавил для совместимости с базой)
+  kEndOceanType = 139;
+
+  //Тропические циклоны (stations_typhoon)
+  kTyphoonType = 140;		//!< Любые данные о тропических циклонах (140-149)
+  kTyphoonRadar = 141;		//!< Информация о тропическом циклоне. Наземные радиолокационные наблюдения (FM20, Часть A)
+  kTyphoon142 = 142;		//!< Информация о тропическом циклоне. (****добавил для совместимости с базой)
+  kTyphoon143 = 143;		//!< Информация о тропическом циклоне. (****добавил для совместимости с базой)
+  kTyphoon144 = 144;		//!< Информация о тропическом циклоне. (****добавил для совместимости с базой)
+  kTyphoon145 = 145;		//!< Информация о тропическом циклоне. (****добавил для совместимости с базой)
+  kTyphoon146 = 146;		//!< Информация о тропическом циклоне. (****добавил для совместимости с базой)
+  kTyphoon147 = 147;		//!< Информация о тропическом циклоне. (****добавил для совместимости с базой)
+  kTyphoon148 = 148;		//!< Информация о тропическом циклоне. (****добавил для совместимости с базой)
+  kEndTyphoonType = 149;
+
+  //Радиолокационные карты (stations_radarmap)
+  kRadarMapType    = 150;  //!< Радиолокационные данные на карте (150-159)
+  kRadarSyn        = 151;  //!< Информация о характерных особенностях. Наземные радиолокационные наблюдения (FM20, Часть B)
+  kRadarWind       = 152;  //!< Измерения радиолокатора (dd, ff, ww, refl_hor)
+  kRadar153       = 153;  //!< Измерения радиолокатора (****
+  kRadar154       = 154;  //!< Измерения радиолокатора (****
+  kRadar155       = 155;  //!< Измерения радиолокатора (****
+  kRadar156       = 156;  //!< Измерения радиолокатора (****
+  kRadar157       = 157;  //!< Измерения радиолокатора (****
+  kRadar158       = 158;  //!< Измерения радиолокатора (****
+  kEndRadarMapType = 159;  //!<
+
+  //Геофизика (stations_geophysics)
+  kGeophysicsType = 160;  //!< Любые геофизические данные (160-179)
+  kGeophIonfo     = 161;  //!< Прогноз геомагнитной возмущенности (ИОНФО)
+  kGeophIonex     = 162;  //!< IONEX
+  kGeophGtex      = 163;  //!< GTEX
+
+  kGeophIonka        = 164;  //!< IONKA
+  kGeophAkap         = 165;  //!< Суточный Ак и Ap-индекс (AFRED, APFRD, APMOS)
+  kGeophMag          = 166;  //!< Магнитометрические наблюдения (UMAGF, МАГКС)
+  kGeophSat          = 167;  //!< Спутниковые SATIN, OPPCM
+  kGeophFluxTen      = 168;  //!< Плотность потока радиоизлучения F10.7 (TENCM)
+  kGeophFlux         = 169;  //!< Плотность потока радиоизлучения (URANJ)
+  kGeophGeoa         = 170;  //!< Прогноз солнечной активности, геомагнитной и радиационной возмущённости (UGEOA)
+  kGeophSunSpot      = 171;  //!< Солнечные пятна (USSPS, USSPT, USSPI, USSPY)
+  kGeophFlare        = 172;  //!< Солнечные вспышки (UFLAE)
+  kGeophGeoe         = 173;  //!< Энергетическая активность (UGEOE)
+  kGeophGeoi         = 174;  //!< Фактические данные геомагнитных, солнечных измерений и наблюдений за сутки (UGEOI)
+  kGeophGeor         = 175;  //!< Характеристики активных областей и прогноз их вспышечной активности (UGEOR)
+  kGeophAbse         = 176;  //!< Измерения риометром ионосферного поглощения (UABSE)
+  kGeophSids         = 177;  //!< Внезапные ионосферные возмущения (USIDS)
+  kGeophFluxAvg      = 178;  //!< Плотность потока радиоизлучения F10.7 (TENMN)
+  kEndGeophysicsType = 179;  //!<
+
+  //Вулканический пепел (stations_va)
+  kVolcanicAsh = 180;		//!< Консультативная информация о вулканическом пепле (VAA)
+  kVolcanic181 = 181;		//!< Консультативная информация о вулканическом пепле ****
+  kVolcanic182 = 182;		//!< Консультативная информация о вулканическом пепле ****
+  kVolcanic183 = 183;		//!< Консультативная информация о вулканическом пепле ****
+  kVolcanic184 = 184;		//!< Консультативная информация о вулканическом пепле ****
+  kVolcanic185 = 185;		//!< Консультативная информация о вулканическом пепле ****
+  kVolcanic186 = 186;		//!< Консультативная информация о вулканическом пепле ****
+  kVolcanic187 = 187;		//!< Консультативная информация о вулканическом пепле ****
+  kVolcanic188 = 188;		//!< Консультативная информация о вулканическом пепле ****
+  kVolcanic189 = 189;		//!< Консультативная информация о вулканическом пепле ****
+
+  //По районам полетной информации (FIR, UIR, CTA) (stations_fir)
+  kFlightType = 190;		//!< Данные по районам полетной информации (190-209)
+  kFlightWar  = 191;		//!< Особые явления по маршруту полета (SIGMET, AIRMET, AMDAR)
+  kFlight192  = 192;		//!< маршруту полета (****)
+  kFlight193  = 193;		//!< маршруту полета (****)
+  kFlight194  = 194;		//!< маршруту полета (****)
+  kFlight195  = 195;		//!< маршруту полета (****)
+  kFlight196  = 196;		//!< маршруту полета (****)
+  kFlight197  = 197;		//!< маршруту полета (****)
+  kFlight198  = 198;		//!< маршруту полета (****)
+  kFlight199  = 199;		//!< маршруту полета (****)
+  kFlight200  = 200;		//!< маршруту полета (****)
+  kFlightFcst = 201;		//!< Прогноз погоды для полетов на нижних эшелонах (GAMET)
+  kFlightSigWx = 202;		//!< Прогноз особых явлений (SIGWX)
+  kFlight203  = 203;		//!< маршруту полета (****)
+  kFlight204  = 204;		//!< маршруту полета (****)
+  kFlight205  = 205;		//!< маршруту полета (****)
+  kFlight206  = 206;		//!< маршруту полета (****)
+  kFlight207  = 207;		//!< маршруту полета (****)
+  kFlight208  = 208;		//!< маршруту полета (****)
+  kEndFlightType = 209;
+
+  //Донесения с борта самолета (station_airplane)
+  kAirplaneType = 210;		//!< Донесения с борта самолёта (210-219)
+  kAirplane     = 211;		//!< Донесения с борта (AIREP, AIREP SPECIAL)
+  kAirplane212     = 212;		//!< Донесения с борта (****)
+  kAirplane213     = 213;		//!< Донесения с борта (****)
+  kAirplane214     = 214;		//!< Донесения с борта (****)
+  kAirplane215     = 215;		//!< Донесения с борта (****)
+  kAirplane216     = 216;		//!< Донесения с борта (****)
+  kAirplane217     = 217;		//!< Донесения с борта (****)
+  kAirplane218     = 218;		//!< Донесения с борта (****)
+  kEndAirplaneType = 219;
+
+  //Спутник, вертикальное зондирование
+  kSatAeroType = 220;
+  kSatAero = 221;    //!< Аэрология по уровням
+  kSatGnss = 222;    //!< ГНСС
+  kSatAeroOne = 223; //!< Аэрология по одному уровню
+  kSat224 = 224; //!< Аэрология ****
+  kSat225 = 225; //!< Аэрология ****
+  kSat226 = 226; //!< Аэрология ****
+  kSat227 = 227; //!< Аэрология ****
+  kSat228 = 228; //!< Аэрология ****
+  kEndSatAeroType = 229;
+
+  //Спутник, приземные
+  kSatSurf = 230;
+  kSatScatter = 231;   //!< скаттерометр
+  kSatAltimeter = 232; //!< альтиметр
+  kSatAltiRad = 233;   //!< альтиметр, радиометр
+  kSatSurfOther = 234; //!< другие
+  kSatSurf235 = 235; //!< другие ****
+  kSatSurf236 = 236; //!< другие ****
+  kSatSurf237 = 237; //!< другие ****
+  kSatSurf238 = 238; //!< другие ****
+  kEndSatSurf = 239;
+
+
+  kUnknownDataType = 500;
+  kCheckDataType   = 501;
+
+  kAllDataType = 555;           //!< Все типы данных
+
+  kNotProcessed = 556;          //!< Не обрабатываемый тип данных
+}
+
+enum QueryType {
+  kMaximumValue         = 0;            //!< отбор максимальных значений за сутки
+  kMinimumValue         = 1;            //!< отбор минимальных значений за сутки
+  kLastValue            = 2;            //!< отбор последних значений (последняя телеграмма) за сутки
+  kNearestTermValue     = 3;            //!< отбор значений, которые расположены ближе всего к указанному времени
+  kAverageValue         = 4;            //!< отбор средних значений за сутки
+  kTermValue            = 5;            //!< отбор значений за срок
+  kFloodPlain           = 6;            //!< отбор критических значений уровня воды для кн-15
+  kNearPoCoord          = 7;            //!< отбор по координатам ближайшей станции (100 км)
+}
+
+enum StationType {
+    kDeparture   = 0;    //!< вылет
+    kOnRoute     = 1;    //!< на маршруте
+    kArrival     = 2;    //!< посадка
+    kReserve     = 3;    //!< запасной
+}
+message Point {
+  //optional GeoPointPb    coord     = 1;  //!<географические координаты
+  optional double        fi        = 1;  //!<радианы
+  optional double        la        = 2;  //!<радианы
+  optional double        height    = 3;  //!<метры
+  optional string        date_time = 4;  //!<дата время
+  optional string        id        = 5;  //!<id
+  optional string        name      = 6;  //!<название
+  optional string        index     = 7;  //!<индекс
+  optional string        eng_name  = 8;  //!<название
+  optional StationType   av12type  = 9;  //!<Тип станции
+  optional int32         model     = 10; //!<Модель данных
+  optional int32         echelon   = 11; //!<Эшелон
+  optional int32         type      = 12; //!<тип станции
+
+}
+
+message Value {
+  optional double value = 1;           //!< значение величины
+  optional int32 quality = 2;            //!< качество величины
+  optional string text_value = 3;      //!<значение величины в текстовом виде
+  optional bool result = 4;
+  optional string comment = 5;
+}
+
+message MeteoData{
+  optional Point point = 1;
+  required Value value = 2;
+  optional string id = 3;  //!< id в БД
+}
+
+message Polygon {
+  repeated Point point = 1;
+}
+
+  //! Для запроса.
+message GribDataRequest {
+  optional string        date_start      = 1;  //!< Начало периода выборки. Qt::ISODate
+  optional string        date_end        = 2;  //!< Окончание периода выборки.
+  optional grib.GribInfo info            = 3;
+}
+
+message GribData{
+  required TGrid.LatLon  grid_def        = 1;  //!< описание  сетки
+  repeated double        value           = 2;  //!< Данные
+  repeated int32         points          = 3;  //!< Количество узлов вдоль каждой меридианы/параллели для квазирегулярных сеток
+  optional bytes         bitmap          = 4;  //!< Битовое отображение (наличие/отсутствие данных в точке сетки)
+  optional int32         descr           = 5;  //!< Дескриптор
+}
+
+//!  Для ответа.
+message GribDataReply {
+  optional grib.GribInfo info            = 1;  //!< описание (метаданные)
+  repeated GribData      data            = 2;  //!< данные
+  repeated string        ids             = 3;  //!< номера записей в базе
+  optional bool          result          = 4;  //!< результат выполнения запроса
+  optional string        comment         = 5;
+  repeated string        idsptkpp        = 6;  //!< для отладки
+  optional bool          finished        = 7;  //!< Флаг, который устанавливается по завершении данных
+}
+
+//!  Доступные грибы
+message GribDataAvailableReply {
+  repeated grib.GribInfo info            = 1;  //!< описание (метаданные)
+  optional bool          result          = 2;  //!< результат выполнения запроса
+  optional string        comment         = 5;
+}
+
+//! Пустой Запрос/подписка
+message SimpleDataRequest {
+  repeated string        id              = 1;
+  optional string        text            = 2;
+  optional bool          asproto         = 3;
+}
+
+message SimpleDataReply {
+  required int32         id            = 1;
+  optional bool          result        = 2;  //!< результат выполнения запроса
+  optional string        comment       = 3;
+}
+
+//! Запрос/подписка
+message DataRequest {
+  repeated string        station         = 1;  //!<индекс станции
+  optional Polygon       region          = 2;  //!<регион, для которого будут отбираться данные
+  repeated int32         type            = 3;  //!<тип данных (DataType)
+  optional string        date_start      = 4;  //!<начальный срок данных для отбора
+  optional string        date_end        = 5;  //!<конечный срок данных для отбора
+  repeated int32         meteo_descr     = 6;  //!< базовая часть дескриптора
+  repeated int32         group_descr     = 13; //!< группа дескриптора
+  repeated int32         add_descr       = 7;  //!< индекс величины в группе величин с одним дескриптором. в БД хранится *100
+  optional int32         level_p         = 8;  //!< барический уровень
+  optional int32         level_h         = 9;  //!< геопотенциальный уровень
+  optional int32         max_srok        = 10; //!< если !0, то ищем только за эту дату.
+  optional int32         rast            = 11; //!< если !0, то ищем ближайшую станцию в радиусе rast.
+  optional int32         type_level      = 12; //!< тип уровня
+  optional int32         only_last       = 14; //!< если true, то в ответе будет последняя дата
+  optional int32         level_h2        = 16; //!< второй уровень для слоя в радарах
+  optional QueryType     query_type      = 17 [default = kTermValue]; //!< тип отбора данных
+  repeated string        cccc_station    = 18; //!< для станций, у которых есть CCCC, но нет индекса
+  optional double        min_lo          = 19; //!< минимальная долгота источника данных
+  optional double        max_lo          = 20; //!< максимальная долгота источника данных
+  optional string        term            = 21; //!< срок в сутках, данные за который или ближайший к нему ищутся данные
+  optional int32         max_secs        = 22; //!< максимальное рассояние в секундах от интересующего срока
+  repeated string        meteo_descrname = 23; //!< имена дескрипторов (если есть, то надо их использовать вместо meteo_descr)
+  optional bool          as_proto        = 24 [default = false]; //!< если true данные возвращаются как proto-структура, иначе как TMeteoData
+  optional int32         period_delta    = 26; //!< период измерения (dt2 - dt1 в таблице meteo_data)
+  optional bool          use_parent      = 27 [default = false]; //!< если true, то запрос будет адресован вышестоящему сервису, а ответ сохранён в локальную БД
+  optional string        request_id      = 28; //!< идентификатор запроса (копируется в ответ)
+  optional int32         skip            = 29; //!< пропустить первые skip записей в выборке
+  optional int32         limit           = 30; //!< ограничить выборку размером limit
+  repeated int32         station_type    = 31; //!< типы станций
+  optional string        notify_message  = 32; //!< текст сообщения отображаемый в области уведомления
+  optional string        notify_action   = 33; //!< текст кнопки
+  optional int32         country         = 34; //!< страна, по которой запрашиваются данные
+  optional bool          duplication     = 35 [default = false];
+  optional bool          archive         = 36 [default = false]; //!< для загрузки данных метеотабло
+  optional bool          meteotablo      = 37 [default = false]; //!< FIXME удалить, как только пропадут все ссылки на это поле в коде
+  optional string        punchid         = 38;
+  optional int32         hour            = 39;  //!< Скрок прогноза, ч
+  optional int32         center = 40; //!< центр обработки
+  optional int32         model   =  41; //!< тип данных
+  optional int32         net_type      = 42; //!< тип сетки
+  optional int32         step_lat      = 43; //!< шаг сетки
+  optional int32         step_lon      = 44; //!< шаг сетки
+  optional string        forecast_beg    = 45; //!< время начала действия прогноза
+  optional string        forecast_end    = 46; //!< время окончания действия прогноза
+  optional bool          protoparam_as_tree = 47 [default = false]; //!< группировать метеопараметры в дочерние метеодаты по uuid
+}
+
+message UpdateDataRequest {
+  optional int64         id              = 1;  //!< идентмфикатор записи в БД
+  optional double        value           = 2;  //!< значение величины
+  optional int32         quality         = 3;  //!< показатель качества величины
+}
+
+//! Запрос/подписка GetZondDataOnStation
+message ZondDataRequest {
+  repeated int32         station         = 1;
+  optional Polygon       region          = 2;
+  optional int32         type            = 3;
+  optional string        date_start      = 4;
+  optional string        date_end        = 5;
+  repeated int32         meteo_descr     = 6;
+}
+
+message StationInfo{
+  optional string name_rus     = 1;
+  optional string name_eng     = 2;
+  optional string cccc         = 3; //!FIXME хранится идентификатор станции (заменить StationInfo на sprinf.Station)
+  optional string country_rus  = 4;
+  optional string country_eng  = 5;
+  optional double country_code = 6;
+  optional int32  station_type = 7;
+  optional string station      = 8;
+}
+
+message MeteoParamProto{
+  optional string          code           = 1;  //!< название параметра
+  optional double          value          = 2;  //!< значение параметра
+  optional int32           quality        = 3;  //!< показатель качества параметра
+  optional int32           descr          = 4;  //!< дескриптор параметра
+  optional string          descrname      = 5;  //!< название параметра
+  optional string          description    = 6;  //!< описание параметра
+  optional bool            danger         = 7;  //!<
+  optional string          text_value     = 8;  //!< значение параметра в текстовом виде
+  optional string          change_time    = 9;  //!< время ручного ввода параметра
+  optional int32           dt_type        = 10;  //!<
+  optional string          dt_beg         = 11;  //!< начало временного интервала данных
+  optional string          dt_end         = 12;  //!< окончание временного интервала данных
+  optional string          uuid           = 14;  //!< uuid метеопараметра для определения взаимосвязанных параметров
+  repeated MeteoParamProto dubl           = 13;  //!< имеющиеся дубликаты данных
+}
+
+message Meteotablo {
+  optional string          n        = 1;   //!< Количество облачности
+  optional string          c        = 2;   //!< Форма облачность
+  optional string          h        = 3;   //!< Высота облачности
+  optional string          w        = 4;   //!< Явления погоды
+  optional string          v        = 5;   //!< Горизонтальная дальность видимости
+  optional string          dd       = 6;   //!< Направление ветра
+  optional string          ff       = 7;   //!< Скорость ветра
+  optional string          t        = 8;   //!< Температура у земли
+  optional string          u        = 9;   //!< Влажность воздуха
+  optional string          p0       = 10;  //!< Давление у земли
+  optional string          psea     = 11;  //!< Давление на уровне моря
+  optional string          p        = 12;  //!< Барическая тенденция
+  optional string          a        = 13;  //!< Характеристика барической тенденции
+  optional string          tb       = 14;  //!< Температура смоченного термометра
+  optional string          r        = 15;  //!< Количество осадков
+  optional double          nval     = 16;  //!< Количество облачности
+  optional double          hval     = 17;  //!< Высота облачности
+  optional double          wval     = 18;  //!< Явления погоды
+  optional double          vval     = 19;  //!< Горизонтальная дальность видимости
+  optional double          ddval    = 20;  //!< Направление ветра
+  optional double          ffval    = 21;  //!< Скорость ветра
+  optional double          tval     = 22;  //!< Температура у земли
+  optional double          uval     = 23;  //!< Влажность воздуха
+  optional double          p0val    = 24;  //!< Давление у земли
+  optional double          pseaval  = 25;  //!< Давление на уровне моря
+  optional double          pval     = 26;  //!< Барическая тенденция
+  optional double          aval     = 27;  //!< Характеристика барической тенденции
+  optional double          tbval    = 28;  //!< Температура смоченного термометра
+  optional double          rval     = 29;  //!< Количество осадков
+  optional string          ncode    = 30;  //!< Количество облачности
+  optional string          hcode    = 31;  //!< Высота облачности
+  optional string          wcode    = 32;  //!< Явления погоды
+  optional string          vcode    = 33;  //!< Горизонтальная дальность видимости
+  optional string          ddcode   = 34;  //!< Направление ветра
+  optional string          ffcode   = 35;  //!< Скорость ветра
+  optional string          tcode    = 36;  //!< Температура у земли
+  optional string          ucode    = 37;  //!< Влажность воздуха
+  optional string          p0code   = 38;  //!< Давление у земли
+  optional string          pseacode = 39;  //!< Давление на уровне моря
+  optional string          pcode    = 40;  //!< Барическая тенденция
+  optional string          acode    = 41;  //!< Характеристика барической тенденции
+  optional string          tbcode   = 42;  //!< Температура смоченного термометра
+  optional string          rcode    = 43;  //!< Количество осадков
+}
+
+message MeteoDataProto {
+  optional StationInfo     station_info  = 1;   //!< информация о станции наблюдения
+  optional string          dt            = 2;   //!< время
+  optional TlgGeoPoint     gp            = 3;   //!< координаты точки
+  repeated MeteoParamProto param         = 4;   //!< данные
+  optional int32           hour          = 5;   //!<
+  optional int32           cor_number    = 6;   //!< номер поправки
+  optional int32           level         = 7;   //!< уровень
+  optional int32           level_type    = 8;   //!< тип уровня
+  optional Meteotablo      tablo         = 9;   //!< набор строковых
+  repeated int64           tlgid         = 10;	//!< номера телеграмм, из которых получен набор метеопараметров
+  repeated string          report        = 11;	//!< сводки, из которых получен набор метеопараметров
+  repeated MeteoDataProto  child         = 12;  //!< дочерние метеодаты
+}
+
+//! Ответ на запрос
+message FullValue {
+  optional Point point        = 2;
+  optional string date        = 3;
+  optional int32  meteo_descr = 4;
+  optional double value       = 5;   //!< значение величины
+  optional string code        = 6;   //!< кодовое (строковое) значение величины
+  optional int32 quality      = 7;   //!< качество величины
+  optional int32 level        = 8;   //!< уровень
+  optional int32 level_type   = 9;   //!< качество величины
+  optional int32 data_type    = 10;  //!< качество величины
+  optional string id          = 11;
+}
+
+//! Ответ на запрос
+message ValueReply {
+  repeated FullValue values = 1;
+  optional int32 type       = 2;
+  optional int32 level      = 3;
+ //TODO optional string date = 3;
+  optional int32 type_level = 4;
+  optional bool  result     = 5;  //!< результат выполнения запроса
+  optional string comment   = 6;
+}
+
+message Uroven {
+   optional Value P        = 1;   //!< давление
+   optional Value H        = 2;   //!< высота геопотенциала
+   optional Value T        = 3;   //!< температура
+   optional Value D        = 4;   //!< дефицит
+   optional Value Td       = 5;   //!< точка росы
+   optional Value dd       = 6;   //!< направление ветра
+   optional Value ff       = 7;   //!< скорость ветра
+   optional Value u        = 8;   //!< направление ветра
+   optional Value v        = 9;   //!< скорость ветра
+   optional Value humidity = 10;  //!< относительная влажность воздуха
+  // optional int32 group_type = 10; //группа данных уровня
+   optional int32 level_type = 11; //тип данных уровня
+//   optional bool  isUV = 9; //Если true, значит ветер в UV(зональные и меридиональные составляющие) u - dd, v -ff
+  optional bool danger = 12 [default = false]; //!< признак ОЯП
+}
+
+message MrlData{
+  optional int32 kvadrat = 1;
+  required Value value = 2;
+}
+//! Ответ на запрос GetMrlDataOnStation
+message OneMrlValueReply {
+  required string date           = 1;
+  required int32 station         = 2;   //!< индекс станции
+  required Point center          = 3;   //! координаты станции
+  required int32 is_abs_h        = 4;   //!< значимость высоты (level)  ( 2 - стандартный уровень)
+  required int32 kol_x           = 5;   //! количество точек по x
+  required int32 kol_y           = 6;   //! количество точек по y
+  required int32 dx              = 7;   //!  размер элемента
+  required int32 dy              = 8;   //! размер элемента
+  required int32 proj            = 9;   //!< тип проекции
+  repeated int32 level           = 10;  //!< абсолютная или относительная высота уровня как в бафре
+  optional double synopdirection = 11;  //!< направление перемещения синоптической характеристики
+  optional double synopspeed     = 12;  //!< скорость перемещения перемещения синоптической
+
+  required int32  meteo_descr = 13;
+  repeated MrlData rdata      = 14;  //TODO пока оба варианта
+  repeated MeteoData mdata    = 15;  //TODO пока оба варианта
+  optional bool result        = 16;  //!< результат выполнения запроса
+  optional string comment     = 17;
+}
+
+message ManyMrlValueReply{
+   repeated OneMrlValueReply values = 1;
+   optional bool result             = 2;  //!< результат выполнения запроса
+   optional string comment          = 3;
+}
+
+message OneZondValueOnStation{
+  optional string date   = 1;  //дата производства
+  optional int32 station = 2;  //!< индекс станции
+  optional Point point   = 3;  //!< координаты
+  optional int32 hour    = 4;  //! срок прогноза, час
+  optional int32 model   = 5;  //! модель прогноза
+  repeated Uroven ur     = 6;  //!< данные на одном уровне
+}
+
+
+//! Ответ на запрос GetZondDataOnStation
+//! Ответ на запрос GetManyZondDataOnStation ответ на запрос данных за интервал
+message ZondValueReply {
+  repeated OneZondValueOnStation data = 1;
+  optional bool result                = 2;  //!< результат выполнения запроса
+  optional string comment             = 3;
+}
+
+// слой для зондов, парное значение низ/верх 
+message ZondLayer{
+  required double bottom    = 1;
+  required double top       = 2;
+  optional double intensive = 3;
+  // параметра тропопаузы с высотой нижней границы и температурой на ней
+  optional double T         = 4;
+}
+
+// индексы зонда
+message ZondIndexes{
+  required string type  = 1;
+  required double value = 2;
+}
+
+
+message OneTZondValueOnStation{
+  required string date                    = 1;   //дата производства
+  optional Point point                    = 3;   //!< координаты
+  optional int32 hour                     = 4;   //! срок прогноза, час
+  optional int32 model                    = 5;   //! модель прогноза
+  optional bytes meteodata                = 6;   //!< метео данные(class Zond) если не включен флаг as_proto
+  repeated MeteoDataProto meteodata_proto = 7;   //!< данные на одном уровне если включен флаг as_proto
+  optional string center                  = 8;   //!< Наименование прогностического центра
+  repeated ZondLayer boltanka             = 9;   //!< болтанка
+  repeated ZondLayer obledenenie          = 10;  //!< обледенение
+  repeated ZondLayer inverse              = 11;  //!< слои инверсии
+  repeated ZondLayer isoterm              = 12;  //!< слои изотремии
+  optional ZondLayer kns                  = 13;  //!< конвективно неустойчивый слой
+  repeated ZondLayer cloudlayers          = 14;  //!< слои облачности
+  repeated MeteoParamProto indexes        = 15;  //!< индексы неоусточисовсти
+  optional double  energy                 = 16;  //!< энергия неустойчивости слоя
+  repeated ZondLayer tropo                = 17;  //!< высота тропопаузы
+  repeated ZondLayer kondensate_trace     = 18;  //!< конденсационные следы
+}
+
+
+//! Ответ на запрос GetZondDataOnStation
+//! Ответ на запрос GetManyZondDataOnStation ответ на запрос данных за интервал
+message TZondValueReply {
+  repeated OneTZondValueOnStation data = 1;
+  optional bool result                 = 2;  //!< результат выполнения запроса
+  optional string comment              = 3;
+}
+
+//! Ответ на запрос GetZondDataOnLevel (по дескриптору - поле значений одной величины)
+/*message ManyZondValueReply {
+  required string date = 1;
+  optional int32 level_p = 2;           //!< изобарический уровень данных
+  optional int32 level_h = 3;           //!<  уровень данных (высота)
+  optional int32 meteo_descr = 4;           //!<  уровень данных (высота)
+  repeated MeteoData data = 5;    //!< значение и качество величины
+  optional int32 type_level = 6;           //!< тип изобарический уровень данных
+  optional bool result = 7;     //!< результат выполнения запроса
+  optional string comment = 8;
+}
+*/
+
+//! Запрос раскодированных данных телеграммы
+message TlgDataRequest {
+  required uint64 id = 1; //!< id записи в БД телеграмм
+}
+
+message TlgCoordRequest {
+  repeated uint64 id = 1; //!< id записи в БД телеграмм
+  optional string dt = 2;
+}
+
+message TlgGeoPoint {
+  required double la = 1;
+  required double lo = 2;
+}
+
+message CoordReply {
+  repeated TlgGeoPoint point = 1;
+  optional bool result = 2;
+  optional string comment = 3;
+}
+
+message EmptyDataRequest {
+  optional string  msg = 1;     //!<
+}
+
+//! Описание доступных данных
+message DataDesc {
+  optional string       date            = 1; //!< срок данных в формате Qt::ISODate
+  optional int32        meteodescr      = 2; //!< дескриптор
+  optional int32        level           = 3; //!< высота измерений
+  optional int32        station         = 4; //!< индекс станции
+  optional int32        id              = 5; //!< идентификатор записи в базе
+  optional int32        h2              = 6; //!< для зонда
+  optional int32        count           = 7; //!< количество данных за срок
+}
+
+//! Описание SIGWX за указанный период
+message SigwxDesc {
+  optional string       date            = 1; //!< срок данных в формате Qt::ISODate
+  optional string       forecast_beg    = 2; //!< время начала действия прогноза
+  optional string       forecast_end    = 3; //!< время окончания действия прогноза
+  optional int32        center          = 4; //!< номер центра, подготовившего sigwx
+  optional int32        level_lo        = 5; //!< нижняя граница слоя
+  optional int32        level_hi        = 6; //!< верхняя граница слоя
+  optional int32        count           = 7; //!< количество данных
+  repeated string       filepath        = 8; //!< пути к файлам sigwx
+  repeated string       file_id         = 9; //!< идентификаторы файлов sigwx
+}
+
+//! Описание доступных SIGWX за указанный период
+message SigwxDescResponse {
+  optional bool         result          = 1; //!< Результат выполнения запроса
+  optional string       comment         = 2; //!< Описание результата выполнения операции
+  repeated SigwxDesc    sigwx           = 3; //!< Список описаний данных
+}
+
+
+message DataDescResponse {
+  required bool         result          = 1; //!< Результат выполнения запроса
+  optional string       comment         = 2; //!< Описание результата выполнения операции
+  repeated DataDesc     descr           = 3; //!< Список описаний данных
+}
+
+message CountData{
+  required string       date       = 1; //!< срок данных в формате Qt::ISODate
+  required int32        count      = 2; //!< количест данных
+  optional double       cover      = 3; //!<полнота данных (отношение количества станций с пришедшими данными к работающим станциям)
+  optional double       level      = 4; //!<уровень данных
+}
+
+message CountDataReply {
+  optional bool       result           = 1; //!< Результат выполнения запроса
+  optional string     comment          = 2; //!< Пояснение к результату выполнения запроса
+  repeated CountData  data             = 3; //!< Список описаний данных
+}
+
+message StationsDataReply {
+  optional bool       result           = 1; //!< Результат выполнения запроса
+  optional string     comment          = 2; //!< Пояснение к результату выполнения запроса
+  repeated Point      coords          = 3; //!< координаты станций
+}
+
+message OceanAvailablePoint {
+  optional string id    = 1;	//!< id записи
+  optional uint32 count = 2;	//!< Количество данных
+  optional uint32 maxlevel = 3;	//!< Максимальная глубина
+  optional float lat    = 4;	//!< Широта
+  optional float lon    = 5;	//!< Долгота
+  optional string name  = 6 [default = ""];	//!< Позывной
+  optional string dt    = 7;    //!< Время измерения
+}
+
+message OceanAvailableReply {
+  repeated OceanAvailablePoint point = 1;
+  optional bool result = 2;    //!< результат выполнения запроса
+  optional string comment = 3;
+
+};
+
+//! Описание доступной геофизической карты
+message GeophysMapInfo {
+  required uint64 id = 1;	//!< id в БД
+  required string dt = 2;	//!< Дата создания данных
+  optional string station = 3;	//!< Название станции
+  optional float lat1 = 4;	//!< Широта, первое значение (градусы)
+  optional float lat2 = 5;	//!< Широта, второе значение (градусы)
+  optional float dlat = 6;	//!< Шаг по широте (градусы)
+  optional float lon1 = 7;	//!< Долгота, первое значение (градусы)
+  optional float lon2 = 8;	//!< Долгота, второе значение (градусы)
+  optional float dlon = 9;	//!< Шаг по долготе (градусы)
+  optional float   h1 = 10;	//!< Высота, первое значение (км)
+  optional float   h2 = 11;	//!< Высота, второе значение (км)
+  optional float   dh = 12;	//!< Шаг по высотк (км)
+};
+
+//! Доступные геофизические карты
+message GeophysMapAvailableReply {
+  repeated GeophysMapInfo info = 1; //!< метаданные
+  optional bool result = 2;        //!< результат выполнения запроса
+  optional string comment = 3;
+};
+
+//!
+message CurStateRequest {
+  optional int32 interval_sec = 1 [default = 1]; //! Периодичность отправки ответа
+  repeated string station     = 2; //!< Список станций (индекс, CCCC)
+}
+
+message DateReply {
+  repeated string date       = 1;
+}
+
+message SaveMsgReply {
+  optional string error     = 1; //!< Описание ошибки
+
+  optional bool   duplicate = 10 [ default = false ]; //!< Признак повторно принятого сообщения
+  optional int64  id        = 11; //!< Идентификатор сообщения в БД
+}

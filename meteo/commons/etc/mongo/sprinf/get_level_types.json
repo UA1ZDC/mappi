@@ -1,0 +1,7 @@
+{
+  "find" : "level_types",
+   "filter" : 
+   {
+    "code_num" : { "$in" : "%1" }
+   }
+}

@@ -1,0 +1,23 @@
+{
+  "aggregate": "stations",
+  "pipeline": [
+    
+    { "$lookup": { "from": "countries", "localField": "country", "foreignField": "number", "as": "countries" } },     
+    
+    { "$project": { 
+      "_id" : false,
+      "station" : true,
+      "type" : "$station_type",
+      "location": "$location", 
+      "country" : "$country",
+      "country_en" : { "$arrayElemAt": ["$countries.name_en", 0] },
+      "country_ru" : { "$arrayElemAt": ["$countries.name_ru", 0] },
+      "icao"  : "$index.cccc", 
+      "index" : "$index.station_index",
+      "name" : "$name.international", 
+      "name_ru" : "$name.ru" } }    
+  ],
+  "allowDiskUse":true,
+  "cursor": { "batchSize": 1 }
+}
+

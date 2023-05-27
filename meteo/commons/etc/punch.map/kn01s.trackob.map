@@ -1,0 +1,10 @@
+name: "kn-01stracob"
+title: "КН-01С (Только TRACKOB)"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "kn01s"
+  data_type: kSynopMobShip
+  type_level: 1
+  level: 0
+}

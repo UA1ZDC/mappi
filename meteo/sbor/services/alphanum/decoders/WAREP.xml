@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="WAREP" text="Оперативная сводка об опасных гидрометеорологических явлениях"  category="4">
+  <MessageSections>(W[WO][AH]P\s*\d{4}\s*\d{6}\s*\d{5})((?:\s\d\d(?:\s[1-9][\d/]{4,6})*)+)</MessageSections>
+  <Section number="0" text="Date" >
+    <SectionGroups>(WW|WO)(AP|HP)\s*(\d{2})(\d{2})\s*(\d{2})(\d{2})(\d{2})\s*(\d{2})(\d{3})</SectionGroups>
+      <Value number="1"  descrName="UNK" text="Возникновение/усиление явления или окончание" />
+      <Value number="2"  descrName="UNK" text="ОЯ или НГЯ" />
+      <Value number="3"  descrName="JJ" text="Год" />
+      <Value number="4"  descrName="MM" text="Месяц" />
+      <Value number="5"  descrName="YY" text="День" />
+      <Value number="6"  descrName="GG" text="Час" />
+      <Value number="7"  descrName="gg" text="Минута" />
+      <Value number="8"  descrName="II" />
+      <Value number="9"  descrName="iii" text="WMO STATION NUMBER" />
+  </Section>
+  <Section number="2" text="Опасное явление" >
+    <SectionGroups>(\d\d)\s*(?:((?:1[\d/]{4,6}\s*)*)\s*((?:2[\d/]{4}\s*)*)\s*((?:3[\d/]{5}\s*)*)\s*(?:(4[\d/]{4}\s*)*)\s*((?:5[\d/]{4}\s*)*)\s*(?:(6[\d/]{3}/\s*)*)\s*(?:(7[\d/]{5}\s*)*)\s*((?:8[\d/]{4}\s*)*)\s*((?:906[\d/]{2}\s*)*)\s*((?:932[\d/]{2}\s*)*)|$)</SectionGroups>
+    <Section number="0" text="Опасное явление" >
+      <GroupValues>(\d{2})</GroupValues>
+      <Value number="1"  descrName="CwCw" text="Вид опасного явления" />
+    </Section>
+    <Section number="1" text="Ветер" >
+      <GroupValues>1([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="dd" text="Направление" />
+      <Value number="2"  descrName="ff" text="Скорость" />
+      <Value number="3"  descrName="fmfm" text="Максимальная скорость" />
+    </Section>
+    <Section number="2" text="Явление" >
+      <GroupValues>2([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="dsds" text="Направление грозы, смерча, закрытия гор" />
+      <Value number="2"	descrName="ww" text="Наличие осадков" />
+    </Section>
+    <Section number="3" text="" >
+      <GroupValues>3([\d/]{2})([\d/]{3})</GroupValues>
+      <Value number="1"  descrName="RR34" text="Диаметр гололедно-изморозевого отложения" />
+      <Value number="2"	descrName="T_T_" text="Температура" />
+    </Section>
+    <Section number="4" text="" >
+      <GroupValues>4([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="snTxTxTx" text="Максимальная температура" />
+    </Section>
+    <Section number="5" text="" >
+      <GroupValues>5([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="snTnTnTn" text="Минимальная температура" />
+    </Section>
+    <Section number="6" text="" >
+      <GroupValues>6([\d/]{3})/</GroupValues>
+      <Value number="1"  descrName="RRR" text="Количество осадков" />
+    </Section>
+    <Section number="7" text="" >
+      <GroupValues>7([\d/]{2})([\d/]{3})</GroupValues>
+      <Value number="1"  descrName="VV" text="Минимальная МДВ" />
+      <Value number="2"	descrName="ttt" text="Продолжительность явления, ч" />
+    </Section>
+    <Section number="8" text="" >
+      <GroupValues>8([\d/])([\d/])(?:([\d]{2})|(\d)/||//)</GroupValues>
+      <Value number="1"  descrName="Ns"  text="Количество облаков" />
+      <Value number="2"  descrName="C"   text="Форма облаков" />
+      <Value number="3"	descrName="hshs" text="ВНГО, инструментальные наблюдения" />
+      <Value number="4"	descrName="h"    text="ВНГО, визуальные наблюдения" />
+    </Section>
+    <Section number="9" text="" >
+      <GroupValues>906([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="ttt" text="Продолжительность явления" />
+    </Section>
+    <Section number="9" text="" >
+      <GroupValues>932([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="RR32" text="Диаметр града" />
+    </Section>
+
+  </Section>
+</Message>

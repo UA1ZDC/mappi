@@ -1,0 +1,10 @@
+Package: python3-idna
+Version: 2.10
+Architecture: amd64
+Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>
+Installed-Size: 290
+Depends: python3:any (>= 3.5~)
+Section: python
+Priority: optional
+Description: Internationalized Domain Names in Applications (IDNA)
+ Summary: Internationalized Domain Names in Applications (IDNA)

@@ -1,0 +1,43 @@
+{
+  "aggregate" : "surf_hour",
+  "pipeline" : [
+    { "$addFields" : {
+      "month" : { "$month" : "$_id.date"}
+    } },
+    { "$match" : {  
+      "_id.station" :  @station@,
+      "_id.station_type" :  @station_type@,    
+      "_id.descrname" : { "$in" : @descrname@ },
+      "month" : @month@,
+      "$and" : [
+	{ "_id.date" : { "$gte" : @start_dt@ } },
+	{ "_id.date" : { "$lte" : @end_dt@ } }
+      ]
+    } },
+    { "$group" : {
+      "_id" : {
+	"descrname" : "$_id.descrname",
+	"month" : { "$month" : "$_id.date" },
+	"hour" : "$_id.hour"
+      },
+      "value" : {
+	"$push" :  "$value"            
+      }
+    }},
+    { "$sort" : { 
+      "_id.descrname" :  1,
+      "_id.month" : 1 ,
+      "_id.hour" : 1
+    }},
+    { "$project" : {
+      "descrname" : "$_id.descrname",
+      "month" : "$_id.month",
+      "hour"  : "$_id.hour",
+      "value" : 1,
+      "_id"   : 0      
+    } }
+    
+  ],  
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}

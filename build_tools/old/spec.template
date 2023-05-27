@@ -1,0 +1,11 @@
+Summary: @PROJECT@@TARGET@
+Name: @PROJECT@@TARGET@
+Version: 0.1
+Release: 1
+License: commercial
+Group: TMeteo/
+BuildRoot:%{_topdir}
+%description
+ @DESCRIPTION@ @PROJECT@
+
+%files

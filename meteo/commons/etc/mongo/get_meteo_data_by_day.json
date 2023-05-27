@@ -1,0 +1,51 @@
+{
+  "aggregate": "meteoreport",
+  "pipeline": [
+    { "$match": {
+      "dt": { "$gte": @start_dt@, "$lte": @end_dt@ },
+      "station_info.country": @country@,
+      "station": { "$in" : @station@},
+      "station_type": { "$in" : @station_type@},
+      "data_type": { "$in": @data_type@ },
+      "level_type": @level_type@,
+      "level": @level@,
+      "param.descrname": { "$in": @descrname@ },
+      "location": @location@
+    }
+    },
+    { "$sort": { "dt": -1 } },
+    { "$project" : {
+        "dt": 1,
+        "station":1,
+        "station_type": 1,
+        "station_info": 1,
+        "location": 1,
+        "data_type": 1,
+        "level_type": 1,
+        "level": 1,
+        "param": 1
+      }
+    },
+    { "$group": {
+        "_id": {
+           "station": "$station",
+           "station_type": "$station_type"
+         },
+        "station": { "$first": "$station"},
+        "station_type": { "$first": "$station_type"},
+        "station_info": {"$first":"$station_info"},
+        "oid": { "$first": "$_id" },
+        "dt": { "$first": "$dt" },
+        "location": { "$first": "$location" },
+        "data_type": { "$first": "$data_type" },
+        "level_type": { "$first": "$level_type" },
+        "level": { "$first": "$level" },
+        "param": { "$first": "$param" }
+      }
+    },
+    { "$sort": { "location.coordinates.0": 1 } }
+
+  ],
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}

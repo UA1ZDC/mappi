@@ -1,0 +1,15 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: aiohttp_jinja2
+Upstream-Contact: Andrew Svetlov <andrew.svetlov@gmail.com>
+Source: https://github.com/aio-libs/aiohttp_jinja2/
+
+Files: *
+Copyright: Andrew Svetlov <andrew.svetlov@gmail.com>
+License: Apache2
+
+Files: debian/*
+Copyright: 2016 © Piotr Ożarowski <piotr@debian.org>
+License: Apache2
+
+License: Apache2
+ See /usr/share/common-licenses/Apache-2.0

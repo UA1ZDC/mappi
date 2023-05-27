@@ -1,0 +1,244 @@
+syntax = "proto2";
+option cc_generic_services = true;
+
+
+import "map_isoline.proto";
+import "satellite.proto";
+
+package mappi.conf;
+
+
+//! Тематические обработки
+enum ThemType {
+  kThemUnk    = 0;
+  kGrayScale  = 1;     //!< Оттенки серого
+  kFalseColor = 2;     //!< Псевдоцвета
+  kRgb        = 3;
+  kRgbAirmass = 4; //-
+  kRgbDust    = 5; //-
+  kRgbAsh     = 6; //-
+  kRgbMicrophysics = 7; //-
+  kRgbDayMicrophysics   = 8;
+  kRgbNightMicrophysics = 9;
+  kRgbSevereStorms = 10; //-
+  kRgbSnow    = 11; //-
+  kRgbNatural = 12; //-
+  kRgbClouds  = 13;
+  kRgbFog     = 14; //-
+  kRgbTrueColor  = 15;
+  kRgbCloudPhase = 16;  //-
+  kRgbCloudType  = 17;  //-
+  kNdvi   = 18;
+  kIndex8 = 19;         //!< Индексная 8 бит
+  kIndex16 = 20;
+  kIndex24 = 21;
+  kIndex32 = 22;
+  kCloudMask =    23;      //!< Маска облачности
+  kCloudType =    24;      //!< Типы облаков
+  kCloudTempr =   25;      //!< Температура верхней границы облаков
+  kCloudAlt =     26;      //!< высота верхней границы облаков
+  kSeaTempr =     27;      //!< температура воды
+  kSurfTempr =    28;      //!< температура поверхности
+  kTemprProfile = 29;      //!< профиль температуры
+  kHumProfile =   30;      //!< профиль влажности
+  kWaterContent = 31;      //!< Влагосодержание
+  kSnowBorder   = 32;      //!< граница снежного покрова
+  kIceBorder    = 33;      //!< граница льда на поверхности океана
+  kTotalPrecip  = 34;    //!< Total Precipitable and Cloud Liquid Water AMSU
+  kSeaIceConc   = 35;       //!<Сплоченность морского льда
+  kCloudFull    = 36;      //!<Все, что нашли про облачность на изображении
+
+}
+
+
+// -----
+//для калькулятора
+
+message ThematicChannel {
+  required string satellite = 1;                        //!< Название спутника
+  required mappi.conf.InstrumentType instrument = 2;    //!< Тип прибора
+  required string channel = 3;                          //!< Номер канала
+}
+
+//!< Переменная участвующая в тематической обработке
+message ThematicVariable {
+  required string name = 1;             //!< Имя переменной
+  repeated ThematicChannel channel = 2; //!< Канал
+}
+
+//!< Описание тематической обработки
+message ThematicProc {
+  required string name = 1;             //!< Уникальное название тематической обработки
+  required bool enabled = 2;            //!< Включить/отключить обработку
+  required ThemType type = 3;           //!< Тип выходной картинки
+  optional string red = 4;              //!< Математическое представление для красной компоненты в rgb или для greyscale/ndvi
+  optional string green = 5;            //!< Математическое представление для зеленой компоненты в rgb
+  optional string blue = 6;             //!< Математическое представление для синей компоненты в rgb
+
+
+  repeated ThematicVariable vars = 7;   //!< Список переменных
+  optional string description = 8;      //!< Описание
+  optional string unit = 9;             //!< единица измерения
+  optional mappi.conf.ImageTransform image  = 10;        //!< операции с изображением
+  optional float red_gamma = 21;              //!< rgb gamma
+  optional float green_gamma = 22;            //!< rgb gamma
+  optional float blue_gamma = 23;             //!< rgb gamma
+
+  optional float red_min = 25;              //!< rgb gamma
+  optional float red_max = 26;              //!< rgb gamma
+  optional float green_min = 27;            //!< rgb gamma
+  optional float green_max = 28;            //!< rgb gamma
+  optional float blue_min = 29;             //!< rgb gamma
+  optional float blue_max = 30;             //!< rgb gamma
+
+}
+
+//!< Массив тематических обработок
+message ThematicProcs {
+  repeated ThematicProc thematics = 1;
+}
+
+message ThematicPalette {
+  optional mappi.conf.ThemType type = 1;        //!< Тип тематической обработки
+  repeated meteo.map.proto.ColorGrad color = 2; //!< Палитра
+  optional string name = 3;        //!< Название тематической обработки
+
+}
+
+message ThematicPalettes {
+  repeated ThematicPalette palette = 1;
+}
+
+// ------
+
+message RgbRange {
+  required int32 ch1 = 1;
+  optional int32 ch2 = 2;
+  required int32 min  = 3;
+  required int32 max  = 4;
+  required float gamma = 5; 
+}
+
+message RgbThem {
+  required mappi.conf.ThemType type = 1;
+  required mappi.conf.InstrumentType instr = 2;
+  required bool calibrate = 3;
+  required RgbRange red = 4;
+  required RgbRange blue  = 5;
+  required RgbRange green = 6;
+}
+
+//настройка для RGB обработок
+message RgbConf {
+  repeated RgbThem them = 1;
+}
+
+message NdviThem {
+  required mappi.conf.ThemType type = 1;
+  required mappi.conf.InstrumentType instr = 2;
+  required int32 nir = 3;
+  required int32 red = 4;
+}
+
+//NDVI
+message NdviConf {
+  repeated NdviThem them = 1;
+}
+
+message GrayscaleThem {
+  required mappi.conf.ThemType type = 1;
+  required mappi.conf.InstrumentType instr = 2;
+}
+
+//оттенки серого
+message GrayscaleConf {
+  repeated GrayscaleThem them = 1;   
+}
+
+//настройка тематических обработок для спутника
+message SatThematics {
+  required string satellite = 1; //!< название спутника
+  repeated ThemType type = 2;    //!< обработки
+}
+
+//настройка тематических обработок
+message ThematicConf {
+  repeated SatThematics thematics = 1;
+}
+
+//----
+
+//запрос на выполнение ТО
+message PerformThemRequest {
+  optional string sat_name   = 1; //!< название спутника
+  optional string date_start = 2; //!< время начала приема данных
+  repeated mappi.conf.InstrumentType instr = 3; //!< приборы, данные которых надо обработать
+}
+
+message ThemResponse {
+  optional bool result = 1;
+  optional string comment = 2;
+}
+
+//пороговые значения для тематических обработок
+message ThematicThresholds{
+//облака
+optional float CloudSurface2 = 1 [default = 20.];
+optional float CloudSurface1 = 2 [default = 0.025];
+optional float CloudTempr    = 3 [default = 7.];
+optional float CloudIce1     = 4 [default = 279.15];
+optional float CloudIce2     = 5 [default = -0.05];
+optional float CloudWater1   = 6 [default = 10.];
+optional float CloudWater2   = 7 [default = 1.];
+optional float CloudLower    = 8 [default = -8.]; //! сравниваем с Т4 > облака нижнего яруса (0-2000 м);
+optional float CloudMiddle   = 9 [default = -28.];//!сравниваем с Т4  облака среднего яруса (2000-6000 м);
+optional float CloudHi       = 10 [default = -28.];//!сравниваем с Т4 облака верхнего яруса (6000-12000 м).
+
+}
+
+message ThematicCoef{
+//температура поверхности моря
+//светлое время
+optional float SeaDayTemprA0   = 1 [default = -254.8];
+optional float SeaDayTemprA1   = 2 [default = 0.934];
+optional float SeaDayTemprA2   = 3 [default = 2.55];
+optional float SeaDayTemprA3   = 4 [default = -0.24];
+
+//темное время суток
+optional float SeaNightTemprA0   = 5 [default = -255.7];
+optional float SeaNightTemprA1   = 6 [default = 0.938];
+optional float SeaNightTemprA2   = 7 [default = 2.34];
+optional float SeaNightTemprA3   = 8 [default = -0.44];
+
+//светлое время
+//L A N D S U R F A C E T E M P E R A T U R E R E T R I E V A L A N D ITS
+//V A L I D A T I O N U S I N G N O A A A V H R R T H E R M A L DATA
+//B.K. BHATTACHARYA@ A N D V.K. DADHWAL*
+//Crop inventory and Modelling Division, ARG / RES1PA
+//Space Applications Centre, Ahmedabad-380 015, India
+//@Corresponding author : bkbhattacharya@sac.isro.gov.in
+
+optional float LandDayTemprA0   = 11 [default = 1.274];
+optional float LandDayTemprB0   = 12 [default = 0.15616];
+optional float LandDayTemprB1   = 13 [default = 0.482];
+optional float LandDayTemprC0   = 14 [default = 6.26];
+optional float LandDayTemprC1   = 15 [default = 3.98];
+optional float LandDayTemprC2   = 16 [default = 38.33];
+
+//темное время суток
+optional float LandNightTemprA0   = 17 [default = 1.274];
+optional float LandNightTemprB0   = 18 [default = 0.15616];
+optional float LandNightTemprB1   = 19 [default = 0.482];
+optional float LandNightTemprC0   = 20 [default = 6.26];
+optional float LandNightTemprC1   = 21 [default = 3.98];
+optional float LandNightTemprC2   = 22 [default = 38.33];
+
+}
+
+
+
+service ThematicService  {
+  //запрос на выполнение обработки данных спутника
+  rpc PerformThemProcess(PerformThemRequest) returns (ThemResponse);
+  
+}

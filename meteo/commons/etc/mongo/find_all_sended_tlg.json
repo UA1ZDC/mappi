@@ -1,0 +1,11 @@
+{
+"aggregate" : "msg",
+"pipeline" : [
+    { "$match" : { "cccc" : @cccc@ } },
+    { "$sort" :  {@@ : @@ }  },
+    { "$skip" : @skip@ } ,
+    { "$limit" : @limit@ }
+],
+"cursor": { "batchSize": 1 },
+"allowDiskUse": true
+}

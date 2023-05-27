@@ -1,0 +1,11 @@
+{
+  "findAndModify": "dialogs_messages",
+  "query": { "_id" : @id@},
+  "update": {
+    "$set" : {      
+      "status" : @status@
+    }
+  },
+  "new": true,
+  "upsert": false
+}

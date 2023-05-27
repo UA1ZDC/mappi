@@ -1,0 +1,49 @@
+code: "kn15ice"
+name: "Толщина льда"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/kn15ice.template"
+wind: false
+rule {
+  pos {
+    x: -11
+    y: 6
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: -1.66
+  id {
+    descr: 213115
+    name: "DDD"
+    description: ""
+  }
+}
+datatype: kSurface
+center: kCircle
+radius: 5
+windfont {
+  family: "wthrNew0"
+  pointsize: 8
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}

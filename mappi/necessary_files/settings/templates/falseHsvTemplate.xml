@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item valueSrc="falseHsvAlgParam" source="this" text="Алгоритм" complex="true">
+    <item text="HSV" />
+    <item valueSrc="hue" type="0" source="this" textItem="K1" text="Тон" />
+    <item valueSrc="saturation" type="0" source="this" textItem="K2" text="Насыщенность" />
+    <item valueSrc="value" type="0" source="this" textItem="K3" text="Яркость" />
+  </item>
+</body>

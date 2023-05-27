@@ -1,0 +1,14 @@
+name: "forecastWindRegion.map"
+title: "Прогноз ветра по району"
+center: 4
+formal {
+    template: "forecastWindRegion.odt"
+    name: "Прогноз ветра по району"
+    module_path: "forecastWindRegion.py"
+    format: kOdt
+    icon_path: ":product/icons/weather_journal.png"
+}
+ 
+document {
+  doctype: kFormalDocument
+}

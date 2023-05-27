@@ -1,0 +1,11 @@
+name: "kn-21"
+title: "КН-21"
+data_type: kSynopType
+data {
+  template_name: "kn21"
+  source: kSurface
+  data_type: kSynopDecade
+  data_type: kEndSynopType
+  type_level: 1
+  level: 0
+}

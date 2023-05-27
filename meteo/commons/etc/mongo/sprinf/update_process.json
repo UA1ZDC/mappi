@@ -1,0 +1,30 @@
+{
+  "update": "processes",
+  "updates": [
+     { "q": {
+        "file_name" :     @file_name@,
+        "is_finished":    @is_finished@,
+        "process_type":   @process_type@
+      },
+      "u": {
+        "$set" : {
+          "file_name":      @file_name@,
+          "number_of_exec": @number_of_exec@,
+          "progress":       @progress@,
+          "is_finished":    @is_finished@,
+          "error":          @error@,
+          "last_val":       @last_val@,
+          "process_type":   @process_type@,
+          "stations":       @stations@,
+          "stationspdc":    @stationspdc@,
+          "step":           @step@,
+          "step_percent":   @step_percent@,
+          "hour_step":      @hour_step@,
+          "params":         @params@,
+          "paramspdc":      @paramspdc@
+        }
+      },
+      "upsert": true
+    }
+  ]
+}

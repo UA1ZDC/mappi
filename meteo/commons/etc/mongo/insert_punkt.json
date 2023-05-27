@@ -1,0 +1,23 @@
+{
+  "findAndModify": "punkts",
+  "query" : {
+    "name" : @name@,
+     "fi" :  @fi@,
+    "la" :  @la@,
+    "height" :  @height@,
+    "station_id" :  @station_id@,
+    "station_type" :  @station_type@
+    },
+  "update": {
+    "$set" : { "name" : @name@ },
+        "$set" : {  "fi" : @fi@ },
+        "$set" : { "la" : @la@ },
+        "$set" : { "height" : @height@ },
+        "$set" : { "station_id" : @station_id@ },
+        "$set" : { "is_active" : @is_active@ },
+        "$set" : { "station_type" : @station_type@ }
+    },
+  "remove": false,
+  "new": true,
+  "upsert": true
+}

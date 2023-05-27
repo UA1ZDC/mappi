@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- атрибут match - полуинтервал вида (min, max] -->
+<control>
+  <category name="level_type" num="100"/> <!--аэрологические данные-->
+  <group>
+    <phys>
+      <match name="La" segment="-30,0;0,30" />
+      <match name="MM" segment="9,12;1,2" /> <!-- зима -->
+      <table name="T" namematch="P1">
+	<val match="850,9999" diff="20" step="1.0" max="20" />
+	<val match="200,850"  diff="10" step="0.8" max="8"  />
+	<val match="70,200"   diff="10" step="2.0" max="25" />
+	<val match="0,70"     diff="10" step="2.5" max="25" />
+      </table>
+    </phys>
+
+    <phys>
+      <match name="La" segment="30,60;-60,-30" />
+      <match name="MM" segment="9,12;1,2" /> <!-- зима -->
+      <table name="T" namematch="P1">
+	<val match="850,9999" diff="20" step="1.5" max="30" />
+	<val match="200,850"  diff="10" step="1.0" max="10" />
+	<val match="70,200"   diff="10" step="2.0" max="25" />
+	<val match="0,70"     diff="10" step="2.5" max="25" />
+      </table>
+    </phys>
+
+    <phys>
+      <match name="La" segment="60,90;-90,-60" />
+      <match name="MM" segment="9,12;1,2" /> <!-- зима -->
+      <table name="T" namematch="P1">
+	<val match="850,9999" diff="20" step="1.7" max="34" />
+	<val match="200,850"  diff="10" step="1.2" max="12" />
+	<val match="70,200"   diff="10" step="2.0" max="25" />
+	<val match="0,70"     diff="10" step="2.5" max="25" />
+      </table>
+    </phys>
+
+    <phys>
+      <match name ="La" segment="-30,0;0,30" />
+      <match name="MM" segment="3,8" /> <!-- лето -->
+      <table name="T" namematch="P1">
+	<val match="850,9999" diff="20" step="0.8" max="16" />
+	<val match="200,850"  diff="10" step="0.8" max="8"  />
+	<val match="70,200"   diff="10" step="2.0" max="20" />
+	<val match="0,70"     diff="10" step="2.5" max="25" />
+      </table>
+    </phys>
+
+    <phys>
+      <match name ="La" segment="30,60;-60,-30" />
+      <match name="MM" segment="3,8" /> <!-- лето -->
+      <table name="T" namematch="P1">
+	<val match="850,9999" diff="20" step="1.0" max="20" />
+	<val match="200,850"  diff="10" step="1.0" max="8"  />
+	<val match="70,200"   diff="10" step="2.0" max="20" />
+	<val match="0,70"     diff="10" step="2.5" max="25" />
+	</table>
+    </phys>
+
+    <phys>
+      <match name ="La" segment="60,90;-90,-60" />
+      <match name="MM" segment="3,8" /> <!-- лето -->
+      <table name="T" namematch="P1">
+	<val match="850,9999" diff="20" step="1.2" max="24" />
+	<val match="200,850"  diff="10" step="1.2" max="8"  />
+	<val match="70,200"   diff="10" step="2.0" max="20" />
+	<val match="0,70"     diff="10" step="2.5" max="25" />
+      </table>
+    </phys>
+
+  </group>
+
+  <group>
+  <adiabat>
+    <table  name="T" namematch="P1">
+      <!-- <val match="850,9999" max="0" /> TODO Зависит от сезона, широты, толщины слоя -->
+      <val match="0,850"    max="0" /> 
+      <val match="0,100"    max="0" />
+    </table>
+  </adiabat>
+  </group>
+
+</control>

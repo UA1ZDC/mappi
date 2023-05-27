@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PlaceWidget</class>
+ <widget class="QWidget" name="PlaceWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>415</width>
+    <height>360</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Пункты</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Пункты</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="3">
+       <widget class="QToolButton" name="upBtn">
+        <property name="toolTip">
+         <string>Поднять пункт на одину позицию вверх</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../etc/meteo.icons.qrc">
+          <normaloff>:/meteo/icons/tools/layer_up.png</normaloff>:/meteo/icons/tools/layer_up.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="7">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QToolButton" name="departBtn">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>29</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>вылет</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QToolButton" name="routeBtn">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>29</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>на маршруте</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QToolButton" name="reserveBtn">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>29</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>запасной</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QToolButton" name="landBtn">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>29</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>посадка</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QToolButton" name="addBtn">
+           <property name="maximumSize">
+            <size>
+             <width>29</width>
+             <height>29</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Добавить пункт в список</string>
+           </property>
+           <property name="text">
+            <string>+</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../etc/meteo.icons.qrc">
+             <normaloff>:/meteo/icons/tools/plus.png</normaloff>:/meteo/icons/tools/plus.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="5">
+          <widget class="StationWidget" name="stationWidget" native="true">
+           <property name="isMapButtonVisible" stdset="0">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QToolButton" name="newBtn">
+        <property name="text">
+         <string>добавить</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QToolButton" name="downBtn">
+        <property name="toolTip">
+         <string>Опустить пункт на одину позицию вниз</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../etc/meteo.icons.qrc">
+          <normaloff>:/meteo/icons/tools/layer_down.png</normaloff>:/meteo/icons/tools/layer_down.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="5">
+       <widget class="QToolButton" name="delBtn">
+        <property name="toolTip">
+         <string>Удалить пункт из списка</string>
+        </property>
+        <property name="text">
+         <string>-</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../etc/meteo.icons.qrc">
+          <normaloff>:/meteo/icons/tools/minus.png</normaloff>:/meteo/icons/tools/minus.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QToolButton" name="histBtn">
+        <property name="toolTip">
+         <string>Ранее использованные пункты</string>
+        </property>
+        <property name="text">
+         <string>H</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../etc/meteo.icons.qrc">
+          <normaloff>:/meteo/icons/misc/blue-document-bookmark.png</normaloff>:/meteo/icons/misc/blue-document-bookmark.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="7">
+       <widget class="QTreeView" name="table">
+        <property name="rootIsDecorated">
+         <bool>false</bool>
+        </property>
+        <property name="itemsExpandable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>StationWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">meteo/commons/ui/custom/stationwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>histBtn</tabstop>
+  <tabstop>newBtn</tabstop>
+  <tabstop>upBtn</tabstop>
+  <tabstop>downBtn</tabstop>
+  <tabstop>delBtn</tabstop>
+  <tabstop>departBtn</tabstop>
+  <tabstop>routeBtn</tabstop>
+  <tabstop>reserveBtn</tabstop>
+  <tabstop>landBtn</tabstop>
+  <tabstop>addBtn</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../etc/meteo.icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>newBtn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>79</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>76</x>
+     <y>88</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>histBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>histBtn</receiver>
+   <slot>showMenu()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>32</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

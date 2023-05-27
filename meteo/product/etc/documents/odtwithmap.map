@@ -1,0 +1,12 @@
+name: "odtwithmap.map"
+title: "Графическая ГМП"
+formal {
+    template: "odtwithmap.odt"
+    name: "Графическая ГМП"
+    module_path: "odtwithmap.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

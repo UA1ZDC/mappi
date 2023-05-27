@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item complex="true" valueSrc="" source="this" textItem="" text="">
+    <item valueSrc="enabled" type="2" source="this" textItem="false" text="Автоматический расчёт" />
+    <item complex="true" valueSrc="conditions" source="this" templateFile="cloudmaskCondTemplate.xml" addable="true" text="Условия"/>
+    <item complex="true" valueSrc="themChannels" chiefFile="channels.xml" buttonName="Выбрать" type="7" source="this" text="Каналы тематической обработки" />
+  </item>
+</body>

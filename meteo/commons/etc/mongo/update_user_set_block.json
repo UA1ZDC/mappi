@@ -1,0 +1,13 @@
+{
+  "update": "users",
+  "updates": [
+    { "q": { "login": @login@},
+      "u": {"$set":
+                { "block": @block@ }
+            },
+            "upsert": false,
+            "multi": true
+    }
+    ]
+}
+

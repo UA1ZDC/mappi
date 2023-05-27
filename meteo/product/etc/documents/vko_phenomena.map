@@ -1,0 +1,11 @@
+name: "vko_phenomena.map"
+title: "Климатическая характеристика (явления)"
+formal {
+    template: "vko_phenomena.odt"
+    name: "Климатическая характеристика (явления)"
+    module_path: "vko_surf_phen.py"
+    format: kOdt
+}
+document {
+  doctype: kFormalDocument
+}

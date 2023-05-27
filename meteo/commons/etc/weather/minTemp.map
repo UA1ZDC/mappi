@@ -1,0 +1,10 @@
+name: "minTemp.map"
+title: "Карта минимальной температуры"
+spline_koef: 2
+data {
+  mode: kGradient
+  level: 0
+  type_level: 1
+  template_name: "12112"
+  transparency: 50
+}

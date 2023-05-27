@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<formats>
+  <msgformat name='ggmc'>
+    <startline regex='(\n{7})(\w{8})\s([0-9]{3})(\s{5})\r\r\n' >
+      <group name='number' order='1' />
+    </startline>
+    <end regex='\r\r\n\n' >
+      <group name='number' order='2' />
+    </end>
+    <header name='circular' regex='(?!(([BbБб]{1})([IMimИМим]{1})))(\w{1})(\w{1})(\w{1})(\w{1})(\d{2})\s(\w{4})\s(\d{6})(\s\w{3})?\r\r\n'>
+      <group name='T1' order='1'/>
+      <group name='T2' order='2'/>
+      <group name='A1' order='3'/>
+      <group name='A2' order='4'/>
+      <group name='ii' order='5'/>
+      <group name='CCCC' order='6'/>
+      <group name='YYGGgg' order='7'/>
+      <group name='BBB' order='8'/>
+    </header>
+  </msgformat>
+</formats>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM65" text="WAVEOB"  category="">
+  <MessageSections>MMXX\s*((?:\w+|\d{5}|[\d/]{3}//)?\s*\d{5}\s*\d{4}/\s*(?:\d{5}|\d{5}\s*\d{5})?)\s*(00[\d/]{3}\s*1[\d/]{4}\s*2[\d/]{4}\s*3[\d/]{4}\s*(?:4[\d/]{4})?\s*(?:5[\d/]{4})?\s*(?:6[\d/]{4})?\s*(?:7[\d/]{4})?\s*(?:8[\d/]{4})?\s*(?:9[\d/]{4})?\s*)(111\d{2}\s*[\d/]{4}/\s*[\d/]{4}/\s*(?:[\d/]{2}///\s*\d[\d/]{4}\s*\d[\d/]{4}\s*)+)?(2222\d\s*[\d/]{5}\s*(?:\d[\d/]{4}\s*)+)(3333\d\s*[\d/]{5}\s*(?:\d[\d/]{4}\s*)+)(4444\d\s*[\d/]{5}\s*(?:\d[\d/]{4}\s*)+)(5555\d\s*[\d/]{5}\s*(?:\d[\d/]{4}\s*)+)</MessageSections>
+  <Section number="0" text="Раздел 0" >
+    <GroupValues>(?:(\w+)|([\d/])([\d/])([\d/]{3})|[\d/]{3}//)?\s*([\d/]{2})([\d/]{2})([\d/])\s*(\d{2})(\d{2})/\s*(?:([\d/]{2})([\d/]{3})|(\d)(\d{4})\s*(\d{5}))?</GroupValues>
+    <Value number="1"  descrName="D____D" text="" />
+    <Value number="2"  descrName="A1"/>
+    <Value number="3"  descrName="bw"/>
+    <Value number="4"  descrName="nbnbnb"/>
+    <Value number="5"  descrName="D____D" text="" />
+    <Value number="6"  descrName="YY"     text="day"/>
+    <Value number="7"  descrName="MM"     text="month"/>
+    <Value number="8"  descrName="J"      text="year"/>
+    <Value number="9"  descrName="GG"     text="H"/>
+    <Value number="10" descrName="gg"     text="M"/>
+    <Value number="11" descrName="II" />
+    <Value number="12" descrName="iii"    text="WMO STATION NUMBER" />
+    <Value number="13" descrName="Qc"     text="QUADRANT OF THE GLOBE"/>
+    <Value number="14" descrName="LaLaLa"    text="LATITUDE, IN TENTHS"/>
+    <Value number="15" descrName="LoLoLoLo"  text="LONGITUDE, IN TENTHS"/>	
+  </Section>
+  <Section number="0" text="Раздел 0_1" >
+    <GroupValues>*00[\d/][\d/][\d/]\s*1([\d/]{4})\s*2([\d/]{4})\s*3[\d/]{4}\s*(?:4([\d/]{4}))?\s*(?:5[\d/]{4})?\s*(?:6([\d/]{4}))?\s*(?:7[\d/]{4})?\s*(?:8[\d/]{4})?\s*(?:9[\d/]{2}([\d/]{2}))?\s*</GroupValues>
+    <Value number="1"   descrName="Ia"    text="Указатель частоты или волнового числа" />
+    <Value number="2"   descrName="Im"    text="Указатель метода расчетов спектральных данных" />
+    <Value number="3"   descrName="Ip"    text="Указатель типа платформы" />
+    <Value number="4"   descrName="zn"    text="Глубина воды, в метрах" />
+    <Value number="5"   descrName="HsHsHsHs" text="Высота значительной волны, в сантиметрах" />
+    <!-- <Value number="6"   descrName="PpPpPpPp" text="" /> -->
+    <Value number="7"   descrName="HmHmHmHm" text="Максимальная высота волны, в сантиметрах" />
+    <!-- <Value number="8"   descrName="PaPaPaPa" text="" /> -->
+    <!-- <Value number="9"   descrName="HseHseHseHse" text="" /> -->
+    <!-- <Value number="10"  descrName="PspPspPspPsp" text="" /> -->
+    <!-- <Value number="11"  descrName="PsaPsaPsaPsa" text="" /> -->
+    <Value number="12"  descrName="dd_dd" text="Истинное направление, откуда поступает доминирующая волна" />
+    <Value number="13"  descrName="dsds"  text="Направление перемещения доминирующей волны, в целых градусах" />    
+  </Section>
+    <Section number="0" text="Раздел 1" >
+    <GroupValues>111\d{2}\s*[\d/]{4}/\s*[\d/]{4}/\s*(?:[\d/]{2}///\s*\d[\d/]{4}\s*\d[\d/]{4}\s*)+</GroupValues>
+    <!-- <Value number="1"  descrName="" text="" /> -->
+    <!-- <Value number="2"  descrName="" text="" /> -->
+    <!-- <Value number="3"  descrName="" text="" /> -->
+    <!-- <Value number="4"  descrName="" text="" /> -->
+  </Section>
+  <Section number="0" text="Раздел 2" >
+    <GroupValues>2222\d\s*[\d/]{5}\s*(?:\d[\d/]{4}\s*)+</GroupValues>
+    <!-- <Value number="1"  descrName="" text="" /> -->
+    <!-- <Value number="2"  descrName="" text="" /> -->
+    <!-- <Value number="3"  descrName="" text="" /> -->
+    <!-- <Value number="4"  descrName="" text="" /> -->
+  </Section>
+  <Section number="0" text="Раздел 3" >
+    <GroupValues>3333\d\s*[\d/]{5}\s*(?:\d[\d/]{4}\s*)+</GroupValues>
+    <!-- <Value number="1"  descrName="" text="" /> -->
+    <!-- <Value number="2"  descrName="" text="" /> -->
+    <!-- <Value number="3"  descrName="" text="" /> -->
+    <!-- <Value number="4"  descrName="" text="" /> -->
+  </Section>
+  <Section number="0" text="Раздел 4" >
+    <GroupValues>4444\d\s*[\d/]{5}\s*(?:\d[\d/]{4}\s*)+</GroupValues>
+    <!-- <Value number="1"  descrName="" text="" /> -->
+    <!-- <Value number="2"  descrName="" text="" /> -->
+    <!-- <Value number="3"  descrName="" text="" /> -->
+    <!-- <Value number="4"  descrName="" text="" /> -->
+  </Section>
+  <Section number="0" text="Раздел 5" >
+    <GroupValues>5555\d\s*[\d/]{5}\s*(?:\d[\d/]{4}\s*)+</GroupValues>
+    <!-- <Value number="1"  descrName="" text="" /> -->
+    <!-- <Value number="2"  descrName="" text="" /> -->
+    <!-- <Value number="3"  descrName="" text="" /> -->
+    <!-- <Value number="4"  descrName="" text="" /> -->
+  </Section>
+</Message>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="KN-19" text="ДЕКАДА"  category="13">
+<MessageSections>^\s*(?:ДЕКАДА|DEKADA|dekada)(?:(\s*[\d]{3})\s|\s*[\d]{5}\s+(\d{3})\d)(\s*[\d]{5})(?:\s*0[\d/]{4})?(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})(\s*4[\d/]{8})?(\s*5[\d/]{3})?(\s*6[\d/]{6})?(\s*7[\d/]{3,6})?(\s*8[\d/]{6})?(\s*9[\d/]{6})?</MessageSections>
+  <Section number="1" text="DATE" > <!--дата-->
+    <SectionGroups>\s*([\d]{2})([\d])</SectionGroups>
+    <Value number="1"  descrName="MM" text="month"/>
+    <Value number="2"  descrName="Nd" text="ten-day period"/>
+  </Section>
+  <Section>
+    <SectionGroups>\s*([\d]{2})([\d])</SectionGroups>
+    <Value number="1"  descrName="MM" text="month"/>
+    <Value number="2"  descrName="Nd" text="ten-day period"/>
+  </Section>
+  <Section number="2" text="WMO STATION NUMBER"> <!--индекс станции-->
+    <SectionGroups>\s*([\d]{2})([\d]{3})</SectionGroups>
+    <Value number="1"  descrName="II"/>
+    <Value number="2"  descrName="iii" text="WMO station number"/>
+  </Section>
+  <Section number="3" text="Среднемесячное давление на уровне станции">
+    <SectionGroups>\s*1([\d/]{4})</SectionGroups>
+        <Value number="1"   descrName="P0P0P0P0_avg" text="Среднемесячное давление на уровне станции"/>
+  </Section>
+  <Section number="4" text="Среднемесячное давление, в десятых долях гектопаскаля или средний месячный геопотенциал в гпм для уровня станции">
+    <SectionGroups>\s*2([\d/]{4})</SectionGroups>
+        <Value number="1"   descrName="PPPP_avg" text="Среднемесячное давление, в десятых долях гектопаскаля или средний месячный геопотенциал в гпм для уровня станции"/>
+  </Section>
+  <Section number="5" text="Среднемесячная температура воздуха">
+    <SectionGroups>\s*3([\d/]{4})</SectionGroups>
+        <Value number="1"   descrName="snTTT_avg" text="Среднемесячная температура воздуха"/>
+  </Section>
+  <Section number="51" text="Средние за месяц экстремальные суточные температуры воздуха">
+    <SectionGroups>\s*4([\d/]{4})([\d/]{4})</SectionGroups>
+    <Value number="1"   descrName="snTxTxTx_avg" text="Максимальная среднесуточная температура воздуха за месяц, в десятых долях градуса" />
+    <Value number="2"   descrName="snTnTnTn_avg" text="Минимальная среднесуточная температура воздуха за месяц, в десятых долях градуса" />
+  </Section>
+  <Section number="6" text="Среднемесячная упругость водяного пара, в десятых долях гектопаскаля">
+    <SectionGroups>\s*5([\d/]{3})</SectionGroups>
+        <Value number="1"   descrName="eee_avg" text="Среднемесячная упругость водяного пара, в десятых долях гектопаскаля"/>
+  </Section>
+  <Section number="7" text="Осадки">
+    <SectionGroups>\s*6([\d/]{4})([\d/]{2})</SectionGroups>
+        <Value number="1"   descrName="R1R1R1R1" text="Суммарное количество осадков за месяц"/>
+    <Value number="2"  descrName="nrnr" text="Количество дней в месяце с осадками, равными или больше 1 мм"/>
+  </Section>
+  <Section number="8" text="Общая продолжительность солнечного сияния за месяц с точностью до ближайшего часа">
+    <SectionGroups>\s*7([\d/]{3})(?:/*)?</SectionGroups>
+        <Value number="1"  descrName="S1S1S1" text="Общая продолжительность солнечного сияния за месяц с точностью до ближайшего часа"/>
+  </Section>
+  <Section number="8" text="Число дней с отсутствующими параметрами">
+    <SectionGroups>\s*8([\d/-]{2})([\d/-]{2})([\d/]|-1)([\d/]|-1)</SectionGroups>
+    <Value number="13"  descrName="mpmp" text="Количество дней с отсутствием данных о давлении" />
+    <Value number="14"  descrName="mTmT" text="Количество дней с отсутствием данных о температуре воздуха" />
+    <Value number="15"  descrName="mTx" text="Количество дней с отсутствием данных о максимальной суточной температуре воздуха" />
+    <Value number="16"  descrName="mTn" text="Количество дней с отсутствием данных о минимальной суточной температуре воздуха" />
+  </Section>
+  <Section number="9" text="Число дней с отсутствующими параметрами">
+    <SectionGroups>\s*9([\d/]{2})([\d/]{2})([\d/]{2})</SectionGroups>
+    <Value number="17"  descrName="meme" text="Количество дней с отсутствием данных о давлении водяного пара" />
+    <Value number="18"  descrName="mRmR" text="Количество дней с отсутствием данных об осадках" />
+    <Value number="19"  descrName="mSmS" text="Количество дней с отсутствием данных о продолжительности солнечного сияния" />
+  </Section> 
+</Message>

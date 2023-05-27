@@ -1,0 +1,20 @@
+{
+"find": "grib",
+"filter" : {
+  "error" : { "$ne" : true },
+  "descr" :@descr@,
+  "center":@center@,
+  "subcenter":@subcenter@,
+  "dt": @dt@,
+  "levelType": @levelType@,
+  "levelValue": @levelValue@,
+  "procType": @procType@,
+  "dt1": @dt1@,
+  "dt2": @dt2@,
+  "hour" : @hour@,
+  "timeRange" : @timeRange@,
+  "stepLat" : @stepLat@,
+  "stepLon" : @stepLon@
+ },
+"sort" : { "hour" : -1 }
+}

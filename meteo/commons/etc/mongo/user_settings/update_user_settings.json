@@ -1,0 +1,19 @@
+{
+   "update": "user_settings",
+   "updates": [
+     { "q": { 
+          "user_login"   : @user_login@,
+          "setting_type" : @setting_type@
+         },
+       "u": {
+         "user_login"   : @user_login@,
+         "setting_type" : @setting_type@,
+         "settings" :   @settings@
+       },
+      "upsert": true,
+      "multi": false
+    }
+ ]
+}
+
+

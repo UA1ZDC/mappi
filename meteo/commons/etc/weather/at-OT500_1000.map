@@ -1,0 +1,9 @@
+name: "at-OT500_1000.map"
+title: "ОТ 500/1000"
+spline_koef: 2
+data {
+  mode: kIsoline
+  template_name: "10009"
+  level: 15000
+  type_level: 15000
+}

@@ -1,0 +1,194 @@
+# section {
+#   require: true
+#   mgroup {
+#     require: true
+#     param {
+#       width: 2
+#       fill: 32
+#       name: "T1T2"
+#     }
+#     param { 
+#       width: 2
+#       fill: 32
+#       name: "A1A2" 
+#     }
+#   }
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 2
+#       name: "ii" 
+#     }
+#   }   
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 4
+#       fill: 32
+#       name: "CCCC" 
+#     }
+#   }
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 2
+#       name: "YY1" 
+#     }
+#     param { 
+#       width: 2
+#       name: "GG1" 
+#     }
+#     param { 
+#       width: 2
+#       name: "gg1" 
+#     }
+#   }
+#   mgroup {
+#     require: false
+#     param { 
+#       width: 3
+#       fill: 32
+#       name: "BBB" 
+#     }
+#   }
+# }
+section {
+  require: true
+  mgroup {
+    require: true
+    param {
+      width: 4
+      name: "MMMM"
+    }
+  }
+  mgroup {
+    require: true
+    param { 
+      width: 2
+      name: "YY" 
+    }
+    param { 
+      width: 2
+      name: "GG" 
+    }
+    param { 
+      width: 1
+      name: "a4" 
+    }
+  }
+  mgroup {
+    require: true
+    param { 
+      width: 5
+      name: "IIiii" 
+    }
+  }
+}
+
+section {
+  require: false
+  mgroupset {
+  name: "wind"
+    mgroup {
+      require: true
+      param {
+        width: 1
+        name:  "uMark"
+      }
+      param {
+        width: 1
+        name:  "tn"
+      }
+      param {
+        width: 3
+        name:  "u1u2u3"
+      }
+     }
+     mgroup {
+       require: false
+        param {
+          width: 2
+          name:  "dd_0"
+        }
+        param {
+          width: 3
+          name:  "ff_0"
+        }
+      }
+      mgroup {
+        require: false
+        param {
+          width: 2
+          name:  "dd_1"
+        }
+        param {
+          width: 3
+          name:  "ff_1"
+        }
+      }
+      mgroup {
+        require: false
+        param {
+          width: 2
+          name:  "dd_2"
+        }
+        param {
+          width: 3
+          name:  "ff_2"
+        }
+      }
+  }
+}
+section {
+  require: false
+  mark: "21212"
+  mgroup {
+    require: true
+    param {
+      width: 2
+      text:  "00"
+    }
+    param {
+      width: 3
+      name:  "P0P0P0"
+      func: "P1"
+    }
+  }
+  mgroup {
+    require: true
+    param {
+      width: 2
+      name:  "d0d0"
+    }
+    param {
+      width: 3
+      name:  "f0f0f0"
+    }
+  }
+  mgroupset {
+    name: "signWind"
+    mgroup {
+      require: true
+      param {
+        width: 2
+        name:  "n1n1"
+      }
+      param {
+        width: 3
+        name:  "P1P1P1"
+	func: "P1"
+      }
+    }
+    mgroup {
+      require: true
+      param {
+        width: 2
+        name:  "d1d1"
+      }
+      param {
+        width: 3
+        name:  "f1f1f1"
+      }
+    }
+  }
+}

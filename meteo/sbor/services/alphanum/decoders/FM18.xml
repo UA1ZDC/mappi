@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM18" text="BUOY" category="121">
+  <MessageSections>^\s*ZZYY((?:\s*[\d/]{5}){3}(?:\s*[\d/]{6}){2}(?:\s*6[\d/]{4})?)((?:\s*111[\d/]{2})(?:(?:\s*[\d/]{5}))(?:\s*(?!222|333)[\d/]{5}){,5})?((?:\s*222[\d/]{2})(?:(?:\s*[\d/]{5})(?!\s*333)){,3}(?:\s*[\d/]{5}))?((?:\s*333[\d/]{2})(?:(?:\s*8887[\d/])(?:(?:\s*2[\d/]{4})(?:\s*3[\d/]{4})?(?:\s*4[\d/]{4})?)+)?(?:(?:\s*66[\d/]9[\d/])(?:(?:\s*2[\d/]{4})(?:\s*[\d/]{5}))+)?)?((?:\s*444)(?:\s*1[\d/]{4})?(?:\s*2[\d/]{4})?(?:(?:\s*[\d/]{6}){2}|(?:(?:\s*[\d/]{5})(?:\s*[\d/]{4}/)))?(?:(?:\s*3[\d/]{4})(?:\s*4[\d/]{4}))?(?:\s*5[\d/]{4})?(?:\s*6[\d/]{4})?(?:\s*7[\d/]{4})?(?:\s*8[\d/]{4})?(?:\s*9[\d/]{4})?)?(.*)?</MessageSections>
+  <Section number="1" text="DATA FOR REPORTING IDENTIFICATION"> <!--опознавательные данные-->
+    <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})(\s*[\d/]{5})(\s*[\d/]{6})(\s*[\d/]{6})(\s*6[\d/]{4})?</SectionGroups>
+    <Group number="1" text="№ буя">
+      <GroupValues>\s*([\d/])([\d/])([\d/]{3})</GroupValues>
+      <Value number="1"  descrName="A1"/>
+      <Value number="2"  descrName="bw"/>
+      <Value number="3"  descrName="nbnbnb"/>
+    </Group>
+    <Group number="2" text="DATE">
+      <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+      <Value number="2"  descrName="MM" text="month"/>
+      <Value number="3"  descrName="J" text="year"/>
+    </Group>
+    <Group number="3" text="observation">
+      <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+      <Value number="1"  descrName="GG" text="H"/>
+      <Value number="2"  descrName="gg" text="M"/>
+      <Value number="3"  descrName="iw" />
+    </Group>
+    <Group number="4" text="latitude">
+      <GroupValues>\s*([\d/])([\d/]{5})</GroupValues>
+      <Value number="1"  descrName="Qc"/>
+      <Value number="2"  descrName="LaLaLaLaLa" text="latitude"/>
+    </Group>
+    <Group number="5" text="longitude">
+      <GroupValues>\s*([\d/]{6})</GroupValues>
+      <Value number="1"  descrName="LoLoLoLoLoLo" text="longitude"/>
+    </Group>
+    <Group number="6" text="качество">
+      <GroupValues>\s*6([\d/])([\d/])([\d/])</GroupValues>
+      <Value number="1"  descrName="Ql" text="качество по местоположению"/>
+      <Value number="2"  descrName="Qt" text="качество по времени"/>
+      <Value number="3"  descrName="QA" text="класс качества местоположения"/>  
+    </Group>
+  </Section>	
+  <Section number="2" text="METEO DATA"> <!--метеорологические и другие неморские данные-->
+    <SectionGroups>(\s*111[\d/]{2})(\s*0[\d/]{4})?(\s*1[\d/]{4})?(?:\s*(29[\d/]{3})|\s*(2[\d/]{4}))?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?</SectionGroups>
+    <Group number="1" text="контроль">
+      <GroupValues>\s*111([\d/])([\d/])</GroupValues>
+      <Value number="1"  descrName="Qd" text="контроль качества"/>
+      <Value number="2"  descrName="Qx"/>
+    </Group>
+    <Group number="2" text="wind">
+      <item>
+	<GroupValues>\s*0()([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="0"  descrName="ggp" default="-10" text="wind direction"	/>
+	<Value number="1"  descrName="dd" text="wind direction"/>
+	<Value number="2"  descrName="ff" text="wind velocity"/>  
+      </item>
+    </Group>
+    <Group number="3" text="Temperature">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="snTTT" text="Temperature"/>
+    </Group>  
+    <Group number="4" text="влажность">
+      <GroupValues>\s*29([\d/]{3})</GroupValues>
+      <Value number="1"  descrName="UUU" text="влажность"/>
+    </Group> 
+    <Group number="4b" text="Точка росы">
+      <GroupValues>\s*2([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="snTdTdTd" text="Точка росы"/>
+    </Group>
+    <Group number="5" text="давление">
+      <GroupValues>\s*3([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="P0P0P0P0" text="давление на уровне станции"/>
+    </Group>
+    <Group number="6" text="давление">
+      <GroupValues>\s*4([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="PPPP" text="давление на среднем уровне моря"/>
+    </Group>
+    <Group number="7" text="барическая тенденция">
+      <GroupValues>\s*5([\d/])([\d/]{3})</GroupValues>
+      <Value number="1"  descrName="a" text="характре барической тенденции"/>
+      <Value number="2"  descrName="ppp" text="величина барической тенденции"/> 
+    </Group>
+  </Section>	  
+  <Section number="3" text="SEA DATA"> <!--морские данные поверхностного слоя-->
+    <SectionGroups>(\s*222[\d/]{2})(\s*0[\d/]{4})?(\s*1[\d/]{4})?(\s*20[\d/]{3})?(\s*21[\d/]{3})?</SectionGroups>
+    <Group number="1" text="контроль">
+      <GroupValues>\s*222([\d/])([\d/])</GroupValues>
+      <Value number="1"  descrName="Qd" text="контроль качества"/>
+      <Value number="2"  descrName="Qx"/>
+    </Group>
+    <Group number="2" text="Temperature of water">
+      <GroupValues>\s*0([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="snTwTwTw" text="температура поверхности моря"/>
+    </Group>
+    <Group number="3" text="Период волн и Высота волн">
+      <GroupValues>\s*1([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="PwaPwa" text="Период волн, в секундах, полученный инструментальными методами"/>
+      <Value number="2"  descrName="HwaHwa" text="Высота волн, измеренная с помощью инструментальных методов, кратно 0,5м"/>
+    </Group>  
+    <Group number="4" text="Период волн">
+      <GroupValues>\s*20([\d/]{3})</GroupValues>
+      <Value number="1"  descrName="PwaPwaPwa" text="Период волн, в десятых долях секунды, полученный инструментальными методами"/>
+    </Group> 
+    <Group number="5" text="Высота волн">
+      <GroupValues>\s*21([\d/]{3})</GroupValues>
+      <Value number="1"  descrName="HwaHwaHwa" text="Высота волн, измеренная с помощью инструментальных методов, кратно 0,1м"/>
+    </Group>
+  </Section>	  
+  <Section number="4" text="TEMPERATURE AND SALINITY OF WATER, CURRENTS"> <!--температура, соленость и течения на характерных горизонтах-->
+    <SectionGroups>(\s*333[\d/]{2})((?:\s*8887[\d/])(?:(?:\s*2[\d/]{4})(?:\s*3[\d/]{4})?(?:\s*4[\d/]{4})?)+)?((?:\s*66[\d/]9[\d/])(?:(?:\s*2[\d/]{4})(?:\s*[\d/]{5}))+)?</SectionGroups>
+    <Group number="1">
+      <GroupValues>\s*333([\d/])([\d/])</GroupValues>
+      <Value number="1"  descrName="Qd1" text="Указатель контроля качества для профиля температуры/солености"/>
+      <Value number="2"  descrName="Qd2" text="Указатель контроля качества для профиля течений"/>
+    </Group>  
+    <Group number="2">
+      <GroupValues>(\s*8887[\d/])((?:(?:\s*2[\d/]{4})(?:\s*3[\d/]{4})?(?:\s*4[\d/]{4})?)+)</GroupValues>
+      <Group number="1">
+	<GroupValues>\s*8887([\d/])</GroupValues>
+	<Value number="1"  descrName="k1"/>
+      </Group>  
+      <Group number="2" text="DeTeSa">
+	<item>
+	  <GroupValues>(\s*2[\d/]{4})(\s*3[\d/]{4})?(\s*4[\d/]{4})?</GroupValues>
+	  <SubGroup number="1" text="depth">
+	    <SubGroupValues>\s*2([\d/]{4})</SubGroupValues>
+	    <Value number="1"  descrName="zn" text="depth"/>
+	  </SubGroup>  
+	  <SubGroup number="2" text="Temperature of water">
+	    <SubGroupValues>\s*3([\d/]{4})</SubGroupValues>
+	    <Value number="1"  descrName="TnTn" default="//" text="Temperature of water"/>
+	  </SubGroup>  
+	  <SubGroup number="3" text="Salinity of water">
+	    <SubGroupValues>\s*4([\d/]{4})</SubGroupValues>
+	    <Value number="1"  descrName="Sn" default="//" text="Salinity of water"/>
+	  </SubGroup>
+	</item>
+      </Group>
+    </Group>  
+    <Group number="3">
+      <GroupValues>(\s*66[\d/]9[\d/])((?:(?:\s*2[\d/]{4})(?:\s*[\d/]{5}))+)</GroupValues>
+      <Group number="1">
+	<GroupValues>\s*66([\d/])9([\d/])</GroupValues>
+	<Value number="1"  descrName="k6"/>
+	<Value number="2"  descrName="k3"/>
+      </Group>  
+      <Group number="2" text="depth and currents">
+	<item>
+	  <GroupValues>(\s*2[\d/]{4})(\s*[\d/]{5})</GroupValues>
+	  <SubGroup number="1" text="depth">
+	    <SubGroupValues>\s*2([\d/]{4})</SubGroupValues>
+	    <Value number="1"  descrName="zn" text="depth"/>
+	  </SubGroup>  
+	  <SubGroup number="2" text="currents">
+	    <SubGroupValues>\s*([\d/]{2})([\d/]{3})</SubGroupValues>
+	    <Value number="1"  descrName="dndn" text="direction of current"/>
+	    <Value number="2"  descrName="cncn" text="velocity of current"/>
+	  </SubGroup>
+	</item>
+      </Group>
+    </Group> 
+  </Section>	
+  <!--информация об эксплуатационно-технических параметрах-->
+  <Section number="5" text="Информация об эксплуатационно-технических параметрах"> 
+    <item>
+    <SectionGroups>\s*444(\s*1[\d/]{4})?(\s*2[\d/]{4})?(?:((?:\s*[\d/]{6}){2})|((?:\s*[\d/]{5})(?:\s*[\d/]{4}/)))?((?:\s*3[\d/]{4})(?:\s*4[\d/]{4}))?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{4})?(\s*9[\d/]{4})?</SectionGroups>
+      <Group number="1">
+	<GroupValues>\s*1([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	<Value number="1"  descrName="QP" text="Качество измерения давления"/>
+	<Value number="2"  descrName="Q2" text="Качество вспомогательного параметра (второе слово в первом блоке данных с датчика терминальной передающей платформы АРГОС)"/>
+	<Value number="3"  descrName="QTW" text="Качество измерения температуры поверхности воды"/>
+	<Value number="4"  descrName="Q4" text="Качество измерений температуры воздуха"/>
+      </Group>
+      <Group number="2">
+	<GroupValues>\s*2([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	<Value number="1"  descrName="QN" text="Качество передачи данных с буя на спутник"/>
+	<Value number="2"  descrName="QL" text="Качество определения местоположения"/>
+	<Value number="3"  descrName="QA" text="Класс качества определения местоположения"/>
+	<Value number="4"  descrName="Qz" text="Указатель корректировки значений глубины (указание на то, откорректированы или нет значения выбранной глубины с использованием гидростатического давления)"/>
+      </Group>
+      <Group number="3" text="latitude and longitude">
+	<GroupValues>(\s*[\d/]{6})(\s*[\d/]{6})</GroupValues>
+	<SubGroup number="1" text="latitude">
+	  <GroupValues>\s*([\d/])([\d/]{5})</GroupValues>
+	  <Value number="1"  descrName="Qc"/>
+	  <Value number="2"  descrName="LaLaLaLaLa" text="latitude"/>
+	</SubGroup>
+	<SubGroup number="2" text="longitude">
+	  <GroupValues>\s*([\d/]{6})</GroupValues>
+	  <Value number="1"  descrName="LoLoLoLoLoLo" text="longitude"/>
+	</SubGroup>
+      </Group>
+      <Group number="3b" text="date">
+	<GroupValues>(\s*[\d/]{5})(\s*[\d/]{4}/)</GroupValues>
+	<SubGroup number="1" text="date">
+	  <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+	  <Value number="1"  descrName="YY" text="day"/>
+	  <Value number="2"  descrName="MM" text="month"/>
+	  <Value number="3"  descrName="J" text="year"/>
+	</SubGroup>
+	<SubGroup number="2" text="H,M">
+	  <GroupValues>\s*([\d/]{2})([\d/]{2})/</GroupValues>
+	  <Value number="1"  descrName="GG" text="H"/>
+	  <Value number="2"  descrName="gg" text="M"/>
+	</SubGroup>
+      </Group>
+      <Group number="4" text="трос и давление">
+	<GroupValues>(\s*3[\d/]{4})(\s*4[\d/]{4})</GroupValues>
+	<SubGroup number="1" text="давление">
+	  <GroupValues>\s*3([\d/]{4})</GroupValues>
+	  <Value number="1"  descrName="Zh" text="Гидростатическое давление на нижнем конце троса. Давление выражается в единицах в кПа (т. е. в килопаскалях, сантибарах)"/>
+	</SubGroup>
+	<SubGroup number="2" text="трос">
+	  <GroupValues>\s*4([\d/]{4})</GroupValues>
+	  <Value number="1"  descrName="Zc" text="Длина троса в метрах (гирлянда терморезисторов)"/>
+	</SubGroup>
+      </Group>
+      <Group number="5" text="буй и якорь">
+	<GroupValues>\s*5([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="BtBt" text="Тип буя"/>
+	<Value number="2"  descrName="XtXt" text="Тип плавучего якоря"/>
+      </Group>
+      <Group number="6" text="анемометр">
+	<GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	<Value number="1"  descrName="AhAhAh" text="Высота анемометра, выраженная в дециметрах"/>
+	<Value number="2"  descrName="AN" text="Тип анемометра"/>
+      </Group>
+      <Group number="7" text="дрейф буя">
+	<GroupValues>\s*7([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="1"  descrName="VBVB" text="Скорость дрейфа буя, в см.с-1, в последнем известном местоположении, сообщенном в группах YYMMJ GGgg/"/>
+	<Value number="2"  descrName="dBdB" text="Направление дрейфа буя, выраженное в десятках градусов, в его последнем известном местоположении, данном в группах YYMMJ GGgg/"/>
+      </Group>
+      <Group number="8" text="Информация о техническом состоянии буя">
+	<GroupValues>\s*8([\d/]{4})</GroupValues>
+	<Value number="1"  descrName="ViViViVi" text="Информация о техническом состоянии буя"/>
+      </Group>
+      <Group number="9" text="Длина троса, к которому прикреплен якорь">
+	<GroupValues>\s*9/([\d/]{3})</GroupValues>
+	<Value number="1"  descrName="ZdZdZd" text="Длина троса, к которому прикреплен якорь, в метрах"/>
+      </Group>
+    </item>
+  </Section>
+  <Section number="6" text="OTHER DATA"> <!--прочие данные-->
+    <SectionGroups>(.*)</SectionGroups>
+    <Group number="1" text="other data">
+      <GroupValues>(.*)</GroupValues>
+      <Value number="1"  descrName="national" text="Данные для национального использования"/>
+    </Group>
+  </Section>
+</Message>

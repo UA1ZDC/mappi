@@ -1,0 +1,633 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="KN-21" text="AGRO" category="29">
+  <MessageSections>^\s*(?:AADD|AAEE|OODD|OOEE)((?:\s*[\d/]{5}){2})((?:\s*111)(?:\s*[\d/]{5})*)?((?:\s*222)(?:\s*[\d/]{5})*)?((?:(?:\s*333)(?:\s*[\d/]{5})*)?)((?:(?:\s*444)(?:\s*[\d/]{5})*)?)((?:(?:\s*555)(?:\s[\d/]{5})*)?)(.*)</MessageSections>
+  <Section number="1" text="DATA FOR REPORTING IDENTIFICATION"> <!--опознавательные данные-->
+    <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+	<Group number="1" text="WMO station number">
+	  <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+	  <Value number="1"  descrName="II"/>
+      <Value number="2"  descrName="iii" text="WMO STATION NUMBER"/>
+	</Group>
+	<Group number="2" text="DATE">
+	  <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+	  <Value number="1"  descrName="YY" text="day"/>
+      <Value number="2"  descrName="MM" text="month"/>
+      <Value number="3"  descrName="B0"/>
+	</Group>
+  </Section> 
+  <!--декадная метеорологическая информация по земледельческой зоне-->
+  <Section number="2" text="Декадная метеорологическая информация по земледельческой зоне">
+    <item>
+    <SectionGroups>\s*111((?:\s*90[\d/]{3})(?:\s*1[\d/]{4})(?:\s*2[\d/]{4})(?:\s*3[\d/]{4})(?:\s*4[\d/]{4})(?:\s*5[\d/]{4})(?:\s*6[\d/]{4})?(?:\s*7[\d/]{4})?(?:\s*8[\d/]{4}))((?:\s*91[\d/]{3})(?:\s*1[\d/]{4})?(?:\s*2[\d/]{4})?(?:\s*3[\d/]{4})?(?:\s*4[\d/]{4})?(?:\s*5[\d/]{4})?)?</SectionGroups>
+	<Zone number="1">
+	  <ZoneGroups>(\s*90[\d/]{3})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Отклонение средней за декаду температуры">
+	    <GroupValues>\s*90([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="snT0T0_avg" text="Отклонение средней за декаду температуры"/>
+	  </Group>
+	  <Group number="2" text="Средняя температура воздуха за декаду">
+	    <GroupValues>\s*1([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="snTTT_avg" text="Средняя температура воздуха за декаду"/>
+	</Group>
+	  <Group number="3" text="Максимальная температура за декаду">
+	    <GroupValues>\s*2([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="snTxTx_avg" text="Абсолютный максимум температуры воздуха за декаду"/>
+	    <Value number="2"  descrName="T25T25" text="Число случаев за декаду с температурой выше 25"/>
+	</Group>
+	  <Group number="4" text="Минимальная температура за декаду">
+	    <GroupValues>\s*3([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="snTnTn_avg" text="Абсолютный минимум температуры воздуха за декаду"/>
+	    <Value number="2"  descrName="u30u30" text="Число случаев за декаду с влажностью ниже 30%"/>
+	  </Group>
+	  <Group number="5" text="Минимальная температура почвы за декаду">
+	    <GroupValues>\s*4([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="snTgTg" text="Абсолютный минимум температуры почвы(снега) за декаду"/>
+	    <Value number="2"  descrName="ntg" text="Число случаев за декаду с температурой почвы ниже 0(ниже -20)"/>
+	  </Group>
+	  <Group number="6" text="Количество осадков за декаду">
+	    <GroupValues>\s*5([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="RRR" text="Количество осадков за декаду"/>
+	    <Value number="2"  descrName="nR1" text="Число случаев за декаду с количеством осадков более 1мм"/>
+	  </Group>
+	  <Group number="7" text="Количество осадков за декаду в процентах от среднего многолетнего">
+	    <GroupValues>\s*6([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="R0R0R0R0" text="Количество осадков за декаду в процентах от среднего многолетнего"/>
+	  </Group>
+	  <Group number="8" text="Суточный максимум осадков за декаду">
+	    <GroupValues>\s*7([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="RxRxRx" text="Суточный максимум осадков за декаду"/>
+	    <Value number="2"  descrName="nR5" text="Число случаев за декаду с количеством осадков более 5мм"/>
+	  </Group>
+	  <Group number="9" text="Максимальная скорость ветра за декаду">
+	    <GroupValues>\s*8([\d/]{2})([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="fxfx" text="Максимальная скорость ветра за декаду"/>
+	    <Value number="2"  descrName="nf" text="Число случаев за декаду со скоростью ветра более 15"/>
+	    <Value number="3"  descrName="ng" text="Число суток с градом за декаду"/>
+	  </Group>
+	</Zone>
+	<Zone number="2">
+	  <ZoneGroups>(\s*91[\d/]{3})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Абсолютный максимум температуры поверхности почвы за декаду">
+	    <GroupValues>\s*91([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="snTzTz" text="Абсолютный максимум температуры поверхности почвы за декаду"/>
+	  </Group>
+	  <Group number="2" text="Продолжительность солнечного сияния за декаду">
+	    <GroupValues>\s*1([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="SdSdSd" text="Продолжительность солнечного сияния за декаду"/>
+	    <Value number="2"  descrName="n0" text="Число суток за декаду с заморозками в воздухе в вегитационный период при положительной средней декадной температуре воздуха"/>
+	  </Group>
+	  <Group number="3" text="Средняя за декаду температура почвы">
+	    <GroupValues>\s*2([\d/]{2})([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="/t10t/" text="Средняя за декаду температура почвы"/>
+	    <Value number="2"  descrName="n25" text="Число суток за декаду с температурой почвы на 10см более 25"/>
+	    <Value number="3"  descrName="nr" text="Число суток с росой за декаду"/>
+	  </Group>
+	  <Group number="4" text="Влажность за декаду">
+	    <GroupValues>\s*3([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="DdDd" text="Средний дефицит насыщения за декаду"/>
+	    <Value number="2"  descrName="UdUd" text="Средняя относительная влажность воздуха за декаду"/>
+	  </Group>
+	  <Group number="5" text="Абсолютный минимум температуры воздуха в травостое">
+	    <GroupValues>\s*4([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="snTrTr" text="Абсолютный минимум температуры воздуха в травостое"/>
+	    <Value number="2"  descrName="ntr" text="Число суток за декаду с температурой воздуха в травостое ниже 0"/>
+	  </Group>
+	  <Group number="6" text="Сведения о росе, пыльных бурях и др.">
+	    <GroupValues>\s*5([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="nrs" text="Число суток с сильной росой за декаду"/>
+	    <Value number="2"  descrName="nM" text="Число суток с мягкопластинчатым состоянием почвы на 10-12см за декаду"/>
+	    <Value number="3"  descrName="nb" text="Число суток с пыльными бурями"/>
+	  </Group>
+	</Zone>  
+      </item>
+  </Section> 
+  <!--декадная агрометеорологическая информация по земледельческой зоне-->
+  <Section number="3" text="Декадная агрометеорологическая информация по земледельческой зоне"> 
+    <item>
+    <SectionGroups>\s*(?:222)?(?:((?:\s*92[\d/]{3})(?:\s*1[\d/]{4})?(?:\s*2[\d/]{4}){,5}(?:\s*3[\d/]{4}){,5}(?:\s*4[\d/]{4})?(?:\s*5[\d/]{4})?(?:\s*6[\d/]{4}){,5}(?:(?:\s*7[\d/]{4})(?:\s*0[\d/]{4})?){,5})((?:\s*93[\d/]{3})(?:\s*1[\d/]{4})?(?:\s*2[\d/]{4})?(?:\s*3[\d/]{4})?(?:\s*4[\d/]{4})?(?:\s*5[\d/]{4})?(?:\s*6[\d/]{4})?)?((?:\s*94[\d/]{3})(?:\s*1[\d/]{4})?(?:\s*2[\d/]{4})?(?:\s*3[\d/]{4})?(?:\s*4[\d/]{4})?(?:\s*5[\d/]{4})?(?:\s*6[\d/]{4})?)?((?:\s*95[\d/]{3})(?:\s*1[\d/]{4})*(?:\s*2[\d/]{4})?(?:\s*3[\d/]{4})?(?:\s*4[\d/]{4})?(?:\s*5[\d/]{4})?(?:\s*6[\d/]{4})?(?:\s*7[\d/]{4})?(?:\s*8[\d/]{4})?(?:\s*0[\d/]{4})?)?)</SectionGroups>
+	<Zone number="1">
+	  <ZoneGroups>(\s*92[\d/]{3})(\s*1[\d/]{4})?((?:\s*2[\d/]{4}){,5})((?:\s*3[\d/]{4}){,5})(\s*4[\d/]{4})?(\s*5[\d/]{4})?((?:\s*6[\d/]{4}){,5})((?:(?:\s*7[\d/]{4})(?:\s*0[\d/]{4})?){,5})</ZoneGroups>
+	  <Group number="1" text="С/х культура, растение">
+	    <GroupValues>\s*92([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="KpKpKp" text="С/х культура, растение"/>
+	  </Group>
+	  <Group number="2" text="Сведения о наблюдательном участке">
+	    <GroupValues>\s*1([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="NNN" text="Номер ноблюдательного участка"/>
+	    <Value number="2"  descrName="Af" text="СредняяШифр вида земледелия, мелиорации"/>
+	  </Group>
+	  <Group number="3" text="Фаза развития растений">
+	    <GroupValues>\s*2([\d/]{2})([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="FF" text="Фаза развития растений, наступившая в данную декаду"/>
+	    <Value number="2"  descrName="Ya" text="День декады, когда данная фаза развития наступила у 10%"/>
+	    <Value number="3"  descrName="O" text="Визуальная оценка состояния посевов или угодий"/>
+	  </Group>
+	  <Group number="4" text="Засоренность посевов и высота растений">
+	    <GroupValues>\s*3([\d/])([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="Oz" text="Засоренность посевов на конец декады"/>
+	    <Value number="2"  descrName="BBB" text="Средняя высота растений на конец декады"/>
+	  </Group>
+	  <Group number="5" text="Густота стояния растений на единицу площади">
+	    <GroupValues>\s*4([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="CpCpCpCp" text="Густота стояния растений на единицу площади"/>
+	  </Group>
+	  <Group number="6" text="Средняя масса одного растения кукурузы или корнеплода">
+	    <GroupValues>\s*5([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="CnCnCnCn" text="Средняя масса одного растения кукурузы или корнеплода"/>
+	  </Group>
+	  <Group number="7" text="С/х работа или агромероприятия">
+	    <GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="PrPrPr" text="С/х работа или агромероприятия"/>
+	    <Value number="2"  descrName="Yr" text="День декады, когда началось проведение работы"/>
+	  </Group>
+	  <Group number="8" text="Повреждения растений">
+	    <GroupValues>(\s*7[\d/]{4})(\s*0[\d/]{4})?</GroupValues>
+	    <SubGrup number="1" text="Повреждения растений ГМУ, вредителями или болезнями">
+		  <SubGroupValues>\s*7([\d/]{3})([\d/])</SubGroupValues>
+	      <Value number="1"  descrName="PyPyPy" text="Характер повреждения растений ГМУ, вредителями или болезнями"/>
+	      <Value number="2"  descrName="Yp" text="День декады, в который было отмечено повреждение"/>
+	    </SubGrup>
+	    <SubGrup number="2" text="Повреждения растений ГМУ, вредителями или болезнями №2">
+		  <SubGroupValues>\s*0([\d/])([\d/])([\d/]{2})</SubGroupValues>
+	      <Value number="1"  descrName="Cn" text="Степень повреждения органов растений ГМУ, вредителями или болезнями"/>
+	      <Value number="2"  descrName="Cy" text="Степень охвата растений повреждением"/>
+		  <Value number="3"  descrName="E0E0" text="Площадь поля, охваченная повреждением"/>
+	    </SubGrup>
+	  </Group>
+	</Zone>
+	<Zone number="2">
+	  <ZoneGroups>(\s*93[\d/]{3})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Колоски, початки, клубни и др.">
+	    <GroupValues>\s*93([\d/]{2})([\d/])</GroupValues>
+	    <Value number="1"  descrName="riri" text="Общее число колосков, початков, клубней и др."/>
+	    <Value number="2"  descrName="rk" text="Среднее число недоразвитых колосков, поврежденных клубней и др."/>
+	  </Group>
+	  <Group number="2" text="Густота стеблестоя, масса клубней и др.">
+	    <GroupValues>\s*1([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="C0C0C0C0" text="Густота стеблестоя, масса клубней и др."/>
+	  </Group>
+	  <Group number="3" text="Число стеблей с колосом, соцветий на 1м2, вес кисти и др.">
+	    <GroupValues>\s*2([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="CkCkCkCk" text="Число стеблей с колосом, соцветий на 1м2, вес кисти и др."/>
+	  </Group>
+	  <Group number="4" text="Развитые колоски и поврежденные клубни">
+	    <GroupValues>\s*3([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="LeLe" text="Среднее число развитых колосков, клубней и др."/>
+	    <Value number="2"  descrName="ZeZe" text="Влажность зерна, поврежденные клубни и др."/>
+	  </Group>
+	  <Group number="5" text="Среднее количество зерен в колоске, початке">
+	    <GroupValues>\s*4([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="rerere" text="Среднее количество зерен в колоске, початке"/>
+	    <Value number="2"  descrName="rm" text="Процент щуплых зерен"/>
+	  </Group>
+	  <Group number="6" text="Кустистость, гроздистость, побеги">
+	    <GroupValues>\s*5([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="MzMz" text="Кустистость зерновых, количество образовавшихся гроздей винограда"/>
+	    <Value number="2"  descrName="VzVz" text="Среднее количество побегов с соцветиями у одного куста винограда"/>
+	  </Group>
+	  <Group number="7" text="Масса 1000 зерен, урожайность">
+	    <GroupValues>\s*6([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="AbAbAbAb" text="Масса 1000 зерен, урожайность сырой фитомассы"/>
+	  </Group>
+	</Zone> 
+	<Zone number="3">
+	  <ZoneGroups>(\s*94[\d/]{3})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Запасы продуктивной влаги 0-100см">
+	    <GroupValues>\s*94([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="WWW10" text="Запасы продуктивной влаги 0-100см"/>
+	  </Group>
+	  <Group number="2" text="Запасы продуктивной влаги 0-50см">
+	    <GroupValues>\s*1([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="WWW5" text="Запасы продуктивной влаги 0-50см"/>
+	    <Value number="2"  descrName="Pr" text="Предшественник"/>
+	  </Group>
+	  <Group number="3" text="Запасы продуктивной влаги 0-20см, 0-10см">
+	    <GroupValues>\s*2([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="WW2" text="Запасы продуктивной влаги 0-20см"/>
+	    <Value number="2"  descrName="WW1" text="Запасы продуктивной влаги 0-10см"/>
+	  </Group>
+	  <Group number="4" text="Запасы продуктивной влаги 0-5см">
+	    <GroupValues>\s*3([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="WW0" text="Запасы продуктивной влаги 0-5см"/>
+	  </Group>
+	  <Group number="5" text="Вода в чеках">
+	    <GroupValues>\s*4([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="t2t2" text="Средняя за декаду температура воды в чеке на глубине 2м"/>
+	    <Value number="2"  descrName="HwHw" text="Средний за декаду уровень воды в чеках"/>
+	  </Group>
+	  <Group number="6" text="Глубина залегания грунтовых вод">
+	    <GroupValues>\s*5([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="GbGbGbGb" text="Глубина залегания грунтовых вод"/>
+	  </Group>
+	  <Group number="7" text="Глубина оттаиваня почвы на последний день декады">
+	    <GroupValues>\s*6([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="HcHcHc" text="Глубина оттаиваня почвы на последний день декады"/>
+	  </Group>
+	</Zone>
+	<Zone number="4">
+	  <ZoneGroups>(\s*95[\d/]{3})((?:\s*1[\d/]{4})*)(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{4})?(\s*0[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Средняя высота снежного покрова">
+	    <GroupValues>\s*95([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="sss" text="Средняя высота снежного покрова"/>
+	  </Group>
+	  <Group number="2" text="Залегание и плотность снежного покрова">
+	    <GroupValues>\s*1([\d/])([\d/])([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="H" text="Указатель наличия снегозадержания и места установки мерзлометра"/>
+	    <Value number="2"  descrName="E/" text="Характер залегания снежного покрова"/>
+	    <Value number="3"  descrName="MpMp" text="Средняя плотность снежного покрова"/>
+	  </Group>
+	  <Group number="3" text="Промеры снежного покрова">
+	    <GroupValues>\s*2([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="C0" text="Число промеров снежного покрова с высотой 0см"/>
+	    <Value number="2"  descrName="C3" text="Число промеров снежного покрова с высотой 1-3см"/>
+	    <Value number="3"  descrName="C6" text="Число промеров снежного покрова с высотой 4-6см"/>
+	    <Value number="4"  descrName="C30" text="Число промеров снежного покрова с высотой более 30см"/>
+	  </Group>
+	  <Group number="4" text="Ледяная корка и оттаивание почвы">
+	    <GroupValues>\s*3([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="LaLa" text="Среднее значение притертой к почве ледяной корки"/>
+	    <Value number="2"  descrName="HcHc" text="Глубина оттаивания почвы на последний день декады"/>
+	  </Group>
+	  <Group number="5" text="Промерзание почвы и оттепели">
+	    <GroupValues>\s*4([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="HpHpHp" text="Глубина промерзания почвы по мерзлометру на последний день декады"/>
+	    <Value number="2"  descrName="nq" text="Число дней с оттепелью"/>
+	  </Group>
+	  <Group number="6" text="Минимальная за декаду температура почвы">
+	    <GroupValues>\s*5([\d/])([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="n" text="Указатель проведенных выборок минимальной температуры почвы"/>
+	    <Value number="2"  descrName="snt3t3" text="Минимальная за декаду температура почвы на 3см (20см в саду)"/>
+	  </Group>
+	  <Group number="7" text="Высота снежного покрова и ледяная корка">
+	    <GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="ststst" text="Высота снежного покрова около датчика для определения температуры почвы"/>
+	    <Value number="2"  descrName="L" text="Распространение притертой к почве ледяной корки"/>
+	  </Group>
+	  <Group number="8" text="Зимующие с/х культуры">
+	    <GroupValues>\s*7([\d/])([\d/])([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="P5" text="Способ определения жизнеспособности зимующих с/х культур"/>
+	    <Value number="2"  descrName="P" text="Предшественник"/>
+	    <Value number="3"  descrName="E1E1" text="Процент погибщих растений озимых зерновых или трав в 1й пробе"/>
+	  </Group>
+	  <Group number="9" text="Погибшие растения">
+	    <GroupValues>\s*8([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="E2E2" text="Процент погибщих растений озимых зерновых или трав в 2й пробе"/>
+	    <Value number="2"  descrName="E3E3" text="Процент погибщих растений озимых зерновых или трав в 3й пробе"/>
+	  </Group>
+	  <Group number="10" text="Погибшие растения №2">
+	    <GroupValues>\s*0([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="E4E4" text="Процент погибщих растений озимых зерновых или трав в 4й пробе"/>
+	    <Value number="2"  descrName="K5K5" text="Температура в морозильной камере, при которой погибло более 50% растений"/>
+	  </Group>
+	</Zone>  
+      </item>
+  </Section>
+  <!--ежедневная агрометеорологическая информация по земледельческой зоне-->
+  <Section number="4" text="Ежедневная агрометеорологическая информация по земледельческой зоне">
+    <item>
+    <SectionGroups>\s*333((?:\s*90[\d/]{3})(?:\s*1[\d/]{4})(?:\s*3[\d/]{4})(?:\s*4[\d/]{4})(?:\s*5[\d/]{4})(?:\s*6[\d/]{4})?(?:\s*7[\d/]{4})(?:\s*8[\d/]{4})?)?((?:\s*91[\d/]{3})(?:\s*1[\d/]{4})?(?:\s*2[\d/]{4})?(?:\s*3[\d/]{4})?)?((?:(?:(?:\s*92[\d/]{3})(?:\s*1[\d/]{4}){,5}(?:\s*6[\d/]{4}){,5}(?:\s*7[\d/]{4}){,5}(?:\s*8[\d/]{4})?)(?:(?:\s*95[\d/]{3})(?:\s*4[\d/]{4})?(?:\s*5[\d/]{4})?)?)*)</SectionGroups>
+	<Zone number="1">
+	  <ZoneGroups>(\s*90[\d/]{3})(\s*1[\d/]{4})(\s*3[\d/]{4})(\s*4[\d/]{4})(\s*5[\d/]{4})(\s*6[\d/]{4})?(\s*7[\d/]{4})(\s*8[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Максимальная температура воздуха за 12 дневных часов">
+	    <GroupValues>\s*90([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="/snTxTx/" text="Максимальная температура воздуха за 12 дневных часов"/>
+	  </Group>
+	  <Group number="2" text="Средняя температура воздуха за сутки">
+	    <GroupValues>\s*1([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="snTTT24" text="Средняя температура воздуха за сутки"/>
+	  </Group>
+	  <Group number="3" text="Минимальная температура воздуха за сутки">
+	    <GroupValues>\s*3([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="/snTnTn/" text="Минимальная температура воздуха за сутки"/>
+	  </Group>
+	  <Group number="4" text="Минимальная температура почвы за сутки">
+	    <GroupValues>\s*4([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="/snTgTg/" text="Минимальная температура почвы за сутки"/>
+	  </Group>
+	  <Group number="5" text="Количество осадков за сутки">
+	    <GroupValues>\s*5([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="RRRR24" text="Количество осадков за сутки"/>
+	  </Group>
+	  <Group number="6" text="Количество осадков за 12 ночных часов">
+	    <GroupValues>\s*6([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="RRRR12" text="Количество осадков за 12 ночных часов"/>
+	  </Group>
+	  <Group number="7" text="Ветер и дефицит за сутки">
+	    <GroupValues>\s*7([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="fxfx" text="Максимальная скорость ветра за сутки"/>
+	    <Value number="2"  descrName="DxDx" text="Максимальный дефицит насыщения воздуха за сутки"/>
+	  </Group>
+	  <Group number="8" text="Роса">
+	    <GroupValues>\s*8([\d/]{2})([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="XX" text="Продолжительность росы за сутки"/>
+	    <Value number="2"  descrName="Z" text="Маскимальная интенсивность росы за сутки"/>
+	    <Value number="3"  descrName="Z/" text="Интенсивность росы в срок наблюдений"/>
+	  </Group>
+	</Zone>
+	<Zone number="2">
+	  <ZoneGroups>(\s*91[\d/]{3})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Солнце и увлажненность почвы">
+	    <GroupValues>\s*91([\d/]{2})([\d/])</GroupValues>
+	    <Value number="1"  descrName="SS24" text="Продолжительность солнечного сияния за сутки"/>
+	    <Value number="2"  descrName="M1" text="Увлажненность верхнего 10-12см слоя почвы"/>
+	  </Group>
+	  <Group number="2" text="Температура почвы термометром-щупом">
+	    <GroupValues>\s*1([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="tt5" text="Температура почвы на глубине 5см термометром-щупом"/>
+	    <Value number="2"  descrName="tt10" text="Температура почвы на глубине 10см термометром-щупом"/>
+	  </Group>
+	  <Group number="3" text="Средняя за сутки температура почвы термометром Савинова">
+	    <GroupValues>\s*2([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="/tt5/" text="Средняя за сутки температура почвы на глубине 5см термометром Савинова"/>
+	    <Value number="2"  descrName="/tt10/" text="Средняя за сутки температура почвы на глубине 10см термометром Савинова"/>
+	  </Group>
+	  <Group number="4" text="Влажность воздуха за сутки">
+	    <GroupValues>\s*3([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="DeDe" text="Средний дефицит насыщения воздуха засутки"/>
+	    <Value number="2"  descrName="uxux" text="Минимальная относительная влажность за сутки"/>
+	  </Group>
+	</Zone>
+	<Zone number="3">
+	  <ZoneGroups>(\s*92[\d/]{3})((?:\s*1[\d/]{4}){,5})((?:\s*6[\d/]{4}){,5})((?:\s*7[\d/]{4}){,5})(\s*8[\d/]{4})?(\s*95[\d/]{3})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="С/х культура">
+	    <GroupValues>\s*92([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="KpKpKp" text="С/х культура"/>
+	  </Group>
+	  <Group number="2" text="Развитие с/х культуры">
+	    <GroupValues>\s*1([\d/]{2})([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="FF" text="Фаза развития культуры"/>
+	    <Value number="2"  descrName="Oy" text="Визуальная оценка состояния посевов"/>
+		<Value number="3"  descrName="Oq" text="Количественная оценка состояния посевов"/>
+	  </Group>
+	  <Group number="3" text="С/х работа или агротехническое мероприятие">
+	    <GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="PrPrPr" text="С/х работа или агротехническое мероприятие"/>
+	    <Value number="2"  descrName="Xr" text="Благоприятность условий для проведения с/х работы"/>
+	  </Group>
+	  <Group number="4" text="Повреждения растений">
+	    <GroupValues>\s*7([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="PyPyPy" text="Характер поврежения растений ГМУ, вредителями или болезнями"/>
+	    <Value number="2"  descrName="Cy" text="Степень охвата растений повреждением"/>
+	  </Group>
+	  <Group number="5" text="Зерно в валках">
+	    <GroupValues>\s*8([\d/])([\d/])([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="Zy" text="Влажность зерна в валках"/>
+	    <Value number="2"  descrName="Sy" text="Влажность соломы в валках"/>
+		<Value number="3"  descrName="EyEy" text="Процент проросших зерен в валках"/>
+	  </Group>
+	  <Group number="6" text="Высота снежного покрова около датчика определния температуры почвы на 3м">
+	    <GroupValues>\s*95([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="ststst" text="Высота снежного покрова около датчика определния температуры почвы на 3м"/>
+	  </Group>
+	  <Group number="7" text="Глубина промерзаия почвы">
+	    <GroupValues>\s*4([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="HmHmHm" text="Глубина промерзаия почвы"/>
+	  </Group>
+	  <Group number="8" text="Температура почвы на 3см">
+	    <GroupValues>\s*5([\d/])([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="n" text="Указатель определения температуры почвы на 3см"/>
+		<Value number="2"  descrName="/snt3t3/" text="Температура почвы на 3см"/>
+	  </Group>
+	</Zone>  
+      </item>
+  </Section>   
+  <!--декадная агрометеорологическая информация по районам пастбищного животноводства-->
+  <Section number="5" text="Декадная агрометеорологическая информация по районам пастбищного животноводства">
+    <item>
+    <SectionGroups>\s*(?:444)?((?:\s*90[\d/]{3})(?:\s*1[\d/]{4})(?:\s*2[\d/]{4})(?:\s*3[\d/]{4})(?:\s*4[\d/]{4})(?:\s*5[\d/]{4})(?:\s*6[\d/]{4})?(?:\s*7[\d/]{4})?(?:\s*8[\d/]{4}))((?:\s*91[\d/]{3})(?:\s*1[\d/]{4})(?:\s*3[\d/]{4})(?:\s*4[\d/]{4})?)?(?:((?:\s*92[\d/]{3})(?:(?:\s*1[\d/]{4})(?:\s*2[\d/]{4})+(?:\s*3[\d/]{4}))*(?:\s*4[\d/]{4})?(?:\s*5[\d/]{4})(?:\s*6[\d/]{4})*(?:\s*7[\d/]{4})*)((?:\s*94[\d/]{3})(?:\s*1[\d/]{4})(?:\s*2[\d/]{4}))?((?:\s*95[\d/]{3})(?:\s*1[\d/]{4})(?:\s*2[\d/]{4})?(?:\s*3[\d/]{4})(?:\s*4[\d/]{4}))?)</SectionGroups>
+	<Zone number="1">
+	  <ZoneGroups>(\s*90[\d/]{3})(\s*1[\d/]{4})(\s*2[\d/]{4})(\s*3[\d/]{4})(\s*4[\d/]{4})(\s*5[\d/]{4})(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{4})</ZoneGroups>
+	  <Group number="1" text="Отклонение средней за декаду температуры">
+	    <GroupValues>\s*90([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="snT0T0" text="Отклонение средней за декаду температуры"/>
+	  </Group>
+	  <Group number="2" text="Средняя температура воздуха за декаду">
+	    <GroupValues>\s*1([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="snTTT_avg" text="Средняя температура воздуха за декаду"/>
+	  </Group>
+	  <Group number="3" text="Максимальная температура за декаду">
+	    <GroupValues>\s*2([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="snTxTx" text="Абсолютный максимум температуры воздуха за декаду"/>
+	    <Value number="2"  descrName="ntx" text="Число случаев за декаду с температурой выше 25"/>
+	  </Group>
+	  <Group number="4" text="Минимальная температура за декаду">
+	    <GroupValues>\s*3([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="snTnTn" text="Абсолютный минимум температуры воздуха за декаду"/>
+	    <Value number="2"  descrName="/nt/" text="Число суток с туманом за декаду с видимостью ниже 500м"/>
+	  </Group>
+	  <Group number="5" text="Минимальная температура почвы за декаду">
+	    <GroupValues>\s*4([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="snTgTg" text="Абсолютный минимум температуры почвы(снега) за декаду"/>
+	    <Value number="2"  descrName="ntg" text="Число случаев за декаду с температурой почвы ниже 0(ниже -20)"/>
+	  </Group>
+	  <Group number="6" text="Количество осадков за декаду">
+	    <GroupValues>\s*5([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="RRR" text="Количество осадков за декаду"/>
+	    <Value number="2"  descrName="nR1" text="Число случаев за декаду с количеством осадков более 1мм"/>
+	  </Group>
+	  <Group number="7" text="Количество осадков за декаду в процентах от среднего многолетнего">
+	    <GroupValues>\s*6([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="R0R0R0R0" text="Количество осадков за декаду в процентах от среднего многолетнего"/>
+	  </Group>
+	  <Group number="8" text="Суточный максимум осадков за декаду">
+	    <GroupValues>\s*7([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="RxRxRx" text="Суточный максимум осадков за декаду"/>
+	    <Value number="2"  descrName="nR5" text="Число случаев за декаду с количеством осадков более 5мм"/>
+	  </Group>
+	  <Group number="9" text="Максимальная скорость ветра за декаду">
+	    <GroupValues>\s*8([\d/]{2})([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="fxfx" text="Максимальная скорость ветра за декаду"/>
+	    <Value number="2"  descrName="nf" text="Число случаев за декаду со скоростью ветра более 15"/>
+	    <Value number="3"  descrName="ng" text="Число суток с градом за декаду"/>
+	  </Group>
+	</Zone>
+	<Zone number="2">
+	  <ZoneGroups>(\s*91[\d/]{3})(\s*1[\d/]{4})(\s*3[\d/]{4})(\s*4[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Абсолютный максимум температуры поверхности почвы за декаду">
+	    <GroupValues>\s*91([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="snTzTz" text="Абсолютный максимум температуры поверхности почвы за декаду"/>
+	  </Group>
+	  <Group number="2" text="Продолжительность солнечного сияния за декаду">
+	    <GroupValues>\s*1([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="SdSdSd" text="Продолжительность солнечного сияния за декаду"/>
+	    <Value number="2"  descrName="n0" text="Число суток за декаду с заморозками в воздухе в вегитационный период при положительной средней декадной температуре воздуха"/>
+	  </Group>
+	  <Group number="3" text="Влажность за декаду">
+	    <GroupValues>\s*3([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="DdDd" text="Средний дефицит насыщения за декаду"/>
+	    <Value number="2"  descrName="UdUd" text="Средняя относительная влажность воздуха за декаду"/>
+	  </Group>
+	  <Group number="4" text="Влажность и пыльные бури">
+	    <GroupValues>\s*4([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="nu" text="Число случаев за декаду с минимальной за сутки влажностью менее 30%"/>
+	    <Value number="2"  descrName="nb" text="Число суток с пыльными бурями"/>
+	  </Group>
+	</Zone>
+	<Zone number="3">
+	  <ZoneGroups>(\s*92[\d/]{3})((?:(?:\s*1[\d/]{4})(?:\s*2[\d/]{4})+(?:\s*3[\d/]{4}))*)(\s*4[\d/]{4})?(\s*5[\d/]{4})((?:\s*6[\d/]{4})*)((?:\s*7[\d/]{4})*)</ZoneGroups>
+	  <Group number="1" text="Пастбища, сенокосы">
+	    <GroupValues>\s*92([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="Af/" text="Тип сенокосов, пастбищ"/>
+		<Value number="2"  descrName="Ax/" text="Преобладающие виды растительности на пастбище, сенокосе"/>
+		<Value number="3"  descrName="Oy/" text="Общая визуальная оценка травостоя"/>
+	  </Group>
+	  <Group number="2" text="Растение эдификатор">
+	    <GroupValues>\s*1([\d/])([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="Mz" text="Состояние верхнего 10-12см слоя почвы в последний день декады"/>
+	    <Value number="2"  descrName="KpKpKp" text="Растение эдификатор"/>
+	  </Group>
+	  <Group number="3" text="Фаза развития растений">
+	    <GroupValues>\s*2([\d/]{2})([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="FF" text="Фаза развития растений, наступившая в данную декаду"/>
+	    <Value number="2"  descrName="Ya" text="День декады, когда данная фаза развития наступила у 10%"/>
+	    <Value number="3"  descrName="Oy" text="Визуальная оценка состояния растений эдификаторов"/>
+	  </Group>
+	  <Group number="4" text="Высота растений эдификаторов и их отрастание">
+	    <GroupValues>\s*3([\d/])([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="H0" text="Характеристика отрастания растений"/>
+	    <Value number="2"  descrName="BBB" text="Средняя высота растения эдификатора на конец декады"/>
+	  </Group>
+	  <Group number="5" text="Сухая масса трав пастбищного или сенокосного участка с площади 10м2">
+	    <GroupValues>\s*4([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="/CkCkCkCk/" text="Сухая масса трав пастбищного или сенокосного участка с площади 10м2"/>
+	  </Group>
+	  <Group number="6" text="Состояние пастбищ и число невыпасных дней">
+	    <GroupValues>\s*5([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="Sc" text="Степень стравленности пастбищ на последний день декады"/>
+		<Value number="2"  descrName="Oc" text="Состояние дернины на последний день декады"/>
+		<Value number="3"  descrName="ny/" text="Число полных невыпасных дней"/>
+		<Value number="4"  descrName="nw" text="Число дней с осложненными условиями выпаса"/>
+	  </Group>
+	  <Group number="7" text="Работа, мероприятие, особый период в жизни животных">
+	    <GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="PrPrPr" text="Работа, мероприятие, особый период в жизни животных"/>
+	    <Value number="2"  descrName="Vr" text="День декады, когда началось проведение работы"/>
+	  </Group>
+	  <Group number="8" text="Повреждения растений">
+	    <GroupValues>\s*7([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="PyPy" text="Характер повреждения растений ГМУ, вредителями или болезнями"/>
+	    <Value number="2"  descrName="EeEe" text="Процент поврежденных растений"/>
+	  </Group>
+	</Zone>
+	<Zone number="4">
+	  <ZoneGroups>(\s*94[\d/]{3})(\s*1[\d/]{4})(\s*2[\d/]{4})</ZoneGroups>
+	  <Group number="1" text="Запасы продуктивной влаги в слое почвы 0-100см">
+	    <GroupValues>\s*94([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="WWW10" text="Запасы продуктивной влаги в слое почвы 0-100см"/>
+	  </Group>
+	  <Group number="2" text="Запасы продуктивной влаги в слое почвы 0-50см">
+	    <GroupValues>\s*1([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="WWW5" text="Запасы продуктивной влаги в слое почвы 0-50см"/>
+	  </Group>
+	  <Group number="3" text="Запасы продуктивной влаги в слое почвы 0-20см и 0-10см">
+	    <GroupValues>\s*2([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="WW2" text="Запасы продуктивной влаги в слое почвы 0-20см"/>
+	    <Value number="2"  descrName="WW1" text="Запасы продуктивной влаги в слое почвы 0-10см"/>
+	  </Group>
+	</Zone>
+	<Zone number="5">
+	  <ZoneGroups>(\s*95[\d/]{3})(\s*1[\d/]{4})(\s*2[\d/]{4})?(\s*3[\d/]{4})(\s*4[\d/]{4})</ZoneGroups>
+	  <Group number="1" text="Средняя высота снежного покрова на последний день декады">
+	    <GroupValues>\s*95([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="sss" text="Средняя высота снежного покрова на последний день декады"/>
+	  </Group>
+	  <Group number="2" text="Снежный покров">
+	    <GroupValues>\s*1([\d/])([\d/]{2})([\d/])</GroupValues>
+	    <Value number="1"  descrName="E/" text="Характеристика залегания снежного покрова"/>
+		<Value number="2"  descrName="MpMp" text="Средняя плотность снежного покрова"/>
+		<Value number="3"  descrName="M30" text="Число промеров снежного покрова с плотностью более 0,30г/см3"/>
+	  </Group>
+	  <Group number="3" text="Ледяная корка">
+	    <GroupValues>\s*2([\d/])([\d/])([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="Ly" text="Характеристика ледяной корки"/>
+		<Value number="2"  descrName="L" text="Распространение притертой к почве ледяной корки"/>
+		<Value number="3"  descrName="LaLa" text="Среднее значение толщины притертой к почве ледяной корки"/>
+	  </Group>
+	  <Group number="4" text="Явления погоды за декаду">
+	    <GroupValues>\s*3([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="ne/" text="Число дней за декаду с любым видом ледяной корки"/>
+		<Value number="2"  descrName="nc" text="Число дней за декаду с сильными снегопадами или дождями"/>
+		<Value number="3"  descrName="nq" text="Число дней за декаду с оттепелью"/>
+		<Value number="4"  descrName="np" text="Число дней за декаду с метелями или сильными позеками"/>
+	  </Group>
+	  <Group number="5" text="Явления погоды и корм">
+	    <GroupValues>\s*4([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="nd" text="Число дней за декаду с гололедом"/>
+		<Value number="2"  descrName="nz" text="Число дней за декаду с сильнымиизморозью, инеем, обледенением"/>
+		<Value number="3"  descrName="nh/" text="Число дней за декаду, в которые пастбищный корм закрыт снегом полностью или над поверхностью снега видны верхние части растений"/>
+		<Value number="4"  descrName="ne" text="Число дней за декаду, в которые над поверхностью снега видно много растений или большая часть травостоя"/>
+	  </Group>
+	</Zone>
+      </item>
+  </Section>
+  <!--ежедневная агрометеорологическая информация по районам пастбищного животноводства-->
+  <Section number="6" text="Ежедневная агрометеорологическая информация по районам пастбищного животноводства">
+    <item>
+    <SectionGroups>\s*555((?:\s*90[\d/]{3})(?:\s*1[\d/]{4})(?:\s*3[\d/]{4})(?:\s*4[\d/]{4})(?:\s*5[\d/]{4})(?:\s*6[\d/]{4})(?:\s*7[\d/]{4}))((?:(?:\s*92[\d/]{3})(?:\s*1[\d/]{4})?(?:\s*6[\d/]{4})(?:\s*8[\d/]{4})?)*)</SectionGroups>
+	<Zone number="1">
+	  <ZoneGroups>(\s*90[\d/]{3})(\s*1[\d/]{4})(\s*3[\d/]{4})(\s*4[\d/]{4})(\s*5[\d/]{4})(\s*6[\d/]{4})(\s*7[\d/]{4})</ZoneGroups>
+	  <Group number="1" text="Максимальная температура воздуха за 12 дневных часов">
+	    <GroupValues>\s*90([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="/snTxTx/" text="Максимальная температура воздуха за 12 дневных часов"/>
+	  </Group>
+	  <Group number="2" text="Средняя температура воздуха за сутки">
+	    <GroupValues>\s*1([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="snTTT24" text="Средняя температура воздуха за сутки"/>
+	  </Group>
+	  <Group number="3" text="Минимальная температура воздуха за сутки">
+	    <GroupValues>\s*3([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="/snTnTn/" text="Минимальная температура воздуха за сутки"/>
+	  </Group>
+	  <Group number="4" text="Минимальная температура почвы за сутки">
+	    <GroupValues>\s*4([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="/snTgTg/" text="Минимальная температура почвы за сутки"/>
+	  </Group>
+	  <Group number="5" text="Количество осадков за сутки">
+	    <GroupValues>\s*5([\d/]{4})</GroupValues>
+	    <Value number="1"  descrName="RRRR24" text="Количество осадков за сутки"/>
+	  </Group>
+	  <Group number="6" text="Высота снежного покрова по рейке">
+	    <GroupValues>\s*6([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="/sss/" text="Высота снежного покрова по рейке"/>
+	  </Group>
+	  <Group number="7" text="Ветер за сутки">
+	    <GroupValues>\s*7([\d/]{2})([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="fxfx" text="Максимальная скорость ветра за сутки"/>
+	    <Value number="2"  descrName="ff24" text="Средняя скорость ветра за сутки"/>
+	  </Group>
+	</Zone>
+	<Zone number="2">
+	  <ZoneGroups>(\s*92[\d/]{3})(\s*1[\d/]{4})?(\s*6[\d/]{4})(\s*8[\d/]{4})?</ZoneGroups>
+	  <Group number="1" text="Преобладающие на пастбище виды растительности и фазы ее развития">
+	    <GroupValues>\s*92([\d/])([\d/]{2})</GroupValues>
+	    <Value number="1"  descrName="Ax/" text="Преобладающие виды растительности на пастбище, сенокосе"/>
+		<Value number="2"  descrName="FF" text="Преобладающая фаза развития, наступившая у более 10% растений"/>
+	  </Group>
+	  <Group number="2" text="Состояние и высота пастбищной растительности">
+	    <GroupValues>\s*1([\d/])([\d/]{3})</GroupValues>
+	    <Value number="1"  descrName="Oy" text="Общая визуальная оценка состояния травостоя"/>
+	    <Value number="2"  descrName="BBB" text="Средняя высота преобладающей пастбищной растительности"/>
+	  </Group>
+	  <Group number="3" text="Работа, мероприятие, особый период в жизни животных">
+	    <GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	    <Value number="1"  descrName="PrPrPr" text="Работа, мероприятие, особый период в жизни животных"/>
+	    <Value number="2"  descrName="Xg" text="Показатель благоприятности условий погоды для проведения работ"/>
+	  </Group>
+	  <Group number="4" text="Обледенение, снег, гололед">
+	    <GroupValues>\s*8([\d/])([\d/])([\d/])([\d/])</GroupValues>
+	    <Value number="1"  descrName="Hn" text="Наличие и характер травостоя над снегом"/>
+	    <Value number="2"  descrName="Hi" text="Обледенение пастбищной растительности"/>
+		<Value number="3"  descrName="E/" text="Характеристика плотности и распределения снега по визуальным наблюдениям"/>
+	    <Value number="4"  descrName="Zb" text="Интенсивность гололеда"/>
+	  </Group>
+	</Zone>
+    </item>
+  </Section>
+  <Section number="7" text="Other data"> <!--прочая информация-->
+    <SectionGroups>(.*)</SectionGroups>
+	<Group number="1" text="Other data">
+	  <GroupValues>(.*)</GroupValues>
+	  <Value number="1"  descrName="national" text="Other data"/>
+	</Group>
+  </Section>
+</Message>

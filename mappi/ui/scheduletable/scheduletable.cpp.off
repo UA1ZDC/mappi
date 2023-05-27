@@ -1,0 +1,709 @@
+#include "scheduletable.h"
+#include "ui_scheduletable.h"
+
+#include <qdir.h>
+#include <qfile.h>
+#include <qsettings.h>
+#include <qbitmap.h>
+#include <qthread.h>
+#include <qmessagebox.h>
+
+#include <meteo/commons/rpc/rpc.h>
+#include <meteo/commons/global/global.h>
+#include <meteo/commons/proto/appconf.pb.h>
+
+#include <mappi/schedule/schedule.h>
+//#include <mappi/schedule/schedulehelper.hpp>
+
+namespace mappi {
+
+static const int kTimeoutConnect  = 30000; //!< Таймаут соединения с сервисом
+static const int kTimeoutRequest  = 10000; //!< Таймаут запроса
+
+static const QString kReceiverApplication = QObject::tr("mappi.receive.manager");
+
+static const QString kSettings = QDir::homePath() + "/.meteo/mappi/sessionswidget.ini";
+
+  //TODO так не подгружаются, вбито в коде ниже при вызове
+// static const QPixmap kEnableAdopt (":/mappi/icons/run_satellite_receiver.png");
+// static const QPixmap kDisableAdopt(":/mappi/icons/no_satellite_receiver.png");
+
+// static const QPixmap kNorthIcon(":/mappi/icons/arrow-up.png");
+// static const QPixmap kSouthIcon(":/mappi/icons/arrow-down.png");
+
+// static const QPixmap kStateUnknow (":/mappi/icons/no_set.png");
+// static const QPixmap kStateMissing(":/mappi/icons/check.png");
+// static const QPixmap kStateFailed (":/mappi/icons/close.png");
+
+ScheduleTable::ScheduleTable(QWidget *parent)
+  : QWidget(parent)
+  , ui_(new Ui::ScheduleTable)
+  , sched_(nullptr)
+  , near_(nullptr)
+  , extendedMode_(false)
+  , showComplitedSeans_(false)
+  , loadedSettings_(false)
+  , updateTimer_(new QTimer(this))
+  , chSchedule_(nullptr)
+    //  , ctrlSchedule_(nullptr)
+    //  , replySchedule_(new conf::ScheduleReply())
+  , chAppManager_(nullptr)
+    //  , ctrlAppManager_(nullptr)
+    //, replyAppManager_(new meteo::app::AppState_Proc())
+{
+  ui_->setupUi(this);
+
+  //Колонка kRevol(Виток) нужна для передачи параметра revol в функцию Scheduler::getSession(name, revol)
+  ui_->scheduleTbl->horizontalHeader()->hideSection(kRevol);
+  ui_->scheduleTbl->horizontalHeaderItem(kCulmin  )->setIcon(QPixmap(":mappi/icons/radar.png"));
+  ui_->scheduleTbl->horizontalHeaderItem(kDuration)->setIcon(QPixmap(":mappi/icons/timer.png"));
+  ui_->scheduleTbl->horizontalHeaderItem(kDirect  )->setIcon(QPixmap(":mappi/icons/compas.png"));
+
+  QObject::connect(ui_->scheduleTbl, &QTableWidget::currentCellChanged, this, &ScheduleTable::slotChangedSchedule);
+  QObject::connect(ui_->scheduleTbl, &QTableWidget::cellDoubleClicked, this, &ScheduleTable::slotScheduleDoubleClicked);
+
+  QObject::connect(updateTimer_, &QTimer::timeout, this, &ScheduleTable::slotCheckSession);
+
+  qRegisterMetaType<SessionState>("SessionState");
+}
+
+ScheduleTable::~ScheduleTable()
+{
+  saveSettings();
+  deleteScheduleChannel();
+  deleteAppManagerChannel();
+  //  delete replySchedule_;
+  delete ui_;
+}
+
+void ScheduleTable::init()
+{
+  loadSettings();
+
+  if(extendedMode_) {
+    ui_->scheduleTbl->horizontalHeader()->showSection(kRevol);
+    ui_->scheduleTbl->horizontalHeaderItem(kState)->setIcon(getEyeIcon(showComplitedSeans_));
+    ui_->scheduleTbl->horizontalHeaderItem(kState)->setToolTip(getStateHeaderTooltip(showComplitedSeans_));
+    QObject::connect(ui_->scheduleTbl->horizontalHeader(), &QHeaderView::sectionClicked, this, &ScheduleTable::toggleMissingSchedule);
+  }
+
+  slotInitScheduleChannel();
+  slotInitAppManagerChannel();
+
+  sched_ = std::make_shared<Schedule>(schedule::ScheduleHelper::getSchedule());
+  near_  = std::make_shared<Session>(Schedule::defaultSession());
+  slotFillSchedule();
+
+  updateTimer_->setInterval(1000);
+  updateTimer_->start();
+}
+  
+void ScheduleTable::loadSettings()
+{
+  if(false == QFile::exists(kSettings)) return;
+  QSettings settings(kSettings, QSettings::IniFormat);
+  ui_->scheduleTbl->horizontalHeader()->restoreState(settings.value("schedule/table").toByteArray());
+  extendedMode_ = settings.value("schedule/extended").toBool();
+  loadedSettings_ = true;
+}
+  
+void ScheduleTable::saveSettings() const
+{
+  QSettings settings(kSettings, QSettings::IniFormat);
+  settings.setValue("schedule/table", ui_->scheduleTbl->horizontalHeader()->saveState());
+}
+
+void ScheduleTable::deleteScheduleChannel()
+{
+  if(nullptr != chSchedule_) {
+    QObject::disconnect(chSchedule_, 0, this, 0);
+    chSchedule_->deleteLater();
+    chSchedule_ = nullptr;
+  }
+
+  // if (nullptr != ctrlSchedule_) {
+  //   ctrlSchedule_->deleteLater();
+  //   ctrlSchedule_ = nullptr;
+  // }
+}
+  
+void ScheduleTable::slotInitScheduleChannel()
+{
+  deleteScheduleChannel();
+  slotConnectToSchedule();
+}
+  
+void ScheduleTable::slotConnectToSchedule()
+{
+  if(nullptr == chSchedule_)
+  {
+    chSchedule_ = meteo::global::serviceChannel(meteo::settings::proto::kSchedule);
+    if(nullptr == chSchedule_) {
+      QTimer::singleShot(kTimeoutConnect, this, &ScheduleTable::slotConnectToSchedule);
+      return;
+    }
+    QObject::connect(chSchedule_, &meteo::rpc::Channel::disconnected, this, &ScheduleTable::slotDisconnectedFromSchedule);
+  }
+
+  if(false == chSchedule_->isConnected())
+  {
+    // if(false == chSchedule_->connect()) {
+      deleteScheduleChannel();
+      QTimer::singleShot(kTimeoutConnect, this, &ScheduleTable::slotConnectToSchedule);
+      return;
+      //}
+  }
+  subscribeSchedule();
+}
+  
+void ScheduleTable::slotDisconnectedFromSchedule()
+{
+  deleteScheduleChannel();
+  QTimer::singleShot(kTimeoutConnect, this, &ScheduleTable::slotConnectToSchedule);
+}
+  
+bool ScheduleTable::subscribeSchedule()
+{
+  trc;
+  if(nullptr == chSchedule_) return false;
+  if(false == chSchedule_->isConnected()) {
+    debug_log << "not connected";
+    return false;
+  }
+
+  //  ctrlSchedule_ = new rpc::TController(chSchedule_);
+
+  mappi::conf::ScheduleSubscribeRequest request;
+  request.set_subscr(true);
+
+  bool ok = chSchedule_->subscribe(&mappi::conf::ScheduleService::Subscribe, request,
+				   this, &ScheduleTable::callbackSchedule);
+  if(false == ok) {
+    error_log << QObject::tr("Не удалось подписаться на получение информации о расписании");
+    QTimer::singleShot(kTimeoutConnect, this, &ScheduleTable::slotInitScheduleChannel);
+  }
+  return ok;
+}
+  
+void ScheduleTable::callbackSchedule(conf::ScheduleResponse* reply)
+{
+  sched_->clear();
+  for(const auto& it : reply->session()) {
+    sched_->appendSession(Session(it));
+  }
+  slotFillSchedule();
+}
+
+void ScheduleTable::deleteAppManagerChannel()
+{
+  if(nullptr != chAppManager_) {
+    QObject::disconnect(chAppManager_, 0, this, 0);
+    chAppManager_->deleteLater();
+    chAppManager_ = nullptr;
+  }
+
+  // if (nullptr != ctrlAppManager_) {
+  //   ctrlAppManager_->deleteLater();
+  //   ctrlAppManager_ = nullptr;
+  // }
+}
+
+void ScheduleTable::slotInitAppManagerChannel() {
+  deleteAppManagerChannel();
+  slotConnectToAppManager();
+}
+
+void ScheduleTable::slotConnectToAppManager()
+{
+  if(nullptr == chAppManager_) {
+    chAppManager_ = meteo::global::serviceChannel(meteo::settings::proto::kDiagnostic);
+    if(nullptr == chAppManager_) {
+      QTimer::singleShot(kTimeoutConnect, this, &ScheduleTable::slotConnectToAppManager);
+      return;
+    }
+    QObject::connect(chAppManager_, &meteo::rpc::Channel::disconnected, this, &ScheduleTable::slotDisconnectedFromAppManager);
+  }
+
+  if(false == chAppManager_->isConnected()) {
+    //    if(false == chAppManager_->connect()) {
+      deleteAppManagerChannel();
+      QTimer::singleShot(kTimeoutConnect, this, &ScheduleTable::slotConnectToAppManager);
+      return;
+      // }
+  }
+  subscribeAppManager();
+  receiverRunning_ = getReceiverServiceRunning();
+}
+
+void ScheduleTable::slotDisconnectedFromAppManager()
+{
+  deleteAppManagerChannel();
+  QTimer::singleShot(kTimeoutConnect, this, &ScheduleTable::slotConnectToAppManager);
+}
+
+bool ScheduleTable::subscribeAppManager()
+{
+  if(nullptr == chAppManager_) return false;
+  if(false == chAppManager_->isConnected()) return false;
+
+  //ctrlAppManager_ = new rpc::TController(chAppManager_);
+
+  bool ok = chAppManager_->subscribe(&meteo::app::ControlService::ProcChanged, Dummy(),
+				     this, &ScheduleTable::callbackAppManager);
+  if(false == ok) {
+    error_log << QObject::tr("Не удалось подписаться на получение информации о состоянии приемника");
+    QTimer::singleShot(kTimeoutConnect, this, &ScheduleTable::slotInitAppManagerChannel);
+  }
+  return ok;
+}
+
+void ScheduleTable::callbackAppManager(meteo::app::AppState_Proc* reply)
+{
+  if(reply->has_app()) {
+    if(reply->app().has_id() &&
+       QString::fromStdString(reply->app().id()) == kReceiverApplication) {
+      if(reply->has_state()) {
+        receiverRunning_ = reply->state() == meteo::app::AppState_ProcState_PROC_RUNNING;
+        if(false == receiverRunning_) {
+          ui_->scheduleTbl->setSelectionMode(QAbstractItemView::SingleSelection);
+        }
+        else {
+          nearStage_ = Session::EXPECTED;
+          slotCheckSession();
+        }
+
+      }
+    }
+  }
+}
+
+void ScheduleTable::slotFillSchedule()
+{
+  if(sched_->isEmpty()) {
+    near_ = std::make_shared<Session>(sched_->defaultSession());
+    return;
+  }
+
+  //Текущее состояние таблицы (количество строк, выбранная строка
+  int rowCountOld = ui_->scheduleTbl->rowCount();
+  int selectRow = ui_->scheduleTbl->currentRow();
+
+  QList<schedule::Session> sessionLst;
+
+  QDateTime curDt = QDateTime::currentDateTimeUtc().addSecs(timeOffset_);
+  
+  //Заполнение таблицы
+  int rowCount = 0; //!< количество сеансов внесенных в таблицу
+  for(int row = 0, sz = sched_->countSession(); row < sz; ++row) {
+    const schedule::Session&  session = sched_->getSession(row);
+
+    //Пропуск завершенных сеансов, если их просмотр отключен
+    if(session.dtStage(curDt) == schedule::Session::MISSING &&
+       (false == session.adopted() || false == showComplitedSeans_))
+      continue;
+
+    if(session.dtStage(curDt) == schedule::Session::MISSING && session.adopted())
+      sessionLst.append(session);
+
+    if(ui_->scheduleTbl->rowCount() > rowCount)
+      fillRow(ui_->scheduleTbl, rowCount, session, timeOffset_);
+    else
+      insertRow(ui_->scheduleTbl, session, timeOffset_);
+    rowCount++;
+  }
+
+  //Если таблица была пуста выбираем первую строку
+  if(rowCountOld != 0) {
+    //Востонавливаем выделенную строку
+    int diff = rowCount - rowCountOld;
+    selectRow += diff;
+    ui_->scheduleTbl->setCurrentCell(selectRow < 0 ? 0 : selectRow, 0);
+  }
+
+  //Удаляем лишние строки в таблице
+  if(rowCount == 0) ui_->scheduleTbl->clearContents();
+  while (ui_->scheduleTbl->rowCount() > rowCount)
+    ui_->scheduleTbl->removeRow(rowCount);
+
+  //Автоподбор ширины столбцов при первом запуске приложения
+  if(false == loadedSettings_) {
+    loadedSettings_ = true;
+    ui_->scheduleTbl->resizeColumnsToContents();
+  }
+
+  slotCheckSession();
+
+  if(false == sessionLst.isEmpty()) {
+    CheckSessionData* coloredSession = new CheckSessionData();
+    coloredSession->setSessionList(sessionLst);
+    QObject::connect(coloredSession, &CheckSessionData::complete, this, &ScheduleTable::coloredRow, Qt::QueuedConnection);
+
+    QThread* thread = new QThread();
+    coloredSession->moveToThread(thread);
+    QObject::connect(thread, &QThread::started, coloredSession, &CheckSessionData::run);
+    QObject::connect(coloredSession, &CheckSessionData::finished, coloredSession, &CheckSessionData::deleteLater);
+    QObject::connect(coloredSession, &CheckSessionData::destroyed, thread, &QThread::quit);
+    QObject::connect(thread, &QThread::finished, thread, &QThread::deleteLater);
+    thread->start();
+  }
+}
+
+void ScheduleTable::coloredRow(const SessionState& state) {
+  static const QPixmap kStateUnknow (":/mappi/icons/no_set.png");
+  static const QPixmap kStateMissing(":/mappi/icons/check.png");
+  static const QPixmap kStateFailed (":/mappi/icons/close.png");
+  
+  for(int i = 0, sz = ui_->scheduleTbl->rowCount(); i < sz; i++) {
+    if(cellText(i, kSatName) == state.satName &&
+       static_cast<unsigned long int>(cellText(i, kRevol).toLongLong()) == state.revol) {
+      if(state.state) {
+        ui_->scheduleTbl->item(i, kState)->setIcon(kStateMissing);
+        ui_->scheduleTbl->item(i, kState)->setToolTip(QObject::tr("Данные есть"));
+      }
+      else {
+        ui_->scheduleTbl->item(i, kState)->setIcon(kStateFailed);
+        ui_->scheduleTbl->item(i, kState)->setToolTip(QObject::tr("Данных нет"));
+      }
+      break;
+    }
+  }
+}
+
+void ScheduleTable::slotChangedSchedule(int row, int col, int prevRow, int prevCol) {
+  Q_UNUSED(col); Q_UNUSED(prevCol);
+
+  //запрешено выделение
+  if(ui_->scheduleTbl->selectionMode() == QAbstractItemView::NoSelection) return;
+
+  //Если выбрана та же строка
+  if(row < 0 || row > ui_->scheduleTbl->rowCount() || row == prevRow ) return;
+
+  const QString satName = cellText(row, kSatName);
+  const ulong revol = cellText(row, kRevol).toLongLong();
+
+  //Если выбран тот же сеанс
+  if(satName == selectSession_.first && revol == selectSession_.second) return;
+
+  //Если выбранного сеанса не существует(мало-ли)
+  auto& session = sched_->getSession(satName, revol);
+  if(session.isDefaults()) return;
+
+  //обновляем выбранный сеанс
+  selectSession_ = { satName, revol };
+  Q_EMIT(changeSession(session));
+}
+
+schedule::Session ScheduleTable::getSession(const QString& satellite, int revol, int offset_time)
+{
+  timeOffset_ = offset_time;
+  auto& session = sched_->getSession(satellite, revol);
+  return session;
+}
+
+void ScheduleTable::slotScheduleDoubleClicked(int row, int col)
+{
+  static const QPixmap kEnableAdopt (":/mappi/icons/run_satellite_receiver.png");
+  static const QPixmap kDisableAdopt(":/mappi/icons/no_satellite_receiver.png");
+
+  if(kState != col) return;
+  const QString satName = cellText(row, kSatName);
+  const ulong revol = cellText(row, kRevol).toLongLong();
+  auto& session = sched_->getSession(satName, revol);
+  if(session.isDefaults()) return;
+  if(toggleAdopted(&session)) {
+    ui_->scheduleTbl->item(row, kState)->setIcon(session.adopted() ? kEnableAdopt : kDisableAdopt);
+    if(session.dtStage(QDateTime::currentDateTimeUtc().addSecs(timeOffset_)) == Session::ALREADY_TAKEN) {
+      near_ = std::make_shared<Session>(sched_->nearSession(true));
+      Q_EMIT(changeNear(near_));
+    }
+    //обновляем выбранный сеанс
+    selectSession_ = { satName, revol };
+    Q_EMIT(changeSession(session));
+  }
+  else {
+    warning_log << QObject::tr("Не удалось изменить статус сеанса");
+  }
+}
+
+void ScheduleTable::toggleMissingSchedule(int index)
+{
+  if(kState != index) return;
+
+  showComplitedSeans_ = !showComplitedSeans_;
+  ui_->scheduleTbl->horizontalHeaderItem(kState)->setIcon(getEyeIcon(showComplitedSeans_));
+  ui_->scheduleTbl->horizontalHeaderItem(kState)->setToolTip(getStateHeaderTooltip(showComplitedSeans_));
+
+  //Перезаполнить таблицу
+  slotFillSchedule();
+
+  //Раскрасить строку с текущим сеансом, если он начался
+  if(near_->dtStage(QDateTime::currentDateTimeUtc().addSecs(timeOffset_)) == schedule::Session::ALREADY_TAKEN) {
+    int nearRow = getSessionRow(*near_);
+    ui_->scheduleTbl->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui_->scheduleTbl->selectRow(nearRow);
+    ui_->scheduleTbl->setSelectionMode(QAbstractItemView::NoSelection);
+  }
+}
+
+//!< проверить сеанс на начала
+void ScheduleTable::slotCheckSession()
+{
+  static const QPixmap kStateMissing(":/mappi/icons/check.png");
+  
+  QDateTime curDt = QDateTime::currentDateTimeUtc().addSecs(timeOffset_);
+  // удаляем пропущеные сеансы из таблицы
+  if(false == showComplitedSeans_) {
+    for(int row = 0, size = getSessionRow(*near_); row < size; ++row)
+    {
+      auto session = sched_->getSession(cellText(row, kSatName), cellText(row, kRevol).toLongLong());
+      if(session.dtStage(curDt) == schedule::Session::MISSING) {
+        ui_->scheduleTbl->removeRow(row);
+      }
+    }
+  }
+
+  //Первичный выбор ближайшего сеанса
+  if(near_->name.isEmpty() && 0 < sched_->countSession()) {
+    near_ = std::make_shared<Session>(sched_->nearSession(curDt));
+    Q_EMIT(changeNear(near_));
+  }
+
+  //Проверка ближайшего сеанса на завершенность
+  if(near_->dtStage(curDt) == schedule::Session::MISSING) {
+    ui_->scheduleTbl->setSelectionMode(QAbstractItemView::SingleSelection);
+    nearStage_ = near_->dtStage(curDt);
+
+    int row = getSessionRow(*near_);
+    if(showComplitedSeans_ && row >= 0) {
+      ui_->scheduleTbl->item(row, kState)->setIcon(kStateMissing);
+    }
+    else {
+      ui_->scheduleTbl->removeRow(row);
+    }
+    near_ =  std::make_shared<Session>(sched_->nearSession(curDt));
+    Q_EMIT(changeNear(near_));
+  }
+
+  //Проверка ближайщего сеанса на выполнение
+  if(near_->dtStage(curDt) == Session::ALREADY_TAKEN)
+  {
+    int row = getSessionRow(*near_);
+    if(nearStage_ != Session::ALREADY_TAKEN) {
+      ui_->scheduleTbl->setSelectionMode(QAbstractItemView::SingleSelection);
+      ui_->scheduleTbl->selectRow(row);
+      if(receiverRunning_) {
+        ui_->scheduleTbl->setSelectionMode(QAbstractItemView::NoSelection);
+      }
+    }
+  }
+  else if(nearStage_ == Session::ALREADY_TAKEN) {
+    ui_->scheduleTbl->setSelectionMode(QAbstractItemView::SingleSelection);
+  }
+  nearStage_ = near_->dtStage(curDt);
+}
+
+//!< Включить/Выключить сеанс
+bool ScheduleTable::toggleAdopted(Session* session) const
+{
+  if(nullptr == session || session->isDefaults()) return false;
+
+  bool ok = true;
+  if((session->adopted() && session->getAos() > QDateTime::currentDateTimeUtc().addSecs(timeOffset_)) ||
+     (!session->adopted() && session->getLos() > QDateTime::currentDateTimeUtc().addSecs(timeOffset_)))
+  {
+    auto oldState = session->getState();
+    session->setState(session->adopted() ? conf::kUserDisableState : conf::kUserEnableState);
+    if(ok) {
+      ok = schedule::ScheduleHelper::changeState(*session);
+      if(!ok) {
+        session->setState(oldState);
+      }
+    }
+  }
+  else {
+    if(session->adopted()) {
+      if(getReceiverServiceRunning()) {
+        QMessageBox* msgbox = new QMessageBox
+            (QMessageBox::Warning, QObject::tr("Предупреждение"),
+             QObject::tr("Перед сменой состояния приёма, остановите сервис приёма!"),
+             QMessageBox::Ok);
+        QObject::connect(msgbox, &QMessageBox::finished, msgbox, &QMessageBox::deleteLater);
+        msgbox->show();
+      }
+    }
+    ok = false;
+  }
+  return ok;
+}
+
+/*!
+* \brief ScheduleTable::cellText - Текст ячейки [row:col]
+* \return Текст в ячейки или "" если ячейки не существует
+*/
+QString ScheduleTable::cellText(int row, int col) const
+{
+  if(nullptr != ui_->scheduleTbl->item(row, col))
+    return ui_->scheduleTbl->item(row, col)->text();
+  return "";
+}
+
+/*!
+* \brief ScheduleTable::getSessionRow - Индекс строки в которой записана сессия session
+* \param session - сеанс
+* \return номер строки в таблице, -1 если сеанс не найден
+*/
+int ScheduleTable::getSessionRow(const Session& session) const
+{
+  for(int row = 0, sz = ui_->scheduleTbl->rowCount(); row < sz; ++row)
+    if(cellText(row, kSatName) == session.getNameSat() &&
+       cellText(row, kRevol).toULongLong() == session.getRevol())
+      return row;
+  return -1;
+}
+
+//!< Залить фон строки цветом
+void ScheduleTable::setBackgroundRow(QTableWidget *table, int row, const QBrush& color)
+{
+  if(row < 0 || row >= table->rowCount()) return;
+  for(int col = 0, sz = table->columnCount(); col < sz; ++col)
+    table->item(row, col)->setBackground(color);
+}
+
+//!< Работа со строкой таблицы
+void ScheduleTable::fillRow(QTableWidget* table, int row, const Session& session, int timeOffset)
+{
+  if(nullptr == table) return;
+  for(auto col : { kState, kDate, kTime, kSatName, kCulmin, kDuration, kDirect, kRevol })
+    fillCell(table->item(row, col), col, session, timeOffset);
+}
+
+void ScheduleTable::insertRow(QTableWidget* table, const Session& session, int timeOffset)
+{
+  if(nullptr == table) return;
+  int row = table->rowCount();
+  table->insertRow(row);
+  table->setRowCount(row + 1);
+  for(auto col : { kState, kDate, kTime, kSatName, kCulmin, kDuration, kDirect, kRevol })
+    table->setItem(row, col, createCell(col, session, timeOffset));
+}
+
+//!Работа с ячейкой таблицы
+void ScheduleTable::fillCell(QTableWidgetItem *item, Column col, const Session &session, int timeOffset)
+{
+  static const QPixmap kEnableAdopt (":/mappi/icons/run_satellite_receiver.png");
+  static const QPixmap kDisableAdopt(":/mappi/icons/no_satellite_receiver.png");
+  static const QPixmap kStateUnknow (":/mappi/icons/no_set.png");
+  static const QPixmap kStateMissing(":/mappi/icons/check.png");
+  static const QPixmap kStateFailed (":/mappi/icons/close.png");
+  
+  switch (col) {
+  case kState:    //!< Состояние сеана (принять/пропустить/завершен)
+    if(session.dtStage(QDateTime::currentDateTimeUtc().addSecs(timeOffset)) == schedule::Session::MISSING) {
+      item->setIcon(kStateUnknow);
+      item->setToolTip(QObject::tr("Сеанс завершен"));
+    }
+    else {
+      item->setIcon(session.adopted() ? kEnableAdopt : kDisableAdopt);
+      item->setToolTip(session.adopted() ? QObject::tr("Сеанс ожидается")
+                                         : QObject::tr("Сеанс исключен"));
+    }
+    break;
+  case kDate:      //!< Дата
+    item->setText(session.getAos().toLocalTime().toString("dd.MM"));
+    break;
+  case kTime:      //!< Время
+    item->setText(session.getAos().toLocalTime().toString("hh:mm") + " - " + session.getLos().toLocalTime().toString("hh:mm"));
+    break;
+  case kSatName:  //!< Название спутника
+    item->setText(session.getNameSat());
+    break;
+  case kCulmin:   //!< Кульминация
+    item->setText(QString::number(MnMath::rad2deg(session.getMaxEl()), 'f', 1) + "°");
+    break;
+  case kDuration: //!< Длительность
+    item->setText(QTime::fromMSecsSinceStartOfDay(session.length() * 1000).toString("mm:ss"));
+    break;
+  case kDirect:   //!< Направление
+    item->setIcon(getDirectionIcon(session.getDirection()));
+    item->setToolTip(getDirectionTooltip(session.getDirection()));
+    break;
+  case kRevol:    //!< Виток (служебное поле)
+    item->setText(QString::number(session.getRevol()));
+    break;
+  default:
+    break;
+  }
+}
+
+QTableWidgetItem* ScheduleTable::createCell(Column col, const Session &session, int timeOffset)
+{
+  QTableWidgetItem* item = new QTableWidgetItem();
+  fillCell(item, col, session, timeOffset);
+  return item;
+}
+
+
+bool ScheduleTable::getReceiverServiceRunning()
+{
+  bool running = true;
+  auto* ch = meteo::global::serviceChannel(meteo::settings::proto::kDiagnostic);
+  if(nullptr != ch)
+  {
+    auto* processes = ch->remoteCall(&meteo::app::ControlService::GetProcList, Dummy(), kTimeoutRequest, true);
+    if(nullptr != processes)
+    {
+      for(const auto& process : processes->procs()) {
+        if(QString::fromStdString(process.app().id()) == kReceiverApplication) {
+          running = process.state() == meteo::app::AppState_ProcState_PROC_RUNNING;
+          break;
+        }
+      }
+      delete processes;
+    }
+  }
+  delete ch;
+  return running;
+}
+
+
+//!< Создать обычный / серый глаз
+QPixmap ScheduleTable::getEyeIcon(bool active)
+{
+  QPixmap eye = QPixmap(":mappi/icons/eye.png");
+  if(false == active) {
+    QPixmap pix(eye.size());
+    pix.fill(Qt::gray);
+    pix.setMask(eye.createMaskFromColor(Qt::transparent));
+    return pix;
+  }
+  return eye;
+}
+
+//!< Создать подсказку к заголовку столбца состояние сеанса
+QString ScheduleTable::getStateHeaderTooltip(bool active)
+{
+  return active ? QObject::tr("Скрыть завершенные сеансы") :
+                  QObject::tr("Показать завершенные сеансы");
+}
+
+//!< Текст ячейки "Направление движения"
+QPixmap ScheduleTable::getDirectionIcon(conf::SatDirection direction)
+{
+  switch (direction) {
+  case conf::kDescending: return QPixmap(":/mappi/icons/arrow-down.png"); //kSouthIcon;
+  case conf::kAscending:  return QPixmap(":/mappi/icons/arrow-up.png"); //kNorthIcon;
+  default:                return QPixmap();
+  }
+}
+
+//!< Подсказка ячейки "Направление движения"
+QString ScheduleTable::getDirectionTooltip(conf::SatDirection direction)
+{
+  switch (direction) {
+  case conf::kDescending: return QObject::tr("Нисходящее направление");
+  case conf::kAscending:  return QObject::tr("Bосходящее направление");
+  default:                return QObject::tr("Неизвестное направление");
+  }
+}
+
+} // mappi

@@ -1,0 +1,248 @@
+syntax = "proto2";
+
+import "sprinf.proto";
+import "meteo.proto";
+import "map_document.proto";
+import "surface.proto";
+import "puanson.proto";
+
+package meteo.map.proto;
+
+//! Способ представления данных в слое
+enum ViewMode {
+  kEmptyLayer   = 0;    //!< простой слой
+  kPuanson      = 1;    //!< пуансоны
+  kIsoline      = 2;    //!< изолинии
+  kGradient     = 3;    //!< градиентная заливка
+  kRadar        = 4;    //!< заливка радара
+  kIsoGrad      = 5;    //!< изолинии и градиентная заливка
+  kSigwx        = 6;    //!< карты SIGWX
+}
+
+//! Возможный источник данных для слоя
+enum DataSource {
+  kSurface      = 0;    //!< результаты наблюдений
+  kField        = 1;    //!< результаты ОА
+  kAuto         = 2;    //!< определять источник данных автоматических по ViewMode
+  kSatSource    = 3;    //!< спутниковые данные
+  kGribSource   = 4;    //!< данные из Гриб
+}
+
+//Тип Вертикального разреза
+enum ProfileType {
+  kSpace           = 0;    //!< простраственный разрез
+  kTime            = 1;    //!< временной разрез
+  kTimeList        = 2;
+  kBulletinSpace   = 3;
+  kBulletinTime    = 4;
+}
+
+//! тип карты
+enum MapType {
+  kObservation  = 0;    //!< карта по результатам наблюдений
+  kForecast     = 1;    //!< прогностическая карта
+}
+
+//! Формат документа
+enum DocumentFormat {
+  kJpeg         = 0;    //!< изображение в формате jpeg
+  kBmp          = 1;    //!< изображение в формате bmp
+  kPng          = 2;    //!< изображение в формате png
+  kSxf          = 3;    //!< документ в формате sxf
+  kPtkpp        = 4;    //!< документ в формате ptkpp
+  kOdt          = 5;    //!< формализованный документ в формате ODT
+  kOds          = 6;    //!< формализованный документ в формате ODS
+  kOdp          = 7;    //!< формализованный документ в формате ODP
+  kPdf          = 8;    //!< формализованный документ в формате PDF
+};
+
+//! Слой карты погоды
+message WeatherLayer {
+  optional ViewMode     mode                            = 1 [default = kEmptyLayer]; //!< способ представления
+  optional DataSource   source                          = 2 [default = kAuto];  //!< возможный источник данных
+  optional int32        center                          = 3;                    //!< центр (если не указан, берется Map::center)
+  optional int32        model                           = 4;                    //!< модель  (если не указан, берется Map::center)
+  optional double       level                           = 5;                    //!< уровень (если не указан, берется Map::center)
+  optional int32        type_level                      = 6;                    //!< тип уровня (если не указан, берется Map::center)
+  optional string       template_name                   = 7;                    //!< наименование шаблона изолинии или пуансона
+  repeated meteo.surf.DataType data_type                = 8;                    //!< типы данных в карте
+  optional string       layer_name_pattern              = 9 [default = "[template] за $dd.MM.yy hh:mm$ [level] [hour] Центр: [center] [count]"]; //!< шаблон имени слоя
+  optional string       datetime                        = 10;                    //!< дата и время данных
+  optional int32        hour                            = 11;                    //!< срок
+  optional int32        data_size                       = 12;                    //!< количество данных
+  optional string       center_name                     = 13;                    //!< имя центра
+  optional LayerType    type                            = 14;                    //!< тип слоя
+  optional int32        h1                              = 15;
+  optional int32        h2                              = 16;
+  optional int32        transparency                    = 17;                    //!< прозрачность
+  optional surf.QueryType query_type                    = 18 [default = kTermValue];
+  optional string       forecast_beg                    = 19;
+  optional string       forecast_end                    = 20;
+  optional int32        net_type                        = 21;
+  repeated int32        meteo_descr                     = 22;
+  optional int32        step_lat                        = 23; //!< шаг сетки
+  optional int32        step_lon                        = 24; //!< шаг сетки
+}
+
+message FormalDocument {
+  //optional string             stnumber            = 1; //!< Индекс станции (число в виде строки)
+  optional meteo.sprinf.Station             station        = 1;//!< станци
+  optional string             module_path         = 2; //!< Путь к python-модулю, генерирующему документ
+  optional DocumentFormat     format              = 3; //!< Формат документа
+  optional string             job_name            = 4; //!< Название работы по созданию документа
+  optional string             job_title           = 5; //!< TODO: Наименование (удобочитаемое) работы по созданию документа
+  optional string             template            = 6; //!< Название шаблона документа (Например: AV6.ods)
+  optional string             path                = 7; //!< Путь к сгенерированному документу
+  optional string             date                = 8; //!< Срок, за который получены данные в документе
+  optional string             forecast_date       = 9;//!< Срок, на который рассчитан прогноз
+  optional string             name                = 10; //!< Наименование документа (Например: Метеосводка)
+  optional string             icon_path           = 11;//!< Путь к значку
+  optional bytes              data                = 12;//!< Содержимое файла (для загрузки файлов на сервер вручную)
+  optional bool               user_changed        = 13;//!< Флаг, указывающий на то, что файл был изменен пользователем
+  optional string             argument            = 14;//!< Дополнительный аргумент для генерации документа (срок прогноза, условный номер станции)
+  optional int32              forecast_hour       = 15;//!< На сколько часов вперед рассчитан прогноз (для указания в работах по прогнозам)
+  optional bytes              proto_args          = 16;//!< Proto-структура в бинарном виде, передаваемая python-модулю, как входные данные
+  optional string             idfile              = 17;//!< Id файла в бд
+}
+
+// Сообщение индикации
+message IndicationItem {
+  optional string operator = 1; // оператор <,>,=
+  optional string param    = 2; // descrname
+  optional string value    = 3; // значение, либо строка для явлений
+}
+
+message Indication {
+  repeated IndicationItem ump = 1; // Условия меньше минимума
+  repeated IndicationItem smu = 2; // сложные метеорологические условия
+}
+
+// настройки  пресетов индикации
+message IndicationSettings {
+  optional Indication preset_settings = 1;
+  optional string preset_name         = 2;
+}
+
+// 
+// Настройки колонок для метеотабло
+// 
+message MeteTabloColumn {
+  optional string align      = 1;
+  optional bool disabled     = 2;
+  optional bool filtercolumn = 3;
+  optional string param      = 4;
+  optional string title      = 5;
+  optional bool visible      = 6;
+}
+
+// 
+// Настройки выбранных станций для метеотабло
+// 
+message MeteoTabloStations {
+  optional int32 country  = 1;
+  optional bool full      = 2;
+  repeated string include = 3;
+  repeated string exclude = 4;
+  repeated int32 sttype   = 5;
+}
+
+
+//! Шаблон карты погоды
+message Map {
+  optional string                       name             = 1;   //!< имя шаблона карты
+  optional string                       title            = 2;   //!< пользовательское наименование шаблона
+  optional int32                        spline_koef      = 3 [default = 1];                                                         //!< коэффициент сглаживания изолиний
+  repeated WeatherLayer                 data             = 4;   //!< список слоев шаблона
+  optional MapType                      type             = 5;   //!< тип карты
+  optional surf.DataType                data_type        = 6 [default = kSynopType];                                                //!< тип данных на карте
+  optional string                       datetime         = 7;   //!< дата и время данных (формат Qt::ISODate)
+  optional int32                        hour             = 8;   //!< срок прогноза (если = 0, то - это наблюдения)
+  optional int32                        center           = 9;   //!< центр
+  optional string                       center_title     = 10;  //!< название центра
+  optional int32                        model            = 11;  //!<
+  optional int32                        level            = 12;  //!< уровень
+  optional int32                        type_level       = 13;  //!<
+  optional string                       path             = 14;  //!< имя файла с сохраненной картой
+  optional Document                     document         = 15;  //!< свойства документа карты погоды
+  optional DocumentFormat               format           = 16;  //!< формат сохранения карты
+  optional string                       job_name         = 17;  //!< название работы по формированию карты
+  optional string                       job_title        = 18;  //!< пользовательское наименование работы по формированию карты
+  repeated meteo.sprinf.Station         station          = 19;  //!< идентификатор станций (CCCC, индекс, другое)
+  optional int32                        regiongroup_id   = 20;  //!< id группы регионов
+  repeated int32                        region_id        = 21;  //!< id региона
+  repeated IndicationSettings           indication       = 22;  //!< массив параметров индикаций
+  optional DataSource                   source           = 23;  //!< тип источника данных
+  optional ProfileType                  profile          = 24;  //!< тип вертикального разреза
+  repeated meteo.surf.Point             point            = 25;  //!< координаты точек
+  optional int32                        echelon          = 26 [default = 0];                                                        //!< Эшелон полёта
+  optional string                       idfile           = 27;  //!< id Файла в БД
+  optional FormalDocument               formal           = 28;  //!< параметры формирования формализованного документа
+  optional bool                         webpunchmap      = 29 [default = false];                                                    //!< тип наноски для web
+  optional int32                        offsetUtc        = 30;  //!< сдвиг времени относительно UTC
+  optional bool                         allow_empty      = 31 [default = false];                                                    //!< В случае отсутствия слоев создать пустую карту
+  optional string                       map_name_pattern = 32 [default = "[template] за $dd.MM.yy hh:mm$ [hour] Центр: [center]"];  //!< шаблон имени слоя
+}
+
+message MapAndPunch {
+  optional Map                          map             = 1;
+  optional meteo.puanson.proto.Puanson  punch           = 2;
+}
+
+message Job {
+  optional string                       name            = 1;                    //!< имя шаблона карты
+  optional string                       title           = 2;                    //!< пользовательское наименование шаблона
+  optional meteo.map.proto.Document     document        = 3;                    //!< свойства документа (для построения карт в автоматическом режиме)
+  optional FormalDocument               formal          = 4;
+  optional string                       map_id          = 5;                    //!< идентификатор карты погоды
+  optional DocumentFormat               format          = 6;                    //!< формат сохранения карты
+  optional string                       timesheet       = 7;                    //!< расписание построения карт
+  repeated int32                        hour            = 8;                    //!< срок прогноза для построения карт или период времени
+  optional int32                        model           = 9;                    //!< модель
+  optional int32                        period          = 10;                    //!< периодичность в минутах
+  repeated string                       additional_date = 11;                   //!< дополнительные даты помимо текущей
+  optional bool                         print           = 12 [default = false]; //!< распечатывать
+  optional int32                        center          = 13;                   //!< центр
+  optional StoreType                    storetype       = 14 [default = kSaveServerFile]; //!< параметры сохранения
+  optional string                       clientsavepath  = 15;                   //!< путь для сохранения на клиентской стороне
+  optional string                       date            = 16;                   //!<
+//  repeated string                       station         = 18;                   //!< идентификатор станций (CCCC, индекс, другое)
+  optional ProfileType                  profile         = 17;                   //!< тип вертикального разреза
+  repeated meteo.surf.Point             point           = 18;                   //!< координаты точек
+  optional Map                          map             = 19;                   //!< шаблон карты погоды
+  optional int32                        await           = 20;                   //!< сдвиг
+  optional bool                         enabled         = 21;                   //!< флаг активности работы (включена/отключена)
+  repeated string                       user_save_path  = 22;                   //!< пользовательские директории для сохранения документа
+  optional int32                        cron_shift      = 23;                   //!< выполнять задачу через заданное количество времени после наступления требуемого срока
+}
+
+message MapList {
+  repeated Map                          map             = 1;//!< Шаблон карты погоды
+  optional bool                         result          = 2 [default = false];
+  optional string                       comment         = 3; //!< результат выполнения запроса
+}
+
+enum StoreType {
+  kNoSave                                               = 0;
+  kSaveServerFile                                       = 1;
+  kSaveClientFile                                       = 2;
+  kSaveServerClient                                     = 3;
+}
+
+message FormalDocumentList {
+  repeated FormalDocument document = 1;
+  optional bool           result   = 2 [default = false];
+  optional string         comment  = 3; //!< результат выполнения запроса
+}
+
+message JobList {
+  repeated Job      job             = 1; //!< список заданий
+  optional bool     result          = 2 [default = false];
+  optional string   comment         = 3; //!< результат выполнения запроса
+}
+
+//! Состав карты из конкретных данных, которые доступны
+message WeatherInfo {
+  optional string       datetime                        = 1; //!< дата и время данных (UTC Qt::IsoDate)
+  optional int32        hour                            = 2; //!< срок
+  repeated WeatherLayer layer                           = 3; //!< слои, для которых есть данные
+}

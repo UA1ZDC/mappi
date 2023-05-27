@@ -1,0 +1,8 @@
+name: "vpf.map"
+title: "Вертикальный разрез по анализу"
+spline_koef: 2
+datetime: "2018-08-13T00:00:00"
+source: kField
+document {
+  doctype: kVerticalCut
+}

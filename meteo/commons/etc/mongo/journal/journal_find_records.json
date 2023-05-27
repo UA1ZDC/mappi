@@ -1,0 +1,7 @@
+{
+  "find": "journal",
+  "filter": @filter@,
+  "sort": { @sort_column@ : @sort_order@ },
+  "skip" : @skip@,
+  "limit" : @limit@
+}

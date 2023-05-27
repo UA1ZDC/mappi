@@ -1,0 +1,40 @@
+code: "kn15water"
+name: "Температура воды"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/kn15water.template"
+wind: false
+rule {
+  pos {
+    x: -11
+    y: -6
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4292282928
+    minuscolor: 4280035572
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 8.34
+  id {
+    descr: 222043
+    name: "tt"
+    description: ""
+  }
+}
+datatype: kSurface
+center: kCircle
+radius: 5

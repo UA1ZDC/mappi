@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- abrev - наименование в поле "Abrev" json -->
+<!-- outDescr - дескпритор соответствует названию из descriptors.xml-->
+<!-- descrName - необходима обработка, название и доп. параметры такие же как в кодовых формах и andescriptors.xml -->
+
+<cliware>
+  <clitype>
+    <type id="SYNOPI"     datatype="0" />
+    <type id="CLIMATI"    datatype="12" />
+    <type id="AIR_LEVELI" datatype="61" />
+    <!-- <type id="" datatype="" /> -->
+    <!-- <type id="" datatype="" /> -->
+  </clitype>
+  
+  <descriptors>
+    <descr abrev="Станция"  ClN="Station_ID" outDescr="station_index" />
+    <descr abrev="Дата"     ClN="Date_obs"   descrName="dt" />
+    <descr abrev="Наименование"  ClN="Station_NM" outDescr="station" />
+    <descr abrev="Широта"   ClN="LAT" outDescr="La" />
+    <descr abrev="Долгота"  ClN="LON" outDescr="Lo" />
+    <descr abrev="TTT"      ClN="TempDb" outDescr="T"  />
+    <descr abrev="dd"       ClN="WndDir" outDescr="dd" />
+    <descr abrev="ff"       ClN="WndSp"  outDescr="ff" />
+    <descr abrev="N"        ClN="CldTot" descrName="N"    />
+    <descr abrev="RRR"      ClN="Precip" descrName="RRR" num="1" />
+    <descr abrev="RRRTime"  ClN="PrecipTime" descrName="tR"  num="1"/>
+
+    <descr abrev="PPPP"   ClN="PressMn"  outDescr="P_avg" />
+    <descr abrev="TTT"    ClN="TempDbMn" outDescr="T_avg" />
+    
+    <descr abrev="Тип набл."   ClN="K"         outDescr="text" />
+    <descr abrev="Уровень"     ClN="Lev"       outDescr="text" />
+    <descr abrev="Тип уровня"  ClN="TypeLev"   outDescr="text" />
+    <descr abrev="PPP"     ClN="PressLev"  outDescr="P1" />
+    <descr abrev="hhh"     ClN="HighLev"   outDescr="hh" />
+    <descr abrev="TTT"     ClN="TempDb"    outDescr="T" />
+    <descr abrev="DD"      ClN="DefTempDp" outDescr="D" />
+    <descr abrev="dd"      ClN="WndDir"    outDescr="ff" />
+    <descr abrev="ff"      ClN="WndSp"     outDescr="dd" />
+    <descr abrev="VbVb"    ClN="SubstWndB" outDescr="vbvb" />
+    <descr abrev="VaVa"    ClN="SubstWndA" outDescr="vava" />
+
+    
+    <!-- <descr abrev=""      outDescr="" /> -->
+    <!-- <descr abrev=""      outDescr="" /> -->
+    <!-- <descr abrev=""      outDescr="" /> -->
+    <!-- <descr abrev=""      outDescr="" /> -->
+    <!-- <descr abrev=""      outDescr="" /> -->
+    <!-- <descr abrev=""      outDescr="" /> -->
+    <!-- <descr abrev=""      outDescr="" /> --> 
+       
+  </descriptors>
+
+</cliware>

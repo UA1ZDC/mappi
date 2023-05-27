@@ -1,0 +1,12 @@
+name: "snowHgt.map"
+title: "Карта высоты снежного покрова"
+spline_koef: 2
+data {
+  query_type: kMaximumValue
+  data_type: kSynopFix
+  data_type: kSynopCoast
+  level: 0
+  type_level: 1
+  mode: kPuanson
+  template_name: "snowHgt"
+}

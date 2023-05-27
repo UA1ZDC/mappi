@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+package meteo.mongodb.proto;
+
+message StationData {
+  optional string datetime     = 1 ; //!< дата время
+  optional string station      = 2 ; //!< название
+  optional double lat_radian   = 3 ; //!< радианы
+  optional double lon_radian   = 4 ; //!< радианы
+  optional int32  height_meter = 5 ; //!< метры
+  optional double descr        = 6 ;
+  optional double level        = 7 ; //!< номер
+  optional int32  level_type   = 8 ; //!< метры
+  optional double value        = 9 ; //!< значение величины
+  optional string code         = 10; //!< значение величины в текстовом виде
+  optional int32  quality      = 11; //!< качество величины
+}
+
+message Value     { //!< значение с мобильных станций
+  optional double value        = 1; //!< значение величины
+  optional int32  quality      = 2; //!< качество величины
+  optional string code         = 3; //!< значение величины в текстовом виде
+  optional int32  descr        = 4; //!< описание величины
+
+}
+
+message MeteoData { //!< запись данных со станции
+  optional string datetime     =  1; //!< дата время измерения
+  optional string station      =  2; //!< название станции
+  optional int32  iitlg        =  3;
+  optional int64  idptkpp      =  4;
+  optional double lat_radian   =  5; //!< широта
+  optional double lon_radian   =  6; //!< долгота
+  optional int32  height_meter =  7; //!< высота
+  optional double level        =  8; //!< уровень измерений
+  optional int32  level_type   =  9; //!< тип уровня
+  repeated Value  value        = 10; //!< значение с приземных станций
+}

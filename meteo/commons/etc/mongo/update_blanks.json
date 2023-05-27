@@ -1,0 +1,17 @@
+{
+  "findAndModify": "blanks",
+  "query" : {
+      "ipaddr" : @ipaddr@,
+      "namegms": @namegms@
+    },
+  "update": {
+    "$set" : {
+       "ipaddr" : @ipaddr@,
+       "namegms": @namegms@,
+       "status":  @status@
+    }
+  },
+  "remove": false,
+  "new": true,
+  "upsert": true
+}

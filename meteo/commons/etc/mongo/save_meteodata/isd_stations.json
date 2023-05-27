@@ -1,0 +1,15 @@
+{
+  "insert": "%1",
+  "documents": [
+    {
+      "usaf" : "%2",
+      "wban" : "%3",
+      "name" : "%4",
+      "icao" : "%5",
+      "country"  : "%6",
+      "location" : "%7",
+      "dtBeg" : "%8",
+      "dtEnd" : "%9"
+    }
+  ]
+}

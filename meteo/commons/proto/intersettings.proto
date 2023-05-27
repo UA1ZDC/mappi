@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+package meteo.settings;
+
+//! Типы серверов
+enum WebServerCode {
+  kBackendServer          = 1;
+}
+
+message WebAddress {
+  optional string title = 1; //Наименование сервера
+  optional string url = 2; // Уникальный адрес сервиса
+}
+
+message WebServerSelectConfig {
+  repeated WebAddress address = 1;
+}
+
+//! Параметры подключения к websocket-серверу
+message WebSockServer {
+  optional WebServerCode  code = 1; //!< идентификатор сервера
+  optional string         name = 2; //!< название сервера
+  optional string         host = 3; //!< адрес
+  optional int32          port = 4; //!< порт
+  optional string         path = 5; //!< путь
+}
+
+//! Список параметров
+message WebSockServerList {
+  repeated WebSockServer websock_server = 1;
+}
+

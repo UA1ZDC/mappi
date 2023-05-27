@@ -1,0 +1,382 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<body>
+  <code type="FM12" decodetype="1" text="SYNOP(KN-01, KN-01c) - Report of surface observation from a fixed land station" >
+    <group>AAXX(?:\s*[\d/]{5}){2}</group>
+  </code> 
+  <code type="FM13" decodetype="1" text="SHIP - Report of surface observation from a sea station" >
+    <group>BBXX\s*[\w]{3,}\s*[\d/]{5}</group>
+  </code>
+  <code type="FM14" decodetype="1" text="SYNOP MOBIL - Report of surface observation from a mobile land station" >
+    <group>OOXX\s*[\w/]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+  </code> 
+  <code type="FM15" decodetype="1" text="METAR - Aerodrome routine meteorological report (with or without trend forecast)" >
+    <group>METAR(?:\s*COR)?\s*\w{4}\s*\d{6}Z</group>
+  </code>
+  <code type="FM16" decodetype="1" text="SPECI - Aerodrome special meteorological report (with or without trend forecast)" >
+    <group>SPECI(?:\s*COR)?\s*\w{4}\s*\d{6}Z</group>
+  </code>
+  <code type="FM18" decodetype="1" text="BUOY - Report of a buoy observation" >
+    <group>ZZYY(?:\s*[\d/]{5}){2}</group>
+  </code>
+  <code type="FM20_A" decodetype="1" text="RADOB - Report of ground radar weather observation" >
+    <group>FFAA(?:\s*[\d/]{5}){2,3}</group>
+    <group>GGAA(?:\s*[\d/]{5}){2,3}</group>
+  </code>
+  <code type="FM20_B" decodetype="1" text="RADOB - Report of ground radar weather observation" >
+    <group>FFBB\s*[\d/]{5}\s*[\d]{5}</group>
+    <group>GGBB\s*[\d/]{5}\s*[\d]{5}</group>
+  </code>
+  <code type="FM32" decodetype="1" text="PILOT(KN-03) - Upper-wind report from a fixed land station" >
+    <group>PPAA\s*(?:\s*[\d/]{5}){2}</group>
+    <group>PPBB\s*(?:\s*[\d/]{5}){2}</group>
+    <group>PPCC\s*(?:\s*[\d/]{5}){2}</group>
+    <group>PPDD\s*(?:\s*[\d/]{5}){2}</group>
+  </code>
+  <code type="FM33" decodetype="1" text="PILOT SHIP - Upper-wind report from a sea station" >
+    <group>QQAA\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>QQBB\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>QQCC\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>QQDD\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+  </code>
+  <code type="FM34" decodetype="1" text="PILOT - Upper-wind report from a mobile land station" >
+    <group>EEAA\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>EEBB\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>EECC\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>EEDD\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+  </code>
+  <code type="FM35" decodetype="1" text="TEMP(KN-04) - Upper-level pressure, temperature, humidity and wind report from a fixed land station" >
+    <group>TTAA(?:\s*[\d/]{5}){2}</group>
+    <group>TTBB\s*[\d/]{5}\s*[\d/]{5}</group>
+    <group>TTCC(?:\s*[\d/]{5}){2}</group>
+    <group>TTDD\s*[\d/]{5}\s*[\d/]{5}</group>
+  </code>
+  <code type="FM36" decodetype="1" text="TEMP SHIP - Upper-level pressure, temperature, humidity and wind report from a sea station" >
+    <group>UUAA\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>UUBB\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>UUCC\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>UUDD\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+  </code>
+  <code type="FM37" decodetype="1" text="TEMP DROP - Upper-level pressure, temperature, humidity and wind report from a sonde released by carrier balloons or aircraft" >
+    <group>XXAA\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>XXBB\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>XXCC\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>XXDD\s*[\d/]{5}\s*99[\d/]{3}</group>
+  </code>
+  <code type="FM38" decodetype="1" text="TEMP MOBIL - Upper-level pressure, temperature, humidity and wind report from a mobile land station" >
+    <group>IIAA\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>IIBB\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>IICC\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+    <group>IIDD\s*[\w]{3,}\s*[\d/]{5}\s*99[\d/]{3}</group>
+  </code>
+  <code type="FM39" decodetype="1" text="ROCOB - Upper-level temperature, wind and air density report from a land rocketsonde station" >
+    <group>RRXX</group>
+  </code>
+  <code type="FM40" decodetype="1" text="ROCOB SHIP - Upper-level temperature, wind and air density report from a rocketsonde station on a ship" >
+    <group>SSXX</group>
+  </code>
+  <code type="FM42" decodetype="1" text="AMDAR - Метеорологическая сводка с самолета (ретрансляция самолетных метеорологических данных)" >
+    <group>AMDAR</group>
+  </code>  
+  <code type="FM44" decodetype="1" text="ICEAN - Ice analysis" >
+    <group>ICEAN</group>
+  </code>
+  <code type="FM47" decodetype="1" text="GRID - Processed data in the form of grid-point values" >
+    <group>GRID</group>
+  </code>
+  <code type="FM51" decodetype="1" text="TAF - Aerodrome forecast" >
+    <group>TAF\s*(?:COR)?(?:AMD)?\s*[A-Z]{4}\s</group>
+  </code>
+  <code type="FM62" decodetype="1" text="TRACKOB - Report of marine surface observation along a ship’s track" >
+    <group>NNXX\s*[\d/]{5}\s*[\d/]{4}/\s*[\d/]{5}</group>
+  </code>
+  <code type="FM63" decodetype="1" text="BATHY - Report of bathythermal observation" >
+    <group>JJYY</group>
+    <group>JJVV</group>
+  </code>
+  <code type="FM64" decodetype="1" text="TESAC - Temperature, salinity and current report from a sea station" >
+    <group>KKYY\s*[\d/]{5,6}</group>
+  </code>
+  <code type="FM65" decodetype="1" text="WAVEOB - Report of spectral wave information from a sea station or from a remote platform (aircraft or satellite)" >
+    <group>MMXX</group>
+  </code>
+  <code type="HY" decodetype="4" text="HYDRA - Report of hydrological observation from a hydrological station" >
+    <group>HHXX</group>
+    <code type="FM67" group="HHXX" />
+  </code>
+  <code type="FM71" decodetype="1" text="CLIMAT - Report of monthly values from a land station" >
+    <group>CLIMAT\s*[\d]{5}</group>
+  </code>
+  <code type="FM72" decodetype="1" text="CLIMAT SHIP - Report of monthly means and totals from an ocean weather station" >
+    <group>CLIMAT\s*SHIP</group>
+  </code>
+  <code type="FM75" decodetype="1" text="CLIMAT TEMP - Report of monthly aerological means from a land station" >
+    <group>CLIMAT\s*TEMP</group>
+  </code>
+  <code type="FM76" decodetype="1" text="CLIMAT TEMP SHIP - Report of monthly aerological means from an ocean weather station" >
+    <group>CLIMAT\s*TEMP\sSHIP</group>
+  </code>
+  <code type="FM85" decodetype="1" text="SAREP - Report of synoptic interpretation of cloud data obtained by a meteorological satellite" >
+    <group>CCAA</group>
+    <group>CCBB</group>
+    <group>DDAA</group>
+    <group>DDBB</group>
+  </code>
+  <code type="FM86" decodetype="1" text="SATEM - Report of satellite remote upper-air soundings of pressure, temperature and humidity" >
+    <group>VVAA</group>
+    <group>VVBB</group>
+    <group>VVCC</group>
+    <group>VVDD</group>
+  </code>
+  <code type="FM87" decodetype="1" text="SARAD - Report of satellite clear radiance observations" >
+    <group>WWXX</group>
+  </code>
+  <code type="FM88" decodetype="1" text="SATOB - Report of satellite observations of wind, surface temperature, cloud, humidity and radiation" >
+    <group>YYXX</group>
+  </code>
+  <code type="KN-02" decodetype="1" text="SEA - " >
+    <group>SEA(?:\s*[\d/]{6}\s*[\d/]{4}\s*[\d/]{5})</group>
+  </code>
+  <code type="KN-05" decodetype="1" text="TESAC — Cводка данных с морской станции о температуре, солености и течении" >
+    <group>KKXX(?:\s*[\d/]{5}){4,6}</group>
+  </code>
+  <code type="KN-06" decodetype="1" text="BATHY — Сводка данных батитермического наблюдения" >
+    <group>JJXX(?:\s*[\d/]{5}){,6}</group>
+  </code>
+  <code type="KN-15" decodetype="1" text="HYDRA —  Сводка данных о гидрологическом наблюдении с гидрологической станции" >
+    <group>HH(?:zz|ZZ)(?:\s*[\d/]{5}){2}</group>
+  </code>
+  <code type="KN-19" decodetype="1" text="ДЕКАДА - климат за декаду">
+    <group>(?:ДЕКАДА|DEKADA|dekada)\s*[\d]{3}</group>
+  </code>
+  <code type="KN-24" decodetype="1" text="SNOW - данные снегосъемки">
+    <group>HHSS(?:\s*[\d/]{5}|\s*NIL){2}</group>
+  </code>
+  <code type="SLOY" decodetype="1" text="СЛОЙ - Аэрологические наблюдения с фиксированной станции в слое">
+    <group>(?:СЛОЙ|SLOJ|sloj)(?:\s*[\d/]{5}){3}</group>
+  </code>
+  <code type="KN-21" decodetype="1" text="AGRO">
+    <group>(?:AADD|AAEE|OODD|OOEE)(?:\s*[\d/]{5}){2}</group>
+  </code>
+  <code type="POLU" decodetype="2" text="POLUS - baykonur" >
+    <group>POLU</group>
+  </code>
+  <code type="MAWS" decodetype="2" text="MAWS - baykonur" >
+    <group>MAWS</group>
+  </code>
+  <code type="AMI2" decodetype="2" text="AMI2 - AMIIS-2000 (baykonur)" >
+    <group>AMI2</group>
+  </code>
+  <code type="PLV3" decodetype="2" text="PLV3 - PLV-300 (baykonur)" >
+    <group>PLV3</group>
+  </code>
+  <code type="KAPL" decodetype="2" text="KAPL - KAPLYA (baykonur)" >
+    <group>KAPL</group>
+  </code>
+  <code type="AMC2_1" decodetype="2" text="AMC2_1 - AMC-2000 (baykonur)" >
+    <group>AMC2_1</group>
+  </code>
+  <code type="AMC2AV6" decodetype="2" text="AMC2AV6 - AMC-2000 (baykonur)" >
+    <group>AMC2AV6</group>
+  </code>
+  <code type="AMC2W" decodetype="2" text="AMC2W - AMC-2000 (baykonur)" >
+    <group>AMC2W</group>
+  </code>
+  <code type="VPTK" decodetype="2" text="VPTK - Vetronom-1 PTK 0.3-500m (baykonur)" >
+    <group>VPTK</group>
+  </code>
+  <code type="PIRM" decodetype="2" text="PIRM - Piranometr M-80 (baykonur)" >
+    <group>PIRM</group>
+  </code>
+  <code type="AL80" decodetype="2" text="AL80 - Alwes NT806 (baykonur)" >
+    <group>AL80</group>
+  </code>
+  <code type="ALLST" decodetype="2" text="ALLST - Alwes 3.2.8.12 .lst (baykonur)" >
+    <group>ALLST</group>
+  </code>
+  <code type="ALSTA" decodetype="2" text="ALSTA - Alwes 3.2.8.12 .sta (baykonur)" >
+    <group>ALSTA</group>
+  </code>
+  <code type="MARLA" decodetype="2" text="MARL-A (baykonur)" >
+    <group>MARLA</group>
+  </code>
+  <code type="AMIS_awrk" decodetype="2" text="AMIS-RF (baykonur)" >
+    <group>AMIS_awrk</group>
+  </code>
+  <code type="AMIS_bil" decodetype="2" text="AMIS-RF (baykonur)" >
+    <group>AMIS_bil</group>
+  </code>
+  <code type="AMIS_av" decodetype="2" text="AMIS-RF (baykonur)" >
+    <group>AMIS_av</group>
+  </code>
+  <code type="AMIS_stm" decodetype="2" text="AMIS-RF (baykonur)" >
+    <group>AMIS_stm</group>
+  </code>
+  <code type="BCM" decodetype="2" text="BCM (ukaz)" >
+    <group>BCM</group>
+  </code>
+  <code type="IPV" decodetype="2" text="IPV (ukaz)" >
+    <group>IPV</group>
+  </code>
+  <code type="GDA1" decodetype="1" text="Грозопеленгатор - дальномер автономный ГДА-1" >
+    <group>[\d-]{10}T[\d:]{8}Z\s*-?\d{1,2}\s*GDA1</group>
+  </code>
+  <code type="IKO1" decodetype="1" text="Измеритель количества осадков ИКО-1" >
+    <group>[\d-]{10}T[\d:]{8}Z\s*-?\d{1,2}\s*IKO1</group>
+  </code>
+  <code type="FI4" decodetype="1" text="Измеритель дальности видимости" >
+    <group>[\d-]{10}T[\d:]{8}Z\s*-?\d{1,2}\s*FI4</group>
+  </code>
+  <code type="DOL2" decodetype="1" text="Датчик облаков лазерный" >
+    <group>[\d-]{10}T[\d:]{8}Z\s*-?\d{1,2}\s*DOL2</group>
+  </code>
+  <code type="MKLM" decodetype="1" text="Комплекс метеорологический МК-ЛМ" >
+    <group>[\d-]{10}T[\d:]{8}Z\s*-?\d{1,2}\s*MKLM</group>
+  </code>
+  <code type="METEO44" decodetype="1" text="METEO44" >
+    <group>М[еЕ][тТ][еЕ][оО]\s*-?\s*44</group>
+  </code>
+  <code type="METEO11" decodetype="1" text="METEO11" >
+    <group>М[еЕ][тТ][еЕ][оО]\s*-?\s*11</group>
+  </code>
+  <code type="SIGMET" decodetype="1" text="SIGMET" >
+    <group>[A-Z]{4}\s*SIGMET\s*(?:SST)?(?:[\w-]+\s*)?[\d]{1,2}\s*VALID</group>
+    <group>[A-Z]{4}\s*AIRMET\s*(?:[\w-]+\s*)?[\d]{1,2}\s*VALID</group>
+  </code>
+  <code type="GAMET" decodetype="1" text="GAMET" >
+    <group>[A-Z]{4}\s*GAMET\s*(?:AMD|COR)?\s*VALID</group>
+  </code>
+  <code type="ADWRNG" decodetype="1" text="Предупреждения по аэродрому" >
+    <group>[A-Z]{4}\s*AD\s*WRNG\s*\w{1,2}\s*\d{6}\s*VALID</group>
+  </code>
+  <code type="WSWRNG" decodetype="1" text="Предупреждения о сдвиге ветра" >
+    <group>[A-Z]{4}\s*WS\s*WRNG\s*\w{1,2}\s*\d{6}\s*VALID</group>
+  </code>
+  <code type="VAA" decodetype="1" text="Консультативная информация о вулканическом пепле" >
+    <group>VA\s*ADVISORY(?:\s*(?!EXERCISE|TEST)[\S]+)+\s*$</group>
+  </code>
+  <code type="WAREP_P" decodetype="1" text="Оперативная сводка об опасных гидрометеорологических явлениях (старая версия)" >
+    <group>WAREP\s*\d{6}\s*\d{5}</group>
+  </code>
+  <code type="WAREP" decodetype="1" text="Оперативная сводка об опасных гидрометеорологических явлениях" >
+    <group>W[WO][AH]P\s*\d{4}\s*\d{6}</group>
+  </code>
+  <code type="AIREP" decodetype="1" text="Донесения с борта (AIREP и AIREP SPECIAL)" >
+    <group>(?:AR[PS]|AIREP)\s*\w{3,7}\s*(?:[NS]\d{4}|\d{4}[NS])\s*(?:[EW]\d{5}|\d{5}[EW])</group>
+  </code>
+  <code type="METREPORT" decodetype="1" text="Местная регулярная сводка по аэродрому" >
+    <group>MET\s*REPORT\s*\w{4}\s*\d{6}Z</group>
+  </code>
+  <code type="SPECIAL" decodetype="1" text="Местная специальная сводка по аэродрому" >
+    <group>SPECIAL\s*\w{4}\s*\d{6}Z</group>
+  </code>
+  <code type="AVGM-STORMW" decodetype="1" text="Текстовое предупреждение, сформировано в АРМ-ВГМ" >
+    <group>ARMVGM-STORM-W\s*\w{4}</group>
+  </code>
+  <code type="AVGM-STORMN" decodetype="1" text="Текстовое оповещение, сформировано в АРМ-ВГМ" >
+    <group>ARMVGM-STORM-N\s*\w{4}</group>
+  </code>
+  <code type="AVGM-FORECAST" decodetype="1" text="Текстовый прогноз, сформировано в АРМ-ВГМ" >
+    <group>ARMVGM-FORECAST\s*\w{4}</group>
+  </code>
+  <code type="GMC" decodetype="1" text="Аэродром" >
+    <group>obmn91</group>
+  </code>
+  <code type="KMI-FP" decodetype="1" text="Фактическая погда, КМИ-ФП" >
+    <group>^99900\s+(?:[\d/]{5}\s*){4}</group>
+  </code>
+  <code type="KMI-PP" decodetype="1" text="Фактическая погда, КМИ-ПП" >
+    <group>^999(?:11|15|22)\s+(?:[\d/]{5}\s*){4}</group>
+  </code>
+  <code type="KMI-SHP" decodetype="1" text="Фактическая погда, КМИ-ПП" >
+    <group>^9994(?:4|5|9)\s+(?:[\d/]{5}\s*){4}</group>
+  </code>
+  <code type="RECCO" decodetype="1" text="Разведка погоды с самолёта, США" >
+    <group>^9[27]{3}9(?:\s+[\d/]{5}){7}</group>
+  </code>   
+  <code type="IONEX" decodetype="3" text="IONEX">
+    <group>\s*[\d.]{1,8}\s*[\w\s]{1,20}\s*[\w\s]{3,17}\s*IONEX\s*VERSION</group>
+  </code>
+  <code type="GTEX" decodetype="3" text="GTEX">
+    <group>\s*[\d.]{1,8}\s*[\w\s]{1,20}\s*[\w\s]{3,17}\s*GTEX\s*VERSION</group>
+  </code>
+  <code type="IONFO" decodetype="4" text="FORECAST">
+    <group>(?:FORECAST|ПРОГНОЗ)(?:\s*[\d/]{5}){2}</group>
+  </code>
+  <code type="GF" decodetype="4" text="гелиогеофизические коды" >
+    <group>(?:AFRED|APFRD|APMOS|UMAGF|МАГКС|magks|SATIN|TENCM|TENMN|URANJ|OPPCM|UABSE|USIDS|USSPS|USSPT|USSPI|USSPY|UFLAE|IONKA|ionka)\s*\d{5}|GEOALERT\s*\w{3}\d{3}</group>
+    <code type="AFAP"  group="AFRED, APFRD, APMOS" />
+    <code type="UMAGF" group="UMAGF" />
+    <code type="MAGKS" group="МАГКС, magks" />
+    <code type="SATIN" group="SATIN" />
+    <code type="TEN"   group="TENCM" />
+    <code type="TENMN" group="TENMN" />
+    <code type="URANJ" group="URANJ" />
+    <code type="OPPCM" group="OPPCM" />
+    <code type="UABSE" group="UABSE" />
+    <code type="USIDS" group="USIDS" />
+    <code type="USSPS" group="USSPS, USSPT" />
+    <code type="USSPI" group="USSPI, USSPY" />
+    <code type="UFLAE" group="UFLAE" />
+    <code type="UGEOA" group="UGEOA" />
+    <code type="UGEOE" group="UGEOE" />
+    <code type="UGEOI" group="UGEOI" />
+    <code type="UGEOR" group="UGEOR" />
+    <code type="IONKA" group="IONKA, ionka" />
+  </code>
+
+</body>
+
+  
+  <!--   <code type="AFAP" decodetype="4" text="Ak и Ap индексы" > -->
+  <!--   <group>(?:AFRED|APFRD|APMOS|UMAGF)\s*\d{5}</group> -->
+  <!-- </code> -->
+  <!-- <code type="UMAGF" decodetype="4" text="Суточные результаты магнитометрических наблюдений" > -->
+  <!--   <group>UMAGF\s*\d{5}</group> -->
+  <!-- </code> -->
+  <!-- <code type="TEN" decodetype="4" text="прогноз F10.7 на 3 и 90 дней" > -->
+  <!--   <group>TEN[CM][MN]</group> -->
+  <!-- </code> -->
+  
+  <!-- <code type="" decodetype="1" text="" > -->
+  <!--   <group></group> -->
+  <!-- </code> -->
+  <!-- <code type="" decodetype="1" text="" > -->
+  <!--   <group></group> -->
+  <!-- </code> -->
+
+<!-- <group>[A-Z]{4}\s*AD\s*WRNG\s*\w{1,2}\s*\d{6}\s*VALID</group> -->
+<!-- <code type="AIRMET" decodetype="1" text="AIRMET" > -->
+<!--   <group>AIRMET</group> -->
+<!-- </code> -->
+
+
+<!--
++ : есть
+- : нет
++-: в каком-то виде
+* : есть FM, соответствует ли ему КН неизвестно
+
+    + КН-01, КН-01с    - FM12
+    +- КН-02, МОРЕ -   - 
+    * КН-03,           - FM32 
+    + КН-04,           - FM35
+    +- КН-05 (не идет) - FM64
+    +- КН-06 (не идет) - FM63
+    +- КН-15,           - FM67 (?)
+    +- КН-21 (метеоагро) (не идет), 
+    +- Метео-11, 
+    +- Метео-44, 
+    + TEMP             - FM35-38
+    + TRAKOB           - FM62
+    + КЛИМАТ  - FM71
+    +- КН-19 ("ДЕКАДА")
+    +- Слой, 
+    + METAR         - FM15
+    + TAF           - FM51
+    + SPECI         - FM16 (FM15)
+    +- SIGMET, 
+    +- КН-24 ("СНЕГОСЪЕМКА") (не идет)
+    + ИОНФО
+    - IONEX
+    - GTEX
+ -->

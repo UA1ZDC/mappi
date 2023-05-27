@@ -1,0 +1,62 @@
+syntax = "proto2";
+
+package obanal.proto;
+
+message TFieldTypeLevel {
+  optional string               name       = 1;                         //!< наименование величины на уровне
+  optional int32                type_level = 2;                         //!< тип уровня
+  optional double               step       = 3 [default = 1.0];         //!< шаг
+  optional double               minvalue   = 4;
+  optional double               maxvalue   = 5;
+}
+
+//! параметры слоя поля
+message TFieldLevel {
+  optional string               name       = 1;                         //!< наименование величины на уровне
+  required int64                level      = 2;                         //!< уровень
+  optional double               step       = 4 [default = 1.0];         //!< шаг
+  optional double               minvalue   = 5;
+  optional double               maxvalue   = 6;
+  repeated TFieldTypeLevel      type_level = 7;
+}
+
+//! параметры поля Field (для meteo::map::Isoline и meteo::map::Gradient)
+message TField {
+  required int64                descr      = 1;                         //!< метеорологический дескриптор
+  optional string               name       = 2;                         //!< наименование величины
+  optional string               unit       = 3;                         //!< единица измерения
+  optional double               step       = 4 [default = 1.0];         //!< шаг
+  optional double               minvalue   = 5;
+  optional double               maxvalue   = 6;
+  repeated TFieldLevel          level      = 7;                         //!< параметры изолиний
+}
+
+//! параметры всех полей (все дескрипторы)
+message TFields {
+  repeated TField field = 1;                                        //!< параметры поля TField
+}
+
+//!
+message TFieldHeader {
+  optional int32  point_count         = 1;  //! количество точек
+  optional int32  net_type            = 2;  //! тип сетки
+  optional bytes  region_start_point  = 10; //!
+  optional bytes  region_end_point    = 11; //!
+  optional float start_fi            = 12; //!
+  optional float start_la            = 13; //!
+  optional float end_fi              = 14; //!
+  optional float end_la              = 15; //!
+  optional float step_fi             = 16; //!
+  optional float step_la             = 17; //!
+  optional uint64 meteodescr          = 20; //! тип метеопараметра
+  optional string date                = 21; //! срок данных
+  optional int32  hour                = 22; //! заблаговременность прогноза (в сек.)
+  optional int32  level               = 23; //! уровень
+  optional int32  level_type          = 24; //! тип уровня
+  optional string level_type_name     = 25; //! описание типа уровня
+  optional int32  model               = 26; //! номер модели анализа
+  optional int32  center              = 27; //! номер центра обработки
+  optional string center_name         = 28; //! название центра обработки
+  optional float min_value           = 29; //! минимальное значение поля
+  optional float max_value           = 30; //! максимальное значение поля
+}

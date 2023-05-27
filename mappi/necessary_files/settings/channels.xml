@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item valueSrc="channels" complex="true" windowName="Выбор каналов прибора" columnName="Каналы прибора" text="Каналы прибора" type="group" >
+    <item valueSrc="channel" complex="true" textItem="ch0" text="Канал 0" type="bool" value="true" />
+    <item valueSrc="channel" complex="true" textItem="ch1" text="Канал 1" type="bool" value="true" />
+    <item valueSrc="channel" complex="true" textItem="ch2" text="Канал 2" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch3" text="Канал 3" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch4" text="Канал 4" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch5" text="Канал 5" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch6" text="Канал 6" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch7" text="Канал 7" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch8" text="Канал 8" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch9" text="Канал 9" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch10" text="Канал 10" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch11" text="Канал 11" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch12" text="Канал 12" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch13" text="Канал 13" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch14" text="Канал 14" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch15" text="Канал 15" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch16" text="Канал 16" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch17" text="Канал 17" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch18" text="Канал 18" type="bool" value="true"/>
+    <item valueSrc="channel" complex="true" textItem="ch19" text="Канал 19" type="bool" value="true"/>
+  </item>
+</body>

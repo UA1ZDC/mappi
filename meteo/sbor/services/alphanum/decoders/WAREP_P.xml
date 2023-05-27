@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="WAREP_P" text="Оперативная сводка об опасных гидрометеорологических явлениях (старая версия)"  category="4">
+  <MessageSections>WAREP\s*(\d{6})\s*(\d{5})\s*(\d\d)\s*([0-3]\d{5})?\s*(6\d{4})?\s*(9\d{4})?\s*(932\d{2})?</MessageSections>
+  <Section number="0" text="Date" >
+    <GroupValues>\s*(\d{2})(\d{2})(\d{2})</GroupValues>
+    <Value number="1"  descrName="YY" />
+    <Value number="2"  descrName="GG" text="Hour" />
+    <Value number="3"  descrName="gg" text="Min"  />
+  </Section>
+  <Section number="1" text="Станция" >
+    <GroupValues>\s*(\d{2})(\d{3})</GroupValues>
+    <Value number="1"  descrName="II" />
+    <Value number="2"  descrName="iii" text="WMO STATION NUMBER" />
+  </Section>
+  <Section number="2" text="Опасное явление" >
+    <GroupValues>\s*(\d{2})</GroupValues>
+    <Value number="1"  descrName="ww" text="Вид опасного явления" />
+  </Section>
+  <Section number="3" text="Ветер" >
+    <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+    <Value number="1"  descrName="dd" text="Направление" />
+    <Value number="1"  descrName="ff" text="Скорость" />
+    <Value number="1"  descrName="fmfm" text="Максимальная скорость" />
+  </Section>
+  <Section number="4" text="Осадки" >
+    <item>
+      <GroupValues>\s*6([\d/]{3})(\d)</GroupValues>
+      <Value number="1"  descrName="RRR" text="Total precipitation/total water equivalent" />
+      <Value number="2"  descrName="tR" text="Time period or displacement" />
+      </item>
+  </Section>
+  <Section number="5" text="Видимость" >
+    <item>
+      <GroupValues>\s*9([\d/]{2})(\d\d)</GroupValues>
+      <Value number="1"  descrName="VV"   text="Horizontal visibility,in km" />
+      <Value number="2"  descrName="GGp" text="Продолжительность ОЯ"/>
+    </item>
+  </Section>
+  <Section number="6" text="Град" >
+    <GroupValues>\s*932([\d/]{2})</GroupValues>
+    <Value number="1"  descrName="RR32" text="Диаметр градин" />
+  </Section>
+</Message>

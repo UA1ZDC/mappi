@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item complex="true" valueSrc="geostationarySsh" source="this" textItem="" text="">
+    <item valueSrc="shortName" type="0" source="this" itemAddr="0x9f9d9c0" textItem="" text="Краткое наименование" />
+    <item complex = "true" valueSrc="satRecvParam" text="Параметры приёма">
+      <item valueSrc="geoSshFreqOne" type="0" validator="\d{1,5}\.\d{2}" source="this" textItem="517" text="Частота 1 (МГц)"/>
+      <item valueSrc="geoSshFreqTwo" type="0" validator="\d{1,5}\.\d{2}" source="this" textItem="577" text="Частота 2 (МГц)"/>
+      <item valueSrc="scanCourse" values="снизу вверх;сверху вниз;" type="1" source="this" textItem="0" text="Направление развертки кадра" />
+      <item valueSrc="streamType" type="1" values="HRIT;LRIT;" source="this" textItem="0" text="Предпочтительный режим приема"/>
+      <item valueSrc="longitude" type="0" readOnly="true" source="this" textItem="30.0" text="Долгота (град.)" />
+      <item valueSrc="elevation" type="0" readOnly="true" source="this" textItem="30.0" text="Угол места (град.)" />
+      <item valueSrc="azimuth" type="0" readOnly="true" source="this" textItem="30.0" text="Азимут (град.)" />
+    </item>
+    <item complex="true" valueSrc="devices" templateFile="devTemplate.xml" chiefFile="devices.xml" buttonName="Выбрать" type="7" source="this" text="Приборы спутника" />
+    <item valueSrc="recvModes" complex="true" text="Режимы приёма" >
+      <item valueSrc="highRes" complex="true" type="1" values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" source="this" text="Высокое разрешение" textItem="0" >
+        <item valueSrc="enabled" type="2" source="this" textItem="false" text="Включён" />
+        <item valueSrc="freq" type="0" validator="\d{1,5}\.\d{2}" source="this" textItem="1000" text="Частота (МГц)"/>
+      </item>
+      <item valueSrc="lowRes" complex="true" type="1" values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" source="this" text="Низкое разрешение" textItem="0" >
+        <item valueSrc="enabled" type="2" source="this" textItem="false" text="Включён" />
+        <item valueSrc="freq" type="0" validator="\d{1,5}\.\d{2}" source="this" textItem="1000" text="Частота (МГц)"/>
+      </item>
+    </item>
+    <item source="this" textItem="" text="-----------------------------------------------" />
+  </item>
+</body>

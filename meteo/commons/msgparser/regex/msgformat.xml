@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<formats>
+  <msgformat name='wmo'>
+    <startline regex='\001\r\r\n([0-9]{3})(\s\d{5})?\r\r\n' >
+      <group name='number' order='1' />
+    </startline>
+    <header name='circular' regex='(?!(([BbБб]{1})([IMimИМим]{1})))(\w{1})(\w{1})(\w{1})(\w{1})(\d{2})\s(\w{4})\s(\d{6})(\s\w{3})?\r\r\n'>
+      <group name='T1' order='1'/>
+      <group name='T2' order='2'/>
+      <group name='A1' order='3'/>
+      <group name='A2' order='4'/>
+      <group name='ii' order='5'/>
+      <group name='CCCC' order='6'/>
+      <group name='YYGGgg' order='7'/>
+      <group name='BBB' order='8'/>
+    </header>
+    <header name='address' regex='(([BbБб]{1})([IMimИМим]{1}))(\w{1})(\w{1})(\d{2})\s(\w{4})\s(\d{6})(\s\w{3})?\r\r\n'>
+      <group name='T1' order='2'/>
+      <group name='T2' order='3'/>
+      <group name='A1' order='4'/>
+      <group name='A2' order='5'/>
+      <group name='ii' order='6'/>
+      <group name='CCCC' order='7'/>
+      <group name='YYGGgg' order='8'/>
+      <group name='BBB' order='9'/>
+    </header>
+  </msgformat>
+  <msgformat name='noaa' exclusive='true'>
+    <header name='circular' regex='(\w{1})(\w{1})(\w{1})(\w{1})(\d{2})\s(\w{4})\s(\d{6})(\s\w{3})?\n'>
+      <group name='T1' order='1'/>
+      <group name='T2' order='2'/>
+      <group name='A1' order='3'/>
+      <group name='A2' order='4'/>
+      <group name='ii' order='5'/>
+      <group name='CCCC' order='6'/>
+      <group name='YYGGgg' order='7'/>
+      <group name='BBB' order='8'/>
+    </header>
+  </msgformat>
+  <msgformat name='gms'>
+    <startline regex='\001(\r\r\n)?([067]{1})([1234]{1})(\d)\s(\d{2})(\d{2})?(\d{2})?/((=\016?(?!\d)\w)(\d{3}))?(=(\d{4}))?(\002)\r\r\n(\016)?' >
+      <group name='gms.F' order='1' />
+      <group name='gms.priority' order='2' />
+      <group name='gms.B' order='3' />
+      <group name='gms.K1K2' order='4' />
+      <group name='gms.K3K4' order='5' />
+      <group name='gms.K5K6' order='6' />
+      <group name='number' order='9' />
+      <group name='gms.GGgg' order='11' />
+    </startline>
+    <header name='circular' regex='(?!(((A|a|А|а)(A|a|А|а))|((B|b|Б|б)(A|a|А|а))|((B|b|Б|б)(B|b|Б|б))|((E|e|Е|е)(E|e|Е|е))|((M|m|М|м)(M|m|М|м))|((R|r|Р|р)(R|r|Р|р))))(\w{1})(\w{1})(\w{1})(\w{1})(\d{2})\s(\w{4})\s(\d{6})(\s\w{3})?\r\r\n'>
+      <group name='T1' order='1'/>
+      <group name='T2' order='2'/>
+      <group name='A1' order='3'/>
+      <group name='A2' order='4'/>
+      <group name='ii' order='5'/>
+      <group name='CCCC' order='6'/>
+      <group name='YYGGgg' order='7'/>
+      <group name='BBB' order='8'/>
+    </header>
+    <header name='address' regex='(((A|a|А|а)(A|a|А|а))|((B|b|Б|б)(A|a|А|а))|((B|b|Б|б)(B|b|Б|б))|((M|m|М|м)(M|m|М|м))|((R|r|Р|р)(R|r|Р|р)))(?![MmМм]{4})(\w{4})\s(\w{4})\s(\d{6})(\s\w{3})?\r\r\n'>
+      <group name='T1' order='3,6,9,12,15'/>
+      <group name='T2' order='4,7,10,13,16'/>
+      <group name='gms.DDDD' order='17'/>
+      <group name='CCCC' order='18'/>
+      <group name='YYGGgg' order='19'/>
+      <group name='BBB' order='20'/>
+    </header>
+    <header name='multiaddress' regex='(((A|a|А|а)(A|a|А|а))|((B|b|Б|б)(A|a|А|а))|((B|b|Б|б)(B|b|Б|б))|((M|m|М|м)(M|m|М|м))|((R|r|Р|р)(R|r|Р|р)))([MmМм]{4})\s(\w{4})\s(\d{6})(\s\w{3})?\r\r\n'>
+      <group name='T1' order='3,6,9,12,15'/>
+      <group name='T2' order='4,7,10,13,16'/>
+      <group name='gms.DDDD' order='17'/>
+      <group name='CCCC' order='18'/>
+      <group name='YYGGgg' order='19'/>
+      <group name='BBB' order='20'/>
+    </header>
+    <header name='convert' regex='((E|e|Е|е)(E|e|Е|е))(?![MmМм]{4})(\w{4})\s(\w{4})\s(\d{6})(\s\w{3})?\r\r\n'>
+      <group name='T1' order='2'/>
+      <group name='T2' order='3'/>
+      <group name='gms.DDDD' order='4'/>
+      <group name='CCCC' order='5'/>
+      <group name='YYGGgg' order='6'/>
+      <group name='BBB' order='7'/>
+    </header>
+  </msgformat>
+  <msgformat name='grib2' exclusive='true' endless='true' >
+  </msgformat>
+  <binformat name='grib' begin='GRIB' end='7777' editionbyte='7' path='binmsg/GRIB' >
+    <edition version='1' sizebyte='4-6' />
+    <edition version='2' sizebyte='8-15' />
+  </binformat>
+  <binformat name='map_ptkpp' begin='BEGIN_PTKPP_DOCUMENT_M' end='FINISH_PTKPP_DOCUMENT' path='binmsg/PTKPP'>
+    <edition sizebyte='22-25' byteorder='le' />
+  </binformat>
+  <binformat name='cut_ptkpp' begin='BEGIN_PTKPP_DOCUMENT_C' end='FINISH_PTKPP_DOCUMENT' path='binmsg/PTKPP'>
+    <edition sizebyte='22-25' byteorder='le' />
+  </binformat>
+  <binformat name='aero_ptkpp' begin='BEGIN_PTKPP_DOCUMENT_A' end='FINISH_PTKPP_DOCUMENT' path='binmsg/PTKPP'>
+    <edition sizebyte='22-25' byteorder='le' />
+  </binformat>
+  <binformat name='ocean_ptkpp' begin='BEGIN_PTKPP_DOCUMENT_O' end='FINISH_PTKPP_DOCUMENT' path='binmsg/PTKPP'>
+    <edition sizebyte='22-25' byteorder='le' />
+  </binformat>
+  <binformat name='mg_ptkpp' begin='BEGIN_PTKPP_DOCUMENT_MG' end='FINISH_PTKPP_DOCUMENT' path='binmsg/PTKPP'>
+    <edition sizebyte='22-25' byteorder='le' />
+  </binformat>
+  <binformat name='bufr' begin='BUFR' end='7777' path='binmsg/BUFR'>
+    <edition sizebyte='4-6'/>
+  </binformat>
+  <binformat name='fax' begin='FAX' path='binmsg/FAX'>
+    <edition sizebyte='49-52' add='65' byteorder='le'/>
+  </binformat>
+  <binformat name='doc' begin='DOC' path='binmsg/DOC'>
+    <edition sizebyte='49-52' add='65' byteorder='le'/>
+  </binformat>
+  <!--
+  <binformat name='jpeg' begin='\xFF\xD8' end='\xFF\xD9' path='binmsg/FAX'>
+    <edition sizebyte='0-0' add='0'/>
+  </binformat>
+  -->
+  <binformat name='sputnik' begin='SPUTNIK' end='\xFF\xD9' path='binmsg/FAX'>
+    <edition sizebyte='0-0' add='0'/>
+  </binformat>
+  <binformat name='map' begin='MAP_RASTR' end='\xFF\xD9' path='binmsg/FAX'>
+    <edition sizebyte='0-0' add='0'/>
+  </binformat>
+  <binformat name='fax_image' begin='F_IMAGE' end='\xFF\xD9' path='binmsg/FAX'>
+    <edition sizebyte='0-0' add='0'/>
+  </binformat>
+</formats>

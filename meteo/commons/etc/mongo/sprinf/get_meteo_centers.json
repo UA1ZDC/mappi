@@ -1,0 +1,8 @@
+{
+  "find" : "centers",
+  "filter" : 
+  {
+    "center" : { "$in" : @center@ },
+    "subcenters.id" : { "$in" : @subcenter@ }
+  }
+}

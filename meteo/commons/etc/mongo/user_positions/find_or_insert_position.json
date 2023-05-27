@@ -1,0 +1,7 @@
+{
+  "findAndModify": "user_positions",
+  "query" : { "display_name" : "%1" },
+  "update": { "$setOnInsert" :  { "display_name" : "%1" } }, 
+  "new": true,
+  "upsert": true
+}

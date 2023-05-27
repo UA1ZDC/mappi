@@ -1,0 +1,12 @@
+name: "factyavleniavoiska.map"
+title: "Сведения о наблюдавшихся стихийных гидрометеорологических явлениях"
+formal {
+    template: "factyavleniavoiska.odt"
+    name: "Сведения о наблюдавшихся стихийных гидрометеорологических явлениях"
+    module_path: "factyavleniavoiska.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+import "google/protobuf/descriptor.proto";
+
+package spo.protobuf;
+
+extend  google.protobuf.MethodOptions {
+  optional bool         multiresponse   = 600010 [default = false];
+};

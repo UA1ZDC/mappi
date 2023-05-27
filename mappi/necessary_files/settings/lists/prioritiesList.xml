@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="KOI8-R"?>
+<body>
+  <item valueSrc="prioritiesList" columnName="Приоритеты" source="this" text="Приоритеты" >
+    <item valueSrc="priority" source="this" textItem="priority0" text="Ошибки"/>
+    <item valueSrc="priority" source="this" textItem="priority1" text = "Предупреждения"/>
+    <item valueSrc="priority" source="this" textItem="priority2" text = "Уведомления"/>
+    <item valueSrc="priority" source="this" textItem="priority3" text = "Сообщения"/>
+    <item valueSrc="priority" source="this" textItem="priority4" text = "Отладочная информация"/>
+    <item valueSrc="priority" source="this" textItem="priority5" text = "Статистика"/>
+  </item>
+</body>
+

@@ -1,0 +1,28 @@
+{
+  "aggregate" : "obanal",
+  "pipeline" :
+   [
+     {"$match" : {
+       "_id" : @id@
+       }
+     },
+     { "$lookup": {
+        "from": "centers",
+        "localField": "center",
+        "foreignField": "center",
+        "as": "centers"
+      }
+    },
+    {"$unwind": "$centers"},
+    { "$lookup": {
+        "from": "level_types",
+        "localField": "level_type",
+        "foreignField": "code_num",
+        "as": "level_types"
+      }
+    },
+    {"$unwind": "$level_types"}
+   ],
+   "cursor":{"batchSize":1}
+}
+

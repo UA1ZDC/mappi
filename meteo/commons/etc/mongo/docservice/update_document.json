@@ -1,0 +1,26 @@
+{
+  "update": "documents",
+  "updates": [
+     { "q": {
+        "mapid" : @mapid@,
+        "jobid" : @jobid@,
+        "dt": @dt@,
+        "hour": @hour@,
+        "center": @center@,
+        "model": @model@,
+        "format": @format@,
+        "map_title": @map_title@,
+        "job_title": @job_title@
+      },
+      "u": {
+        "$set": {
+          "path": @path@,
+          "idfile": @idfile@,
+          "dt_write": @dt_write@
+        }
+      },
+      "upsert": true,
+      "multi": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "descrname": @descrname@,
+  "descr" :   @descr@,
+  "value" :   @value@,
+  "code"  :   @code@,
+  "quality" : @quality@,
+  "source"   : @source@,
+  "dt_write": @dt_write@,
+  "dt_type" : @dt_type@,
+  "dt_beg"  : @dt_beg@,
+  "dt_end"  : @dt_end@,
+  "uuid"  : @uuid@
+}

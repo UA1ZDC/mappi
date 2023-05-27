@@ -1,0 +1,158 @@
+DEPS=(
+  cross-commons
+  sql
+  commons 
+)
+
+DIRS_EXTRA=(
+  meteo/commons/etc
+)
+
+DIRS=(
+  meteo/commons/proto  
+  meteo/commons/auth
+  meteo/commons/rpc
+  meteo/commons/rpc/pywrap
+  meteo/commons/settings
+  meteo/commons/punchrules
+  meteo/commons/websockets
+  meteo/commons/global
+  meteo/commons/global/globalwrap
+  meteo/commons/formsh
+  meteo/commons/fonts
+  meteo/commons/xmlproto
+  meteo/commons/radar
+  meteo/commons/zond
+  meteo/commons/zond/zondwrap
+  meteo/commons/ocean
+  
+  meteo/commons/appmanager  
+
+  meteo/commons/services/sprinf
+
+  meteo/commons/grib
+  meteo/commons/grib/parser
+  meteo/commons/grib/iface
+  meteo/commons/primarydb
+
+
+  meteo/commons/services/obanal
+  meteo/commons/services/obanal/appmain
+
+  meteo/commons/ui/map/tileimage/
+  meteo/commons/ui/map
+  meteo/commons/rc
+  meteo/commons/ui/custom
+  meteo/commons/ui/mainwindow/embedwindow
+  meteo/commons/ui/mainwindow
+  meteo/commons/ui/viewheader
+  meteo/commons/ui/appclient
+  meteo/commons/ui/map/view/custom
+  meteo/commons/ui/map/view
+  meteo/commons/ui/map/loader/old.geo
+  meteo/commons/ui/map/loader/ptkpp.geo
+  meteo/commons/ui/conditionmaker/
+
+  meteo/commons/ui/map/dataexchange
+  meteo/commons/ui/map/puansonwrap
+  meteo/commons/ui/map/weatherwrap
+  
+  meteo/commons/tlgpool
+  meteo/commons/services/decoders
+  meteo/commons/services/state    
+
+  meteo/commons/control
+  meteo/commons/alphanum
+  
+  meteo/commons/bufr
+  meteo/commons/grib/decoder
+  meteo/commons/msgparser
+  meteo/commons/msgdata
+  meteo/commons/services/msgcenter
+  meteo/commons/services/fieldata
+  meteo/commons/services/srcdata
+  meteo/commons/services/map
+  meteo/commons/services/formalpy
+# meteo/commons/msgcenter/proto
+  meteo/commons/services/indexes
+  meteo/commons/services/obanal_indexes
+
+  meteo/commons/planner  
+  meteo/commons/services/map/tool
+  meteo/commons/services/map/runjob
+  
+  meteo/commons/astrodata
+  meteo/commons/astrodata/window
+  meteo/commons/astrodata/astrodatawrap
+  
+  meteo/commons/services/forecast
+  meteo/commons/services/forecast/service
+  meteo/commons/services/forecast/process
+  meteo/commons/services/forecast/opravd
+  meteo/commons/services/climatsaver
+  meteo/commons/services/climatdata
+  meteo/commons/services/vko
+  meteo/commons/services/esimo_nc
+
+  meteo/commons/faxes  
+    
+  meteo/commons/msgstream
+  meteo/commons/msgstream/plugins/filestream
+  meteo/commons/msgstream/plugins/ftpstream
+  meteo/commons/msgstream/plugins/sriv512  
+  meteo/commons/msgstream/plugins/ptkpp
+  meteo/commons/msgstream/plugins/socketspecial
+  meteo/commons/msgstream/plugins/socketspec2g
+  meteo/commons/msgstream/plugins/udpstream
+  meteo/commons/msgstream/plugins/httpstream
+  meteo/commons/msgstream/plugins/cliwarestream
+  meteo/commons/msgstream/plugins/esimostream
+  meteo/commons/msgstream/appmain
+    
+  meteo/commons/cleaner
+  
+  meteo/commons/cron    
+  meteo/commons/appclient  
+  
+  meteo/commons/createanimation
+  
+  meteo/commons/services/chainloader
+  meteo/commons/ui/customviewer/decode
+  meteo/commons/services/customviewer
+
+  meteo/commons/ui/obanalsettings/timesheeteditor
+  meteo/commons/ui/obanalsettings
+
+
+  meteo/commons/ui/graph
+  meteo/commons/ui/graphitems
+  meteo/commons/ui/plugins/axisaction
+  meteo/commons/ui/graph/coordaction
+  meteo/commons/ui/graph/valueaction  
+
+  meteo/commons/ui/map/view/drawtools
+  meteo/commons/ui/plugins/drawtools
+
+#  meteo/commons/ui/plottingwidget
+  meteo/commons/ui/plugins/navigator
+  meteo/commons/ui/plugins/fields
+  meteo/commons/ui/plugins/ruler
+  meteo/commons/ui/plugins/nabludenia  
+#  meteo/commons/ui/plugins/puanson
+#  meteo/commons/ui/plugins/opensavedoc
+  meteo/commons/ui/plugins/renamedoc  
+
+  meteo/commons/ui/stationlist
+  meteo/commons/ui/aero/table
+  meteo/commons/ui/aero/verticalcut
+  meteo/commons/ui/aero
+ 
+  meteo/commons/ui/plugins/aeroplugin
+  meteo/commons/ui/plugins/verticalplugin
+
+)
+
+
+
+
+

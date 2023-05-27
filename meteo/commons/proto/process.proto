@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+package meteo.forecast;
+
+//! 
+message ProcessParams {
+  optional string               fileName     = 1;                         //!< имя файла
+  optional string               processId    = 2;                         //!< айди процесса
+  optional string               fileId       = 3;                         //!< айди файла
+  optional int32                numberOfExec = 4;                         //!< количество запусков
+  optional bool                 isFinished   = 5;                         //!< закончено или нет
+  optional string               error        = 6;                         //!< текст ошибки
+  optional string               processType  = 7;                         //!< тип пройесса
+  optional string               lastVal      = 8;                         //!< поледнее значения
+  optional int32                progress     = 9;                         //!< прогресс
+  optional int32                step         = 10;                        //!< шаг для процесса
+  optional int32                step_percent = 11;                        //!< шаг для процесса в процентах
+
+  optional int32                hour_step    = 12;                        //!< шаг для в часах
+
+  repeated string               stantions    = 13;                        //!< станции по которым нужны данные
+  repeated string               stantionsPdc = 14;                        //!< станции по которым будем считать модель
+
+  repeated string               params       = 15;                        //!< список параметров который прогнозируем
+  repeated string               paramspdc    = 16;                        //!< список параметров, по которым прогнозируем
+}

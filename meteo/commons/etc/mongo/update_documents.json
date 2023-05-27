@@ -1,0 +1,27 @@
+ {
+   "update": "weather_document",
+   "updates": [
+      { "q": {
+              "map_template" : "%1",
+              "job_template" : "%2",
+              "job_title": "%3",
+              "dt": "%4",
+              "hour": "%5",
+              "center": "%6",
+              "model": "%7"
+              },
+        "u": {
+              "$set": { 
+                        "path": "%8",
+                        "format_type": "%9",
+                        "format_name": "%10",
+                        "forecast_time": "%11",
+                        "idfile": "%12"
+                       } 
+              },
+              "upsert": false,
+              "multi": true
+      } 
+   ]
+}
+

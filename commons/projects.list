@@ -1,0 +1,35 @@
+DEPS=(
+  cross-commons
+)
+
+DIRS=(
+  commons/etc
+  commons/textproto
+  commons/proto
+#  commons/testhelper
+#  commons/defines
+  commons/container
+  commons/mathtools
+  commons/funcs
+  commons/coord_systems
+  commons/geobasis  
+  commons/geom
+  commons/meteo_data
+  commons/meteo_data/meteodatawrap
+  commons/landmask
+  commons/obanal
+#  commons/factory
+#  commons/xmlparser
+#  commons/settings
+  commons/sun_moon
+#  commons/compress
+  commons/compresslib
+  commons/ui/qcustomplot
+  commons/proc_read
+  commons/lpod-python
+  commons/lpod-python3
+  commons/qftp
+#  commons/cgal
+)
+
+

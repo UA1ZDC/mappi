@@ -1,0 +1,8 @@
+{
+  "find": "gmi_condition",
+    "filter":
+    {
+      "t2" : "null"
+    },
+  "batchSize" : 1
+}

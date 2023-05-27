@@ -1,0 +1,41 @@
+code: "radar_speed_direct"
+name: "Радар (скорость и направление)"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/radar_speed_direct.template"
+wind: false
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 127
+  testqual: 0
+  id {
+    descr: 22004
+    name: "dndn"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 41
+  testqual: 0
+  id {
+    descr: 22031
+    name: "cncn"
+  }
+}
+datatype: kSpecial
+center: kCircle
+radius: 5
+windfont {
+  family: "Serif"
+  pointsize: 8
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+flow: true

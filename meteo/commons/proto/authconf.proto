@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+package meteo.auth;
+
+enum AuthProvider {
+  kAuthALD = 0;
+  kAuthPAM = 1;
+}
+
+message AuthConf {
+  optional AuthProvider auth_provider = 1 [default = kAuthPAM];
+  optional string ald_keytab = 3;
+  optional string ald_domain = 4;
+  optional string ald_service_name = 5;
+  optional string ald_admin = 6;
+  optional string ald_password = 7;
+}
+
+message AldUsersConfig {
+  repeated string system_user = 1;
+}
+
+
+enum SysUsersRequestType {
+  kGetUsersList = 0;  
+  kDeleteUser = 1;
+  kTryAuth = 2;
+  kRegisterUser = 3;
+  kUserSetPassword = 4;
+  kUserSetBlocked = 5;
+  kUserHome = 6;
+  kIsAdmin = 7;
+  kGetUserGroups = 8;
+  kSetGecos = 9;
+  kGetGecos = 10;
+}
+
+message SysUsersRequest {
+  optional SysUsersRequestType request = 1; //Тип запроса
+  optional string username = 2; //Имя пользователя
+  optional string password = 3; // Пароль(для запросов с паролями)
+  optional bool isBlocked = 4; // Статус блокировки(для запроса блокировки пользователя)
+  repeated string gecos = 5; // GECOS для запроса изменения GECOS
+
+  optional AuthConf config = 6; //Конфигурация для запуска
+}
+
+message SysUsersResponce {
+  optional bool status = 1; //Успешно\не успешно
+  optional string comment = 2;
+  repeated string responce_strlist = 3;
+  optional string responce_string = 4;
+  optional bool   responce_bool = 5;
+
+}

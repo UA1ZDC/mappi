@@ -1,0 +1,22 @@
+{
+  "aggregate" : "documents",
+  "pipeline" : [
+  { "$project" : 
+    { 
+      "jobid" : 1,
+      "dt" : 1
+    }
+  },
+  { "$sort" : { "dt" : -1 } },
+  { "$group" : 
+    {
+      "_id" : { "jobid" : "$jobid" },
+      "dt" : { "$first" : "$dt" },
+      "jobid" : { "$first" : "$jobid" }
+    }
+  },
+  { "$sort" : { "dt" : -1 } }
+  ],
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}

@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>js/getmanysurfacedataarray_finalize.js</file>
+        <file>js/getmanysurfacedataarray_map.js</file>
+        <file>js/getmanysurfacedataarray_reduce.js</file>
+        <file>js/getdatacount_map.js</file>
+        <file>js/getdatacount_reduce.js</file>
+        <file>js/grouping_descr_map.js</file>
+        <file>js/grouping_descr_reduce.js</file>
+        <file>js/datastation_map.js</file>
+        <file>js/datastation_reduce.js</file>
+        <file>js/getoneclouddata_map.js</file>
+        <file>js/getoneclouddata_reduce.js</file>
+        <file>js/getaerolistonstation_map.js</file>
+        <file>js/getaerolistonstation_reduce.js</file>
+        <file>js/getdescrbyparent_map.js</file>
+        <file>js/getdescrbyparent_reduce.js</file>
+        <file>js/getoneaerodata_map.js</file>
+        <file>js/getoneaerodata_reduce.js</file>
+        <file>js/getvalues_map.js</file>
+        <file>js/getvalues_reduce.js</file>
+        <file>js/getavaileblestations_map.js</file>
+        <file>js/getavaileblestations_reduce.js</file>
+    </qresource>
+</RCC>

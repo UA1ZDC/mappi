@@ -1,0 +1,32 @@
+{
+   "update": "fax",
+   "updates": [
+      { "q": {
+          "t1" : @t1@,
+          "t2" : @t2@,
+          "a1" : @a1@,
+          "a2" : @a2@,
+          "ii" : @ii@,
+          "cccc" : @cccc@,
+          "yygggg" : @yygggg@,
+          "magic" : @magic@,
+          "image_path" : @iimage_path@,
+          "dt" : @dt@
+        }, 
+        "u": { "$set" : {
+          "t1" : @t1@,
+          "t2" : @t2@,
+          "a1" : @a1@,
+          "a2" : @a2@,
+          "ii" : @ii@,
+          "cccc" : @cccc@,
+          "yygggg" : @yygggg@,
+          "magic" : @magic@,
+          "image_path" : @image_path@,
+          "dt" : @dt@
+        }},  
+        "upsert": true, 
+        "multi": false
+      }
+   ]
+}

@@ -1,0 +1,10 @@
+{
+  "position" : @position@,
+  "job" : {
+    "name" : @name@,
+    "title" : @jtitle@,
+    "map" : @map@  
+  },
+  "title" : @title@,
+  "icon" : @icon@
+}

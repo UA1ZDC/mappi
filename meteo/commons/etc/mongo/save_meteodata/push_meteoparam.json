@@ -1,0 +1,16 @@
+{
+  "q": {
+    "_id" : @id@
+  },
+  "u": {
+    "$addToSet" : {
+      "param" : {
+    "$each" : [
+      @param@
+    ]
+      }
+    }
+  },
+  "upsert": false
+}
+

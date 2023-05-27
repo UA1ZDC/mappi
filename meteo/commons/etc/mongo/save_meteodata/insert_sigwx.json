@@ -1,0 +1,22 @@
+{
+  "insert" :  @collection@,
+  "documents": [
+    {
+      "dt_write" : @dt_write@,
+      "dt" : @dt@,
+      "center" : @center@,
+      "dt_beg" : @dt_beg@,
+      "dt_end" : @dt_end@,
+      "level_type" : @level_type@,
+      "level_lo"  : @level_lo@,
+      "level_hi" : @level_hi@,
+      "descriptor" : @descriptor@,
+      "value"  : @value@,
+      "fileid" : @fileid@,
+      "tlgid"  : @tlgid@,
+      "data_type" : @data_type@,
+      "source" : @source@,
+      "ii" : @ii@
+    }
+  ]
+}

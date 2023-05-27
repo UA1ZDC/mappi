@@ -1,0 +1,52 @@
+#!/bin/sh
+#создание ветки для релиза. все исходники должны быть в готовом виде в develop.
+
+#вывод ОШИБОК спецом на АНГЛИЙСКОМ, из-за разных кодировок. кто переведёт, буду ругаться. а если кто поправит ломанный английский на литературный, буду признательна :)
+
+if [ $# -lt 2 ]; then
+  echo "Usage: `basename $0` <project name> <version>"
+  exit -1
+fi
+
+prg_name="$1"
+prg_name_esc=`echo $1 | sed -e 's/[/]/./'`
+version="$2"
+
+if [ -z "$SRC" ]; then
+  echo "Error: SRC not defined"
+  exit -1
+fi
+
+if [ ! -d "$SRC/$prg_name" ]; then
+  echo "Error: $prg_name directory not exist"
+  exit -1
+fi
+
+echo "Create release $prg_name_esc-$version"
+
+branch=`git rev-parse --abbrev-ref HEAD`
+if [ $branch != "develop" ]; then
+  echo "Error: it's not develop branch"
+  exit 1
+fi
+
+git checkout -b "$prg_name_esc-$version" develop
+if [ $? -ne 0 ]; then
+  echo "Error: git checkout or git push"
+  exit -1
+fi
+
+git push origin "$prg_name_esc-$version"
+if [ $? -ne 0 ]; then
+  echo "Error: git push"
+  exit -1
+fi
+
+git branch --set-upstream "$prg_name_esc-$version" origin/"$prg_name_esc-$version"
+if [ $? -ne 0 ]; then
+  echo "Error: git branch --set-upstream"
+  exit -1
+fi
+
+
+exit 0

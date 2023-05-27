@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>html/static/css/bootstrap.css</file>
+        <file>html/static/css/font-awesome.css</file>
+        <file>html/static/fonts/font-awesome/FontAwesome.otf</file>
+        <file>html/static/fonts/font-awesome/fontawesome-webfont.eot</file>
+        <file>html/static/fonts/font-awesome/fontawesome-webfont.svg</file>
+        <file>html/static/fonts/font-awesome/fontawesome-webfont.ttf</file>
+        <file>html/static/fonts/font-awesome/fontawesome-webfont.woff</file>
+        <file>html/static/fonts/font-awesome/fontawesome-webfont.woff2</file>
+        <file>html/static/js/vue.js</file>
+        <file>html/static/js/qwebchannel.js</file>
+    </qresource>
+</RCC>

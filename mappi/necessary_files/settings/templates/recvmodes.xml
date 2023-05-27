@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item complex="true" valueSrc="recvModes" columnName="Режимы приёма" windowName="Режимы приёма спутников" text="Режимы приёма спутников" >
+    <item complex="true" valueSrc="recvModeHRPT" textItem="0" text="HRPT" />
+    <item complex="true" valueSrc="recvModeLRPT" textItem="1" text="LRPT" />
+    <item complex="true" valueSrc="recvModeAPT" textItem="2" text="APT" />
+    <item complex="true" valueSrc="recvModeLRIT" textItem="3" text="LRIT" />
+    <item complex="true" valueSrc="recvModeWEFAX" textItem="4" text="WEFAX" />
+  </item>
+</body>

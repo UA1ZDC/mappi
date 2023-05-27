@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <geoObjectShow checkable="true" value="true" type="group" source="this" text="Показывать географические объекты">
+    <geoObjectColor textItem="Выбрать цвет" type="color" value="56;123;248;12;Verdana;bold" source="this" text="о. Хейса"/>
+  </geoObjectShow>
+  <settlementShow checkable="true" value="true" type="group" source="this" text="Показывать населенные пункты">
+    <settlementColor textItem="Выбрать цвет" type="color" value="7;3;72;16;0;0" source="this" text="Тула"/>
+  </settlementShow>
+  <recvPointShow checkable="true" value="true" type="group" source="this" text="Показывать пункты приема">
+    <recvPointColor textItem="Выбрать цвет" type="color" value="0;0;0;20;0;bold,italic" source="this" text="Москва"/>
+  </recvPointShow>
+  <admBorderShow checkable="true" value="true" type="group" source="this" text="Показывать административные границы">
+    <admBorderColor textItem="Выбрать цвет" type="color" value="255;54;195;40;0;0" source="this" text="--------"/>
+  </admBorderShow>
+  <reservoirShow checkable="true" value="true" type="group" source="this" text="Показывать внутренние водоемы">
+    <reservoirColor textItem="Выбрать цвет" type="color" value="56;123;248;40;0;0" source="this" text="--------"/>
+  </reservoirShow>
+  <coastlineShow checkable="true" value="true" type="group" source="this" text="Показывать береговые линии">
+    <coastlineColor textItem="Выбрать цвет" type="color" value="56;123;248;40;0;0" source="this" text="--------"/>
+  </coastlineShow>
+  <graticuleShow checkable="true" value="true" type="group" source="this" text="Показывать географическую сетку">
+    <graticuleColor textItem="Выбрать цвет" type="color" value="150;150;150;40;0;0" source="this" text="--------"/>
+  </graticuleShow>
+  <hydrosShow checkable="true" value="true" type="group" source="this" text="Показывать реки">
+    <hydrosColor textItem="Выбрать цвет" type="color" value="0;7;205;40;0;0" source="this" text="--------"/>
+  </hydrosShow>
+</body>

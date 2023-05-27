@@ -1,0 +1,181 @@
+code: "gribair"
+name: "GRIB (аэрология)"
+path: "/opt/maslo//share/meteo//punch/gribair.template"
+wind: true
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 12
+  testqual: 0
+  id {
+    descr: 11003
+    name: "u"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 13
+  testqual: 0
+  id {
+    descr: 11004
+    name: "v"
+    parent: "wind"
+  }
+}
+rule {
+  pos {
+    x: -11
+    y: -6
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4292282928
+    minuscolor: 4280035572
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 9.34
+  id {
+    descr: 12101
+    name: "T"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -11
+    y: 6
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278357852
+    minuscolor: 4278357852
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 1.34
+  id {
+    descr: 12108
+    name: "D"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: 6
+    y: -6
+  }
+  align: kTopRight
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 0.1
+  }
+  testval: 1500
+  id {
+    descr: 10009
+    name: "hh"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 0
+  testqual: 0
+  id {
+    descr: 11002
+    name: "ff"
+    description: ""
+    parent: "wind"
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -20
+    y: -20
+  }
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 0
+  testqual: 9999
+  id {
+    descr: 11001
+    name: "dd"
+    description: ""
+    parent: "wind"
+  }
+  y_plus_bad_dd: false
+}
+datatype: kAero
+center: kCircle
+crisscross: false
+radius: 5
+windfont {
+  family: "helvetica"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+draw_bad_dd: false

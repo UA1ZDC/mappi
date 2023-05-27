@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="USSPI" text="Магнитных характеристик солнечных пятен"  category="171">
+  <MessageSections>(?:USSPI\s*(\d{5}\s*\d{5})\s*((?:(?:[1-4]\d{4}\s*[50]\d{4}\s*)|(?:[1-4]\d{4}\s*[67][\dxX]{4}\s*\d{5}\s*)|(?:[1-4]\d{4}\s*[89]\d{4}\s*(?:[1-4]\d{4}\s*(?:[50]\d{4}|[67][\dxX]{4}\s*\d{5}\s*)\s*)*))*)|USSPY\s*(\d{5}\s*\d{5})\s*((?:(?:[1-4]\d{4}\s*5\d{4}\s*)|(?:[1-4]\d{4}\s*[670][\dxX]{4}\s*\d{5}\s*)|(?:[1-4]\d{4}\s*[89]\d{4}\s*(?:[1-4]\d{4}\s*(?:5\d{4}|[670][\dxX]{4}\s*\d{5}\s*)\s*)*))*))</MessageSections>
+  <Section number="0" text="USSPI" >
+    <GroupValues>(\d{5})\s*(\d\d)(\d{2})(\d)</GroupValues>
+    <Value number="1"  descrName="station_index" text="Индекс обсерватории" />
+    <Value number="2"  descrName="YY"  text="День наблюдения" />
+    <Value number="3"  descrName="GG"  text="Час" />
+    <Value number="4"  descrName="gVq" text="Качество наблюдения" />
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <MessageSections>([1-4])(\d\d)(\d\d)\s*(?:(5\d{4}\s*)|([67][\dxX]{4}\s*\d{5}\s*)|(0\d{4}\s*)|([89]\d{4}\s*(?:[1-4]\d{4}\s*(?:[50]\d{4}|[67][\dxX]{4}\s*\d{5}\s*)\s*)*))</MessageSections>
+      <Value number="1"  descrName="gQc" text="квадрант, в котором находится геометрический центр однополярной группы солнечных пятен" />
+      <Value number="2"  descrName="gLo" text="расстояние до центрального меридиана в градусах (долгота)" />
+      <Value number="3"  descrName="gLa" text="гелиографическая широта в градусах" />
+      
+      <Section number="1" text="однополярные пятна (UNIPOLAR) USSPI" >
+	<GroupValues>(5)(\d)(\d)(\d)(\d)</GroupValues>
+	<Value number="4"  descrName="gst" text="признак пятна" />
+	<Value number="5"  descrName="gCc" text="класс пятен по Цюрихской классификации" />
+	<Value number="6"  descrName="gsd" text="диаметр тени основного пятна в градусах" />
+	<Value number="7"  descrName="gsp" text="полярность магнитного поля основного пятна" />
+	<Value number="8"  descrName="gsc" text="конфигурация" />
+      </Section>
+      <Section number="2" text="биполярные пятна (BIPOLAR) USSPI" >
+	<GroupValues>([67])(\d)(\d\d)(?:\d|[xX])\s*(\d\d)(\d)(\d)(\d)</GroupValues>
+	<Value number="4"  descrName="gst"  text="признак пятна" />
+	<Value number="5"  descrName="gCc"  text="класс пятна согласно Цюрихской классификации:" />
+	<Value number="6"  descrName="grr"  text="расстояние по долготе между внешними краями основных пятен" />
+	<!-- <Value number="7"  descrName="UNK" text="описание конфигурации" /> -->
+	<Value number="8"  descrName="gri"  text="кратчайшее расстояние (в градусах) между внутренними краями ближайших пятен противоположной полярности" />
+	<Value number="9"  descrName="gsd"  text="диаметр тени наибольшего пятна (в градусах)" />
+	<Value number="10" descrName="gmp"  text="ориентация нейтральной линии магнитного поля" />
+	<Value number="11" descrName="gpol" text="описание полярностей" />
+      </Section>
+      <Section number="3" text="Определённая конфигурация пятен USSPI" >
+	<GroupValues>(0)(\d)(\d)(\d)(\d)\s*</GroupValues>
+	<Value number="4"  descrName="gst"  text="признак пятна" />
+	<Value number="5"  descrName="gmp1" text="тип конфигурации и данные об ориентации нейтральной линии" />
+	<Value number="6"  descrName="gdw"  text="диаметр западного пятна (западной тени в DELTA конфигурации) в градусах" />
+	<Value number="7"  descrName="gde"  text="диаметр восточного пятна (восточной тени в DELTA конфигурации) в градусах" />
+	<Value number="8"  descrName="gri"  text="расстояние между внутренними краями двух полярностей" />
+      </Section>
+      <Section number="6" text="мультиполярные (MULTIPOLAR) или комплексные (COMPLEX) области USSPI" >
+	<GroupValues>([89])(\d\d)(\d\d)\s*((?:\d{5}\s*(?:[50]\d{4}|[67][\dXx]{4}\s*\d{5})\s*)*)</GroupValues>
+	<Value number="4"  descrName="gst" text="признак пятна" />
+	<Value number="5"  descrName="grr" text="долготная разность между внешними краями основных пятен в градусах" />
+	<Value number="6"  descrName="grv" text="широтная разность между внешними краями основных пятен в градусах" />
+	<SubGroup number="61" text="" >
+	  <item>
+	    <SubGroupValues>(\d)(\d\d)(\d\d)\s*(?:(5)(\d)(\d)(\d)(\d)\s*|([67])(\d)(\d\d)[xX]\s*(\d\d)(\d)(\d)(\d)|(0)(\d)(\d)(\d)(\d))</SubGroupValues>
+	    <Value number="1"  descrName="gQc" text="квадрант, в котором находится геометрический центр однополярной группы солнечных пятен" />
+	    <Value number="2"  descrName="gLo" text="расстояние до центрального меридиана в градусах (долгота)" />
+	    <Value number="3"  descrName="gLa" text="гелиографическая широта в градусах" />
+	    <Value number="4"  descrName="gst" text="признак пятна" />
+	    <Value number="5"  descrName="gCc" text="класс пятен по Цюрихской классификации" />
+	    <Value number="6"  descrName="gsd" text="диаметр тени основного пятна в градусах" />
+	    <Value number="7"  descrName="gsp" text="полярность магнитного поля основного пятна" />
+	    <Value number="8"  descrName="gsc" text="конфигурация" />
+	    <Value number="9"  descrName="gst" text="признак пятна" />
+	    <Value number="10" descrName="gCc" text="класс пятна согласно Цюрихской классификации:" />
+	    <Value number="11" descrName="grr" text="расстояние по долготе между внешними краями основных пятен" />
+	    <!-- <Value number=""  descrName="UNK" text="описание конфигурации" /> -->
+	    <Value number="12" descrName="gri"  text="кратчайшее расстояние (в градусах) между внутренними краями ближайших пятен противоположной полярности" />
+	    <Value number="13" descrName="gsd"  text="диаметр тени наибольшего пятна (в градусах)" />
+	    <Value number="14" descrName="gmp"  text="ориентация нейтральной линии магнитного поля" />
+	    <Value number="15" descrName="gpol" text="описание полярностей" />
+	    <Value number="16" descrName="gst"  text="признак пятна" />
+	    <Value number="17" descrName="gmp1" text="тип конфигурации и данные об ориентации нейтральной линии" />
+	    <Value number="18" descrName="gdw"  text="диаметр западного пятна (западной тени в DELTA конфигурации) в градусах" />
+	    <Value number="19" descrName="gde"  text="диаметр восточного пятна (восточной тени в DELTA конфигурации) в градусах" />
+	    <Value number="20" descrName="gri"  text="расстояние между внутренними краями двух полярностей" />
+	  </item>
+	</SubGroup>
+      </Section>
+    </item>
+  </Section>
+
+  <Section number="0" text="USSPY" >
+    <GroupValues>(\d{5})\s*(\d\d)(\d{2})(\d)</GroupValues>
+    <Value number="1"  descrName="station_index" text="Индекс обсерватории" />
+    <Value number="2"  descrName="YY"  text="День наблюдения" />
+    <Value number="3"  descrName="GG"  text="Час" />
+    <Value number="4"  descrName="gVq" text="Качество наблюдения" />
+  </Section>
+  <Section number="1" text="" >
+    <item>
+      <MessageSections>(\d)(\d\d)(\d\d)\s*(?:(5\d{4}\s*)|([67][\dxX]{4}\s*\d{5}\s*)|(0\d{4}\s*\d{5}\s*)|([89]\d{4}\s*(?:[1-4]\d{4}\s*(?:5\d{4}|[670][\dxX]{4}\s*\d{5}\s*)\s*)*))</MessageSections>
+      <Value number="1"  descrName="gQc" text="квадрант, в котором находится геометрический центр однополярной группы солнечных пятен" />
+      <Value number="2"  descrName="gLo" text="расстояние до центрального меридиана в градусах (долгота)" />
+      <Value number="3"  descrName="gLa" text="гелиографическая широта в градусах" />
+      <Section number="1" text="однополярные пятна (UNIPOLAR) USSPY" >
+	<GroupValues>(5)(\d)(\d)(\d)(\d)</GroupValues>
+	<Value number="4"  descrName="gst" text="признак пятна" />
+	<Value number="5"  descrName="gCc" text="класс пятен по Цюрихской классификации" />
+	<Value number="6"  descrName="gsd" text="диаметр тени основного пятна в градусах" />
+	<Value number="7"  descrName="gsp" text="полярность магнитного поля основного пятна" />
+	<Value number="8"  descrName="gsc" text="конфигурация" />
+      </Section>
+      <Section number="2" text="биполярные пятна (BIPOLAR) USSPY" >
+	<GroupValues>([67])(\d)(\d\d)(?:\d|[xX])\s*(\d\d)(\d)(\d)(\d)</GroupValues>
+	<Value number="4"  descrName="gst"  text="признак пятна" />
+	<Value number="5"  descrName="gCc"  text="класс пятна согласно Цюрихской классификации:" />
+	<Value number="6"  descrName="grr"  text="расстояние по долготе между внешними краями основных пятен" />
+	<!-- <Value number="7"  descrName="UNK" text="описание конфигурации" /> -->
+	<Value number="8"  descrName="gri"  text="кратчайшее расстояние (в градусах) между внутренними краями ближайших пятен противоположной полярности" />
+	<Value number="9"  descrName="gsd"  text="диаметр тени наибольшего пятна (в градусах)" />
+	<Value number="10" descrName="gmp"  text="ориентация нейтральной линии магнитного поля" />
+	<Value number="11" descrName="gpol" text="описание полярностей" />
+      </Section>
+      <Section number="4" text="Определённая конфигурация пятен USSPY USSPY" >
+	<GroupValues>(0)(\d)(\d)(\d)(\d)\s*(\d\d)(\d\d)(\d)</GroupValues>
+	<Value number="4"  descrName="gst"  text="признак пятна" />
+	<Value number="5"  descrName="gmp1" text="тип конфигурации и данные об ориентации нейтральной линии" />
+	<Value number="6"  descrName="gdw"  text="диаметр западного пятна (западной тени в DELTA конфигурации) в градусах" />
+	<Value number="7"  descrName="gde"  text="диаметр восточного пятна (восточной тени в DELTA конфигурации) в градусах" />
+	<Value number="8"  descrName="gri"  text="расстояние между внутренними краями двух полярностей" />
+	<Value number="9"  descrName="gnH"  text="напряжённость магнитного поля северной поляризации" />
+	<Value number="10" descrName="gsH"  text="напряжённость магнитного поля южной поляризации" />
+	<Value number="11" descrName="gdH"  text="оценка величины градиента магнитного поля" />
+      </Section>
+      <Section number="8" text="мультиполярные (MULTIPOLAR) или комплексные (COMPLEX) области USSPY" >
+	<GroupValues>([89])(\d\d)(\d\d)\s*((?:\d{5}\s*(?:5\d{4}|[670][\dXx]{4}\s*\d{5})\s*)*)</GroupValues>
+	<Value number="4"  descrName="gst" text="признак пятна" />
+	<Value number="5"  descrName="grr" text="долготная разность  между внешними краями основных пятен в градусах" />
+	<Value number="6"  descrName="grv" text="широтная разность между внешними краями основных пятен в градусах" />
+	<SubGroup number="81" text="" >
+	  <item>
+	    <SubGroupValues>(\d)(\d\d)(\d\d)\s*(?:(5)(\d)(\d)(\d)(\d)\s*|([67])(\d)(\d\d)[xX]\s*(\d\d)(\d)(\d)(\d)|(0)(\d)(\d)(\d)(\d)\s*(\d{2})(\d{2})(\d))</SubGroupValues>
+	    <Value number="1"  descrName="gQc" text="квадрант, в котором находится геометрический центр однополярной группы солнечных пятен" />
+	    <Value number="2"  descrName="gLo" text="расстояние до центрального меридиана в градусах (долгота)" />
+	    <Value number="3"  descrName="gLa" text="гелиографическая широта в градусах" />
+	    <Value number="4"  descrName="gst" text="признак пятна" />
+	    <Value number="5"  descrName="gCc" text="класс пятен по Цюрихской классификации" />
+	    <Value number="6"  descrName="gsd" text="диаметр тени основного пятна в градусах" />
+	    <Value number="7"  descrName="gsp" text="полярность магнитного поля основного пятна" />
+	    <Value number="8"  descrName="gsc" text="конфигурация" />
+	    <Value number="9"  descrName="gst" text="признак пятна" />
+	    <Value number="10"  descrName="gCc" text="класс пятна согласно Цюрихской классификации:" />
+	    <Value number="11"  descrName="grr" text="расстояние по долготе между внешними краями основных пятен" />
+	    <!-- <Value number=""  descrName="UNK" text="описание конфигурации" /> -->
+	    <Value number="12"  descrName="gri"  text="кратчайшее расстояние (в градусах) между внутренними краями ближайших пятен противоположной полярности" />
+	    <Value number="13"  descrName="gsd"  text="диаметр тени наибольшего пятна (в градусах)" />
+	    <Value number="14"  descrName="gmp"  text="ориентация нейтральной линии магнитного поля" />
+	    <Value number="15"  descrName="gpol" text="описание полярностей" />
+	    <Value number="16"  descrName="gst"  text="признак пятна" />
+	    <Value number="17"  descrName="gmp1" text="тип конфигурации и данные об ориентации нейтральной линии" />
+	    <Value number="18"  descrName="gdw"  text="диаметр западного пятна (западной тени в DELTA конфигурации) в градусах" />
+	    <Value number="19"  descrName="gde"  text="диаметр восточного пятна (восточной тени в DELTA конфигурации) в градусах" />
+	    <Value number="20"  descrName="gri"  text="расстояние между внутренними краями двух полярностей" />
+	    <Value number="21"  descrName="gnH"  text="напряжённость магнитного поля северной поляризации" />
+	    <Value number="22" descrName="gsH"  text="напряжённость магнитного поля южной поляризации" />
+	    <Value number="23" descrName="gdH"  text="оценка величины градиента магнитного поля" />
+	  </item>
+	</SubGroup>
+      </Section>
+    </item>
+  </Section>  
+</Message>

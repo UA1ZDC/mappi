@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TlgEditor</class>
+ <widget class="QWidget" name="TlgEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>572</width>
+    <height>428</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>TlgEditor</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;СООБЩЕНИЯ ФОРМАТА ВМО:&lt;br/&gt;&lt;/span&gt;&amp;lt;SOH&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;br/&gt;NNN(_CLLLL)&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;/p&gt;&lt;p&gt;NNN - группа порядкового номера сообщения при передаче по определенному каналу.&lt;br/&gt;CLLLL - группа классификации и опознавания сообщений.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;СООБЩЕНИЯ ФОРМАТА ГМС:&lt;br/&gt;&lt;/span&gt;циркулярные - &amp;lt;SOH&amp;gt;FCB_K1K2K3K4K5K6/(=НNNN)(=GGgg)&amp;lt;STX&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;br/&gt;адресованные - &amp;lt;SOH&amp;gt;FCB_K1K2(K3K4(K5K6))/(=HNNN)(=GGgg)&amp;lt;STX&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;/p&gt;&lt;p&gt;F - указатель формата сообщения, может принимать значения:&lt;br/&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;0 - основной формат, используется для передачи обычной буквенно-цифровой информации;&lt;br/&gt;6,7 - формат тест-сообщений.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;C - указатель категории срочности сообщения:&lt;br/&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;1 - (высшая срочность) используется только для передачи штормовых предупреждений, сообщений об авариях и срочных административных телеграмм;&lt;br/&gt;2 - как правило, используется для передачи данных наблюдений, оперативных авиационных прогнозов, запросов о повторении и ответов на них;&lt;br/&gt;3 - как правило, используется для передачи несрочных административных телеграмм, а также обработанной информации и данных наблюдений, используемых для выпуска несрочной продукции;&lt;br/&gt;4 - используется для передачи неоперативных данных.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;B - указатель вида информации, содержащейся в тексте сообщения, может принимать значения:&lt;br/&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;0 - для адресованных сообщений;&lt;br/&gt;1,2,3,4,5,6,7 - для регулярной и другой метеорологической информации;&lt;br/&gt;9 - для сообщений, содержащих факсимильную информацию.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;K1K2(K3K4(K5K6)) - указатель распределения (адресации) сообщений. Каждый знак указателя может принимать значение от 0 до 9. Данная группа имеет переменную длину и должна заканчиваться символом &amp;quot;/&amp;quot; - конец адреса.&lt;br/&gt;K1K2 - определяет центр, узел связи, в который посылается сообщение. &lt;br/&gt;K3K4 - указывает абонента, рабочее место, терминал центра.&lt;br/&gt;K5K6 - расширение группы.&lt;/p&gt;&lt;p&gt;=Н - фиксированный  отличительный признак группы порядкового номера.&lt;br/&gt;NNN - трехзначное  число от 000 до 999, изменяемое циклически.&lt;/p&gt;&lt;p&gt;=GGgg - группа времени ввода сообщения в автоматизированную систему передачи данных, где: GG - часы, gg - минуты.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../../etc/meteo.icons.qrc">:/meteo/icons/misc/information-button.png</pixmap>
+       </property>
+       <property name="buddy">
+        <cstring>startEditor</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Начальная строка:</string>
+       </property>
+       <property name="buddy">
+        <cstring>startEditor</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="startEditor">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>62</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Начальная строка</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QTextEdit::NoWrap</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;ЦИРКУЛЯРНЫЕ СООБЩЕНИЯ ФОРМАТА ВМО, ГМС: &lt;br/&gt;&lt;/span&gt;TTAAii CCCC YYGGgg( BBB)&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;/p&gt;&lt;p&gt;ТТ - вид метеорологической информации. &lt;br/&gt;AA - указатель территории, к которой относится содержимое циркулярного сообщения.&lt;br/&gt;ii - число, определяющее список станций, которые должны входить в бюллетень, при этом первая цифра должна соответствовать типу обмена (1 - глобальный; 2,3 - региональный; 4,5,6,7,8 - национальный), а вторая определять номер списка станций.&lt;br/&gt;CCCC - позывной центра.&lt;br/&gt;YYGGgg - группа дата-время, к которой относятся данные, содержащиеся в тексте сообщения, где YY - день месяца, GGgg - время (часы, минуты).&lt;br/&gt;BBB - используется для отличия сообщений, содержащих задержанные и исправленные данные &lt;br/&gt;Возможны два варианта использования этой группы:&lt;br/&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;для неавтоматизированных центров, узлов связи:&lt;/span&gt;&lt;br/&gt;RTD/РТД - для задержанных регулярных сводок погоды, &lt;br/&gt;COR/ЦОР - для исправлений сводок,&lt;br/&gt;AMD/АМД - для поправок к обработанной информации;&lt;br/&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;для автоматизированных центров, узлов связи:&lt;/span&gt;&lt;br/&gt;RRx/РРх - для задержанных, &lt;br/&gt;CCx/ЦЦх - для исправленных,&lt;br/&gt;AAx/ААх - для поправок к обработанной информации; &lt;br/&gt;где: х - меняющийся от А до Х знак латинского алфавита (для ГМС представленный идентичной по коду русской буквой).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;АДРЕСОВАННЫЕ СООБЩЕНИЯ ФОРМАТА ГМС:&lt;br/&gt;&lt;/span&gt;TTDDDD CCCC YYGGgg&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&lt;/p&gt;&lt;p&gt;ТТ - указатель типа данных, принимает следующие значения:&lt;br/&gt;AA - для административных телеграмм и телеграмм об опасных явлениях, требующих подтверждения приема;&lt;br/&gt;БА - для подтверждений приема административных и других сообщений;&lt;br/&gt;ББ - для служебных сообщений (сообщений по оперативным вопросам);&lt;br/&gt;ММ - для сообщений, содержащих метеорологические данные, представленные не в форме стандартного метеорологического бюллетеня;&lt;br/&gt;РР - для сообщений, содержащих запросы на метеорологические данные.&lt;br/&gt;DDDD - сокращенный указатель получателя адресованного сообщения.&lt;br/&gt;CCCC - сокращенный указатель отправителя адресованного сообщения.&lt;br/&gt;YYGGgg - время формирования сообщения (день, часы, минуты СГВ).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;АДРЕСОВАННЫЕ СООБЩЕНИЯ ФОРМАТА ВМО:&lt;br/&gt;&lt;/span&gt;TTMM01 DDDD YYGGgg&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt; &lt;br/&gt;CCCC&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt; &lt;/p&gt;&lt;p&gt;ТТ - указатель вида данных, принимает следующие значения:&lt;br/&gt;BM - адресованные сообщения в текстовом виде;&lt;br/&gt;BI - адресованные сообщения в бинарном виде.&lt;br/&gt;MM - указатель вида адресованного сообщения, принимает следующие значения:&lt;br/&gt;BB - служебные сообщения;&lt;br/&gt;RR - сообщения-запросы о повторении;&lt;br/&gt;AA - административные сообщения;&lt;br/&gt;MM - сообщения, содержащие данные.&lt;br/&gt;DDDD - сокращенный указатель получателя адресованного сообщения.&lt;br/&gt;YYGGgg - время формирования сообщения (день, часы, минуты СГВ).&lt;br/&gt;CCCC - сокращенный указатель отправителя адресованного сообщения.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../../etc/meteo.icons.qrc">:/meteo/icons/misc/information-button.png</pixmap>
+       </property>
+       <property name="buddy">
+        <cstring>headEditor</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Сокращённый заголовок:</string>
+       </property>
+       <property name="buddy">
+        <cstring>headEditor</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="headEditor">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>62</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Сокращённый заголовок</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QTextEdit::NoWrap</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;ЦИРКУЛЯРНЫЕ СООБЩЕНИЯ:&lt;br/&gt;&lt;/span&gt;Текст циркулярного сообщения оформляется в соответствии с кодовой формой, установленной для каждого вида метеорологической информации. Кроме того, при подготовке текста должны соблюдаться следующие правила:&lt;br/&gt;- текст бюллетеня может быть только в одной кодовой форме;&lt;br/&gt;- каждая метеорологическая сводка должна начинаться с новой строки, при этом между первой строкой текста и сокращенным заголовком не должно быть пустых строк.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;АДРЕСОВАННЫЕ СООБЩЕНИЯ:&lt;br/&gt;&lt;/span&gt;Текст сообщения может быть метеорологическим бюллетенем, обработанной метеорологической информацией, запросами о повторении, служебными или другими телеграммами.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../../etc/meteo.icons.qrc">:/meteo/icons/misc/information-button.png</pixmap>
+       </property>
+       <property name="buddy">
+        <cstring>editor</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Текст:</string>
+       </property>
+       <property name="buddy">
+        <cstring>editor</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="editor">
+     <property name="toolTip">
+      <string>Текст сообщения</string>
+     </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QTextEdit::NoWrap</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_8">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;СООБЩЕНИЯ&amp;nbsp;ФОРМАТА&amp;nbsp;ВМО,&amp;nbsp;ГМС:&lt;br/&gt;&lt;/span&gt;&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;&amp;lt;ETX&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../../etc/meteo.icons.qrc">:/meteo/icons/misc/information-button.png</pixmap>
+       </property>
+       <property name="buddy">
+        <cstring>endEditor</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Конец сообщения:</string>
+       </property>
+       <property name="buddy">
+        <cstring>endEditor</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="endEditor">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Конец сообщения</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QTextEdit::NoWrap</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>startEditor</tabstop>
+  <tabstop>headEditor</tabstop>
+  <tabstop>editor</tabstop>
+  <tabstop>endEditor</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../etc/meteo.icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

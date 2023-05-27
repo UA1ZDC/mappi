@@ -1,0 +1,6 @@
+{ "delete" : @collection@, "deletes" : [
+  {
+    "q": { "_id" :  { "$in" : @id@ }},
+    "limit" : 0 }
+]}
+

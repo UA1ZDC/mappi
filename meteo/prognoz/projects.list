@@ -1,0 +1,20 @@
+#DEPS=(
+#  cross-commons
+#  sql
+#  commons
+#  meteo/commons
+#)
+
+DIRS_EXTRA=(
+  meteo/prognoz/etc
+)
+
+DIRS=(
+  meteo/prognoz/services/obanal
+  meteo/prognoz/ui/obanal.settings
+
+)
+
+
+
+

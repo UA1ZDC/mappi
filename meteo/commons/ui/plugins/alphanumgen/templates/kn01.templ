@@ -1,0 +1,477 @@
+# section {
+#   require: true
+#   mgroup {
+#     require: true
+#     param {
+#       width: 2
+#       fill: 32
+#       name: "T1T2"
+#     }
+#     param { 
+#       width: 2
+#       fill: 32
+#       name: "A1A2" 
+#     }
+#   }
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 2
+#       name: "ii" 
+#     }
+#   }   
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 4
+#       fill: 32
+#       name: "CCCC" 
+#     }
+#   }
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 2
+#       name: "YY1" 
+#     }
+#     param { 
+#       width: 2
+#       name: "GG1" 
+#     }
+#     param { 
+#       width: 2
+#       name: "gg1" 
+#     }
+#   }
+#   mgroup {
+#     require: false
+#     param { 
+#       width: 3
+#       fill: 32
+#       name: "BBB" 
+#     }
+#   }
+# }
+section {
+  require: true
+  mgroup {
+    require: true
+    param {
+      width: 4
+      text: "AAXX"
+    }
+  }
+  mgroup {
+    require: true
+    param { 
+      width: 2
+      name: "YY" 
+    }
+    param { 
+      width: 2
+      name: "GG" 
+    }
+    param { 
+      width: 1
+      name: "iw" 
+    }
+  }
+  mgroup {
+    require: true
+    param { 
+      width: 5
+      name: "IIiii" 
+    }
+  }
+}
+section {
+  require: true
+  mgroup {
+    require: true
+    param { 
+       width: 1
+       name: "iR"
+    }
+    param { 
+       width: 1
+       name: "ix"
+    }
+    param { 
+       width: 1
+       name: "h"
+       table: "0; 50; 100; 200; 300; 600; 1000; 1500; 2000; 2500"
+    }
+    param { 
+       width: 2
+       name: "VV"
+    }
+  }
+  mgroup {
+    require: true
+    param { 
+       width: 1
+       name: "N"
+       table: "0; 1; 2; 4; 5; 6; 7; 9; 10"
+    }
+    param { 
+       width: 2
+       name: "dd"
+       func: "dd"
+    }
+    param { 
+       width: 2
+       name: "ff"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "1"
+    }
+    param { 
+       width: 4
+       name: "snTTT"
+       mul: 10
+       sign: "1"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "2"
+    }
+    param { 
+       width: 4
+       name: "snTdTdTd"
+       mul: 10
+       sign: "1"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "3"
+    }
+    param { 
+       width: 4
+       name: "P0P0P0P0"
+       func: "P"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "4"
+    }
+    param { 
+       width: 4
+       name: "PPPP"
+       func: "P"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "4"
+    }
+    param { 
+       width: 1
+       name: "a3"
+    }
+    param { 
+       width: 3
+       name: "hhh"
+       func: "hhh"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "5"
+    }
+    param { 
+       width: 1
+       name: "a"
+    }
+    param { 
+       width: 3
+       name: "ppp"
+       mul: 10
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "6"
+    }
+    param { 
+       width: 3
+       name: "RRR"
+       func: "RRR"
+    }
+    param { 
+       width: 1
+       name: "tR"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "7"
+    }
+    param { 
+       width: 2
+       name: "ww"
+    }
+    param { 
+       width: 1
+       name: "W1"
+    }
+    param { 
+       width: 1
+       name: "W2"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "8"
+    }
+    param { 
+       width: 1
+       name: "Nh"
+       table: "0; 1; 2; 4; 5; 6; 7; 9; 10"
+    }
+    param { 
+       width: 1
+       name: "CL"
+    }
+    param { 
+       width: 1
+       name: "CM"
+    }
+    param { 
+       width: 1
+       name: "CH"
+    }
+  }
+}
+section {
+  require: false
+  mark   : "333"
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "1"
+    }
+    param { 
+       width: 4
+       name: "snTxTxTx"
+       mul: 10
+       sign: "1"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "2"
+    }
+    param { 
+       width: 4
+       name: "snTnTnTn"
+       mul: 10
+       sign: "1"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "3"
+    }
+    param { 
+       width: 1
+       name: "E"
+    }
+    param { 
+       width: 3
+       name: "snTgTg"
+       sign: "1"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "4"
+    }
+    param { 
+       width: 1
+       name: "E_"
+    }
+    param { 
+       width: 3
+       name: "sss"
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 2
+       text: "55"
+    }
+    param { 
+       width: 3
+       name: "SSS"
+       mul: 10
+    }
+  }
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "6"
+    }
+    param { 
+       width: 3
+       name: "RRR6"
+       func: "RRR"
+    }
+    param { 
+       width: 1
+       name: "tR6"
+    }
+  }
+  mgroup {
+    require: false
+    name: "clouds"
+    param { 
+       width: 1
+       text: "8"
+    }
+    param { 
+       width: 1
+       name: "Ns"
+       table: "0; 1; 2; 4; 5; 6; 7; 9; 10"
+    }
+    param { 
+       width: 1
+       name: "C"
+    }
+    param { 
+       width: 2
+       name: "hshs"
+    }
+  }
+  mgroup {
+    require: false
+    name: "9Sp"
+    param { 
+       width: 1
+       text: "9"
+    }
+    param { 
+       width: 2
+       name: "SpSp"
+    }
+    param { 
+       width: 2
+       name: "spsp"
+    }
+  }
+}
+section {
+  require: false
+  mark: "555"
+  mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "1"
+    }
+    param { 
+       width: 1
+       name: "E5"
+    }
+    param { 
+       width: 3
+       name: "snTg_Tg_"
+       sign: "1"
+    }
+  }
+ mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "5"
+    }
+    param { 
+       width: 4
+       name: "snT24T24T24"
+       mul: 10
+       sign: "1"
+    }
+  }
+ mgroup {
+    require: false
+    param { 
+       width: 2
+       text: "52"
+    }
+    param { 
+       width: 3
+       name: "snT2T2"
+       sign: "1"
+    }
+  }
+ mgroup {
+    require: false
+    param { 
+       width: 3
+       text: "530"
+    }
+    param { 
+       width: 2
+       name: "f12f12"
+    }
+  }
+ mgroup {
+    require: false
+    param { 
+       width: 1
+       text: "7"
+    }
+    param { 
+       width: 3
+       name: "R24R24R24"
+       func: "RRR"
+    }
+    param { 
+       width: 1
+       text: "/"
+    }
+  }
+ mgroup {
+    require: false
+    param { 
+       width: 2
+       text: "88"
+    }
+    param { 
+       width: 3
+       name: "R24R24R24_check"
+       func: "RRR"
+    }
+  }
+}

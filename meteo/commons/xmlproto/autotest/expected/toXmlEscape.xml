@@ -1,0 +1,8 @@
+<bookcase>
+  <books>
+    <book>
+      <name>Xml движок сам экранирует спец. символы: $,#,%,^,?,\,',",>,&lt;.</name>
+    </book>
+    <book name="Ушастый нинзь &quot;>_&lt;&quot;"/>
+  </books>
+</bookcase>

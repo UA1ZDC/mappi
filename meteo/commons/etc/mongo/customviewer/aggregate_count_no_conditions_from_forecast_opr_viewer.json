@@ -1,0 +1,8 @@
+{
+"aggregate" : "%1",
+    "pipeline" : [
+        { "$count" : "n" }
+],
+"cursor": { "batchSize": 1 },
+"allowDiskUse": true
+}

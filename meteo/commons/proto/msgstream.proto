@@ -1,0 +1,259 @@
+syntax = "proto2";
+
+import "ptkppstream.proto";
+import "msgcenter.proto";
+
+package meteo.msgstream;
+
+//! Направление передачи сообщений
+enum Direction {
+  kSender   = 1;  //! отправка сообщений во внешние системы
+  kReceiver = 2;  //! приём сообщений от внешних систем
+  kSenderReceiver = 3;  //! приём сообщений от внешних систем + отправка сообщений во внешние системы
+}
+
+//
+// Секция протокола udp
+//
+//
+// Секция протокола SocketSpecial
+//
+enum CompressMode {
+  COMPRESS_NONE    = 0;   //!< без сжатия
+  COMPRESS_OPTIM   = 1;   //!< оптимальный режим сжатия
+  COMPRESS_ALWAYS  = 2;   //!< всегда сжимать
+}
+
+message UdpOptions {
+  optional string host    = 1; //!< ip-адрес подключения
+  optional int32  port    = 2; //!< порт подключения
+  optional int32 msg_limit    = 3 [default = 1000]; //!< ограничение на количество телеграмм в одном файле
+  optional int64 size_limit   = 4 [default = 1024]; //!< ограничение на размер файла (байты)
+  optional int32 time_limit   = 5 [default = 3600]; //!< ограничение на время записи (секунды)
+  optional bytes  meta_template = 6 [default = "{YYYY}{MM}{DD}"]; //!< шаблон для извлечения метаинформации из имени файла
+  optional bool  content_only = 7 [default = false]; //!< передавать только текст телеграммы
+  optional CompressMode  compress_mode = 8 [default = COMPRESS_ALWAYS];    //!< включение режима сжатия
+  optional string osh_host    = 9; //!< ip-адрес Шлюза
+  optional int32 expire_time   = 10 [default = 600]; //!< время устаревания пакета (секунды). при истечении этогог времени пакет удаляется
+  optional int32 state_interval   = 11 [default = 5]; //!< время устаревания пакета (секунды). при истечении этогог времени пакет удаляется
+  optional int32 read_interval   = 12 [default = 1000]; //!< интервал чтения из очереди  (микросекунды).
+  optional int32 send_try   = 13 [default = 1]; //!< интервал чтения из очереди  (микросекунды).
+  optional int32 chunk_size = 14 [default = 256];  //!< максимальный размер пакета при передаче, байт
+  optional bool  need_fec   = 15 [default = false];  //!< Использовать ли избыточное кодирование при передаче. в этом случае значение chunk_size игнорируется
+}
+
+// Параметры приёма сообщений
+message FileInOptions {
+  optional string path        = 1; //!< путь к директории c файлами
+  optional string file_filter = 2; //!< шаблон имени файлов, которые необходимо обрабатывать
+  optional string path_filter = 3; //!< шаблон имени пути, которые необходимо обрабатывать
+  optional bool   delete_files  = 4 [default = false]; //!< флаг удаления обработанных файлов
+  optional bytes  meta_template = 6; //!< шаблон для извлечения метаинформации из имени файла
+  optional int32  wait_before_read = 7 [default = 10]; //!< ожидание, в секундах, между временем последней модификации файла и началом чтения
+}
+
+//! Параметры передачи сообщений
+message FileOutOptions {
+  optional string path        = 1; //!< путь сохранения файлов
+  optional int32 msg_limit    = 2 [default = 1000]; //!< ограничение на количество телеграмм в одном файле
+  optional int64 size_limit   = 3 [default = 1024]; //!< ограничение на размер файла (байты)
+  optional int32 time_limit   = 4 [default = 3600]; //!< ограничение на время записи (секунды)
+  optional bytes mask         = 5 [default = "{YYYY}{MM}{DD}_{ID}.tlg"]; //!< шаблон имени создаваемых файлов
+  optional bool  content_only = 6 [default = false]; //!< передавать только текст телеграммы
+}
+
+//
+// Секция протокола FTP
+//
+enum FtpMode {
+  kActiveFtpMode    = 0;
+  kPassiveFtpMode   = 1;
+}
+
+enum FtpTransferType {
+  kBinaryTransferType    = 0;
+  kAsciiTransferType     = 1;
+}
+
+message FtpServer {
+  optional string host      = 1;                 //!< адрес ftp-сервера
+  optional int32  port      = 2 [default = 21];  //!< порт ftp-сервера
+  optional string user      = 3; //!< имя пользователя
+  optional string password  = 4; //!< пароль
+  optional FtpMode mode     = 5 [default = kPassiveFtpMode]; //!< режим подключения к ftp-серверу
+  optional FtpTransferType transfer_type     = 6 [default = kBinaryTransferType]; //!< тип передачи ftp
+
+
+}
+
+// Параметры приёма сообщений
+message FtpInOptions {
+  optional FtpServer  server  = 1; //!< парметры ftp-сервера
+  optional string path        = 11; //!< путь к директории c файлами
+  optional string file_filter = 12; //!< шаблон имени файлов, которые необходимо обрабатывать
+  optional string path_filter = 13; //!< маска путей, которые необходимо обрабатывать
+  optional bool   delete_files  = 14 [default = false]; //!< флаг удаления обработанных файлов
+  optional bytes  meta_template = 15; //!< шаблон для извлечения метаинформации из имени файла
+  optional int32  wait_before_read = 16 [default = 10];  //!< ожидание, в секундах, между временем последней модификации файла и началом чтения
+  optional int32  session_timeout  = 17 [default = 30]; //!< ожидание, в секундах, между сеансами работы
+  optional int32  file_size_limit  = 18 [default = 10]; //!< файлы больше заданного размера не будут загружаться (Мбайт)
+  optional string skip_older       = 19; //!< не загружать файлы, дата создания которых старше указанной (ISO DATE)
+}
+
+//! Параметры передачи сообщений
+message FtpOutOptions {
+  required FtpServer  server  = 1; //!< парметры ftp-сервера
+
+  optional string path        = 11; //!< путь сохранения файлов
+  optional int32 msg_limit    = 12 [default = 1000]; //!< ограничение на количество телеграмм в одном файле
+  optional int64 size_limit   = 13 [default = 1024]; //!< ограничение на размер файла (байты)
+  optional int32 time_limit   = 14 [default = 3600]; //!< ограничение на время записи (секунды)
+  optional bytes mask         = 15 [default = "{YYYY}{MM}{DD}_{ID}.tlg"]; //!< шаблон имени создаваемых файлов
+  optional bool  content_only = 16 [default = false]; //!< передавать только текст телеграммы
+}
+
+//
+// Секция протокола TCP
+//
+enum DeviceType {
+  kDeviceBCM    = 1;
+  kDeviceIPV    = 2;
+  kDeviceLing   = 3;
+}
+
+
+
+
+//! Параметры приёма данных
+message TcpInOptions {
+  optional string host    = 1; //!< ip-адрес подключения
+  optional int32  port    = 2; //!< порт подключения
+
+  optional DeviceType dev = 10; //!< тип устройства, влияет на выбор формат для разбора потока данных
+  optional int32  station = 11 [default = 256001]; //!< условный номер станции
+  optional string dev_name   = 12; //!< название устройства (для раскодировщика)
+  optional int32  utc_offset = 13 [default = 0]; //!< смещение времени измерения отностительно utc
+
+  optional int32  tlg_interval_msec = 20 [default = -1]; //!< периодичность формирования метеосообщений с данными изменерий (мсек.), если значение равно -1, сообщения формируются при каждом поступлении блока данных
+
+  optional int32 wait_data_timeout  = 100 [default = 120000]; //!< если в течении указанного периода времени небыло получено данных, будет предпринята попытка переподключиться к серверу (мсек.)
+  optional int32 connect_timeout    = 101 [default = 30000];  //!< время ожидания ответа от сервера при подключении (мсек.)
+  optional int32 reconnect_timeout  = 102 [default = 5000];   //!< время ожидания между повторными попытками подключения к серверу (мсек.)
+  optional int32 disconnect_timeout = 103 [default = 10000];  //!< время ожидания отключения от сервера (мсек.)
+
+}
+
+//
+// Секция протокола SRIV512
+//
+message Sriv512Options {
+  optional string   host  = 1; //!< адрес сервера
+  optional int32    port  = 2; //!< порт сервера
+  optional int32    ack_waiting    = 3 [default = 120];      //!< время ожидания подтвердения получения телеграммы
+  optional int32    window         = 4 [default = 100];      //!< количество сообщений передаваемых без ожидания подтверждения
+  optional bool     mode_client    = 5 [default = false];    //!< запуск в режиме клиента
+  optional bool     compress_optim = 6 [default = false];    //!< включение режима сжатия
+  optional int32    max_len        = 7 [default = 20000000]; //!< максимальный размер отправляемого сообщения
+}
+
+
+enum MODE {
+  SOCKSPEC_TCP     = 0;      //!< режим работы MTS<->MTS
+  SOCKSPEC_UTCP    = 1;      //!< режим работы MTS<->Unimas, Unimas<->Unimas
+}
+
+message SocketSpecialOptions {
+  // общие опции
+  optional bool  client = 1 [default = true]; //!< признак запуска приложения в качестве клиента
+  optional MODE  mode   = 2 [default = SOCKSPEC_UTCP]; //!< режим информационного обмена
+  optional bytes host   = 3;  //!< адрес подключения к MTS-,Unimas-серверу
+  optional int32 port   = 4;  //!< порт кодключения к MTS-,Unimas-серверу или порт, на который ожидается подключение MTS-,Unimas-клиента
+  optional int32 session_timeout = 5 [default = 0];     //!< ожидание между сеансами работы (в секундах)
+  optional int32 ack_timeout     = 6 [default = 120];   //!< время ожидания подтвердения получения телеграммы
+  optional bytes error_path      = 7; //!< путь к директории, для сохранения телеграмм, которые не удалось обработать
+  optional int32 window          = 9 [default = 100];   //!< количество сообщений отправляемых без подтверждения
+  optional CompressMode compress_mode = 8 [default = COMPRESS_NONE]; //!< режим упаковки/распаковки текста сообщения
+}
+
+
+//
+// Секция протокола SocketSpecial2
+//
+message SocketSpecial2Options {
+  optional string   host  = 1; //!< адрес сервера
+  optional int32    port  = 2; //!< порт сервера
+  optional int32    ack_waiting    = 3 [default = 120];      //!< время ожидания подтвердения получения телеграммы
+  optional int32    window         = 4 [default = 100];      //!< количество сообщений передаваемых без ожидания подтверждения
+  optional bool     mode_client    = 5 [default = false];    //!< запуск в режиме клиента
+  optional bool     compress_optim = 6 [default = false];    //!< включение режима сжатия
+  optional int32    max_len        = 7 [default = 524288]; //!< максимальный размер отправляемого сообщения
+  optional string   path            = 8; //!< куда сохранять файлы
+
+}
+
+
+//
+// Секция протокола PTKPP
+//
+message PtkppOptions {
+  repeated SubscribeData subscribe  = 1;  //!< подписки к удалённым ЦКС для получения телеграмм
+}
+
+//
+//
+//
+
+enum FileParseOptions {
+  PARSE = 1;
+  NO_PARSE = 2;  //!< отключает выделение сообщений из потока данных (ожидается, что каждое сообщение располагается в отдельном файла и содержит только текст телеграммы)
+  SPLIT = 3; //!< Разбивает каждый файл на фрагменты и формирует из них телеграммы без декодирования
+}
+
+message Options {
+  optional string module  = 1000;  //!< название модуля (служебное поле)
+
+  optional string id            = 1;  //!< идентификатор потока
+  optional string protocol      = 2;  //!< название протокола
+  optional Direction direction  = 3;  //!< режим работы (приём, передача)
+
+  optional int32 reconnect_timeout  = 11 [default = 5];    //!< время ожидания между подключения к msgcenter при разрыве связи (секунды, по умолчанию 5)
+  optional int32 center_window      = 12 [default = 1000]; //!< количество сообщений отправляемых в центр без ожидания подтверждения
+  optional int32 max_queue          = 13 [default = 8000]; //!< максимальный размер очереди принятых сообщений, при достижении которого приём приостанавливается
+
+  optional msgcenter.RuleTable      filter = 20; //!< разрешающие и запрещающие правила на приём/пердачу сообщений
+  optional string rule           = 21; //!< название правила, которое будет использовано парсером для выделения сообщений из потока данных
+  optional FileParseOptions   file_parse_mode   = 22 [ default = PARSE ];
+
+  optional string predef_t1             = 30; //!< значение для поля T1 (устанавливается если не заполнено парсером)
+  optional string predef_t2             = 31; //!< значение для поля T2 (устанавливается если не заполнено парсером)
+  optional string predef_a1             = 32; //!< значение для поля A1 (устанавливается если не заполнено парсером)
+  optional string predef_a2             = 33; //!< значение для поля A2 (устанавливается если не заполнено парсером)
+  optional int32  predef_ii             = 34; //!< значение для поля ii (устанавливается если не заполнено парсером)
+  optional string predef_cccc           = 35; //!< значение для поля CCCC (устанавливается если не заполнено парсером)
+  optional string predef_msgtype        = 36; //!< значение для поля msgtype
+
+  optional string magic_begin           = 40;  //!< добавляет в начало каждого принятого болока данных
+  optional string magic_end             = 41;  //!< добавляет в конец каждого принятого болока данных
+  optional int32 time_to_last_activity = 42[default = 600000];//!< интервал проверки активности потока, мсек
+  optional FileInOptions  file_recv     = 100;
+  optional FileOutOptions file_send     = 101;
+  optional FtpInOptions   ftp_recv      = 102;
+  optional FtpOutOptions  ftp_send      = 103;
+  optional TcpInOptions   tcp_recv      = 104;
+//  optional TcpOutOptions  tcp_send  = 105;
+  optional Sriv512Options sriv512       = 106;
+  optional SocketSpecialOptions sockspec  = 107;
+  optional PtkppOptions   ptkpp_recv    = 108;
+  optional SocketSpecial2Options socksp2g  = 109;
+//  optional PtkppOptions   ptkpp_send  = 109;
+  optional UdpOptions     udp           = 110;
+
+  optional bool           split_stucked = 111;
+
+}
+
+//! Общая структура для хранения параметров всех msgstream'ов.
+message MsgStreamSettings {
+  repeated Options  msgstream_settings = 1;
+}
+

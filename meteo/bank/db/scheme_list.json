@@ -1,0 +1,157 @@
+{
+  "database": [
+    { "name": "djangodb",
+      "scheme": [
+        { "name": "public",
+          "table": [
+            { "name": "auth_group",                 "scheme": "true", "data": "false" },
+            { "name": "auth_group_permissions",     "scheme": "true", "data": "false" },
+            { "name": "auth_permission",            "scheme": "true", "data": "true" },
+            { "name": "auth_user",                  "scheme": "true", "data": "false" },
+            { "name": "auth_user_groups",           "scheme": "true", "data": "false" },
+            { "name": "auth_user_user_permissions", "scheme": "true", "data": "false" },
+            { "name": "django_content_type",        "scheme": "true", "data": "true" },
+            { "name": "django_migrations",          "scheme": "true", "data": "true" },
+            { "name": "django_session",             "scheme": "true", "data": "false" }
+          ]
+        }
+      ]
+    },
+
+    { "name": "meteotemplate",
+      "scheme": [
+        { "name": "global" }
+      ]
+    },
+
+    { "name": "meteodb",
+      "template": "meteotemplate",
+      "scheme": [
+        { "name": "meteo",
+          "table": [
+            { "name":"bufr_code",        "scheme": "true", "data": "true" },
+            { "name":"centers",          "scheme": "true", "data": "true" },
+            { "name":"countries",        "scheme": "true", "data": "true" },
+            { "name":"data_type",        "scheme": "true", "data": "true" },
+            { "name":"disciplines",      "scheme": "true", "data": "true" },
+            { "name":"gmi_types",        "scheme": "true", "data": "true" },
+            { "name":"hydro_levels",     "scheme": "true", "data": "true" },
+            { "name":"grib",             "scheme": "true", "data": "false" },
+            { "name":"level_types",      "scheme": "true", "data": "true" },
+            { "name":"parameters",       "scheme": "true", "data": "true" },
+            { "name":"station_types",    "scheme": "true", "data": "true" },
+            { "name":"stations",         "scheme": "true", "data": "true" },
+            { "name":"report",           "scheme": "true", "data": "false" },
+            { "name":"mlmodel",          "scheme": "true", "data": "false" },
+            { "name":"obanal",           "scheme": "true", "data": "false" },
+            { "name":"radarmap",         "scheme": "true", "data": "false" },
+            { "name":"stations_history", "scheme": "true", "data": "false" },
+            { "name":"sigwx",            "scheme": "true", "data": "false" },
+            { "name":"dopusk_opr",       "scheme": "true", "data": "true" },
+            { "name":"forecast",         "scheme": "true", "data": "false" },
+            { "name":"forecast_centers", "scheme": "true", "data": "false" },
+            { "name":"forecast_opr",     "scheme": "true", "data": "false" },
+            { "name":"forecast_manual",  "scheme": "true", "data": "false" },
+            { "name":"forecast_region",  "scheme": "true", "data": "true" },
+            { "name":"forecast_regiongroup",  "scheme": "true", "data": "false" },
+            { "name":"forecast_region_to_regiongroup",  "scheme": "true", "data": "false" },
+            { "name":"punkts",           "scheme": "true", "data": "false" },
+	          { "name":"esimo_elem",       "scheme": "true", "data": "true" }
+          ]
+        },
+        { "name": "global" }
+      ]
+    },
+
+    { "name": "telegramsdb",
+      "template": "meteotemplate",
+      "scheme": [
+        { "name": "meteo",
+          "table": [
+            { "name": "msg",           "scheme": "true", "data": "false" },
+            { "name": "typec_area",    "scheme": "true", "data": "true" },
+            { "name": "nodes",         "scheme": "true", "data": "false" },
+            { "name": "nodes_link",    "scheme": "true", "data": "false" },
+            { "name": "gmi_condition", "scheme": "true", "data": "true" }
+          ]
+        },
+        { "name": "global" }
+      ]
+    },
+
+    { "name": "journaldb",
+      "template": "meteotemplate",
+      "scheme": [
+        { "name": "meteo",
+           "table": [
+             { "name": "journal", "scheme": "true", "data": "false" }
+          ]
+        }
+      ]
+    },
+
+    { "name": "documentdb",
+      "template": "meteotemplate",
+      "scheme": [
+        { "name": "meteo",
+          "table": [
+            { "name": "fax",            "scheme": "true", "data": "false" },
+            { "name": "documents",      "scheme": "true", "data": "false" },
+            { "name": "image_satelite", "scheme": "true", "data": "false" }
+          ]
+        }
+      ]
+    },
+
+    { "name": "climatdb",
+      "template": "meteotemplate",
+      "scheme": [
+        { "name": "meteo",
+         "table": [
+            { "name": "aero",              "scheme": "true", "data": "false" },
+            { "name": "stations",          "scheme": "true", "data": "false" },
+            { "name": "surf_accumulation", "scheme": "true", "data": "false" },
+            { "name": "surf_day",          "scheme": "true", "data": "false" },
+            { "name": "surf_decade",       "scheme": "true", "data": "false" },
+            { "name": "surf_hour",         "scheme": "true", "data": "false" },
+            { "name": "surf_month",        "scheme": "true", "data": "false" }
+          ]
+        }
+      ]
+    },
+
+    { "name": "interdb",
+      "template": "meteotemplate",
+      "scheme": [
+        { "name": "meteo",
+          "table": [
+            { "name": "conferences",         "scheme": "true", "data": "false" },
+            { "name": "conference_messages", "scheme": "true", "data": "false" },
+            { "name": "up_down_loads",       "scheme": "true", "data": "false" },
+            { "name": "dialogs_messages",    "scheme": "true", "data": "false" },
+            { "name": "department_messages", "scheme": "true", "data": "false" }
+          ]
+        }
+      ]
+    },
+
+    { "name": "usersdb",
+      "template": "meteotemplate",
+      "scheme": [
+        { "name": "meteo",
+          "table": [
+            { "name": "departments",       "scheme": "true", "data": "false" },
+            { "name": "positions",         "scheme": "true", "data": "false" },
+            { "name": "ranks",             "scheme": "true", "data": "true" },
+            { "name": "roles",             "scheme": "true", "data": "true" },
+            { "name": "user_settings",     "scheme": "true", "data": "false" },
+            { "name": "user_appointments", "scheme": "true", "data": "false" },
+            { "name": "users",             "scheme": "true", "data": "true" },
+            { "name": "custom_settings",   "scheme": "true", "data" : "false" }
+          ]
+        }
+      ]
+    }
+
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "aggregate" : "meteoreport",
+  "pipeline" : [
+    {"$match" :  {
+      "dt" : { "$gte" : @start_dt@,
+               "$lt"  : @end_dt@ },
+      "station"      : @station@,
+      "station_type" : @station_type@
+    }},
+    { "$match" : {
+      "param.descrname" : { "$in" : @descrname@ },
+      "param.dt_type" : 0
+    }},
+    { "$sort"  : { "dt" : -1 }},
+    { "$limit"  : 1 },
+    { "$unwind" : "$param" },
+    { "$match"  : {
+      "param.descrname" : { "$in" : @descrname@ }
+    }},
+    { "$project" : {
+      "dt" : 1,
+      "descrname" : "$param.descrname",
+      "value"   : "$param.value",
+      "quality" : "$param.quality",
+      "dt_beg"  : { "$ifNull" : ["$param.dt_beg",  "$dt"]},
+      "dt_end"  : { "$ifNull" : ["$param.dt_end",  "$dt"]}
+    }}
+  ],
+  "cursor" : { "batchSize" : 1 }
+}

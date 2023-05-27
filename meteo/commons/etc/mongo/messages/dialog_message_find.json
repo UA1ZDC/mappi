@@ -1,0 +1,13 @@
+{
+  "find" : "dialogs_messages",
+  "filter" : {    
+    "mac": { "$lte" : @mac@ },
+    "$or": [ 
+      { "from": @one@, "to" : @two@ },
+      { "from": @two@, "to" : @one@ }
+    ]
+  },
+  "limit" : 50,
+  "skip" : @skip@,
+  "sort" : { "dt" : -1 }
+}

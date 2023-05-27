@@ -1,0 +1,18 @@
+{
+  "update": "centers",
+  "updates": [
+     { "q": {
+        "center" : @center@
+      },
+      "u": {
+        "$set" : {
+          "priority" : @priority@,
+          "priority_value" : @priority_value@,
+          "forecast_count" : @forecast_count@,
+          "forecast_true_count" : @forecast_true_count@
+        }
+      },
+      "upsert": true
+    }
+  ]
+}

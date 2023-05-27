@@ -1,0 +1,25 @@
+ 
+#DEPS=(
+#  cross-commons
+#  sql
+#  commons
+#  meteo/commons
+#)
+
+DIRS_EXTRA=(
+  meteo/product/etc 
+)
+
+DIRS=(
+  meteo/product/services/document
+  meteo/product/services/document/tool
+  meteo/commons/ui/isoline
+  meteo/product/ui/plugins/settingsplugin
+  meteo/commons/ui/wrb/map
+  meteo/commons/ui/city
+  meteo/product/ui/plugins/cityplugin
+#  meteo/product/ui/plugins/station
+#  meteo/product/ui/plugins/puansoneditor
+  meteo/commons/ui/plottingwidget
+  meteo/product/ui/plugins/plottingplugin
+)

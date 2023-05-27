@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="UGEOA" text="прогноз солнечной активности, геомагнитной и радиационной возмущённости"  category="170">
+  <MessageSections>UGEOA\s*(\d{5}\s*\d{5}\s*\d{4}/\s*\d{4}/)\s*(1[\d/]{4}\s*2[\d/]{4}\s*3\d{4})\s*99999\s*(?:PLAIN(.*)BT)?</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d)(\d{2})(\d{2})\s*(\d{2})(\d{2})/\s*(\d)(\d)(\d)(\d)/</GroupValues>
+    <Value number="1"  descrName="station_index" text="индекс регионального центра" />
+    <Value number="2"  descrName="J"   text="год выпуска сообщения" />
+    <Value number="3"  descrName="MM"  text="месяц" />
+    <Value number="4"  descrName="YY"  text="день" />
+    <Value number="5"  descrName="GG"  text="час" />
+    <Value number="6"  descrName="gg"  text="минута" />
+    <Value number="7"  descrName="g"   text="использование при прогнозе наземных наблюдений за Солнцем" />
+    <Value number="8"  descrName="go1" text="использование при прогнозе данных спутниковых измерений" />
+    <Value number="9"  descrName="go2" text="использование при прогнозе данных о магнитном поле Земли" />
+    <Value number="10" descrName="go3" text="использование при прогнозе ионосферных данных" />
+  </Section>
+  <Section number="1" text="" >
+    <GroupValues>1(?:(\d)|/)(?:(\d{2})|//)(?:()(\d)|/)\s*2(?:(\d)|/)(?:(\d{2})|//)(?:()(\d)|/)\s*3(?:(\d)|/)(?:(\d{2})|//)(?:()(\d)|/)</GroupValues>
+    <Value number="1"   descrName="gS"  num="0" text="прогноз вспышечной активности Солнца в целом" />
+    <Value number="2"   descrName="YY"  num="0" text="дата начала действия прогноза вспышечной активности Солнца" />
+    <Value number="4"   descrName="YYp" num="0" default="0" text="продолжительность прогноза в днях" />
+    <Value number="3"   descrName="YYp" num="0" text="продолжительность прогноза в днях" />
+    <Value number="5"   descrName="gM"  num="1" text="прогноз геомагнитного поля" />
+    <Value number="6"   descrName="YY"  num="1" text="дата начала действия прогноза геомагнитного поля" />
+    <Value number="8"   descrName="YYp" num="1" default="0" text="продолжительность прогноза в днях" />
+    <Value number="7"   descrName="YYp" num="1" text="продолжительность прогноза в днях" />
+    <Value number="9"   descrName="gP"  num="2" text="прогноз протонных событий" />
+    <Value number="10"  descrName="YY"  num="2" text="дата начала действия прогноза протонных событи" />
+    <Value number="12"  descrName="YYp" num="2" default="0" text="продолжительность прогноза в днях" />
+    <Value number="11"  descrName="YYp" num="2" text="продолжительность прогноза в днях" />
+  </Section>
+  <Section number="2" text="" >
+    <GroupValues>(.*)</GroupValues>
+    <Value number="1"  descrName="text" text="Текстового сообщения (необходимые дополнения к прогнозу)" />
+  </Section>
+</Message>

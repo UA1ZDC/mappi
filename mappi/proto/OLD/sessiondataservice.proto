@@ -1,0 +1,109 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+
+package mappi.proto;
+
+import "satellite.proto";
+import "reception.proto";
+import "thematic.proto";
+import "spo_options.proto";
+
+
+enum Channels {
+  kAVHRR_1 = 1;
+  kAVHRR_2 = 2;
+  kAVHRR_3A = 3;
+  kAVHRR_3B = 4;
+  kAVHRR_4 = 5;
+  kAVHRR_5 = 6;
+}
+
+message SessionData {
+  optional string sat_name = 1;         //!< название спутника
+  optional string date_start = 2;       //!< время начала приема (Qt::ISODate)
+  optional string date_end = 3;         //!< время окончания приема (Qt::ISODate)
+  optional mappi.conf.Site site = 4;    //!< пункт приема
+  optional string server_path = 5;      //!< путь к файлу на сервере
+  optional bytes data = 6;              //!< файл данных (не используется)
+  optional bool processed = 7;          //!< флаг, указывающий, была ли проведена обработка
+  optional int32 id = 8;                //!< идентификатор
+  optional bool thematic_done = 9;      //!< флаг, указывающий, были ли проведены все виды тематической обработки
+  optional bytes tle = 10;              //!< TLE параметры
+}
+
+message SessionList {
+  repeated SessionData sessions = 1;    //!< список полученных сессий
+  optional bool result = 2;             //!< результат
+  optional string comment = 3;          //!< комментарий
+}
+
+message Pretreatment {
+  optional string date_start = 1;                               //!< время начала приема, в формате ISO yyyy-mm-ddTHH-MM-SS
+  optional string date_end = 2;                                 //!< время окончания приема, в формате ISO yyyy-mm-ddTHH-MM-SS
+  optional mappi.conf.InstrumentType instrument_type = 3;       //!< тип прибора
+  optional string satellite_name = 4;                           //!< название спутника
+  optional string channel_alias = 5;                            //!< псевдоним канала
+  optional int32 channel = 6;                                   //!< номер канала в приборе
+  optional bool calibration = 7;                                //!< флаг калибровки
+  optional int32 session_id = 8;                                //!< идентификатор сессии
+  optional string path = 9;                                     //!< путь к файлу
+  optional bytes data = 10;                                     //!< файл данных
+}
+
+message PretreatmentList {
+  repeated Pretreatment pretreatments = 1; //!< список предварительных обработок
+  optional bool result                = 2; //!< флаг выполнения
+  optional string comment             = 3; //!< комментарий/ошибка
+}
+
+message ThematicData {
+  optional string name = 1;                                     //!< название тематической обработки (grayscalem, falsecolor, index8)
+  optional string title = 2;                                    //!< удобочитаемое название тематической обработки (Оттенки серого, Псевдоцвета, NDVI)
+  optional string date_start = 3;                               //!< начальная дата срока, в формате ISO yyyy-mm-ddTHH-MM-SS
+  optional string date_end = 4;                                 //!< конечная дата срока, в формате ISO yyyy-mm-ddTHH-MM-SS
+  optional string path = 5;                                     //!< путь к файлу на сервере
+  optional int32 session_id = 6;                                //!< идентификатор сессии
+  optional string satellite_name = 7;                           //!< название спутника
+  optional int32 channel_number = 8;                            //!< номер канала в приборе
+  optional mappi.conf.InstrumentType instrument_type = 9;       //<! тип прибора
+  optional ThemType type = 10;                                  //!< тип тематической обработки
+  optional string channel_alias = 11;                           //!< псевдоним канала (не надо задавать при запросе; возвращается для удобства при получении списка)
+}
+
+message ThematicList {
+  repeated ThematicData themes = 1;     //!< список тематических обработок
+  optional bool result = 2;             //!< результат
+  optional string comment = 3;          //!< комментарий
+}
+
+message Response {
+  optional bool result = 1;
+  optional string comment = 2;
+  optional int32 index = 3;     //!< индекс занесенной в базу данных записи (для сессий)
+}
+
+message Dummy {
+}
+
+// Сервис полученных данных
+service SessionDataService {
+  rpc GetAvailableSessions( SessionData ) returns ( SessionList );   //!< получить список сессий, по которым имеются данные
+  rpc SaveSession( SessionData ) returns ( Response );               //!< сохранить данные по сессии
+  rpc MarkSessionThematicDone( SessionData ) returns ( Response );   //!< установить флаг завершенности тематических обработок (флаг можно и снимать, устанавливая значение thematic_done в false)
+
+  rpc GetAvailablePretreatment( Pretreatment ) returns ( PretreatmentList ); //!< получить список имеющихся предварительных обработок, удовлетворящих заданным фильтрам
+
+  rpc SavePretreatment( Pretreatment ) returns ( Response ); //!< сохранить данные предварительной обработки
+
+  rpc GetAvailableThematic( ThematicData ) returns ( ThematicList ); //!< получить список имеющихся тематических обработок, удовлетворящих заданным фильтрам
+  rpc SaveThematic( ThematicData ) returns ( Response );             //!< созранить данные тематической обработки
+
+  rpc GetSession( SessionData ) returns ( SessionList ); //!< получить TLE-параметры по идентификатору сессии
+  rpc GetAvailableThematicTypes( Dummy ) returns ( ThematicList ); //<! получить список имеющих разных видов тематической обработки
+  rpc GetGrayscaleChannels( Dummy ) returns ( ThematicList ); //<! возвращает список псевдонимов каналов всех обработок типа grayscale
+
+  // TODO временное решение
+  rpc SaveSession_new( SessionData ) returns ( Response );               //!< сохранить данные по сессии
+  rpc SavePretreatment_new( Pretreatment ) returns ( Response ); //!< сохранить данные предварительной обработки
+}

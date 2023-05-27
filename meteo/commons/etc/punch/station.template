@@ -1,0 +1,62 @@
+code: "station"
+name: "Станция"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/station.template"
+wind: false
+rule {
+  pos {
+    x: 2
+    y: -2
+  }
+  align: kTopRight
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 4
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "Noto Serif"
+      pointsize: 7
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 0.0001
+  }
+  testval: 6063
+  id {
+    descr: 1002
+    name: "iii"
+    description: ""
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  id {
+    descr: 11001
+    name: "dd"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  id {
+    descr: 11002
+    name: "ff"
+    parent: "wind"
+  }
+}
+datatype: kSpecial
+center: kCircle
+radius: 3

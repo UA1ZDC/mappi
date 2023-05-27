@@ -1,0 +1,13 @@
+{
+  "findAndModify" : "user_folders",
+  "query" : {
+    "user" : @user@
+  },
+  "update" : {
+    "user" : @user@,
+    "folder" : {
+        "entities" : [@entities@]
+    }
+    },
+  "upsert" : true
+}

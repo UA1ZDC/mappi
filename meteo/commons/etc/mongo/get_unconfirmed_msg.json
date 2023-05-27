@@ -1,0 +1,12 @@
+{
+  "find": "msg",
+  "filter": {
+    "confirm": { "$exists": false },
+    "external": false,
+    "dddd": { "$ne": "" },
+    "cccc": @cccc@,
+    "msg_dt": { "$gt": @dt@ },
+    "t1": "A",
+    "t2": "A"
+  }
+}

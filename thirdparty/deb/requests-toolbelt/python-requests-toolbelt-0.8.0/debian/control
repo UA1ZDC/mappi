@@ -1,0 +1,56 @@
+Source: python-requests-toolbelt
+Section: python
+Priority: optional
+Maintainer: Petter Reinholdtsen <pere@debian.org>
+Uploaders: Ross Gammon <rossgammon@mail.dk>
+Build-Depends: debhelper (>= 9~)
+Build-Depends-Indep:
+ dh-python,
+ python-all (>= 2.6.6-3),
+ python-setuptools (>= 0.6b3),
+ python-requests,
+ python-sphinx,
+ python-sphinx-rtd-theme,
+ python-doc,
+ python3-all,
+ python3-requests,
+ python3-setuptools,
+Standards-Version: 4.0.0
+X-Python-Version: >= 2.7
+X-Python3-Version: >= 3.4
+Testsuite: autopkgtest-pkg-python
+Homepage: https://pypi.python.org/pypi/requests-toolbelt
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/python-requests-toolbelt.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/python-requests-toolbelt.git
+
+Package: python-requests-toolbelt
+Architecture: all
+XB-Python-Version: ${python:Versions}
+Depends: ${misc:Depends}, ${python:Depends}
+Description: Utility belt for advanced users of python-requests
+ Collection of utilities for python-requests
+ It provides transport adapters: FingerprintAdapter, SSLAdapter,
+ SourceAddressAdapter, SocketOptionsAdapter, TCPKeepAliveAdapter
+ and authenticators: AuthHandler, GuessAuth, HTTPProxyDigestAuth
+ Also a cookiejar, streaming helpers and more.
+
+Package: python3-requests-toolbelt
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Utility belt for advanced users of python3-requests
+ Collection of utilities for python3-requests
+ It provides transport adapters: FingerprintAdapter, SSLAdapter,
+ SourceAddressAdapter, SocketOptionsAdapter, TCPKeepAliveAdapter
+ and authenticators: AuthHandler, GuessAuth, HTTPProxyDigestAuth
+ Also a cookiejar, streaming helpers and more.
+
+Package: python-requests-toolbelt-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}, ${python:Depends}, ${sphinxdoc:Depends}
+Description: Utility belt for python3-requests (documentation)
+ Collection of utilities for python3-requests: documentation
+ It provides transport adapters: FingerprintAdapter, SSLAdapter,
+ SourceAddressAdapter, SocketOptionsAdapter, TCPKeepAliveAdapter
+ and authenticators: AuthHandler, GuessAuth, HTTPProxyDigestAuth
+ Also a cookiejar, streaming helpers and more.

@@ -1,0 +1,12 @@
+{
+  "find": "obanal",
+  "filter": {
+      "center":     {"$in": @center@},
+      "descr":      {"$in": @descr@},
+      "hour":       {"$in": @hour@},
+      "level":      {"$in": @level@},
+      "level_type":  {"$in": @level_type@},
+      "dates":{"$elemMatch":{"$eq": @dt@}}
+     },
+  "limit": 1
+}

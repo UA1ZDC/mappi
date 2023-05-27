@@ -1,0 +1,15 @@
+# --- meteo.app.conf
+autostart_schedule.service=true
+autostart_receive.manager=true
+autostart_cron=true
+autostart_pretreatment.service=true
+autostart_sessiondata.service=true
+autostart_file.service=true
+autostart_thematic_processor.service=true
+autostart_cleaner=false
+
+#data_path=/home/vgmdaemon/stend/ukaz/
+
+#db_host=localhost
+#db_port=5432
+#services_host=localhost

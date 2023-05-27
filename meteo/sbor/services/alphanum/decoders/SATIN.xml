@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="SATIN"  text="индексы суббуревой и буревой возмущённости магнитосферы по данным КА “Метеор”"  category="167">
+  <MessageSections>SATIN\s*(\d{5})\s*RC(\d{3}\s*\d{5})\s*SN(\d{3}\s*\d{5})\s*LPC(\d{8})/</MessageSections>
+  <Section number="0" text="Дата сообщаемого 24х-часового периода наблюдений" >
+    <GroupValues>()(\d\d)(\d\d)(\d)()()</GroupValues>
+    <Value number="0"  descrName="station" default="Метеор" text="спутник" />
+    <Value number="1"  descrName="YY" text="День " />
+    <Value number="2"  descrName="MM" text="Месяц" />
+    <Value number="3"  descrName="J"  text="Год" />
+    <Value number="4"  descrName="YYp" default="0" text="" />
+    <Value number="5"  descrName="YYp" default="1" text="" />
+  </Section>
+  <Section number="1" text="" >
+    <GroupValues>(\d)\s*</GroupValues>
+    <Value number="1"  descrName="gd" text="Значения 3-часовых индексов кольцевого тока" />
+  </Section>
+  <Section number="1" text="Суббуревая активность" >
+    <GroupValues>(\d)\s*</GroupValues>
+    <Value number="1"  descrName="gsn" text="Количество суббурь за 3-часовые периоды" />
+  </Section>
+  <Section number="1" text="Границы зоны устойчивого захвата электронов в 3-часовых интервалах" >
+    <GroupValues>(\d)\s*</GroupValues>
+    <Value number="1"  descrName="ggr" text="граница зоны устойчивого захвата электронов с Ее>1Мэв на ночной стороне магнитосферы" />
+  </Section>
+</Message>

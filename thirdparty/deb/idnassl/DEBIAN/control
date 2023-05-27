@@ -1,0 +1,10 @@
+Package: python3-idna-ssl
+Version: 1.1.0
+Architecture: amd64
+Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>
+Installed-Size: 22
+Depends: python3:any (>= 3.5~), python3-idna
+Section: python
+Priority: optional
+Description: Patch ssl.match_hostname for Unicode(idna) domains support
+ Summary: Patch ssl.match_hostname for Unicode(idna) domains support

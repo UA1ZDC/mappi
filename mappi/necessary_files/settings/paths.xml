@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item itemAddr="0x84a3590" type="group" value="true" source="this" text="Программный модуль">
+    <item itemAddr="0x84a38a0" readOnly="true" value="/usr/local/bin/elk-mappi" type="path" source="this" valueSrc="programPath" text="Путь к программному модулю"/>
+  </item>
+  <item itemAddr="0x8955608" type="group" value="true" source="this" text="Каталоги цифровых потоков">
+    <item itemAddr="0x8a54530" value="/var/mappi/dgt/hrpt/%ddMMyyhhmm%[SAT_NAME].[FILE_TYPE]" type="string" source="this" valueSrc="hrptDigitPath" text="HRPT (CHRPT)"/>
+    <item itemAddr="0x8a55470" value="/var/mappi/dgt/hrit/" type="string" source="this" valueSrc="hritDigitPath" text="HRIT"/>
+  </item>
+  <item itemAddr="0x8abaff8" type="group" value="true" source="this" text="Каталоги аналоговых потоков">
+    <item itemAddr="0x8abb310" value="/var/mappi/anlg/lrpt/" type="string" source="this" valueSrc="lrptAnalogPath" text="LRPT (APT)"/>
+    <item itemAddr="0x8954ae8" value="/var/mappi/anlg/lrit/" type="string" source="this" valueSrc="lritAnalogPath" text="LRIT (WEFAX)"/>
+  </item>
+  <item itemAddr="0x8aba1f0" type="group" value="true" source="this" text="Результаты предварительной обработки">
+    <item itemAddr="0x8aba508" value="/var/mappi/data/" type="string" source="this" valueSrc="hrptPreliminaryPath" text="HRPT (CHRPT)"/>
+  </item>
+  <item itemAddr="0x88b4a38" type="group" value="true" source="this" text="Результаты тематической обработки">
+    <item itemAddr="0x88b4d38" value="/var/mappi/data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/hrpt/" type="string" source="this" valueSrc="hrptImgPath" text="HRPT (CHRPT)"/>
+    <item itemAddr="0x89b4680" value="/var/mappi/data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/false/file.[FILE_TYPE]" type="string" source="this" valueSrc="falseColorImgPath" text="False color"/>
+    <item itemAddr="0x8943750" value="/var/mappi/data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/user/file_[CHANNEL_INDEX].[FILE_TYPE]" type="string" source="this" valueSrc="userColorImgPath" text="Определённые пользователем цвета"/>
+    <item itemAddr="0x8944748" value="/var/mappi/data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/temperature/file.[FILE_TYPE]" type="string" source="this" valueSrc="temperatureImgPath" text="Температура"/>
+    <item itemAddr="0x888e658" value="/var/mappi//data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/vegetation/file.[FILE_TYPE]" type="string" source="this" valueSrc="vegetationImgPath" text="Индекс вегетации"/>
+    <item itemAddr="0x89ee2f8" value="/var/mappi/data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/fire/file.[FILE_TYPE]" type="string" source="this" valueSrc="fireImgPath" text="Пожароопасные зоны"/>
+    <item value="/var/mappi//data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/clouds_mask/file.[FILE_TYPE]" type="string" source="this" valueSrc="cloudMaskImgPath" text="Маска облачности"/>
+    <item value="/var/mappi/data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/channels/file_[CHANNEL_INDEX].[FILE_TYPE]" type="string" source="this" valueSrc="channelImgPath" text="Канал"/>
+    <item itemAddr="0x8911be0" value="/var/mappi/data/[SAT_NAME]_%yyyyMMddhhmmss%/thematic/hrpt/avhrr_[CHANNEL_INDEX].bmp" type="string" source="this" valueSrc="avhrrImgPath" text="Каналы AVHRR (bmp)"/>
+    <item itemAddr="0x8912568" value="/var/mappi/thematic/hrit/" type="string" source="this" valueSrc="hritImgPath" text="HRIT"/>
+    <item itemAddr="0x8a88c30" value="/var/mappi/thematic/lrpt/" type="string" source="this" valueSrc="lrptImgPath" text="LRPT (APT)"/>
+    <item itemAddr="0x89224d8" value="/var/mappi/thematic/lrit/" type="string" source="this" valueSrc="lritImgPath" text="LRIT (WEFAX)"/>
+    <item itemAddr="0x8923070" value="/var/mappi/thematic/tvza/" type="string" source="this" valueSrc="tvzaPath" text="Температурно-влажностное зондирование атмосферы"/>
+    <item itemAddr="0x86c4078" value="/var/mappi/thematic/mggp/" type="string" source="this" valueSrc="mggpPath" text="Мониторинг гелиофизических параметров"/>
+    <item itemAddr="0x86c4c10" value="/var/mappi/thematic/rtty/" type="string" source="this" valueSrc="rttyPath" text="RTTY"/>
+    <item itemAddr="0x8a51d78" value="/var/mappi/thematic/fax/" type="string" source="this" valueSrc="faxPath" text="FAX"/>
+  </item>
+  <item hidden="tue" type="group" value="true" source="this" text="Скрытые настройки">
+    <item prefix="paths;hrptPreliminaryPath" value="/[SAT_NAME]_%yyyyMMddhhmmss%/preliminaries/coastline/data.raw" type="string" source="this" valueSrc="coastLineDataPath" text="Данные о береговой черте"/>
+  </item>
+  <!--item source="this" hidden="true" text="Скрытые настройки">
+    <item source="this" valueSrc="semPretTxtTypePath" type="string" value="" text="Текстовые sem-данные"/>
+    <item source="this" valueSrc="semPretRawTypePath" type="string" value="" text=""/>
+    <item source="this" valueSrc="hirsPretInstrDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="hirsPretEarthDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="hirsPretDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="hirsPretGDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="hirsPretCalibrPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="hirsPretInfoPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua1PretEarthDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua1PretDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua1PretGDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua1PretCalibrPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua1PretInfoPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua2PretEarthDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua2PretDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua2PretGDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua2PretCalibrPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsua2PretInfoPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsubPretEarthDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsubPretDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsubPretGDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsubPretCalibrPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="amsubPretInfoPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="avhrr3PretEarthDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="avhrr3PretDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="avhhr3PretGDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="avhrr3PretCalibrPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="avhhr3PretInfoPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="mhsPretEarthDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="mhsPretDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="mhsPretGDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="mhsPretCalibrPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="mhsPretInfoPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="hirsPretCalibrStorePath" type="string" value="" text=""/>
+    <item source="this" valueSrc="hirsDigitInfoPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="thresoldDataPath" type="string" value="" text=""/>
+    <item source="this" valueSrc="geoArrayDataOath" type="string" value="" text=""/>
+  </item-->
+  <!--item source="this" text="Формат имён файлов снимков" >
+    <item valueSrc="fnameFormatSatellite" type="2" source="this" value="true" text="Тип спутника" />
+    <item valueSrc="fnameFormatDay" type="2" source="this" value="true" text="День даты" />
+    <item valueSrc="fnameFormatMonth" type="2" source="this" value="true" text="Месяц даты" />
+    <item valueSrc="fnameFormatYear" type="2" source="this" value="true" text="Год даты" />
+    <item valueSrc="fnameFormatSHour" type="2" source="this" value="true" text="Часы начала сеанса" />
+    <item valueSrc="fnameFormatSMinutes" type="2" source="this" value="true" text="Минуты начала сеанса" />
+    <item valueSrc="fnameFormatSSeconds" type="2" source="this" value="true" text="Секунды начала сеанса" />
+    <item valueSrc="fnameFormatFHour" type="2" source="this" value="true" text="Часы окончания сеанса" />
+    <item valueSrc="fnameFormatFMinutes" type="2" source="this" value="true" text="Минуты окончания сеанса" />
+    <item valueSrc="fnameFormatFSeconds" type="2" source="this" value="true" text="Секунды окончания сеанса" />
+    <item valueSrc="fnameFormatSeparator" type="2" source="this" value="true" text="Разделитель" />
+    <item valueSrc="fnameFormatTimeZone" values="местное время;гринвичское время;" type="1" source="this" value="0" text="Часовой пояс" />
+  </-->
+  <item itemAddr="0x88e1da0" type="group" value="true" source="this" text="Формат файлов">
+    <item values="JPEG (*.jpg);BMP (*.bmp);TIFF (*.tiff);GEOTIFF (*.tiff);" itemAddr="0x87bc988" value="0" type="combo" source="this" valueSrc="fileFormat" text="Формат файлов"/>
+  </item>
+  <item itemAddr="0x8134558" type="group" value="true" source="this" text="Автоматическое удаление файлов">
+    <item parentItemAddr="0x812ee08" itemAddr="0x810d4f8" value="true" type="bool" source="this" valueSrc="autoDeleteFiles" text="Удалять файлы автоматически"/>
+  </item>
+</body>

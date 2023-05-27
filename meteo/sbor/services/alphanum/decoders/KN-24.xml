@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="KN-24" text="SNOW" category="5">
+  <MessageSections>^\s*HHSS((?:\s*[\d/]{5}){2})((?:\s*[\d/]{5}){,10})</MessageSections>
+  <Section number="1" text="DATA FOR REPORTING IDENTIFICATION"> <!--опознавательные данные-->
+    <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})</SectionGroups>
+	<Group number="1" text="WMO station number">
+	  <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+	  <Value number="1"  descrName="II"/>
+      <Value number="2"  descrName="iii" text="WMO STATION NUMBER"/>
+	</Group>
+	<Group number="2" text="DATE">
+	  <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+	  <Value number="1"  descrName="YY" text="day"/>
+      <Value number="2"  descrName="MM" text="month"/>
+      <Value number="3"  descrName="J" text="year"/>
+	</Group>
+  </Section>  
+  <Section number="2" text="SNOW"> <!--данные по маршруту снегомерной съемки-->
+    <SectionGroups>(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[\d/]{4})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{4})?(\s*9[\d/]{4})?(\s*0[\d/]{4})?</SectionGroups>
+	<Group number="1" text="Высота снежного покрова и степень покрытости почвы ледяной коркой в поле">
+	<GroupValues>\s*1([\d/]{3})([\d/])</GroupValues>
+	  <Value number="1"  descrName="sssp" text="Средняя высота снежного покрова в поле, в см"/>
+	  <Value number="2"  descrName="Klp" text="Степень покрытости лдяной коркой поверхности почвы в поле"/>
+	</Group>
+	<Group number="2" text="Средняя плотность снега и средняя толщина ледяной корки в поле">
+	<GroupValues>\s*2([\d/]{2})([\d/]{2})</GroupValues>
+	  <Value number="1"  descrName="dd_iceP" text="Средняя плотность снега"/>
+	  <Value number="2"  descrName="LLP" text="Средняя толщина ледяной корки"/>
+	</Group>
+	<Group number="3" text="Запас воды в снежном покрове и ледяной корке в поле">
+	<GroupValues>\s*3([\d/]{3})([\d/])</GroupValues>
+	  <Value number="1"  descrName="RsP" text="Общий запас воды в снежном покрове"/>
+	  <Value number="2"  descrName="E1P" text="Состояние поверхности почвы"/>
+	</Group>
+	<Group number="4" text="Высота снежного покрова и степень покрытости почвы ледяной коркой в лесу">
+	<GroupValues>\s*4([\d/]{3})([\d/])</GroupValues>
+	  <Value number="1"  descrName="sssf" text="Средняя высота снежного покрова в лесу, в см"/>
+	  <Value number="2"  descrName="Klf" text="Степень покрытости лдяной коркой поверхности почвы"/>
+	</Group>
+	<Group number="5" text="Средняя плотность снега и средняя толщина ледяной корки в лесу">
+	<GroupValues>\s*5([\d/]{2})([\d/]{2})</GroupValues>
+	  <Value number="1"  descrName="dd_iceF" text="Средняя плотность снега"/>
+	  <Value number="2"  descrName="LLF" text="Средняя толщина ледяной корки"/>
+	</Group>
+	<Group number="6" text="Запас воды в снежном покрове и ледяной корке в лесу">
+	<GroupValues>\s*6([\d/]{3})([\d/])</GroupValues>
+	  <Value number="1"  descrName="RsF" text="Общий запас воды в снежном покрове"/>
+	  <Value number="2"  descrName="E1F" text="Состояние поверхности почвы"/>
+	</Group>
+	<Group number="7" text="Дата образования снежного покрова в поле">
+	<GroupValues>\s*7([\d/]{2})([\d/]{2})</GroupValues>
+	  <Value number="1"  descrName="YY1P" text="day"/>
+	  <Value number="2"  descrName="MM1P" text="month"/>
+	</Group>
+	<Group number="8" text="Дата образования снежного покрова в лесу">
+	<GroupValues>\s*8([\d/]{2})([\d/]{2})</GroupValues>
+	  <Value number="1"  descrName="YY1F" text="day"/>
+	  <Value number="2"  descrName="MM1F" text="month"/>
+	</Group>
+	<Group number="9" text="Дата схода снежного покрова в поле">
+	<GroupValues>\s*9([\d/]{2})([\d/]{2})</GroupValues>
+	  <Value number="1"  descrName="YY2P" text="day"/>
+	  <Value number="2"  descrName="MM2P" text="month"/>
+	</Group>
+	<Group number="10" text="Дата схода снежного покрова в лесу">
+	<GroupValues>\s*0([\d/]{2})([\d/]{2})</GroupValues>
+	  <Value number="1"  descrName="YY2F" text="day"/>
+	  <Value number="2"  descrName="MM2F" text="month"/>
+	</Group>
+  </Section>
+</Message>

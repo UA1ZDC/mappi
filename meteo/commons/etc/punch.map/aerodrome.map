@@ -1,0 +1,11 @@
+name: "aerodrome"
+title: "Аэродромы"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "aerodrome"
+  data_type: kAerodrome
+  type_level: 1
+  level: 0
+}
+webpunchmap: true

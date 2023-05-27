@@ -1,0 +1,12 @@
+{
+  "_id" : {
+    "station"  :     @station@,
+    "station_type" : @station_type@,
+    "dt" :           @dt@,
+    "level_type": @level_type@,
+    "level" :     @level@,
+    "descrname":  @descrname@
+  },  
+  "dt_write" :  @dt_write@,
+  "value" :     @value@
+}

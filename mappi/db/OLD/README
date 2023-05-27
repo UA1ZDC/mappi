@@ -1,0 +1,23 @@
+Cхема:
+scheme.sh
+
+Cправочные данные:
+data.sh
+
+На новой машине:
+- создать БД
+- создать пользователей (create_role.sql)
+- назначить права БД    (grands.sql)
+- залить схему          (scheme.db_*.orig.sql)
+- залить справочные данные, если есть (data.db_*.orig.sql)
+- создать пользователей с помощью meteo.su и meteo.admin
+
+!!! Нужен правильно настроенный pg_hba.conf
+должно стоять расширение postgresql-X.X-postgis-scripts
+
+Таблицы BUFR можно залить отдельно:
+meteo/commons/db/bufrtables.sql - схема
+bufrtables_grand.sql - права
+
+codes_identification_pure.sql - справочная по станциям, без мусора, который может добавиться в таблицу
+codes_identification при ошибках сохранения раскодированных данных, но, соответственно, и без новых станций

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <pointName type="group" value="true" source="this" text="Название пункта">
+    <pointName type="string" value="Санкт-Петербург" source="this" text="Название"/>
+  </pointName>
+  <tleParams type="group" value="true" source="this" text="Параметры телеграммы">
+    <tlePath readOnly="true" type="path" value="var/mappi/weather.txt" source="this" text="Путь к файлу телеграммы"/>
+    <tlePeriod maxValue="60" readOnly="true" type="spin" value="14" source="this" text="Срок хранения телеграммы (дни)" minValue="1"/>
+  </tleParams>
+  <getSiteParams nomr="true" signal="true" type="group" value="true" buttonName="Получить с нав. приёмника" source="this" text="Координаты пункта приёма">
+    <lat complex="true" type="array" source="this" text="Широта">
+      <pointLatitudeDegree maxValue="180" type="spin" value="59" source="this" valueSrc="pointLatitudeDegree" text="Широта (град.)" minValue="-180"/>
+      <pointLatitudeMinutes maxValue="59" type="spin" value="58" source="this" valueSrc="pointLatitudeMinutes" text="Широта (мин.)" minValue="0"/>
+      <pointLatitudeCource values="с.ш.;ю.ш." type="combo" value="1" source="this" valueSrc="pointLatitudeCource" text="Направление"/>
+    </lat>
+    <lon complex="true" type="array" source="this" text="Долгота">
+      <pointLongitudeDegree maxValue="180" type="spin" value="30" source="this" text="Долгота (град.)" minValue="-180"/>
+      <pointLongitudeMinutes maxValue="59" type="spin" value="18" source="this" text="Долгота (мин.)" minValue="0"/>
+      <pointLongitudeCource values="в.д.;з.д.;" type="combo" value="1" source="this" text="Направление"/>
+    </lon>
+    <heightOverSea complex="true" type="group" value="true" source="this" text="Высота пункта над уровнем моря">
+      <heightOverSea width="4" maxValue="1000" type="spin" value="6" source="this" text="Метры" minValue="-1000"/>
+    </heightOverSea>
+  </getSiteParams>
+  <angleCorrection checkable="true" type="group" value="false" source="this" text="Статистическая поправка азимута антенны">
+    <angleCorrection inputMask="00.00" type="string" value="0." source="this" text="Поправка (град.)"/>
+  </angleCorrection>
+  <timeShow type="group" value="true" source="this" text="Отображение времени">
+    <timesDifference readOnly="true" type="string" value="3" source="this" text="Часовой пояс (ч.)"/>
+    <pointTimeReflection values="гринвичское;местное;" type="combo" value="0" source="this" text="Время"/>
+  </timeShow>
+  <devicesParams type="group" value="true" source="this" text="Параметры устройств">
+    <navigatorPort maxValue="4" type="spin" value="2" source="this" text="Порт навигатора" minValue="0"/>
+    <antennaPort maxValue="4" type="spin" value="1" source="this" text="Порт антенны" minValue="0"/>
+    <recieverPort maxValue="4" type="spin" value="0" source="this" text="Порт приёмника" minValue="0"/>
+    <compasPort maxValue="4" type="spin" value="3" source="this" text="Порт компаса" minValue="0"/>
+  </devicesParams>
+</body>

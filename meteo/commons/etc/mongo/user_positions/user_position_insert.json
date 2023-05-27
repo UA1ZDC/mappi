@@ -1,0 +1,13 @@
+{
+  "findAndModify": "positions",
+  "query": { "_id" : { "$exists" : false } },
+  "update": {
+    "$setOnInsert" : {
+      "name": @name@,
+      "parent" : @parent@,
+      "current" : @current@
+    }
+  },
+  "new": true,
+  "upsert": true
+}

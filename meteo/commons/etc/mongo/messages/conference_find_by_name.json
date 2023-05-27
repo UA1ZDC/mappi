@@ -1,0 +1,5 @@
+{ "find" : "conferences",
+  "filter" : { 
+    "name" : "%1"
+  }
+}

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <them_common columnName="Общие параметры" complex="true" type="group" value="true" text="Общие параметры">
+    <OrbScaleParam complex="true" type="group" value="true" source="this" text="HRPT, APT">
+      <orbScale values="13.5;25;50;100" itemAddr="0x87bc988" value="0" type="combo" source="this" text="Масштаб, %"/>
+      <themGeogr value="true" type="bool" source="this" text="Географическая привязка данных"/>
+    </OrbScaleParam>
+    <GeostatScaleParam complex="true" type="group" value="true" source="this" text="WEFAX">
+      <wefaxScale values="600x600;800x800;1144x800;" value="1" type="combo" source="this" text="Разрешение"/>
+    </GeostatScaleParam>
+    <shtampParam nomr="true" signal="true" complex="true" type="7" buttonName="Изменить" source="this" text="Штамп"/>
+    <themHistCorr value="true" complex="true" type="bool" source="this" text="Коррекция гистограммы яркости"/>
+    <fileFormat values="GEOTIFF (*.tiff);TIFF (*.tiff);PNG (*.png);BMP (*.bmp);" itemAddr="0x87bc988" value="0" complex="true" type="combo" source="this" text="Формат файлов"/>
+  </them_common>
+  <them_proc columnName="Тематические обработки спутника" windowName="Тематические обрабоки" complex="true" type="group" value="true" valueSrc="them_proc" text="Виды тематических обработок">
+    <themFalsecolor templateFile="themFalseTemplate.xml" textItem="th0" complex="true" type="group" value="true" valueSrc="themFalsecolor" text="Цветные изображения">
+      <themType value="false" type="string" valueSrc="themType" text="Идентификатор"/>
+      <themDataType values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" value="1" type="combo" valueSrc="themDataType" text="Тип данных"/>
+      <notNorm value="false" type="bool" valueSrc="notNorm" text="Не нормализовать данные"/>
+      <fewFiles hidden="true" value="true" type="bool" valueSrc="fewFiles" text="Несколько файлов"/>
+    </themFalsecolor>
+    <themTemperature templateFile="themTempTemplate.xml" textItem="th2" complex="true" type="group" value="true" valueSrc="themTemperature" text="Температура подстилающей поверхности">
+      <themType value="temperature" type="string" valueSrc="themType" text="Идентификатор"/>
+      <themDataType values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" value="2" type="combo" valueSrc="themDataType" text="Тип данных"/>
+      <notNorm value="false" type="bool" valueSrc="notNorm" text="Не нормализовать данные"/>
+      <themTempMinTemp maxValue="1000" value="-40" type="spin" valueSrc="themTempMinTemp" text="Минимальная температура, C " minValue="-1000"/>
+      <themTempMaxTemp maxValue="1000" value="40" type="spin" valueSrc="themTempMaxTemp" text="Максимальная температура, C" minValue="-1000"/>
+      <fewFiles hidden="true" value="false" type="bool" valueSrc="fewFiles" text="Несколько файлов"/>
+    </themTemperature>
+    <themVegetation templateFile="themTemplate.xml" textItem="th3" complex="true" type="group" value="true" valueSrc="themVegetation" text="Индекс вегетации">
+      <themType value="vegetation" type="string" valueSrc="themType" text="Идентификатор"/>
+      <themDataType values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" value="2" type="combo" valueSrc="themDataType" text="Тип данных"/>
+      <notNorm value="false" type="bool" valueSrc="notNorm" text="Не нормализовать данные"/>
+      <fewFiles hidden="true" value="false" type="bool" valueSrc="fewFiles" text="Несколько файлов"/>
+    </themVegetation>
+    <themFire templateFile="themTemplate.xml" textItem="th4" complex="true" type="group" value="true" valueSrc="themFire" text="Индекс пожароопасности">
+      <themType value="fire" type="string" valueSrc="themType" text="Идентификатор"/>
+      <themDataType values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" value="2" type="combo" valueSrc="themDataType" text="Тип данных"/>
+      <notNorm value="false" type="bool" valueSrc="notNorm" text="Не нормализовать данные"/>
+      <fewFiles hidden="true" value="false" type="bool" valueSrc="fewFiles" text="Несколько файлов"/>
+      <dayNightThresold maxValue="999" value="75" type="spin" valueSrc="dayNightThresold" text="Порог 'День/Ночь (Град)'" minValue="0"/>
+      <areaSize maxValue="999" value="3" type="spin" valueSrc="areaSize" text="Размер области" minValue="0"/>
+    </themFire>
+    <themCloudmask templateFile="themCloudmaskTemplate.xml" textItem="th5" complex="true" type="group" value="true" valueSrc="themCloudmask" text="Маска облачности">
+      <themType value="cloudsmask" type="string" valueSrc="themType" text="Идентификатор"/>
+      <themDataType values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE" value="2" type="combo" valueSrc="themDataType" text="Тип данных"/>
+      <notNorm value="false" type="bool" valueSrc="notNorm" text="Не нормализовать данные"/>
+      <fewFiles hidden="true" value="true" type="bool" valueSrc="fewFiles" text="Несколько файлов"/>
+      <dayThresold value="83" type="spin" valueSrc="dayThresold" text="Порог 'День(Град)'"/>
+      <nightThresold value="90" type="spin" valueSrc="nightThresold" text="Порог 'Ночь (Град)'"/>
+    </themCloudmask>
+    <!--item valueSrc="themCloudform" complex="true" templateFile="themTemplate.xml" textItem="th6" text="Форма облачности" >
+      <item valueSrc="themType" type="0" textItem="cloudsform" text="Идентификатор" />
+      <item valueSrc="themDataType" values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" type="1" textItem="0" text="Тип данных" />
+      <item valueSrc="notNorm" type="2" textItem="false" text="Не нормализовать данные" />
+      <item valueSrc="fewFiles" hidden="true" type="2" textItem="false" text="Несколько файлов" />
+    </item-->
+    <!--item valueSrc="themWind" complex="true" templateFile="themTemplate.xml" textItem="th7" text="Диагностика поля ветра" >
+      <item valueSrc="themType" type="0" textItem="wind" text="Идентификатор" />
+      <item valueSrc="themDataType" values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" type="1" textItem="4" text="Тип данных" />
+      <item valueSrc="notNorm" type="2" textItem="false" text="Не нормализовать данные" />
+      <item valueSrc="fewFiles" hidden="true" type="2" textItem="false" text="Несколько файлов" />
+    </item-->
+    <themGeophys templateFile="themTemplate.xml" textItem="th8" complex="true" type="group" value="true" valueSrc="themGeophys" text="Таблица геофизических величин">
+      <themType value="geophys" type="string" valueSrc="themType" text="Идентификатор"/>
+      <themDataType values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" value="4" type="combo" valueSrc="themDataType" text="Тип данных"/>
+      <notNorm value="false" type="bool" valueSrc="notNorm" text="Не нормализовать данные"/>
+      <fewFiles hidden="true" value="false" type="bool" valueSrc="fewFiles" text="Несколько файлов"/>
+    </themGeophys>
+    <themProfiler templateFile="themTemplate.xml" textItem="th9" complex="true" type="group" value="true" valueSrc="themProfiler" text="Расчёт вертикального профиля атмосферы">
+      <themType value="profiler" type="string" valueSrc="themType" text="Идентификатор"/>
+      <themDataType values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" value="3" type="combo" valueSrc="themDataType" text="Тип данных"/>
+      <notNorm value="false" type="bool" valueSrc="notNorm" text="Не нормализовать данные"/>
+      <fewFiles hidden="true" value="false" type="bool" valueSrc="fewFiles" text="Несколько файлов"/>
+    </themProfiler>
+    <themChannel templateFile="themTemplate.xml" textItem="th10" complex="true" type="group" value="true" valueSrc="themChannel" text="Канал">
+      <themType value="channels" type="string" valueSrc="themType" text="Идентификатор"/>
+      <themDataType values="VECT_TYPE;VALUE_TYPE;INDEXED_TYPE;RGBA_TYPE;UNKNOWN_TYPE;" value="3" type="combo" valueSrc="themDataType" text="Тип данных"/>
+      <notNorm value="true" type="bool" valueSrc="notNorm" text="Не нормализовать данные"/>
+      <fewFiles hidden="true" value="true" type="bool" valueSrc="fewFiles" text="Несколько файлов"/>
+    </themChannel>
+  </them_proc>
+</body>

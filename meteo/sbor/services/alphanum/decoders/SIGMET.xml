@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="SIGMET" text="Особые явления по маршруту полета"  category="191">
+  <MessageSections>(?:(\w{4}\s*[\d\w/-\s]+EXERCISE.*)|(.*))</MessageSections>
+  <Section number="0" text="" >
+    <SectionGroups>.*</SectionGroups>
+    <!-- <Value number="0"   descrName="UNK"    text="Тестовые сводки"/> -->
+  </Section>
+  <Section number="0" text="" >
+    <MessageSections>(\w{4})\s*(?:SIGMET\s*(?:SST)?|AIRMET)\s*((?:[\w-]+\s*)?[\d]{1,2}\s*VALID\s*[\d/]{13}\s*[\w]{4}\s*-)\s*(?:([\w]{4}\s+(?:[\w\d-]+\s+){1,2}(?:FIR|UIR|FIR/UIR|CTA)\s*.*(?=VA\s*CLD\s*).*)|(.*(?=CNC?L\s*[SA]I[GR]MET).*)|((?:[\w]{4}\s+)?(?:[\w\d-]+\s+){1,2}(?:FIR|UIR|FIR/UIR|CTA)\s*TC.*)|(.*))</MessageSections>
+    <!-- <MessageSections>(\w{4})\s*(?:SIGMET\s*(?:SST)?|AIRMET)\s*((?:[\w-]+\s*)?[\d]{1,2}\s*VALID\s*[\d/]{13}\s*)(.*)</MessageSections> -->
+  <Section number="0" text="" >
+    <SectionGroups>(.*)</SectionGroups>
+    <Value number="0"   descrName="CCCC"    text="Индекс органа ОВД, обслуживающего FIR, CTA или UIR"/>
+  </Section>
+  <Section number="0" text="Первая строка SIGMET" >
+    <SectionGroups>((?:[\w-]+\s*)?[\d]{1,2})\s*VALID\s*(\d\d)(\d\d)(\d\d)/(\d\d)(\d\d)(\d\d)\s*([\w]{4})\s*-</SectionGroups>
+    <Value number="0"   descrName="nn"  text="Ежедневный порядковый номер сообщения"/>
+    <Value number="1"   descrName="YY"  text="Начало периода действия, день"/>
+    <Value number="2"   descrName="GG"  text="Начало периода действия, час"/>
+    <Value number="3"   descrName="gg"  text="Начало периода действия, минута"/>
+    <Value number="4"   descrName="YY"  text="Конец периода действия, год"/>
+    <Value number="5"   descrName="GG"  text="Конец периода действия, час"/>
+    <Value number="6"   descrName="gg"  text="Конец периода действия, минута"/>
+    <Value number="7"   descrName="C2C2C2C2" text="Индекс ОМС, подготовившего сообщение"/>
+  </Section>
+  <Section number="1" text="Вторая строка SIGMET сообщенинй, касающихся облаков вулканического пепла" >
+    <SectionGroup>^\s*((?:[\w]{4}\s+)?(?:[\w\d-]+\s+){1,3}(?:FIR[\w/]{0,4}|UIR|CTA))\s*(?:VA\s*ERUPTION\s*)?((?:MT\s*(?:\w+\s+){1,2})?(?:(?:PSN|LOC)\s*[NS]\d{2,4}\s*[EW]\d{2,5})?)?\s*(VA\s*CLD\s*\w{3,4}\s*(?:AT\s*\d{4}Z)?\s*(?:\s*(?!FCST)[\S]+)+\s*(?:FCST.*)?)\s*-?</SectionGroup>
+    <Group number="0" text="1 и 2 стобцы" >
+      <GroupValues>(?:^([\w]{4})\s+)?((?:[\w\d-]+\s+){1,})([\w/]{3,7})</GroupValues>
+      <Value number="0"   descrName="CCCC"    text="Индекс органа ОВД, обслуживающего FIR, CTA или UIR"/>
+      <Value number="1"   descrName="station" text="Наименование FIR, UIR или CTA"/>
+      <Value number="2"   descrName="st_sign"     text="FIR,UIR,CTA"/>
+    </Group>
+    <Group number="1" text="3 стобец" >
+      <item>
+	<GroupValues>(?:MT\s*((?:\w+\s+)?\w+)\s+)?(?:(?:PSN|LOC)\s*([NS]\d{2,4})\s*([EW]\d{2,5}))?</GroupValues>
+	<Value number="1"   descrName="volcano" text="Наименование вулкана"/>
+	<Value number="2"   descrName="La_v" text="Местоположение вулкана, широта"/>
+	<Value number="3"   descrName="Lo_v" text="Местоположение вулкана, долгота"/>
+      </item>
+    </Group>
+    <Group number="3" text="4,5,6,7,8 стобцы" >
+      <item>
+	<GroupValues>(VA\s*CLD\s*\w{3,4}\s*(?:AT\s*\d{4}Z)?)\s*(.*)</GroupValues>
+	<Group number="2" text="4 стобец" >
+	  <GroupValues>VA\s*CLD\s*()(\w{3,4})\s*(?:AT\s*(\d{2}/)?(\d{2})(\d{2})Z)?</GroupValues>
+	  <Value number="0"   descrName="syn_sign" default="17" text="Метеорологическая характеристика"/>
+	  <Value number="1"   descrName="sig_type" text="Наблюдается или прогнозируется"/>
+	  <Value number="2"   descrName="YY"  text="Время наблюдения или срок прогноза, день"/>
+	  <Value number="3"   descrName="GG"  text="Время наблюдения или срок прогноза, часы"/>
+	  <Value number="4"   descrName="gg"  text="Время наблюдения или срок прогноза, минуты"/>
+	</Group>
+	<Group number="3" text="5,6,7,8 стобцы" >
+
+	    <GroupValues>\s*((?:\s*(?!FCST)[\S]+)+)\s*(FCST.*)?</GroupValues>
+	    <Group number="3" text="5,6,7 стобцы" >
+	      <item>
+	      <GroupValues>\s*((?:\s*(?!MOV|STNR)[\S]+)+)\s*((?:MOV\s*\w{1,3}\s+\d+\s*(?:KMH|KT))|STNR)?\s*(INTSF|WKNG?|NC)?\s*(?:AND\s*)?</GroupValues>
+	      <SubGroup number="0" text="5 столбец">
+		<SubGroupValues>\s*((?:ENTIRE|WI)(?:\s*(?!FL|SFC)[\S]+)+)?\s*(FL[\d/]{7}|SFC/FL[\d]{3})\s*((?:APRX)?\s*[\d]{2,3}KM.*)?</SubGroupValues>
+		<SubGroup number="0" text="Географическое местоположение">
+		  <SubGroupValues>(.*)</SubGroupValues>
+		  <Value number="1"   descrName="region" text="Координаты"/>
+		</SubGroup>
+		<SubGroup number="1" text="Вертикальная протяженность или уровень">
+		  <SubGroupValues>\s*FL(\d{3})/(\d{3})|(SFC)/\s*FL(\d{3})</SubGroupValues>
+		  <Value number="0"   descrName="h_lo" text="Нижняя граница, эшелон"/>
+		  <Value number="1"   descrName="h_hi" text="Верхняя граница, эшелон"/>
+		  <Value number="2"   descrName="h_lo" text="Нижняя граница, поверхность Земли"/>
+		  <Value number="2"   descrName="h_hi" text="Верхняя граница, эшелон"/>
+		</SubGroup>
+		<SubGroup number="2" text="Протяженность">
+		  <SubGroupValues>(.*)</SubGroupValues>
+		  <Value number="1"   descrName="region" text="Координаты"/>
+		</SubGroup>
+	      </SubGroup>
+	      <SubGroup number="4" text="6 столбец" >
+		<SubGroupValues>STNR|MOV\s*([\w]{1,3})\s*(?:([\d]{1,3})KMH|([\d]{1,3})KT)?</SubGroupValues>
+		<Value number="0"   descrName="sig_dd" text="Направление"/>
+		<Value number="1"   descrName="sig_ff" text="Скорость, км/ч"/>
+		<Value number="2"   descrName="fsfs"   text="Скорость, узлы"/>
+	      </SubGroup>
+	      <SubGroup number="5" text="7 столбец" >
+		<SubGroupValues>(INTSF|WKNG|NC)</SubGroupValues>
+		<Value number="0"   descrName="sig_i"  text="Измненение интенсивности явления"/>
+	      </SubGroup>
+	      </item>
+	    </Group>
+	    <Group number="6" text="8 столбец" >
+	      <GroupValues>FCST\s*(?:VA\s*CLD)?\s*(?:AT)?\s*([\d/]{4,7})Z\s*(.*)</GroupValues>
+	      <SubGroup number="0" text="FCST">
+		<SubGroupValues>()(\d\d)?/?(\d\d)(\d\d)</SubGroupValues>
+		<Value number="0"   descrName="t_sign" num="1" default="4" text="Значимость времени, прогноз"/>
+		<Value number="1"   descrName="YY" num="1" text="День"/>
+		<Value number="2"   descrName="GG" num="1" text="Час"/>
+		<Value number="3"   descrName="gg" num="1" text="Минута"/>
+	      </SubGroup>
+	      <SubGroup number="0" text="FCST">
+		<SubGroupValues>((?:VA\s*CLD\s*APRX)?(?:\s*(?!AND)[\S]+)+)</SubGroupValues>
+		<Value number="0"   descrName="region" num="1" text="Координаты"/>
+	      </SubGroup>
+	    </Group>
+	</Group>
+      </item>
+    </Group>
+  </Section>
+
+
+  <Section number="2" text="Отмена SIGMET" >
+    <SectionGroup>()(?:^\s*([\w]{4})\s+)?((?:[\w\d-]+\s+){1,3})(FIR[\w/]{0,4}|UIR|CTA)\s*CNC?L\s*[SA]I[GR]MET\s*((?:[\w-]+\s*)?[\d]{1,1})\s*(?:VALID\s*)?(\d\d)(\d\d)(\d\d)/(\d\d)(\d\d)(\d\d)\s*(?:\w{4})?(?:\s*RMK.*)?\s*-?</SectionGroup>
+    <Value number="0"   descrName="status" default="4" text="Статус: отмена"/>
+    <Value number="1"   descrName="CCCC" text="ИНдекс органа ОВД, обслуживающего FIR, CTA или UIR"/>
+    <Value number="2"   descrName="station" text="Наименование FIR, UIR или CTA"/>
+    <Value number="3"   descrName="st_sign" text="FIR,UIR,CTA"/>
+    <Value number="4"   descrName="nn_cnl" num="0" text="Порядковый номер отменяемого сообщения"/>
+    <Value number="5"   descrName="YY" num="0" text="Начало периода действия, день"/>
+    <Value number="6"	descrName="GG" num="0" text="Начало периода действия, час"/>
+    <Value number="7"	descrName="gg" num="0" text="Начало периода действия, минута"/>
+    <Value number="8"   descrName="YY" num="0" text="Конец периода действия, год"/>
+    <Value number="9"	descrName="GG" num="0" text="Конец периода действия, час"/>
+    <Value number="10"	descrName="gg" num="0" text="Конец периода действия, минута"/>
+  </Section>
+  <Section number="3" text="Тропические циклоны" >
+    <SectionGroup>^\s*((?:[\w]{4}\s+)?(?:[\w\d-]+\s+){1,}(?:FIR[\w/]{0,4}|UIR|CTA))\s*TC\s*(?:((?:\s+(?!OBS|FCST)[\S]*)*\s*(?:OBS|FCST|(?:OBS|FCST)\s*(?:AND\s*|/)?(?:OBS|FCST))))?\s*(AT\s*\d{4}Z)?\s*([NS]\d{2,4}\s*[WE]\d{2,5})\s*(.*)</SectionGroup>
+    <Group number="1" text="1 стобец" >
+      <GroupValues>(?:^([\w]{4})\s+)?((?:[\w\d-]+\s+){1,}[\w/]{3,7})</GroupValues>
+      <Value number="0"   descrName="CCCC" text="ИНдекс органа ОВД, обслуживающего FIR, CTA или UIR"/>
+      <Value number="1"   descrName="station" text="Наименование FIR, UIR или CTA"/>
+      <!-- <Value number="2"   descrName="UNK" text="FIR,UIR,CTA"/> -->
+    </Group>
+    <Group number="2" text="2, часть 3 столбца. Название циклона. Наблюдается или прогнозируется" >
+      <GroupValues>\s*([\w/\s]*)\s+(OBS|FCST|(?:OBS|FCST)\s*(?:AND\s*|/)?(?:OBS|FCST))\s*$</GroupValues>
+      <Value number="0"   descrName="w_w_" text="Название циклона"/>
+      <Value number="1"   descrName="sig_type" text="Наблюдается или прогнозируется"/>
+    </Group>
+    <Group number="3" text="Часть 3 столбца. Время наблюдения или срок прогноза" >
+      <item>
+	<GroupValues>(AT)\s*(\d{2})(\d{2})Z</GroupValues>	
+	<Value number="0"   descrName="TT" text="Описатель времени, когда ожидается изменение прогноза"/>
+	<Value number="1"   descrName="GG" text="Время наблюдения или срок прогноза, часы"/>
+	<Value number="2"   descrName="gg" text="Время наблюдения или срок прогноза, минуты"/>
+      </item>
+    </Group>
+    <Group number="4" text="Часть 3 столбца. Местоположение" >
+      <GroupValues>([NS]\d{2,4})\s*([WE]\d{2,5})</GroupValues>
+      <Value number="0"   descrName="La_c" text="Местоположение центра, широта"/>
+      <Value number="1"   descrName="Lo_c" text="Местоположение центра, долгота"/>
+    </Group>
+    <Group number="5" text="4,5,6,7 столбцы" >
+      <GroupValues>\s*(CB\s*TOP\s*(?:ABV|BLW)?\s*FL\s*\d{3}\s*WI\s*\d{3}\s*\wM\s*OF\s*CENTRE)\s*(MOV\s*\w{1,2}\s*\d{1,3}\s*(?:KMH|KT)|STNR)\s*(INTSF|WKN|NC)\s*(FCST\s*\d{4}Z\s*TC\s*CENTRE\s*[NS]\d{2,4}\s*[WE]\d{2,5})</GroupValues>
+      <SubGroup number="1" text="Вертикальная и горизонтальная протяженность облака">
+	<SubGroupValues>CB\s*TOP\s*(ABV|BLW)?\s*FL\s*(\d{3})\s*WI\s*(?:(\d{3})\s*KM|(\d{3})\s*NM)\s*OF\s*CENTRE</SubGroupValues>
+	<Value number="1"   descrName="sig_fl" text="ABV|BLW"/>
+	<Value number="2"   descrName="sig_fl" text="Эшелон"/>
+	<Value number="3"   descrName="sig_length" text="Горизонтальная протяженность, км ?"/>
+	<Value number="4"   descrName="sig_length" text="Горизонтальная протяженность, мили ?"/>
+      </SubGroup>
+      <SubGroup number="2" text="Движение">
+	<SubGroupValues>STNR|MOV\s*(\w{1,2})\s*(?:(\d{1,3})\s*KMH|(\d{1,3})\s*KT)</SubGroupValues>
+	<!-- <Value number="1"   descrName="UNK" text="STNR"/> -->
+	<Value number="2"   descrName="sig_dd" text="Направление"/>
+	<Value number="3"   descrName="sig_ff" text="Скорость, км/ч"/>
+	<Value number="4"   descrName="sig_ff" text="Скорость, узлы"/>
+      </SubGroup>
+      <SubGroup number="3" text="Измненение интенсивности">
+	<SubGroupValues>(INTSF|WKN|NC)</SubGroupValues>
+	<Value number="1"   descrName="sig_i" text="Измненение интенсивност"/>
+      </SubGroup>
+      <SubGroup number="4" text="Прогноз положения центра">
+	<item>
+	  <SubGroupValues>FCST\s*()(\d{2})(\d{2})Z\s*TC\s*CENTRE\s*([NS]\d{2,4})\s*([WE]\d{2,5})</SubGroupValues>
+	  <Value number="1"   descrName="tf_sign" default="4" text="Значимость времени"/>
+	  <Value number="2"   descrName="gg" text="Время прогноза, минуты"/>
+	  <Value number="3"   descrName="La_c" text="Широта"/>
+	  <Value number="4"   descrName="Lo_c" text="Долгота"/>
+	</item>
+      </SubGroup>
+    </Group>
+  </Section>
+
+
+  <Section number="4" text="Вторая строка SIGMET сообщений, касающихся явлений погоды, отличных от вулканического пепла" >
+    <SectionGroup>^\s*((?:[\w]{4}\s+)?(?:(?!ENTIRE)[\w\d-]+\s+){1,}(?:FIR[\w/]{0,4}|UIR|CTA))(.*)</SectionGroup>
+    <Group number="1" text="1 и 2 стобцы" >
+      <GroupValues>(?:^([\w]{4})\s+)?((?:[\w\d-]+\s+){1,})([\w/]{3,7})</GroupValues>
+      <Value number="0"   descrName="CCCC" text="ИНдекс органа ОВД, обслуживающего FIR, CTA или UIR"/>
+      <Value number="1"   descrName="station" text="Наименование FIR, UIR или CTA"/>
+      <Value number="2"   descrName="st_sign" text="FIR,UIR,CTA"/>
+    </Group>
+    <Group number="1" text="3-9 стобцы" >
+      <item>
+	<SectionGroup>(?:((?:\s+(?!OBS(?!C).|FCST)[\S]*)*\s*(?:OBS|FCST|(?:OBS|FCST)\s*(?:AND\s*|/)?(?:OBS|FCST))))?\s*(AT\s*\d{4}Z)?\s*(.*)</SectionGroup>
+	<Group number="2" text="3, часть 4 столбца. Явление. Наблюдается или прогнозируется" >
+	  <GroupValues>\s*([\w/\s]*)\s+(OBS|FCST|(?:OBS|FCST)\s*(?:AND\s*|/)?(?:OBS|FCST))\s*$</GroupValues>
+	  <Value number="0"   descrName="syn_sign" text="Явление"/>
+	  <Value number="1"   descrName="sig_type" text="Наблюдается или прогнозируется"/>
+	</Group>
+	<Group number="3" text="4 столбец. Время наблюдения или срок прогноза" >
+	  <GroupValues>(AT)\s*(\d{2})(\d{2})Z</GroupValues>
+	  <Value number="0"   descrName="TT" text="Описатель времени, когда ожидается изменение прогноза"/>
+	  <Value number="1"   descrName="GG" text="Время наблюдения или срок прогноза, часы"/>
+	  <Value number="2"   descrName="gg" text="Время наблюдения или срок прогноза, минуты"/>
+	</Group>
+	<Group number="4" text="5-9 столбцы" >
+	  <item>
+	    <!-- <GroupValues>\s*(IN\s*\w{4}|[NESW]{1,2}\s*(?:AND\s*[NESW]{1,2}\s*)PART\s*OF\s*FIR|(?:(?:(?:WI|WTN|[NESW]{1,2})\s*(?:\d+\s*NM)?\s*(?:OF\s*)?(?:LINE\s*)?)(?:(?:\s*[NSWE][\d]{2,5}|\s*(?!SFC|BLW|TOP|ABV|AND|BTN)\w{3,5})\s*-?\s*(?:AND\s*)?)+)+|ENTIRE\s*[\w]{3})?[.]?\s*((?:SFC\s*/\s*)?(?:CB\s*)?(?:TOP\s*)?(?:CB\s*)?(?:BLW\s*)?(?:ABV\s*)?(?:BTN\s*)?FL\s*[\d]{3}(?:/(?:FL)?\s*\d{3})?|(?:SFC\s*/|\d{4}/)?\d{4,5}\s*(?:M|FT))?(?:AND)?[.]?\s*((STNR|QS)|MOV\s*[\w]{1,3}\s*(?:AT)?\s*(?:[\d]{1,3}\s*(?:KMH|KT))?)?[.]?\s*(INTSF|WKN|NC)?[.]?\s*(FCST\s\d{4}Z(?:\s*(?!RMK)[\S]+)+)?\s*(RMK.*)?</GroupValues> -->
+	    <GroupValues>\s*(IN\s*\w{4}|[NESW]{1,2}\s*(?:AND\s*[NESW]{1,2}\s*)PART\s*OF\s*FIR|(?:(?:(?:WI|WTN|[NESW]{1,2})\s*(?:\d+\s*NM)?\s*(?:OF\s*)?(?:LINE\s*)?)(?:(?:\s*/?[NSWE][\d]{2,5}/?(?:/\d+\s*\w{1,2}\s*\w{4})?|\s*(?!SFC|BLW|TOP|ABV|AND|BTN|MOV|STNR)\w{3,5})\s*-?\s*(?:AND\s*)?)+)+|ENTIRE\s*[\w]{3}(?:/[\w]{3})?)?[.]?\s*((?:SFC\s*/\s*)?(?:CB\s*)?(?:TOP\s*)?(?:CB\s*)?(?:BLW\s*)?(?:ABV\s*)?(?:BTN\s*)?FL\s*[\d]{3}(?:/(?:FL)?\s*\d{3})?|(?:SFC\s*/|\d{4}/)?\d{4,5}\s*(?:M|FT))?(?:AND)?[.]?\s*((STNR|QS)|MOV\s*[\w]{1,3}\s*(?:AT)?\s*(?:[\d]{1,3}\s*(?:KMH|KT))?)?[.]?\s*(INTSF|WKN|NC)?[.]?\s*(FCST\s\d{4}Z(?:\s*(?!RMK)[\S]+)+)?\s*(RMK.*)?</GroupValues>
+	    <SubGroup number="0" text="Географическое местоположение">
+	      <SubGroupValues>(.*)</SubGroupValues>
+	      <Value number="1"   descrName="region" text="Координаты"/>
+	    </SubGroup>
+	    <SubGroup number="1" text="Вертикальная протяженность или уровень">
+	      <!-- <SubGroupValues>FL\s*((\d{3}))|(SFC)/\s*FL\s*(\d{3})|(SFC|\d{4})?/?\s*(\d{4,5})\s*M|(SFC|\d{4})?/?\s*(\d{4})\s*FT|(?:BTN\s*)?FL\s*(\d{3})/(\d{3})|(TOP|ABV|BLW|TOP\s*(?:ABV|BLW))\s*FL\s*(\d{3})|\s*(?:CB\s*)?(TOP)\s*(?:CB\s*)?FL\s*(?:\d{3}/(?:FL)?\s*)?(\d{3})</SubGroupValues> -->
+	      <SubGroupValues>(?:FL\s*((\d{3})))|(?:(SFC)/\s*FL\s*(\d{3}))|(?:(SFC|\d{4})?/?\s*(\d{4,5})\s*M)|(?:(SFC|\d{4})?/?\s*(\d{4})\s*FT)|(?:(?:BTN\s*)?FL\s*(\d{3})/(\d{3}))|(?:(?:(TOP|ABV|TOP\s*ABV)\s*FL(\d{3})))</SubGroupValues>
+	      <Value number="1"   descrName="h_lo"  text="Нижняя граница, эшелон"/>
+	      <Value number="1"   descrName="h_hi"  text="Верхняя граница, эшелон"/>
+	      <Value number="2"	  descrName="h_lo"  text="Нижняя граница, поверхность Земли"/>
+	      <Value number="2"	  descrName="h_hi"  text="Верхняя граница, эшелон"/>
+	      <Value number="3"	  descrName="h0m"    text="Нижняя граница, поверхность Земли"/>
+	      <Value number="3"   descrName="h0m"    text="Верхняя граница, м"/>
+	      <Value number="4"   descrName="h0m"    text="Нижняя граница, поверхность Земли"/>
+	      <Value number="4"   descrName="h0ft"   text="Верхняя граница, футы"/>
+	      <Value number="5"   descrName="h_lo"    text="Нижняя граница, эшелон"/>
+	      <Value number="5"   descrName="h_hi"    text="Верхняя граница, эшелон"/>
+	      <Value number="6"   descrName="limType" text="Тип предела"/>
+	      <Value number="6"   descrName="h_hi"    text="Верхняя граница, эшелон"/>
+	    </SubGroup>
+	    <SubGroup number="2" text="Смещение или ожидаемое смещение метеорологического явления">
+	      <SubGroupValues>STNR|QS|MOV\s*([\w]{1,3})\s*(?:((?:AT\s*)?[\d]{1,3})\s*KMH)?\s*(?:(?:AT\s*)?([\d]{1,3})\s*KT)?</SubGroupValues>
+	      <Value number="0"   descrName="sig_dd" text="Направление"/>
+	      <Value number="1"   descrName="sig_ff" text="Скорость в км/ч"/>
+	      <Value number="1"   descrName="fsfs"  text="Скорость в узлах"/>
+	    </SubGroup>
+	    <SubGroup number="3" text="Незначительное смещение">
+	      <SubGroupValues>(STNR|QS)</SubGroupValues>
+	      <Value number="1"   descrName="sig_dd"  text="Незначительное смещение"/>
+	    </SubGroup>
+	    <SubGroup number="0" text="8">
+	      <SubGroupValues>(INTSF|WKN|NC)</SubGroupValues>
+	      <Value number="0"   descrName="sig_i" text="Измненение интенсивности явления"/>
+	    </SubGroup>
+	    <SubGroup number="0" text="Прогноз местоположения явления на конец периода действия">
+	      <item>
+		<SubGroupValues>FCST\s()(\d\d)(\d\d)Z(.*)</SubGroupValues>
+		<Value number="1"   descrName="tf_sign" default="4" text="Значимость времени"/>
+		<Value number="0"   descrName="GG" text="Час"/>
+		<Value number="1"   descrName="gg" text="Минута"/>
+		<Value number="2"   descrName="region" text="Координаты"/>
+	      </item>
+	    </SubGroup>
+	    <SubGroup number="0" text="RMK">
+	      <SubGroupValues>RMK\s*(.*)</SubGroupValues>
+	      <Value number="0"   descrName="national" text="RMK"/>
+	    </SubGroup>
+	  </item>
+	</Group>
+      </item>
+    </Group>
+</Section>
+</Section>
+</Message>

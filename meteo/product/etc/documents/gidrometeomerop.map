@@ -1,0 +1,12 @@
+name: "gidrometeomerop.map"
+title: "Отчёт об участии в гидрометеорологическом обеспечении мероприятий оперативной подготовки"
+formal {
+    template: "gidrometeomerop.odt"
+    name: "Отчёт об участии в гидрометеорологическом обеспечении мероприятий оперативной подготовки"
+    module_path: "gidrometeomerop.py"
+    format: kOdt
+    icon_path: ":product/icons/layer.png"
+}
+document {
+  doctype: kFormalDocument
+}

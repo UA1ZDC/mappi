@@ -1,0 +1,9 @@
+{ "find" : "message",
+  "filter" : { 
+    "to" : {
+      "type" : "%1",
+      "appointment_id" : "%2"
+    },
+    "readBy" : { "$exists" : false } 
+  }
+}

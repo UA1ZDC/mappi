@@ -1,0 +1,27 @@
+{
+  "findAndModify": "users",
+  "query" : {
+	"login" : @login@
+    },
+  "update": {
+	"$set" : { 
+    "login" : @login@ ,
+    "role_id" : @role_id@,
+    "rank_id" : @rank_id@,
+    "gender" : @gender@,
+    "department" : @department@,
+    "avatar" : @avatar@,
+    "permissions" : {
+      "inter" : {
+        "contact_visibility" : @contact_visibility@
+        }
+      }
+    },  
+    "$unset" : {
+      "department" : "@removedepartment@"
+    }    
+  },
+  "remove": false,
+  "new": true,
+  "upsert": true
+}

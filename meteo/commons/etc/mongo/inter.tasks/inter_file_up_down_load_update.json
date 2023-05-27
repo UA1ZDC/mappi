@@ -1,0 +1,12 @@
+{
+  "findAndModify": "up_down_loads",
+  "query": {
+    "_id" : @id@
+  },
+  "update": { "$set" : {      
+      "next_chunk" : @chunk@
+    }
+  },
+  "new": true,
+  "upsert": true
+}

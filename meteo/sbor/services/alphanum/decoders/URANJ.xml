@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="URANJ" text="Плотности потока радиоизлучения Солнца в потоковых единицах"  category="169">
+  <MessageSections>URANJ\s*(\d{5}\s*\d{5})\s*(\d{5}\s*\d{5}\s*(?:\d{5})?)\s*((?:[\d/]{5}\s*[\d/]{5}\s*(?:[\d/]{5}|\dFLUX\s*\d{5})\s*)*)\s*(/\d{4}\s*(?:[01234]\d{4}\s*)*)?</MessageSections>
+  <Section number="0" text="" >
+    <GroupValues>(\d{5})\s*(\d)(\d\d)(\d\d)\s*</GroupValues>
+    <Value number="1"  descrName="station_index" text="индекс обсерватории" />
+    <Value number="2"  descrName="J" text="последняя цифра года измерений" />
+    <Value number="3"  descrName="MM" text="месяц измерений" />
+    <Value number="4"  descrName="YY" text="день измерений" />
+  </Section>
+  <Section number="1" text="" >
+    <GroupValues>(\d{5})\s*(\d\d)(\d\d)\d\s*(?:(\d{3})(\d{2})())?</GroupValues>
+    <Value number="1"  descrName="gfreq" text="Частота, МГц" />
+    <Value number="2"  descrName="GG" text="ближайший час (UT) к началу периода наблюдения" />
+    <Value number="3"  descrName="GG" text="ближайший час (UT) к концу периода наблюдения" />
+    <!-- <Value number="4"  descrName="UNK" text="число сообщаемых значительных явлений" /> -->
+    <Value number="5"  descrName="gFf" num="0" text="фоновое значение плотности потока" />
+    <Value number="6"  descrName="GG" num="0" text="ближайший час (UT) к измерению плотности потока" />
+    <Value number="4"  descrName="gg" default="0" num="0" text="минута" />
+  </Section>
+  <Section number="2" text="" >
+    <item>
+      <GroupValues>(\d)([\d/]{2})([\d/]{2})\s*(\d)([\d/]{2})([\d/]{2})\s*()(?:[56](?:(\d{4})|FLUX\s*(\d{5}))|[78](\d{4}))</GroupValues>
+      <Value number="1"  descrName="nns"   text="номер максимума явления, основной или вторичные" />
+      <Value number="2"  descrName="GG"    text="час начала явления" />
+      <Value number="3"  descrName="gg"    text="минута начала явления" />
+      <Value number="4"  descrName="gSynf" text="тип события" />
+      <Value number="5"  descrName="GG"    text="час окончания явления" />
+      <Value number="6"  descrName="gg"    text="минута окончания явления" />
+      <Value number="6"  descrName="stat_sign"  default="2"   text="максимальное" />
+      <Value number="8"  descrName="gF"   text="значение максимального потока явления в 10-22 Вт/(м2∙с)" />
+      <Value number="9"  descrName="gF"   text="значение максимального потока явления в 10-22 Вт/(м2∙с)" />
+      <Value number="9"  descrName="gFp"   text="значение максимального потока явления в %" />
+    </item>
+  </Section>
+  <Section number="3" text="" >
+    <GroupValues>/()(\d{2})(\d{2})\s*((?:[01234]\d{4}\s*)*)</GroupValues>
+    <Value number="0"  descrName="stat_sign"  default="2"   text="максимальное" />
+    <Value number="1"  descrName="GG" text="" />
+    <Value number="2"  descrName="gg" text="" />
+    <SubGroup number="" text="" >
+      <SubGroupValues>0(7|8)(\d{3})|(\d)(\d{2})(\d{2})</SubGroupValues>
+      <Value number="1"  descrName="gDa" text="местоположение источника" />
+      <Value number="2"  descrName="gdist" text="расстояние всплеска до центра сканирования в процентах от радиуса фотосферы" />
+      <Value number="3"  descrName="gQc" text="квадрант, где наблюдался источник" />
+      <Value number="4"  descrName="gLa" text="расстояние к северу или югу от N-S диаметра в градусах" />
+      <Value number="5"  descrName="gLo" text="расстояние к востоку или западу от диаметра E-W  в градусах" />
+    </SubGroup>
+  </Section>
+</Message>

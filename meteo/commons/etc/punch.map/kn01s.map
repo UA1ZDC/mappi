@@ -1,0 +1,13 @@
+name: "kn-01s"
+title: "КН-01С"
+data_type: kSynopType
+data {
+  source: kSurface
+  template_name: "kn01s"
+  data_type: kSynopCoast
+  data_type: kSynopMobSea
+  data_type: kSynopMobShip
+  data_type: kOceanBuoy
+  type_level: 1
+  level: 0
+}

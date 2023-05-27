@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=chardet
+export PYTHONWARNINGS=d
+
+%:
+	dh $@ --with python2,python3 --buildsystem=pybuild
+
+override_dh_python3:
+	dh_python3 --shebang=/usr/bin/python3
+
+override_dh_auto_build:
+	dh_auto_build
+	cp debian/chardet.1 debian/chardet3.1
+	sed -i 's/chardet/chardet3/g' debian/chardet3.1
+
+override_dh_auto_install:
+	dh_auto_install
+	mv debian/python3-chardet/usr/bin/chardetect \
+		debian/python3-chardet/usr/bin/chardetect3
+
+override_dh_auto_test:
+	PYBUILD_SYSTEM=custom \
+	PYBUILD_TEST_ARGS="cd {dir}; {interpreter} -m pytest" dh_auto_test
+
+override_dh_clean:
+	dh_clean
+	rm -rf .hypothesis/

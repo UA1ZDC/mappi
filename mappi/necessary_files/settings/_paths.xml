@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <programModule type="group" value="true" source="this" text="Программный модуль">
+    <!--item source="this" text="Данные со спутников" >
+        <item valueSrc="hrptDigitPath" type="0" source="this" textItem="/var/mappi/stream/[STREAM_TYPE]/[ddMMyyhhmm][SAT_NAME].[FILE_TYPE]" text="Путь к данным" >
+          <item source="this" text="Каталоги аналоговых потоков" >
+            <item valueSrc="lrptAnalogPath" type="0" source="this" textItem="/var/mappi/anlg/lrpt/" text="LRPT (APT)" />
+            <item valueSrc="lritAnalogPath" type="0" source="this" textItem="/var/mappi/anlg/lrit/" text="LRIT (WEFAX)" />
+          </item>
+          <item source="this" text="Каталоги цифровых потоков" >
+            <item valueSrc="hritDigitPath" type="0" source="this" textItem="/var/mappi/dgt/hrit/" text="HRIT" />
+          </item>
+        </item>
+      </item-->
+    <programPath readOnly="true" value="/usr/local/bin/elk-mappi" complex="true" type="path" source="this" text="Путь к программному модулю"/>
+  </programModule>
+  <commonDataPath value="/var/mappi/data/" complex="true" type="string" source="this" text="Данные">
+    <streamPath prefix="_paths;commonDataPath" value="/[STREAM_TYPE]/" complex="true" type="string" source="this" text="Тип потока">
+      <hrptDigitPath prefix="_paths;streamPath" value="/raws/[ddMMyyhhmm][SAT_NAME].[FILE_TYPE]" complex="true" type="string" source="this" text="Данные со спутников"/>
+      <streamHirsPretCalibrStorePath prefix="_paths;streamPath" hidden="true" value="/hirs/[SAT_NAME]_calibrStore.raw" type="string" source="this" text="hirsPretCalibrStorePath"/>
+      <streamSatDataPath prefix="_paths;streamPath" value="/[yyyyMMddhhmm][SAT_NAME]/" complex="true" type="string" source="this" text="Спутниковая информация">
+        <streamDigitInfoPath prefix="_paths;streamSatDataPath" value="/info" type="string" source="this" text="Информация о сеансе"/>
+        <streamTotalPreliminaryPath prefix="_paths;streamSatDataPath" value="/preliminaries/" complex="true" type="string" source="this" text="Первичная обработка">
+          <streamPreliminaryPath prefix="_paths;streamTotalPreliminaryPath" value="/[INSTR_DIR]/" complex="true" type="string" source="this" text="Данные приборов">
+            <streamInstrPretInstrDataPath prefix="_paths;streamPreliminaryPath" value="/instrData.raw" type="string" source="this" text="FIXME streamInstrPretInstrDataPath FIXME"/>
+            <streamInstrPretEarthDataPath prefix="_paths;streamPreliminaryPath" value="/earthCount_[CHANNEL_INDEX].raw" type="string" source="this" text="FIXME streamInstrPretEarthDataPath FIXME"/>
+            <streamInstrPretDataPath prefix="_paths;streamPreliminaryPath" value="/data_[CHANNEL_INDEX].raw" type="string" source="this" text="FIXME hrptInstrPretDataPath FIXME"/>
+            <streamInstrPretCalibrPath prefix="_paths;streamPreliminaryPath" value="/[FREE_PARAM]_calibr.raw" type="string" source="this" text="FIXME streamInstrPretCalibrPath FIXME"/>
+            <streamInstrPretInfoPath prefix="_paths;streamPreliminaryPath" value="/[FREE_PARAM]_info.txt" type="string" source="this" text="FIXME streamInstrPretInfoPath FIXME"/>
+          </streamPreliminaryPath>
+        </streamTotalPreliminaryPath>
+        <streamTotalThematicPath prefix="_paths;streamSatDataPath" value="/thematic/" complex="true" type="string" source="this" text="Тематическая обработка">
+          <streamThematicPath prefix="_paths;streamTotalThematicPath" value="/[INSTR_DIR]/" complex="true" type="string" source="this" text="Группировка по приборам">
+            <streamThematicDataPath prefix="_paths;streamThematicPath" value="/[THEM_TYPE]_[FREE_PARAM]_[CHANNEL_INDEX].[FILE_TYPE]" type="string" source="this" text="Данные ТО"/>
+          </streamThematicPath>
+        </streamTotalThematicPath>
+      </streamSatDataPath>
+    </streamPath>
+  </commonDataPath>
+  <dataParams type="group" value="true" source="this" text="Параметры хранения данных">
+    <streamDataStore values="Срок хранения (дней);Не удалять;Удалять автоматически" vislist="Срок хранения (дней)" spinvalue="0" value="1" complex="true" type="combospin" source="this" text="Данные со спутников"/>
+    <pretrDataStore values="Срок хранения (дней);Не удалять;Удалять автоматически" vislist="Срок хранения (дней)" spinvalue="0" value="1" complex="true" type="combospin" source="this" text="Данные предварительной обработки"/>
+    <themDataStore values="Срок хранения (дней);Не удалять;Удалять автоматически" vislist="Срок хранения (дней)" spinvalue="0" value="1" complex="true" type="combospin" source="this" text="Данные тематической обработки"/>
+    <themPhotoStore value="22" complex="true" type="spin" source="this" text="Спутниковые снимки( Срок хранения, дней )"/>
+    <autoDeleteFiles hidden="true" value="true" type="bool" source="this" text="Удалять файлы автоматически"/>
+  </dataParams>
+  <thresoldData hidden="true" type="group" value="true" source="this" text="Скрытые настройки">
+    <thresoldDataPath hidden="true" value="/share/mappi/thresolds/[FREE_PARAM]_[INDEX].thresold" type="string" source="this" text="thresoldDataPath"/>
+  </thresoldData>
+</body>

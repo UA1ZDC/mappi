@@ -1,0 +1,17 @@
+{
+   "update": "user_appointments",
+   "updates": [
+      { "q": { "_id" : { "$eq" : @id@ }, 
+                         "users" : { "$elemMatch" : { "$eq" : @user@ } }			 
+        },
+        "u": {
+          "$set" : {
+            "currentUser" : @user@,
+	    "dtStart": @dtStart@ 
+          }
+        },
+        "upsert": false,
+        "multi": false
+      }
+   ]
+}

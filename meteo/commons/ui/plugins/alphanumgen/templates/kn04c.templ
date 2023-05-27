@@ -1,0 +1,250 @@
+# section {
+#   require: true
+#   mgroup {
+#     require: true
+#     param {
+#       width: 2
+#       fill: 32
+#       name: "T1T2"
+#     }
+#     param { 
+#       width: 2
+#       fill: 32
+#       name: "A1A2" 
+#     }
+#   }
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 2
+#       name: "ii" 
+#     }
+#   }   
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 4
+#       fill: 32
+#       name: "CCCC" 
+#     }
+#   }
+#   mgroup {
+#     require: true
+#     param { 
+#       width: 2
+#       name: "YY1" 
+#     }
+#     param { 
+#       width: 2
+#       name: "GG1" 
+#     }
+#     param { 
+#       width: 2
+#       name: "gg1" 
+#     }
+#   }
+#   mgroup {
+#     require: false
+#     param { 
+#       width: 3
+#       fill: 32
+#       name: "BBB" 
+#     }
+#   }
+# }
+section {
+  require: true
+  mgroup {
+    require: true
+    param {
+      width: 4
+      name: "MMMM"
+    }
+  }
+  mgroup {
+    require: true
+    param { 
+      width: 2
+      name: "YY" 
+    }
+    param { 
+      width: 2
+      name: "GG" 
+    }
+    param { 
+      width: 1
+      name: "Id" 
+    }
+  }
+  mgroup {
+    require: true
+    param { 
+      width: 5
+      name: "IIiii" 
+    }
+  }
+}
+section {
+  require: true
+  mgroupset {
+    name: "standart"
+    mgroup {
+      require: true
+      param {
+        width: 2
+        name:  "P1P1"
+	func: "P1h"
+      }
+      param {
+        width: 3
+        name:  "h1h1h1"
+      }
+    }
+    mgroup {
+      require: true
+      param {
+        width: 3
+        name:  "T1T1Ta1"
+        func: "T1T1"
+      }
+     param {
+       width: 2
+       name:  "D1D1"
+       func: "D1D1"
+     }
+    }
+    mgroup {
+      require: false
+      param {
+        width: 2
+        name:  "d1d1"
+      }
+      param {
+        width: 3
+        name:  "f1f1f1"
+      }
+    }
+  }
+}
+section {
+  require: true
+  defvalue: "88999"
+  mgroupset {
+  name: "tropo"
+    mgroup {
+      require: true
+      param {
+        width: 2
+        text:  "88"
+      }
+      param {
+        width: 3
+        name:  "PtPtPt"
+        func: "P1"
+      }
+    }
+    mgroup {
+      require: true
+      param {
+        width: 3
+        name:  "TtTtTat"
+        func: "T1T1"
+      }
+      param {
+        width: 2
+        name:  "DtDt"
+        func: "D1D1"
+      }
+    }
+    mgroup {
+      require: true
+      param {
+        width: 2
+        name:  "dtdt"
+      }
+      param {
+        width: 3
+        name:  "ftftft"
+      }
+    }
+  }
+}
+section {
+  require: true
+  defvalue: "77999"
+  mgroupset {
+  name: "wind"
+    mgroup {
+      require: true
+      param {
+        width: 2
+        text:  "77"
+      }
+      param {
+        width: 3
+        name:  "PmPmPm"
+        func: "P1"
+      }
+    }
+    mgroup {
+      require: true
+      param {
+        width: 2
+        name:  "dmdm"
+      }
+      param {
+        width: 3
+        name:  "fmfmfm"
+      }
+    }
+    mgroup {
+      require: false
+      param {
+        width: 1
+        text:  "4"
+      }
+      param {
+        width: 2
+        name:  "vbvb"
+     }
+     param {
+       width: 2
+       name:  "vava"
+     }
+   }
+  }
+}
+section {
+  require: true
+  mark: "31313"
+  mgroup {
+    require: true
+    param {
+      width: 1
+      name:  "sr"
+    }
+    param {
+      width: 2
+      name:  "rara"
+    }
+    param {
+     width: 2
+     name:  "sasa"
+    }
+  }
+  mgroup {
+    require: true
+    param {
+      width: 1
+      text:  "8"
+    }
+    param {
+      width: 2
+      name:  "GGz"
+    }
+    param {
+      width: 2
+      name:  "ggz"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "aggregate": @tablename@,
+  "pipeline": [
+    { "$sort": { "_id.dt": 1 } },
+    { "$group": {
+      "_id" : {
+        "station" : "$_id.station",
+        "station_type" : "$_id.station_type"
+      },
+      "first": { "$first": "$_id.dt" },
+      "last":  { "$last": "$_id.dt" }
+    } 
+    }
+  ],
+  "allowDiskUse": true,
+  "cursor": { "batchSize": 1 }
+}
+  

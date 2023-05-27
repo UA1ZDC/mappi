@@ -1,0 +1,7640 @@
+code: "kn01"
+name: "КН-01 (Росгидромет)"
+path: "/home/viktor/build_dir//share/meteo//punch/kn01.template"
+wind: true
+rule {
+  pos {
+    x: -11
+    y: -6
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  testval: 22
+  id {
+    descr: 12101
+    name: "T"
+    description: "Температура воздуха,C"
+  }
+}
+rule {
+  pos {
+    x: 11
+    y: -6
+  }
+  align: kTopRight
+  type: kNumber
+  number {
+    intcount: 2
+    cutorder: kLower
+    fracount: 1
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  testval: 1000
+  id {
+    descr: 10051
+    name: "P"
+    description: "Давление, приведенное к среднему уровню моря,гПа"
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -11
+    y: 6
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+  }
+  testval: 12.34
+  id {
+    descr: 12103
+    name: "Td"
+    description: "Температура точки росы,C"
+  }
+}
+rule {
+  pos {
+    x: 8
+    y: 0
+  }
+  align: kRightCenter
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kNoSep
+    signview: kMinus
+    pluscolor: 4280035572
+    minuscolor: 4293792876
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+  }
+  testval: 1.34
+  id {
+    descr: 10061
+    name: "p"
+    description: "Величина барической тенденции на станции за три часа, предшествовавших сроку наблюдения"
+    parent: "Ptend"
+  }
+}
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 16711680
+    minuscolor: 16711680
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "21"
+    }
+    symbol {
+      minval: 10
+      maxval: 19
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "22"
+    }
+    symbol {
+      minval: 20
+      maxval: 39
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "23"
+    }
+    symbol {
+      minval: 40
+      maxval: 49
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "24"
+    }
+    symbol {
+      minval: 50
+      maxval: 59
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "25"
+    }
+    symbol {
+      minval: 70
+      maxval: 89
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "27"
+    }
+    symbol {
+      minval: 90
+      maxval: 99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "28"
+    }
+    symbol {
+      minval: 100
+      maxval: 100
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "29"
+    }
+    symbol {
+      minval: 90
+      maxval: 99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "2a"
+    }
+    symbol {
+      minval: 60
+      maxval: 69
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "26"
+    }
+    symbol {
+      minval: 113
+      maxval: 120
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "2a"
+    }
+    symbol {
+      minval: -9999
+      maxval: -9999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "7c"
+    }
+  }
+  testval: 71
+  id {
+    descr: 20010
+    name: "N"
+    description: "Общая облачность,%"
+  }
+  y_plus_bad_dd: false
+  absent_rule {
+    minval: 0
+    maxval: 0
+    font {
+      family: "Synop"
+      pointsize: 12
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    color: 4278190080
+    patternba: "6b"
+    label: ""
+  }
+}
+rule {
+  pos {
+    x: 22
+    y: 0
+  }
+  align: kRightCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 16711680
+    minuscolor: 16711680
+    font {
+      family: "wthrNew0"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6c"
+    }
+    symbol {
+      minval: 1
+      maxval: 1.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6d"
+    }
+    symbol {
+      minval: 3
+      maxval: 3.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6f"
+    }
+    symbol {
+      minval: 5
+      maxval: 5.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "71"
+    }
+    symbol {
+      minval: 6
+      maxval: 6.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "72"
+    }
+    symbol {
+      minval: 8
+      maxval: 8.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "74"
+    }
+    symbol {
+      minval: 2
+      maxval: 2.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6e"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "70"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 7.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "73"
+      label: ""
+    }
+  }
+  testval: 5.34
+  id {
+    descr: 10063
+    name: "a"
+    description: "Характеристика барической тенденции в течение трех часов, предшествовавших сроку наблюдения"
+    parent: "Ptend"
+  }
+}
+rule {
+  pos {
+    x: 0
+    y: 7
+  }
+  align: kBottomCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 30
+      maxval: 30.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+    }
+    symbol {
+      minval: 31
+      maxval: 31.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3f"
+    }
+    symbol {
+      minval: 32
+      maxval: 32.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "40"
+    }
+    symbol {
+      minval: 33
+      maxval: 33.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "41"
+    }
+    symbol {
+      minval: 34
+      maxval: 34.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "42"
+    }
+    symbol {
+      minval: 35
+      maxval: 35.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "43"
+    }
+    symbol {
+      minval: 36
+      maxval: 36.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "44"
+    }
+    symbol {
+      minval: 37
+      maxval: 37.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "45"
+    }
+    symbol {
+      minval: 38
+      maxval: 38.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "46"
+    }
+    symbol {
+      minval: 39
+      maxval: 39.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "47"
+    }
+    symbol {
+      minval: 59
+      maxval: 63.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+    }
+  }
+  testval: 34.34
+  id {
+    descr: 120012
+    name: "CL"
+    description: ""
+    parent: "cloud"
+  }
+}
+rule {
+  pos {
+    x: 10
+    y: 6
+  }
+  align: kBottomRight
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 0
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "30"
+      label: ""
+    }
+    symbol {
+      minval: 1
+      maxval: 1
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "31"
+      label: ""
+    }
+    symbol {
+      minval: 2
+      maxval: 3
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "32"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "33"
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "34"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 6
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "35"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 8
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "36"
+      label: ""
+    }
+    symbol {
+      minval: 9
+      maxval: 9
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "37"
+      label: ""
+    }
+    symbol {
+      minval: 10
+      maxval: 10
+      font {
+        family: "helvetica"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "38"
+      label: ""
+    }
+  }
+  testval: 6.34
+  id {
+    descr: 120011
+    name: "Nh"
+    description: ""
+    parent: "cloud"
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 0
+    y: -15
+  }
+  align: kTopCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 16711680
+    font {
+      family: "helvetica"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 11
+      maxval: 11.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "51"
+    }
+    symbol {
+      minval: 12
+      maxval: 12.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "52"
+    }
+    symbol {
+      minval: 13
+      maxval: 13.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "53"
+    }
+    symbol {
+      minval: 14
+      maxval: 14.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "54"
+    }
+    symbol {
+      minval: 15
+      maxval: 15.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "55"
+    }
+    symbol {
+      minval: 16
+      maxval: 16
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "56"
+    }
+    symbol {
+      minval: 17
+      maxval: 17.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "57"
+    }
+    symbol {
+      minval: 18
+      maxval: 18.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "58"
+    }
+    symbol {
+      minval: 19
+      maxval: 19.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "59"
+    }
+    symbol {
+      minval: 59
+      maxval: 63.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+    }
+  }
+  testval: 14.34
+  id {
+    descr: 120012
+    name: "CH"
+    description: ""
+    parent: "cloud"
+  }
+  y_plus_bad_dd: true
+}
+rule {
+  pos {
+    x: 0
+    y: -6
+  }
+  align: kTopCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 20
+      maxval: 20.9
+    }
+    symbol {
+      minval: 21
+      maxval: 21.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "48"
+    }
+    symbol {
+      minval: 22
+      maxval: 22.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "49"
+    }
+    symbol {
+      minval: 23
+      maxval: 23.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4a"
+    }
+    symbol {
+      minval: 24
+      maxval: 24.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4b"
+    }
+    symbol {
+      minval: 25
+      maxval: 25.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4c"
+    }
+    symbol {
+      minval: 26
+      maxval: 26.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4d"
+    }
+    symbol {
+      minval: 27
+      maxval: 27.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4e"
+    }
+    symbol {
+      minval: 28
+      maxval: 28.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "4f"
+    }
+    symbol {
+      minval: 29
+      maxval: 29.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "50"
+    }
+    symbol {
+      minval: 59
+      maxval: 63.9
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+    }
+  }
+  testval: 23.34
+  id {
+    descr: 120012
+    name: "CM"
+    description: ""
+    parent: "cloud"
+  }
+  y_plus_bad_dd: true
+}
+rule {
+  pos {
+    x: 19
+    y: 5
+  }
+  align: kBottomRight
+  type: kSymbol
+  symbol {
+    symbol {
+      minval: 3
+      maxval: 3.99
+      font {
+        family: "wthrNew0"
+        pointsize: 9
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "75"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "76"
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5.99
+      font {
+        family: "wthrNew1"
+        pointsize: 9
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "4d"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 6.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "57"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 7.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "61"
+      label: ""
+    }
+    symbol {
+      minval: 8
+      maxval: 8.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "7a"
+      label: ""
+    }
+    symbol {
+      minval: 9
+      maxval: 9.99
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "5f"
+      label: ""
+    }
+    symbol {
+      minval: 11
+      maxval: 11.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "7e"
+      label: ""
+    }
+    symbol {
+      minval: 12.99
+      maxval: 12.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "75"
+      label: ""
+    }
+    symbol {
+      minval: 13
+      maxval: 13.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "48"
+      label: ""
+    }
+    symbol {
+      minval: 14
+      maxval: 14.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "5f"
+      label: ""
+    }
+    symbol {
+      minval: 15
+      maxval: 15.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "4d"
+      label: ""
+    }
+    symbol {
+      minval: 16
+      maxval: 16.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "57"
+      label: ""
+    }
+    symbol {
+      minval: 17
+      maxval: 17.99
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "5d"
+      label: ""
+    }
+    symbol {
+      minval: 18
+      maxval: 18.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "7a"
+      label: ""
+    }
+    symbol {
+      minval: 19
+      maxval: 19.99
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "5f"
+      label: ""
+    }
+  }
+  testval: 19
+  id {
+    descr: 20004
+    name: "W1"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: 32
+    y: 5
+  }
+  align: kBottomRight
+  type: kSymbol
+  symbol {
+    symbol {
+      minval: 3
+      maxval: 3.99
+      font {
+        family: "wthrNew0"
+        pointsize: 9
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "75"
+      label: ""
+    }
+    symbol {
+      minval: 4
+      maxval: 4.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "76"
+      label: ""
+    }
+    symbol {
+      minval: 5
+      maxval: 5.99
+      font {
+        family: "wthrNew1"
+        pointsize: 9
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "4d"
+      label: ""
+    }
+    symbol {
+      minval: 6
+      maxval: 6.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "57"
+      label: ""
+    }
+    symbol {
+      minval: 7
+      maxval: 7.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "61"
+      label: ""
+    }
+    symbol {
+      minval: 8
+      maxval: 8.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "7a"
+      label: ""
+    }
+    symbol {
+      minval: 9
+      maxval: 9.99
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "5f"
+      label: ""
+    }
+    symbol {
+      minval: 11
+      maxval: 11.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "7e"
+      label: ""
+    }
+    symbol {
+      minval: 12.99
+      maxval: 12.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "75"
+      label: ""
+    }
+    symbol {
+      minval: 13
+      maxval: 13.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "48"
+      label: ""
+    }
+    symbol {
+      minval: 14
+      maxval: 14.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "5f"
+      label: ""
+    }
+    symbol {
+      minval: 15
+      maxval: 15.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "4d"
+      label: ""
+    }
+    symbol {
+      minval: 16
+      maxval: 16.99
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "57"
+      label: ""
+    }
+    symbol {
+      minval: 17
+      maxval: 17.99
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278211840
+      patternba: "5d"
+      label: ""
+    }
+    symbol {
+      minval: 18
+      maxval: 18.99
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "7a"
+      label: ""
+    }
+    symbol {
+      minval: 19
+      maxval: 19.99
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294901760
+      patternba: "5f"
+      label: ""
+    }
+  }
+  testval: 19
+  id {
+    descr: 20005
+    name: "W2"
+    description: ""
+  }
+  y_plus_bad_dd: false
+}
+rule {
+  pos {
+    x: -8
+    y: 0
+  }
+  align: kLeftCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 4
+      maxval: 4.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "7d"
+    }
+    symbol {
+      minval: 5
+      maxval: 5.9
+      font {
+        family: "wthrNew0"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "7e"
+    }
+    symbol {
+      minval: 6
+      maxval: 6.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "21"
+    }
+    symbol {
+      minval: 7
+      maxval: 7.9
+      font {
+        family: "wthrNew1"
+        pointsize: 11
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "22"
+      label: ""
+    }
+    symbol {
+      minval: 8
+      maxval: 8.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "23"
+    }
+    symbol {
+      minval: 9
+      maxval: 9.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "24"
+    }
+    symbol {
+      minval: 10
+      maxval: 10.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "25"
+    }
+    symbol {
+      minval: 11
+      maxval: 11.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "26"
+    }
+    symbol {
+      minval: 12
+      maxval: 12.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "27"
+    }
+    symbol {
+      minval: 13
+      maxval: 13.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "28"
+    }
+    symbol {
+      minval: 14
+      maxval: 14.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "29"
+    }
+    symbol {
+      minval: 15
+      maxval: 15.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "2a"
+    }
+    symbol {
+      minval: 16
+      maxval: 16.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "2b"
+    }
+    symbol {
+      minval: 17
+      maxval: 17.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2c"
+    }
+    symbol {
+      minval: 18
+      maxval: 18.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2d"
+    }
+    symbol {
+      minval: 19
+      maxval: 19.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2e"
+    }
+    symbol {
+      minval: 20
+      maxval: 20.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "2f"
+    }
+    symbol {
+      minval: 21
+      maxval: 21.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "30"
+    }
+    symbol {
+      minval: 22
+      maxval: 22.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "31"
+    }
+    symbol {
+      minval: 23
+      maxval: 23.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "32"
+    }
+    symbol {
+      minval: 24
+      maxval: 24.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "33"
+    }
+    symbol {
+      minval: 25
+      maxval: 25.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "34"
+    }
+    symbol {
+      minval: 26
+      maxval: 26.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "35"
+    }
+    symbol {
+      minval: 27
+      maxval: 27.9
+      font {
+        family: "wthrNew1"
+        pointsize: 11
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "36"
+    }
+    symbol {
+      minval: 28
+      maxval: 28.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "37"
+    }
+    symbol {
+      minval: 29
+      maxval: 29.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "38"
+    }
+    symbol {
+      minval: 30
+      maxval: 30.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "39"
+    }
+    symbol {
+      minval: 31
+      maxval: 31.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "3a"
+    }
+    symbol {
+      minval: 32
+      maxval: 32.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "3b"
+    }
+    symbol {
+      minval: 33
+      maxval: 33.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "3c"
+    }
+    symbol {
+      minval: 34
+      maxval: 34.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "3d"
+    }
+    symbol {
+      minval: 35
+      maxval: 35.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "3e"
+    }
+    symbol {
+      minval: 36
+      maxval: 36.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "3f"
+    }
+    symbol {
+      minval: 37
+      maxval: 37.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "40"
+    }
+    symbol {
+      minval: 38
+      maxval: 38.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "41"
+    }
+    symbol {
+      minval: 39
+      maxval: 39.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "42"
+    }
+    symbol {
+      minval: 40
+      maxval: 40.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "43"
+    }
+    symbol {
+      minval: 41
+      maxval: 41.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "44"
+    }
+    symbol {
+      minval: 42
+      maxval: 42.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "45"
+    }
+    symbol {
+      minval: 43
+      maxval: 43.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "46"
+    }
+    symbol {
+      minval: 44
+      maxval: 44.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "47"
+    }
+    symbol {
+      minval: 45
+      maxval: 45.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "48"
+    }
+    symbol {
+      minval: 46
+      maxval: 46.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "49"
+    }
+    symbol {
+      minval: 47
+      maxval: 47.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "4a"
+    }
+    symbol {
+      minval: 48
+      maxval: 48.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "4b"
+    }
+    symbol {
+      minval: 49
+      maxval: 49.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "4c"
+    }
+    symbol {
+      minval: 50
+      maxval: 50.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "4d"
+    }
+    symbol {
+      minval: 51
+      maxval: 51.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "4e"
+    }
+    symbol {
+      minval: 52
+      maxval: 52.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "4f"
+    }
+    symbol {
+      minval: 53
+      maxval: 53.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "50"
+    }
+    symbol {
+      minval: 54
+      maxval: 54.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "51"
+    }
+    symbol {
+      minval: 55
+      maxval: 55.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "52"
+    }
+    symbol {
+      minval: 56
+      maxval: 56.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "53"
+    }
+    symbol {
+      minval: 57
+      maxval: 57.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "54"
+    }
+    symbol {
+      minval: 58
+      maxval: 58.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "55"
+    }
+    symbol {
+      minval: 59
+      maxval: 59.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "56"
+    }
+    symbol {
+      minval: 60
+      maxval: 60.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "57"
+    }
+    symbol {
+      minval: 61
+      maxval: 61.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "58"
+    }
+    symbol {
+      minval: 62
+      maxval: 62.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "59"
+    }
+    symbol {
+      minval: 63
+      maxval: 63.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5a"
+    }
+    symbol {
+      minval: 64
+      maxval: 64.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5b"
+    }
+    symbol {
+      minval: 65
+      maxval: 65.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5c"
+    }
+    symbol {
+      minval: 66
+      maxval: 66.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "5d"
+    }
+    symbol {
+      minval: 67
+      maxval: 67.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "5e"
+    }
+    symbol {
+      minval: 68
+      maxval: 68.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5f"
+    }
+    symbol {
+      minval: 69
+      maxval: 69.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "60"
+    }
+    symbol {
+      minval: 70
+      maxval: 70.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "61"
+    }
+    symbol {
+      minval: 71
+      maxval: 71.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "62"
+    }
+    symbol {
+      minval: 72
+      maxval: 72.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "63"
+    }
+    symbol {
+      minval: 73
+      maxval: 73.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "64"
+    }
+    symbol {
+      minval: 74
+      maxval: 74.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "65"
+    }
+    symbol {
+      minval: 75
+      maxval: 75.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "66"
+    }
+    symbol {
+      minval: 76
+      maxval: 76.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "67"
+    }
+    symbol {
+      minval: 77
+      maxval: 77.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "68"
+    }
+    symbol {
+      minval: 78
+      maxval: 78.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "69"
+    }
+    symbol {
+      minval: 79
+      maxval: 79.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6a"
+    }
+    symbol {
+      minval: 80
+      maxval: 80.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6b"
+    }
+    symbol {
+      minval: 81
+      maxval: 81.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6c"
+    }
+    symbol {
+      minval: 82
+      maxval: 82.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6d"
+    }
+    symbol {
+      minval: 83
+      maxval: 83.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6e"
+    }
+    symbol {
+      minval: 84
+      maxval: 84.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6f"
+    }
+    symbol {
+      minval: 85
+      maxval: 85.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "70"
+    }
+    symbol {
+      minval: 86
+      maxval: 86.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "71"
+    }
+    symbol {
+      minval: 87
+      maxval: 87.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "72"
+    }
+    symbol {
+      minval: 88
+      maxval: 88.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "73"
+    }
+    symbol {
+      minval: 89
+      maxval: 89.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "74"
+    }
+    symbol {
+      minval: 90
+      maxval: 90.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "75"
+    }
+    symbol {
+      minval: 91
+      maxval: 91.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "76"
+    }
+    symbol {
+      minval: 92
+      maxval: 92.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "77"
+    }
+    symbol {
+      minval: 93
+      maxval: 93.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "78"
+    }
+    symbol {
+      minval: 94
+      maxval: 94.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "79"
+    }
+    symbol {
+      minval: 95
+      maxval: 95.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7a"
+    }
+    symbol {
+      minval: 96
+      maxval: 96.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7b"
+    }
+    symbol {
+      minval: 97
+      maxval: 97.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7c"
+    }
+    symbol {
+      minval: 98
+      maxval: 98.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7d"
+    }
+    symbol {
+      minval: 99
+      maxval: 99.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7e"
+    }
+    symbol {
+      minval: 104
+      maxval: 104.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "25"
+      label: ""
+    }
+    symbol {
+      minval: 110
+      maxval: 110.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "25"
+      label: ""
+    }
+    symbol {
+      minval: 111
+      maxval: 111.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "23"
+      label: ""
+    }
+    symbol {
+      minval: 112
+      maxval: 112.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2c"
+      label: ""
+    }
+    symbol {
+      minval: 118
+      maxval: 118.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2d"
+      label: ""
+    }
+    symbol {
+      minval: 120
+      maxval: 120.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "48"
+      label: ""
+    }
+    symbol {
+      minval: 121
+      maxval: 121.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "32"
+      label: ""
+    }
+    symbol {
+      minval: 122
+      maxval: 122.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "2f"
+      label: ""
+    }
+    symbol {
+      minval: 123
+      maxval: 123.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "30"
+      label: ""
+    }
+    symbol {
+      minval: 124
+      maxval: 124.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "36"
+      label: ""
+    }
+    symbol {
+      minval: 125
+      maxval: 125.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "33"
+      label: ""
+    }
+    symbol {
+      minval: 126
+      maxval: 126.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "38"
+      label: ""
+    }
+    symbol {
+      minval: 127
+      maxval: 129.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "41"
+      label: ""
+    }
+    symbol {
+      minval: 130
+      maxval: 130.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "48"
+      label: ""
+    }
+    symbol {
+      minval: 131
+      maxval: 131.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "44"
+      label: ""
+    }
+    symbol {
+      minval: 132
+      maxval: 132.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "45"
+      label: ""
+    }
+    symbol {
+      minval: 133
+      maxval: 133.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "47"
+      label: ""
+    }
+    symbol {
+      minval: 134
+      maxval: 134.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "4a"
+      label: ""
+    }
+    symbol {
+      minval: 135
+      maxval: 135.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "4c"
+      label: ""
+    }
+    symbol {
+      minval: 140
+      maxval: 141.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5f"
+      label: ""
+    }
+    symbol {
+      minval: 142
+      maxval: 142.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "60"
+      label: ""
+    }
+    symbol {
+      minval: 143
+      maxval: 143.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5a"
+      label: ""
+    }
+    symbol {
+      minval: 144
+      maxval: 144.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5c"
+      label: ""
+    }
+    symbol {
+      minval: 145
+      maxval: 145.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "64"
+      label: ""
+    }
+    symbol {
+      minval: 146
+      maxval: 146.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "66"
+      label: ""
+    }
+    symbol {
+      minval: 147
+      maxval: 147.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "5d"
+      label: ""
+    }
+    symbol {
+      minval: 148
+      maxval: 148.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "5e"
+      label: ""
+    }
+    symbol {
+      minval: 150
+      maxval: 150.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "4d"
+      label: ""
+    }
+    symbol {
+      minval: 151
+      maxval: 151.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "4e"
+      label: ""
+    }
+    symbol {
+      minval: 152
+      maxval: 152.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "50"
+      label: ""
+    }
+    symbol {
+      minval: 153
+      maxval: 153.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "52"
+      label: ""
+    }
+    symbol {
+      minval: 154
+      maxval: 155.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "53"
+      label: ""
+    }
+    symbol {
+      minval: 156
+      maxval: 156.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "5e"
+      label: ""
+    }
+    symbol {
+      minval: 157
+      maxval: 157.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "55"
+      label: ""
+    }
+    symbol {
+      minval: 158
+      maxval: 158.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "56"
+      label: ""
+    }
+    symbol {
+      minval: 160
+      maxval: 160.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "57"
+      label: ""
+    }
+    symbol {
+      minval: 161
+      maxval: 161.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "58"
+      label: ""
+    }
+    symbol {
+      minval: 162
+      maxval: 162.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5a"
+      label: ""
+    }
+    symbol {
+      minval: 163
+      maxval: 163.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5c"
+      label: ""
+    }
+    symbol {
+      minval: 164
+      maxval: 165.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "5d"
+      label: ""
+    }
+    symbol {
+      minval: 166
+      maxval: 166.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "5e"
+      label: ""
+    }
+    symbol {
+      minval: 167
+      maxval: 167.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5f"
+      label: ""
+    }
+    symbol {
+      minval: 168
+      maxval: 168.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "60"
+      label: ""
+    }
+    symbol {
+      minval: 170
+      maxval: 170.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "61"
+      label: ""
+    }
+    symbol {
+      minval: 171
+      maxval: 171.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "62"
+      label: ""
+    }
+    symbol {
+      minval: 172
+      maxval: 172.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "64"
+      label: ""
+    }
+    symbol {
+      minval: 173
+      maxval: 173.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "66"
+      label: ""
+    }
+    symbol {
+      minval: 174
+      maxval: 176.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6a"
+      label: ""
+    }
+    symbol {
+      minval: 177
+      maxval: 177.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "68"
+      label: ""
+    }
+    symbol {
+      minval: 178
+      maxval: 178.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "69"
+      label: ""
+    }
+    symbol {
+      minval: 180
+      maxval: 181.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6b"
+      label: ""
+    }
+    symbol {
+      minval: 182
+      maxval: 183.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6c"
+      label: ""
+    }
+    symbol {
+      minval: 184
+      maxval: 184.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6d"
+      label: ""
+    }
+    symbol {
+      minval: 185
+      maxval: 185.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "70"
+      label: ""
+    }
+    symbol {
+      minval: 186
+      maxval: 187.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "71"
+      label: ""
+    }
+    symbol {
+      minval: 189
+      maxval: 189.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "74"
+      label: ""
+    }
+    symbol {
+      minval: 190
+      maxval: 191.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2c"
+      label: ""
+    }
+    symbol {
+      minval: 192
+      maxval: 192.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7a"
+      label: ""
+    }
+    symbol {
+      minval: 193
+      maxval: 193.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7d"
+      label: ""
+    }
+    symbol {
+      minval: 194
+      maxval: 194.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2c"
+      label: ""
+    }
+    symbol {
+      minval: 195
+      maxval: 195.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7c"
+      label: ""
+    }
+    symbol {
+      minval: 196
+      maxval: 196.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "7e"
+      label: ""
+    }
+    symbol {
+      minval: 199
+      maxval: 199.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2e"
+      label: ""
+    }
+    symbol {
+      minval: 206
+      maxval: 207.9
+      font {
+        family: "wthrNew1"
+        pointsize: 11
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "22"
+      label: ""
+    }
+    symbol {
+      minval: 208
+      maxval: 208.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "3f"
+      label: ""
+    }
+    symbol {
+      minval: 210
+      maxval: 210.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "25"
+      label: ""
+    }
+    symbol {
+      minval: 213
+      maxval: 213.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2c"
+      label: ""
+    }
+    symbol {
+      minval: 217
+      maxval: 217.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2c"
+      label: ""
+    }
+    symbol {
+      minval: 230
+      maxval: 230.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "23"
+      label: ""
+    }
+    symbol {
+      minval: 239
+      maxval: 239.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "41"
+      label: ""
+    }
+    symbol {
+      minval: 241
+      maxval: 249.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "48"
+      label: ""
+    }
+    symbol {
+      minval: 250
+      maxval: 257.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "4d"
+      label: ""
+    }
+    symbol {
+      minval: 259
+      maxval: 259.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "55"
+      label: ""
+    }
+    symbol {
+      minval: 260
+      maxval: 267.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "57"
+      label: ""
+    }
+    symbol {
+      minval: 270
+      maxval: 277.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "61"
+      label: ""
+    }
+    symbol {
+      minval: 278
+      maxval: 278.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "67"
+      label: ""
+    }
+    symbol {
+      minval: 279
+      maxval: 279.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5f"
+      label: ""
+    }
+    symbol {
+      minval: 280
+      maxval: 280.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "57"
+      label: ""
+    }
+    symbol {
+      minval: 281
+      maxval: 281.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "5e"
+      label: ""
+    }
+    symbol {
+      minval: 282
+      maxval: 282.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "5f"
+      label: ""
+    }
+    symbol {
+      minval: 283
+      maxval: 283.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "61"
+      label: ""
+    }
+    symbol {
+      minval: 284
+      maxval: 287.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "72"
+      label: ""
+    }
+    symbol {
+      minval: 288
+      maxval: 291.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "75"
+      label: ""
+    }
+    symbol {
+      minval: 292
+      maxval: 293.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "79"
+      label: ""
+    }
+    symbol {
+      minval: 105
+      maxval: 105.9
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "24"
+      label: ""
+    }
+    symbol {
+      minval: 209
+      maxval: 209.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "21"
+      label: ""
+    }
+    symbol {
+      minval: 211
+      maxval: 211.9
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4292786244
+      patternba: "64"
+      label: ""
+    }
+    symbol {
+      minval: 219
+      maxval: 219.9
+      font {
+        family: "wthrNew1"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "2e"
+      label: ""
+    }
+    symbol {
+      minval: 223
+      maxval: 228.9
+      font {
+        family: "Synop"
+        pointsize: 10
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "62"
+      label: ""
+    }
+  }
+  testval: 63
+  id {
+    descr: 20003
+    name: "w"
+    description: ""
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 0
+  testqual: 9999
+  id {
+    descr: 11001
+    name: "dd"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 0
+  testqual: 0
+  id {
+    descr: 11002
+    name: "ff"
+    parent: "wind"
+  }
+}
+rule {
+  pos {
+    x: -23
+    y: 0
+  }
+  align: kLeftCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: -1
+    septype: kComma
+    signview: kMinus
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3030"
+    }
+    symbol {
+      minval: 100
+      maxval: 199
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3031"
+    }
+    symbol {
+      minval: 200
+      maxval: 299
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3032"
+    }
+    symbol {
+      minval: 300
+      maxval: 399
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3033"
+    }
+    symbol {
+      minval: 400
+      maxval: 499
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3034"
+    }
+    symbol {
+      minval: 500
+      maxval: 599
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3035"
+    }
+    symbol {
+      minval: 600
+      maxval: 699
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3036"
+    }
+    symbol {
+      minval: 700
+      maxval: 799
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3037"
+    }
+    symbol {
+      minval: 800
+      maxval: 899
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3038"
+    }
+    symbol {
+      minval: 900
+      maxval: 999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3039"
+    }
+    symbol {
+      minval: 1000
+      maxval: 1099
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3130"
+    }
+    symbol {
+      minval: 1100
+      maxval: 1199
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3131"
+    }
+    symbol {
+      minval: 1200
+      maxval: 1299
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3132"
+    }
+    symbol {
+      minval: 1300
+      maxval: 1399
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3133"
+    }
+    symbol {
+      minval: 1400
+      maxval: 1499
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3134"
+    }
+    symbol {
+      minval: 1500
+      maxval: 1599
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3135"
+    }
+    symbol {
+      minval: 1600
+      maxval: 1699
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3136"
+    }
+    symbol {
+      minval: 1700
+      maxval: 1799
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3137"
+    }
+    symbol {
+      minval: 1800
+      maxval: 1899
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3138"
+    }
+    symbol {
+      minval: 1900
+      maxval: 1999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3139"
+    }
+    symbol {
+      minval: 2000
+      maxval: 2099
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3230"
+    }
+    symbol {
+      minval: 2100
+      maxval: 2199
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3231"
+    }
+    symbol {
+      minval: 2200
+      maxval: 2299
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3232"
+    }
+    symbol {
+      minval: 2300
+      maxval: 2399
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3233"
+    }
+    symbol {
+      minval: 2400
+      maxval: 2499
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3234"
+    }
+    symbol {
+      minval: 2500
+      maxval: 2599
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3235"
+    }
+    symbol {
+      minval: 2600
+      maxval: 2699
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3236"
+    }
+    symbol {
+      minval: 2700
+      maxval: 2799
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3237"
+    }
+    symbol {
+      minval: 2800
+      maxval: 2899
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3238"
+    }
+    symbol {
+      minval: 2900
+      maxval: 2999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3239"
+    }
+    symbol {
+      minval: 3000
+      maxval: 3099
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3330"
+    }
+    symbol {
+      minval: 3100
+      maxval: 3199
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3331"
+    }
+    symbol {
+      minval: 3200
+      maxval: 3299
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3332"
+    }
+    symbol {
+      minval: 3300
+      maxval: 3399
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3333"
+    }
+    symbol {
+      minval: 3400
+      maxval: 3499
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3334"
+    }
+    symbol {
+      minval: 3500
+      maxval: 3599
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3335"
+    }
+    symbol {
+      minval: 3600
+      maxval: 3699
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3336"
+    }
+    symbol {
+      minval: 3700
+      maxval: 3799
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3337"
+    }
+    symbol {
+      minval: 3800
+      maxval: 3899
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3338"
+    }
+    symbol {
+      minval: 3900
+      maxval: 3999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3339"
+    }
+    symbol {
+      minval: 4000
+      maxval: 4099
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3430"
+    }
+    symbol {
+      minval: 4100
+      maxval: 4199
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3431"
+    }
+    symbol {
+      minval: 4200
+      maxval: 4299
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3432"
+    }
+    symbol {
+      minval: 4300
+      maxval: 4399
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3433"
+    }
+    symbol {
+      minval: 4400
+      maxval: 4499
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3434"
+    }
+    symbol {
+      minval: 4500
+      maxval: 4599
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3435"
+    }
+    symbol {
+      minval: 4600
+      maxval: 4699
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3436"
+    }
+    symbol {
+      minval: 4700
+      maxval: 4799
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3437"
+    }
+    symbol {
+      minval: 4800
+      maxval: 4899
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3438"
+    }
+    symbol {
+      minval: 4900
+      maxval: 4999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3439"
+    }
+    symbol {
+      minval: 5000
+      maxval: 5999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3530"
+    }
+    symbol {
+      minval: 6000
+      maxval: 6999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3536"
+    }
+    symbol {
+      minval: 7000
+      maxval: 7999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3537"
+    }
+    symbol {
+      minval: 8000
+      maxval: 8999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3538"
+    }
+    symbol {
+      minval: 9000
+      maxval: 9999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3539"
+    }
+    symbol {
+      minval: 10000
+      maxval: 10999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3630"
+    }
+    symbol {
+      minval: 11000
+      maxval: 11999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3631"
+    }
+    symbol {
+      minval: 12000
+      maxval: 12999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3632"
+    }
+    symbol {
+      minval: 13000
+      maxval: 13999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3633"
+    }
+    symbol {
+      minval: 14000
+      maxval: 14999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3634"
+    }
+    symbol {
+      minval: 15000
+      maxval: 15999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3635"
+    }
+    symbol {
+      minval: 16000
+      maxval: 16999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3636"
+    }
+    symbol {
+      minval: 17000
+      maxval: 17999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3637"
+    }
+    symbol {
+      minval: 18000
+      maxval: 18999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3638"
+    }
+    symbol {
+      minval: 19000
+      maxval: 19999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3639"
+    }
+    symbol {
+      minval: 20000
+      maxval: 20999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3730"
+    }
+    symbol {
+      minval: 21000
+      maxval: 21999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3731"
+    }
+    symbol {
+      minval: 22000
+      maxval: 22999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3732"
+    }
+    symbol {
+      minval: 23000
+      maxval: 23999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3733"
+    }
+    symbol {
+      minval: 24000
+      maxval: 24999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3734"
+    }
+    symbol {
+      minval: 25000
+      maxval: 25999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3735"
+    }
+    symbol {
+      minval: 26000
+      maxval: 26999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3736"
+      label: ""
+    }
+    symbol {
+      minval: 27000
+      maxval: 27999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3737"
+      label: ""
+    }
+    symbol {
+      minval: 28000
+      maxval: 28999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3738"
+    }
+    symbol {
+      minval: 29000
+      maxval: 29999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3739"
+    }
+    symbol {
+      minval: 30000
+      maxval: 34999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3830"
+    }
+    symbol {
+      minval: 35000
+      maxval: 39999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3831"
+    }
+    symbol {
+      minval: 40000
+      maxval: 44999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3832"
+    }
+    symbol {
+      minval: 45000
+      maxval: 49999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3833"
+    }
+    symbol {
+      minval: 50000
+      maxval: 54999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3834"
+    }
+    symbol {
+      minval: 55000
+      maxval: 59999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3835"
+    }
+    symbol {
+      minval: 64000
+      maxval: 64999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3836"
+    }
+    symbol {
+      minval: 65000
+      maxval: 69999
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3837"
+    }
+    symbol {
+      minval: 7
+      maxval: 70000.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3838"
+    }
+    symbol {
+      minval: 70001
+      maxval: 100000
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3839"
+    }
+    symbol {
+      minval: 0
+      maxval: 0.49
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3930"
+    }
+    symbol {
+      minval: 0.05
+      maxval: 0.19
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3931"
+    }
+    symbol {
+      minval: 0.2
+      maxval: 0.49
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3932"
+    }
+    symbol {
+      minval: 0.5
+      maxval: 0.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3933"
+    }
+    symbol {
+      minval: 1
+      maxval: 1.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3934"
+    }
+    symbol {
+      minval: 2
+      maxval: 3.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3935"
+    }
+    symbol {
+      minval: 4
+      maxval: 9.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3936"
+    }
+    symbol {
+      minval: 10
+      maxval: 19.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3937"
+    }
+    symbol {
+      minval: 20
+      maxval: 49.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3938"
+    }
+    symbol {
+      minval: 50
+      maxval: 100
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3939"
+    }
+    codedigit: true
+  }
+  testval: 2000
+  id {
+    descr: 20001
+    name: "V"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: 0
+    y: 17
+  }
+  align: kBottomCenter
+  type: kSymbol
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 0
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "wthrNew0"
+      pointsize: 8
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+  }
+  symbol {
+    symbol {
+      minval: 0
+      maxval: 29.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3030"
+      label: "<30 м"
+    }
+    symbol {
+      minval: 30
+      maxval: 59.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3031"
+      label: "30 м"
+    }
+    symbol {
+      minval: 60
+      maxval: 89.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3032"
+      label: "60"
+    }
+    symbol {
+      minval: 90
+      maxval: 119.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3033"
+      label: "90 м"
+    }
+    symbol {
+      minval: 120
+      maxval: 149.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3034"
+      label: "120 м"
+    }
+    symbol {
+      minval: 150
+      maxval: 179.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3035"
+      label: "150 м"
+    }
+    symbol {
+      minval: 180
+      maxval: 209.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3036"
+      label: "180 м"
+    }
+    symbol {
+      minval: 210
+      maxval: 239.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3037"
+      label: "210 м"
+    }
+    symbol {
+      minval: 240
+      maxval: 269.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3038"
+      label: "240 м"
+    }
+    symbol {
+      minval: 270
+      maxval: 299.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3039"
+      label: "270 м"
+    }
+    symbol {
+      minval: 300
+      maxval: 329.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3130"
+      label: "300 м"
+    }
+    symbol {
+      minval: 330
+      maxval: 359.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3131"
+      label: "330 м"
+    }
+    symbol {
+      minval: 360
+      maxval: 389.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3132"
+      label: "360 м"
+    }
+    symbol {
+      minval: 390
+      maxval: 419.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3133"
+      label: "390 м"
+    }
+    symbol {
+      minval: 420
+      maxval: 449.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3134"
+      label: "420 м"
+    }
+    symbol {
+      minval: 450
+      maxval: 479.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3135"
+      label: "450 м"
+    }
+    symbol {
+      minval: 480
+      maxval: 509.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3136"
+      label: "480 м"
+    }
+    symbol {
+      minval: 510
+      maxval: 539.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3137"
+      label: "510 м"
+    }
+    symbol {
+      minval: 540
+      maxval: 569.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3138"
+      label: "540 м"
+    }
+    symbol {
+      minval: 570
+      maxval: 599.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3139"
+      label: "570 м"
+    }
+    symbol {
+      minval: 600
+      maxval: 629.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3230"
+      label: "600 м"
+    }
+    symbol {
+      minval: 630
+      maxval: 659.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3231"
+      label: "630 м"
+    }
+    symbol {
+      minval: 660
+      maxval: 689.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3232"
+      label: "660 м"
+    }
+    symbol {
+      minval: 690
+      maxval: 719.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3233"
+      label: "690 м"
+    }
+    symbol {
+      minval: 720
+      maxval: 749.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3234"
+      label: "720 м"
+    }
+    symbol {
+      minval: 750
+      maxval: 779.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3235"
+      label: "750 м"
+    }
+    symbol {
+      minval: 780
+      maxval: 809.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3236"
+      label: "780 м"
+    }
+    symbol {
+      minval: 810
+      maxval: 839.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3237"
+      label: "810 м"
+    }
+    symbol {
+      minval: 840
+      maxval: 869.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3238"
+      label: "840 м"
+    }
+    symbol {
+      minval: 870
+      maxval: 899.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3239"
+      label: "870 м"
+    }
+    symbol {
+      minval: 900
+      maxval: 929.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3330"
+      label: "900 м"
+    }
+    symbol {
+      minval: 930
+      maxval: 959.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3331"
+      label: "930 м"
+    }
+    symbol {
+      minval: 960
+      maxval: 989.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3332"
+      label: "960 м"
+    }
+    symbol {
+      minval: 990
+      maxval: 1019.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3333"
+      label: "990 м"
+    }
+    symbol {
+      minval: 1020
+      maxval: 1049.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3334"
+      label: "1020 м"
+    }
+    symbol {
+      minval: 1050
+      maxval: 1079.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3335"
+      label: "1050 м"
+    }
+    symbol {
+      minval: 1080
+      maxval: 1109.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3336"
+      label: "1080 м"
+    }
+    symbol {
+      minval: 1110
+      maxval: 1139.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3337"
+      label: "1110 м"
+    }
+    symbol {
+      minval: 1140
+      maxval: 1169.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3338"
+      label: "1140 м"
+    }
+    symbol {
+      minval: 1170
+      maxval: 1199.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3339"
+      label: "1170 м"
+    }
+    symbol {
+      minval: 1200
+      maxval: 1229.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3430"
+      label: "1200 м"
+    }
+    symbol {
+      minval: 1230
+      maxval: 1259.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3431"
+      label: "1230 м"
+    }
+    symbol {
+      minval: 1260
+      maxval: 1289.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3432"
+      label: "1260 м"
+    }
+    symbol {
+      minval: 1290
+      maxval: 1319.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3433"
+      label: "1290 м"
+    }
+    symbol {
+      minval: 1320
+      maxval: 1349.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3434"
+      label: "1320 м"
+    }
+    symbol {
+      minval: 1350
+      maxval: 1379.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3435"
+      label: "1350 м"
+    }
+    symbol {
+      minval: 1380
+      maxval: 1409.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3436"
+      label: "1380 м"
+    }
+    symbol {
+      minval: 1410
+      maxval: 1439.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3437"
+      label: "1410 м"
+    }
+    symbol {
+      minval: 1440
+      maxval: 1469.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3438"
+      label: "1440 м"
+    }
+    symbol {
+      minval: 1470
+      maxval: 1499.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3439"
+      label: "1470 м"
+    }
+    symbol {
+      minval: 1500
+      maxval: 1799.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3530"
+      label: "1500 м"
+    }
+    symbol {
+      minval: 1800
+      maxval: 2099.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3536"
+      label: "1800 м"
+    }
+    symbol {
+      minval: 2100
+      maxval: 2399.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3537"
+      label: "2100 м"
+    }
+    symbol {
+      minval: 2400
+      maxval: 2699.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3538"
+      label: "2400 м"
+    }
+    symbol {
+      minval: 2700
+      maxval: 2999.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3539"
+      label: "2700 м"
+    }
+    symbol {
+      minval: 3000
+      maxval: 3299.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3630"
+      label: "3000 м"
+    }
+    symbol {
+      minval: 3300
+      maxval: 3599.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3631"
+      label: "3300 м"
+    }
+    symbol {
+      minval: 3600
+      maxval: 3899.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3632"
+      label: "3600 м"
+    }
+    symbol {
+      minval: 3900
+      maxval: 4199.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3633"
+      label: "3900 м"
+    }
+    symbol {
+      minval: 4200
+      maxval: 4499.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3634"
+      label: "4200 м"
+    }
+    symbol {
+      minval: 4500
+      maxval: 4799.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3635"
+      label: "4500 м"
+    }
+    symbol {
+      minval: 4800
+      maxval: 5099.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3636"
+      label: "4800 м"
+    }
+    symbol {
+      minval: 5100
+      maxval: 5399.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3637"
+      label: "5100 м"
+    }
+    symbol {
+      minval: 5400
+      maxval: 5699.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3638"
+      label: "5400 м"
+    }
+    symbol {
+      minval: 5700
+      maxval: 5999.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3639"
+      label: "5700 м"
+    }
+    symbol {
+      minval: 6000
+      maxval: 6299.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3730"
+      label: "6000 м"
+    }
+    symbol {
+      minval: 6300
+      maxval: 6599.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3731"
+      label: "6300 м"
+    }
+    symbol {
+      minval: 6600
+      maxval: 6899.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3732"
+      label: "6600 м"
+    }
+    symbol {
+      minval: 6900
+      maxval: 7199.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3733"
+      label: "6900 м"
+    }
+    symbol {
+      minval: 7200
+      maxval: 7499.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3734"
+      label: "7200 м"
+    }
+    symbol {
+      minval: 7500
+      maxval: 7799.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3735"
+      label: "7500 м"
+    }
+    symbol {
+      minval: 7800
+      maxval: 8099.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3736"
+      label: "7800 м"
+    }
+    symbol {
+      minval: 8100
+      maxval: 8399.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3737"
+      label: "8100 м"
+    }
+    symbol {
+      minval: 8400
+      maxval: 8699.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3738"
+      label: "8400 м"
+    }
+    symbol {
+      minval: 8700
+      maxval: 8999.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3739"
+      label: "8700 м"
+    }
+    symbol {
+      minval: 9000
+      maxval: 10499.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3830"
+      label: "9000 м"
+    }
+    symbol {
+      minval: 10500
+      maxval: 11999.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3831"
+      label: "10500 м"
+    }
+    symbol {
+      minval: 12000
+      maxval: 13499.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3832"
+      label: "12000 м"
+    }
+    symbol {
+      minval: 13500
+      maxval: 14999.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3833"
+      label: "13500 м"
+    }
+    symbol {
+      minval: 15000
+      maxval: 16499.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3834"
+      label: "15000 м"
+    }
+    symbol {
+      minval: 16500
+      maxval: 17999.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3835"
+      label: "16500 м"
+    }
+    symbol {
+      minval: 18000
+      maxval: 19499.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3836"
+      label: "18000 м"
+    }
+    symbol {
+      minval: 19500
+      maxval: 20999.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3837"
+      label: "19500 м"
+    }
+    symbol {
+      minval: 21000
+      maxval: 21000.01
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3838"
+      label: "21000 м"
+    }
+    symbol {
+      minval: 21000.02
+      maxval: 99999.99
+      font {
+        family: "wthrNew0"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "3839"
+      label: "> 21000 м"
+    }
+    codedigit: true
+  }
+  testval: 176.34
+  id {
+    descr: 20013
+    name: "h"
+    description: ""
+    parent: "cloud"
+  }
+}
+center: kNoCenter
+crisscross: false
+radius: 5
+windfont {
+  family: "Sans Serif"
+  pointsize: 5
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+draw_bad_dd: true

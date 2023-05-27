@@ -1,0 +1,16 @@
+{
+   "update": "message",
+   "updates": [
+      { "q": { "_id" : "%1" }, 
+        "u": { "$pull" : { 
+                 "unread" :"%2"
+               },
+               "$addToSet" : {
+                 "history" : { "read" : "%3" }
+               }
+             },
+        "upsert": false, 
+        "multi": false 
+      }
+   ]   
+}

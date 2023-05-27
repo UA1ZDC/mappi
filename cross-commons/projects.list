@@ -1,0 +1,7 @@
+DIRS=(
+    cross-commons/includes
+    cross-commons/app
+    cross-commons/singleton
+    cross-commons/debug
+    cross-commons/funcs
+)

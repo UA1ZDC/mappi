@@ -1,0 +1,13 @@
+{
+  "findAndModify": "up_down_loads",
+  "query": { "_id" : { "$exists" : false } 
+  },
+  "update": { "$set" : {
+      "dt_write" : @dt@,
+      "file_id" : @id@,
+      "next_chunk" : 0
+    }
+  },
+  "new": true,  
+  "upsert": true
+}

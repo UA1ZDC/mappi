@@ -1,0 +1,36 @@
+{ "$match" : {
+  "value" : { "%1" : "%2" }
+}},
+{
+  "$addFields" : { "month" : { "$month" : "$_id.date" } } 
+},
+{ "$facet" : {
+  "start" : [
+    {
+      "$match" : { "month" : { "$gt" : "%3" } }
+    },
+    { "$group" : {
+      "_id"  : { "year" : { "$year" : "$_id.date" } },
+      "date" : { "$min" : "$_id.date" }
+    }},
+    { "$project" :  {
+      "_id"  : 0,
+      "year" : "$_id.year",
+      "date" : "$date" 
+    } }
+  ],
+  "end" : [
+    {
+      "$match" : { "month" : { "$lt" : "%4" } }
+    },
+    { "$group" : {
+      "_id"    : { "year" : { "$year" : "$_id.date" } },
+      "date"   : { "$max" : "$_id.date" }
+    }},
+    { "$project" :  {
+      "_id"  : 0,
+      "year" : "$_id.year",
+      "date" : "$date" 
+    } }
+  ]        
+}}

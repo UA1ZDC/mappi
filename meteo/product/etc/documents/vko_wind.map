@@ -1,0 +1,11 @@
+name: "vko_wind.map"
+title: "Климатическая характеристика (ветер)"
+formal {
+    template: "vko_wind.odt"
+    name: "Климатическая характеристика (ветер)"
+    module_path: "vko_surf_wind.py"
+    format: kOdt
+}
+document {
+  doctype: kFormalDocument
+}

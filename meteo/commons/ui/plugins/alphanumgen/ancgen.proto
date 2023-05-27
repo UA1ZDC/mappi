@@ -1,0 +1,48 @@
+syntax = "proto2";
+
+package meteo.anc;
+
+//! Описание метеопараметра
+message Param {
+  required uint32 width = 1;    //!< Количество символов
+  optional uint32 fill  = 9 [default = 48];    //!< Символ для заполнения до необходимой width (при отсутствии - '0')
+  optional string text  = 2;	//!< Текст
+  optional string name  = 3;	//!< Название метеопараметра (если не задан, б.д. указано неизменяемое значение text)
+  // optional string validator = 4; //!< Валидатор для введенной величины
+  optional float  mul   = 5;	//!< Множитель для преобразования в кодовое значение
+  optional string func  = 6;	//!< Функция для преобразования в кодовое значение
+  optional string table = 7;	//!< Таблица для преобразования в кодовое значение
+  optional string sign  = 8;    //!< Обозначение знака в коде (sn)
+};
+
+message ParamList {
+  repeated Param param = 1;
+};
+
+//! Описание группы
+message Group {
+  required bool require = 1;	//!< true - группа обязательная
+  optional string name = 2;	//!< Название группы
+  repeated Param param  = 3;	//!< Описание метеопараметров
+  repeated ParamList plist = 4; //!< Набор повторяющихся групп, строится по описанию метеопараметров param, используется вместо него
+};
+
+message GroupList {
+  required string name   = 1;	//!< Название повторяющегося набора
+  repeated Group  mgroup = 2;	//!< Описание группы или набора повторяющихся групп
+};
+
+//! Описание секции
+message Section {
+  required bool require = 1;	//!< true - секция обязательная
+  optional string mark  = 2;    //!< Обозначение начала секции
+  optional string defvalue = 3; //!< Значение для секции, если все группы пустые
+  repeated Group mgroup = 4;	//!< Описание группы  
+  repeated GroupList mgroupset = 5; //!< Описание набора повторяющихся групп (кн-04), первый элемент используется как шаблон для других, значениями не заполняется
+};
+
+//! Шаблон для построения цифро-буквенного кода
+message AncTemplate {
+  repeated Section section = 1;	//!< Описание секции
+};
+

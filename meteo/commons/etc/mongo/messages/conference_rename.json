@@ -1,0 +1,11 @@
+{
+   "update": "conferences",
+   "updates": [
+      { "q": { "_id" : @id@ }, 
+	"u": { "$set" : { "name" :@name@ } }, 
+	"upsert": false, 
+	"multi": false 
+      }
+   ]
+}
+

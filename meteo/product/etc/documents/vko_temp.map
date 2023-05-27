@@ -1,0 +1,11 @@
+name: "vko_temp.map"
+title: "Климатическая характеристика (температура)"
+formal {
+    template: "vko_temp.odt"
+    name: "Климатическая характеристика (температура)"
+    module_path: "vko_surf_temp.py"
+    format: kOdt
+}
+document {
+  doctype: kFormalDocument
+}

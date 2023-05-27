@@ -1,0 +1,12 @@
+{
+   "find": "dialogs_messages",
+   "filter": {
+     "$or": [ 
+      { "from": @one@, "to" : @two@ },
+      { "from": @two@, "to" : @one@ } 
+    ]
+   },
+   "sort": { "dt" : -1 },
+   "limit" : 1,
+   "singleBatch": true
+}

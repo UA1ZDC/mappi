@@ -1,0 +1,30 @@
+{
+  "q": {
+    "_id" : @id@,
+    "param.descrname" : @descrname@,
+    "param.descr" : @descr@
+  },
+  "u": {
+    "$set" : {
+      "param.$.value" : @value@,
+      "param.$.code" : @code@,
+      "param.$.quality" : @quality@,
+      "param.$.control" : @control@,
+      "param.$.tlgid"	: @tlgid@,
+      "param.$.dt_write": @dt_write@,
+      "param.$.uuid" : @uuid@
+    },
+    "$addToSet" : {
+      "param.$.dubl" : {
+    "value" :   @d_value@,
+    "code" :    @d_code@,
+    "quality" : @d_quality@,
+    "control" : @d_control@,
+    "tlgid" :   @d_tlgid@,
+    "dt_write": @d_dt_write@,
+    "uuid"   :  @d_uuid@
+      }
+    }
+  },
+  "upsert": false
+}

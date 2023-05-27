@@ -1,0 +1,75 @@
+BUFR TABLE RELATIVE TO SECTION 1 (Version 14-11/2008)
+BUFR Table A — Data category
+Code figure
+Meaning
+0
+Surface data — land
+1
+Surface data — sea
+2
+Vertical soundings (other than satellite)
+3
+Vertical soundings (satellite)
+4
+Single level upper-air data (other than satellite)
+5
+Single level upper-air data (satellite)
+6
+Radar data
+7
+Synoptic features
+8
+Physical/chemical constituents
+9
+Dispersal and transport
+10
+Radiological data
+11
+BUFR tables, complete replacement or update
+12
+Surface data (satellite)
+13
+Forecasts
+14
+Warnings
+15–19
+Reserved
+20
+Status information
+21
+Radiances (satellite measured)
+22
+(Awaiting validation) Radar (satellite) but not altimeter and scatterometer
+23
+(Awaiting validation) Lidar (satellite)
+24
+(Awaiting validation) Scatterometry (satellite)
+25
+(Awaiting validation) Altimetry (satellite)
+26
+(Awaiting validation) Spectrometry (satellite)
+27
+(Awaiting validation) Gravity measurement (satellite)
+28
+(Awaiting validation) Precision orbit (satellite)
+29
+(Awaiting validation) Space environment (satellite)
+30
+(Awaiting validation) Calibration datasets (satellite)
+31
+Oceanographic data
+32–100
+Reserved
+101
+Image data (satellite)
+102–239
+Reserved
+240–254
+For experimental use
+FOR BUFR EDITION 3:
+255
+Indicator for local use, with sub-category
+FOR BUFR EDITION 4:
+255
+Other category
+Note (for BUFR Edition 3):  In data category 255, the local data category may be described by BUFR, Section 1, octet 10.

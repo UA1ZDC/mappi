@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="AVGM-STORMW" text="Штормовое предупреждение (АРМ_ВГМ)"  category="47">
+  <MessageSections>ARMVGM-STORM-W\s*(\w{4}\s*\d{6})\s*(?:(CNL)$|(.*))</MessageSections>
+  <Section number="0" text="" >
+    <SectionGroups>\s*(\w{4})\s*([\d/]{2})([\d/]{2})([\d/]{2})</SectionGroups>
+    <Value number="1"  descrName="CCCC" text="ИКАО"/>
+    <Value number="1"  descrName="YY" text="День" />
+    <Value number="2"  descrName="GG" text="Час" />
+    <Value number="3"  descrName="gg" text="Минута" />
+  </Section>
+  <Section number="2" text="" >
+    <SectionGroups>\s*(CNL)</SectionGroups>
+    <Value number="1"  descrName="status" text="Статус: отмена"  />
+  </Section>
+  <Section number="3" text="" >
+    <SectionGroups>\s*(.*)</SectionGroups>
+    <Value number="1"  descrName="text" text="Текст прогноза"  />
+  </Section>
+</Message>

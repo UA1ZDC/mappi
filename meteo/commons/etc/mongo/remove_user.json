@@ -1,0 +1,6 @@
+{  "delete": "users",
+   "deletes": [ {
+      "q": {  "login" : @login@ },
+      "limit": 1
+}
+]}

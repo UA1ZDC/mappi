@@ -1,0 +1,85 @@
+syntax = "proto2";
+
+package TRepresent;
+
+message PointData {
+  required float  r = 1;
+  required sint32 e = 2;
+  required sint32 d = 3;
+  required uint32 bits = 4;
+  optional uint32 type = 5;
+}
+
+//! template 0, 41, 61
+message SimplePoint {
+  required PointData pd = 1;
+  optional uint32 ln_b = 2;
+}
+
+//! template 1
+message MatrixPoint {
+  required PointData pd = 1;
+  required bool map = 2;
+  required uint32 num = 3;
+  required uint32 nr = 4;
+  required uint32 nc = 5;
+  required uint32 dim1 = 6;
+  required uint32 nc1  = 7;
+  required uint32 dim2 = 8;
+  required uint32 nc2  = 9;
+  required uint32 phys1 = 10;
+  required uint32 phys2 = 11;
+  repeated float coef1 = 12;
+  repeated float coef2 = 13;
+}
+
+//! template 2,3
+message ComplexPoint {
+  required PointData pd  = 1;
+  required uint32 method = 2;
+  required uint32 missing = 3;
+  required uint32 prime = 4;
+  required uint32 second = 5;
+  required uint32 ng  = 6;
+  required uint32 r_w = 7;
+  required uint32 bits_w= 8;
+  required uint32 r_l   = 9;
+  required uint32 inc_l = 10;
+  required uint32 last_l= 11;
+  required uint32 bits_l= 12;
+  optional uint32 order = 13;
+  optional uint32 octets= 14;
+}
+
+//! template 4
+message IEEEPoint {
+  required uint32 prec = 1;
+}
+
+//! template 40
+message JpegPoint {
+  required PointData pd = 1;
+  required uint32 compress = 2;
+  required uint32 ratio = 3;
+}
+
+//! template 50, 51
+message Spectral {
+  required PointData pd = 1;
+  optional float  rp = 2;
+  optional uint32 p  = 3;
+  optional uint32 js = 4;
+  optional uint32 ks = 5;
+  optional uint32 ms = 6;
+  optional uint32 ts = 7;
+  optional uint32 prec = 8;
+}
+
+//! template 200
+message LevelValues {
+  required uint32 bits = 1;
+  required uint32 mv  = 2;
+  required uint32 mvl = 3;
+  required uint32 d   = 4;
+  repeated uint32 scale = 5;
+}

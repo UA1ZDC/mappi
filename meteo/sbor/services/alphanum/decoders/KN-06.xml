@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="KN-06" text="BATHY" category="122">
+  <MessageSections>^\s*JJXX((?:(?:\s*[\d/]{5})(?!\s*8888)){3,5}(?:\s*[\d/]{5}))((?:\s*8888[\d/])(?:(?:\s*[\d/]{5})(?!\s*(?:00000|66666|99999)))+(?:\s*[\d/]{5})?(?:\s*00000)?)((?:(?:\s*66666)(?:\s*1[\d/]{4})?(?:\s*[\d/]{5})?)?)(.*)</MessageSections>
+  <Section number="1" text="DATA FOR REPORTING IDENTIFICATION"> <!--опознавательные данные-->
+    <SectionGroups>(\s*[\d/]{5})(\s*[\d/]{5})(\s*[\d/]{5})(\s*[\d/]{5})(\s*[0-3][\d/]{4})?(\s*4[\d/]{4})?</SectionGroups>
+    <Group number="1" text="DATE">
+      <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+      <Value number="1"  descrName="YY" text="day"/>
+      <Value number="2"  descrName="MM" text="month"/>
+      <Value number="3"  descrName="J" text="year"/>
+    </Group>
+    <Group number="2" text="observation">
+      <GroupValues>\s*([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="GG" text="H"/>
+      <Value number="2"  descrName="gg" text="M"/>
+    </Group>
+    <Group number="3" text="latitude">
+      <GroupValues>\s*([\d/])([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="Qc"/>
+      <Value number="2"  descrName="LaLaLaLa" text="latitude"/>
+    </Group>
+    <Group number="4" text="longitude">
+      <GroupValues>\s*([\d/]{5})</GroupValues>
+      <Value number="1"  descrName="LoLoLoLoLo" text="longitude"/>
+    </Group>
+    <Group number="5" text="wind">
+      <item>
+	<GroupValues>\s*()([\d/])([\d/]{2})([\d/]{2})</GroupValues>
+	<Value number="0"  descrName="ggp" default="-10" text="wind direction"	/>
+	<Value number="1"  descrName="iu"/>
+	<Value number="2"  descrName="dd" text="wind direction"/>
+	<Value number="3"  descrName="ff2" text="wind velocity"/>  
+      </item>
+    </Group>
+    <Group number="6" text="Temperature">
+      <GroupValues>\s*4([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="snTTT" text="Temperature"/>
+    </Group>  
+  </Section>	  
+  <Section number="2" text="TEMPERATURE OF WATER"> <!--температура воды на характерных горизонтах-->
+    <SectionGroups>(\s*8888[\d/])((?:(?:\s*[\d/]{5})(?!\s*(?:00000|999)))+(?:\s*[\d/]{5})(?!\s*00000))((?:(?:\s*999[\d/]{2})(?:(?:\s*[\d/]{5})(?!\s*(?:00000|999)))+(?:(?:\s*[\d/]{5})(?!\s*00000))?)*)((?:\s*[\d/]{5})(?:\s*00000))?</SectionGroups>
+    <Group number="1">
+      <GroupValues>\s*8888([\d/])</GroupValues>
+      <Value number="1"  descrName="k1"/>
+    </Group>  
+    <Group number="2" text="depth and temperature of water">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+	<Value number="1"  descrName="zn1" text="depth"/>
+	<Value number="2"  descrName="TnTnTn" text="Temperature of water"/>
+      </item>
+    </Group>  
+    <Group number="3" text="hundreds of meters">
+      <GroupValues>(\s*999[\d/]{2})((?:(?:\s*(?!999)[\d/]{5}))+)</GroupValues>
+      <SubGroup number="1" text="hundreds of meters">
+	<SubGroupValues>\s*999([\d/]{2})</SubGroupValues>
+	<Value number="1"  descrName="zz" text="hundreds of meters"/>
+      </SubGroup>
+      <SubGroup number="2" text="depth and temperature of water">
+	<item>
+	  <SubGroupValues>\s*()([\d/]{2})([\d/]{3})</SubGroupValues>
+	  <Value number="0"  descrName="level_type" default="160" text="depth"/>
+	  <Value number="1"  descrName="zn1" text="depth + hundreds of meters"/>
+	  <Value number="2"  descrName="TnTnTn" text="Temperature of water"/>
+	</item>
+      </SubGroup> 
+    </Group>  
+    <Group number="4" text="DNO">
+      <item>
+	<GroupValues>\s*([\d/]{2})([\d/]{3})\s*00000</GroupValues>
+	<Value number="0"  descrName="level_type" default="9" text="depth"/>
+	<Value number="1"  descrName="zn1D" text="DNO depth"/>
+	<Value number="2"  descrName="TnTnTnD" text="DNO Temperature of water"/>
+      </item>
+    </Group>  
+  </Section>		
+  <Section number="3" text="DEPTH AND CURRENTS"> <!--глубина места наблюдения и течение на поверхности-->
+    <SectionGroups>\s*66666(\s*1[\d/]{4})?(\s*[\d/]{5})?</SectionGroups>
+    <Group number="1" text="depht">
+      <GroupValues>\s*1([\d/]{4})</GroupValues>
+      <Value number="1"  descrName="Zd" text="depth"/>
+    </Group>
+    <Group number="2" text="currents">
+      <GroupValues>\s*([\d/])([\d/]{2})([\d/]{2})</GroupValues>
+      <Value number="1"  descrName="k5"/>
+      <Value number="2"  descrName="d0d0" text="direction of current"/>
+      <Value number="3"  descrName="VcVc" text="velocity of current"/>
+    </Group>
+  </Section>
+  <Section number="4" text="OTHER DATA"> <!--прочие данные-->
+    <SectionGroups>(.*)</SectionGroups>
+    <Group number="1" text="other data">
+      <GroupValues>\s*(\S.*)</GroupValues>
+      <Value number="1"  descrName="D____D" text="позывной"/>
+    </Group>
+  </Section>
+</Message>

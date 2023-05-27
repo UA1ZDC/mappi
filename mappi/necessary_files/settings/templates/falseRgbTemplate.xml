@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item valueSrc="falseRgbAlgParam" source="this" text="Алгоритм" complex="true">
+    <item text="RGB" />
+    <item valueSrc="redColor" type="0" source="this" textItem="K1" text="Красный цвет" />
+    <item valueSrc="greenColor" type="0" source="this" textItem="K2" text="Зелёный цвет" />
+    <item valueSrc="blueColor" type="0" source="this" textItem="K3" text="Синий цвет" />
+  </item>
+</body>

@@ -1,0 +1,13 @@
+{
+  "find": "meteoreport",
+  "filter": {
+    "dt": { "$gte": @start_dt@, "$lte": @end_dt@ },
+    "station":  @station@,
+    "data_type": { "$in": @data_type@ }
+  },
+  "sort" : {
+     "dt": -1
+  },
+  "limit": 1
+
+}

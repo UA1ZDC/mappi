@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>radarmaps.menu.conf</file>
+    </qresource>
+</RCC>

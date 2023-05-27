@@ -1,0 +1,12 @@
+name: "gmi-medium.map"
+title: "Среднесрочный прогноз ГМИ"
+formal {
+    template: "gmi.odt"
+    name: "Среднесрочный прогноз ГМИ"
+    module_path: "shortgmi36h.py"
+    format: kOdt
+    icon_path: ":product/icons/AV-4.png"
+}
+document {
+  doctype: kFormalDocument
+}

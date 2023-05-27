@@ -1,0 +1,11 @@
+name: "vko_month.map"
+title: "Климатическая справка за месяц"
+formal {
+    template: "vko_month.odt"
+    name: "Климатическая справка за месяц"
+    module_path: "vko_month.py"
+    format: kOdt
+}
+document {
+  doctype: kFormalDocument
+}

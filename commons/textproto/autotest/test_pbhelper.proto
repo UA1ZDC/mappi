@@ -1,0 +1,13 @@
+enum TEnum {
+  kOne  = 1;
+  kTwo  = 2;
+}
+
+//
+message Simple {
+  optional string str_field = 1;
+  optional int32  int_field = 2;
+  optional double dbl_field = 3;
+  optional TEnum  enm_field = 4;
+  optional bytes  bytes_field = 5;
+}

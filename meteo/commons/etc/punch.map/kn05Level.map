@@ -1,0 +1,13 @@
+name: "kn-05lvl"
+title: "КН-05 (горизонты)"
+data_type: kOceanType
+data {
+  template_name: "kn05Level"
+  source: kSurface
+  data_type: KOceanBathy
+  data_type: kOceanDepth
+  data_type: kOceanBuoy
+  data_type: kSynopMobSea
+  data_type: kSynopMobShip
+  data_type: kSynopCoast
+}

@@ -1,0 +1,26 @@
+{
+"findAndModify" : "station_to_notify",
+"query" : {
+  "station_index": @station_index@,
+  "type_data" : @type_data@
+},
+"update" : {
+  "$set" : {
+            "station_index": @station_index@,
+            "type_data": @type_data@,
+            "station_id" : @station_id@,
+            "descriptors": @descriptors@,
+            "is_active": true
+  }
+},
+"upsert": true
+}
+
+
+
+
+
+
+
+
+

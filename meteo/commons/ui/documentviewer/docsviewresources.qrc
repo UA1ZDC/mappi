@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/documentview">
+        <file>docslistplugin.json</file>
+    </qresource>
+</RCC>

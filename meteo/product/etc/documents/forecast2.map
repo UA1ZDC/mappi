@@ -1,0 +1,13 @@
+name: "forecast2.map"
+title: "Прогноз погоды на 2 часа"
+formal {
+    template: "Forecast2.odt"
+    name: "Прогноз погоды на 2 часа"
+    module_path: "forecast.py"
+    format: kOdt
+    icon_path: ":product/icons/forecast2.png"
+    forecast_hour: 2
+}
+document {
+  doctype: kFormalDocument
+}

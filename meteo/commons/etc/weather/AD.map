@@ -1,0 +1,6 @@
+name: "ad.map"
+title: "Аэрологическа диаграмма"
+spline_koef: 2
+document {
+  doctype: kAeroDiagram
+}

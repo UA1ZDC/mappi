@@ -1,0 +1,39 @@
+TARGET   = mappi.session.manager
+TEMPLATE = app
+CONFIG  += thread
+
+SOURCES  = \
+    main.cpp            \
+    sessionmanager.cpp  \
+    virtualsession.cpp
+
+HEADERS  = \
+    sessionmanager.h \
+    virtualsession.h
+
+LIBS    += \
+    -ltdebug            \
+    -ltapp              \
+    -lprotobuf          \
+    -ltrpc              \
+    -lmnprocread        \
+    -lmnsatellite       \
+    -lmeteo.global      \
+    -lmeteo.settings    \
+    -lmeteo.proto       \
+    -lmeteo.textproto   \
+    -lmeteo.geobasis    \
+    -lmeteo.dbi         \
+    -lmappi.global      \
+    -lmappi.settings    \
+    -lmappi.proto       \
+    -lmappi.schedule    \
+    -lmappi.antenna     \
+    -lmappi.receiver    \
+    -lmappi.po.handler
+
+
+PROTOPATH += $(SRC)/meteo/commons/proto
+include( $$(SRC)/protobuf.pri )
+
+include( $$(SRC)/include.pro )

@@ -1,0 +1,23 @@
+{
+  "find": "msg",
+  "filter": {
+    "_id": { "$in": @id@ },
+    "t1": { "$in": @t1@ },
+    "t2": { "$in": @t2@ },
+    "a1": { "$in": @a1@ },
+    "a2": { "$in": @a2@ },
+    "cccc": { "$in": @cccc@ },
+    "bbb": { "$in": @bbb@ },
+    "ii": { "$in": @ii@ },
+    "yygggg": { "$in": @yygggg@ },
+    "type": { "$in": @type@ },
+    "decoded": @decoded@,
+    "msg_dt": { "$gte": @start_msgdt@, "$lt": @end_msgdt@ },
+    "dt": { "$gte": @start_dt@, "$lt": @end_dt@ }
+  },
+  "sort": {
+    "_id": @sid@
+  },
+  "limit": @limit@,
+  "skip": @skip@
+}

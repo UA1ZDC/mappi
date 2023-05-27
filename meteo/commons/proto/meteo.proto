@@ -1,0 +1,395 @@
+syntax = "proto2";
+
+package meteo;
+
+//! набор предопределенных значений весов шрифта (как в Qt)
+enum Weight {
+  kLight        = 25;
+  kNormal       = 50;
+  kDemiBold     = 63;
+  kBold         = 75;
+  kBlack        = 87;
+}
+
+//! стиль карандаша (как в Qt)
+enum PenStyle {
+  kNoPen          = 0;
+  kSolidLine      = 1;
+  kDashLine       = 2;
+  kDotLine        = 3;
+  kDashDotLine    = 4;
+  kDashDotDotLine = 5;
+  kCustomDashLine = 6;
+}
+
+//! стиль кисти (как в Qt)
+enum BrushStyle {
+  kNoBrush                = 0;
+  kSolidPattern           = 1;
+  kDense1Pattern          = 2;
+  kDense2Pattern          = 3;
+  kDense3Pattern          = 4;
+  kDense4Pattern          = 5;
+  kDense5Pattern          = 6;
+  kDense6Pattern          = 7;
+  kDense7Pattern          = 8;
+  kHorPattern             = 9;
+  kVerPattern             = 10;
+  kCrossPattern           = 11;
+  kBDiagPattern           = 12;
+  kFDiagPattern           = 13;
+  kDiagCrossPattern       = 14;
+  kLinearGradientPattern  = 15;
+  kConicalGradientPattern = 17;
+  kRadialGradientPattern  = 16;
+  kTexturePattern         = 24;
+}
+
+//! параметры шрифта
+message Font {
+  optional string       family          = 1 [default = "helvetica"]; //!< наименование
+  optional int32        pointsize       = 2 [default = 10];          //!< размер
+  optional int32        weight          = 3 [default = 50];     //!< вес
+  optional bool         bold            = 4 [default = false];       //!< жирный
+  optional bool         italic          = 5 [default = false];       //!< наклонный
+  optional bool         underline       = 6 [default = false];       //!< подчеркнутый
+  optional bool         strikeout       = 7 [default = false];       //!< перечеркнутый
+}
+
+//! свойства карандаша
+message Pen {
+  optional PenStyle     style           = 1 [default = kSolidLine];                         //!< стиль карандаша
+  optional int32        width           = 2 [default = 1];           //!< толщина карандаша
+  optional uint32       color           = 3  [default = 0xFF000000]; //!< цвет карандаша
+  repeated double       dash_pattern    = 4;                         //!< шаблон линии
+}
+
+message Brush {
+  optional BrushStyle   style           = 1 [default = kSolidPattern];                         //!< стиль кисти
+  optional uint32       color           = 2 [default = 0x00000000];  //!< цвет заливки в формате 0xAARRGGBB
+}
+
+//! расположение стрелки на линии
+enum ArrowPlace {
+  kNoArrow      = 0;                                                //!< нет стрелки
+  kBeginArrow   = 1;                                                //!< стрелка в начале линии
+  kEndArrow     = 2;                                                //!< стрелка в конце линии
+  kBothArrow    = 3;                                                //!< стрелка с обоих сторон линии
+};
+
+//! тип рамки у текста
+enum TextRamka {
+  kNoRamka      = 0;                                                //!< нет рамки
+  kBorder       = 1;                                                //!< рамка
+  kBrush        = 2;                                                //!< заливка
+  kFullRamka    = 3;                                                //!< рамка и заливка
+};
+
+//! TODO под вопросом
+enum TextScale {
+  kNoScale      = 0;
+  kScaleUp      = 1;
+  kScaleDown    = 2;
+  kScaleBoth    = 3;
+};
+
+//! расположение чего-нибудь относительно его координаты
+enum Position {
+  kCenter       =  0;
+  kTopCenter    =  1;
+  kLeftCenter   =  2;
+  kTopLeft      =  3;
+  kBottomCenter =  4;
+  kBottomLeft   =  6;
+  kRightCenter  =  8;
+  kTopRight     =  9;
+  kBottomRight  = 12;
+  kNoPosition   = 13;
+  kFloat        = 14;
+};
+
+//! тип стрелок
+enum ArrowType {
+  kSimpleArrow  = 0;                                                //!< простая стрелка
+};
+
+//! тип проекции
+enum ProjectionType {
+  kGeneral        = -1;                                            //!< генеральная проекция (для документов специального вида)
+  kMercat         = 0;                                             //!< мерактор
+  kStereo         = 1;                                             //!< стереографическая
+  kConical        = 2;                                             //!< коническая
+  kSatellite      = 3;                                             //!< спутниковая
+}
+
+enum Orientation {
+  kHorizontal     = 0;
+  kVertical       = 1;
+}
+
+enum LayerType {
+  kLayerCommon          = 1;
+  kLayerGrid            = 2;
+  kLayerIso             = 3;
+  kLayerPunch           = 4;
+  kLayerMrl             = 5;
+  kLayerItems           = 6;
+  kLayerFigure          = 7;
+  kLayerSigwx           = 8;
+  kLayerAero            = 9;
+  kLayerCut             =10;
+  kLayerOcean           =11;
+  kLayerSatellite       =12;
+  kLayerAirport         =13;
+  kLayerBorder          =14;
+  kLayerNode            =15;
+};
+
+//! Способ отображения метеопараметров с плохим пок-качем
+enum RuleView {
+  kBadInvisible                         = 0;
+  kBadWithRect                          = 1;
+  kBadWithoutRect                       = 2;
+}
+
+//! параметры генерализации
+message General {
+  message Level {                               //!< свойства вилимости для масштаба
+    required int32      level           = 1;    //!< масштаб
+    required bool       visible         = 2;    //!< призак видимости
+  }
+  repeated Level        level           = 1;    //!< набор свойств
+}
+
+//! координата (как QPoint)
+message Point {
+  optional int32        x               = 1;
+  optional int32        y               = 2;
+}
+
+//! координата (как QPointF)
+message PointF {
+  optional double       x               = 1;
+  optional double       y               = 2;
+}
+
+message Size {
+  optional int32        width           = 1;
+  optional int32        height          = 2;
+}
+
+message SizeF {
+  optional double       width           = 1;
+  optional double       height          = 2;
+}
+
+message SimpleProp {
+  required string       name            = 1;
+  required string       value           = 2;
+}
+
+//! Свойства примитивов карты
+message Property {
+  optional bool         visible         = 1  [default = true];     //!< признак видимости
+  optional General      general         = 2;                       //!< параметры генерализации
+  optional int32        zlevel          = 3;                       //!< z-кордината
+  optional Pen          pen             = 4;                       //!< свойства карандаша
+  optional Brush        brush           = 5;                       //!< свойства кисти
+  optional int32        splinefactor    = 6  [default = 1];        //!< количество узлов (при сглаживании кривой)
+  optional bool         closed          = 7  [default = false];    //!< признак того, что кривая - замкнутая
+  optional bool         double_line     = 8  [default = false];    //!< признак того, что кривая - двойная
+  optional ArrowPlace   arrow_place     = 9  [default = kNoArrow];                    //!< положение стрелки на линии
+  optional ArrowType    arrow_type      = 10;                      //!< тип стрелки
+  optional Position     pos             = 11 [default = kTopLeft]; //!< положение относительно координаты
+  optional Position     pos_on_parent   = 12;                      //!< положение на родителе
+  optional bool         draw_on_ends    = 13 [default = true];     //!< признак отрисовки текста на концах линии
+  optional bool         draw_always     = 14 [default = false];    //!< отрисовывать всегда (в основном к тексту относится)
+  optional Font         font            = 15;                      //!< параметры шрифта
+  optional TextRamka    ramka           = 16 [default = kNoRamka]; //!< параметры рамки вокруг текста
+  optional double       rotateangle     = 17;                      //!< поворот объекта
+  optional PointF       scalexy         = 18;                      //!< масштаб по x,y
+  optional Point        translatexy     = 19;                      //!< смещение по x,y
+  optional TextScale    textscale       = 20 [default = kNoScale]; //!< тип изменения масштаба текста (TODO под вопросом параметр)
+  optional double       originalscale   = 21;                      //!< масштаб для оргигинального размера текста (TODO под вопросом параметр)
+  optional uint32       outlinecolor    = 22;                      //!< цвет outline у текста и пуансонов
+  optional string       name            = 23;                      //!< имя свойств (необходимо для хранения в файлах предустановленных свойств)
+  repeated SimpleProp   prop            = 24;                      //!<
+  optional int32        alphapercent    = 25;                      //!< прозрачность объекта в процентах
+  optional int32        priority        = 26 [default = 0];        //!< приотритет используется для городов и пуансонов
+  optional string       ornament        = 27;                      //!< орнамент используется при отрисовке геополигонов
+  optional bool         draw_on_ramka   = 28 [default = true];     //!< рисовать подписи к изолиням на обрезе карты
+  optional bool         ornament_mirror = 29 [default = false];    //!< оранмент заркально по вертикали
+  optional int32        geoline_start_shift = 30;                  //!< смещение в пикселах от начала траектории
+  optional int32        geoline_end_shift   = 31;                  //!< смещение в пикселах от конца траектории
+}
+
+//! Набор свойств. Необходим для сохранения/чтения набора свойств из файла/в файл
+message Properties {
+  repeated Property     property        = 1;                    //!< Набор свойств
+}
+
+message Polygon {
+  repeated Point        point           = 1;
+}
+
+enum TypeGeoPointPb
+{
+  kLA360         = 0;    //!< широта от 0 до 180 долгота от 0 до 360
+  kLA180         = 1;    //!< широта от -90 до 90 долгота от -180 до 180
+  kLA_GENERAL    = 2;     //!< широта и долгота не ограничены
+};
+
+//! Географическая координата
+message GeoPointPb {
+  optional double       lat_radian      = 1;    //!< широта (радианы)
+  optional double       lon_radian      = 2;    //!< долгота (радианы)
+  optional double       lat_deg         = 3;    //!< широта (радианы)
+  optional double       lon_deg         = 4;    //!< долгота (радианы)
+  optional double       height_meters   = 5 [default = 0];    //!< высота над уровнем моря (метры)
+  optional TypeGeoPointPb type            = 6 [default = kLA180];
+}
+
+
+message GeoVectorPb {
+  repeated GeoPointPb     point           = 1;    //!< точки геовектора
+  optional Property     props           = 2;    //!< свойства геовектора
+  optional string       uuid            = 3;    //!< идентификатор полигона
+  optional string       luuid           = 4;    //!< идентификатор слоя
+}
+
+message GeoVectors {
+  repeated GeoVectorPb    gv              = 1;
+  optional Property     props           = 2;
+  optional string       uuid            = 3;    //!< идентификатор группы
+  optional string       luuid           = 4;
+}
+
+message FieldHeader {           //!< Параметры поля
+  optional string               dt      = 1; //!< Срок
+  optional string               unit    = 2; //!< Ед.изм. величины
+  optional string               name    = 3; //!< Наиименование величины
+  optional double               level   = 4; //!< Значения уровеня
+  optional int32             level_type = 5; //!< Тип уровня
+  optional int64             meteodescr = 6; //!< Дескриптор величины
+  optional int32                hour    = 7; //!< заблаговременность прогноза (в секундах)
+  optional int32                model   = 8; //!< модель обработки (250, 251 - свой анализ)
+  optional int32                center  = 9; //!< центр обработки
+  optional string           center_name = 10;//!< центр обработки название
+  optional string            layer_name = 11;//!< наименование слоя
+  optional meteo.GeoPointPb     begin   = 12;//!< начало сетки
+  optional meteo.GeoPointPb     end     = 13;//!< окончание сетки
+  optional double              step_lat = 14;
+  optional double              step_lon = 15;
+  optional string              field_id = 16;
+}
+
+//! Структура для описания изолинии
+message IsoLine {
+  optional string   name        = 1;            //!< наименование метеопараметра
+  optional string   datetime    = 2;            //!< срок данных
+  optional int32    hour        = 3;            //!< срок прогноза в секундах
+  optional double   value       = 4;            //!< значение метеопараметра
+  optional Pen      pen         = 5;            //!< параметры отображения изолинии
+  optional GeoVectorPb skelet   = 6;            //!< набор координат изолинии
+}
+
+//! набор изолиний, описывающих одно поле величины
+message IsoLines {
+  repeated IsoLine isoline      = 1;
+  optional bool    result       = 2;
+  optional string  comment      = 3;
+  optional FieldHeader header   = 4;
+  repeated Extremum extremums   = 5;
+}
+
+//! набор изолиний, описывающих одно поле величины в формате SHP. передается четыре файла: shp, dbf, prj, shx
+message IsoLinesShp {
+  optional bytes   shp_data      = 1; //!< изолинии
+  optional bytes   dbf_data      = 2; //!< изолинии
+  optional bytes   prj_data      = 3; //!< изолинии
+  optional bytes   shx_data      = 4; //!< изолинии
+  optional bool    result        = 5;
+  optional string  comment       = 6;
+  optional FieldHeader header    = 7;
+}
+
+
+message GeoText {
+  optional string       uuid            = 1;
+  optional Polygon      position        = 2;
+  optional GeoVectorPb    coord           = 3;
+  optional string       text            = 4;
+  optional double       value           = 5;
+  optional string       parent_uuid     = 6;
+  optional string       doc_uuid        = 7;
+  optional Property     prop            = 8;
+}
+
+//!
+message Station {
+  optional GeoPointPb     coord           = 1;    //!<
+  optional int32        index           = 2;    //!<
+  optional string       cccc            = 3;
+}
+
+//!
+message Stations {
+  repeated Station      station         = 1;    //!<
+}
+
+message GeoPolygon {
+  optional string       uuid            = 1;
+  optional GeoVectorPb    coord           = 2;
+  optional string       parent_uuid     = 3;
+  optional string       doc_uuid        = 7;
+  optional Property     prop            = 4;
+}
+message Layer {
+  optional string       uuid             = 1;
+  optional bool         visible          = 2 [default = true];
+  optional string       name             = 3;
+  optional int32        zorder           = 4;
+  optional string       doc_uuid         = 5;
+  optional double       smootch          = 6;
+}
+//
+//message IsoLayer {
+//  optional Layer                    layer   = 1;
+//  optional meteo.field.DataRequest  dataReq = 2;
+//}
+
+
+message Layers {
+  repeated Layer        layer           = 1;
+}
+
+message Label {
+  optional string       key             = 1;
+  optional string       value           = 2;
+  optional Font         font            = 3;
+}
+
+message Incut {
+  optional string       doc_uuid        = 1;
+  optional string       uuid            = 2;
+  optional int32        pos             = 3;
+  optional Point        float_pos       = 4;
+  optional bytes        image           = 5;
+  repeated Label        label           = 6;
+  optional Pen          pen             = 7;
+  optional Brush        bruah           = 8;
+}
+
+message Extremum {
+  optional double           value         = 2;//!<значение экстремумa поля
+  optional int32            tip           = 3;//!<тип экстремума поля (0 - "+") (1 - "-")
+  optional string           date          = 4; //!< дата и время (срок) данных
+  optional meteo.GeoPointPb pbcoord       = 5; //!< координаты экстремумов поля
+}
+
+message Extremums {
+  optional int32            num           = 1;
+  repeated Extremum         extremums     = 2;
+  optional string           error         = 3; //!< результат выполнения запроса
+  optional string           date          = 4; //!< дата и время (срок) данных
+}

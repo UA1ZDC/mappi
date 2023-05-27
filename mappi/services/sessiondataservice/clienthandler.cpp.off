@@ -1,0 +1,897 @@
+#include <sql/dbi/dbiquery.h>
+#include "clienthandler.h"
+
+TMap<int, QString> themeTypes = TMap<int, QString>()
+  << QPair<int, QString>(0, "Неизвестный тип")
+  << QPair<int, QString>(1, "Оттенки серого")
+  << QPair<int, QString>(2, "NDVI")
+  << QPair<int, QString>(3, "Псевдоцвета");
+
+namespace mappi {
+
+const QString sessionSavePath(){ return MnCommon::varPath("mappi") + "sessions/"; }
+const QString pretreatmentSavePath(){ return MnCommon::varPath("mappi") + "pretreatment/"; }
+const QString thematicSavePath(){ return MnCommon::varPath("mappi") + "thematic/"; }
+
+// ClientHandler::ClientHandler( SessionDataService* s )
+//   : QObject(),
+//   service_(s)
+// {
+// }
+
+// ClientHandler::~ClientHandler()
+// {
+//   for ( auto c : connections_ ) {
+//     c->blockSignals(true);
+//     c->channel()->disconnect();
+//     delete c;
+//   }
+// }
+
+// bool ClientHandler::contains( rpc::Channel* ch ) const
+// {
+//   if ( false == connections_.contains(ch) ) {
+//     return false;
+//   }
+//   return true;
+// }
+
+// HandlerConnection* ClientHandler::connection( rpc::Channel* ch ) const
+// {
+//   if ( false == connections_.contains(ch) ) {
+//     return 0;
+//   }
+//   return connections_[ch];
+// }
+
+// void ClientHandler::removeConnection( rpc::Channel* ch )
+// {
+//   if ( 0 == ch ) {
+//     return;
+//   }
+//   if ( false == connections_.contains(ch) ) {
+//     return;
+//   }
+//   connections_.remove(ch);
+// }
+
+// void ClientHandler::slotClientConnected( rpc::Channel* ch )
+// {
+//   HandlerConnection* cnn = new HandlerConnection( this, ch );
+//   connections_.insert( ch, cnn );
+// }
+
+void HandlerConnection::GetAvailableSessions(const proto::SessionData *req, proto::SessionList *resp)
+{
+  bool atLeastOneCondition = false;
+
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+  QString q = "SELECT * FROM sessions WHERE"; //строка запроса
+
+  if ( req->has_date_start()) {
+    QDateTime dts = TSqlQuery::datetimeFromString( req->date_start() );
+    if ( false == dts.isValid() ) {
+      QString err =  QObject::tr("Неверный формат даты отбора доступных карт");
+      error_log << err;
+      resp->set_result(false);
+      resp->set_comment( err.toUtf8().data() );
+      return;
+    }
+
+    q = q + QObject::tr( " date_start >= '%1' AND").arg(dts.toString( Qt::ISODate ));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_date_end()) {
+    QDateTime dte = TSqlQuery::datetimeFromString( req->date_end() );
+    if ( false == dte.isValid() ) {
+      QString err = QObject::tr("Неверный формат даты окончания отбора доступных документов");
+      error_log << err;
+      resp->set_result(false);
+      resp->set_comment( err.toUtf8().data() );
+      return;
+    }
+    q = q + QObject::tr(" date_end <= '%1' AND").arg(dte.toString( Qt::ISODate ));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_sat_name() ) {
+    q = q + QObject::tr(" satellite_name = '%1' AND").arg(QString::fromUtf8(req->sat_name().data()));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_processed() ) {
+    QString proc;
+    if ( req->processed() ) {
+      proc = "TRUE";
+    }
+    else {
+      proc = "FALSE";
+    }
+    q = q + QObject::tr(" preprocessed = '%1' AND").arg(proc);
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_sat_name() ) {
+    q = q + QObject::tr(" satellite_name = '%1' AND").arg(QString::fromUtf8(req->sat_name().data()));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->site().has_name() ) {
+    q = q + QObject::tr(" site = '%1' AND").arg(QString::fromUtf8(req->site().name().data()));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_thematic_done() ) {
+    QString thDone;
+    if (req->thematic_done()) {
+      thDone = "TRUE";
+    }
+    else {
+      thDone = "FALSE";
+    }
+    q = q + QObject::tr(" thematic_done = '%1'").arg(thDone);
+    atLeastOneCondition = true;
+  }
+
+  if ( q.endsWith(" AND")) {
+    q.resize(q.size()-4);
+  }
+
+  debug_log << q;
+
+  if ( !atLeastOneCondition ) {
+//    QString err = QObject::tr("Не задано ни одного условия");
+//    error_log << err;
+//    resp->set_result(false);
+//    resp->set_comment( err.toUtf8().data() );
+//    return;
+    QString q = "SELECT * FROM sessions";
+  }
+
+  TSqlQuery query(db);
+  query.setQuery(q);
+  if ( false == query.exec()) {
+    QString err = QObject::tr(("Не удалось выполнить запрос %1"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+  for ( int i = 0, sz = query.size(); i < sz; ++i ) {
+    bool ok = false;
+    proto::SessionData session = sessionFromQuery(query, i, ok);
+    if ( false == ok ) {
+      continue;
+    }
+    resp->add_sessions()->CopyFrom(session);
+  }
+  resp->set_result(true);
+}
+
+void HandlerConnection::SaveSession(const proto::SessionData *req, proto::Response *resp)
+{
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+  QString preprocessed;
+  if(req->processed()) {
+    preprocessed = "TRUE";
+  }
+  else {
+    preprocessed = "FALSE";
+  }
+
+  QString q = QObject::tr("SELECT update_sessions( '%1', %2, %3, '%4', '%5', '%6', '%7')");
+  TSqlQuery query(db);
+  query.setQuery(q)
+          .arg( QString::fromStdString( req->sat_name() ) )
+          .arg( TSqlQuery::datetimeFromString(req->date_start()) )
+          .arg( TSqlQuery::datetimeFromString(req->date_end()))
+          .arg(QString::fromStdString(req->site().name()))
+          .arg(QString::fromStdString(req->server_path()))
+          .arg( preprocessed )
+          .arg(QString::fromStdString(req->tle()));
+
+  debug_log << query.query();
+  bool res = query.exec();
+  if ( false == res ) {
+    QString err = QObject::tr(("Не удалось выполнить запрос %1"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+  resp->set_index(query.result().toInt());
+  resp->set_result(true);
+}
+
+void HandlerConnection::MarkSessionThematicDone(const proto::SessionData *req, proto::Response *resp)
+{
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment(err.toUtf8().data());
+    return;
+  }
+
+  if ( !req->has_id() ) {
+    QString err = QObject::tr("Не задан идентификатор сессии.");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment(err.toUtf8().data());
+    return;
+  }
+
+  bool flag = false;
+
+  if ( !req->has_thematic_done() ) {
+    resp->set_comment(QObject::tr("Флаг не задан, будет установлено значение по умолчанию (FALSE)").toStdString());
+  }
+  else {
+    flag = req->thematic_done();
+  }
+
+  QString thematicDone;
+  if ( flag ) {
+    thematicDone = "TRUE";
+  }
+  else {
+    thematicDone = "FALSE";
+  }
+
+  QString q = QObject::tr("UPDATE sessions SET thematic_done = '%1' WHERE index = %2");
+
+  TSqlQuery query(db);
+  query.setQuery(q)
+      .arg(thematicDone)
+      .arg(QString::number(req->id()));
+
+  bool res = query.exec();
+  if ( false == res ) {
+    QString err = QObject::tr("Не удалось выполнить запрос %1").arg( query.query() );
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment(err.toUtf8().data());
+    return;
+  }
+  resp->set_result(true);
+}
+
+void HandlerConnection::GetAvailablePretreatment(const proto::Pretreatment *req, proto::PretreatmentList *resp)
+{
+  bool atLeastOneCondition = false;
+
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+//  QString q = "SELECT DISTINCT preprocess.session_id,"
+//              " preprocess.date_start, preprocess.date_end, preprocess.calibration,"
+//              " preprocess.path, preprocess.channel_id FROM preprocess, sessions, instruments,"
+//              " channels, instr_ch WHERE"; //строка запроса
+
+  QString q = "SELECT * FROM pretreatment WHERE";
+
+  if ( req->has_date_start()) {
+    QDateTime dts = TSqlQuery::datetimeFromString( req->date_start() );
+    if ( false == dts.isValid() ) {
+      QString err =  QObject::tr("Неверный формат даты отбора доступных карт");
+      error_log << err;
+      resp->set_result(false);
+      resp->set_comment( err.toUtf8().data() );
+      return;
+    }
+
+    q = q + QObject::tr( " date_start >= '%1' AND").arg(dts.toString( Qt::ISODate ));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_date_end()) {
+    QDateTime dte = TSqlQuery::datetimeFromString( req->date_end() );
+    if ( false == dte.isValid() ) {
+      QString err = QObject::tr("Неверный формат даты окончания отбора доступных документов");
+      error_log << err;
+      resp->set_result(false);
+      resp->set_comment( err.toUtf8().data() );
+      return;
+    }
+    q = q + QObject::tr(" date_start <= '%1' AND").arg(dte.toString( Qt::ISODate ));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_session_id() ) {
+    q = q + QObject::tr(" session_id = %1 AND").arg(QString::number(req->session_id()));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_satellite_name() ) {
+    q = q + QObject::tr(" satellite_name = '%1' AND")
+        .arg(QString::fromUtf8(req->satellite_name().data()));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_instrument_type() ) {
+    q = q + QObject::tr(" instr_type = %1 AND")
+        .arg(QString::number(req->instrument_type()));
+    atLeastOneCondition = true;
+    if ( req->has_channel() ) {
+      q = q + QObject::tr(" channel = %1 AND")
+          .arg(QString::number(req->channel()));
+    }
+  }
+
+  if ( req->has_channel_alias() ) {
+    q = q + QObject::tr(" alias = '%1' AND")
+        .arg(QString::fromUtf8(req->channel_alias().data()));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_calibration() ) {
+    QString c;
+    if ( req->calibration() ) {
+      c = "TRUE";
+    }
+    else {
+      c = "FALSE";
+    }
+    q = q + QObject::tr(" calibration = '%1'")
+        .arg(c);
+    atLeastOneCondition = true;
+  }
+
+  if ( q.endsWith(" AND")) {
+    q.resize(q.size()-4);
+  }
+
+  if ( !atLeastOneCondition ) {
+    q = "SELECT * FROM pretreatment";
+  }
+
+  debug_log << q;
+
+  TSqlQuery query(db);
+  query.setQuery(q);
+  if ( false == query.exec()) {
+    QString err = QObject::tr(("Не удалось выполнить запрос %1"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+  for ( int i = 0, sz = query.size(); i < sz; ++i ) {
+    bool ok = false;
+    proto::Pretreatment pr = pretreatmentFromQuery(query, i, ok);
+    if ( false == ok ) {
+      continue;
+    }
+    resp->add_pretreatments()->CopyFrom(pr);
+  }
+  resp->set_result(true);
+}
+
+void HandlerConnection::SavePretreatment(const proto::Pretreatment *req, proto::Response *resp)
+{
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment(err.toUtf8().data());
+    return;
+  }
+
+  //сохранение файла производится модулем, выполняющим предварительную обработку
+  //(он выполняется на той же машине, что и данный сервис)
+
+  if (!req->has_session_id()
+      || !req->has_channel()
+      || !req->has_instrument_type()
+      || !req->has_calibration()
+      || !req->has_path()
+      || !req->has_date_start()
+      || !req->has_date_end()) {
+    QString err = QObject::tr("Заданы не все необходимые параметры");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment(err.toUtf8().data());
+    return;
+  }
+
+  QString calibration;
+  if ( req->calibration() ) {
+    calibration = "'TRUE'";
+  }
+  else {
+    calibration = "'FALSE'";
+  }
+
+  QString q = QObject::tr("SELECT update_preprocess( %1, %2, %3, %4, '%5', %6, %7)");
+  TSqlQuery query(db);
+  query.setQuery(q)
+          .arg( QString::number(req->session_id()) )
+          .arg( QString::number(req->instrument_type()) )
+          .arg(QString::number(req->channel()))
+          .arg(calibration)
+          .arg( QString::fromLocal8Bit(req->path().data()) )
+          .arg( TSqlQuery::datetimeFromString(req->date_start()) )
+          .arg( TSqlQuery::datetimeFromString(req->date_end()));
+
+  bool res = query.exec();
+  if ( false == res ) {
+    QString err = QObject::tr("Не удалось выполнить запрос %1").arg( query.query() );
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment(err.toUtf8().data());
+    return;
+  }
+
+  QString flag = QObject::tr("UPDATE sessions SET preprocessed = 'TRUE' WHERE index = %1");
+
+  TSqlQuery flag_query(db);
+  flag_query.setQuery(flag)
+      .arg(QString::number(req->session_id()));
+
+  bool flag_res = flag_query.exec();
+  if ( false == flag_res ) {
+    QString err = QObject::tr("Не удалось выполнить запрос %1").arg( flag_query.query() );
+    error_log << err;
+//    resp->set_result(false);
+    resp->set_comment(QObject::tr("Не удалось установить флаг обработки: ").toLocal8Bit().data() + err.toStdString());
+  }
+
+  resp->set_result(true);
+}
+
+void HandlerConnection::GetAvailableThematic(const proto::ThematicData *req, proto::ThematicList *resp)
+{
+  bool atLeastOneCondition = false;
+
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+//  QString q = "SELECT DISTINCT theme.th_name, theme.path, theme.date_start, theme.date_end, theme.meta_path, theme.session_id, theme.instr_type, theme.channel_alias, sessions.satellite_name FROM theme, sessions WHERE"; //строка запроса
+  QString q = "SELECT * FROM thematics WHERE";
+
+  if ( req->has_date_start()) {
+    QDateTime dts = TSqlQuery::datetimeFromString( req->date_start() );
+    if ( false == dts.isValid() ) {
+      QString err =  QObject::tr("Неверный формат даты отбора доступных карт");
+      error_log << err;
+      resp->set_result(false);
+      resp->set_comment( err.toUtf8().data() );
+      return;
+    }
+
+    q = q + QObject::tr( " date_start >= '%1' AND").arg(dts.toString( Qt::ISODate ));
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_date_end()) {
+    QDateTime dte = TSqlQuery::datetimeFromString( req->date_end() );
+    if ( false == dte.isValid() ) {
+      QString err = QObject::tr("Неверный формат даты окончания отбора доступных документов");
+      error_log << err;
+      resp->set_result(false);
+      resp->set_comment( err.toUtf8().data() );
+      return;
+    }
+    q = q + QObject::tr(" date_start <= '%1' AND").arg(dte.toString( Qt::ISODate ));
+    //важно, что здесь указывается именно date_start
+    //таким образом, при запросе доступных тематических обработок
+    //date_end выступает не как дата окончания сессии, а как конечная точка интервала дат начала
+    //искомых сессий
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_satellite_name() ) {
+    QString satName = QString::fromStdString(req->satellite_name());
+    q = q + " satellite_name = '" + satName + "' AND";
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_name() ) {
+    QString name = QString::fromStdString(req->name());
+    q = q + " name = '" + name + "' AND";
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_title() ) {
+    QString title = QString::fromStdString(req->title());
+    q = q + " title = '" + title + "' AND";
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_instrument_type() ) {
+    QString iType = QString::number(req->instrument_type());
+    q = q + QString(" instrument_type = %1 AND").arg(iType);
+//    if ( req->has_channel_number() ) {
+//      QString channel = QString::number(req->channel_number());
+//      q = q + QString(" channel = %1 AND").arg(channel);
+//    }
+    atLeastOneCondition = true;
+  }
+  if ( req->has_channel_number() ) {
+    QString channel = QString::number(req->channel_number());
+    q = q + QString(" channel = %1 AND").arg(channel);
+    atLeastOneCondition = true;
+  }
+
+  if ( req->has_channel_alias() ) {
+    QString alias = QString::fromStdString(req->channel_alias());
+    q = q + QString(" alias = '%1' AND").arg(alias);
+    atLeastOneCondition = true;
+  }
+
+
+  if ( req->has_session_id() ) {
+    q = q + " session_id = " + QString::number(req->session_id());
+    atLeastOneCondition = true;
+  }
+
+  if ( q.endsWith(" AND")) {
+    q.resize(q.size()-4);
+  }
+
+  if ( !atLeastOneCondition ) {
+    q = "SELECT * FROM thematics";
+  }
+
+  debug_log << q;
+
+  TSqlQuery query(db);
+  query.setQuery(q);
+  if ( false == query.exec()) {
+    QString err = QObject::tr(("Не удалось выполнить запрос %1"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+  for ( int i = 0, sz = query.size(); i < sz; ++i ) {
+    bool ok = false;
+    proto::ThematicData theme = themeFromQuery(query, i, ok);
+    if ( false == ok ) {
+      continue;
+    }
+    resp->add_themes()->CopyFrom(theme);
+  }
+  resp->set_result(true);
+}
+
+void HandlerConnection::SaveThematic(const proto::ThematicData *req, proto::Response *resp)
+{
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+  TSqlQuery query(db);
+  QString q;
+
+  if ( false == req->has_channel_number() ) {
+    q = QObject::tr("SELECT update_theme( '%1', '%2', %3, %4, %5, %6, %7 )");
+    query.setQuery(q)
+            .arg(QString::fromStdString(req->name()))
+            .arg( QString::fromUtf8(req->path().data()) )
+            .arg(QString::number(req->session_id()))
+            .arg(QString::number(req->instrument_type()))
+            .arg(TSqlQuery::datetimeFromString(req->date_start()))
+            .arg(TSqlQuery::datetimeFromString(req->date_end()))
+            .arg(QString::number(req->type()));
+  }
+  else {
+    q = QObject::tr("SELECT update_theme( '%1', '%2', %3, %4, %5, %6, %7, %8 )");
+    query.setQuery(q)
+            .arg(QString::fromStdString(req->name()))
+            .arg( QString::fromUtf8(req->path().data()) )
+            .arg(QString::number(req->session_id()))
+            .arg(QString::number(req->instrument_type()))
+            .arg(QString::number(req->channel_number()))
+            .arg(TSqlQuery::datetimeFromString(req->date_start()))
+            .arg(TSqlQuery::datetimeFromString(req->date_end()))
+            .arg(QString::number(req->type()));
+  }
+
+  debug_log << query.query();
+  bool res = query.exec();
+  if ( false == res ) {
+    QString err = QObject::tr(("Не удалось выполнить запрос %1"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+
+  resp->set_result(true);
+}
+
+void HandlerConnection::GetSession(const proto::SessionData *req, proto::SessionList *resp)
+{
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+  QString q = "SELECT * FROM sessions WHERE index = %1";
+  TSqlQuery query(db);
+  query.setQuery(q).arg(QString::number(req->id()));
+  debug_log << query.query();
+  bool res = query.exec();
+  if ( false == res ) {
+    QString err = QObject::tr(("Не удалось выполнить запрос %1"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+  bool ok = false;
+  proto::SessionData session = sessionFromQuery(query, 0, ok);
+  if ( false == ok ) {
+    QString err = QObject::tr(("Не удалось прочитать полученный ответ"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+  resp->add_sessions()->CopyFrom(session);
+  resp->set_result(true);
+}
+
+void HandlerConnection::GetAvailableThematicTypes(const proto::Dummy *req, proto::ThematicList *resp)
+{
+  Q_UNUSED(req);
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+  QString q = "SELECT DISTINCT name, type, title FROM thematics";
+  TSqlQuery query(db);
+  query.setQuery(q);
+  debug_log << query.query();
+  bool res = query.exec();
+  if ( false == res ) {
+    QString err = QObject::tr(("Не удалось выполнить запрос %1"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+  for ( int i = 0, sz = query.size(); i < sz; ++i ) {
+    bool ok = false;
+    proto::ThematicData theme = themeFromQuery(query, i, ok);
+    if ( false == ok ) {
+      continue;
+    }
+    resp->add_themes()->CopyFrom(theme);
+  }
+  resp->set_result(true);
+
+}
+
+void HandlerConnection::GetGrayscaleChannels(const proto::Dummy *req, proto::ThematicList *resp)
+{
+  Q_UNUSED(req);
+  NS_PGBase* db = meteo::global::dbMappi();
+  if ( 0 == db || false == db->Connected() ) {
+    QString err = QObject::tr("Нет подключения к БД");
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+  QString q = "SELECT DISTINCT alias, channel FROM thematics WHERE type = 1";
+  TSqlQuery query(db);
+  query.setQuery(q);
+  debug_log << query.query();
+  bool res = query.exec();
+  if ( false == res ) {
+    QString err = QObject::tr(("Не удалось выполнить запрос %1"))
+        .arg(query.query());
+    error_log << err;
+    resp->set_result(false);
+    resp->set_comment( err.toUtf8().data() );
+    return;
+  }
+  for ( int i = 0, sz = query.size(); i < sz; ++i ) {
+    bool ok = false;
+    proto::ThematicData theme = themeFromQuery(query, i, ok);
+    if ( false == ok ) {
+      continue;
+    }
+    resp->add_themes()->CopyFrom(theme);
+  }
+  resp->set_result(true);
+}
+
+proto::ThematicData HandlerConnection::themeFromQuery(TSqlQuery &result, int recnumber, bool &ok)
+{
+  proto::ThematicData theme;
+  ok = false;
+  if (0 > recnumber || result.size() <= recnumber) {
+    error_log << QObject::tr("Неверный номер записи = %1. Количество записей в запросе = %2")
+                 .arg( recnumber )
+                 .arg( result.size() );
+    return theme;
+  }
+  QString path = result.value( recnumber, "path" );
+  QString date_start = result.value( recnumber, "date_start" );
+  QString date_end = result.value( recnumber, "date_end" );
+  theme.set_name(result.value( recnumber, "name" ).toStdString());
+  theme.set_title(result.value( recnumber, "title" ).toStdString());
+  theme.set_date_start(TSqlQuery::datetimeFromString(date_start).toString( Qt::ISODate ).toStdString());
+  theme.set_date_end(TSqlQuery::datetimeFromString(date_end).toString( Qt::ISODate ).toStdString());
+  theme.set_path(path.toStdString());
+  theme.set_session_id(result.value(recnumber, "session_id").toInt());
+  theme.set_satellite_name(result.value(recnumber, "satellite_name").toStdString());
+  theme.set_channel_number(result.value(recnumber, "channel").toInt());
+  theme.set_instrument_type(static_cast<conf::InstrumentType>(result.value(recnumber, "instr_type").toInt()));
+  theme.set_type(static_cast<proto::ThemType>(result.value(recnumber, "type").toInt()));
+  theme.set_channel_alias(result.value(recnumber, "alias").toStdString());
+  ok = true;
+  return theme;
+}
+
+proto::SessionData HandlerConnection::sessionFromQuery(TSqlQuery &result, int recnumber, bool &ok)
+{
+  proto::SessionData session;
+  ok = false;
+  if (0 > recnumber || result.size() <= recnumber) {
+    error_log << QObject::tr("Неверный номер записи = %1. Количество записей в запросе = %2")
+                 .arg( recnumber )
+                 .arg( result.size() );
+    return session;
+  }
+  session.set_sat_name(result.value(recnumber, "satellite_name").toUtf8().data());
+  session.set_id(result.value(recnumber, "index").toInt());
+  session.set_date_start(TSqlQuery::datetimeFromString(result.value( recnumber, "date_start" )).toString( Qt::ISODate ).toUtf8().data());
+  session.set_date_end(TSqlQuery::datetimeFromString(result.value( recnumber, "date_end" )).toString( Qt::ISODate ).toUtf8().data());
+  mappi::conf::Site site;
+  site.set_name(result.value( recnumber, "site" ).toUtf8().data());
+  session.mutable_site()->CopyFrom(site);
+  QString prep = result.value( recnumber, "preprocessed" );
+  bool proc = false;
+  if ( prep == "TRUE") {
+    proc = true;
+  }
+  else if ( prep == "FALSE") {
+    proc = false;
+  }
+  session.set_processed(proc);
+  session.set_server_path( result.value(recnumber, "fpath").toUtf8().data());
+//  session.set_tle(result.value(recnumber, "tle").toUtf8());
+  if ( false == result.value(recnumber, "tle").isEmpty()) {
+    session.set_tle(result.value(recnumber, "tle").toStdString());
+  }
+  ok = true;
+  return session;
+}
+
+proto::Pretreatment HandlerConnection::pretreatmentFromQuery(TSqlQuery &result, int recnumber, bool &ok)
+{
+  proto::Pretreatment pr;
+  ok = false;
+  if (0 > recnumber || result.size() <= recnumber) {
+    error_log << QObject::tr("Неверный номер записи = %1. Количество записей в запросе = %2")
+                 .arg( recnumber )
+                 .arg( result.size() );
+    return pr;
+  }
+  pr.set_date_start(TSqlQuery::datetimeFromString(result.value( recnumber, "date_start" )).toString( Qt::ISODate ).toUtf8().data());
+  pr.set_date_end(TSqlQuery::datetimeFromString(result.value( recnumber, "date_end" )).toString( Qt::ISODate ).toUtf8().data());
+  bool calibr = false;
+  if ( result.value(recnumber, "calibration") == "TRUE") {
+    calibr = true;
+  }
+  else if ( result.value(recnumber, "calibration") == "FALSE" ) {
+    calibr = false;
+  }
+  pr.set_calibration(calibr);
+  pr.set_path( result.value(recnumber, "path").toUtf8().data());
+  pr.set_channel(result.value(recnumber, "channel").toInt());
+  pr.set_channel_alias(result.value(recnumber, "alias").toStdString());
+  pr.set_instrument_type(static_cast<conf::InstrumentType>(result.value(recnumber, "instr_type").toInt()));
+  pr.set_session_id(result.value(recnumber, "session_id").toInt());
+  pr.set_satellite_name(result.value(recnumber, "satellite_name").toStdString());
+  ok = true;
+  return pr;
+}
+
+HandlerConnection::HandlerConnection( ClientHandler* h, rpc::Channel* ch )
+  : QObject(),
+  handler_(h),
+  channel_(ch),
+  used_(false)
+{
+  QObject::connect( channel_, SIGNAL( disconnected() ), this, SLOT( slotClientDisconnected() ) );
+}
+
+HandlerConnection::~HandlerConnection()
+{
+  while ( 0 != deferredcalls_.size() ) {
+    google::protobuf::Closure* c = deferredcalls_.takeFirst();
+    delete c;
+  }
+  handler_->removeConnection(channel_);
+}
+
+void HandlerConnection::slotFutureFinished()
+{
+  if ( 0 == deferredcalls_.size() ) {
+    critical_log << QObject::tr("Непредвиденная ситуация. Завершился вызов. Но список вызовов пуст");
+    return;
+  }
+  delete deferredcalls_.takeFirst();
+  runnedstat_ = qMakePair( QDateTime::currentDateTime(), QObject::tr("Нет выполняющегося") );
+
+  if ( 0 == deferredcalls_.size() ) {
+    if ( 0 == channel_ ) {
+      this->deleteLater();
+    }
+  }
+  else {
+//    runnedstat_ = deferredstat_.takeFirst();
+    if ( 0 != deferredcalls_.size() ) {
+      deferredcalls_[0]->Run();
+    }
+  }
+}
+
+// void HandlerConnection::slotClientDisconnected()
+// {
+//   handler_->removeConnection(channel_);
+//   channel_ = 0;
+//   this->deleteLater();
+// }
+
+} // mappi

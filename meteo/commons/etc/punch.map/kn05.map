@@ -1,0 +1,15 @@
+name: "kn-05"
+title: "КН-05 (поверхность)"
+data_type: kSynopType
+data {
+  template_name: "kn05"
+  source: kSurface
+  data_type: kOceanBuoy
+  data_type: kOceanDepth
+  data_type: KOceanBathy
+  data_type: kSynopMobSea
+  data_type: kSynopMobShip
+  data_type: kSynopCoast
+  type_level: 1
+  level: 0
+}

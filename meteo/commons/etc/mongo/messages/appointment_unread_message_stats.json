@@ -1,0 +1,9 @@
+{
+  "count": "appointment_messages",
+  "query": { 
+    "mac": { "$lte" : @mac@},
+    "from": @from@,
+    "to" : @to@,
+    "read_by" : { "$exists" : false }
+  }
+}

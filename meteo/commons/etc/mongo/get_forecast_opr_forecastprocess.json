@@ -1,0 +1,11 @@
+{
+  "find": "forecast_opr",
+  "filter" : {
+        "center"       : @center@,
+        "punkt.punkt_id" : @punkt_id@,
+        "descrname"    : @descrname@,
+        "level"        : @level@,
+        "type_level"   : @type_level@,
+        "ftype_method" : @ftype_method@
+    }
+}

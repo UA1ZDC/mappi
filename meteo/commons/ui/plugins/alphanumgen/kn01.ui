@@ -1,0 +1,3463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Kn01</class>
+ <widget class="QWidget" name="Kn01">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1249</width>
+    <height>893</height>
+   </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="windowTitle">
+   <string>Создание телеграммы КН-01</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_12">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Индекс станции</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="IIiii">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_27">
+     <property name="text">
+      <string>Дата и срок наблюдения (UTC)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QDateTimeEdit" name="dt">
+     <property name="displayFormat">
+      <string>dd.MM.yy H:mm</string>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>589</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="5">
+    <widget class="QPushButton" name="help">
+     <property name="text">
+      <string>Схема кода</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="6">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1233</width>
+        <height>804</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_42">
+           <property name="text">
+            <string>Сокращенный заголовок телеграммы в формате ВМО:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;T&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;T&lt;span style=&quot; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="T1T2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <item>
+            <property name="text">
+             <string>SI</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SM</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SN</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;A&lt;span style=&quot; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="A1A2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_24">
+           <property name="text">
+            <string>ii</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="ii">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_37">
+           <property name="text">
+            <string>CCCC</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="CCCC">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>64</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_40">
+           <property name="text">
+            <string>BBB</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="BBB">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>612</width>
+             <height>17</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="tabPosition">
+          <enum>QTabWidget::West</enum>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="baseTab">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <attribute name="title">
+           <string>Основные параметры</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_11">
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <property name="verticalSpacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0" rowspan="3">
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="palette">
+              <palette>
+               <active>
+                <colorrole role="Base">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="Window">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </active>
+               <inactive>
+                <colorrole role="Base">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="Window">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </inactive>
+               <disabled>
+                <colorrole role="Base">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="Window">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>255</red>
+                   <green>255</green>
+                   <blue>255</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </disabled>
+              </palette>
+             </property>
+             <property name="title">
+              <string>Облачность</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="2" column="0" colspan="2">
+               <widget class="QLabel" name="label_10">
+                <property name="text">
+                 <string>Общая, балл</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_17">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;C&lt;span style=&quot; vertical-align:sub;&quot;&gt;M&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QSpinBox" name="N">
+                <property name="suffix">
+                 <string/>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>10</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QSpinBox" name="Nh">
+                <property name="maximum">
+                 <number>10</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1" colspan="4">
+               <widget class="QComboBox" name="CL">
+                <item>
+                 <property name="text">
+                  <string>Облаков нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cu плоские</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cu средние или мощные</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cb лысые</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sc из Cu или Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sc не из Cu или Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>St (кроме St плохой погоды)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>St fr. или Cu fr плохой погоды</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cu и Sc не из Cu или Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cb волосатые</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определены</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="6" column="0" colspan="5">
+               <widget class="QTableWidget" name="clouds">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="showGrid">
+                 <bool>false</bool>
+                </property>
+                <property name="gridStyle">
+                 <enum>Qt::SolidLine</enum>
+                </property>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="verticalHeaderVisible">
+                 <bool>false</bool>
+                </attribute>
+                <attribute name="verticalHeaderDefaultSectionSize">
+                 <number>20</number>
+                </attribute>
+                <attribute name="verticalHeaderStretchLastSection">
+                 <bool>false</bool>
+                </attribute>
+                <row>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>4</string>
+                 </property>
+                </row>
+                <column>
+                 <property name="text">
+                  <string>Количество, балл</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Форма</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>ВНГО, м</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Инстр.</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QSpinBox" name="h">
+                <property name="maximum">
+                 <number>9999</number>
+                </property>
+                <property name="singleStep">
+                 <number>10</number>
+                </property>
+                <property name="value">
+                 <number>2500</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1" colspan="4">
+               <widget class="QComboBox" name="CM">
+                <item>
+                 <property name="text">
+                  <string>Облаков нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As просвечивающие</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As не просвечивающие или Ns</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As просвечивающие не изменяющиеся</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As чечевицеобразные</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As распространяющиеся по небу</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>As из Cu или Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ac вместе с As или без них</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ac башенками или хлопьями</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ac при хаотическом виде неба</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определены</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_18">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;C&lt;span style=&quot; vertical-align:sub;&quot;&gt;H&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>ВНГО, м</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1" colspan="4">
+               <widget class="QComboBox" name="CH">
+                <item>
+                 <property name="text">
+                  <string>Облаков нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ci волокнистые не распр. по небу</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ci плотные или хлопьевидные</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ci плотные из Cb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ci волокнистые распр. по небу</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cs (иногда Ci) надвигающиеся (ниже 45°)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cs (иногда Ci) надвигающиеся (выше 45°)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cs покрывающие все небо</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cs не распр. по небу</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cc</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определены</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>Нижняя, балл</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="5">
+               <widget class="QComboBox" name="cloudMode">
+                <item>
+                 <property name="text">
+                  <string>Облаков нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Количество облаков &lt; 1 балла (но не 0 баллов)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Небо не видно из-за метеорологических явлений</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Небо не видно по иным причинам</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Наблюдения не проводились</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Задать параметры</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_16">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;C&lt;span style=&quot; vertical-align:sub;&quot;&gt;L&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string>Ветер</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_6">
+              <item row="0" column="0" colspan="3">
+               <widget class="QComboBox" name="windMode">
+                <item>
+                 <property name="text">
+                  <string>Задать параметры</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Штиль</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Переменный</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Нет данных</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="2">
+               <widget class="QSpinBox" name="dd">
+                <property name="suffix">
+                 <string>  (С)</string>
+                </property>
+                <property name="maximum">
+                 <number>359</number>
+                </property>
+                <property name="singleStep">
+                 <number>5</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Скорость, м/с</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QSpinBox" name="ff">
+                <property name="maximum">
+                 <number>99</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="iw">
+                <property name="text">
+                 <string>Инструментально</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Направление,° (румбы)</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QGroupBox" name="groupBox_6">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Осадки</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_7">
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_21">
+                <property name="text">
+                 <string>Срок, ч</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_20">
+                <property name="text">
+                 <string>Количество, мм</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QComboBox" name="tR">
+                <item>
+                 <property name="text">
+                  <string>Иной</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>6</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>12</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>18</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>24</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>9</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>15</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QDoubleSpinBox" name="RRR">
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="maximum">
+                 <double>999.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="3">
+               <widget class="QComboBox" name="iR">
+                <property name="currentIndex">
+                 <number>3</number>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Включить в раздел 1 и 3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Включить в раздел 1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Включить в раздел 3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Осадков не было</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Осадки не измерялись</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QGroupBox" name="groupBox_5">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Давление</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Уровень моря:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <widget class="QRadioButton" name="is_PPPP">
+                <property name="text">
+                 <string>Давление, гПа</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="2">
+               <widget class="QRadioButton" name="is_hhh">
+                <property name="text">
+                 <string>Геопотенциал, гп.м</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QComboBox" name="a3">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QSpinBox" name="hhh">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>9999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_19">
+                <property name="text">
+                 <string>Тенденция, гПа/3 ч</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QComboBox" name="a">
+                <property name="font">
+                 <font>
+                  <family>wthrNew0  Normal</family>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>l</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>m</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>n</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>o</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>p</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>q</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>r</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>s</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>t</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="QDoubleSpinBox" name="ppp">
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>99.900000000000006</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" colspan="2">
+               <widget class="QDoubleSpinBox" name="P0P0P0P0">
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>9999.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QDoubleSpinBox" name="PPPP">
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>9999.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_13">
+                <property name="text">
+                 <string>Станция, гПа</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="3" column="1" colspan="2">
+            <widget class="QGroupBox" name="groupBox_8">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Состояние поверхности</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_5">
+              <item row="0" column="3">
+               <widget class="QLabel" name="label_41">
+                <property name="text">
+                 <string>Высота снежного покрова</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Со снегом</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QSpinBox" name="snTgTg">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="minimum">
+                 <number>-99</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QSpinBox" name="sss">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>996</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2" colspan="4">
+               <widget class="QComboBox" name="E_">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Лёд, &gt; 1 балла</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Мокрый или слежавшийся снег &lt; 5 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Мокрый или слежавшийся снег 5-9 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Мокрый или слежавшийся снег 10 баллов, равномерный слой</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Мокрый или слежавшийся снег 10 баллов, неравномерный слой</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Сухой рассыпчатый снег &lt; 5 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Сухой рассыпчатый снег 5-9 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Сухой рассыпчатый снег 10 баллов, равномерный слой</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Сухой рассыпчатый снег 10 баллов, неравномерный слой</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Снег с глубокими сугробами, заносами 10 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определено</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="2">
+               <widget class="QCheckBox" name="is_snTgTg">
+                <property name="text">
+                 <string>Мин температура почвы, °С</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2" colspan="4">
+               <widget class="QComboBox" name="E">
+                <item>
+                 <property name="text">
+                  <string>Сухая</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Влажная</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Сырая</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Затоплена водой</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Замерзшая</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Покрыта льдом (без снега)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Покрыта пылью или песком частично</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Покрыта пылью или песком,тонкий слой</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Покрыта пылью или песком, умеренный или толстый слой</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Сухая (с трещинами)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определено</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Без снега</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QComboBox" name="sssMode">
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>В окрестности станции снега нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Измеренное значение, см</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Высота снежного покрова &lt; 0,5 см</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>На метеоплощадке снега нет</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Измерения невозможны</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QGroupBox" name="SSSmode">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>&amp;Cолнечное сияние</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="topMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_28">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Продолжительность, ч</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QDoubleSpinBox" name="SSS">
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>24.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QGroupBox" name="groupBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Явления</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="1" column="1">
+               <widget class="QSpinBox" name="ww">
+                <property name="minimum">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="3">
+               <widget class="QComboBox" name="ix">
+                <property name="currentIndex">
+                 <number>1</number>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Включить группу погоды</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Нет явлений, подлежащих передаче</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Наблюдения не производились</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Прошедшая</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QComboBox" name="VVmode">
+                <item>
+                 <property name="text">
+                  <string>Инструментально</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Визуально</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Не определена</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Видимость, км</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QToolButton" name="wwCode">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Текущая погода</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QDoubleSpinBox" name="VV">
+                <property name="value">
+                 <double>99.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" colspan="2">
+               <widget class="QComboBox" name="W1">
+                <item>
+                 <property name="text">
+                  <string>Ясно или облачно ≤ 5 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Облачность от ≤ 5 до &gt; 5 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Облачность &gt; 5 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Буря (песчанная, пыльная) или метель</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Туман или сильная мгла</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Морось</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Дождь</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Снег или дождь со снегом</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ливневые осадки</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Гроза с осадками или без них</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>/</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="1" colspan="2">
+               <widget class="QComboBox" name="W2">
+                <item>
+                 <property name="text">
+                  <string>Ясно или облачно ≤ 5 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Облачность от ≤ 5 до &gt; 5 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Облачность &gt; 5 баллов</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Буря (песчанная, пыльная) или метель</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Туман или сильная мгла</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Морось</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Дождь</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Снег или дождь со снегом</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ливневые осадки</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Гроза с осадками или без них</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>/</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+             <zorder>ix</zorder>
+             <zorder>label_2</zorder>
+             <zorder>label_3</zorder>
+             <zorder>ww</zorder>
+             <zorder>wwCode</zorder>
+             <zorder>label_4</zorder>
+             <zorder>VV</zorder>
+             <zorder>W1</zorder>
+             <zorder>VVmode</zorder>
+             <zorder>W2</zorder>
+            </widget>
+           </item>
+           <item row="1" column="2" rowspan="2">
+            <widget class="QGroupBox" name="groupBox_7">
+             <property name="title">
+              <string>Температура</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_8">
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="is_snTxTxTx">
+                <property name="text">
+                 <string>Максимальная, °С</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QDoubleSpinBox" name="snTxTxTx">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QDoubleSpinBox" name="snTTT">
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_23">
+                <property name="text">
+                 <string>Точка росы, °С</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QDoubleSpinBox" name="snTdTdTd">
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QDoubleSpinBox" name="snTnTnTn">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="2">
+               <widget class="QCheckBox" name="is_snTnTnTn">
+                <property name="text">
+                 <string>Минимальная, °С</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>Температура, °С</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="addTab">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <attribute name="title">
+           <string>Дополнительная группа</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_9">
+           <property name="verticalSpacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="is_Sptornado">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="Sp_tornado">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>Смерч разрушающей силы</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Смерч, вихрь</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="2" colspan="2">
+            <widget class="QComboBox" name="Sp_Mw">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>Водяной смерч(и) в радиусе 3 км от станции</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Водяной смерч(и) на расстоянии &gt; 3 км от станции</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Смерч(и) на суше в радиусе 3 км от станции</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Cмерч(и) на суше на расстоянии &gt; 3 км от станции</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Вихрь(и) слабой интенсивности</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Вихрь(и) умеренной интенсивности</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Вихрь(и) сильной интенсивности</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Пыльный(е) вихрь(и) слабой интенсивности</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Пыльный(е) вихрь(и) умеренной интенсивности</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Пыльный(е) вихрь(и) сильной интенсивности</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="4">
+            <widget class="QLabel" name="label_25">
+             <property name="text">
+              <string>Направление</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <widget class="QComboBox" name="Sp_Da">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>На станции</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>СВ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>В</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ЮВ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Ю</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ЮЗ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>З</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>СЗ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>С</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Все направления</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_Spgust">
+             <property name="text">
+              <string>Шквал</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2" colspan="2">
+            <widget class="QComboBox" name="Sp_sq">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <item>
+              <property name="text">
+               <string>Штиль или слабый ветер, за которыми последовал шквал</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Штиль или слабый ветер, за которыми последовала серия шквалов</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Порывистый ветер, за которым последовал шквал</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Порывистый ветер, за которым последовала серия шквалов</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Шквал, за которым последовал порывистый ветер</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Порывистый ветер, временами шквалы</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Шквал в поле зрения, приближающийся к станции</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Линия шквалов</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Шквал с песчаным позѐмком или с пыльной/песчаной бурей</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Линия шквалов с песчаным позѐмком или с пыльной/песчаной бурей</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="1" column="4">
+            <widget class="QLabel" name="label_39">
+             <property name="text">
+              <string>Направление</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="5">
+            <widget class="QComboBox" name="Sp_Dp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>На станции</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>СВ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>В</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ЮВ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Ю</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ЮЗ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>З</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>СЗ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>С</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Все направления</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_Spff">
+             <property name="text">
+              <string>Порыв ветра</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QComboBox" name="Sp_ff_hour">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>В срок наблюдения</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Между сроками наблюдения</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QLabel" name="label_38">
+             <property name="text">
+              <string>Макс скорость, м/с</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="4">
+            <widget class="QSpinBox" name="Sp_ff">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_Spsstorm">
+             <property name="text">
+              <string>Общая метель</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QComboBox" name="Sp_sstorm">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>Слабая или умеренная</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Сильная</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QLabel" name="label_36">
+             <property name="text">
+              <string>Эволюция</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="4" colspan="2">
+            <widget class="QComboBox" name="Sp_S8_">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>Окончилась до срока наблюдения</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Ослабевала</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Без изменений</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Усиливалась</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Возобновилась после перерыва продолж. ≤ 30 мин</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Высота распространения метели уменьшалась</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Высота распространения метели увеличивалась</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Возобновилась после перерыва продолж. &gt; 30 мин</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_Sphail">
+             <property name="text">
+              <string>Град</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <widget class="QComboBox" name="Sp_hailRRmode">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <item>
+              <property name="text">
+               <string>Диаметр, мм</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Диаметр &lt; 0,1 мм</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Диаметр &gt; 400 мм</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Измерения невозможны</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="4" column="4">
+            <widget class="QDoubleSpinBox" name="Sp_hailRR">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>400.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_Spprecp">
+             <property name="text">
+              <string>Гололедно-изморозевые отложения</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="2">
+            <widget class="QComboBox" name="Sp_precp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>Гололёд</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Изморозь</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Сложные отложения</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Отложения мокрого снега</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="5" column="3">
+            <widget class="QComboBox" name="Sp_RRmode">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <item>
+              <property name="text">
+               <string>Диаметр, мм</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Диаметр &lt; 0,1 мм</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Диаметр &gt; 400 мм</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Измерения невозможны</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="5" column="4">
+            <widget class="QDoubleSpinBox" name="Sp_RR">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>400.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_Spss">
+             <property name="text">
+              <string>Снег за последние сутки</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="3">
+            <widget class="QComboBox" name="Sp_ssmode">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <item>
+              <property name="text">
+               <string>Высота, см</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Высота &lt; 0,1 см</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Высота &gt; 400 см</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Измерения невозможны</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="6" column="4">
+            <widget class="QDoubleSpinBox" name="Sp_ss">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>400.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_Sphaze">
+             <property name="text">
+              <string>Снежная мгла</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <widget class="QComboBox" name="Sp_haze_hour">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>В срок наблюдения</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Между сроками наблюдения</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="8" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_Spfog">
+             <property name="text">
+              <string>Туман во время осадков</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="2">
+            <widget class="QComboBox" name="Sp_fog">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>Туман или обрывки ледяного тумана</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Ослабел, небо видно</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Ослабел, небо не видно</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Без изменений, небо видно</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Без изменений, небо не видно</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Начался или усилился, небо видно</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Начался или усилился, небо не видно</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>С отложением изморози, небо видно</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>С отложением изморози, небо не видно</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="9" column="0" colspan="2">
+            <widget class="QCheckBox" name="is_SpTw">
+             <property name="text">
+              <string>Температура воды, °С</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="2">
+            <widget class="QSpinBox" name="Sp_Tw">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0" colspan="6">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <property name="spacing">
+              <number>-1</number>
+             </property>
+             <item>
+              <widget class="QGroupBox" name="is_SpNm">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="title">
+                <string>Облачность над горами и перевалами</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_4">
+                <property name="verticalSpacing">
+                 <number>4</number>
+                </property>
+                <item row="2" column="0" colspan="3">
+                 <widget class="QCheckBox" name="is_SpNm_Eh">
+                  <property name="text">
+                   <string>Максимальная концентрация облаков</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_32">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Угловая высота</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QLabel" name="label_33">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Направление</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0" colspan="2">
+                 <widget class="QCheckBox" name="is_SpNm_vp">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string> Перемещение облаков</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_34">
+                  <property name="text">
+                   <string>Скорость, м/с</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QLabel" name="label_35">
+                  <property name="text">
+                   <string>Направление</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="4">
+                 <widget class="QComboBox" name="SpNm">
+                  <item>
+                   <property name="text">
+                    <string>Горы открыты</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Горы частично закрыты</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Все склоны гор закрыты облаками, вершины гор и перевалы открыты</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Горы открыты со стороны наблюдателя</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Низкая облачность над горами, склоны открыты</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Низкая облачность над горами, склоны  частично закрыты</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Горы закрыты облаками, перевалы открыты</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Горы закрыты облаками, склоны закрыты полностью или частично</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Все вершины гор, перевалы и склоны закрыты облаками</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Горы не видны из-за темноты, тумана, метели, осадков и т.д.</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="4">
+                 <widget class="QComboBox" name="Sp_n3">
+                  <item>
+                   <property name="text">
+                    <string>Изменений нет</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Развитие кучевообразной облачности</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Медленное повышение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Быстрое повышение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Поднялась и стала слоистой</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Медленное снижение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Быстрое снижение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Развитие слоистости</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Развитие слоистости и понижение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Быстрые изменения</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QComboBox" name="Sp_NmDa">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>На станции</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>СВ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>В</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ЮВ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Ю</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ЮЗ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>З</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>СЗ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>С</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Все направления</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="5" column="3">
+                 <widget class="QComboBox" name="Sp_NmDp">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>На станции</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>СВ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>В</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ЮВ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Ю</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ЮЗ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>З</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>СЗ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>С</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Все направления</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QComboBox" name="Sp_NmEh">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Очень низко</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Менее 30°</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Более 30°</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QComboBox" name="Sp_Nmvp">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>≤ 2</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>3-7</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>8-12</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>13-17</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>18-22</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>23-27</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>28-32</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>33-38</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>39-43</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>≥ 44</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="is_SpNv">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="title">
+                <string>Облачность, туман, дымка внизу (высокогорная станция)</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_10">
+                <property name="verticalSpacing">
+                 <number>4</number>
+                </property>
+                <item row="0" column="0" colspan="4">
+                 <widget class="QComboBox" name="Sp_Nv">
+                  <item>
+                   <property name="text">
+                    <string>Нет ни облаков, ни дымки</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Дымка, над нею ясно</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Клочки тумана</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Слой слабого тумана</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Слой сильного тумана</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Разрозненные облака, небольшое количество</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Разрозненные облака, ниже туман</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Разрозненные облака, большое количество</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Сплошная облачность</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Наблюдения невозможны из-за плохой видимости</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="4">
+                 <widget class="QComboBox" name="Sp_n4">
+                  <item>
+                   <property name="text">
+                    <string>Изменений нет</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Уменьшение и повышение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Уменьшение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Повышение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Уменьшение и снижение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Увеличение и повышение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Снижение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Увеличение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Увеличение и снижение</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>На станции туман или туман временами</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="3">
+                 <widget class="QCheckBox" name="is_SpNv_Eh">
+                  <property name="text">
+                   <string>Максимальная концентрация облаков</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_26">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Угловая высота</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QLabel" name="label_29">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Направление</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0" colspan="2">
+                 <widget class="QCheckBox" name="is_SpNv_vp">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string> Перемещение облаков</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_30">
+                  <property name="text">
+                   <string>Скорость, м/с</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QLabel" name="label_31">
+                  <property name="text">
+                   <string>Направление</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QComboBox" name="Sp_NvDa">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>На станции</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>СВ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>В</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ЮВ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Ю</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ЮЗ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>З</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>СЗ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>С</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Все направления</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="5" column="3">
+                 <widget class="QComboBox" name="Sp_NvDp">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>На станции</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>СВ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>В</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ЮВ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Ю</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ЮЗ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>З</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>СЗ</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>С</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Все направления</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QComboBox" name="Sp_NvEh">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Очень низко</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Менее 30°</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Более 30°</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QComboBox" name="Sp_Nvvp">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>≤ 2</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>3-7</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>8-12</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>13-17</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>18-22</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>23-27</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>28-32</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>33-38</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>39-43</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>≥ 44</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+          <zorder>Sp_fog</zorder>
+          <zorder>is_Spprecp</zorder>
+          <zorder>is_Spff</zorder>
+          <zorder>is_Sptornado</zorder>
+          <zorder>Sp_tornado</zorder>
+          <zorder>Sp_precp</zorder>
+          <zorder>is_Spfog</zorder>
+          <zorder>Sp_ff_hour</zorder>
+          <zorder>is_SpTw</zorder>
+          <zorder>Sp_sq</zorder>
+          <zorder>Sp_Mw</zorder>
+          <zorder>is_Spsstorm</zorder>
+          <zorder>Sp_sstorm</zorder>
+          <zorder>is_Spgust</zorder>
+          <zorder>label_38</zorder>
+          <zorder>label_36</zorder>
+          <zorder>Sp_ff</zorder>
+          <zorder>label_39</zorder>
+          <zorder>Sp_RR</zorder>
+          <zorder>is_Sphail</zorder>
+          <zorder>Sp_hailRR</zorder>
+          <zorder>Sp_Tw</zorder>
+          <zorder>Sp_Da</zorder>
+          <zorder>Sp_Dp</zorder>
+          <zorder>Sp_S8_</zorder>
+          <zorder>Sp_hailRRmode</zorder>
+          <zorder>Sp_RRmode</zorder>
+          <zorder>is_Spss</zorder>
+          <zorder>Sp_ssmode</zorder>
+          <zorder>Sp_ss</zorder>
+          <zorder>is_Sphaze</zorder>
+          <zorder>Sp_haze_hour</zorder>
+          <zorder>label_25</zorder>
+         </widget>
+         <widget class="QWidget" name="nationalTab">
+          <attribute name="title">
+           <string>Национальные данные</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_14">
+           <item row="0" column="1">
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="0">
+            <layout class="QGridLayout" name="gridLayout_13">
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="is_snTg_Tg_">
+               <property name="text">
+                <string>Температура подстилающей поверхности, °С</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="2">
+              <widget class="QComboBox" name="E5">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QCheckBox" name="is_snT24T24T24">
+               <property name="text">
+                <string>Средняя температура за прошедшие сутки, °С</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QDoubleSpinBox" name="snT24T24T24">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="decimals">
+                <number>1</number>
+               </property>
+               <property name="minimum">
+                <double>-100.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QCheckBox" name="is_snT2T2">
+               <property name="text">
+                <string>Минимальная температура за ночь на высоте 2 см, °С</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QCheckBox" name="is_f12f12">
+               <property name="text">
+                <string>Максимальная скорость ветра за полусутки, м/с</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QSpinBox" name="f12f12">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QCheckBox" name="is_R24R24R24">
+               <property name="text">
+                <string>Количество осадков за сутки, мм</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QSpinBox" name="snTg_Tg_">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="minimum">
+                <number>-99</number>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QSpinBox" name="snT2T2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="minimum">
+                <number>-99</number>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QDoubleSpinBox" name="R24R24R24">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="maximum">
+                <double>999.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSplitter" name="splitter">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QTextEdit" name="codeView">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QTreeWidget" name="decodeView">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <column>
+           <property name="text">
+            <string>Название</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Код</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Цифра кода</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Значение</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Ед. изм.</string>
+           </property>
+          </column>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="6">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="sendInMsg">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Отправить в ЦКС</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="accept">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Сохранить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

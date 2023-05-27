@@ -1,0 +1,4 @@
+{
+  "insert" : "@tablename@",
+  "documents" : @param@
+}

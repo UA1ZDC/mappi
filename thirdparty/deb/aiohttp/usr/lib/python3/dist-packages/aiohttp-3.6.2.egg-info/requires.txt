@@ -1,0 +1,7 @@
+idna-ssl>=1.0; python_version<"3.7"
+typing_extensions>=3.6.5; python_version<"3.7"
+
+[speedups]
+aiodns
+brotlipy
+cchardet

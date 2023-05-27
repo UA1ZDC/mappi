@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM20_B" text="RADOB"  category="151">
+<!--MessageSections>((?:\s*[\d/]{5}){2,3}(?:\s*[\d/]{5})*(?:\s*/555/(?:\s*[\d/]{5})*)?(?:\s*[5-6]1[5-6]1[5-6](?:\s*[\d/]{5})*)?(?:\s*[\w/]{3,9})?)</MessageSections-->
+<MessageSections>(?:\s*(?:FFBB|GGBB))?(?:.*NIL|((?:\s*[\d/]{5})*(?:\s*(?!NIL)[\w/]{3,9})?))</MessageSections>
+<Part number="1" text="">
+<!--PartSections>(\s*[\d/]{5})((?:\s*[\d/]{5})|(?:\s*99[\d/]{3}\s*[\d/]{5}))((?:\s*\d\d[\d/]{3})*)((?:\s*[\d/]{5})*)((?:\s*51515(?:\s*[\d/]{5})*)?)((?:\s*61616(?:\s*[\d/]{5})*)?)((?:\s*[\w/]{3,9})?)</PartSections-->
+<PartSections>(\s*[\d/]{5})((?:\s*[\d/]{5})|(?:\s*99[\d/]{3}\s*[\d/]{5}))((?:\s*(?:(?![5-6]1[5-6]1[5-6])\d[\d/]{4}))*)((?:\s*/555/(?:(?:\s*(?:(?![5-6]1[5-6]1[5-6])[\d/]{5}))*))?)((?:\s*(?:\s*[\d/]{5})*)?)((?:\s*[\w/]{3,9})?)</PartSections>
+    <Section number="1" text="DAY,HOUR, TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT" >
+      <SectionGroups>([\d/]{2})([\d/]{2})([\d/])</SectionGroups>
+      <Value number="1" descrName="YY" text="День"/>
+      <Value number="2" descrName="GG" text="Час"/>
+      <Value number="3" descrName="g"  text="Десятки мин"/>
+    </Section>
+    <Section number="2" text="IDENTIFICATION AND POSITION DATA" >
+      <SectionGroups>(?:\s*([\d/]{5}))|(?:\s*99([\d/]{3})\s*([\d/]{5}))</SectionGroups>
+      <Group number="1" text="WMO STATION NUMBER">
+        <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+        <Value number="1" descrName="II" text="Номер большого географического района" />
+        <Value number="2" descrName="iii" text="Номер станции" />
+      </Group>
+      <Group number="2" text="POSITION LATITUDE">
+        <GroupValues>\s*([\d/]{3})</GroupValues>
+        <Value number="1" descrName="LaLaLa" text="Latitude in degrees and minutes"/>
+      </Group>
+      <Group number="3" text="POSITION LONGITUDE">
+        <GroupValues>\s*([\d/])([\d/]{4})</GroupValues>
+        <Value number="1" descrName="Qc" text="Quadrant of the globe" />
+        <Value number="2" descrName="LoLoLoLo" text="Longitude in degrees and minutes" />
+      </Group>
+    </Section>
+    <Section number="3" text="" >
+      <SectionGroups>((?:\s*[\d/]{5})*)</SectionGroups>
+      <Group number="1" text="the location , the type of phenomena and / or clouds, You are a cell and the intensity of their of radio echo">
+        <GroupValues>\s*(?:([\d]{2})([\d/])([\d/])([\d/]))|0/0/0|0////|00000</GroupValues>
+        <Value number="1" descrName="NeNe" text="Number of square"/>
+        <Value number="2" descrName="Wr" text="Type of clouds"/>
+        <Value number="3" descrName="He" text="Height of radio echo"/>
+        <Value number="4" descrName="Ie" text="Intensity of radio echo"/>
+      </Group>
+    </Section>
+    <Section number="4" text="" >
+      <SectionGroups>\s*/555/((?:\s*[\d/]{5})*)</SectionGroups>
+      <Group number="1" text="changing and moving system of radio echo">
+        <GroupValues>\s*([\d]{2})([\d/])([\d/])([\d/])</GroupValues>
+        <Value number="1" descrName="NeNe" text="Number of square"/>
+        <Value number="2" descrName="ae" text="The tendency of the system configuration of radio echo"/>
+        <Value number="3" descrName="De" text="Beginning of the velocity vector , which characterizes the direction of movement of radio echo systems"/>
+        <Value number="4" descrName="fe" text="The speed of the system of radio echo"/>
+      </Group>
+    </Section>
+    <!-- считаем, что в региональных/национальных настройках/параметрах используются только цифры и "/" -->
+    <Section number="5" text="REGIONAL SETTINGS" >
+      <SectionGroups>\s*[5-6]1[5-6]1[5-6]((?:\s*[\w/]{5,})*)</SectionGroups>
+      <Group number="1" text="SOMETHING">
+        <GroupValues>\s*([/\w]{5,})</GroupValues>
+        <Value number="1" descrName="national" text="REGIONAL/NATIONAL SETTINGS INFO"/>
+      </Group>
+    </Section>
+
+  <Section number="6" text="SHIP NAME" >
+    <SectionGroups>\s*([\w/]{3,9})</SectionGroups>
+      <Value number="1" descrName="D____D" text="POZUVNOY"/>
+  </Section>
+</Part>
+</Message>
+

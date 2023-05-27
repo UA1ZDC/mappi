@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<control>
+  <category name="level_type" num="100"/> <!--аэрологические данные, данные с самолётов, SATOB, спутниковые (SATEM)-->
+  <group>
+    <phys rule="1">
+      <match name ="La"   segment="-45,45" />
+      <table name="hh"   namematch="P1">
+	<val match="1000" segment="-800,600"   	doubtsegment="-1000,-801;601,800" />
+	<val match="850"  segment="200,2000"   	doubtsegment="0,199"/>
+	<val match="700"  segment="2350,3450"  	doubtsegment="2200,2350;3450,3600"/>
+	<val match="500"  segment="4700,6100"  	doubtsegment="4500,4700;6100,6300"/>
+	<val match="400"  segment="6300,7800"  	doubtsegment="6100,6300;7800,8000"/>
+	<val match="300"  segment="7550,9800"  	doubtsegment="7300,7550;9800,10100"/>
+	<val match="250"  segment="8800,11100" 	doubtsegment="8500,8800;11100,11400"/>
+	<val match="200"  segment="10300,12900" doubtsegment="10000,10300;12900,13200"/>
+	<val match="150"  segment="12300,14900" doubtsegment="12000,12300;14900,15200"/>
+	<val match="100"  segment="14400,17700" doubtsegment="14000,14400;17700,18100"/>
+	<val match="70"	  segment="16100,20900" doubtsegment="15500,16100;20900,21500"/>
+	<val match="50"	  segment="18300,23100" doubtsegment="17700,18300;23100,23700"/>
+	<val match="30"	  segment="21100,25900" doubtsegment="20500,21100;25900,26500"/>
+	<val match="20"	  segment="23900,29700" doubtsegment="23300,23900;29700,30300"/>
+	<val match="10"	  segment="26800,33200" doubtsegment="26000,26800;33200,34000"/>
+	<val match="7"	  segment="31300,35800" doubtsegment="30700,31300;35800,36400"/>
+	<val match="5"	  segment="33800,37800" doubtsegment="33300,33800;37800,38300"/>
+	<val match="3"	  segment="37100,41600" doubtsegment="36600,37100;41600,42100"/>
+	<val match="2"	  segment="39800,44400" doubtsegment="39400,39800;44400,44900"/>
+	<val match="1"	  segment="45500,50100" doubtsegment="44900,45500;50100,50700"/>
+      </table>
+    </phys>
+    <phys rule="2">
+      <match name ="La"   segment="45,90;-90,-45" />
+      <table name="hh"   namematch="P1">
+	<val match="1000" segment="-550,650" doubtsegment="-700,-551;651,800" />
+	<val match="850"  segment="400,2000" doubtsegment="200,399;2001,2200" />
+	<val match="700"  segment="2450,3450" doubtsegment="2300,2450;3450,3600" />
+	<val match="500"  segment="4700,6100" doubtsegment="4500,4700;6100,6300"/>
+	<val match="400"  segment="6300,7800" doubtsegment="6100,6300;7800,8000"/>
+	<val match="300"  segment="7550,9800" doubtsegment="7300,7550;9800,10100"/>
+	<val match="250"  segment="8800,11100" doubtsegment="8500,8800;11100,11400"/>
+	<val match="200"  segment="10300,12900" doubtsegment="10000,10300;12900,13200"/>
+	<val match="150"  segment="12300,14900" doubtsegment="12000,12300;14900,15200"/>
+	<val match="100"  segment="14400,17700" doubtsegment="14000,14400;17700,18100"/>
+	<val match="70"	  segment="16100,20900" doubtsegment="15500,16100;20900,21500"/>
+	<val match="50"	  segment="18300,23100" doubtsegment="17700,18300;23100,23700"/>
+	<val match="30"	  segment="21100,25900" doubtsegment="20500,21100;25900,26500"/>
+	<val match="20"	  segment="23900,29700" doubtsegment="23300,23900;29700,30300"/>
+	<val match="10"	  segment="26800,33200" doubtsegment="26000,26800;33200,34000"/>
+	<val match="7"	  segment="31300,35800" doubtsegment="30700,31300;35800,36400"/>
+	<val match="5"	  segment="33800,37800" doubtsegment="33300,33800;37800,38300"/>
+	<val match="3"	  segment="37100,41600" doubtsegment="36600,37100;41600,42100"/>
+	<val match="2"	  segment="39800,44400" doubtsegment="39400,39800;44400,44900"/>
+	<val match="1"	  segment="45500,50100" doubtsegment="44900,45500;50100,50700"/>
+      </table>
+    </phys>
+  </group>
+  <group>
+    <phys rule="3">
+      <match name ="La"   segment="-45,45" />
+      <table name="T"   namematch="P1">
+	<val match="1000" segment="-30,50" doubtsegment="-50,-30;50,60" />
+	<val match="850"  segment="-50,30" doubtsegment="-65,-50;30,40"/>
+	<val match="700"  segment="-70,20" doubtsegment="-80,-70;20,30"/>
+	<val match="500"  segment="-80,5"  doubtsegment="-95,-80;5,10"/>
+	<val match="400"  segment="-85,-5" doubtsegment="-100,-85;-5,0"/>
+	<val match="300"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="250"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="200"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="150"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="100"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="70"   segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="50"	  segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="30"	  segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="20"	  segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="10"	  segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="7"	  segment="-80,10" doubtsegment="-90,-80;10,20"/>
+	<val match="5"	  segment="-70,15" doubtsegment="-80,-70;15,30"/>
+	<val match="3"	  segment="-60,25" doubtsegment="-70,-60;25,35"/>
+	<val match="2"	  segment="-60,30" doubtsegment="-70,-60;30,40"/>
+	<val match="1"	  segment="-60,30" doubtsegment="-70,-60;30,40"/>
+      </table>
+    </phys>
+    <phys rule="4">
+      <match name ="La"   segment="45,90;-90,-45" />
+      <table name="T"   namematch="P1">
+	<val match="1000" segment="-70,40" doubtsegment="-90,-70;40,50" />
+	<val match="850"  segment="-70,20" doubtsegment="-90,-70;20,30"/>
+	<val match="700"  segment="-70,10" doubtsegment="-90,-70;10,20"/>
+	<val match="500"  segment="-80,-5"  doubtsegment="-100,-80;-5,5"/>
+	<val match="400"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="300"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="250"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="200"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="150"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="100"  segment="-85,-10" doubtsegment="-100,-85;-10,-5"/>
+	<val match="70"   segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="50"	  segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="30"	  segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="20"	  segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="10"	  segment="-85,-5" doubtsegment="-100,-85;-5,5"/>
+	<val match="7"	  segment="-80,10" doubtsegment="-90,-80;10,20"/>
+	<val match="5"	  segment="-70,15" doubtsegment="-80,-70;15,30"/>
+	<val match="3"	  segment="-60,25" doubtsegment="-70,-60;25,35"/>
+	<val match="2"	  segment="-60,30" doubtsegment="-70,-60;30,40"/>
+	<val match="1"	  segment="-60,30" doubtsegment="-70,-60;30,40"/>
+      </table>
+    </phys>
+
+    <phys rule="5">
+      <table name="ff"    namematch="P1">
+	<val match="1000" segment="0,60"  doubtsegment="60,100"  />
+	<val match="850"  segment="0,65"  doubtsegment="65,100" />
+	<val match="700"  segment="0,70"  doubtsegment="70,100" />
+	<val match="500"  segment="0,100" doubtsegment="100,120"/>
+	<val match="400"  segment="0,130" doubtsegment="130,150"/>
+	<val match="300"  segment="0,160" doubtsegment="160,180"/>
+	<val match="250"  segment="0,160" doubtsegment="160,180"/>
+	<val match="200"  segment="0,160" doubtsegment="160,180"/>
+	<val match="150"  segment="0,150" doubtsegment="150,170"/>
+	<val match="100"  segment="0,150" doubtsegment="150,170"/>
+	<val match="70"	  segment="0,150" doubtsegment="150,170"/>
+	<val match="50"	  segment="0,150" doubtsegment="150,170"/>
+	<val match="30"	  segment="0,90"  doubtsegment="90,110" />
+	<val match="20"	  segment="0,90"  doubtsegment="90,110" />
+	<val match="10"	  segment="0,75"  doubtsegment="75,95" />
+	<val match="7"	  segment="0,80"  doubtsegment="80,100" />
+	<val match="5"	  segment="0,120" doubtsegment="120,140"/>
+	<val match="3"	  segment="0,150" doubtsegment="150,170"/>
+	<val match="2"	  segment="0,200" doubtsegment="200,220"/>
+	<val match="1"	  segment="0,200" doubtsegment="200,220"/>
+      </table>
+    </phys>
+  </group>
+
+</control>

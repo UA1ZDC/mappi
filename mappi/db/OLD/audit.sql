@@ -1,0 +1,5 @@
+--ALTER ROLE root  SET ac_session_audit = '{SsRawdCTEMce:ce}';
+--ALTER ROLE vgmdaemon  SET ac_session_audit = '{SsRawdCTEMce:ce}';
+--ALTER ROLE meteousers  SET ac_session_audit = '{SsRawdCTEMce:ce}';
+--ALTER ROLE meteoadministrators  SET ac_session_audit = '{SsRawdCTEMce:ce}';
+--ALTER ROLE meteo  SET ac_session_audit = '{SsRawdCTEMce:ce}';

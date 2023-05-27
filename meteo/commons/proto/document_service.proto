@@ -1,0 +1,374 @@
+syntax = "proto2";
+
+option cc_generic_services = true;
+option py_generic_services = true;
+
+import "meteo.proto";
+import "surface.proto";
+import "map_document.proto";
+import "weather.proto";
+import "puanson.proto";
+import "map_ornament.proto";
+
+
+package meteo.map.proto;
+
+enum typeBulleten {
+    kVRP     = 0; //!< Воздушная разведка погоды 
+    kPolet   = 1; //!< Полёты
+    kPerelet = 2; //!< Перелёты
+    kBattle  = 3; //!< Боевое дежурство
+}
+
+enum typeTime {
+    kUTC   = 0; //!< Время UTC
+    kNoUTC = 1; //!< Местное время
+}
+
+
+message ImportRequest {
+  optional bytes        data            = 1;
+  optional string       path            = 2;
+  optional string       idfile          = 3;
+}
+
+message ImportResponse {
+  optional bool         result          = 1;
+  optional string       comment         = 2;
+}
+
+//! ответ на запрос выолнения rpc-метода
+message Response {
+  optional bool         result          = 1;    //!< результат выполнения rpc-метода
+  optional string       uuid            = 2;    //!< идентификатор
+  optional string       comment         = 3;    //!< описание результата выполнения операции
+}
+
+message ExportRequest {
+  enum ExportDb {
+    kDocumentDb = 0; //!< Экспортировать из БД документов
+    kClimatDb = 1; //!< Экспортировать из БД климатических описаний
+  }
+  optional string       uuid            = 1;    //!< идентификатор объекта
+  optional string       name            = 2;    //!< название пользовательской карты
+  optional string       title           = 3;    //!< наименование пользовательской карты
+  optional string       path            = 4;    //!< Путь к файлу с сохраненным документом
+  optional DocumentFormat format        = 5 [ default = kJpeg ]; //!< формат экспорта
+  optional string       idfile          = 6;    //!< Id файла в бд
+  optional ExportDb     source          = 7 [ default = kDocumentDb ]; //!< БД из которой экспортировать документ
+  optional Map          map             = 8;    //!< если параметры документа заданы, то перед экспортом выполняется построение документа
+}
+
+message ExportResponse {
+
+  optional bool           result          = 1; //!< результат выполнения rpc-метода
+  optional DocumentFormat format          = 2; //!< формат экспорта
+  optional string         datetime        = 3; //!< Фактические дата и время полученных данных
+  optional string         filename        = 4; //!< Путь к сгенерированному файлу
+  optional string         comment         = 5; //!< описание результата выполнения операции
+  optional bytes          data            = 6; //!< документ в указанном формате
+  optional string         idfile          = 7; //!< id файла в бд
+}
+
+message MapRequest {
+  optional string date_start            = 1;//!< Начальная граница срока, по которому запрашиваются документы
+  optional string date_end              = 2;//!< Конечная граница срока, по которому запрашиваются документы
+  optional string map_name              = 3;//!< идентификатор документа
+  optional string map_title             = 4;//!< описание документа
+  optional string job_name              = 5; //!< Название задания
+  optional string job_title             = 6; //!< описание задания
+  optional int32 center                 = 7; //!< прогностический центр
+  optional int32 model                  = 8; //!<прогностическая модель
+  optional DocumentFormat format        = 9; //!<
+  optional int32 hour                   = 10; //!<срок прогноза, секунды
+}
+
+//!< Запрос списка документов с различными фильтрами
+message FormalDocumentRequest {
+  optional string date_start            = 1; //!< Начальная граница срока, по которому запрашиваются документы
+  optional string date_end              = 2; //!< Конечная граница срока, по которому запрашиваются документы
+  optional string template              = 3; //!< Шаблон документа
+  optional string job_name              = 4; //!< Название задания
+  optional string stnumber              = 5; //!< Индекс станции (число в виде строки)
+  optional string name                  = 6; //!< Наименование документа (Например: Метеосводка)
+}
+
+message JobRequest {
+  repeated string map_name              = 1; //!< идентификатор документа
+  repeated string formal_name           = 2; //!< идентификатор скрипта запроса
+}
+
+message MapDataRequest {
+  repeated int32  ptkpp_id = 1;
+}
+
+message MapData {
+  optional string date     = 1;
+  optional int32 ptkpp_id  = 2;
+  optional string map_name = 3;//!< идентификатор документа
+  optional string job_name = 4;
+  optional bytes mapdata   = 5;
+}
+
+message MapDataResponse {
+  repeated MapData maps = 1;
+  optional string error = 2;
+  optional bool result  = 3;
+}
+
+message TypeList {
+  optional FormalDocumentList doc_types      = 1;
+  optional MapList            map_types      = 2;
+}
+
+message FaxRecord {
+  optional string id = 1;
+  optional string t1 = 2;
+  optional string t2 = 3;
+  optional string a1 = 4;
+  optional string a2 = 5;
+  optional int32 ii = 6;
+  optional string cccc = 7;
+  optional string yygggg = 8;
+  optional string magic = 9;
+  optional string dt_start = 10;
+  optional string dt_end = 11;  
+  optional bytes msg = 12; // Данные
+  optional bytes end = 13; // Окончание данных
+}
+
+message FaxRequest {
+  repeated FaxRecord faxes = 1;
+  optional bool header_only = 2 [default = true];
+}
+
+message FaxReply {
+  repeated FaxRecord faxes = 1;
+  optional bool result = 2;
+  optional string comment = 3;
+}
+
+message av12script {
+    optional typeBulleten     type            = 1;  //!< Тип бюллетеня 
+    optional int32            bullNumber      = 2;  //!< Номер документа
+    repeated meteo.surf.Point stations        = 3;  //!< Станции
+    optional string           reciver         = 4;  //!< Тип получателя
+    optional string           reciverName     = 5;  //!< Имя получателя
+    optional string           reciverRank     = 6;  //!< Звание получателя
+    optional string           weatherRoute    = 7;  //!< Прогноз погоды по марщруту
+    optional string           weatherArrival  = 8;  //!< Прогноз погоды в пункте посадки
+    optional string           birdsRoute      = 9;  //!< Орнитологическая обстановка по маршруту (району)
+    optional string           birdsArrival    = 10;  //!< Оритологическая обстановка в пункте посадки 
+    optional string           synoptic        = 11;  //!< Дежурный синоптик
+    optional typeTime         typeTime        = 12; //!< Время UTC/ местное
+    optional string           date            = 13; //!< Дата вылета
+    optional string           timeStart       = 14; //!< Время вылета
+    optional string           timeEnd         = 15; //!< Время посадки
+    optional string           commander       = 16; //!< Командир части
+    optional string           commanderRank   = 17; //!< Звание командира части
+    optional string           number          = 18; //!< Номер части
+    optional int32            echelon         = 19; //!< Эшелон
+    optional string           dts             = 20; //!< Начальная граница срока, по которому запрашиваются документы
+    optional string           dte             = 21; //!< Конечная граница срока, по которому запрашиваются документы
+    optional bool             findStation     = 22; //!< Флаг поиска ближайших станций
+    optional int32            radiusFind      = 23; //!< Радиус поиска
+    repeated meteo.surf.Point factWindList    = 24;
+    optional bool             dopSign         = 25 [ default = false ] ;
+    optional string           dopReciver      = 26; 
+    optional string           dopReciverName  = 27;
+    optional string           dopReciverRank  = 28;
+    optional int32            shiftTime       = 29;
+    
+}
+
+//!Структуры для работы со сценариями python
+message StartArguments {
+  repeated string index                         = 1;                       //!< Индекс станции, по которой формируется документ (В Аэрометеорологическом бюллетене может быть несколько станций)
+  optional string datetime                      = 2;                       //!< Дата и время, за которые формируется документ (начало периода для ВКО)
+  optional string filepath                      = 3;                       //!< Путь сохранения файла
+  optional int32 number                         = 4;                       //!< Условный номер станции (для бюллетеней Метео-11, Метео-44) или разница с UTC для ВКО
+  optional int32 forecast                       = 5;                       //!< Срок прогноза (если нужен)
+  optional string datetime_end                  = 6;                       //!< Срок, до которого прогноз актуален (конец периода для ВКО)
+  optional string text                          = 7;                       //!< Текст прогноза
+  optional string user_rank                     = 8;                       //!< звание пользователя формирующего документ
+  optional string user_name                     = 9;                       //!< имя пользователя формирующего документ
+  optional string department                    = 10;                      //!< подразделение пользователя формирующего документ
+  optional bool av6_all_hours                   = 11 [ default = false ];  //!< показывать в дневнике погоды данные по всем имеющимся срокам 
+  optional bool av6_full                        = 12 [ default = false ];  //!< формировать дневник погоды в полной версии
+  repeated meteo.surf.Point stations            = 13;
+  optional int32 regiongroup_id                 = 14;                      //!< Группа регионов/станций для которой составляется документ
+  repeated int32 region_id                      = 15;                      //!< Группа регионов/станций для которой составляется документ
+  repeated IndicationSettings indication        = 16;                      //!< массив параметров индикаций
+  repeated MeteTabloColumn columns              = 17;                      //!< выбранные колонки для формирования метеотабло
+  repeated MeteoTabloStations selected_stations = 18;                      //!< выбранные настройки станций для метеотабло
+  optional int32 center                         = 19;                      //!< прогностический центр
+  optional int32 month                          = 20;                      //!< Месяц, для которого делать расчёт
+  optional Map   map                            = 21;                      //!< Для формирования карты для вставки в документ
+  optional string name                          = 22;                      //!< Название станции
+  optional string coord                         = 23;                      //!< Координаты станции
+}
+
+message GmiArguments {
+  enum GmiType {
+    kShort = 0; //Краткосрочный прогноз ГМИ (на 36 часов, 3 даты)
+    kMedium = 1; //Среднесрочный прогноз ГМИ (на 3 суток, 3 даты)
+    kLong = 2; //Долгосрочный прогноз ГМИ (на 7 суток, 7 дат)
+  };
+
+  optional string dt_start = 1; //Дата начала прогноза
+  optional GmiType doc_type = 2; //Тип документа
+  optional string document_number = 3;//номер документа(заявки)
+  optional string station_name = 4; //наименование станции
+  optional string station_index = 5; //индекс станции
+  optional double station_h = 6; //высота станции над уровнем моря
+  optional double lat = 7; //широта станции
+  optional double lon = 8; //долгота станции
+  optional string author = 9; // автор документа(логин)
+}
+
+message ScriptResult {
+  optional bool result             = 1; //!< Флаг результата выполнения сценария
+  optional string comment          = 2; //!< Комментарий/ошибка
+  optional string filename         = 3; //!< Путь к сгенерированному файлу
+  optional string datetime         = 4; //!< Фактические дата и время полученных данных
+  optional bytes file              = 5; //!< Бинарный файл
+}
+
+
+message SateliteImageHeader {
+  optional string id = 1;
+  optional string gridfs_id = 2;
+  optional string t1 = 3;
+  optional string t2 = 4;
+  optional string a1 = 5;
+  optional string a2 = 6;
+  optional string cccc = 7;
+  optional int32 ii = 8;
+  optional string yygggg = 9;
+  optional string dt = 10;
+}
+
+message GetSateliteImageListRequest {
+ optional string dt_begin = 1;//!< Начальная граница срока, по которому запрашиваются документы
+ optional string dt_end   = 2;//!< Конечная граница срока, по которому запрашиваются документы
+}
+
+message GetSateliteImageListReply {
+  repeated SateliteImageHeader headers = 1;
+  optional string comment = 2;
+  optional bool result = 3;
+}
+
+message GetSateliteImageRequest {
+  optional string gridfs_file_id = 1;  
+}
+
+message GetSateliteImageReply {
+  optional bytes data = 1;
+  optional string comment = 2;
+  optional bool result = 3;
+}
+
+message TileAddress {
+  optional int32 x              = 1;
+  optional int32 y              = 2;
+}
+
+message TileRequest {
+  optional ProjectionType proj 	= 1 [ default = kMercat ];
+  optional double scale	        = 2 [ default = 17.0 ];
+  optional double primemeridian = 3;
+  optional string loader        = 4 [ default = "ptkpp" ];
+  optional TileAddress address	= 5;
+}
+
+message TileResponse {
+  optional bytes image		= 1;
+  optional bool result		= 2;
+  optional string comment	= 3;
+}
+
+message ClimatRequest {
+}
+
+message ClimatResponse {
+  repeated string path    = 1;
+  optional bool result    = 2;
+  optional string comment = 3;
+}
+
+message PunchRequest {
+  optional string punchcode     = 1;                   //!< отбор конкретного шаблона
+  optional bool specialpunches  = 2 [default = false]; //!< запрос специальных шаблонов наноски
+}
+
+message PunchResponse {
+  repeated meteo.puanson.proto.Puanson punch = 1;
+  optional bool result                       = 2;
+  optional string comment                    = 3;
+}
+
+message DocServiceParam {
+  optional int32                        max_job_proc	= 1 [ default = 16 ];
+}
+
+message Dummy {
+}
+
+message GraphicGmpSettings {
+  optional Document doc    = 1; //!< параметры документа. Должны быть заполнены: size, projection, scale, map_center
+  optional int32 hour      = 2 [ default = 0 ]; //!< срок прогноза
+  optional string title    = 3; //!< наименование
+  optional string index    = 4; //!< индекс
+  optional string map_type = 5; //!< тип карты
+  repeated GraphicGmpMaptypeDocnumber numbers = 6; //!< текущие номера документов для каждого типа карты
+}
+
+message GraphicGmpMaptypeDocnumber {
+  optional string map_type = 1; //!< тип карты
+  optional int32 doc_number = 2 [ default = 1] ; //!< номер документа
+}
+
+//! Картографический сервис
+service DocumentService {
+  //управление документами
+  rpc CreateDocument( Document ) returns ( Response );          //!< создать документ в соответствии с указанными параметрами
+  rpc GetDocument( ExportRequest ) returns ( ExportResponse );  //!< получить созданный ранее документ в указанном формате
+  rpc RemoveDocument( Document ) returns ( Response );          //!< удалить созданный ранее документ
+
+  //шаблоны карт погоды
+  rpc GetWeatherJobs( JobList ) returns ( JobList );         //!< получить список настроенных шаблонов карт погоды
+  rpc SetWeatherJobs( JobList ) returns ( Response );        //!< отправить на сервер список работ
+  
+//формализованные документы
+  rpc GetDocumentTypes (TypeList) returns (TypeList);                    //!<возвращает список всех видов документов и карт, о которых известно серверу
+  rpc GetAvailableDocuments( MapRequest ) returns ( MapList );   //!<
+  rpc CreateMap( Map ) returns ( Response );                  //!< добавить слои с данными на виртуальный документ клиента
+  rpc ProcessJob( Job ) returns ( ExportResponse );                 //!< выполнить задание на построение документа
+  rpc SaveDocument( ExportRequest ) returns ( Response );     //!<
+  rpc ImportDocument( ImportRequest ) returns ( Response );   //!<
+
+  rpc GetPunches( PunchRequest ) returns ( PunchResponse );
+  rpc AddPunch( meteo.puanson.proto.Puanson ) returns ( Response );
+
+  rpc GetPunchMaps( Map ) returns ( MapList );
+
+  rpc GetOrnament( Dummy ) returns ( Ornaments );
+  
+  rpc GetLastJobs( Dummy ) returns ( JobList );
+
+//  rpc GetExtremums( IsoLayer ) returns ( meteo.field.ExtremumTrajReply );      //!<
+//  rpc GetExtremumsTraj( IsoLayer ) returns ( meteo.field.ExtremumTrajReply );  //!<
+
+  //Факсы
+  rpc GetFaxes( FaxRequest ) returns ( FaxReply );
+
+  //Спутниковые изображения
+  rpc GetSateliteImageList ( GetSateliteImageListRequest ) returns ( GetSateliteImageListReply );
+  rpc GetSateliteImageFile ( GetSateliteImageRequest ) returns ( GetSateliteImageReply );
+  
+  //Климатическое описание
+  rpc GetAvailableClimat ( ClimatRequest ) returns ( ClimatResponse );
+
+  rpc GetTile( TileRequest ) returns ( TileResponse );
+}

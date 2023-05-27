@@ -1,0 +1,11 @@
+{
+  "update": "msg",
+  "updates": [
+      { "q": { "_id" : { "$in" : @id@ } },
+    "u": { "$set" : { "decoded" :  @decoded@ } },
+    "upsert": false,
+        "multi": true
+      }
+   ]
+}
+

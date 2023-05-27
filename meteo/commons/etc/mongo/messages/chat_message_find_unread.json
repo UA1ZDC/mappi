@@ -1,0 +1,6 @@
+{
+  "find" : "message",
+  "filter" : {
+    "unread" :  { "$elemMatch" : { "$in" : "%1" } }
+  }
+}

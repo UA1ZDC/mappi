@@ -1,0 +1,24 @@
+<universe>
+  <galaxies>
+    <galaxy>
+      <systems>
+        <solarsystem>
+          <planets>
+            <planet name="Земля"/>
+            <planet name="Марс"/>
+          </planets>
+        </solarsystem>
+      </systems>
+    </galaxy>
+    <galaxy name="g-234">
+      <systems>
+        <solarsystem>
+          <planets>
+            <planet name="Планета-1"/>
+            <planet name="Планета-2"/>
+          </planets>
+        </solarsystem>
+      </systems>
+    </galaxy>
+  </galaxies>
+</universe>

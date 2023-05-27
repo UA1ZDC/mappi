@@ -1,0 +1,8 @@
+{
+  "find" : "bufr_code",
+  "filter" : 
+  {
+    "bufr_code" : "%1",
+    "values.code" : "%2"
+  }
+}

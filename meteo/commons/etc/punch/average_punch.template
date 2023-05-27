@@ -1,0 +1,143 @@
+code: "average_punch"
+name: "Среднесуточные показатели"
+path: "/home/vgmdaemon/build_dir//share/meteo//punch/average_punch.template"
+wind: true
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 12
+  testqual: 0
+  id {
+    descr: 11001
+    name: "dd"
+    parent: "wind"
+  }
+}
+rule {
+  align: kNoPosition
+  type: kNumber
+  number {
+  }
+  testval: 12
+  testqual: 0
+  id {
+    descr: 11002
+    name: "ff"
+    parent: "wind"
+  }
+}
+rule {
+  pos {
+    x: -5
+    y: -5
+  }
+  align: kTopLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kBoth
+    pluscolor: 4294901760
+    minuscolor: 4278190335
+    font {
+      family: "Serif"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 3.24
+  id {
+    descr: 12101
+    name: "T"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: -5
+    y: 5
+  }
+  align: kBottomLeft
+  type: kNumber
+  number {
+    intcount: -1
+    cutorder: kNoCut
+    fracount: 1
+    septype: kDot
+    signview: kBoth
+    pluscolor: 4294901760
+    minuscolor: 4278190335
+    font {
+      family: "Serif"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: -1.2
+  id {
+    descr: 12103
+    name: "Td"
+    description: ""
+  }
+}
+rule {
+  pos {
+    x: 5
+    y: -5
+  }
+  align: kTopRight
+  type: kNumber
+  number {
+    intcount: 2
+    cutorder: kLower
+    fracount: 1
+    septype: kNoSep
+    signview: kNoSign
+    pluscolor: 4278190080
+    minuscolor: 4278190080
+    font {
+      family: "Serif"
+      pointsize: 10
+      weight: 50
+      bold: false
+      italic: false
+      underline: false
+      strikeout: false
+    }
+    factor: 1
+  }
+  testval: 1024.1
+  id {
+    descr: 10051
+    name: "P"
+    description: ""
+  }
+}
+datatype: kSurface
+center: kCircle
+radius: 5
+windfont {
+  family: "Serif"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}
+draw_bad_dd: false
+flow: false

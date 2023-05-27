@@ -1,0 +1,8 @@
+name: "vps.map"
+title: "Вертикальный разрез"
+spline_koef: 2
+datetime: "2018-08-13T00:00:00"
+source: kSurface
+document {
+  doctype: kVerticalCut
+}

@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="FM16" text="SPECI"  category="42">
+  <MessageSections>.*SPECI(?:\s*COR)?(?:(?:(?:(?:\s*\w{4})(?:\s*\d{6}Z)(?:\s*AUTO)?)\s*NIL.*)|(.*))$</MessageSections>
+  <Section number="1" text="" >
+    <SectionGroups>(\s*\w{4})(\s*\d{6}Z)(?:\s*CC.)?(?:\s*COR)?(?:\s*AUTO)?(\s*[\w/]{5,10}(?:KT|MPS|MS|MRS))?(\s*[\d/]{3}V[\d/]{3})?\s*(?:(CAVOK)|((?:P?[\d/]{4}|[PM]?(?:[\d]\s)?\d{1,2}(?:/\d{1,2})?SM)(?:\s*NDV)?(?:\s*[\d/]{4}[\w/]{1,2})?\s+)?((?:\s*R[\d/]{2}(?:L|C|R)?/[\w/]{4,14})*)?\s*((?:[-+]?[A-Za-z/]{2}(?:[A-Za-z/]{2})?(?:[A-Za-z/]{2})?(?:[A-Za-z/]{2})?\s+)*)\s*((?:(?:[A-Za-z/]{3}[\d/]{3}[A-Za-z/]{0,3}\s+)*)|(?:VV[\w/]{3})|NSC|NCD|SKC|CLR)?)?(\s*[M/]?[\d/X]{2}/(?:[M/]?[\d/X]{2})?)?(\s*Q[\d/]{4})?(\s*A[\d/]{4})?((?:\s*RE\w{2,6}){0,3})?(\s*WS\s*(?:ALL\s*RWY|R[\w]{,4}))?(\s*W[\w/]+)?\s*((?:\s*R[\w/]{2,3}/(?:[\d/]{6}|SNOCLO|CLRD..)|\s*[\d]{2}CLRD[\d]{2})*)\s*(?:RF[.\d/]{10}\s*(?:[\w\s]*SENSOR\s*US)?)?\s*(?:NOSIG|((?:(?:\s*(?:BECMG|TEMPO|INTER|FM\d{4}|TL\d{4}|AT\d{4})\s*(?:(?:\s*[FTA][MLT]\d{4}){0,2}|\s*\d{4}/\d{4}))(?:\s*[\w/]{5,10}(?:KT|MPS|MS|MRS))?(?:\s*(?:CAVOK|[\d/]{2}[\w/]{1,3}))?(?:(?:\s*[-+]?[A-Za-z/]{2}(?:[A-Za-z/]{2})?(?:[A-Za-z/]{2})?(?:\s|$))*)(?:(?:\s*MOD|\s*/?SEV|\s*TURB|\s*BLW|\s*\d{4}FT|\s*TILL\s*\d{4})*)?(?:\s*NSW)?(?:\s*(?:\s*[\w/]{3}[\d/]{3}[\w]{0,3})*|(?:VV[\w/]{3})|NSC|NCD|SKC|CLR)?)*))?(\s*RMK.*)?</SectionGroups>
+    <Group number="1" text="">
+      <GroupValues>\s*(\w{4})</GroupValues>
+      <Value number="1"   descrName="CCCC" text="ИКАО"/>
+    </Group>
+    <Group number="2" text="">
+      <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/]{2})Z</GroupValues>
+      <Value number="1"  descrName="YY" text="День" />
+      <Value number="2"  descrName="GG" text="Час" />
+      <Value number="3"  descrName="gg" text="Минута" />
+    </Group>
+    <Group number="3" text="">
+      <GroupValues>(.*KT)|(.*M[PR]?S)</GroupValues> 
+      <SubGroup number="1" text="Ветер в узлах" >
+	<SubGroupValues>\s*([\d/\w]{3})(?:(P)?([\d/]{2})G?(P)?([\d/]{2})?KT)</SubGroupValues>
+	<Value number="0"   descrName="dd_10m"   innum="0" text="Истинное направление ветра в градусах" />
+	<Value number="1"   descrName="iff"      innum="0" text="Описатель скорости ветра или порывов ветра" />
+	<Value number="2"   descrName="ff_10_kt" innum="0" text="Скорость ветра в узлах" />
+	<Value number="3"   descrName="iff"      innum="1" text="Описатель скорости ветра или порывов ветра" />
+	<Value number="4"   descrName="fmfm_10_kt" innum="1" text="Максимальная скорость ветра в узлах" />
+      </SubGroup>
+      <SubGroup number="2" text="Ветер в м/с" >
+	<SubGroupValues>\s*([\d/\w]{3})(?:(P)?([\d/]{2})G?(P)?([\d/]{2})?M[PR]?S)</SubGroupValues>
+	<Value number="0"   descrName="dd_10m"    innum="0" text="Истинное направление ветра в градусах" />
+	<Value number="1"   descrName="iff"       innum="0" text="Описатель скорости ветра или порывов ветра" />
+	<Value number="2"   descrName="ff_10_mps" innum="0" text="Скорость ветра в м/с" />
+	<Value number="3"   descrName="iff"       innum="1" text="Описатель скорости ветра или порывов ветра" />
+	<Value number="4"   descrName="fmfm_10_mps" innum="1" text="Максимальная скорость ветра в м/с" />
+      </SubGroup>
+    </Group>
+    <Group number="4" text="">
+      <GroupValues>\s*([\d/]{3})V([\d/]{3})</GroupValues> 
+      <Value number="6"   descrName="dndndn" text="Экстремальное направление переменного ветра против часовой стрелки" />
+      <Value number="7"   descrName="dxdxdx" text="Экстремальное направление переменного ветра по часовой стрелке" />
+    </Group>
+    <Group number="4_1" text="">
+      <GroupValues>\s*(CAVOK)</GroupValues>
+      <Value number="1"   descrName="Nsw" text="Общий указатель погоды" />
+    </Group>
+    <Group number="5" text="">
+      <GroupValues>\s*(P|M)?([\d/]{4}|(?:[\d]\s)?\d{1,2}(?:/\d{1,2})?SM)?\s*(NDV)?\s*(?:([\d/]{4})([\w/]{1,2}))?</GroupValues>
+      <Value number="1"   descrName="attr" text="Атрибут следующего значения" />
+      <Value number="2"   descrName="VVVV" text="Горизонтальная видимость у поверхности" />
+      <Value number="4"   descrName="Dv"   text="Направление наблюдения" />
+      <Value number="3"   descrName="VNVNVNVN" text="Минимальная горизонтальная видимость у поверхности" />
+      <Value number="4"   descrName="Dv"   text="Направление наблюдения" />
+    </Group>
+    <Group number="6" text="">
+      <item>
+	<GroupValues>\s*R([\w/]{2}(?:L|C|R)?)/(?:(P|M)?([\d/]{4})(?:V(P|M)?([\d/]{4}))?(?:/?([\w/]))?|(P|M)?([\d/]{4})(?:V(P|M)?([\d/]{4}))?FT(?:/([\w/]))?)</GroupValues>
+	<Value number="1"   descrName="DRDR" text="Указатель ВПП" />
+	<Value number="1"   descrName="attr"     innum="0" text="Атрибут следующего значения" />
+	<Value number="2"   descrName="VRVRVRVR" innum="0"    text="Визуальная дальность видимости на взлетно-посадочной полосе" />
+	<Value number="1"   descrName="attr"     innum="1"    text="Атрибут следующего значения" />
+	<Value number="3"   descrName="VRVRVRVR" innum="1"    text="Визуальная дальность видимости на взлетно-посадочной полосе" />
+	<Value number="4"   descrName="i"           text="Тенденция дальности видимости на ВПП" />
+	<Value number="1"   descrName="attr"        innum="2" text="Атрибут следующего значения" />
+	<Value number="5"   descrName="VRVRVRVR_ft" innum="2" text="Визуальная дальность видимости на взлетно-посадочной полосе, футы" />
+	<Value number="1"   descrName="attr"        innum="3" text="Атрибут следующего значения" />
+	<Value number="6"   descrName="VRVRVRVR_ft" innum="3" text="Визуальная дальность видимости на взлетно-посадочной полосе, футы" />
+	<Value number="7"   descrName="i"    text="Тенденция дальности видимости на ВПП" />
+      </item>
+    </Group>
+    <Group number="7" text="">
+      <GroupValues>\s*([+-]?[\w/]{2,8})</GroupValues>
+      <Value number="1"   descrName="w_w_" text="Особые явления текущей и прогнозируемой погоды" />
+    </Group>
+    <Group number="8" text="">
+      <GroupValues>\s*(?:(VV[\d/]{3})|((?:NCD|NSC|SKC|CLR|(?:[A-Za-z/]{3}[\d/]{3}[A-Za-z/]{0,3}))))?</GroupValues>
+      <SubGroup number="1" text="">
+	<GroupValues>\s*VV([\d/]{3})</GroupValues>
+	<Value number="1"   descrName="hv" text="Наблюдаемая вертикальная видимость" />
+      </SubGroup>
+      <SubGroup number="2" text="">
+	<item>
+	  <GroupValues>\s*([\w/]{3})([\d/]{3})?([\w/]{0,3})?</GroupValues>
+	  <Value number="1"   descrName="NsNsNs" text="Категория облачности" />
+	  <Value number="2"   descrName="hshshs" text="Высота основания облачного слоя или массы" />
+	  <Value number="3"   descrName="Ccum"  text="Значительные конвективные облака" />
+	</item>
+      </SubGroup>
+    </Group>
+    <Group number="9" text="">
+      <GroupValues>\s*(?:([M/]?[\d/]{2})|XX)/(?:([M/]?[\d/]{2})|XX)?</GroupValues>
+      <Value number="1"   descrName="T_T_"   text="Температура воздуха" />
+      <Value number="2"   descrName="T_dT_d" text="Температура точки росы" />
+    </Group>
+    <Group number="10" text="">
+      <GroupValues>\s*Q([\d/]{4})</GroupValues>
+      <Value number="1"   descrName="PHPHPHPH" text="Величина QNH" />
+    </Group>
+    <Group number="10_1" text="">
+      <GroupValues>\s*A([\d/]{4})</GroupValues>
+      <Value number="1"   descrName="PHPHPHPH_A" text="Величина QNH, дюйм ртутного столба" />
+    </Group>
+    <Group number="11" text="">
+      <GroupValues>\s*RE([\w/]{2,6})</GroupValues>
+      <Value number="1"   descrName="w_w_" text="Особые явления текущей и прогнозируемой погоды" />
+    </Group>
+    <Group number="12" text="">
+      <GroupValues>\s*WS\s*([\w\s/]*)</GroupValues>
+      <Value number="1"   descrName="DRDR" text="Указатель ВПП" />
+    </Group>
+    <Group number="13" text="">
+      <GroupValues>W(M?[\d/]{2})/(?:S([\w/])|H(\d{1,3}))</GroupValues>
+      <Value number="1"   descrName="TsTs" text="Температура поверхности моря" />
+      <Value number="2"   descrName="S_" text="Состояние водной поверхности в месте посадки гидросамолётов" />
+      <Value number="3"   descrName="HwaHwa" text="Состояние водной поверхности в месте посадки гидросамолётов" />
+    </Group>
+    <Group number="14" text="">
+      <item>
+	<GroupValues>R?([\w/]{2,3})/?(?:([\d/])([\d/])([\d/]{2})([\d/]{2})|((?:SNOCLO|CLRD))(?:..)?)</GroupValues>
+	<Value number="1"   descrName="DRDR" text="Указатель ВПП" />
+	<Value number="2"   descrName="ER"   text="Отложения на ВПП" />
+	<Value number="3"   descrName="CR"   text="Степень загрязнения ВПП" />
+	<Value number="4"   descrName="eReR" text="Высота отложения" />
+	<Value number="5"   descrName="BRBR" text="Коэффициент трения/торможения" />
+	<Value number="6"   descrName="ERCReReBRBR" text="Общее состояние ВПП" />
+      </item>
+    </Group>
+    <Group number="1" text="">
+      <item category="53">
+	<GroupValues>(\s*(?:BECMG|TEMPO|INTER|FM\d{4}|TL\d{4}|AT\d{4})\s*(?:(?:\s*[FTA][MLT]\d{4}){0,2}|\d{4}/\d{4}))(\s*[\w/]{5,10}(?:KT|MPS|MS|MRS))?(\s*(?:CAVOK|[\d/]{2}[\w/]{1,3}))?((?:\s*[-+]?[A-Za-z/]{2}(?:[A-Za-z/]{2})?(?:[A-Za-z/]{2})?(?:\s|$))*(?:(?:\s*MOD|\s*/?SEV|\s*TURB|\s*BLW|\s*\d{4}FT|\s*TILL\s*\d{4})*)?)(?:\s*NSW)?(\s*(?:\s*[A-Za-z/]{3}[\d/]{3}[A-Za-z]{0,3})*|(?:VV[\w/]{3})|NSC|NCD|SKC|CLR)?</GroupValues>
+	<Group number="1" text="">
+	  <GroupValues>\s*(BECMG|TEMPO|INTER)?\s*(?:([\D/]{2})?([\d/]{2})([\d/]{2}))?\s*(?:([\D/]{2})?([\d/]{2})([\d/]{2}))?</GroupValues>
+	  <Value number="1"   descrName="TTTTT" text="Описатель изменения прогноза трендового типа или прогноза по аэродрому" />
+	  <Value number="2"   descrName="TT" text="Описатель времени, когда ожидается изменение прогноза" />
+	  <Value number="3"   descrName="GG" text="Время начала периода действия прогноза" />
+	  <Value number="4"   descrName="gg" text="Время начала периода действия прогноза" />
+	  <Value number="5"   descrName="TT" text="Описатель времени, когда ожидается изменение прогноза" />
+	  <Value number="6"   descrName="GG" text="Время начала периода действия прогноза" />
+	  <Value number="7"   descrName="gg" text="Время начала периода действия прогноза" />
+	</Group>
+	<Group number="2" text="">
+	  <GroupValues>(.*KT)|(.*M[PR]?S)</GroupValues> 
+	  <SubGroup number="1" text="Ветер в узлах" >
+	    <SubGroupValues>\s*([\d/\w]{3})(?:(P)?([\d/]{2})G?(P)?([\d/]{2})?KT)</SubGroupValues>
+	    <Value number="0"   descrName="dd_10m" text="Истинное направление ветра в градусах" />
+	    <Value number="1"   descrName="iff"      innum="2" text="Описатель скорости ветра или порывов ветра" />
+	    <Value number="2"   descrName="ff_10_kt" innum="2" text="Скорость ветра в узлах" />
+	    <Value number="3"   descrName="iff"      innum="3" text="Описатель скорости ветра или порывов ветра" />
+	    <Value number="4"   descrName="fmfm_10_kt" innum="3" text="Максимальная скорость ветра в узлах" />
+	  </SubGroup>
+	  <SubGroup number="2" text="Ветер в м/с" >
+	    <SubGroupValues>\s*([\d/\w]{3})(?:(P)?([\d/]{2})G?(P)?([\d/]{2})?M[PR]?S)</SubGroupValues>
+	    <Value number="1"   descrName="dd_10m" text="Истинное направление ветра в градусах" />
+	    <Value number="2"   descrName="iff"       innum="2" text="Описатель скорости ветра или порывов ветра" />
+	    <Value number="3"   descrName="ff_10_mps" innum="2" text="Скорость ветра в м/с" />
+	    <Value number="4"   descrName="iff"       innum="3" text="Описатель скорости ветра или порывов ветра" />
+	    <Value number="5"   descrName="fmfm_10_mps" innum="3" text="Максимальная скорость ветра в м/с" />
+	  </SubGroup>
+	</Group>	     
+	<Group number="3" text="">
+	  <GroupValues>\s*(CAVOK)|([\d/]{4}|P?(?:[\d]\s)?\d{1,2}(?:/\d)?SM)</GroupValues>
+	  <Value number="0"   descrName="Nsw" text="Общий указатель погоды" />
+	  <Value number="1"   descrName="VVVV" text="Горизонтальная видимость у поверхности" />
+	</Group>
+	<Group number="4" text=""> 
+	  <GroupValues>\s*([+-]?[\w/]{2,6})|((?:\s*MOD|\s*/?SEV|\s*TURB|\s*BLW|\s*\d{4}FT|\s*TILL\s*\d{4})*)</GroupValues>
+	  <Value number="1"   descrName="w_w_" text="Особые явления текущей и прогнозируемой погоды" />
+	  <Value number="1"   descrName="w_w_" text="Особые явления текущей и прогнозируемой погоды" />
+	</Group>
+	<Group number="5" text="">
+	  <item>
+	    <GroupValues>\s*(?:VV([\d/]{3}))|(?:([A-Za-z/]{3})([\d/]{3})?)([\w/]{0,3})?</GroupValues>
+	    <Value number="1"   descrName="hv" text="Наблюдаемая вертикальная видимость" />
+	    <Value number="2"   descrName="NsNsNs" text="Категория облачности" />
+	    <Value number="3"   descrName="hshshs" text="Высота основания облачного слоя или массы или наблюдаемая или прогнозируемая вертикальная видимость" />
+	    <Value number="4"   descrName="Ccum"  text="Значительные конвективные облака" />
+	  </item>
+	</Group>
+      </item>	
+    </Group>		     
+    <Group number="6" text="">
+      <GroupValues>(?:\s*RMK)?\s*(?:QFE([\d/]{3})(?:/[\d/]{4})?)?(?:\s*SC0[.]?([\d]{2}))?(?:.*)</GroupValues>
+      <Value number="1"  descrName="P_ami" text="Давлене на уровне порога ВПП в мм.рт.ст"/>
+      <Value number="2"  descrName="SC"    text="Коэффициент сцепления"/>
+    </Group>
+  </Section>			     
+</Message>

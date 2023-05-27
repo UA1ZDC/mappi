@@ -1,0 +1,19 @@
+{
+  "insert" :  @collection@,
+  "documents": [
+    {
+      "dt_write" : @dt_write@,
+      "dt" : @dt@,
+      "station" : @station@,
+      "h1" : @h1@,
+      "h2" : @h2@,
+      "product" : @product@,
+      "count"  : @count@,
+      "fileid" : @fileid@,
+      "tlgid"  : @tlgid@,
+      "data_type" : @data_type@,
+      "source" : @source@,
+      "ii" : @ii@
+    }
+  ]
+}

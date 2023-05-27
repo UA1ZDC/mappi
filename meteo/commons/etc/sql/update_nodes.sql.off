@@ -1,0 +1,16 @@
+INSERT INTO meteo.stations (station, index, name, location, station_type, alt, operational, country)
+    VALUES (@station@,
+      json_build_object('cccc', @cccc@),
+      json_build_object('ru', @name_ru@),
+      @location@,
+      13,
+      @alt@,
+      @operational@,
+      @country@)
+    ON CONFLICT (index, station_type) DO UPDATE SET
+  station = EXCLUDED.station,
+  name = EXCLUDED.name,
+  location = EXCLUDED.location,
+  alt = EXCLUDED.alt,
+  operational = EXCLUDED.operational,
+  country = EXCLUDED.country;

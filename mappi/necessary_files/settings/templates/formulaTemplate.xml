@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <item valueSrc="userAlgParam" source="this" text="Алгоритм" complex="true">
+    <item valueSrc="redColor" type="0" source="this" textItem="K1" text="Выражение для красного цвета" />
+    <item valueSrc="greenColor" type="0" source="this" textItem="K2" text="Выражение для зелёного цвета" />
+    <item valueSrc="blueColor" type="0" source="this" textItem="K3" text="Выражение для голубого цвета" />
+  </item>
+</body>

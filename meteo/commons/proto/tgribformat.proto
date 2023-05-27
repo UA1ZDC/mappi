@@ -1,0 +1,121 @@
+syntax = "proto2";
+
+package grib;
+
+// (v1) - данные, относящиеся к grib1, (v2) - к grib2
+
+message TBitmapData {
+  required bytes  bitmap = 1; //!< Битовое отображение
+  required uint32 type = 2; //!< 0 или предопределенное битовое отображение
+  optional uint32 unused = 3; //!< Количество неиспользованных битов в конце битового отображения (v1)
+  required uint32 crc = 4;
+};
+
+//! (v1)
+message TProductData1 {
+  required uint32 number = 1; //!< Указатель параметра (см. кодовую таблицу 2)
+  required uint32 levelType  = 2;  //!< Указатель типа уровня (т.3 приводится к GRIB2 т.4.5)
+  required uint32 levelValue = 3; //!< Значение уровня
+  required uint64  P1 = 4;
+  required uint64  P2 = 5;
+  required int32 timeRange = 6; //!< Указатель времени (т.5 приводится к GRIB2 т.4.10)
+  required uint32 numAvg    = 7; //!< N — Число случаев, включенных в расчет, если статистическая обработка; иначе 0
+  required uint32 absentAvg = 8; //!< Число отсутствующих (утраченных) в расчете в случае статистической обработки
+  required uint32 processType = 13; //!< Указательный номер процесса формирования продукции
+  required string dt1 = 14;	//!< Первое значение времени (смысл определяется timeRange)
+  required string dt2 = 15;	//!< Второе значение времени (смысл определяется timeRange)
+  required uint64 forecastTime= 16; //!< Срок прогноза
+};
+
+//! (v2)
+message TProductData2 {
+  required uint32 defType = 1;      //!< Номер образца определения продукции (т. 4.0)
+  required bytes definition = 3;    //!< Определение продукции, в соотв-ии с defType
+  required uint32 defCrc = 4;
+  required uint32 category = 9;     //!< Категория параметра (т.4.1)
+  required uint32 number = 10;      //!< Номер параметра (т.4.2)
+  required uint64 forecastTime= 11; //!< Срок прогноза
+  required uint32 surf1_type= 12;   //!< Тип первой фиксированной поверхности (т.4.5)
+  required float  surf1 = 13;       //!< Величина первой фиксированной поверхности
+  required uint32 surf2_type= 14;   //!< Тип первой фиксированной поверхности (т.4.5)
+  required float  surf2 = 15;	    //!< Величина первой фиксированной поверхности
+  required uint32 processType = 16;  //!< Указательный номер процесса формирования продукции
+  optional uint32 timeRange = 7; //!< Указатель времени (т.4.10)
+  required string dt1 = 17;	//!< Первое значение времени (смысл определяется timeRange)
+  required string dt2 = 18;	//!< Второе значение времени (смысл определяется timeRange)
+};
+
+message TGridData {
+  required uint32 type = 1; //!< Определение сетки (номер используемой сетки — из каталога)
+  required bytes data  = 2; //!< Данные сетки в соотв-ии с type
+  required uint32 dataCrc = 3;
+  optional bytes points   = 4; //!< Перечень точек в каждом ряду
+  optional uint32 pointsCrc   = 5;
+  optional uint32 pointsType  = 6; //!< Интерпретация списка чисел (т. 3.11) (v2)
+  optional bytes verticCoords = 7; //!< Перечень параметров вертикальной координаты
+  optional uint32 verticCrc   = 8;
+  optional sint32 di = 9;  //!< Приращение в направлении i
+  optional sint32 dj = 10; //!< Приращение в направлении j
+
+};
+
+
+message HourType {
+  optional int32 hour = 1; //!< Скрок прогноза, ч
+  optional string dt1 = 2; //!< Первая точка времени
+  optional string dt2 = 3; //!< Вторая точка времени
+  optional int32 time_range = 4 [default = 255]; //!< Смысловое значение dt1 и dt2  (т.4.10 GRIB2)
+};
+
+
+message GribInfo {
+  optional int32 center = 1; //!< центр обработки
+  optional string date = 2; //!<
+  optional int32 model   =  3; //!< тип данных
+  optional int32 level_type = 4;  //!< Тип уровная TODO для TMeteoData:1 - приземные данные; 0 - высотные; у GRIB для этого большая табличка
+  optional int32 level     = 5 ;  //!< Уровни в гПа
+  optional HourType hour    = 6; //!< Срок
+  repeated int32 param      = 7; //!< Номер параметра - сейчас это дескриптор bufr
+  optional int32 net_type      = 8; //!< тип сетки
+  optional string       center_name  = 9; //!< центр обработки название
+  optional string       level_type_name  = 10; //!< Тип уровня название
+  optional int32 step_lat      = 11; //!< шаг сетки
+  optional int32 step_lon      = 12; //!< шаг сетки
+
+};
+
+message Parameter {
+  optional int64        descr           = 1;
+  optional int32        paramv1         = 2;
+  optional int32        paramv2         = 3;
+  optional int32        discipline      = 4;
+  optional int32        category        = 5;
+  optional string       name            = 6;
+  optional string       unit            = 7;
+  optional string       unit_en         = 8;
+}
+
+message Parameters {
+  repeated Parameter    param           = 1;
+}
+
+message TGribData {
+  required uint32 center = 1; //!< Идентификация центра — поставщика/производителя продукции (кодовая таблица 0 = общая кодовая таблица C-1 в части C/c.)
+  required uint32 subcenter = 2; //!< Указатель подцентра (см. общую кодовую таблицу C-1 в части C/c., примечание (3))
+  required string dt   = 3; //!< Время подготовки данных — дата и время начала периода усреднения или накопления, "yyyy-MM-dd hh:mm:ss"
+  required uint32 masterTable = 12; //!< Номер версии эталонных таблиц GRIB
+  optional uint32 localTable  = 13; //!< Номер версии местных таблиц GRIB
+
+  optional uint32 discipline = 4; //!< Дисциплина, т.0.0. (v2)
+  optional uint32 signDt = 5;     //!< Значимость времени начала отсчёта, т.1.2 (v2)
+  optional uint32 status = 6;     //!< Состояние производства обработанных данных, т.1.3 (v2)
+  optional uint32 dataType = 7;       //!< Тип обработанных данных, т.1.4 (v2)
+
+  required bytes  data    = 14;
+  required uint32 dataCrc = 15;
+
+  required TGridData grid = 8;
+  optional TProductData1 product1 = 9; // (v1)
+  optional TProductData2 product2 = 10;// (v2)
+  optional TBitmapData bitmap = 11; //!< Битовое отображение
+};

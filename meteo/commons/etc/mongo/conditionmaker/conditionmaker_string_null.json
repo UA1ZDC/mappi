@@ -1,0 +1,8 @@
+{
+  "$or": [ 
+    { @param@: "" }, 
+    { @param@: 
+    { "$exists": false } 
+    }
+  ]
+}

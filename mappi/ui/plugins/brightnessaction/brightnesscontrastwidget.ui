@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BrightnessContrastWidget</class>
+ <widget class="QWidget" name="BrightnessContrastWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>318</width>
+    <height>195</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>318</width>
+    <height>195</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="brightnessBox">
+     <property name="title">
+      <string>Яркость</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout"/>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="contrastBox">
+     <property name="title">
+      <string>Контраст</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2"/>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QComboBox" name="applianceBox">
+       <property name="toolTip">
+        <string>Список слоев</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="lockButton">
+       <property name="maximumSize">
+        <size>
+         <width>41</width>
+         <height>34</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Заблокировать изменения</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

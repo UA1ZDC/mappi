@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/novost">
+        <file>tlgeditor/hmsaddr.tlg</file>
+        <file>tlgeditor/hmscirc.tlg</file>
+        <file>tlgeditor/wmoaddr.tlg</file>
+        <file>tlgeditor/wmocirc.tlg</file>
+    </qresource>
+</RCC>

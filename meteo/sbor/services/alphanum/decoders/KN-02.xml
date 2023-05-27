@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Message type="KN-02" text="SEA" category="2">
+  <MessageSections>^\s*SEA((?:\s*[\d/]{6})(?:\s*[\d/]{4})(?:\s*[\d/]{5})(?:\s*[\d]{6}\s*\d{4})?)((?:(?:(?:(?:\s*01[\d/]{2})(?:\s*1[\d/]{4})?(?:\s*2[\d/]{4})?(?:\s*[34][\d/]{4}){,2}(?:\s*[567][\d/]{4}){,4})(?:\s*8[\d/]{5}){0,3})*(?:(?:\s*02[\d/]{3})(?:\s*[12][\d/]{6}){,2}(?:\s*3[\d/]{6})?(?:\s*[45][\d/]{5}){0,2}(?:\s*6[\d/]{6})?(?:\s*7[\d/]{5})?)*(?:(?:\s*03[\d/]{2})(?:\s*[12][\d/]{4}){,2})*)*)</MessageSections>
+  <Section number="1" text="DATA FOR REPORTING IDENTIFICATION"> <!--опознавательные данные-->
+    <SectionGroups>(\s*[\d/]{6})(\s*[\d/]{4})(\s*[\d/]{5})(?:\s*[\d]{6}\s*\d{4})?</SectionGroups>
+        <Group number="1" text="DATE">
+          <GroupValues>\s*([\d/]{2})([\d/]{2})([\d/]{2})</GroupValues>
+          <Value number="1"  descrName="JJ" text="year"/>
+	  <Value number="2"  descrName="MM" text="month"/>
+	  <Value number="3"  descrName="YY" text="day"/>
+        </Group>
+        <Group number="2" text="observation">
+          <GroupValues>\s*([\d/]{2})([\d/]{2})</GroupValues>
+          <Value number="1"  descrName="GG" text="H"/>
+	  <Value number="2"  descrName="gg" text="M"/>
+        </Group>
+        <Group number="3" text="WMO station number">
+          <GroupValues>\s*([\d/]{2})([\d/]{3})</GroupValues>
+          <Value number="1"  descrName="II"/>
+	  <Value number="2"  descrName="iii" text="WMO STATION NUMBER"/>
+        </Group>
+  </Section>
+  <Section number="11" text="DATA">
+    <SectionGroups>((?:(?:(?:\s*01[\d/]{2})(?:\s*1[\d/]{4})?(?:\s*2[\d/]{4})?(?:\s*[34][\d/]{4}){,2}(?:\s*[567][\d/]{4}){,4})(?:\s*8[\d/]{5}){0,3})*)((?:(?:\s*02[\d/]{3})(?:\s*[12][\d/]{6}){,2}(?:\s*3[\d/]{6})?(?:\s*[45][\d/]{5}){0,2}(?:\s*6[\d/]{6})?(?:\s*7[\d/]{5})?)*)((?:(?:\s*03[\d/]{2})(?:\s*[12][\d/]{4}){,2})*)</SectionGroups>
+    <!--данные о состоянии атмосферы и поверхности моря-->
+    <Section number="2" text="ATMOSPHERE AND WATER SURFACE">
+      <item>
+	<SectionGroups>(\s*01[\d/]{2})(\s*1[\d/]{4})?(\s*2[\d/]{4})?(\s*3[\d/]{4})?(\s*4[\d/]{4})?(\s*5[0-8/][\d/]{3})?(\s*59[\d/]{3})?(\s*6[\d/]{4})?(\s*7[\d/]{4})?(\s*8[\d/]{5})?(\s*88[\d/]{4})?(\s*89[\d/]{4})?</SectionGroups>
+        <Group number="1">
+          <GroupValues>\s*01([\d/]{2})</GroupValues>
+          <Value number="1"  descrName="pp" text="object of observation"/>
+        </Group>
+        <Group number="2" text="wind">
+          <GroupValues>\s*1([\d/]{2})([\d/]{2})</GroupValues>
+          <Value number="1"  descrName="dd" text="wind direction"/>
+	  <Value number="2"  descrName="ff1" text="wind velocity"/>
+        </Group>
+        <Group number="3" text="MAX wind velocity and visibility to sea">
+          <GroupValues>\s*2([\d/]{2})([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="fxfx" text="MAX wind velocity"/>
+	  <Value number="2"  descrName="Vs24" text="visibility to sea"/>
+	  <Value number="3"  descrName="Ws" text="weather"/>
+        </Group>
+        <Group number="4" text="Temperature">
+	  <GroupValues>\s*3([\d/]{4})</GroupValues>
+          <Value number="1"  descrName="snTTT" text="Temperature"/>
+        </Group>
+        <Group number="5" text="Temperature of water surface">
+          <GroupValues>\s*4([\d/]{4})</GroupValues>
+          <Value number="1"  descrName="snTwTwTw" text="Temperature of water surface"/>
+        </Group>
+        <Group number="6" text="WAVES">
+          <GroupValues>\s*5([\d/])([\d/]{3})</GroupValues>
+          <Value number="1"  descrName="ib"/>
+          <Value number="2"  descrName="HwaHwaHwa" text="height of waves"/>
+        </Group>
+        <Group number="7" text="MAX WAVES">
+          <GroupValues>\s*59([\d/]{3})</GroupValues>
+          <Value number="1"  descrName="//HwaHwaHwa//" text="MAX height of waves"/>
+        </Group>
+        <Group number="8" text="DIRECTION OF WAVES">
+          <GroupValues>\s*6([\d/]{2})([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="PwaPwa"/>
+          <Value number="2"  descrName="Dw1" text="direction of waves 1"/>
+          <Value number="3"  descrName="Dw2" text="direction of waves 2"/>
+        </Group>
+        <Group number="9">
+          <GroupValues>\s*7([\d/])([\d/])([\d/]){2}</GroupValues>
+          <Value number="1"  descrName="B1"/>
+          <Value number="2"  descrName="b"/>
+          <Value number="3"  descrName="HnHn"/>
+        </Group>
+        <Group number="10" text="LEVEL OF SEA">
+          <GroupValues>\s*8([\d/])([\d/]{4})</GroupValues>
+          <Value number="1"  descrName="ah"/>
+          <Value number="2"  descrName="snhshshs" text="level of sea"/>
+        </Group>
+        <Group number="11" text="MIN LEVEL OF SEA">
+          <GroupValues>\s*88([\d/]{4})</GroupValues>
+          <Value number="1"  descrName="/snhshshs/" text="min level of sea"/>
+        </Group>
+        <Group number="12" text="MAX LEVEL OF SEA">
+          <GroupValues>\s*89([\d/]{4})</GroupValues>
+          <Value number="1"  descrName="//snhshshs//" text="max level of sea"/>
+        </Group>
+      </item>
+    </Section>
+    <!--сведения о состоянии льда в море-->
+    <Section number="3" text="ICE IN SEA">
+      <item>
+	<SectionGroups>(\s*02[\d/]{3})(\s*1[\d/]{6})?(\s*2[\d/]{6})?(?:(\s*3[\d/]{3}000)|(\s*3[\d/]{6}))?(\s*4[\d/]{5})?(\s*5[\d/]{5})?(\s*6[\d/]{6})?(\s*7[\d/]{5})?</SectionGroups>
+        <Group number="1">
+          <GroupValues>\s*02([\d/]{2})([\d/])</GroupValues>
+          <Value number="1"  descrName="pp" text="object of observation"/>
+          <Value number="2"  descrName="Q"/>
+        </Group>
+        <Group number="2" text="SHORE ICE">
+          <GroupValues>\s*1([\d/]{2})([\d/]{4})</GroupValues>
+          <Value number="1"  descrName="NfNf" text="quantity of shore ice"/>
+          <Value number="2"  descrName="LLLL" text="width of shore ice"/>
+        </Group>
+        <Group number="3" text="SHORE ICE">
+          <GroupValues>\s*2([\d/]{3})([\d/]{3})</GroupValues>
+          <Value number="1"  descrName="qqq" text="shore ice"/>
+          <Value number="2"  descrName="HsHsHs" text="height of snow on shore ice"/>
+        </Group>
+        <Group number="4" text="WATER AND ICE">
+          <GroupValues>\s*3([\d/]{2})([\d/])([\d/]{2})([\d/])()</GroupValues>
+          <Value number="1"  descrName="NwNw" text="quantity of water"/>
+          <Value number="2"  descrName="Dw" text="direction"/>
+          <Value number="3"  descrName="NiNi" text="quantity of ice"/>
+          <Value number="4"  descrName="Di1" text="direction"/>
+          <Value number="1"  descrName="PP" default="00"/>
+        </Group>
+        <Group number="4" text="WATER AND ICE">
+          <GroupValues>\s*3([\d/]{2})([\d/])([\d/]{2})([\d/])</GroupValues>
+          <Value number="1"  descrName="NwNw" text="quantity of water"/>
+          <Value number="2"  descrName="Dw" text="direction"/>
+          <Value number="3"  descrName="NiNi" text="quantity of ice"/>
+          <Value number="4"  descrName="Di1" text="direction"/>
+        </Group>
+        <Group number="5" text="ICE">
+          <GroupValues>\s*4([\d/]{2})([\d/]{2})([\d/])</GroupValues>
+          <Value number="1"  descrName="PP"/>
+          <Value number="2"  descrName="SS1" text="age of ice"/>
+          <Value number="3"  descrName="F" text="form of ice"/>
+        </Group>
+        <Group number="6" text="HUMMOCK">
+          <GroupValues>\s*5([\d/])([\d/])([\d/]{2})([\d/])</GroupValues>
+          <Value number="1"  descrName="Xp" text="level of hummockly"/>
+	  <Value number="2"  descrName="Xf" text="form of hummockly"/>
+          <Value number="3"  descrName="hphp" text="height of hummock"/>
+          <Value number="4"  descrName="Zf"/>
+        </Group>
+        <Group number="7" text="HUMMOCKLY OF ICE">
+          <GroupValues>\s*6([\d/])([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="Xi" text="level of hummockly"/>
+	  <Value number="2"  descrName="Xn" text="form of hummockly"/>
+          <Value number="3"  descrName="Zi"/>
+          <Value number="4"  descrName="Fn"/>
+          <Value number="5"  descrName="Fd" text="velocity of ice"/>
+          <Value number="6"  descrName="Dd" text="direction of ice"/>
+        </Group>
+        <Group number="8" text="ICE FORMATION">
+          <GroupValues>\s*7([\d/])([\d/])([\d/])([\d/])([\d/])</GroupValues>
+          <Value number="1"  descrName="A0" text="ice formation 1"/>
+          <Value number="2"  descrName="A2" text="ice formation 2"/>
+          <Value number="3"  descrName="A3" text="ice formation 3"/>
+          <Value number="4"  descrName="A4" text="ice formation 4"/>
+          <Value number="5"  descrName="A5" text="ice formation 5"/>
+        </Group>
+      </item>
+    </Section>
+    <Section number="4" text="MID TEMPERATURE OF AIR AND WATER"> <!--сведения о средних за прошедшие сутки температурах воздуха и поверхностного слоя морской воды-->
+      <SectionGroups>(\s*03[\d/]{2})(\s*1[\d/]{4})?(\s*2[\d/]{4})?</SectionGroups>
+      <Group number="1">
+        <GroupValues>\s*03([\d/]{2})</GroupValues>
+        <Value number="1"  descrName="pp" text="object of observation"/>
+      </Group>
+      <Group number="2" text="MID TEMPERATURE OF AIR">
+        <GroupValues>\s*1([\d/]{4})</GroupValues>
+        <Value number="1"  descrName="snTTT24" text="MID temperature of air"/>
+      </Group>
+      <Group number="3" text="MID TEMPERATURE OF WATER">
+        <GroupValues>\s*2([\d/]{4})</GroupValues>
+        <Value number="1"  descrName="snTwTwTw24" text="MID temperature of water"/>
+      </Group>
+    </Section>
+  </Section>
+</Message>

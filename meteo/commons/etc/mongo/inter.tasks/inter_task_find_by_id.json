@@ -1,0 +1,6 @@
+{
+  "find": "tasks",
+  "filter": {
+    "_id" : @id@    
+  }
+}

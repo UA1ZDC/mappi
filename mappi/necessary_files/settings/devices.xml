@@ -1,0 +1,1649 @@
+<?xml version='1.0' encoding='KOI8-R'?>
+<body>
+  <devices columnName="Приборы спутника" windowName="Выбор приборов спутника" complex="true" type="tabs" value="true" valueSrc="devices" text="Приборы спутника">
+    <AVHRR_3 value="true" complex="true" type="group" text="AVHRR/3">
+      <samplesCnt value="2048" type="string" source="this" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="0" type="combo" source="this" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="1.1" type="string" source="this" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="0.0541" type="string" source="this" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="55.37" type="string" source="this" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="6.5" type="string" source="this" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="avhrr3" type="string" source="this" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" type="combo" source="this" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="0" type="combo" source="this" text="Тип проекции"/>
+      <devChannels addable="true" chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" text="Каналы прибора">
+        <template checkable="true" value="false" tagName="channel$" type="group" checked="true" source="this" text="Канал $">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </template>
+        <channel0 checkable="true" value="false" type="group" checked="true" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 checkable="true" value="false" type="group" checked="true" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel2 checkable="true" value="false" type="group" checked="true" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 checkable="true" value="false" type="group" checked="true" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="180" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="335" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 checkable="true" value="false" type="group" checked="true" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="180" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="335" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+        <channel5 checkable="true" value="false" type="group" checked="true" source="this" valueSrc="channel" text="Канал 5">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="180" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="335" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel5>
+      </devChannels>
+    </AVHRR_3>
+    <HIRS_3 value="true" complex="true" type="group" valueSrc="device" text="HIRS/3">
+      <samplesCnt value="56" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="1" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="20.4" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="1.8" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="49.5" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="0.15625" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="hirs" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="0" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel10 value="true" type="group" source="this" valueSrc="channel" text="Канал 10">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel10>
+        <channel11 value="true" type="group" source="this" valueSrc="channel" text="Канал 11">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel11>
+        <channel12 value="true" type="group" source="this" valueSrc="channel" text="Канал 12">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel12>
+        <channel13 value="true" type="group" source="this" valueSrc="channel" text="Канал 13">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel13>
+        <channel14 value="true" type="group" source="this" valueSrc="channel" text="Канал 14">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel14>
+        <channel15 value="true" type="group" source="this" valueSrc="channel" text="Канал 15">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel15>
+        <channel16 value="true" type="group" source="this" valueSrc="channel" text="Канал 16">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel16>
+        <channel17 value="true" type="group" source="this" valueSrc="channel" text="Канал 17">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel17>
+        <channel18 value="true" type="group" source="this" valueSrc="channel" text="Канал 18">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel18>
+        <channel19 value="true" type="group" source="this" valueSrc="channel" text="Канал 19">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel19>
+        <channel2 value="true" type="group" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 value="true" type="group" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 value="true" type="group" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+        <channel5 value="true" type="group" source="this" valueSrc="channel" text="Канал 5">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel5>
+        <channel6 value="true" type="group" source="this" valueSrc="channel" text="Канал 6">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel6>
+        <channel7 value="true" type="group" source="this" valueSrc="channel" text="Канал 7">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel7>
+        <channel8 value="true" type="group" source="this" valueSrc="channel" text="Канал 8">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel8>
+        <channel9 value="true" type="group" source="this" valueSrc="channel" text="Канал 9">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel9>
+      </devChannels>
+    </HIRS_3>
+    <HIRS_4 value="true" complex="true" type="group" valueSrc="device" text="HIRS/4">
+      <samplesCnt value="56" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="1" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="10.2" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="1.8" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="49.5" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="0.15625" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="hirs" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="0" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel10 value="true" type="group" source="this" valueSrc="channel" text="Канал 10">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel10>
+        <channel11 value="true" type="group" source="this" valueSrc="channel" text="Канал 11">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel11>
+        <channel12 value="true" type="group" source="this" valueSrc="channel" text="Канал 12">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel12>
+        <channel13 value="true" type="group" source="this" valueSrc="channel" text="Канал 13">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel13>
+        <channel14 value="true" type="group" source="this" valueSrc="channel" text="Канал 14">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel14>
+        <channel15 value="true" type="group" source="this" valueSrc="channel" text="Канал 15">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel15>
+        <channel16 value="true" type="group" source="this" valueSrc="channel" text="Канал 16">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel16>
+        <channel17 value="true" type="group" source="this" valueSrc="channel" text="Канал 17">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel17>
+        <channel18 value="true" type="group" source="this" valueSrc="channel" text="Канал 18">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel18>
+        <channel19 value="true" type="group" source="this" valueSrc="channel" text="Канал 19">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel19>
+        <channel2 value="true" type="group" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 value="true" type="group" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 value="true" type="group" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+        <channel5 value="true" type="group" source="this" valueSrc="channel" text="Канал 5">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel5>
+        <channel6 value="true" type="group" source="this" valueSrc="channel" text="Канал 6">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel6>
+        <channel7 value="true" type="group" source="this" valueSrc="channel" text="Канал 7">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel7>
+        <channel8 value="true" type="group" source="this" valueSrc="channel" text="Канал 8">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel8>
+        <channel9 value="true" type="group" source="this" valueSrc="channel" text="Канал 9">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="-4096" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="4095" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="150" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel9>
+      </devChannels>
+    </HIRS_4>
+    <AMSU_A1 value="true" complex="true" type="group" valueSrc="device" text="AMSU-A1">
+      <samplesCnt value="30" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="1" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="48.05" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="3.333" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="48.33" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="0.125" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="amsua1" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="0" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel10 value="true" type="group" source="this" valueSrc="channel" text="Канал 10">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel10>
+        <channel11 value="true" type="group" source="this" valueSrc="channel" text="Канал 11">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel11>
+        <channel12 value="true" type="group" source="this" valueSrc="channel" text="Канал 12">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel12>
+        <channel2 value="true" type="group" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 value="true" type="group" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 value="true" type="group" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+        <channel5 value="true" type="group" source="this" valueSrc="channel" text="Канал 5">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel5>
+        <channel6 value="true" type="group" source="this" valueSrc="channel" text="Канал 6">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel6>
+        <channel7 value="true" type="group" source="this" valueSrc="channel" text="Канал 7">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel7>
+        <channel8 value="true" type="group" source="this" valueSrc="channel" text="Канал 8">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel8>
+        <channel9 value="true" type="group" source="this" valueSrc="channel" text="Канал 9">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel9>
+      </devChannels>
+    </AMSU_A1>
+    <AMSU_A2 value="true" complex="true" type="group" valueSrc="device" text="AMSU-A2">
+      <samplesCnt value="30" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="1" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="48.05" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="3.333" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="48.33" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="0.125" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="amsua2" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="0" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="16383" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+      </devChannels>
+    </AMSU_A2>
+    <AMSU_B value="true" complex="true" type="group" valueSrc="device" text="AMSU-B">
+      <samplesCnt value="90" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="1" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="16.0" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="1.1" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="48.95" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="0.375" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="amsub" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="0" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel2 value="true" type="group" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 value="true" type="group" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 value="true" type="group" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+      </devChannels>
+    </AMSU_B>
+    <MHS value="true" complex="true" type="group" valueSrc="device" text="MHS">
+      <samplesCnt value="90" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="0" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="16.0" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="11.111" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="49.4444" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="0.375" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="mhs" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="0" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel2 value="true" type="group" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 value="true" type="group" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 value="true" type="group" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="65535" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="90" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="340" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+      </devChannels>
+    </MHS>
+    <SEM_2 value="true" complex="true" type="group" valueSrc="device" text="SEM-2">
+      <samplesCnt value="11" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="0" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="0" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="0" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="0" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="0" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="sem2" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="0" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="0" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="0" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+      </devChannels>
+    </SEM_2>
+    <MVISR value="true" complex="true" type="group" valueSrc="device" text="MVISR">
+      <samplesCnt value="2048" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="0" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="1.1" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="0.0541" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="55.37" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="6" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="mvisr" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="1" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="1" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel2 value="true" type="group" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 value="true" type="group" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 value="true" type="group" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+        <channel5 value="true" type="group" source="this" valueSrc="channel" text="Канал 5">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel5>
+        <channel6 value="true" type="group" source="this" valueSrc="channel" text="Канал 6">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel6>
+        <channel7 value="true" type="group" source="this" valueSrc="channel" text="Канал 7">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel7>
+        <channel8 value="true" type="group" source="this" valueSrc="channel" text="Канал 8">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel8>
+        <channel9 value="true" type="group" source="this" valueSrc="channel" text="Канал 9">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel9>
+      </devChannels>
+    </MVISR>
+    <MSU_MR value="true" complex="true" type="group" valueSrc="device" text="MSU_MR">
+      <samplesCnt value="1540" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="2" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="0" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="1" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="0.0702" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="54" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="6,5" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="msu_mr" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="2" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="2" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel2 value="true" type="group" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 value="true" type="group" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 value="true" type="group" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+        <channel5 value="true" type="group" source="this" valueSrc="channel" text="Канал 5">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="1023" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="0" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel5>
+      </devChannels>
+    </MSU_MR>
+    <AVHRR_APT value="true" complex="true" type="group" valueSrc="device" text="AVHRR_APT">
+      <samplesCnt value="1048" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="1" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="0" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="4" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="0.10567" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="55.37" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="2" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="avhrr3" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="4" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="4" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="255" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+        <channel1 value="true" type="group" source="this" valueSrc="channel" text="Канал 1">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="255" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel1>
+        <channel2 value="true" type="group" source="this" valueSrc="channel" text="Канал 2">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="255" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="0" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel2>
+        <channel3 value="true" type="group" source="this" valueSrc="channel" text="Канал 3">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="255" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="80" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="300" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel3>
+        <channel4 value="true" type="group" source="this" valueSrc="channel" text="Канал 4">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="255" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="80" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="300" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel4>
+        <channel5 value="true" type="group" source="this" valueSrc="channel" text="Канал 5">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="255" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="80" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="300" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel5>
+      </devChannels>
+    </AVHRR_APT>
+    <WEFAX value="true" complex="true" type="group" valueSrc="device" text="WEFAX">
+      <samplesCnt value="1144" type="string" source="this" valueSrc="samplesCnt" text="Количество областей сканирования"/>
+      <necalibrElemSize maxValue="1000000" value="1" type="spin" source="this" valueSrc="necalibrElemSize" text="Размер некалбированных данных (байт)" minValue="0"/>
+      <calibrElemSize maxValue="1000000" value="4" type="spin" source="this" valueSrc="calibrElemSize" text="Размер калбированных данных (байт)" minValue="0"/>
+      <scanCourse values="Справа налево;Слева направо" value="0" type="combo" source="this" valueSrc="scanCourse" text="Направление сканирования (FIXME ед. изм.)"/>
+      <diaScanArea value="4" type="string" source="this" valueSrc="diaScanArea" text="Диаметр сканирования (FIXME ед. изм.)"/>
+      <scanStep value="0.10567" type="string" source="this" valueSrc="scanStep" text="Шаг сканирования (FIXME ед. изм.)" minValue="0"/>
+      <scanAngle value="55.37" type="string" source="this" valueSrc="scanAngle" text="Угол сканирования (FIXME ед. изм.)"/>
+      <recvSpeed value="2" type="string" source="this" valueSrc="recvSpeed" text="Скорость передачи данных (FIXME ед. изм.)"/>
+      <dataPath value="wefax" type="string" source="this" valueSrc="dataPath" text="Путь к данным прибора"/>
+      <dataType values="instrPretDataPath" value="0" type="combo" source="this" valueSrc="dataType" text="Тип данных"/>
+      <geomCorr values="Да;Нет" value="0" type="combo" source="this" valueSrc="geomCorr" text="Геом. коррекция"/>
+      <streamType values="WEFAX;LRIT;HRIT;APT;LRPT;MHRPT;CHRPT;HRPT;" value="7" type="combo" source="this" valueSrc="streamType" text="Тип потока"/>
+      <progType values="APT_NOAA;WEFAX;HRPT_METEOR;HRPT_FY;HRPT_NOAA;" value="3" type="combo" source="this" valueSrc="progType" text="Тип проекции"/>
+      <devChannels chiefFile="channels.xml" templateFile="devChannelTemplate.xml" complex="true" type="tabs" buttonName="Выбрать" source="this" valueSrc="devChannels" text="Каналы прибора">
+        <channel0 value="true" type="group" source="this" valueSrc="channel" text="Канал 0">
+          <freqsRegion soure="this" type="group" value="true" text="Диаппазон частот канала">
+            <minWaveLength value="100" type="string" source="this" valueSrc="minWaveLength" text="Нижняя граница FIXME"/>
+            <maxWaveLenght value="100" type="string" source="this" valueSrc="maxWaveLenght" text="Верхняя граница FIXME"/>
+          </freqsRegion>
+          <nekDataRegion soure="this" type="group" value="true" text="Диапазон некалиброванных данных">
+            <minChanCount value="0" type="string" source="this" valueSrc="minChanCount" text="Минимум FIXME"/>
+            <maxChanCount value="255" type="string" source="this" valueSrc="maxChanCount" text="Максимум FIXME"/>
+          </nekDataRegion>
+          <kDataRegion soure="this" type="group" value="true" text="Диапазон калиброванных данных">
+            <minChanValue value="100" type="string" source="this" valueSrc="minChanValue" text="Минимум FIXME"/>
+            <maxChanValue value="100" type="string" source="this" valueSrc="maxChanValue" text="Максимум FIXME"/>
+          </kDataRegion>
+          <chanDataType values="float;ushort;etc.;" value="0" type="combo" source="this" valueSrc="chanDataType" text="Тип данных"/>
+        </channel0>
+      </devChannels>
+    </WEFAX>
+  </devices>
+</body>

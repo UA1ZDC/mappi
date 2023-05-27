@@ -1,0 +1,29 @@
+{ "aggregate" : "meteoreport",
+  "pipeline"  : [
+    { "$match" : {
+      "dt" : @start_dt@,
+      "data_type" : { "$in" : @data_type@ },
+      "level_type" : @level_type@,
+      "param.descrname" : "T"
+    } },
+    { "$project" : {
+      "station_type" : 1,
+      "station"  : 1,
+      "location" : 1,
+      "station_info" : 1,
+      "level"  : 1 } },
+    { "$group" : {
+      "_id" : {
+    "station_type" : "$station_type",
+    "station"      : "$station"
+      },
+      "station_type" : { "$first" : "$station_type" },
+      "station" : { "$first" : "$station" },
+      "location" :     { "$first" : "$location" },
+      "station_info" : { "$first" : "$station_info" },
+      "count"    : { "$sum" : 1 }
+    } },
+    { "$match" : { "count": { "$gte": 5 } } }
+  ],
+  "cursor" : { "batchSize" : 1 }
+}

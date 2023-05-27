@@ -1,0 +1,166 @@
+chardet (3.0.4-1~bpo9+1) stretch-backports; urgency=medium
+
+  * Rebuild for stretch-backports.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 26 Oct 2018 01:12:29 +0200
+
+chardet (3.0.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Run tests at build time.
+  * debian/clean
+    - Clean egg-info.
+  * debian/control
+    - Bump Standards-Version to 3.9.8 (no changes needed).
+    - Add python{,3}-pytest and python{,3}-hypothesis to B-D.
+  * debian/copyright
+    - Update copyright years.
+    - Update Upstream-Contact.
+    - Update chardetect stanza.
+  * debian/rules
+    - Add override_dh_auto_test stanza.
+    - Clean stuff created by hypothesis.
+
+ -- Daniele Tricoli <eriol@mornie.org>  Sun, 18 Jun 2017 23:51:08 +0200
+
+chardet (2.3.0-2) unstable; urgency=medium
+
+  * debian/control
+    - Remove python-chardet-whl as it's no longer necessary.
+    - Remove python3-wheel from Build-Depends.
+    - Update Vcs fields for git migration.
+    - Use secure URI for Vcs-Git.
+    - Bump Standards-Version to 3.9.7 (no changes needed).
+  * debian/copyright
+    - Update copyright years.
+  * debian/rules
+    - Don't build the wheel package.
+  * debian/watch
+    - Use pypi.debian.net redirector.
+
+ -- Daniele Tricoli <eriol@mornie.org>  Wed, 10 Feb 2016 02:08:56 +0100
+
+chardet (2.3.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Remove python-chardet-doc package since upstream is not shipping
+    documentation anymore.
+  * debian/control
+    - Remove stanza for python-chardet-doc.
+    - Bump Standards-Version to 3.9.6 (no changes needed).
+  * debian/copyright
+    - Remove stanza for documentation.
+  * debian/python-chardet-doc{s,.doc-base}
+    - Remove since not needed anymore.
+
+ -- Daniele Tricoli <eriol@mornie.org>  Sat, 18 Oct 2014 02:56:10 +0200
+
+chardet (2.2.1-2) unstable; urgency=medium
+
+  * Team upload.
+  * d/control:
+    - Add python3-wheel to Build-Depends.
+    - Add python-chardet-whl binary package.
+    - Clean up whitespace.
+  * d/rules: 
+    - Build the universal wheels.
+    - Override dh_python3 to set the shebang line to /usr/bin/python3
+      (Closes: #741340)
+  * d/python-chardet-whl.install: Added.
+
+ -- Barry Warsaw <barry@debian.org>  Thu, 15 May 2014 16:14:49 -0400
+
+chardet (2.2.1-1) unstable; urgency=medium
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+  [ Daniele Tricoli ]
+  * New upstream release
+  * Switched to pybuild
+  * Builded Python3 package
+  * Removed embedded chardet CLI script since upstream is providing it
+  * Moved documentation into python-chardet-doc and registered it using
+    doc-base
+  * debian/clean
+    - Clean debian/chardet3.1 manpage
+  * debian/compat
+    - Bumped debhelper compatibility level to 9
+  * debian/control
+    - Added myself to Uploaders with Piotr Ożarowski's permission
+    - Added python3-all and python(3)-setuptools to B-D
+    - Switched to python-all in B-D
+    - Added stanza for python3-chardet
+    - Bumped debhelper B-D to (>= 9)
+    - Updated Homepage
+    - Added X-Python-Version: >= 2.6
+    - Bumped Standards-Version to 3.9.5 (no changes needed)
+    - Added python(3)-pkg-resources to Depends
+  * debian/copyright
+    - Made DEP5 compliant
+  * debian/python(3)-chardet.links
+    - Added chardet(3) symlinks to preserve old CLI script name
+    - Added symlinks for manpages
+  * debian/python(3)-chardet.manpages
+    - Installed manpages
+  * debian/rules
+    - Added export PYTHONWARNINGS=d
+    - Renamed chardetect CLI script to chardetect3 for python3-chardet
+    - Copied debian/chardet.1 into debian/chardet3.1 and changed occurences
+      of chardet to chardet3
+  * debian/watch
+    - Updated to new source code URI
+
+  [ Piotr Ożarowski ]
+  * drop preinst file, python-central is no longer available in Debian
+
+ -- Piotr Ożarowski <piotr@debian.org>  Mon, 17 Feb 2014 22:17:37 +0100
+
+chardet (2.0.1-2) unstable; urgency=low
+
+  [ Barry Warsaw ]
+  * Switch to dh_python2, closes: 634313, LP: #788514
+
+  [ Piotr Ożarowski ]
+  * Bump Standards-Version to 3.9.2 (no changes needed)
+  * Source format changed to 3.0 (quilt)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Wed, 20 Jul 2011 22:28:12 +0200
+
+chardet (2.0.1-1) unstable; urgency=low
+
+  [ Sandro Tosi ]
+  * Switch Vcs-Browser field to viewsvn
+
+  [ Piotr Ożarowski ]
+  * New upstream release (no changes in the code)
+  * Add /usr/bin/chardet (thanks to Ben Finney, closes: #479178)
+  * Convert package to dh sequencer and python-support
+  * debian/watch file updated (now points to the Python 2.X version)
+  * Bump Standards-Version to 3.8.3 (no changes needed)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Wed, 11 Nov 2009 14:14:10 +0100
+
+chardet (1.0.1-1.1) unstable; urgency=low
+
+  * NMU. Rebuild to move files to /usr/share/pyshared. Closes: #490452.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 18 Jul 2008 15:58:15 +0000
+
+chardet (1.0.1-1) unstable; urgency=low
+
+  * New upstream release
+  * New co-maintainer: Mark Pilgrim
+  * Changed my address to piotr@debian.org
+  * Added Vcs-Svn, Vcs-Browser and Homepage fields
+  * Debian packaging is now licenced under LGPL as well
+  * Bump Standards-Version to 3.7.3 (no changes needed)
+
+ -- Piotr Ożarowski <piotr@debian.org>  Wed, 05 Mar 2008 20:26:06 +0100
+
+chardet (1.0-1) unstable; urgency=low
+
+  * Initial release (closes: #375809)
+
+ -- Piotr Ozarowski <ozarow@gmail.com>  Sat,  8 Jul 2006 16:12:00 +0200
+

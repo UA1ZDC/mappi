@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# Script to automate running the provided example programs to test all
+# language binding (cpp, python, java)
+
+set -e
+
+cp -a examples $ADTTMP
+
+cd $ADTTMP/examples
+
+export CLASSPATH=/usr/share/java/protobuf.jar
+
+echo "*** Building example programs"
+
+make
+
+echo "*** Adding via cpp"
+./add_person_cpp TEST_FILE << EOF
+1
+Person One
+
+
+EOF
+
+echo "*** Adding via python"
+
+./add_person_python TEST_FILE << EOF
+2
+Person Two
+two@example.net
+
+EOF
+
+echo "*** Adding via java"
+
+./add_person_java TEST_FILE << EOF
+3
+Person Three
+
+555-1234
+work
+
+EOF
+
+
+
+for kind in cpp python java; do
+  echo "*** Listing via $kind"
+  ./list_people_$kind TEST_FILE
+done
+
+for kind in cpp python java; do
+  echo "*** Checking listing via $kind"
+  ./list_people_$kind TEST_FILE|grep "Name: Person One"
+  ./list_people_$kind TEST_FILE|grep "Name: Person Two"
+  ./list_people_$kind TEST_FILE|grep "E-mail address: two@example.net"
+  ./list_people_$kind TEST_FILE|grep "Name: Person Three"
+  ./list_people_$kind TEST_FILE|grep "Work phone #: 555-1234"
+done

@@ -1,0 +1,43 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
+
+ifeq ($(DEB_HOST_ARCH),hppa)
+CXXFLAGS += -mlong-calls
+else ifeq ($(DEB_BUILD_ARCH), mips)
+CXXFLAGS += -mxgot
+else ifeq ($(DEB_BUILD_ARCH), mips64el)
+CXXFLAGS += -mxgot
+else ifeq ($(DEB_BUILD_ARCH), mipsel)
+CXXFLAGS += -mxgot
+endif
+
+export CXXFLAGS
+
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure --buildsystem=cmake -- -Dgmock_build_tests=ON -Dgtest_build_tests=ON
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	cd obj-* && ctest || (cat Testing/Temporary/LastTest.log; exit 1)
+endif
+
+override_dh_install:
+	dh_install
+	find debian/googletest/usr/src/googletest -iname LICENSE -o -iname .gitignore -o -iname '*.pyc' | xargs rm
+	find debian/googletest/usr/src/googletest -iname '*.py' | xargs chmod -x
+	rm -rf debian/googletest/usr/src/googletest/*/msvc
+	for f in $$(ls debian/googletest-tools/usr/bin/*.py); \
+	  do mv $$f $$(echo $$f | sed s/\.py//); \
+	done
+	chmod a-x -R debian/googletest-tools/usr/share/googletest-tools/generator/cpp/*
+
+override_dh_clean:
+	dh_clean
+	rm -f test/*.pyc

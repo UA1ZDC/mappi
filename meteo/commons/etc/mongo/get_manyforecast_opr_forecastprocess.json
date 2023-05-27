@@ -1,0 +1,7 @@
+{
+  "find": "forecast_opr",
+  "filter" : {
+    "punkt.punkt_id" : @punkt_id@,
+    "ftype_method" : {"$in": @ftype_method@}
+  }
+}

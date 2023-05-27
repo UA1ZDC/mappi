@@ -1,0 +1,12 @@
+{
+   "update": "users",
+   "updates": [
+      { "q": { "login" : "%1" },
+	"u": { "$set" : {
+	  "avatar" : "%2" }
+	}, 
+	"upsert": false, 
+	"multi": false
+      }
+   ]
+}

@@ -1,0 +1,23 @@
+{
+  "update": "users",
+  "updates" : [
+    { "q" : { "login" : @login@ },
+      "u" : { 
+        "$setOnInsert" : {
+          "login":   @login@,
+          "role_id": @role_id@,
+          "rank_id": @rank_id@,
+          "gender" : @gender@,
+          "department" : @department@,
+          "permissions" : {
+            "inter" : {
+              "contact_visibility" : @contact_visibility@
+            }
+          }
+        }
+      },
+      "upsert" : true 
+    }
+  ]
+}
+

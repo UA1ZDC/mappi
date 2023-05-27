@@ -1,0 +1,26 @@
+{
+   "update": "user_appointments",
+   "updates": [
+      { "q": { 
+        "_id" : { "$in" : @id@ }, 
+        "users": { 
+          "$not" : {
+            "$elemMatch": { "$eq" : @users@ }
+            }
+          }
+        },
+        "u": { "$addToSet": { "users": @users@ } },
+        "upsert": false, "multi": true
+      },
+      { "q": { 
+        "_id" : { "$nin" : @id@ }, 
+        "users": { 
+          "$elemMatch": { "$eq" : @users@ }
+          }
+        },
+        "u": { "$pull": { "users": @users@ } },
+        "upsert": false, "multi": true
+      }
+   ],
+   "ordered": true   
+}

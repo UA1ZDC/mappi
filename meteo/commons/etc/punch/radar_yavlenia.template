@@ -1,0 +1,275 @@
+code: "radar_yavlenia"
+name: "Радар (явления)"
+path: "/opt/maslo//share/meteo//punch/radar_yavlenia.template"
+wind: false
+rule {
+  pos {
+    x: 0
+    y: 0
+  }
+  align: kCenter
+  type: kSymbol
+  number {
+  }
+  symbol {
+    symbol {
+      minval: 1
+      maxval: 1
+      font {
+        family: "Serif"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: "Облака верхние и средние"
+    }
+    symbol {
+      minval: 2
+      maxval: 2
+      font {
+        family: "Serif"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: "Облака слоистообразные"
+    }
+    symbol {
+      minval: 6
+      maxval: 6
+      font {
+        family: "Serif"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: "Кучевая облчность"
+    }
+    symbol {
+      minval: 3
+      maxval: 3
+      font {
+        family: "Serif"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: "Слабые осадки"
+    }
+    symbol {
+      minval: 4
+      maxval: 4
+      font {
+        family: "Serif"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: "Умеренные осадки"
+    }
+    symbol {
+      minval: 5
+      maxval: 5
+      font {
+        family: "Serif"
+        pointsize: 8
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: ""
+      label: "Сильные осадки"
+    }
+    symbol {
+      minval: 7
+      maxval: 7
+      font {
+        family: "wthrNew1"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6b"
+      label: "Слабый ливень"
+    }
+    symbol {
+      minval: 8
+      maxval: 8
+      font {
+        family: "wthrNew1"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6c"
+      label: "Ливень"
+    }
+    symbol {
+      minval: 9
+      maxval: 9
+      font {
+        family: "wthrNew1"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "6d"
+      label: "Сильный ливень"
+    }
+    symbol {
+      minval: 10
+      maxval: 10
+      font {
+        family: "Synop"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "285f29"
+      label: "Гроза (30-70%)"
+    }
+    symbol {
+      minval: 11
+      maxval: 11
+      font {
+        family: "Synop"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "5f29"
+      label: "Гроза (71-90%)"
+    }
+    symbol {
+      minval: 12
+      maxval: 12
+      font {
+        family: "Synop"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "5f"
+      label: "Гроза (> 90%)"
+    }
+    symbol {
+      minval: 13
+      maxval: 15
+      font {
+        family: "Synop"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4281042204
+      patternba: "6a"
+      label: "Град"
+    }
+    symbol {
+      minval: 16
+      maxval: 18
+      font {
+        family: "Synop"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4294128420
+      patternba: "69"
+      label: "Шквал"
+    }
+    symbol {
+      minval: 19
+      maxval: 19
+      font {
+        family: "Synop"
+        pointsize: 12
+        weight: 50
+        bold: false
+        italic: false
+        underline: false
+        strikeout: false
+      }
+      color: 4278190080
+      patternba: "67"
+      label: "Торнадо"
+    }
+  }
+  testval: 17
+  id {
+    descr: 21022
+    name: "phen"
+    description: ""
+  }
+}
+datatype: kSpecial
+center: kNoCenter
+crisscross: false
+radius: 3
+windfont {
+  family: "helvetica"
+  pointsize: 10
+  weight: 50
+  bold: false
+  italic: false
+  underline: false
+  strikeout: false
+}

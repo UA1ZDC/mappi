@@ -1,0 +1,15 @@
+{
+   "update": "user_appointments",
+   "updates": [      
+      { "q": {         
+        "users": { 
+          "$elemMatch": { "$eq" : @users@ }
+          }
+        },
+        "u": { "$pull": { "users": @users@ } },
+        "upsert": false, 
+        "multi": true
+      }
+   ],
+   "ordered": true   
+}

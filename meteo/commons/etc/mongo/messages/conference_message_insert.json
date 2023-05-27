@@ -1,0 +1,20 @@
+{
+  "findAndModify": "conference_messages",
+  "query": { "_id" : { "$exists" : false } },
+  "update": {
+    "$setOnInsert" : {
+      "mac" : @mac@,
+      "dt" : @dt@,
+      "from" : @from@ ,
+      "to" : @to@,
+      "text": @text@,
+      "delivery" : @delivery@,
+      "unread" : @unread@,
+      "total" : @total@,
+      "files" : @files@,
+      "parent" : @parent@
+    }
+  },
+  "new": true,
+  "upsert": true
+}

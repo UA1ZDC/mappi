@@ -1,0 +1,27 @@
+{
+  "findAndModify" : "stations",
+  "query" : { 
+    "station": @station@,
+    "type"   : @type@,
+    "cltype" : @cltype@,
+    "location" : @location@
+  },
+  "update" : {
+    "$setOnInsert" : {
+      "station": @station@,
+      "type"   : @type@,
+      "cltype" : @cltype@,
+      "utc"    : @utc@, 
+      "name" : {
+        "en" : @name_en@,
+        "ru" : @name_ru@
+      },
+      "location" : @location@, 
+      "country"  : @country@
+    },
+    "$min" : { "dtBegin" : @first@ },
+    "$max" : { "dtEnd"   : @last@ }
+  },
+  
+  "upsert": true
+}

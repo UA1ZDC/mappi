@@ -1,0 +1,6 @@
+{
+  "date"    : @date@,
+  "user"    : @user@,
+  "result"  : @result@,
+  "comment" : @comment@
+}
