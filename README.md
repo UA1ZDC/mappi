@@ -3,7 +3,7 @@ Software for automated collection and processing of satellite hydrometeorologica
 
 ```
 # Install dependencies
-sudo apt-get update && 
+sudo apt-get update && \
 sudo apt-get install -y -q \
     build-essential cmake g++ gcc graphicsmagick-libmagick-dev-compat libblas-dev libboost-python-dev \
     libcgal-dev libdlib-dev libgdal-dev libicu-dev libmagick-dev libnetcdf-dev libopenblas-dev libopenjp2-7-dev \
