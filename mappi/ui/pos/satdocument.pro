@@ -4,13 +4,15 @@ TARGET   = mappi.pos
 QT += widgets
 
 LOG_MODULE_NAME = map
-PUB_HEADERS =           posdocument.h           
-                        
-HEADERS =     $$PUB_HEADERS  $$PRIVATE_HEADERS \
-  posgrid.h
+PUB_HEADERS =           pos.h                   \
+                        posdocument.h           \
+                        posgrid.h
 
-SOURCES =               posdocument.cpp          \
-  posgrid.cpp
+HEADERS =     $$PUB_HEADERS  $$PRIVATE_HEADERS
+
+SOURCES =               pos.cpp                 \
+                        posdocument.cpp         \
+                        posgrid.cpp
 
 LIBS +=                 -lmeteo.map \
                         -lmnsatellite\

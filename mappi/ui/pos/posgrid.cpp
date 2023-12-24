@@ -4,7 +4,7 @@
 #include <qtransform.h>
 #include <qelapsedtimer.h>
 
-#include <mappi/projection/pos.h>
+#include "pos.h"
 
 #include <meteo/commons/ui/map/loader.h>
 #include <cross-commons/debug/tlog.h>
@@ -74,7 +74,8 @@ bool PosGrid::buildGridX2F(int samples, int lines, int step)
 
   x2fInitialized_ = true;
 
-  //qint64 x2fmem = nLat_*nLon_*sizeof(double)*2;
+  qint64 x2fmem = nLat_*nLon_*sizeof(double)*2;
+  debug_log << "X2F mem:" << x2fmem << "bytes";
 
   return true;
 }
@@ -107,6 +108,8 @@ bool PosGrid::buildGridF2X(int gridWidth, int gridHeight)
     return false;
   }
 
+  samples_ = gridWidth;
+  lines_  = gridHeight;
   f2xHalfHeight = qCeil(gridHeight*0.5);
   f2xHalfWidth  = qCeil(gridWidth*0.5);
 
@@ -156,8 +159,11 @@ bool PosGrid::buildGridF2X(int gridWidth, int gridHeight)
   QPoint bottomRight(maxX, maxY);
 
   boundRect_ = QRect(topLeft, bottomRight);
+  debug_log << QObject::tr("%1x%2").arg(boundRect_.width()).arg(boundRect_.height()) << boundRect_.bottomLeft() << boundRect_.topRight();
 
   gridSize_ = 1000;
+
+  info_log << "calc rect:" << t.restart() << "msec.";
 
   GeoPoint gp;
   if ( !X2F_one(QPointF(0,0),&gp) ) {
@@ -227,6 +233,8 @@ bool PosGrid::buildGridF2X(int gridWidth, int gridHeight)
     }
   }
 
+  info_log << "X2F:" << t.restart() << "msec.";
+
   edgeVec.clear();
   edgeVec.reserve((f2xHalfHeight*f2xHalfWidth)*4);
 
@@ -278,6 +286,8 @@ bool PosGrid::buildGridF2X(int gridWidth, int gridHeight)
     }
   }
 
+  info_log << "calc edges:" << t.restart() << "msec.";
+
   // маркируем граничные узлы
   for ( int i = 1, isz = edgeVec.size(); i < isz; ++i ) {
     const QPoint& p0 = edgeVec.at(i - 1);
@@ -310,6 +320,8 @@ bool PosGrid::buildGridF2X(int gridWidth, int gridHeight)
       }
     }
   }
+
+  info_log << "mark edge nodes:" << t.restart() << "msec.";
 
   // заполняем пропуски
   int j = 0;
@@ -509,12 +521,16 @@ bool PosGrid::buildGridF2X(int gridWidth, int gridHeight)
     }
   }
 
+  info_log << "interpol:" << t.restart() << "msec.";
+
 
   f2xInitialized_ = true;
 
-  //qint64 f2xmem = gridSize_*gridSize_*sizeof(qint16)*2;
+  qint64 f2xmem = gridSize_*gridSize_*sizeof(qint16)*2;
+  debug_log << "F2X mem:" << f2xmem << "bytes";
 
-  //f2xmem = gridSize_*gridSize_*sizeof(qint16)*2 + edgeVec.size()*sizeof(QPoint) + mask_.size();
+  f2xmem = gridSize_*gridSize_*sizeof(qint16)*2 + edgeVec.size()*sizeof(QPoint) + mask_.size();
+  debug_log << "F2X mem:" << f2xmem << "bytes";
 
   return true;
 }
@@ -778,8 +794,5 @@ bool PosGrid::calcMinMax(int width, int height, GeoPoint* minPoint, GeoPoint* ma
 
   return true;
 }
-
-
-
 
 } // meteo

@@ -4,16 +4,62 @@
 #include <meteo/commons/proto/map_document.pb.h>
 #include <meteo/commons/ui/map/document.h>
 #include <meteo/commons/ui/map/object.h>
-#include <meteo/commons/ui/map/geopixmap.h>
 
 #include <mappi/proto/satelliteimage.pb.h>
 #include <mappi/proto/thematic.pb.h>
 #include <mappi/ui/pos/posgrid.h>
 
+#include <gdal/gdal_priv.h>
+#include <gdal/cpl_conv.h>
+#include <gdal/cpl_string.h>
+#include <gdal/gdal_alg.h>
+#include <gdal/ogr_spatialref.h>
+#include <gdal/ogr_geometry.h>
+#include <gdal/ogr_featurestyle.h>
+#include <gdal/gdalwarper.h>
+
+struct GDALDatasetDeleter {
+  void operator()(GDALDataset *dataset) const {
+    if (dataset != nullptr) {
+      GDALClose(dataset);
+    }
+  }
+};
+
+struct GDALWKTDeleter {
+  void operator()(char *wkt) const {
+    if (wkt != nullptr) {
+      CPLFree(wkt);
+    }
+  }
+};
+
+struct GDALWarpOptionsDeleter {
+  void operator()(GDALWarpOptions *warpOptions) const {
+    if (warpOptions != nullptr) {
+      GDALDestroyWarpOptions(warpOptions);
+    }
+  }
+};
+
+struct OCTCoordinateTransformationDeleter {
+  void operator()(OGRCoordinateTransformation *poCT) const {
+    if (poCT != nullptr) {
+      OCTDestroyCoordinateTransformation(poCT);
+    }
+  }
+};
+
+
+typedef std::unique_ptr <GDALDataset, GDALDatasetDeleter> GDALDatasetPtr;
+typedef std::unique_ptr <char, GDALWKTDeleter> GDALWKTPtr;
+typedef std::unique_ptr <GDALWarpOptions, GDALWarpOptionsDeleter> GDALWarpOptionsPtr;
+typedef std::unique_ptr <OGRCoordinateTransformation, OCTCoordinateTransformationDeleter> OGRCoordinateTransformationPtr;
+
 namespace meteo {
 namespace map {
 
-class SatelliteImage: public meteo::map::GeoPixmap
+class SatelliteImage: public meteo::map::Object
 {
 public:
   SatelliteImage(meteo::map::Layer* layer);
@@ -30,9 +76,9 @@ public:
   Object* copy( Object* o ) const;
   Object* copy( meteo::Projection* grid ) const;
 
- // QList<meteo::GeoVector> skeletInRect( const QRect& rect, const QTransform& transform ) const;
+  QList<meteo::GeoVector> skeletInRect( const QRect& rect, const QTransform& transform ) const;
 
-  //bool render( QPainter* painter, const QRect& target, const QTransform& transform );
+  bool render( QPainter* painter, const QRect& target, const QTransform& transform );
 
   int minimumScreenDistance( const QPoint& pos, QPoint* cross = 0 ) const;
   QList<QRect> boundingRect( const QTransform& transform ) const;
@@ -47,6 +93,10 @@ public:
   virtual bool load(const QString& filename);
   bool loadImg(const QString& filename);
 
+  bool georeferenceImg();
+  bool reprojectImg();
+  bool loadCache();
+  bool setCacheCorners(GDALDataset *dataset, const OGRSpatialReference *poSource, const OGRSpatialReference *poTarget);
   virtual void buildCache();
   virtual void resetCache();
 
@@ -75,12 +125,13 @@ public:
 
 protected:
   QRect calcBoundingRect(map::Document* doc) const;
-  void fixImagePosition();
 
 protected:
   QImage cache_;
   QImage orig_;
   QString fileName_;
+  QString cacheFileName_;
+  QRectF cacheCornersWGS84_;
   ::mappi::proto::SatelliteImage protoData_;
 
 private:

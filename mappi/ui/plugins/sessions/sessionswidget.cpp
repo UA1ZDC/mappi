@@ -13,6 +13,8 @@
 
 #include <meteo/commons/global/global.h>
 #include <meteo/commons/proto/appconf.pb.h>
+#include <mappi/proto/reception.pb.h>
+#include <commons/textproto/tprototext.h>
 
 #include <mappi/settings/mappisettings.h>
 
@@ -23,7 +25,7 @@ static const int kTimeoutRequest  = 10000; //!< Таймаут запроса
 
 static const QString kSettings = QDir::homePath() + "/.meteo/mappi/sessionswidget.ini";
 
-static const QString kReceiverApplication = QObject::tr("mappi.session.manager");
+static const QString kReceiverApplication = QObject::tr("mappi.receiver.service");
 
 namespace mappi {
 
@@ -558,15 +560,18 @@ void SessionsWidget::refreshReceiverControls()
 {
   if(receiverRunning_) {
     ui_->receiveCtrlBtn->setIcon(QPixmap(":/mappi/icons/stop_proc.png"));
-  }
-  else {
+  } else {
     ui_->receiveCtrlBtn->setIcon(QPixmap(":/mappi/icons/run_proc.png"));
   }
 }
 
 void SessionsWidget::slotClickReceiverCtrl() const
 {
-  receiverRunning_ ? stopReceiverApp() : startReceiverApp();
+  if(receiverRunning_) {
+    stopReceiverApp();
+  }else{
+    startReceiverApp();
+  }
 }
 
 void SessionsWidget::startReceiverApp() // static
@@ -589,8 +594,8 @@ void SessionsWidget::startReceiverApp() // static
               delete processes;
             }
             delete ch;
-
           }
+          debug_log << QObject::tr("Создан процесс %1").arg(kReceiverApplication);
           break;
         }
       }
@@ -602,11 +607,9 @@ void SessionsWidget::startReceiverApp() // static
 void SessionsWidget::stopReceiverApp()  // static
 {
   auto* ch = meteo::global::serviceChannel(meteo::settings::proto::kDiagnostic);
-  var(ch);
   if(nullptr != ch)
   {
     auto* processes = ch->remoteCall(&meteo::app::ControlService::GetProcList, meteo::app::Dummy(), kTimeoutRequest, true);
-    var(processes);
     if(nullptr != processes)
     {
       for(const auto& process : processes->procs()) {
@@ -621,8 +624,8 @@ void SessionsWidget::stopReceiverApp()  // static
               delete processes;
             }
             delete ch;
-
           }
+          debug_log << QObject::tr("Остановлен процесс %1").arg(kReceiverApplication);
           break;
         }
       }

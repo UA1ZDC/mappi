@@ -54,6 +54,18 @@ bool Configuration::load(const QString& filePath)
   conflResol = schedule.resol();
   period = schedule.period();
 
+  for (int idx = 0; idx < conf.satellite_size(); idx++) {
+    if(conf.satellite(idx).type() == mappi::conf::kGeostatSat){
+      QString satName = QString::fromStdString(conf.satellite(idx).name());
+
+      if(!geoTimes.contains(satName)) geoTimes[satName] = QStringList();
+      for (int j = 0; j < conf.satellite(idx).time_size(); j++)
+        geoTimes[satName] << QString::fromStdString(conf.satellite(idx).time(j));
+
+      geoDuration[satName] = conf.satellite(idx).duration();
+    }
+  }
+
   isValid_ = true;
 
   return true;

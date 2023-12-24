@@ -38,6 +38,7 @@ public :
   float freq;
   float gain;
   float rate;
+  QString script;
 
   dump_t dump;  // опционально
 };

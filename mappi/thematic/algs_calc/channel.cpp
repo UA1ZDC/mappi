@@ -102,46 +102,40 @@ bool to::Channel::putValues(QDataStream &ds) {
 
 void to::Channel::scale(int new_size){
   if(size() == new_size) return;
-  debug_log << QObject::tr("Изменяем размер массива (%1) -> (%2)").arg(size()).arg(new_size);
 
   double scaleFactor = 1.0 * size() / new_size;
-
-  QVector<float> oldData(*this);
-  resize(new_size);
-  _header.lines = static_cast<int>(rows() * scaleFactor);
-  _header.samples = static_cast<int>(columns() * scaleFactor);
-
-  for (int i = 0; i < new_size; i++) {
-    int oldIndex = static_cast<int>(i * scaleFactor);
-    operator[](i) = oldData.value(oldIndex, INVALID_VALUE);
-  }
+  int new_rows = static_cast<int>(rows() * scaleFactor);
+  int new_columns = static_cast<int>(columns() * scaleFactor);
+  return scale(new_rows, new_columns);
 };
 void to::Channel::scale(int new_rows, int new_columns){
   if(rows() == new_rows && columns() == new_columns) return;
-  debug_log << QObject::tr("Изменяем размер массива (%1х%2) -> (%3х%4)")
-                  .arg(columns())
-                  .arg(rows())
-                  .arg(new_columns)
-                  .arg(new_rows);
-
-  double scaleFactorRow = 1.0 * rows() / new_rows;
-  double scaleFactorCol = 1.0 * columns() / new_columns;
-  if(scaleFactorRow == scaleFactorCol) return scale(new_rows * new_columns);
+  debug_log << QObject::tr("Изменяем размер массива %1(%2х%3) -> (%4х%5)")
+      .arg(QString::fromStdString(name()))
+      .arg(columns())
+      .arg(rows())
+      .arg(new_columns)
+      .arg(new_rows);
 
   QVector<float> oldData(*this);
   resize(new_rows*new_columns);
-  _header.lines = new_rows;
-  _header.samples = new_columns;
+  no_data_idx_.clear();
 
+  double scaleFactorRow = 1.0 * rows() / new_rows;
+  double scaleFactorCol = 1.0 * columns() / new_columns;
   for(int row=0; row < new_rows; row++){
     for(int col=0; col < new_columns; col++){
       int linearIndex = row * new_columns + col;
       int scaledRowIdx = scaleFactorRow == 1.0 ? row : static_cast<int>(row * scaleFactorRow);
       int scaledColIdx = scaleFactorCol == 1.0 ? col : static_cast<int>(col * scaleFactorCol);
-      int oldIndex = scaledRowIdx * new_columns + scaledColIdx;
-      operator[](linearIndex) = oldData.value(oldIndex, INVALID_VALUE);
+      int oldIndex = scaledRowIdx * _header.samples + scaledColIdx;
+      float oldValue = oldData.value(oldIndex, INVALID_VALUE);
+      operator[](linearIndex) = oldValue;
+      if (qFuzzyCompare(oldValue, INVALID_VALUE)) no_data_idx_.push_back(linearIndex);
     }
   }
+  _header.lines = new_rows;
+  _header.samples = new_columns;
 };
 
 void to::Channel::calculateMaxMin(){
@@ -149,8 +143,13 @@ void to::Channel::calculateMaxMin(){
   _max = std::numeric_limits<float>::min();
   for (int idx = 0; idx < size(); idx++) {
     float val = at(idx);
-    if (qFuzzyCompare(val, INVALID_VALUE)) continue;
-    if (val > _max) _max = val;
-    if (val < _min) _min = val;
+
+    if (qFuzzyCompare(val, INVALID_VALUE)){
+      no_data_idx_.push_back(idx);
+    }else{
+      if (val > _max) _max = val;
+      if (val < _min) _min = val;
+    }
+
   }
 }

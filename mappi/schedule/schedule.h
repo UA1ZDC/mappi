@@ -21,6 +21,8 @@ public :
   // решение конфликтов, конфликты могут быть решены вручную пользователем
   void resolvConfl(const Configuration& conf, bool saveConflResolByUser = false);
 
+  void addGeo(const Configuration& conf);
+
   void clear();
   bool isEmpty() const;
   int size() const;

@@ -27,7 +27,7 @@ class LayerSpectr: public Layer
 public:
   enum { Type = meteo::LayerType_MAX + 26 };
 
-  LayerSpectr( Document* d, const QString& name = QString::null);
+  LayerSpectr( Document* d, const QString& name = QString());
   virtual ~LayerSpectr() {}
 
   virtual int type() const { return Type; }

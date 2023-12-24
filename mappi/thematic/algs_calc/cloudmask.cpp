@@ -69,24 +69,28 @@ bool CloudMask::process()
   const auto chs = channels();
   if(chs.size() == 0) return false;
 
-  if(config_.vars_size() < chs.size() || false == isValid(config_))
-    return false;
+  for(const auto &config_val : qAsConst(config_.vars())){
+    if(!chs.contains(config_val.name())){
+      error_log << QObject::tr("В потоке не найден канал %1.").arg(QString::fromStdString(config_val.name())) << chs.keys() ;
+      return false;
+    }
+  }
 
   QSharedPointer<Channel> A1 =  _ch.value("A1");
   QSharedPointer<Channel> A2 =  _ch.value("A2");
   QSharedPointer<Channel> T3 =  _ch.value("T3");
   QSharedPointer<Channel> T4 =  _ch.value("T4");
-  if(A1.isNull() ||A2.isNull() ||T3.isNull()||T4.isNull() )
+  if(A1.isNull() || A2.isNull() || T3.isNull() || T4.isNull() )
   {
     error_log << QObject::tr("Не произведена привязка данных");
     return false;
   }
-  if(false == initProjection(A1) || nullptr == projection_)
+  if(!initProjection(A1) || nullptr == projection_)
   {
     error_log << QObject::tr("Проекция не создана");
     return false;
   }
-  if(false == initLandMask() || nullptr == landmask_)
+  if(!initLandMask() || nullptr == landmask_)
   {
     error_log << QObject::tr("Не удалось загрузить маску суша/вода");
     return false;
@@ -99,15 +103,11 @@ bool CloudMask::process()
   for (int idx = 0; idx < sz; idx++) {
     pixelType pixtype = CLOUD;
     meteo::GeoPoint geoCoord;
-    if(false == projection_->X2F_one(idx, &geoCoord) ){
-      error_log << QObject::tr("Ошибка расчета координат изображения")<<sz<< idx<< geoCoord.toString();
-      return false;
+    if(!projection_->X2F_one(idx, &geoCoord) || !geoCoord.isValid()){
+      error_log << QObject::tr("Ошибка расчета координат пикселя %1 из %2:").arg(idx).arg(sz) << geoCoord.toString();
+      data_[idx] = UNKNOW;
+      continue;
     }
-    if(!geoCoord.isValid()){
-      debug_log << geoCoord.toString();
-      return false;
-    }
-    // int landmask = landmask_->land(geoCoord);//1 for land mask , 0 for sea mask
 
     float a1 = A1->at(idx);
     float a2 = A2->at(idx);
@@ -129,38 +129,29 @@ bool CloudMask::process()
 
     switch (_themType) {
       case mappi::conf::kCloudMask:
-        if((CLOUD == pixtype) ||(CLOUD_LOWER == pixtype) ||(CLOUD_MIDL == pixtype) ||(CLOUD_HI == pixtype)  )
-        {
+        if(CLOUD == pixtype || CLOUD_LOWER == pixtype || CLOUD_MIDL == pixtype || CLOUD_HI == pixtype){
           pixtype = CLOUD;
         } else {
           pixtype = NOT_CLOUD;
         }
       break;
       case mappi::conf::kCloudType:
-        if((CLOUD_LOWER == pixtype) ||(CLOUD_MIDL == pixtype) ||(CLOUD_HI == pixtype)  )
-        {
-        } else {
+      case mappi::conf::kCloudAlt:
+        if(CLOUD_LOWER != pixtype && CLOUD_MIDL != pixtype && CLOUD_HI != pixtype){
           pixtype = UNKNOW;
         }
       break;
-//      case mappi::conf::kCloudAlt:
-//      break;
       case mappi::conf::kSnowBorder:
-        if((SNOW == pixtype) )
-        {
-        } else {
+        if(SNOW != pixtype) {
           pixtype = UNKNOW;
         }
       break;
       case mappi::conf::kIceBorder:
-        if((ICE == pixtype) )
-        {
-        } else {
+        if(ICE != pixtype) {
           pixtype = UNKNOW;
         }
       break;
-      default:
-      break;
+      default: break;
     }
 
     data_[idx] = pixtype;
@@ -172,18 +163,14 @@ bool CloudMask::process()
 ThemAlg::pixelType CloudMask::cloudTest(float a1, float a2, float t3,float t4, int landmask)
 {
   pixelType pixtype = cloudTestWithLandMask(a1,a2,t3,t4,landmask);
-  if(CLOUD == pixtype ){
-    if(t4 > them_thresholds_.cloudlower()){
-      pixtype = CLOUD_LOWER;
-    } else {
-      if(t4 < them_thresholds_.cloudhi()){
-        pixtype = CLOUD_LOWER;
-      } else {
-        pixtype = CLOUD_MIDL;
-      }
-    }
+  if(CLOUD != pixtype ) return pixtype;
+
+  if (t4 > them_thresholds_.cloudlower()) return CLOUD_LOWER;
+  if (t4 < them_thresholds_.cloudhi()) {
+    return CLOUD_LOWER;
+  } else {
+    return CLOUD_MIDL;
   }
-  return pixtype;
 }
 
 

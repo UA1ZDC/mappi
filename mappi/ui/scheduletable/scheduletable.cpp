@@ -90,6 +90,8 @@ bool ScheduleTable::getShedule()
       error_log << resp->comment().c_str();
     return false;
   }
+
+  ui_->scheduleTbl->setRowCount(0); //clear() удаляет также заголовки
   for(const auto &session: resp->list()){
     schedule::Session line;
     schedule::Session::fromProto(session, &line);
@@ -128,12 +130,12 @@ void ScheduleTable::fillCell(QTableWidgetItem *item, Column col, const schedule:
   switch (col) {
     case kAos:
      // item->setText(sitem.data().aos.toString("hh:mm:ss dd-MM-yyyy"));
-      item->setData(Qt::DisplayRole, sitem.data().aos);
+      item->setData(Qt::DisplayRole, sitem.data().aos.toLocalTime());
       //item->setToolTip(them.enabled() ? QObject::tr("Выполнять") : QObject::tr("Пропускать"));
     break;
 
     case kLos:
-      item->setData(Qt::DisplayRole, sitem.data().los);
+      item->setData(Qt::DisplayRole, sitem.data().los.toLocalTime());
       //item->setText(sitem.data().los.toString("hh:mm:ss dd-MM-yyyy"));
     break;
     case kName:

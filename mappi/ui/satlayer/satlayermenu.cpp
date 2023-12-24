@@ -85,7 +85,7 @@ void SatLayerMenu::slotColorFillDialog()
   delete dlg;
 }
 
-QPixmap SatLayerMenu::createPixmap(Qt::PenStyle style, int width, bool isSelected, QString text /* = QString::null*/)
+QPixmap SatLayerMenu::createPixmap(Qt::PenStyle style, int width, bool isSelected, QString text /* = QString()*/)
 {
   QFont font;
   QFontMetrics fm(font);

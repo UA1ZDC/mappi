@@ -14,7 +14,7 @@ void printHelp(const QString& progName)
 {
   info_log << QObject::tr("\nИспользование: %1 [option]\n").arg(progName)
 	   << QObject::tr("Опции:\n")
-	   << QObject::tr("-f <type>\t Тип заголовка файла [default = 3 (Handler::kMappiHeader)]\n")
+	   << QObject::tr("-f <type>\t Тип заголовка файла [default = 3 (Handler::kSeparateHeader)]\n")
 	   << QObject::tr("-n <type>\t Тип уведомлений [default = 1 (CreateNotify::ServiceNotify)] \n")
 	   << QObject::tr("-h\t\t Справка\n");
 }
@@ -46,7 +46,7 @@ int main (int argc, char** argv)
       return EXIT_FAILURE;
     }
 
-    int htype = mappi::po::Handler::kMappiHeader;
+    int htype = mappi::po::Handler::kSeparateHeader;
     int ntype = mappi::CreateNotify::ServiceNotify;
     int opt;
 

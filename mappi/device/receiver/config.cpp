@@ -59,7 +59,7 @@ bool Configuration::load(const QString& filePath)
 
     case conf::kSubEngine :
       if (receiver.has_sub_process()) {
-        appName = receiver.sub_process().app().c_str();
+        appPath = receiver.sub_process().path().c_str();
         break ;
       }
       return false;
@@ -67,6 +67,7 @@ bool Configuration::load(const QString& filePath)
     default :
       return false;
   }
+  separateHeader = receiver.separate_header();
 
   conf::FileStorage storage = conf.file_storage();
   sessionDir = QString("%1/%2")

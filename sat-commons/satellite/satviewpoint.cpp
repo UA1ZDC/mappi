@@ -423,6 +423,7 @@ bool SatViewPoint::countGridCorners(float maxAngle, meteo::GeoPoint* bl, meteo::
   g2.lon=br->lon();
 
   if (!countViewedMaxPoints(_dtStart, maxAngle, &g1, &g2)) {
+    error_log<< QObject::tr("Невозможно найти угловые точки начала сканирования: %1(%2deg)").arg(_dtStart.toString()).arg(maxAngle);
     return false;
   }
   bl->setLat(g1.lat);
@@ -435,6 +436,7 @@ bool SatViewPoint::countGridCorners(float maxAngle, meteo::GeoPoint* bl, meteo::
   g2.lat=er->lat();
   g2.lon=er->lon();
   if (!countViewedMaxPoints(_dtEnd, maxAngle, &g1, &g2)) {
+    error_log<< QObject::tr("Невозможно найти угловые точки окончания сканирования: %1(%2deg)").arg(_dtEnd.toString()).arg(maxAngle);
     return false;
   }
 
@@ -456,8 +458,7 @@ bool SatViewPoint::countGridCorners(float maxAngle, meteo::GeoPoint* bl, meteo::
  * \param er Конечный правый
  * \return  true в случае успеха, иначе false
  */
- bool SatViewPoint::countGridCorners(float maxAngle,
-				     GeoCoord* bl, GeoCoord* br, GeoCoord* el, GeoCoord* er) const
+ bool SatViewPoint::countGridCorners(float maxAngle, GeoCoord* bl, GeoCoord* br, GeoCoord* el, GeoCoord* er) const
 {
   if (!_isOk) {
     error_log<< QObject::tr("Не задано время начала и окончания сканирования");
@@ -465,10 +466,15 @@ bool SatViewPoint::countGridCorners(float maxAngle, meteo::GeoPoint* bl, meteo::
   }
 
   if (!countViewedMaxPoints(_dtStart, maxAngle, bl, br)) {
+    error_log<< QObject::tr("Невозможно найти угловые точки начала сканирования: %1(%2deg)").arg(_dtStart.toString()).arg(maxAngle);
     return false;
   }
 
-  return countViewedMaxPoints(_dtEnd, maxAngle, el, er);
+  if(!countViewedMaxPoints(_dtEnd, maxAngle, el, er)){
+    error_log<< QObject::tr("Невозможно найти угловые точки окончания сканирования: %1(%2deg)").arg(_dtEnd.toString()).arg(maxAngle);
+    return false;
+  }
+  return true;
 }
 
 /*!

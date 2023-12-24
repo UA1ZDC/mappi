@@ -28,7 +28,7 @@ public:
 
   void addActions( QMenu* menu );
 
-  static QPixmap createPixmap(Qt::PenStyle style, int width, bool isSelected, QString text = QString::null);
+  static QPixmap createPixmap(Qt::PenStyle style, int width, bool isSelected, QString text = QString());
   static void changeStylePixmap(QMenu* act, int val);
   static void changeWidthPixmap(QMenu* act, int oldval);
 

@@ -13,7 +13,7 @@ public:
     ~Widget();
 
 public  slots:
-      void plot(QVector<QStringList> list, QStringList times, QVector<QString> cities, const QString &satelite = QString::null);
+      void plot(QVector<QStringList> list, QStringList times, QVector<QString> cities, const QString &satelite = QString());
       void setupBars(QVector<QString> cities);
 private:
       int findMaxY();

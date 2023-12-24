@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
 
   int option_index = 0;
   QString weatherFileName = mappi::po::singleton::SatFormat::instance()->getWeatherFilePath();
-  QString path = mappi::po::singleton::SatFormat::instance()->getReceptionStoragePath();
+  QString path = MnCommon::varPath();
 
   QString optStr = QString("y:m:d:qeocifs:glw:p:h");
 

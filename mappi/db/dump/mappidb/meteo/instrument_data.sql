@@ -31,6 +31,11 @@ INSERT INTO meteo.instrument (id, name) VALUES (7, 'AMSU-A1');
 INSERT INTO meteo.instrument (id, name) VALUES (8, 'AMSU-A2');
 INSERT INTO meteo.instrument (id, name) VALUES (10, 'VIIRS');
 INSERT INTO meteo.instrument (id, name) VALUES (11, 'MODIS');
+INSERT INTO meteo.instrument (id, name) VALUES (12, 'MERSI-1');
+INSERT INTO meteo.instrument (id, name) VALUES (13, 'MERSI-2');
+INSERT INTO meteo.instrument (id, name) VALUES (14, 'MERSI-3');
+INSERT INTO meteo.instrument (id, name) VALUES (15, 'MERSI-LL');
+INSERT INTO meteo.instrument (id, name) VALUES (16, 'MERSI-RM');
 
 
 --

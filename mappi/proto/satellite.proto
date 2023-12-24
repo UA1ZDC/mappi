@@ -31,6 +31,11 @@ enum InstrumentType
   kMsuGs = 9;
   kViirs = 10;
   kModis = 11;
+  kMersi1 = 12;
+  kMersi2 = 13;
+  kMersi3 = 14;
+  kMersiLL = 15;
+  kMersiRM = 16;
 }
 
 //! Тип кадра
@@ -172,7 +177,7 @@ message ImageTransform {
   optional int32 width = 5;  //!< Новое значение ширины изображения, пропорции не сохраняются
   optional int32 height = 6; //!< Новое значение высоты изображения, пропорции не сохраняются
   optional float geostep = 7 [default = 0.05];  //!< геотиф с шагом сетки geocoding градусов, если у канала geocoding=true
-  optional ImageFormat format = 8 [default = kRGB32];
+  optional ImageFormat format = 8 [default = kARGB32];
 }
 
 

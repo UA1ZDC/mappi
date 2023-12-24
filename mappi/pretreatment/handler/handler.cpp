@@ -17,6 +17,23 @@ using namespace mappi;
 using namespace po;
 using namespace TSatPretr;
 
+Handler::~Handler(){
+  if(!_tempFileName.isNull()){
+    QFile::remove(_tempFileName);
+    debug_log << QObject::tr("Временный файл удален: %1").arg(_tempFileName);
+  }
+
+  _pipeline.clear();
+  debug_log << QObject::tr("Временная папка удалена: %1").arg(_pipeline.params().output_dir);
+
+  if(_deleteInput && singleton::SatFormat::instance()->getFlagDeleteInputFile()) {
+    QFile::remove(_fileName);
+    if (QFileInfo::exists(_fileName + ".header")) QFile::remove(_fileName + ".header");
+    debug_log << QObject::tr("Удален исходный файл: %1").arg(_fileName);
+  }
+}
+
+
 void Handler::clear(){
   _pipeline = SatPipeline();
   _mode = conf::kUnkRate;
@@ -45,6 +62,8 @@ bool Handler::process(SaveNotify* notify)
       headerType = "kPostOldHeader"; break;
     case kMappiHeader:
       headerType = "kMappiHeader"; break;
+    case kSeparateHeader:
+      headerType = "kSeparateHeader"; break;
     default: //kNoHeader
       headerType = "kNoHeader"; break;
   }
@@ -91,11 +110,16 @@ bool Handler::process(SaveNotify* notify)
   if (!_pipeline.dtStart().isValid() || !_pipeline.dtEnd().isValid()) {
     warning_log << QObject::tr("Неверное время получения информации, используем данные из header");
     _pipeline.setDateTime(_header.start, _header.stop);
+  }
+
+  if(_useOnlyTimePipeline){
+    _header.start.setTime(_pipeline.dtStart().time());
+    _header.stop.setTime(_pipeline.dtEnd().time());
+    _pipeline.setDateTime(_header.start, _header.stop);
   }else{
     _header.start = _pipeline.dtStart();
     _header.stop = _pipeline.dtEnd();
   }
-
   debug_log << QObject::tr("Pipeline:");
   debug_log << QObject::tr("  satName: %1").arg(_pipeline.satName());
   debug_log << QObject::tr("  dtStart: %1").arg(_pipeline.dtStart().toString("dd.MM.yyyy hh:mm"));
@@ -103,8 +127,8 @@ bool Handler::process(SaveNotify* notify)
   debug_log << QObject::tr("  instruments:");
   debug_log << _pipeline.instruments(",", " ");
 
-
-  notify->rawNotify(_header, _fileName);
+  if (nullptr != notify) notify->rawNotify(_header, _fileName);
+  else error_log << QObject::tr("Неверный указатель на saveNotify");
 
   if (!_pipeline.save(_header)) {
     error_log << QObject::tr("Ошибка сохранения данных");
@@ -112,15 +136,46 @@ bool Handler::process(SaveNotify* notify)
   }
   debug_log << QObject::tr("Сохранено в %1").arg(_pipeline.path());
 
-  if(!_tempFileName.isNull()){
-    QFile::remove(_tempFileName);
-    debug_log << QObject::tr("Временный файл удален: %1").arg(_tempFileName);
+  _pipeline.saveComposites(_header);
+
+  if(singleton::SatFormat::instance()->getFlagCopyCaduFile()) {
+    QDir::root().mkpath(_path + "/" + "copied_files");
+    QString extensions[3] = {".cadu", ".frm", ".bin"};
+    for(auto ext : extensions){
+      QString caduFileName = QString("%1/%2%3").arg(
+          _pipeline.params().output_dir,
+          _pipeline.params().pipeline_name,
+          ext
+      );
+      debug_log << QObject::tr("Попытка копирования cadu файла: %1").arg(caduFileName);
+      if(!QFileInfo::exists(caduFileName)) continue;
+
+      QFileInfo fileInfo(caduFileName);
+      QString copiedFileName = QString("%1/%2/%3").arg(
+          _path,
+          "copied_files",
+          _pipeline.dtStart().toString("ddMMyyyy_hhmm") + "_" + fileInfo.completeBaseName()
+      );
+      QFile::copy(_fileName, copiedFileName);
+      debug_log << QObject::tr("Скопирован cadu файл: %1 -> %2").arg(fileInfo.completeBaseName()).arg(copiedFileName);
+    }
   }
 
-  _pipeline.clear();
-  debug_log << QObject::tr("Временная папка удалена: %1").arg(_pipeline.params().output_dir);
+  if(singleton::SatFormat::instance()->getFlagCopyInputFile()) {
+    QDir::root().mkpath(_path + "/" + "copied_files");
+    QFileInfo fileInfo(_fileName);
+    QString copiedFileName = QString("%1/%2/%3").arg(
+        _path,
+        "copied_files",
+        fileInfo.completeBaseName()
+    );
+    QFile::copy(_fileName, copiedFileName);
+    if (QFileInfo::exists(_fileName + ".header")) QFile::copy(_fileName + ".header", copiedFileName + ".header");
+    debug_log << QObject::tr("Скопирован исходный файл: %1 -> %2").arg(fileInfo.completeBaseName()).arg(copiedFileName);
+  }
 
-  notify->finish();
+  if (nullptr != notify) notify->finish();
+  else error_log << QObject::tr("Неверный указатель на saveNotify");
   return true;
 }
 
@@ -130,19 +185,30 @@ bool Handler::setupPipeline(SaveNotify* notify)
     _mode = conf::kHiRate;
   }
 
-  auto conf = singleton::SatFormat::instance()->getPretreatmentFor(_header.satellite, _mode);
-  if (nullptr == conf) {
+  auto pretrConf = singleton::SatFormat::instance()->getPretreatmentFor(_header.satellite, _mode);
+  if (nullptr == pretrConf) {
     error_log << QObject::tr("Ошибка загрузки настроек предварительной обработки для спутника") << _header.satellite;
+    return false;
+  }
+
+  auto receptionConf = singleton::SatFormat::instance()->getReceptionFor(_header.satellite);
+  if (receptionConf.receiver().empty()) {
+    error_log << QObject::tr("Ошибка загрузки настроек приема для спутника") << _header.satellite;
     return false;
   }
   
   _pipeline.setSatName(_header.satellite);
   _pipeline.setTLE(_header.tle);
   _pipeline.setRecvMode(_mode);
-  _pipeline.setDataLevel(_level == mappi::conf::kUnkLevel ? conf->level() : _level);
+  _pipeline.setDataLevel(_level == mappi::conf::kUnkLevel ? pretrConf->level() : _level);
   _pipeline.setPath(_path + _suffix);
-  _pipeline.setInstruments(conf->instr());
+  _pipeline.setInstruments(pretrConf->instr());
   _pipeline.setSaveNotify(notify);
+  _pipeline.setParams(
+      QString("{\"samplerate\":%1,\"baseband_format\":\"%2\"}")
+          .arg(receptionConf.receiver().at(0).rate())
+          .arg(receptionConf.receiver().at(0).format().c_str())
+  );
   
   return true;
 }
@@ -167,8 +233,8 @@ bool Handler::readHeader()
       dataSize -= meteo::global::StreamHeaderOld::size();
 
       QFileInfo fileInfo(file.fileName());
-      _tempFileName = QString("%1%2%3%4").arg(
-          MnCommon::varPath(),
+      _tempFileName = QString("%1/%2%3%4").arg(
+          _path,
           fileInfo.baseName(),
           "_noheader.",
           fileInfo.completeSuffix()
@@ -193,8 +259,8 @@ bool Handler::readHeader()
       file.seek(0);
 
       QFileInfo fileInfo(file.fileName());
-      _tempFileName = QString("%1%2%3%4").arg(
-          MnCommon::varPath(),
+      _tempFileName = QString("%1/%2%3%4").arg(
+          _path,
           fileInfo.baseName(),
           "_noheader.",
           fileInfo.completeSuffix()
@@ -214,33 +280,50 @@ bool Handler::readHeader()
     {
       meteo::global::PreHeader preHeader;
       in >> preHeader;
-      if (preHeader.type == meteo::global::kRawFile) {
-        QByteArray ar(preHeader.offset, 0);
-        in.readRawData(ar.data(), ar.size());
-        // in >> _header;
-        var(ar.size());
-        meteo::global::fromBuffer(ar, _header);
-        dataSize = file.size() - preHeader.size() - preHeader.offset;
-
-        QFileInfo fileInfo(file.fileName());
-        _tempFileName= QString("%1%2%3%4").arg(
-            MnCommon::varPath(),
-            fileInfo.baseName(),
-            "_noheader.",
-            fileInfo.completeSuffix()
-        );
-        QDir dir;
-        dir.mkpath(_tempFileName.left(_tempFileName.lastIndexOf("/")));
-
-        std::ifstream src(file.fileName().toStdString(), std::ios::binary);
-        std::ofstream dst(_tempFileName.toStdString(),    std::ios::binary);
-        src.seekg(preHeader.size() + preHeader.offset);
-        dst << src.rdbuf();
-        _pipeline.setFileName(_tempFileName);
-      } else {
+      if (preHeader.type != meteo::global::kRawFile) {
         error_log << QObject::tr("Тип файла не соответствует сырому потоку");
         return false;
       }
+
+      QByteArray ar(preHeader.offset, 0);
+      in.readRawData(ar.data(), ar.size());
+      meteo::global::fromBuffer(ar, _header);
+      dataSize = file.size() - preHeader.size() - preHeader.offset;
+
+      QFileInfo fileInfo(file.fileName());
+      _tempFileName = QString("%1/%2%3%4").arg(
+          _path,
+          fileInfo.baseName(),
+          "_noheader.",
+          fileInfo.completeSuffix()
+      );
+      QDir dir;
+      dir.mkpath(_tempFileName.left(_tempFileName.lastIndexOf("/")));
+
+      std::ifstream src(file.fileName().toStdString(), std::ios::binary);
+      std::ofstream dst(_tempFileName.toStdString(), std::ios::binary);
+      src.seekg(preHeader.size() + preHeader.offset);
+      dst << src.rdbuf();
+      _pipeline.setFileName(_tempFileName);
+    }
+    case kSeparateHeader:  //заголовок отдельно
+    {
+      QFile headerFile(_fileName + ".header");
+      if (!headerFile.open(QIODevice::ReadOnly)) {
+        error_log << QObject::tr("Ошибка открытия файла c заголовком %1").arg(_fileName);
+        return false;
+      }
+      meteo::global::PreHeader preHeader;
+      QDataStream headerStream(&headerFile);
+      headerStream >> preHeader;
+      if (preHeader.type != meteo::global::kRawFile) {
+        error_log << QObject::tr("Тип файла не соответствует сырому потоку");
+        return false;
+      }
+      QByteArray ar(preHeader.offset, 0);
+      headerStream.readRawData(ar.data(), ar.size());
+      meteo::global::fromBuffer(ar, _header);
+      _pipeline.setFileName(_fileName);
     }
     break;
     default: //kNoHeader
@@ -268,8 +351,8 @@ bool Handler::readHeader()
     }
 
     QFileInfo fileInfo(fileToSwapPath);
-    _tempFileName = QString("%1%2%3%4").arg(
-        MnCommon::varPath(),
+    _tempFileName = QString("%1/%2%3%4").arg(
+        _path,
         fileInfo.baseName(),
         "_swapped.",
         fileInfo.completeSuffix()
@@ -293,25 +376,28 @@ bool Handler::readHeader()
  * \param date дата приёма
  */
 void Handler::dateFromOpt(TSatPretr::PretrOpt &opt, QDate &date) {
+  bool passedDate = (opt.year != 0 || opt.month != 0 || opt.day != 0);
   if (opt.year == 0) { opt.year = date.year(); }
   if (opt.month == 0) { opt.month = date.month(); }
   if (opt.day == 0) { opt.day = date.day(); }
 
-  if (QDate::isValid(opt.year, opt.month, opt.day))
+  if (QDate::isValid(opt.year, opt.month, opt.day)){
     date.setDate(opt.year, opt.month, opt.day);
+    if(passedDate) _useOnlyTimePipeline = true;
+  }
 }
 
 void Handler::parseStream(const QString &fileName, const QString &weatherFile, const QString &path, PretrOpt &opt) {
   Satellite sat;
   sat.readTLE(opt.satName, weatherFile);
-
-  _pipeline.setName(opt.pipelineName);
-  _pipeline.setParams(opt.json_params);
-  _pipeline.setFileName(fileName);
-
   setTle(sat.getTLEParams());
-  setFile(fileName);
+
   setPath(path);
+  setSatName(opt.satName);
+  setFile(fileName);
+  setPipelineFile(fileName);
+  setPipelineName(opt.pipelineName);
+  setPipelineParams(opt.json_params);
 
   //  QString stream;
   if (opt.mode != mappi::conf::kUnkRate) {
@@ -319,8 +405,7 @@ void Handler::parseStream(const QString &fileName, const QString &weatherFile, c
   }
 
   setSwap(opt.swap);
-  setSatName(opt.satName);
-  setPipeline(opt.pipelineName);
+
   if (opt.manchester) {
     setDataLevel(opt.invert ? mappi::conf::kManchesterInvertLevel : mappi::conf::kManchesterLevel);
   } else if (opt.deframer) {
@@ -330,7 +415,11 @@ void Handler::parseStream(const QString &fileName, const QString &weatherFile, c
   }
 
   if (opt.headerExist) {
-    setHeaderType(mappi::po::Handler::kMappiHeader);
+    if(QFileInfo::exists(fileName + ".header")) {
+      setHeaderType(mappi::po::Handler::kSeparateHeader);
+    }else {
+      setHeaderType(mappi::po::Handler::kMappiHeader);
+    }
   } else if (opt.oldHeaderExist) {
     if (opt.deframer) { //с такими параметрами виндовый cif формат
       setHeaderType(mappi::po::Handler::kPreOldHeader);

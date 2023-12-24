@@ -26,6 +26,7 @@ LIBS +=  -lprotobuf \
          -lmappi.po.formats \
          -lmappi.po.savenotify \
          -lmappi.po.images \
+         -lmappi.them.algs_calc \
          -lsatdump_core
 
 

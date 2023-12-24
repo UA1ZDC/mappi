@@ -83,19 +83,6 @@
          </spacer>
         </item>
         <item>
-         <widget class="QRadioButton" name="orbitaRbtn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Орбита</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QRadioButton" name="receiverRbtn">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -105,6 +92,19 @@
           </property>
           <property name="text">
            <string>Приемник</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="orbitaRbtn">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Орбита</string>
           </property>
          </widget>
         </item>

@@ -17,6 +17,7 @@
 #include <mappi/pretreatment/savenotify/savenotify.h>
 
 #include <qfile.h>
+#include <QtConcurrent>
 
 using namespace mappi;
 using namespace po;
@@ -41,12 +42,10 @@ void PretrService::init(Handler::HeaderType htype, CreateNotify::Type ntype)
   mappi::conf::Reception conf = mappi::inter::Settings::instance()->reception();
   
   _handler = new mappi::po::Handler;
-  _handler->setHeaderType(htype);
-  _handler->setPath(pbtools::toQString(conf.file_storage().root()));
-
+  _headerType = htype;
+  _handlerPath = MnCommon::varPath();
   _notify = CreateNotify::createServiceNotify(ntype);
 
-  
   connect(this, &PretrService::processSession, this, &PretrService::process);
   
 }
@@ -57,7 +56,6 @@ void PretrService::SessionCompleted(::google::protobuf::RpcController* ctrl, con
 {
   Q_UNUSED(ctrl);
 
-   
   schedule::Session session;
   schedule::Session::fromProto(req->session(), &session);
   debug_log << session.data().toString();
@@ -71,26 +69,42 @@ void PretrService::SessionCompleted(::google::protobuf::RpcController* ctrl, con
     .arg(session.data().fileName());
   debug_log << path;
 
-  emit processSession(path, -1);
+  emit processSession(session.data().satellite, path, -1);
 
   resp->set_result(true);
   done->Run();
 }
 
 
-void PretrService::process(const QString& filename, ulong sessionId)
+void PretrService::process(const QString& satName, const QString& fileName, ulong sessionId)
 {
   if (nullptr == _handler) return;
-
   _handler->clear();
-  _handler->setFile(filename); 
+  _handler->setHeaderType(_headerType);
+  _handler->setPath(_handlerPath);
+  _handler->setFile(fileName);
 
-  if (nullptr != _notify) {
-    _notify->setSource(sessionId);
+  if (_headerType == mappi::po::Handler::kNoHeader) {
+    _handler->setDateTime(QDateTime::currentDateTimeUtc());
+    _handler->setSite("Санкт-Петербург");
   }
-  
-  if (!_handler->process(_notify)) {
-    error_log << "Ошибка обрабоки данных";
-    return;
-  } 
+
+  _handler->setPipelineName(singleton::SatFormat::instance()->getPipelineFor(satName));
+  _handler->setPipelineParams("{}");
+  _handler->setPipelineFile(fileName);
+
+  _handler->setSatName(satName);
+
+  Satellite sat;
+  sat.readTLE(satName, mappi::po::singleton::SatFormat::instance()->getWeatherFilePath());
+  _handler->setTle(sat.getTLEParams());
+
+  QtConcurrent::run([=] {
+    Handler thread_handler = *_handler;
+    if (nullptr != _notify) {
+      ServiceSaveNotify thread_notify = *_notify;
+      thread_notify.setSource(sessionId);
+      thread_handler.process(&thread_notify);
+    }
+  });
 }

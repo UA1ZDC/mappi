@@ -36,9 +36,9 @@ void RgbAlg::setData(Color color_channel, const QVector<uchar> &data )
   float min = 0;
   float max = 255;
 
-  if(!pixels_.contains(color_channel)){
-      debug_log << QObject::tr("Цветовой канал %1 добавлен в хешмап pixels_").arg(static_cast<std::underlying_type<Color>::type>(color_channel));
-      pixels_.insert(color_channel, QVector<uchar>());
+  if(pixels_.contains(color_channel)){
+    warning_log << QObject::tr("Цветовой канал %1 уже существует хешмапе pixels_")
+                      .arg(static_cast<std::underlying_type<Color>::type>(color_channel));
   }
 
   switch (color_channel) {
@@ -78,10 +78,9 @@ void RgbAlg::setData(Color color_channel, const QVector<uchar> &data )
   }
   coef = 255. / pow(max - min, gamma);
 
-  for(uchar pix: data){
-    uchar pixel = coef * pow(pix - min,  gamma);
-    pixels_[color_channel].append(pixel);
-  }
+  pixels_[color_channel].resize(data.size());
+  for(int i = 0; i < data.size(); i++)
+    pixels_[color_channel][i] = static_cast<uchar>(coef * pow(data.at(i) - min,  gamma));
 }
 
 
@@ -95,9 +94,11 @@ bool RgbAlg::process()
       error_log << QObject::tr("Неверный конфигурационный файл.");
       return false;
   }
-  if(config_.vars_size() != chs.size()){
-    error_log << QObject::tr("Количество каналов в конфигурационном файле(%1) и выбранном потоке(%2) не совпадают.").arg(config_.vars_size()).arg(chs.size()) ;
-    return false;
+  for(const auto &config_val : qAsConst(config_.vars())){
+    if(!chs.contains(config_val.name())){
+      error_log << QObject::tr("В потоке не найден канал %1.").arg(QString::fromStdString(config_val.name())) << chs.keys() ;
+      return false;
+    }
   }
 
 //  normalize(0, 255);
@@ -122,55 +123,44 @@ bool RgbAlg::process()
   return !pixels_.isEmpty();
 }
 
-
-
-bool RgbAlg::saveImage(const QString& name, const QSharedPointer<Channel>& channel, QImage::Format )
+bool RgbAlg::saveImage(const QString& name, const QSharedPointer<Channel>& /*channel*/, QImage::Format /*format*/)
 {
-  const auto chs = channels();
-  if (chs.isEmpty()) {
-    debug_log << "empty";
-    return false;
-  }
-
-  bitmap_.clear();
-
   if (pixels_.size() < 3) {
     debug_log << "Невозможно сохранить изображение. Размер хешмапа pixels_:" << pixels_.size();
     return false;
   }
 
-  int size = pixels_.first().size();
-  if(0 == size){
-      debug_log << "Невозможно сохранить изображение. Размер первого канала равен 0:";
-      return false;
-  }
-  if(pixels_[Color::kBlue].size() != pixels_[Color::kGreen].size() || pixels_[Color::kGreen].size() != pixels_[Color::kRed].size()){
-      debug_log << QObject::tr("Невозможно сохранить изображение. Размеры каналов не совпадают (%1,%2,%3)")
-                                .arg(pixels_[Color::kBlue].size())
+  if(channel_size_ != pixels_[Color::kBlue].size() ||
+     channel_size_ != pixels_[Color::kGreen].size() ||
+     channel_size_ != pixels_[Color::kRed].size()){
+      debug_log << QObject::tr("Невозможно сохранить изображение. Размеры каналов не совпадают %1!=(%2,%3,%4)")
+                                .arg(channel_size_)
+                                .arg(pixels_[Color::kRed].size())
                                 .arg(pixels_[Color::kGreen].size())
-                                .arg(pixels_[Color::kRed].size());
+                                .arg(pixels_[Color::kBlue].size());
       return false;
   }
-  bitmap_.resize(size * 4);
+  debug_log << QObject::tr("Изображение: %1(%2x%3) -> %4")
+                  .arg(channel_size_)
+                  .arg(rows_)
+                  .arg(cols_)
+                  .arg(name);
+
+  bitmap_.clear();
+  bitmap_.resize(channel_size_ * 4);
   uchar alpha = 255;
-  for(int i = 0; i < size; ++i)
+  for(int i = 0; i < channel_size_; ++i)
   {
-    bitmap_[i * 4]     = pixels_[Color::kBlue ].at(i);
+    bitmap_[i * 4]     = pixels_[Color::kRed ].at(i);
     bitmap_[i * 4 + 1] = pixels_[Color::kGreen].at(i);
-    bitmap_[i * 4 + 2] = pixels_[Color::kRed  ].at(i);
+    bitmap_[i * 4 + 2] = pixels_[Color::kBlue  ].at(i);
     bitmap_[i * 4 + 3] = alpha;
   }
   QString imageFileName = name + ".png";
-  QImage im(bitmap_.data(), channel->columns(), channel->rows(), channel->columns()*4, QImage::Format_ARGB32);
+  QImage im(bitmap_.data(), columns(), rows(), columns()*4, QImage::Format_RGBA8888);
   bool ok = im.save(imageFileName, "PNG");
-  if (!ok) {
-    error_log << QObject::tr("Ошибка сохранения файла %1").arg(imageFileName);
-  }
+
+  if(ok) debug_log << QObject::tr("Сохранено изображение: %1(%2x%3)").arg(imageFileName).arg(rows()).arg(columns());
+  else error_log << QObject::tr("Ошибка сохранения изображения: %1(%2x%3)").arg(imageFileName).arg(rows()).arg(columns());
   return ok;
 }
-
-//bool RgbAlg::saveData(const QString& /*baseName*/)
-//{
-//  // Сохранить QMap data_ в каком-нибудь формате
-//  return true;
-//}

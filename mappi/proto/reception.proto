@@ -26,6 +26,8 @@ message ReceptionParam {
   required string name = 1;             //!< название спутника
   required SatType type = 2;            //!< тип орбиты
   repeated ReceiverParam receiver = 3;  //!< параметры приёмника, могут повторяться в зависимости от режима приёма
+  repeated string time = 4;
+  optional int32 duration = 5;
 }
 
 //! структура файлового хранилища
@@ -34,6 +36,9 @@ message FileStorage {
   required string tle = 2;      //!< директория с TLE файлами
   required string session = 3;  //!< директория для хранения "сырых" необработанных сеансов
   required string dump = 4;     //!< директория для хранения dump файлов, для демонстрационного режима
+  optional bool delete_input = 5 [default = true];//!< удалять файл приема после обработки
+  optional bool copy_input = 6 [default = false];//!< копировать файл приема после обработки
+  optional bool copy_cadu = 7 [default = false];//!< копировать файл приема после обработки
 }
 
 //! настройки приёма

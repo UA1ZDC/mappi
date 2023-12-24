@@ -30,7 +30,6 @@ LIBS +=  -ltapp                     \
          -lmappi.global             \
          -lmappi.proto              \
          -lmappi.settings           \
-         -lasmjit            \
          -lmappi.them.algs_calc
 
 #         -lmappi.fileservice.client

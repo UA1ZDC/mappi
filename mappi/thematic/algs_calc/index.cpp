@@ -61,7 +61,6 @@ bool Index::process()
 
   //palette_.clear();
   data_ = calc.getResult();
-  debug_log << "выполнено";
   return !data_.isEmpty();
 }
 

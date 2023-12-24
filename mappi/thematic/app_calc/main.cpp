@@ -10,6 +10,7 @@
 #include <commons/proc_read/daemoncontrol.h>
 
 #include <QCoreApplication>
+#include <QtConcurrent>
 
 #include <unistd.h>
 #include <getopt.h>
@@ -54,29 +55,54 @@ bool getThemConf(const QString& satname, QMap< std::string,conf::ThemType>* type
   return true;
 }
 
+bool processTasks(QSharedPointer<to::ThemAlg> &alg){
+  debug_log << "Запускаем" << alg->name() << "в потоке:" << QThread::currentThread();
 
+  if(!alg->loadData()) {
+    error_log << "Ошибка загрузки данных" << alg->name() << "в потоке:" << QThread::currentThread();
+    alg.clear();
+    return false;
+  }
+  if(!alg->process()) {
+    error_log << "Ошибка обработки" << alg->name() << "в потоке:" << QThread::currentThread();
+    alg.clear();
+    return false;
+  }
+  if(!alg->saveImg()) {
+    error_log << "Ошибка сохранения изображения" << alg->name() << "в потоке:" << QThread::currentThread();
+    alg.clear();
+    return false;
+  }
+  if(!alg->saveData()) {
+    error_log << "Ошибка сохранения данных" << alg->name() << "в потоке:" << QThread::currentThread();
+    alg.clear();
+    return false;
+  }
 
+  debug_log << "Завершен" << alg->name() << "в потоке:" << QThread::currentThread();
+  alg.clear();
+  return true;
+}
 
 void dataProcess(const QDateTime& start, const QString& satname, const QList<conf::InstrumentType>& )
 {
   QMap<std::string,conf::ThemType> typelist;
   bool ok = getThemConf(satname, &typelist);
   if (!ok) return;
-
   QSharedPointer<to::DataStore> store = QSharedPointer<to::DataStore>(new to::DataServiceStore());
+
+  QList<QSharedPointer<to::ThemAlg>> tasks;
   QMapIterator<std::string,conf::ThemType> i(typelist);
   while (i.hasNext()) {
     i.next();
-    auto alg = std::unique_ptr<to::ThemAlg>(to::singleton::ThemFormat::instance()->createThemAlg(i.value(),i.key(), store));
-    if (nullptr == alg) {
-      continue;
-    }
-    alg->init(start, satname);
-    alg->process( );
-    alg->saveImg( );
-    alg->saveData( );
+    auto alg = QSharedPointer<to::ThemAlg>(to::singleton::ThemFormat::instance()->createThemAlg(i.value(), i.key(), store));
+    if (alg.isNull()) continue;
+    if (!alg->init(start, satname)) continue;
+    tasks.append(alg);
   }
-
+  const int maxThreads = 1; //fix
+  QThreadPool::globalInstance()->setMaxThreadCount(maxThreads);
+  QtConcurrent::map(tasks, processTasks).waitForFinished();
 }
 
 void printHelp(const QString& progName)

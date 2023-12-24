@@ -17,8 +17,10 @@ SUBDIRS = \
   schedule\
   fsm/receiver.pro\ # TODO: Rename or make subproject
   schedule/appmain/app.pro\ # TODO: Rename or make subproject
+  thematic/thematiccalc\
   pretreatment/savenotify\
   pretreatment/images\
+  thematic/algs_calc/algs.pro\ # TODO: Rename or make subproject
   pretreatment/formats\
   pretreatment/handler\
   pretreatment/fileapp\
@@ -33,9 +35,6 @@ SUBDIRS = \
   services/sessiondataservice\
   services/fileservice\
   services/fileservice/fileserviceclient\
-  thematic/asmjit\
-  thematic/thematiccalc\
-  projection/satprojection.pro\ # TODO: Rename or make subproject
   ui/pos/satdocument.pro\ # TODO: Rename or make subproject
   ui/scheduletable\
   ui/antenna\
@@ -43,10 +42,12 @@ SUBDIRS = \
   ui/satlayer\
   ui/satelliteimage\
 # thematic/algs\
-  thematic/algs_calc/algs.pro\ # TODO: Rename or make subproject
 #  thematic/app\
   thematic/app_calc/app.pro\ # TODO: Rename or make subproject
   thematic/service\
+  thematic/import_app\
+  animate_app\
+  pretreatment/geostationary_app\
   ui/plugins/settings/base\
   ui/plugins/settings/receiver\
   ui/plugins/settings/schedule\
@@ -67,7 +68,8 @@ SUBDIRS = \
 # ftploader\
 # mmirz\
   meteo-app \ # subprojects
-  ui/mainwindow
+  ui/mainwindow\
+  device/grc
 
 meteo-app.file = ../meteo/commons/ui/mainwindow/appmain/mainwindow.pro
 cross-commons.subdir = ../cross-commons

@@ -79,7 +79,7 @@ void Image::applyFilters(const mappi::conf::ImageTransform& conf)
   }
   
   for (auto filter : conf.filter()) {
-    info_log << QObject::tr("Фильтрация. Тип %1").arg(filter);
+    info_log << QObject::tr("Фильтрация. Тип %1").arg(QString::fromStdString(conf::ImgFilters_Name(filter)));
     switch (filter) {
       case conf::kInvert:
         colors::invert(_imData.data(), _imData.size());

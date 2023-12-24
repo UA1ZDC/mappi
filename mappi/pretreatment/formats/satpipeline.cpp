@@ -1,5 +1,6 @@
 #include <mappi/pretreatment/formats/satpipeline.h>
 #include <QtConcurrent/QtConcurrent>
+#include <mappi/thematic/import_app/import.h>
 
 using namespace meteo;
 
@@ -30,21 +31,16 @@ namespace mappi::po {
   \param dtEnd  дата/время последней строки сканирования
 */
   void SatPipeline::setDateTime(const QDateTime &dtBeg, const QDateTime &dtEnd) {
-    if (nullptr == _sat) {
-      error_log << QObject::tr("Ошибка установки даты/времени. Кадр сформирован без создания спутника");
-      return;
-    }
-
     debug_log << "dtBeg" << dtBeg.toString("dd.MM.yy hh:mm:ss.zzz")
               << "dtEnd" << dtEnd.toString("dd.MM.yy hh:mm:ss.zzz");
 
-    _sat->setDateTime(dtBeg, dtEnd);
+    _sat.setDateTime(dtBeg, dtEnd);
 
     //определение положения начальной и конечной точек сканирования
     Coords::GeoCoord geoB;
     Coords::GeoCoord geoE;
-    if (!_sat->getPosition(_sat->timeFromTLE(dtBeg), &geoB) ||
-        !_sat->getPosition(_sat->timeFromTLE(dtEnd), &geoE)) {
+    if (!_sat.getPosition(_sat.timeFromTLE(dtBeg), &geoB) ||
+        !_sat.getPosition(_sat.timeFromTLE(dtEnd), &geoE)) {
       error_log << QObject::tr("Ошибка определения положения спутника");
     }
 
@@ -63,12 +59,7 @@ namespace mappi::po {
   \param tleFile файл с орбитальными параметрами
 */
   void SatPipeline::setTLE(const QString &satName, const QString &tleFile) {
-    if (nullptr == _sat) {
-      error_log << QObject::tr("Ошибка загрузки орбитальных параметров. Кадр сформирован без создания спутника");
-      return;
-    }
-
-    if (!_sat->readTLE(satName, tleFile)) {
+    if (!_sat.readTLE(satName, tleFile)) {
       error_log << QObject::tr("Ошибка чтения TLE %1. Спутник %2").arg(tleFile).arg(satName);
     }
   }
@@ -78,12 +69,7 @@ namespace mappi::po {
   \param tle орбитальные параметры
 */
   void SatPipeline::setTLE(const MnSat::TLEParams &tle) {
-    if (nullptr == _sat) {
-      error_log << QObject::tr("Ошибка загрузки орбитальных параметров. Кадр сформирован без создания спутника");
-      return;
-    }
-
-    _sat->setTLEParams(tle);
+    _sat.setTLEParams(tle);
   }
 
 //! Установка приборов, данные которых будут обрабатываться для текущего формата
@@ -124,19 +110,20 @@ namespace mappi::po {
         _params.input_level = "soft";
         break;
       case conf::kFrameLevel:
-        _params.input_level = _satDumpWrapper->pipelineHasCadu(_params.pipeline_name) ? "cadu" : "frames";
+        _params.input_level = _satDumpWrapper.pipelineHasCadu(_params.pipeline_name) ? "cadu" : "frames";
         break;
       case conf::kManchesterLevel:
       case conf::kManchesterInvertLevel:
       default:
-        _params.input_level = "baseline";
+        _params.input_level = "baseband";
     }
   }
 
   bool SatPipeline::run() {
-    auto pipeline = _satDumpWrapper->setupPipeline(_params);
-    if (!_satDumpWrapper->runPipeline(pipeline, _params)) return false;
-    _instrProducts = _satDumpWrapper->getProducts(_params.output_dir);
+    auto pipeline = _satDumpWrapper.setupPipeline(_params);
+    if (!_satDumpWrapper.runPipeline(pipeline, _params)) return false;
+    _instrProducts = _satDumpWrapper.getProducts(_params.output_dir);
+    _allComposites = _satDumpWrapper.getComposites(_params.output_dir);
 
     conf::InstrCollect _instrConf = singleton::SatFormat::instance()->getInstruments();
     debug_log << "Инструменты, полученные из конфига:";
@@ -165,12 +152,17 @@ namespace mappi::po {
     QDateTime dtEndAll;
     for (auto instrName: _instrCheckedTypes.keys()) {
       QDateTime dtStart = _instrProducts[instrName].time.first;
+      if(!dtStart.isValid()) continue;
       QDateTime dtEnd = _instrProducts[instrName].time.second;
+      if(!dtEnd.isValid()) continue;
+
       if (!dtStartAll.isValid() || dtStart < dtStartAll) dtStartAll = dtStart;
       if (!dtEndAll.isValid() || dtEnd > dtEndAll) dtEndAll = dtEnd;
     }
-    if (dtStartAll.isValid()) _sat->setDtStart(dtStartAll);
-    if (dtEndAll.isValid()) _sat->setDtEnd(dtEndAll);
+    if(dtEndAll == dtStartAll) dtEndAll = dtEndAll.addSecs(8*60);
+
+    if (dtStartAll.isValid()) _sat.setDtStart(dtStartAll);
+    if (dtEndAll.isValid()) _sat.setDtEnd(dtEndAll);
     return true;
   }
 
@@ -193,10 +185,56 @@ namespace mappi::po {
     }
   }
 
+  void SatPipeline::saveComposites(const meteo::global::StreamHeader &header) {
+    QString startStr = header.start.toString("yyyyMMddhhmm");
+    QString outputPath = MnCommon::varPath() + "/thematics/" + header.start.toString("yyyy-MM-dd/");
+    info_log << QObject::tr("Сохранение композитов для %1 по пути: %2").arg(header.satellite, outputPath);
+    for (auto composite: _allComposites) {
+      QString imgFullPath = composite.file_path;
+      QString instrName = composite.instrument_name;
+      QString compositeName = composite.composite_name;
+      QString thematicName = composite.thematic_name;
+      QString compositeNameStripped = compositeName;
+      compositeNameStripped.replace("/", "_").replace(" ", "_");
+      QString outputPNG = QString("%1/%2_%3_%4.png").arg(
+          outputPath,
+          startStr,
+          header.satellite,
+          compositeNameStripped
+      );
+
+      auto instrTypes = singleton::SatFormat::instance()->getInstrumentTypesBy(instrName);
+      if (instrTypes.size() <= 0) {
+        debug_log << QObject::tr("Инструмент %1 не существует в общем конфиге инструментов").arg(instrName);
+        continue;
+      }
+
+      QDir dir;
+      dir.mkpath(outputPNG.left(outputPNG.lastIndexOf("/")));
+      if(!dir.rename(imgFullPath, outputPNG)){
+        error_log << QObject::tr("Невозможно переместить файл: %1").arg(imgFullPath);
+        continue;
+      }
+
+      mappi::Import::GDALImporter importer;
+      importer.setName(thematicName);
+      importer.setSatellite(header.satellite);
+      importer.setStart(header.start);
+      importer.setStop(header.stop);
+      importer.setInstrument(instrTypes.at(0));
+      importer.setPath(imgFullPath);
+      if(!importer.saveData(outputPNG)){
+        error_log << QObject::tr("Невозможно сохранить в БД: %1").arg(imgFullPath);
+      }else{
+        info_log << QObject::tr("Сохранен композит для %1 по пути: %2").arg(thematicName, outputPNG);
+      }
+    }
+  }
+
   bool SatPipeline::save(const meteo::global::StreamHeader &header) {
     QString dateTemplate = "yyyyMMddhhmm";
-    QString startStr = _sat->dtStart().toString(dateTemplate);
-    QString endStr = _sat->dtEnd().toString(dateTemplate);
+    QString startStr = dtStart().toString(dateTemplate);
+    QString endStr = dtEnd().toString(dateTemplate);
 
     QDir dir;
     QString outputPath = QString("%1/%2_%3_%4").arg(_path, startStr, endStr, satName().remove(' '));
@@ -218,11 +256,11 @@ namespace mappi::po {
       for (auto imageProduct: _instrProducts[instrName].images) {
         QString imgFullPath = imageProduct.file_path;
 
-        QDateTime dtStart = _instrProducts[instrName].time.first;
-        QDateTime dtEnd = _instrProducts[instrName].time.second;
-        if (!dtStart.isValid() || !dtEnd.isValid()) {
-          dtStart = _sat->dtStart();
-          dtEnd = _sat->dtEnd();
+        QDateTime instrStart = _instrProducts[instrName].time.first;
+        QDateTime instrEnd = _instrProducts[instrName].time.second;
+        if (!instrStart.isValid() || !instrEnd.isValid()) {
+          instrStart = dtStart();
+          instrEnd = dtEnd();
         }
 
         if (!QFile::exists(imgFullPath)) {
@@ -230,22 +268,18 @@ namespace mappi::po {
           continue;
         }
         debug_log << QObject::tr("Получено изображение %1 (channel %2)").arg(instrName).arg(channel_num);
-        auto image_8bit = imageProduct.image.to8bits();
-        QVector<uchar> im_data(image_8bit.data(), image_8bit.data() + image_8bit.size());
         meteo::global::PoHeader pohead = createPoHeader<uint16_t>(
             header,
             imageProduct.image,
             instr_type,
             channel_num,
-            dtStart,
-            dtEnd
+            dtStart(),
+            dtEnd()
         );
-        Image im(im_data, pohead, _notify);
-
         QString filePath = QString("%1/%2_%3_%4_%5_%6").arg(
             outputPath,
-            dtStart.toString(dateTemplate),
-            dtEnd.toString(dateTemplate),
+            instrStart.toString(dateTemplate),
+            instrEnd.toString(dateTemplate),
             _satName,
             QString::number(instr_type).rightJustified(2, '0'),
             QString::number(channel_num).rightJustified(2, '0')
@@ -257,6 +291,9 @@ namespace mappi::po {
           }else{
             debug_log << QObject::tr("Сохранение PNG файла");
           }
+          auto image_8bit = imageProduct.image.to8bits();
+          QVector<uchar> im_data(image_8bit.data(), image_8bit.data() + image_8bit.size());
+          Image im(im_data, pohead, _notify);
           po::GeomCorrection geomCorr = createGeomCorrection(curInstr, pretrConfig, pohead, imtransform);
           im.save(filePath, imtransform, geomCorr);
         }else{
@@ -268,24 +305,25 @@ namespace mappi::po {
         }
 
         QString outputPO = filePath + ".po";
+        debug_log << QObject::tr("Сохранение PO - %1").arg(outputPO);
         meteo::global::PreHeader pre = createPreHeader(pohead);
         QVector<uint16_t> full_data(imageProduct.image.data(), imageProduct.image.data() + imageProduct.image.size());
         savePO(outputPO, pohead, pre, full_data);
         channel_num++;
       }
 
-      QString productJSON = QString("%1/%2/product.json").arg(_params.output_dir, instrName);
+      /*QString productJSON = QString("%1/%2/product.json").arg(_params.output_dir, instrName);
       if (QFile::exists(productJSON)) {
         debug_log << QObject::tr("product.json для %1 скопирован").arg(instrName);
         QFile::copy(productJSON, QString("%1/%2.json").arg(outputPath, instrName));
-      }
+      }*/
     }
 
-    QString datasetJSON = QString("%1/dataset.json").arg(_params.output_dir);
+    /*QString datasetJSON = QString("%1/dataset.json").arg(_params.output_dir);
     if (QFile::exists(datasetJSON)) {
       debug_log << QObject::tr("dataset.json скопирован");
       QFile::copy(datasetJSON, QString("%1/dataset.json").arg(outputPath));
-    }
+    }*/
 
     return true;
   }
@@ -304,6 +342,7 @@ namespace mappi::po {
     ds << data;
     file.close();
     if (nullptr != _notify) _notify->dataNotify(pohead, outputFilePath);
+    else error_log << QObject::tr("Неверный указатель на saveNotify");
     return true;
   }
 
@@ -372,7 +411,7 @@ namespace mappi::po {
       meteo::global::PoHeader pohead,
       mappi::conf::ImageTransform imtransform
   ) {
-    po::GeomCorrection geomCorr(*_sat);
+    po::GeomCorrection geomCorr(_sat);
     float gridStep = MnMath::deg2rad(pretrConfig.geostep());
     if (pretrConfig.geostep() < 0.005) {
       gridStep = MnMath::deg2rad(0.005);

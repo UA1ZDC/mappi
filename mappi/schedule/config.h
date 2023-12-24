@@ -2,7 +2,8 @@
 
 #include <commons/geobasis/coords.h>
 #include <mappi/proto/reception.pb.h>
-
+#include <QMap>
+#include <QStringList>
 
 namespace mappi {
 
@@ -26,7 +27,8 @@ public :
   QString tlePath;              // путь к телеграмме
   meteo::GeoPoint point;
   Coords::GeoCoord coord;       // координаты пункта приёма
-
+  QMap<QString, QStringList> geoTimes; //время приема геостационаров
+  QMap<QString, int> geoDuration; //продолжительность приема геостационаров
 private :
   bool isValid_;
 };

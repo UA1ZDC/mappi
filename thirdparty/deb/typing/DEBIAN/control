@@ -1,4 +1,4 @@
-Package: typing-extensions
+Package: python3-typing-extensions
 Version: 3.7.4.2
 Architecture: amd64
 Maintainer: АО «НПК «ВТ и СС» <info@htsts.ru>

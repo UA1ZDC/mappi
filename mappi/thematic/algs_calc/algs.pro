@@ -32,7 +32,6 @@ LIBS       +=   -ltdebug            \
                 -lmappi.global      \
                 -lmnmathtools       \
                 -lthematiccalc      \
-                -lasmjit            \
                 -lmappi.po.images   \
                 -lmappi.satprojection \
                 -lmappi.landmask      \

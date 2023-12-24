@@ -13,6 +13,7 @@ OTHER_FILES = reception.conf          \
               thematics.conf          \
               thematics_calc.conf     \
               palette.conf            \
+              composites.conf          \
               ftploader.conf
 
 METEO_ETC_FILES =  map.settings.conf            

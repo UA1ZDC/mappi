@@ -26,7 +26,7 @@ bool SatLegend::buildPixmap()
 
   if ( palette.isEmpty() ) { return false; }
 
-  QString header;
+  QString header = "Таблица метеорологических параметров: ";
   if ( meteo::kVertical == orient_ && 0 != vlabel_.size() ) {
     header += vlabel_;
   }
@@ -34,20 +34,20 @@ bool SatLegend::buildPixmap()
     header += hlabel_;
   }
   else {
-    //    if ( true == TMeteoDescriptor::instance()->isExist( l->descriptor() ) ) {
-    //      const meteodescr::Property& prop = TMeteoDescriptor::instance()->property( l->descriptor() );
-    //      if ( proto::kVertical == orient_ ) {
-    //        header += TMeteoDescriptor::instance()->name( l->descriptor() );
-    //        header += QString(", %1").arg( prop.unitsRu );
-    //      }
-    //      else {
-    //        header += QString::fromStdString( color.name() );
-    //        header += QString(", %1").arg( prop.unitsRu );
-    //      }
-    //    }
-    //    else {
-    //      header = QObject::tr("Неизв.");
-    //    }
+//    if ( true == TMeteoDescriptor::instance()->isExist( l->descriptor() ) ) {
+//      const meteodescr::Property& prop = TMeteoDescriptor::instance()->property( l->descriptor() );
+//      if ( proto::kVertical == orient_ ) {
+//        header += TMeteoDescriptor::instance()->name( l->descriptor() );
+//        header += QString(", %1").arg( prop.unitsRu );
+//      }
+//      else {
+//        header += QString::fromStdString( color.name() );
+//        header += QString(", %1").arg( prop.unitsRu );
+//      }
+//    }
+//    else {
+//      header = QObject::tr("Неизв.");
+//    }
   }
 
   QStringList labels;
@@ -56,7 +56,7 @@ bool SatLegend::buildPixmap()
     const TColorGrad& gr = palette[i];
     if(gr.title().isEmpty())
     {
-      labels.append( QString::number( gr.begval() ) );
+    labels.append( QString::number( gr.begval() ) );
     } else
     {
       labels.append(gr.title());
@@ -65,7 +65,7 @@ bool SatLegend::buildPixmap()
   }
   bool has_title = true;
   if(palette.last().title().isEmpty()){
-    labels.append( QString::number( palette.last().endval() ) );
+  labels.append( QString::number( palette.last().endval() ) );
     has_title = false;
   } else {
     labels.append(  palette.last().title() );
@@ -120,8 +120,8 @@ bool SatLegend::buildPixmap()
       height += maxlblheight;
     }
     if(!has_title) {
-      QRect rect = QRect( QPoint( 0, height ), QSize( maxlblwidth, maxlblheight ) );
-      painter.drawText( rect, Qt::AlignRight| Qt::AlignVCenter, labels.first() );
+    QRect rect = QRect( QPoint( 0, height ), QSize( maxlblwidth, maxlblheight ) );
+    painter.drawText( rect, Qt::AlignRight| Qt::AlignVCenter, labels.first() );
     }
     painter.end();
     label_->setImage(result);
@@ -152,7 +152,7 @@ bool SatLegend::buildPixmap()
       width += maxlblwidth;
     }
     if(!has_title) {
-      QRect rect = QRect( QPoint( width, header_rect.height() + maxlblheight + 4 ), QSize( maxlblwidth, maxlblheight ) );
+    QRect rect = QRect( QPoint( width, header_rect.height() + maxlblheight + 4 ), QSize( maxlblwidth, maxlblheight ) );
       painter.drawText( rect, alflag | Qt::AlignVCenter, labels.last() );
     }
     painter.end();

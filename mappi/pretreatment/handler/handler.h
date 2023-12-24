@@ -48,13 +48,14 @@ namespace mappi {
     class Handler {
     public:
       Handler(){};
-      ~Handler(){};
+      ~Handler();
 
       enum HeaderType {
-        kNoHeader      = 0, //!< нет заголовка
-	      kPreOldHeader  = 1, //!< сюжетовский заголовко в начале файла
-	      kPostOldHeader = 2, //!< сюжетовский заголовко в конце файла
-	      kMappiHeader   = 3  //!< наш заголовок
+        kNoHeader       = 0, //!< нет заголовка
+	      kPreOldHeader   = 1, //!< сюжетовский заголовко в начале файла
+	      kPostOldHeader  = 2, //!< сюжетовский заголовко в конце файла
+        kMappiHeader    = 3, //!< наш заголовок
+        kSeparateHeader = 4  //!< заголовок отдельно
       };
       
       const meteo::global::StreamHeader& header() { return _header; }
@@ -62,7 +63,9 @@ namespace mappi {
       void setFile(const QString& fileName)   { _fileName = fileName; }
       void setRecvMode(const conf::RateMode& mode)  { _mode = mode; }
       void setDataLevel(const mappi::conf::DataLevel level) { _level = level; }
-      void setPipeline(const QString &pipelineName) { _pipeline.setName(pipelineName); }
+      void setPipelineName(const QString &pipelineName) { _pipeline.setName(pipelineName); }
+      void setPipelineFile(const QString &fileName) { _pipeline.setFileName(fileName); }
+      void setPipelineParams(const QString &params) { _pipeline.setParams(params); }
       void setHeaderType(const HeaderType type)     { _headerType = type; }
       void setTle(const MnSat::TLEParams& tle) { _header.tle = tle; }
       void setSatName(const QString& satName) { _header.satellite = satName; }
@@ -71,6 +74,7 @@ namespace mappi {
       void setPath(const QString& path) { _path = path + "pretreatment"; }
       void setNameSuffix(const QString& suffix) { _suffix = suffix; }
       void setSwap(const conf::ByteSwap swap) { _swap = swap; }
+      void setDeleteInput(const bool del) { _deleteInput = del; }
 
       bool process(SaveNotify* notify);
       void parseStream(const QString &fileName, const QString &weatherFile, const QString &path, PretrOpt &opt);
@@ -88,6 +92,8 @@ namespace mappi {
       conf::ByteSwap _swap = conf::kNoSwap; //!< Порядок байтов(иногда в Raw16 четные и нечтные байты нужно поменять местами)
       QString _fileName;    //!< Файл с данными
       meteo::global::StreamHeader _header; //!< мета-информация потока данных
+      bool _deleteInput = true;
+      bool _useOnlyTimePipeline = false;
 
       HeaderType _headerType = kNoHeader; 
       mappi::conf::DataLevel _level = mappi::conf::kUnkLevel;

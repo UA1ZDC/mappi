@@ -17,23 +17,18 @@
 #include <qstring.h>
 #include <qdatetime.h>
 
-#include <qstring.h>
-
 namespace mappi::po {
   float rotateAngle(Coords::GeoCoord geoB, Coords::GeoCoord geoE);
 
   class SatPipeline {
   public:
     SatPipeline() {
-      _sat = new SatViewPoint;
-      _satDumpWrapper = singleton::SatDumpWrapper::instance();
-      _params.output_dir = MnCommon::randomPath(8, MnCommon::varPath() + "satdump_tmp/");
+      QString storage_root = mappi::po::singleton::SatFormat::instance()->getReceptionStoragePath();
+      _params.output_dir = MnCommon::randomPath(8, storage_root + "/satdump_tmp/");
     };
     ~SatPipeline(){
-      delete _sat;
-      _sat = nullptr;
       _notify = nullptr;
-      _satDumpWrapper = nullptr;
+      clear();
     };
 
     enum {
@@ -78,22 +73,17 @@ namespace mappi::po {
 
     QString path() { return _path; }
 
-    QDateTime dtStart() {
-      return nullptr != _sat ? _sat->dtStart() : QDateTime();
-    }
+    QDateTime dtStart() { return _sat.dtStart(); }
 
-    QDateTime dtEnd() {
-      return nullptr != _sat ? _sat->dtEnd() : QDateTime();
-    }
+    QDateTime dtEnd() { return _sat.dtEnd(); }
 
     SaveNotify* notify() { return _notify; }
-
-    SatViewPoint *satellite() { return _sat; }
 
     QString instruments(QString delimeter = ",", QString prefix = "");
 
     bool run();
     void filterOutInstrs();
+    void saveComposites(const meteo::global::StreamHeader &header);
     bool save(const meteo::global::StreamHeader &header);
     bool savePO(
         QString outputFilePath,
@@ -135,16 +125,17 @@ namespace mappi::po {
     bool createFrames(const QByteArray &data);
 
   private:
-    SatDump::Wrapper *_satDumpWrapper;
+    SatDump::Wrapper _satDumpWrapper = SatDump::Wrapper::getInstance();
     SatDump::Params _params;
     QString _satName;
     conf::RateMode _mode = conf::kUnkRate;
     conf::DataLevel _level = conf::kUnkLevel;
     float _rAngle = 0; //!< угол отклонения от севера траектории спутника
     QVector<mappi::conf::PretrInstr> _instrPretr;
-    SatViewPoint *_sat = nullptr; //!< класс для получения координат данных потока
+    SatViewPoint _sat; //!< класс для получения координат данных потока
     QString _path;   //!< Путь для сохранения данных
     QMap<QString, SatDump::Product> _instrProducts; //!< продукты, сохраненные SatDump
+    QVector<SatDump::ImageComposite> _allComposites; //!< композиты, сохраненные SatDump
     QMap<QString, conf::InstrumentType> _instrCheckedTypes; //!< типы для продуктов SatDump;
     SaveNotify* _notify = nullptr;
   };

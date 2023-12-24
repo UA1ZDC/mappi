@@ -8,7 +8,7 @@
 
 #include <mappi/proto/thematic.pb.h>
 #include <mappi/settings/mappisettings.h>
-#include <mappi/projection/pos.h>
+#include <mappi/ui/pos/pos.h>
 #include <mappi/landmask/landmask.h>
 
 #include <qmap.h>
@@ -47,12 +47,13 @@ namespace mappi {
       const std::string &name() const { return _them_name; }
       QString description() const { return QString::fromStdString(config_.description()); }
 
-      void clear() { _ch.clear(); }
+      void clear();
       int channel_size() {return channel_size_;}
       int rows()    { return rows_; }
       int columns() { return cols_; }
 
       bool init(const QDateTime& start, const QString& satname);
+      bool loadData();
 
       //обработка сеанса
       virtual bool process() =0;
@@ -69,17 +70,16 @@ namespace mappi {
       bool initProjection(const QSharedPointer<Channel>& channel);
       bool initLandMask();
       void getVars();
-      bool loadData();
       static bool isValid(const mappi::conf::ThematicProc& thematic);
       int getLandMask(  ){ return 1;}
       virtual bool readConfig(); //!< чтение конфиг файла
       int instrConfIndex(conf::InstrumentType instrtype);
 
 
-      const QMap<std::string , QSharedPointer<Channel>>& channels() { return _ch; }
+      const QMap<std::string, QSharedPointer<Channel>>& channels() { return _ch; }
       
       QSharedPointer<DataStore> store() { return  _ds; }
-      void clearChannels() { _ch.clear(); }
+      void clearChannels();
 
       void getSavePath(QString* path, QString* templName);
       

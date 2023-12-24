@@ -7,6 +7,7 @@
 #include <qthread.h>
 #include <qaction.h>
 #include <qmenu.h>
+#include <QTimeZone>
 
 #include <commons/textproto/tprototext.h>
 
@@ -166,13 +167,14 @@ bool ThematicListWidget::loadSessions()
   // }
 
   QDateTime dt = ui_->dateEdit->dateTime();
+  dt.setTimeZone(QTimeZone::systemTimeZone());
   QTime time(0,0,0);
   dt.setTime(time);
-  theme.set_date_start(dt.toString(Qt::ISODate).toStdString());
+  theme.set_date_start(dt.toUTC().toString(Qt::ISODate).toStdString());
   time.setHMS(23,59,59);
   dt.setTime(time);
-  theme.set_date_end(dt.toString(Qt::ISODate).toStdString());
-  //theme.set_format("bin");
+  theme.set_date_end(dt.toUTC().toString(Qt::ISODate).toStdString());
+  //theme.set_format("png");
 
   ::mappi::proto::ThematicList* resp;
 
@@ -385,7 +387,8 @@ void ThematicListWidget::slotAddLayer()
 
     // высоту сетки берём с запасом, т.к. на данном этапе она неизвестна
     if ( !grid->buildGridF2X(instr.samples(), instr.samples()*3) ) {
-      debug_log << tr("Не удалось построить сетку.");
+      error_log << tr("Не удалось построить сетку.");
+      debug_log << dts << dte << instr.scan_angle()*meteo::DEG2RAD << instr.samples() << instr.velocity();
     }
 
     layer->setProjection(grid);
@@ -568,21 +571,11 @@ bool ThematicListWidget::addImageObject(SatLayer* layer, const QString& name)
 
   GeoRastr* o = new GeoRastr(layer);
   o->setProtoData(params);
-//  if(0 == params.format().compare("bin") ){
-    if ( !o->load(fileName) ) {
-      error_log << QObject::tr("Ошибка загрузки файла '%1'").arg(fileName);
-      delete o;
-      return false;
-    }
-//  } else
-//  {
-//    fileName.replace(".to", ".png"); //TODO пока так
-//    if ( !o->loadImg(fileName) ) {
-//      error_log << QObject::tr("Ошибка загрузки файла '%1'").arg(fileName);
-//      delete o;
-//      return false;
-//    }
-//  }
+  if ( !o->load(fileName) ) {
+    error_log << QObject::tr("Ошибка загрузки файла '%1'").arg(fileName);
+    delete o;
+    return false;
+  }
 
   SatLegend* sl = new SatLegend(layer->document());
   Legend* l = layer->document()->setLegend(sl);

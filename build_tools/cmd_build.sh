@@ -38,10 +38,12 @@ do
 case $i in
     -h|--help)
         bs_mod_build_help
+        return 0 2>/dev/null
         exit 0
     ;;
     --short-help)
         bs_mod_build_short_help
+        return 0 2>/dev/null
         exit 0
     ;;
     --conf=*)
@@ -87,10 +89,12 @@ for PROJ in "${PRJ_LIST[@]}"
 do  
   if ! $SRC/build_tools/tool_build.sh $PROJ
   then
+    return $EXIT_FAILTURE 2>/dev/null
     exit $EXIT_FAILTURE
   fi
 done
 
+return $EXIT_SUCCESS 2>/dev/null
 exit $EXIT_SUCCESS
 ##############################################################################################################################################################################################################################################
 
@@ -114,7 +118,7 @@ if [[ 1 == $? ]]; then build_tests=1; fi
 
 if [[ 1 == $build_tests ]];
 then
-    for prj in ${projects[@]};
+    for prj in "${projects[@]}";
     do
         if [[ -d $SRC/$prj/test/ ]]; then
             if [[ 1 == `ls $SRC/$prj/test/ | grep ".pro" -c` ]]; then
@@ -133,7 +137,7 @@ if [[ 1 == $? ]]; then build_autotests=1; fi
 
 if [[ 1 == $build_autotests ]];
 then
-    for prj in ${projects[@]};
+    for prj in "${projects[@]}";
     do
         if [[ -d $SRC/$prj/autotest/ ]]; then
             if [[ 1 == `ls $SRC/$prj/autotest/ | grep ".pro" -c` ]]; then
@@ -148,6 +152,7 @@ fi
 f_check_dirs projects[@]
 if [[ 0 != $? ]]; then
     f_print_last_error
+    return 1 2>/dev/null
     exit 1
 fi
 
@@ -156,7 +161,10 @@ do
     # echo -e "${ct_green}${i}${c_def}"
 
     f_qmake_make_install $i
-    if [[ 0 != $? ]]; then exit 1; fi
+    if [[ 0 != $? ]]; then
+      return 1 2>/dev/null
+      exit 1
+    fi
 done
 
 

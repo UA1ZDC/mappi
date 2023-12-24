@@ -7,7 +7,7 @@
 
 #include <cross-commons/debug/tlog.h>
 
-#include <mappi/projection/pos.h>
+#include "pos.h"
 
 namespace meteo {
 namespace map {

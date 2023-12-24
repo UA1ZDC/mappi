@@ -9,11 +9,13 @@ INCLUDEPATH += $$(SRC)/satdump/src-core
 
 HEADERS     =   satformat.h \
                 satwrapper.h \
-                satpipeline.h
+                satpipeline.h \
+                $$(SRC)/mappi/thematic/import_app/import.h
 
 SOURCES     =   satformat.cpp \
                 satwrapper.cpp \
-                satpipeline.cpp
+                satpipeline.cpp \
+                $$(SRC)/mappi/thematic/import_app/import.cpp
 
 LIBS       +=   -lprotobuf \
                 -ltdebug \
@@ -24,6 +26,7 @@ LIBS       +=   -lprotobuf \
                 -lmnsatellite \
                 -lmappi.global\
                 -lmappi.po.images\
+                -lmappi.them.algs_calc \
                 -lsatdump_core
 
 

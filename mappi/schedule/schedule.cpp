@@ -34,10 +34,6 @@ bool Schedule::make(const Configuration& conf, const QDateTime& dt /*=*/)
     if (!satellite.readTLE(satName, conf.tlePath))
       continue ;
 
-    // геостационарные спутники
-    // if (satellite.satType == Settings::GEOSTAT_SAT)
-    //   continue ;
-
     time_t ts = satellite.timeFromTLE(dtStart) * 60; // в секундах
     time_t nextTs = ts;
 
@@ -111,6 +107,31 @@ void Schedule::resolvConfl(const Configuration& conf, bool saveConflResolByUser 
     if (!isOk && lhs->data().conflState == conf::kUnkState)
       lhs->data().conflState = conf::kNormalState;
   }
+}
+
+void Schedule::addGeo(const Configuration& conf){
+  Satellite satellite;
+  QDateTime currentDateTime = QDateTime::currentDateTime();
+  for(const QString& satName : conf.geoTimes.keys()) {
+    if (!satellite.readTLE(satName, conf.tlePath)) continue;
+    for(const QString recTime : conf.geoTimes[satName]){
+
+      QDateTime aosDateTime = currentDateTime;
+      aosDateTime.setTime(QTime::fromString(recTime, "HH:mm"));
+      QDateTime losDateTime = aosDateTime.addSecs(conf.geoDuration[satName]);
+
+      SessionData sessionData;
+      sessionData.satellite = satName;
+      sessionData.aos = aosDateTime;
+      sessionData.los = losDateTime;
+      sessionData.direction = static_cast<conf::SatDirection>(satellite.direction(sessionData.aos, sessionData.los));
+      sessionData.revol = satellite.revolNumber(sessionData.aos);
+      sessionData.elevatMax = 0.7; //changeme
+      data_.append(sessionData);
+    }
+  }
+
+  qSort(data_);
 }
 
 void Schedule::clear()

@@ -11,6 +11,7 @@
 
 #include <mappi/proto/thematic.pb.h>
 #include <mappi/proto/sessiondataservice.pb.h>
+#include <mappi/thematic/algs_calc/themalg.h>
 
 
 namespace mappi {
@@ -32,7 +33,7 @@ namespace mappi {
 //    QList<conf::ThemType> types;
      QMap< std::string,conf::ThemType> types;
   };
-  
+
 class ThematicHandler : public QObject
 {
   Q_OBJECT

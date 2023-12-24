@@ -24,8 +24,10 @@ DIRS=(
   mappi/schedule
   mappi/fsm
   mappi/schedule/appmain
+  mappi/thematic/thematiccalc
   mappi/pretreatment/savenotify
   mappi/pretreatment/images
+  mappi/thematic/algs_calc
   mappi/pretreatment/formats
   mappi/pretreatment/handler
   mappi/pretreatment/fileapp
@@ -43,9 +45,6 @@ DIRS=(
   mappi/services/fileservice
   mappi/services/fileservice/fileserviceclient
 
-  mappi/thematic/asmjit
-  mappi/thematic/thematiccalc
-  mappi/projection
   mappi/ui/pos
   mappi/ui/scheduletable
   mappi/ui/antenna
@@ -53,9 +52,11 @@ DIRS=(
   mappi/ui/satlayer
   mappi/ui/satelliteimage
 # mappi/thematic/algs
-  mappi/thematic/algs_calc
   mappi/thematic/app_calc
   mappi/thematic/service
+  mappi/thematic/import_app
+  mappi/animate_app
+  mappi/pretreatment/geostationary_app
 
   mappi/ui/plugins/settings/base
   mappi/ui/plugins/settings/receiver
@@ -76,6 +77,8 @@ DIRS=(
   mappi/ui/plugins/transparencyaction
 
   mappi/ui/mainwindow
+
+  mappi/device/grc
 
   # mappi/ftploader
   # mmirz

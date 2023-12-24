@@ -14,6 +14,7 @@ void Parameters::toProto(const Parameters& other, conf::ReceiverParam* param)
   param->set_freq(other.freq);
   param->set_gain(other.gain);
   param->set_rate(other.rate);
+  param->set_script(other.script.toStdString());
 
   // if (other.dump.isUsed) {
   conf::DumpParam* dumpParam = param->mutable_dump();
@@ -28,6 +29,7 @@ void Parameters::fromProto(const conf::ReceiverParam& other, Parameters* param)
   param->freq = other.freq();
   param->gain = other.gain();
   param->rate = other.rate();
+  param->script = other.script().c_str();
 
   if (other.has_dump()) {
     conf::DumpParam dumpParam = other.dump();
@@ -53,7 +55,7 @@ Parameters::~Parameters()
 
 bool Parameters::isDefault() const
 {
-  return ((freq == MIN_VALUE) && (gain == MIN_VALUE) && (rate == MIN_VALUE));
+  return ((freq == MIN_VALUE) && (gain == MIN_VALUE) && (rate == MIN_VALUE) && script == "sampleRecorder");
 }
 
 void Parameters::setDefault()
@@ -61,16 +63,18 @@ void Parameters::setDefault()
   freq = MIN_VALUE;
   gain = MIN_VALUE;
   rate = MIN_VALUE;
+  script = "sampleRecorder";
 
   dump.isUsed = false;
 }
 
 QString Parameters::toString() const
 {
-  return QString("receiver param(freq:%1, gain:\%2, rate:%3)")
+  return QString("receiver param(freq:%1, gain:%2, rate:%3, script:%4)")
     .arg(freq)
     .arg(gain)
-    .arg(rate);
+    .arg(rate)
+    .arg(script);
 }
 
 }

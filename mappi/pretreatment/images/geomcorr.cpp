@@ -113,7 +113,7 @@ void po::GeomCorrection::createCoords(uint rows, float gridStep, float scanAngle
     
   QVector<Coords::GeoCoord> points;
   
- _sat.countGrid(fovStep, vstep, scanAngle, points);
+  _sat.countGrid(fovStep, vstep, scanAngle, points);
 
   sortPoints(points, gridStep, min, max);
   

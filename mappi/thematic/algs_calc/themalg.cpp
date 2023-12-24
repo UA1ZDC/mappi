@@ -27,15 +27,31 @@ ThemAlg::ThemAlg(conf::ThemType type, const std::string &them_name, QSharedPoint
 {
   _themType = type;
   _them_name = them_name;
-  debug_log <<"выполняется " +  _them_name;
 }
 
 
 ThemAlg::~ThemAlg()
 {
-  _ch.clear();
+  debug_log << QObject::tr("Очистка памяти %1").arg(QString::fromStdString(name()));
+  clear();
   delete projection_;
   delete landmask_;
+}
+
+void ThemAlg::clear() {
+  clearChannels();
+  data_.clear();
+  bitmap_.clear();
+}
+
+void ThemAlg::clearChannels() {
+  QMapIterator<std::string, QSharedPointer<Channel>> iter(_ch);
+  while(iter.hasNext()){
+    iter.next();
+    Channel().swap(*iter.value());
+    _ch[iter.key()].clear();
+  }
+  _ch.clear();
 }
 
 bool ThemAlg::readConfig()
@@ -80,17 +96,12 @@ bool ThemAlg::readConfig()
 
 bool ThemAlg::init(const QDateTime& start, const QString& satname)
 {
-  bool ok = false;
+  if (!readConfig())  return false;
 
-  ok = readConfig();
-  if (!ok) {
-    return false;
-  }
   start_ = start;
   satname_ = satname;
   getVars();
-  ok = loadData();
-  return ok;
+  return true;
 }
 
 void ThemAlg::getVars()
@@ -116,50 +127,59 @@ bool ThemAlg::loadData() {
     return false;
   }
   QMap <std::string, QString> chfiles; //название канала, название файла
-  QMap<QString, QSharedPointer<Channel>> loaded_files;
+  QSet<QString> loaded_files;
   // QMap<std::string, QPair< std::string, mappi::conf::InstrumentType> > variables_; //имя переменной , <  прибор, название канала >
   QList <std::string> variables = variables_.keys();
   for (const auto &varname: qAsConst(variables)) {
     if (_ch.contains(varname)){
-      debug_log << QObject::tr("Файл для %1 уже открыт").arg(QString::fromStdString(varname));
+      debug_log << QObject::tr("Канал %1 уже существует в массиве").arg(QString::fromStdString(varname));
       continue;
     }
 
     QMultiMap<mappi::conf::InstrumentType, std::string> map = variables_.value(varname);
     for (const auto &instr: map.keys()) {
-      if (!_ds->getFiles(start_, satname_, instr, map.values(instr), &chfiles)){
-        debug_log << QObject::tr("Нет файлов для %1").arg(QString::fromStdString(InstrumentType_Name(instr)));
+      if (!_ds->getFiles(start_, satname_, instr, map.values(instr), &chfiles) || chfiles.keys().length() == 0){
+        debug_log << QObject::tr("Нет файлов для %1(%2)").arg(satname_).arg(QString::fromStdString(InstrumentType_Name(instr)));
         continue;
       }
 
       for (const auto &chname: chfiles.keys()) {
         if(loaded_files.contains(chfiles.value(chname))){
           debug_log << QObject::tr("Файл для %1 уже открыт").arg(QString::fromStdString(chname));
-          _ch.insert(varname, loaded_files.value(chfiles.value(chname)));
-        }else{
-          //! Чтение данных каналов из файлов
-          debug_log << QObject::tr("Чтение %1 из файла: %2")
-              .arg(QString::fromStdString(chname))
-              .arg(chfiles.value(chname));
-          QSharedPointer<Channel>sch = QSharedPointer<Channel>(new Channel());
-          sch->setInstrument(instr);
-          sch->setName(chname);
-          if (sch->readData(chfiles.value(chname))) {
-            debug_log << QObject::tr("Прочитан файл размером: %1x%2. Мин-Макс: %3,%4")
-                .arg(sch->columns())
-                .arg(sch->rows())
-                .arg(sch->min())
-                .arg(sch->max());
-            _ch.insert(varname, sch);
-            loaded_files.insert(chfiles.value(chname), sch);
-            if (channel_size() < sch->size()) {
-              channel_size_ = sch->size();
-              cols_ = sch->columns();
-              rows_ = sch->rows();
+          if(!_ch.contains(varname)){
+            for(const auto &sch: _ch.values()){
+              if(sch->name() == chname){
+                _ch.insert(varname, sch);
+                break;
+              }
             }
-          } else {
-            warning_log << "Ошибка чтения файла";
           }
+          continue;
+        }
+        //! Чтение данных каналов из файлов
+        debug_log << QObject::tr("Чтение %1(%2) из файла: %3")
+            .arg(QString::fromStdString(chname))
+            .arg(QString::fromStdString(varname))
+            .arg(chfiles.value(chname));
+        QSharedPointer <Channel> sch = QSharedPointer<Channel>(new Channel());
+        sch->setInstrument(instr);
+        sch->setName(chname);
+        if (sch->readData(chfiles.value(chname))) {
+          debug_log << QObject::tr("Прочитан файл %1 размером: %2x%3. Мин-Макс: %4,%5")
+              .arg(chfiles.value(chname))
+              .arg(sch->columns())
+              .arg(sch->rows())
+              .arg(sch->min())
+              .arg(sch->max());
+          _ch.insert(varname, sch);
+          loaded_files.insert(chfiles.value(chname));
+          if (channel_size() < sch->size()) {
+            channel_size_ = sch->size();
+            cols_ = sch->columns();
+            rows_ = sch->rows();
+          }
+        } else {
+          warning_log << "Ошибка чтения файла";
         }
       }
     }
@@ -168,7 +188,7 @@ bool ThemAlg::loadData() {
   // Устанавливаем значения масштабирования для каждого канала
   for (auto channel: _ch.values()) channel->scale(rows(), columns());
   debug_log << QObject::tr("Размер выходных изображений: %1x%2(%3)").arg(columns()).arg(rows()).arg(channel_size());
-  return true;
+  return columns() != 0 && rows() != 0;
 }
 
 void ThemAlg::fillPalette()
@@ -205,8 +225,7 @@ void ThemAlg::getSavePath(QString* path, QString* templName)
     return;
   }
   
-  *path = QString::fromStdString(::mappi::inter::Settings::instance()->reception().file_storage().root()) +
-          "/thematics/" + start_.toString("yyyy-MM-dd/");
+  *path = MnCommon::varPath() + "/thematics/" + start_.toString("yyyy-MM-dd/");
   QDir dir;
   dir.mkpath(*path);
   
@@ -230,7 +249,8 @@ bool ThemAlg::saveData()
 
 bool ThemAlg::saveData(const QString& baseName)
 {
-  if(( data_.isEmpty() && bitmap_.isEmpty() )|| channels().isEmpty()) {
+  if(( data_.isEmpty() && bitmap_.isEmpty() ) || channels().isEmpty()) {
+    error_log << QObject::tr("Ошибка сохранения данных: %1").arg(baseName);
     return false;
   }
   auto src = channels().first();
@@ -247,8 +267,11 @@ bool ThemAlg::saveData(const QString& baseName)
     typeext = ".to";
     format = "bin";
     filename = baseName + typeext;
+    debug_log << QObject::tr("Cохраняем массив _data в %1").arg(filename);
+
     QFile file(filename);
     if(!file.open(QIODevice::WriteOnly)) {
+      error_log << QObject::tr("Невозможно открыть файл: %1").arg(filename);
       return false;
     }
     meteo::global::PoHeader poh =  src->header();
@@ -262,8 +285,6 @@ bool ThemAlg::saveData(const QString& baseName)
       stream << data_.at(i);
     }
     file.close();
-  }else{
-      debug_log << QObject::tr("ThemAlg::saveData: Не сохраняем %1, массив _data пуст").arg(filename);
   }
 
   store()->save(src->header(), type() ,name(), filename, format);
@@ -274,33 +295,32 @@ bool ThemAlg::saveData(const QString& baseName)
 bool ThemAlg::saveImage(const QString& name, const QSharedPointer<Channel>& channel, QImage::Format format)
 {
   if(data_.isEmpty() ) {
+    error_log << QObject::tr("Ошибка сохранения изображения(нет данных): %1").arg(name);
     return false;
   }
   const ::mappi::conf::ImageTransform& transform = config_.image();
 
-  if(channel.isNull()|| false == transform.IsInitialized()) {
+  if(channel.isNull()) {
+    error_log << QObject::tr("Ошибка сохранения изображения(канал пуст): %1").arg(name);
+    return false;
+  }
+  if(!transform.IsInitialized()){
+    error_log << QObject::tr("Ошибка сохранения изображения(нет трансформации): %1").arg(name);
     return false;
   }
 
-  for(const auto &filter: qAsConst(transform.filter()))
-  {
-    if (::mappi::conf::kNormalize == filter)
-    {
-      normalizeImg(0, 255,channel->min(),channel->max());
-      break;
-    }
-  }
-
-
-
-  if(transform.geocoding()&&nullptr == projection_)
-  {
-    if( false == initProjection(channel))
-    {
-      error_log << QObject::tr("Проекция не создана");
-    }
-  }
   const meteo::global::PoHeader& header = channel->header();
+  if(transform.geocoding())
+  {
+    if(nullptr == projection_ && !initProjection(channel)) {
+      error_log << QObject::tr("Проекция не создана");
+      return false;
+    }
+  }else{
+    sat_view_.setDateTime(header.start, header.stop);
+    sat_view_.setTLEParams(header.tle);
+  }
+
   po::GeomCorrection geom(sat_view_);
   int instrindx = instrConfIndex(header.instr);
   if(0 <= instrindx )
@@ -310,24 +330,55 @@ bool ThemAlg::saveImage(const QString& name, const QSharedPointer<Channel>& chan
     geom.createCoords(channel->rows(), gridStep, MnMath::deg2rad(instr.scan_angle()), MnMath::deg2rad(instr.fovstep()));
   }
 
-  if(QImage::Format_RGB32 ==format || QImage::Format_ARGB32 == format){
+  if(QImage::Format_RGB32 == format || QImage::Format_ARGB32 == format || QImage::Format_RGBA8888 == format){
     size_t size = data_.size();
     bitmap_.resize(size * 4);
     for(size_t i = 0; i < size; i++)
     {
       const QColor& color = gradient_.color(data_[i]).rgba();
-      bitmap_[i * 4]     = color.blue();// pixels_[Color::kBlue  ].at(i);
+      bitmap_[i * 4]     = color.red();// pixels_[Color::kRed  ].at(i);
       bitmap_[i * 4 + 1] = color.green();//pixels_[Color::kGreen].at(i);
-      bitmap_[i * 4 + 2] = color.red();//pixels_[Color::kRed ].at(i);
+      bitmap_[i * 4 + 2] = color.blue();//pixels_[Color::kBlue ].at(i);
       bitmap_[i * 4 + 3] = color.alpha();//alpha;
+    }
+    format = QImage::Format_RGBA8888;
+  }else{
+    debug_log << QObject::tr("Применяем фильтры к изображению: %1.png").arg(name);
+    for(const auto &filter: qAsConst(transform.filter()))
+    {
+      switch(filter){
+        case conf::kInvert:
+          colors::invert(bitmap_.data(), bitmap_.size());
+          break;
+        case conf::kStretchHist:
+          colors::stretchHist(bitmap_.data(), bitmap_.size());
+          break;
+        case conf::kEqualization:
+          colors::equalization(bitmap_.data(), bitmap_.size(), columns(), rows());
+          break;
+        case conf::kFillEmpty:
+          //TODO
+          break;
+        case conf::kMedian3:
+          meteo::median3(rows(), columns(), &bitmap_);
+          break;
+        case conf::kMedian5:
+          meteo::median5(rows(), columns(), &bitmap_);
+          break;
+        case conf::kNagaoMacuyamaModify:
+          meteo::nagaoMacuyamaModify(rows(), columns(), &bitmap_);
+          break;
+        default: {}
+      }
     }
   }
 
   mappi::Image *img = new Image(bitmap_,header,nullptr );
   bool ok = img->save(name, transform, geom, format);
-
-  debug_log << "write" << name + ".png";
   delete img;
+
+  if(ok) debug_log << QObject::tr("Сохранено изображение: %1.png").arg(name);
+  else error_log << QObject::tr("Ошибка сохранения изображения: %1.png").arg(name);
   return ok;
 }
 
@@ -384,8 +435,8 @@ bool ThemAlg::initProjection(const QSharedPointer<Channel>& channel)
 {
   const meteo::global::PoHeader &header = channel->header();
   int instrindx = instrConfIndex(header.instr);
-  if(0 > instrindx )
-  {
+  if(instrindx < 0){
+    error_log << QObject::tr("Проекция не создана, инструмент не найден: %1").arg(header.instr);
     return false;
   }
   const ::mappi::conf::Instrument &instr = instruments_.instrs(instrindx);
@@ -394,13 +445,23 @@ bool ThemAlg::initProjection(const QSharedPointer<Channel>& channel)
     delete projection_;
     projection_ = nullptr;
   }
+
   projection_ = new meteo::POSproj;
-  //SatelliteBase sat;
   sat_view_.setDateTime(header.start, header.stop);
   sat_view_.setTLEParams(header.tle);
-  projection_->setSatellite(header.start, header.stop, &sat_view_,
+  projection_->setSatellite(header.start, header.stop, header.tle,
                             instr.scan_angle()*meteo::DEG2RAD,
                             instr.samples(), instr.velocity());
+
+  meteo::GeoVector corners(4);
+  if(!projection_->countGridCorners(corners.data())) {
+    error_log << error_log << QObject::tr("Невозможно определить координаты углов, будут ошибки");
+    return false;
+  }
+  debug_log << QObject::tr("Точки углов в начале сканирования %1 -> ")
+      .arg(header.start.toString("dd.MM.yy hh:mm:ss.zzz")) << corners.at(0) << corners.at(1);
+  debug_log << QObject::tr("Точки углов в конце сканирования %1 -> ")
+      .arg(header.stop.toString("dd.MM.yy hh:mm:ss.zzz")) << corners.at(2) << corners.at(3);
   return true;
 }
 
@@ -408,7 +469,7 @@ int ThemAlg::instrConfIndex(mappi::conf::InstrumentType instrtype)
 {
   int kol_instr = instruments_.instrs_size();
 
-  for(int i =0; i < kol_instr; ++i) {
+  for(int i = 0; i < kol_instr; ++i) {
     const ::mappi::conf::Instrument &instr = instruments_.instrs(i);
     if( instrtype == instr.type()){
       return i;
@@ -424,10 +485,10 @@ ThemAlg::pixelType ThemAlg::cloudTestWithLandMask(float a1, float a2, float t3,f
   const float thresholdSurface2 = them_thresholds_.cloudsurface2();
   const float thresholdTempr = them_thresholds_.cloudtempr();
 
-  pixelType pixtype =OPEN_LAND;
-  pixtype = openWaterTest(a1, a2,landmask);
+  pixelType pixtype = OPEN_LAND;
+  pixtype = openWaterTest(a1, a2, landmask);
   if(UNKNOW == pixtype){
-    pixtype = openSurfaceTest(a1,  ndv, landmask);
+    pixtype = openSurfaceTest(a1, ndv, landmask);
   }
   if(UNKNOW != pixtype){
     //проверяем на лед. уже точно не облака

@@ -35,6 +35,7 @@ bool Context::makeSchedule()
     return false;
   }
 
+  schedule.addGeo(conf);
   schedule.resolvConfl(conf, (0 < schedule.size()));
   saveSchedule();
 

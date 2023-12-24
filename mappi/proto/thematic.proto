@@ -47,7 +47,7 @@ enum ThemType {
   kTotalPrecip  = 34;    //!< Total Precipitable and Cloud Liquid Water AMSU
   kSeaIceConc   = 35;       //!<Сплоченность морского льда
   kCloudFull    = 36;      //!<Все, что нашли про облачность на изображении
-
+  kImport       = 99;
 }
 
 

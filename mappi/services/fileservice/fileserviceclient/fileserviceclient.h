@@ -12,7 +12,7 @@
 namespace mappi {
 
 struct FileServiceResponse {
-  explicit FileServiceResponse( const QString& fn = QString::null, int sz = 0, bool ok = false ) :
+  explicit FileServiceResponse( const QString& fn = QString(), int sz = 0, bool ok = false ) :
              filename(fn),
              size(sz),
              result(ok) {}

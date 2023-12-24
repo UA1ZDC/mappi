@@ -32,13 +32,15 @@ public :
   conf::RateMode mode;
   conf::ReceiverEngine engine;
   bool apch;
-  QString appName;
+  QString appPath;
   QHostAddress host;
   quint16 port;
 
   QString sessionDir;
   QString dumpDir;
   QString rawFile;
+
+  bool separateHeader;
 
 private :
   bool isValid_;

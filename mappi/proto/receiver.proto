@@ -22,6 +22,8 @@ message ReceiverParam {
   required float rate = 4;      //!< частота дискретизации
 
   optional DumpParam dump = 5;
+  optional string script = 6 [default = "sampleRecorder.py"];
+  optional string format = 7 [default = "f32"];
 }
 
 //! варианты реализации логики работы (движка) приёмника
@@ -38,7 +40,7 @@ message UdpEngineConf {
 
 //! настройки для движка дочернего процесса
 message SubEngineConf {
-  required string app = 1; // имя приложения
+  required string path = 1; // путь к папке с скриптами
 }
 
 //! настройки приёмника
@@ -50,6 +52,7 @@ message ReceiverConf {
   required ReceiverEngine engine = 4;   //!< текущий движок
   optional UdpEngineConf udp = 5;
   optional SubEngineConf sub_process = 6;
+  optional bool separate_header = 7 [default = true]; //!< метаданные отдельно
 }
 
 //! ответ приёмника

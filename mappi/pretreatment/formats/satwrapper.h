@@ -9,7 +9,6 @@
 #include <QVector>
 #include <QMap>
 
-#include <cross-commons/singleton/tsingleton.h>
 #include <sat-commons/satellite/satviewpoint.h>
 #include <mappi/global/streamheader.h>
 #include <mappi/pretreatment/formats/satformat.h>
@@ -37,7 +36,7 @@
 #include "nlohmann/json.hpp"
 #include "logger.h"
 
-#define DEFAULT_LOG_LEVEL slog::LOG_TRACE
+#define DEFAULT_LOG_LEVEL slog::LOG_INFO
 
 namespace mappi::po::SatDump {
   struct Params {
@@ -57,6 +56,13 @@ namespace mappi::po::SatDump {
     int offset_x = 0;
   };
 
+  struct ImageComposite {
+    QString file_path;
+    QString instrument_name;
+    QString composite_name;
+    QString thematic_name;
+  };
+
   struct Product{
     QVector<ImageProduct> images;
     QPair<QDateTime, QDateTime> time;
@@ -69,12 +75,20 @@ namespace mappi::po::SatDump {
 
   class Wrapper {
   public:
-    Wrapper(const QString weather_file,
+    static Wrapper & getInstance(){
+      static Wrapper wrapper;
+      return wrapper;
+    }
+
+    Wrapper(const QString& weather_file,
             const slog::LogLevel logLevel = DEFAULT_LOG_LEVEL,
-            const bool thematic_toggle = false
+            const bool thematic_enabled = true
     );
+
     Wrapper(){
-      Wrapper(singleton::SatFormat::instance()->getWeatherFilePath());
+      Wrapper(
+          singleton::SatFormat::instance()->getWeatherFilePath()
+      );
     }
 
     bool pipelineHasCadu(const QString pipeline_name);
@@ -84,13 +98,11 @@ namespace mappi::po::SatDump {
     bool runPipeline(satdump::Pipeline &pipeline_opt, const Params &params);
     QMap<QString, Product> getProducts(const QString &output_dir) const;
     QMap<QString, Product> getProductsFallback(const QString &output_dir) const;
+    QVector<ImageComposite> getComposites(const QString &output_dir) const;
 
     nlohmann::json readJSON(const QString &fileNameIn) const;
     nlohmann::json readCBOR(const QString &fileNameIn) const;
     void writeJSON(const nlohmann::json &contents, const QString &fileNameOut) const;
   };
-}
-namespace mappi::po::singleton {
-  typedef TSingleton<mappi::po::SatDump::Wrapper> SatDumpWrapper;
 }
 #endif //SATDUMP_WRAPPER_INIT_H

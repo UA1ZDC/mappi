@@ -6,7 +6,7 @@
 #include <commons/geobasis/geopoint.h>
 #include <commons/geobasis/projection.h>
 #include <meteo/commons/ui/map/document.h>
-#include <mappi/projection/pos.h>
+#include <mappi/ui/pos/pos.h>
 
 namespace meteo {
 
@@ -47,7 +47,13 @@ public:
   virtual bool X2F_one(const QPointF& screenCoord, GeoPoint* geoCoord) const;
 
   bool cartesian2X(const QVector<QPoint>& coords, const GeoPoint& mapCenter, int* ax, int* ay) const;
+  int samples() const {return samples_;};
+  int lines() const {return lines_;};
 
+  QVector<qint16> gridXValues() const { return xVec_; };
+  QVector<qint16> gridYValues() const { return yVec_; };
+  QVector<double> gridLatValues() const { return latVec_; };
+  QVector<double> gridLonValues() const { return lonVec_; };
 
 private:
   bool calcMinMax(int width, int height, GeoPoint* minPoint, GeoPoint* maxPoint) const;
@@ -75,6 +81,9 @@ private:
   double deltaAngle_ = 0;
 
   const int kMultX2F = 10000;
+
+  int samples_ = 0;
+  int lines_ = 0;
 
   int f2xHalfHeight = 0;
   int f2xHalfWidth  = 0;

@@ -108,6 +108,7 @@ private slots:
   void slotSetChannels(const QStringList& channels);
 
   void slotClickReceiverCtrl() const;
+  void slotClickGeoCtrl() const;
 
 private:
   Ui::SessionsWidget*         ui_;

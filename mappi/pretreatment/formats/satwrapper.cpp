@@ -1,15 +1,7 @@
 #include "satwrapper.h"
 
-namespace mappi {
-  namespace po {
-    namespace singleton {
-      template<> mappi::po::SatDump::Wrapper *SatDumpWrapper::_instance = 0;
-    }
-  }
-}
-
 namespace mappi::po::SatDump {
-  Wrapper::Wrapper(QString weather_file, slog::LogLevel logLevel, bool thematic_toggle) {
+  Wrapper::Wrapper(const QString& weather_file, slog::LogLevel logLevel, bool thematic_enabled) {
     initLogger();
     logger->set_level(logLevel);
 
@@ -17,7 +9,9 @@ namespace mappi::po::SatDump {
     satdump::tle_file_override = weather_file.toStdString();
     logger->set_level(slog::LOG_ERROR);
     satdump::initSatdump();
-    satdump::config::main_cfg["satdump_general"]["auto_process_products"]["value"] = thematic_toggle;
+    satdump::config::main_cfg["satdump_general"]["auto_process_products"]["value"] = thematic_enabled;
+    satdump::config::main_cfg["satdump_general"]["image_format"]["value"] = "png";
+    satdump::config::main_cfg["satdump_general"]["product_format"]["value"] = "png";
     logger->set_level(logLevel);
   }
 
@@ -56,12 +50,16 @@ namespace mappi::po::SatDump {
     std::string input_level = params.input_level.toStdString();
     std::string output_dir = params.output_dir.toStdString();
     nlohmann::json parameters = nlohmann::json::parse(params.additional_params.toStdString());
+    if(parameters["additional_params"].contains("samplerate"))
+      parameters["samplerate"] = parameters["additional_params"]["samplerate"];
+    if(parameters["additional_params"].contains("baseband_format"))
+      parameters["baseband_format"] = parameters["additional_params"]["baseband_format"];
 
     if (std::filesystem::exists(input_file) && !std::filesystem::is_directory(input_file)) {
       HeaderInfo hdr = try_parse_header(input_file);
       if (hdr.valid) {
-        parameters["samplerate"] = hdr.samplerate;
-        parameters["baseband_format"] = hdr.type;
+        if(!parameters.contains("samplerate")) parameters["samplerate"] = hdr.samplerate;
+        if(!parameters.contains("baseband_format")) parameters["baseband_format"] = hdr.type;
       }
     }
 
@@ -77,12 +75,19 @@ namespace mappi::po::SatDump {
   }
 
   QMap<QString, Product> Wrapper::getProducts(const QString &output_dir) const {
-    logger->trace("Getting products for" + output_dir.toStdString());
+    logger->debug("Getting products for " + output_dir.toStdString());
     if (!QFile::exists(output_dir + "/dataset.json")) return getProductsFallback(output_dir);
-
     satdump::ProductDataSet dataset;
     dataset.load(output_dir.toStdString() + "/dataset.json");
+
     QDateTime roughDateTime = QDateTime::fromMSecsSinceEpoch(dataset.timestamp * 1000);
+    const int daysRoughToNow = std::abs(roughDateTime.daysTo(QDateTime::currentDateTime()));
+    if(daysRoughToNow > 365){
+      logger->warn("roughDateTime(" + roughDateTime.toString("dd.MM.yyyy hh:mm").toStdString() + ") is too far (" +std::to_string(daysRoughToNow)+ " days). Taking only time");
+      QTime roughTime = roughDateTime.time();
+      roughDateTime = QDateTime::currentDateTime();
+      roughDateTime.setTime(roughTime);
+    }
 
     QMap<QString, Product> products;
     for (std::string pName : dataset.products_list) {
@@ -93,7 +98,7 @@ namespace mappi::po::SatDump {
       QVector<double> timestamps;
 
       //TODO: remove in production
-      writeJSON(readCBOR(productPath), QString("%1/%2/product.json").arg(output_dir, productName));
+      //writeJSON(readCBOR(productPath), QString("%1/%2/product.json").arg(output_dir, productName));
 
       int bit_depth = 16;
       nlohmann::ordered_json projection_cfg;
@@ -173,15 +178,16 @@ namespace mappi::po::SatDump {
         dtEnd = dtStart;
       }
 
-      const short MAX_DAYS_BETWEEN_DATES = 1;
-      if(std::abs(dtStart.daysTo(roughDateTime)) > MAX_DAYS_BETWEEN_DATES){
-        logger->warn("dtStart(" + dtStart.toString("dd.MM.yyyy hh:mm").toStdString() + ") is too far. Taking only time");
+      const int daysStartToRough = std::abs(dtStart.daysTo(roughDateTime));
+      if(daysStartToRough > 2){
+        logger->warn("dtStart(" + dtStart.toString("dd.MM.yyyy hh:mm").toStdString() + ") is too far (" +std::to_string(daysStartToRough)+ " days). Taking only time");
         QTime startTime = dtStart.time();
         dtStart = roughDateTime;
         dtStart.setTime(startTime);
       }
-      if(std::abs(dtEnd.daysTo(roughDateTime)) > MAX_DAYS_BETWEEN_DATES){
-        logger->warn("dtEnd(" + dtEnd.toString("dd.MM.yyyy hh:mm").toStdString() + ") is too far. Taking only time");
+      const int daysEndToRough = std::abs(dtEnd.daysTo(roughDateTime));
+      if(daysEndToRough > 2){
+        logger->warn("dtEnd(" + dtEnd.toString("dd.MM.yyyy hh:mm").toStdString() + ") is too far (" +std::to_string(daysEndToRough)+ " days). Taking only time");
         QTime endTime = dtEnd.time();
         dtEnd = roughDateTime;
         dtEnd.setTime(endTime);
@@ -189,7 +195,7 @@ namespace mappi::po::SatDump {
 
       QString dateString = dtStart.toString("dd.MM.yyyy hh:mm") + " -> " + dtEnd.toString("dd.MM.yyyy hh:mm");
       logger->debug("Product has " + std::to_string(images.size()) + " images. Date: " + dateString.toStdString());
-      Product curProduct = {images, qMakePair(dtStart, dtEnd), bit_depth, projection_cfg};
+      Product curProduct = {images, qMakePair(dtStart.toUTC(), dtEnd.toUTC()), bit_depth, projection_cfg};
       products.insert(productName, curProduct);
     }
     return products;
@@ -197,27 +203,93 @@ namespace mappi::po::SatDump {
 
   QMap<QString, Product> Wrapper::getProductsFallback(const QString &output_dir) const {
     logger->warn("Using fallback method to get products. Cannot find dataset information");
-    QDirIterator subdirs(output_dir, QDir::AllDirs, QDirIterator::NoIteratorFlags);
+    QDirIterator subdirs(output_dir, QDir::AllDirs | QDir::NoDotAndDotDot, QDirIterator::NoIteratorFlags);
     QMap<QString, Product> products;
 
     while (subdirs.hasNext()) {
-      QString productName = subdirs.next();
+      QString curPath = subdirs.next();
+      QFileInfo dirInfo = subdirs.fileInfo();
+      if(!dirInfo.isDir()) continue;
+      QString productName = dirInfo.fileName();
       QDirIterator png_files(QString("%1/%2").arg(output_dir, productName), {"*.png", "*.PNG"}, QDir::Files);
 
       QVector<ImageProduct> images;
       image::Image<uint16_t> png_image;
       while (png_files.hasNext()) {
         QString file = png_files.next();
-        QString filePath = QString("%1/%2/%3").arg(output_dir,productName, file);
-        png_image.load_png(filePath.toStdString());
-        images.push_back({ filePath, png_image });
+        png_image.load_png(file.toStdString());
+        images.push_back({ file, png_image });
       }
 
-      nlohmann::ordered_json projection_cfg;
       Product curProduct = {images, qMakePair(QDateTime(), QDateTime())};
       products.insert(productName, curProduct);
     }
     return products;
+  }
+
+  QVector<ImageComposite> Wrapper::getComposites(const QString &output_dir) const {
+    logger->debug("Getting composites for " + output_dir.toStdString());
+    QVector <ImageComposite> composites;
+
+    QString settingsPath = singleton::SatFormat::instance()->getCompositesSettingsFilePath();
+    if(!QFile::exists(settingsPath)){
+      logger->error("Composite config file does not exist!");
+      return composites;
+    }
+    std::vector<std::string> compositeNames;
+    std::vector<std::string> thematicNames;
+    auto compositeConfig = readJSON(settingsPath);
+    if (compositeConfig.contains("composites")) {
+      for (auto it = compositeConfig["composites"].begin(); it != compositeConfig["composites"].end(); ++it) {
+        std::string name_key = it.key();
+        std::string name_val = it.value();
+        compositeNames.push_back(static_cast<std::string>(name_key));
+        thematicNames.push_back(static_cast<std::string>(name_val));
+        logger->trace("Added " + compositeNames.back() + "=" + thematicNames.back());
+      }
+    }
+    for (size_t i = 0; i < compositeNames.size(); i++)
+      logger->debug("[" + compositeNames[i] + "] => " + thematicNames[i]);
+
+    if(compositeNames.size() == 0 || compositeNames.size() == 0){
+      logger->warn("Composite names are empty!");
+    }
+
+    if (!QFile::exists(output_dir + "/dataset.json")) return composites;
+    satdump::ProductDataSet dataset;
+    dataset.load(output_dir.toStdString() + "/dataset.json");
+
+    for (std::string pName: dataset.products_list) {
+      logger->debug("Checking composites in " + pName);
+      QString productName = QString::fromStdString(pName);
+      QString productPath = QString("%1/%2/product.cbor").arg(output_dir, productName);
+
+      satdump::Products products;
+      products.load(productPath.toStdString());
+
+      for (size_t i=0; i<compositeNames.size(); i++){
+        std::string initial_name = compositeNames[i];
+        std::replace(initial_name.begin(), initial_name.end(), ' ', '_');
+        std::replace(initial_name.begin(), initial_name.end(), '/', '_');
+        logger->trace("Checking for composite: %s!", initial_name.c_str());
+
+        QString filePath = QString("%1/%2/%3_%4.png").arg(output_dir, productName, QString::fromStdString(products.instrument_name), QString::fromStdString(initial_name));
+        if(!QFile::exists(filePath)) filePath = QString("%1/%2/%3_rgb_%4.png").arg(output_dir, productName, QString::fromStdString(products.instrument_name), QString::fromStdString(initial_name));
+        if(!QFile::exists(filePath)){
+          logger->trace("Composite not found: %s -> %s!", initial_name.c_str(), filePath.toStdString().c_str());
+          continue;
+        }
+
+        logger->debug("Found composite: %s!", initial_name.c_str());
+        composites.push_back({
+          filePath,
+          productName,
+          QString::fromStdString(compositeNames[i]),
+          QString::fromStdString(thematicNames[i])
+        });
+      }
+    }
+    return composites;
   }
 
   nlohmann::json Wrapper::readJSON(const QString &fileNameIn) const {

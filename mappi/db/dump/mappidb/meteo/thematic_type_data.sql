@@ -44,11 +44,12 @@ INSERT INTO meteo.thematic_type (id, name, title) VALUES (34, 'kTotalPrecip', '�
 INSERT INTO meteo.thematic_type (id, name, title) VALUES (24, 'kCloudType', 'Типы облаков');
 INSERT INTO meteo.thematic_type (id, name, title) VALUES (25, 'kCloudTempr', 'Температура верхней границы облаков');
 INSERT INTO meteo.thematic_type (id, name, title) VALUES (26, 'kCloudAlt', 'Высота верхней границы облаков');
-INSERT INTO meteo.thematic_type (id, name, title) VALUES (27, 'SeaTempr', 'Температура поверхности');
+INSERT INTO meteo.thematic_type (id, name, title) VALUES (27, 'SeaTempr', 'Температура поверхности суши-моря');
 INSERT INTO meteo.thematic_type (id, name, title) VALUES (32, 'kSnowBorder', 'Граница снежного покрова');
 INSERT INTO meteo.thematic_type (id, name, title) VALUES (33, 'kIceBorder', 'Граница льда на поверхности океана');
 INSERT INTO meteo.thematic_type (id, name, title) VALUES (36, 'kCloudFull', 'Вся облачность');
 INSERT INTO meteo.thematic_type (id, name, title) VALUES (35, 'kSeaIceConc', 'Сплоченность морского льда');
+INSERT INTO meteo.thematic_type (id, name, title) VALUES (99, 'kImport', 'Импорт из сторонних источнкиов');
 
 
 --

@@ -318,19 +318,19 @@ TopoCoord eciToTopo(const GeoCoord &recv, const EciPoint &target) {
 			vecRange.r,  // range, km
 			rate);  // rate,  km / sec
 
-#ifdef WANT_ATMOSPHERIC_CORRECTION
+
 	// Elevation correction for atmospheric refraction.
 	// Reference:  Astronomical Algorithms by Jean Meeus, pp. 101-104
 	// Note:  Correction is meaningless when apparent elevation is below horizon
-	topo.m_El += deg2rad((1.02 /
+       topo.el += deg2rad((1.02 /
 					tan(deg2rad(rad2deg(el) + 10.3 /
 									(rad2deg(el) + 5.11)))) / 60.0);
-	if (topo.m_El < 0.0)
-	topo.m_El = el;// Reset to true elevation
+	if (topo.el < 0.0)
+	topo.el = el;// Reset to true elevation
 
-	if (topo.m_El > (M_PI / 2))
-	topo.m_El = (M_PI / 2);
-#endif
+	if (topo.el > (M_PI / 2))
+	topo.el = (M_PI / 2);
+
 
 	return topo;
 }

@@ -38,6 +38,16 @@ bool SatFormat::readReceptionConf() {
   }
   _tleStoragePath = pbtools::toQString(_receptionConf.file_storage().tle());
   _receptionStoragePath = pbtools::toQString(_receptionConf.file_storage().root());
+  _deleteInputFile = _receptionConf.file_storage().delete_input();
+  _copyInputFile = _receptionConf.file_storage().copy_input();
+  _copyCaduFile = _receptionConf.file_storage().copy_cadu();
+
+  for (int idx = 0; idx < _receptionConf.satellite_size(); idx++) {
+    _satReception.insert(
+        QString::fromStdString(_receptionConf.satellite(idx).name()),
+        _receptionConf.satellite(idx)
+    );
+  }
   return true;
 }
 
@@ -105,9 +115,16 @@ QString SatFormat::getWeatherFilePath(const QDateTime dateTime) {
   return meteo::global::findWeatherFile(_tleStoragePath, dateTime);
 }
 
+QString SatFormat::getCompositesSettingsFilePath(){
+  return COMPCONF_FILE;
+}
 
 QString SatFormat::getPipelineFor(const QString &satName) {
   return _satPipelines.contains(satName) ? _satPipelines.value(satName) : "";
+}
+
+const mappi::conf::ReceptionParam SatFormat::getReceptionFor(const QString &satName) {
+  return _satReception.contains(satName) ? _satReception.value(satName) : mappi::conf::ReceptionParam();
 }
 
 QVector<conf::InstrumentType> SatFormat::getInstrumentTypesBy(const QString &instrName){
@@ -134,3 +151,13 @@ bool SatFormat::hasInstrument(const conf::InstrumentType &instr_type){
 conf::Instrument SatFormat::getInstrumentBy(const conf::InstrumentType &instr_type){
   return _instrConfCol.value(instr_type);
 }
+
+QString SatFormat::getSiteName() const {
+  return QString::fromStdString(_receptionConf.site().name().c_str());
+};
+meteo::GeoPoint SatFormat::getSiteCoord() const {
+  meteo::GeoPoint point;
+  meteo::sprinf::GeoPoint p = _receptionConf.site().point();
+  point.setPoint(p.lat_radian(), p.lon_radian(), p.height_meters());
+  return point;
+};

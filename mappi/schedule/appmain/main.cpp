@@ -29,6 +29,7 @@ int main(/*int argc, char* argv[]*/)
     return EXIT_FAILURE;
   }
 
+  schedule.addGeo(conf);
   schedule.resolvConfl(conf);
 
   debug_log << schedule.toString();

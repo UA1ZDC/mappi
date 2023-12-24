@@ -49,8 +49,8 @@ private:
   ::meteo::global::PoHeader header_;
 
   QPoint cnt_;
-
   int headerSize_ = -1;
+  QString toFileName_;
 };
 
 } // map

@@ -31,13 +31,15 @@ namespace mappi {
         mappi::conf::PretreatmentResponse* resp, ::google::protobuf::Closure* done);
 
     signals:
-      void processSession(const QString& filename, ulong sessionId);
+      void processSession(const QString& satName, const QString& fileName, ulong sessionId);
 							    
     public slots:
-      void process(const QString& filename, ulong sessionId);
+      void process(const QString& satName, const QString& fileName, ulong sessionId);
       
     private:
       Handler* _handler = nullptr;
+      QString _handlerPath;
+      mappi::po::Handler::HeaderType _headerType = mappi::po::Handler::kSeparateHeader;
       ServiceSaveNotify* _notify = nullptr;
     };
 

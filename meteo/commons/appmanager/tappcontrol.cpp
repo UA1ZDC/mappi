@@ -333,14 +333,16 @@ void Control::slotRestartProcess(int exitCode, QProcess::ExitStatus exitStatus){
 void Control::stopProc( QProcess* proc )
 {
   QMutexLocker lock(&mutex_);
-  info_log << tr("Остановка процесса [%1] %2").arg(proc->pid())
-                                                  .arg(pbtools::toQString(applications_.value(proc, Application()).path()));
+  info_log << tr("Остановка процесса [%1] %2")
+                  .arg(proc->pid())
+                  .arg(pbtools::toQString(applications_.value(proc, Application()).path()));
 
   // проверяем условия перезапуска
   if(applications_.contains(proc)){
     const RestartPolicy restartPolicy = applications_[proc].restart();
-    if(restartPolicy == RestartPolicy::UNLESS_STOPPED || restartPolicy == RestartPolicy::ON_FAILURE)
-      proc->disconnect(SLOT(SLOT(slotRestartProcess(int, QProcess::ExitStatus))));
+    if(restartPolicy == RestartPolicy::UNLESS_STOPPED || restartPolicy == RestartPolicy::ON_FAILURE){
+      proc->disconnect(nullptr, this, SLOT(slotRestartProcess(int, QProcess::ExitStatus)));
+    }
   }
 
   // завершаем все дочерние процессы

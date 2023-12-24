@@ -31,6 +31,11 @@ INSERT INTO meteo.satellite (id, name) VALUES (8, 'FENGYUN 3C');
 INSERT INTO meteo.satellite (id, name) VALUES (9, 'ELEKTRO-L 2');
 INSERT INTO meteo.satellite (id, name) VALUES (10, 'NOAA 20');
 INSERT INTO meteo.satellite (id, name) VALUES (11, 'TERRA');
+INSERT INTO meteo.satellite (id, name) VALUES (12, 'AQUA');
+INSERT INTO meteo.satellite (id, name) VALUES (13, 'NOAA 21 (JPSS-2)');
+INSERT INTO meteo.satellite (id, name) VALUES (14, 'SUOMI NPP');
+INSERT INTO meteo.satellite (id, name) VALUES (15, 'ELEKTRO-L 3');
+INSERT INTO meteo.satellite (id, name) VALUES (16, 'ARKTIKA-M 1');
 
 
 --

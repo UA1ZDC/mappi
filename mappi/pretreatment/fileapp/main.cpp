@@ -16,6 +16,8 @@
 #include <getopt.h>
 #include <qdatetime.h>
 #include <qcoreapplication.h>
+#include <QFile>
+#include <QFileInfo>
 
 using namespace mappi::po;
 
@@ -39,7 +41,7 @@ int main(int argc, char **argv) {
 
   int option_index = 0;
   QString weatherFileName = mappi::po::singleton::SatFormat::instance()->getWeatherFilePath();
-  QString path = mappi::po::singleton::SatFormat::instance()->getReceptionStoragePath();
+  QString path = MnCommon::varPath();
 
   QString optStr = QString("y:m:d:qeocifs:glw:p:h");
 
@@ -136,10 +138,10 @@ int main(int argc, char **argv) {
   }
 
   QString fileName = argv[optind];
-
   mappi::po::Handler handler;
   handler.parseStream(fileName, weatherFileName, path, opt);
   mappi::SaveNotify* notify = mappi::CreateNotify::createServiceNotify(mappi::CreateNotify::StubServiceNotify);
+  handler.setDeleteInput(false);
   if (!handler.process(notify)) {
     error_log << QObject::tr("Ошибка обработки данных");
   }

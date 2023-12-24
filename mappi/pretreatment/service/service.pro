@@ -35,6 +35,7 @@ LIBS = \
   -lmappi.po.savenotify\
   -lmappi.po.formats\
   -lmappi.po.images \
+  -lmappi.them.algs_calc \
   -lsatdump_core
 
 PROTOPATH += $(SRC)/meteo/commons/proto

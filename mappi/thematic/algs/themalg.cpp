@@ -156,8 +156,7 @@ void ThemAlg::getSavePath(const QDateTime& start, const QString& satname, QStrin
     return;
   }
   
-  *path = QString::fromStdString(::mappi::inter::Settings::instance()->reception().file_storage().root()) +
-    "/thematics/" + start.toString("yyyy-MM-dd/");
+  *path = MnCommon::varPath() + "/thematics/" + start.toString("yyyy-MM-dd/");
   QDir dir;
   dir.mkpath(*path);
   

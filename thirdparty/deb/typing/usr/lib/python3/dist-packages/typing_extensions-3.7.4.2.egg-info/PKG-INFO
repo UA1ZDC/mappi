@@ -1,5 +1,5 @@
 Metadata-Version: 1.1
-Name: typing-extensions
+Name: python3-typing-extensions
 Version: 3.7.4.2
 Summary: Backported and Experimental Type Hints for Python 3.5+
 Home-page: https://github.com/python/typing/blob/master/typing_extensions/README.rst

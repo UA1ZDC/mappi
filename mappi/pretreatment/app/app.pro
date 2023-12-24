@@ -22,6 +22,7 @@ LIBS +=  -lprotobuf \
          -lmeteo.dbi \
          -lmappi.po.savenotify\
          -lmappi.po.images \
+         -lmappi.them.algs_calc \
          -lsatdump_core
          
 

@@ -13,6 +13,7 @@
 //#include <mappi/global/streamheader.h>        //! readPoHeader();
 
 #include <mappi/thematic/algs_calc/dataservstore.h>
+#include <QtConcurrent>
 
 using namespace mappi;
 
@@ -81,28 +82,24 @@ void ThematicHandler::addTask(ThematicTask &task)
 
 void ThematicHandler::dataProcess(const ThematicTask& task)
 {
+  QString instrString;
+  for(const auto& instr : task.instruments)
+    instrString += QString::fromStdString(InstrumentType_Name(instr)) + ",";
+  if(!instrString.isEmpty()) instrString.chop(1);
+
   debug_log << QObject::tr("Обработка сеанса %1 %2").arg(task.satellite).arg(task.start.toString(Qt::ISODate));
 
+  QProcess p;
+  p.setProgram(QCoreApplication::applicationDirPath() + "/mappi.thematic.app");
+  p.setArguments({
+    "-n", task.satellite,
+    "-s", task.start.toString(Qt::ISODate),
+    "-i", instrString});
+  p.setProcessChannelMode(QProcess::ForwardedChannels);
+  p.start();
+  p.waitForStarted();
 
-  QMapIterator<std::string,conf::ThemType> i(task.types);
-  while (i.hasNext()) {
-    i.next();
-    auto alg = std::unique_ptr<to::ThemAlg>(to::singleton::ThemFormat::instance()->createThemAlg(i.value(),i.key(), _store));
-    if (nullptr == alg) {
-      continue;
-    }
-    try {
-        alg->init(task.start, task.satellite);
-        alg->process();
-        alg->saveImg();
-        alg->saveData();
-    } catch (const std::exception& ex) {
-        error_log << QObject::tr("Необработанное исключение %1").arg(ex.what());
-    }catch (...) {
-        error_log << QObject::tr("Необработанное исключение неизвестного типа");
-    }
-  }
-
+  p.waitForFinished(-1);
 
 //  for (auto type : task.types) {
 //    var(type);

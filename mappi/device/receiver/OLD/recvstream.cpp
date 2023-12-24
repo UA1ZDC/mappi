@@ -125,7 +125,7 @@ void RecvStream::stop(const mappi::conf::Site& site, QString* fileName, uint64_t
     *fileName = result_.fileName();
   }
   else {
-    *fileName = QString::null;
+    *fileName = QString();
     *dbId = 0;
     result_.close();
     result_.remove();
@@ -172,7 +172,7 @@ void RecvStream::stop(const mappi::conf::Site& site, QString* fileName, uint64_t
     *fileName = result_.fileName();
   }
   else {
-    *fileName = QString::null;
+    *fileName = QString();
     *dbId = 0;
     result_.close();
     result_.remove();
