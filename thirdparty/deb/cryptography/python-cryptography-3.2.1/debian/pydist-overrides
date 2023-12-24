@@ -1,0 +1,6 @@
+idna python-idna; PEP386
+pyasn1 python-pyasn1; PEP386
+six python-six; PEP386
+setuptools python-setuptools; PEP386
+enum34 python-enum34; PEP386
+ipaddress python-ipaddress; PEP386

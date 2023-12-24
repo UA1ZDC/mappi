@@ -1,0 +1,13 @@
+Set the libdlib soname to libdlib.so.18
+--- a/dlib/CMakeLists.txt
++++ b/dlib/CMakeLists.txt
+@@ -413,7 +413,8 @@
+        if(UNIX)
+            set_target_properties(dlib-shared PROPERTIES
+                                         OUTPUT_NAME dlib 
+-                                        VERSION ${VERSION})
++                                        VERSION ${VERSION}
++                                        SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR})
+            install(TARGETS dlib dlib-shared
+                    EXPORT dlib 
+                    RUNTIME DESTINATION bin # Windows (including cygwin) considers .dll to be runtime artifacts

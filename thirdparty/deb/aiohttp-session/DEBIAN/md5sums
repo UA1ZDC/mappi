@@ -1,0 +1,14 @@
+72e29cfbe368e6f782b45677d9a87ae2  usr/lib/python3/dist-packages/aiohttp_session-2.9.0.egg-info/PKG-INFO
+68b329da9893e34099c7d8ad5cb9c940  usr/lib/python3/dist-packages/aiohttp_session-2.9.0.egg-info/dependency_links.txt
+e1662449bbcc179420e78876f21bd0cf  usr/lib/python3/dist-packages/aiohttp_session-2.9.0.egg-info/requires.txt
+ca5bf2ce580753396369198ef8bfc982  usr/lib/python3/dist-packages/aiohttp_session-2.9.0.egg-info/top_level.txt
+0138288f364a28912df245cd38b1868e  usr/lib/python3/dist-packages/aiohttp_session/__init__.py
+060a88cb616b00dc987b0f98999e94a6  usr/lib/python3/dist-packages/aiohttp_session/cookie_storage.py
+d9890be9f1219ada33031e2d43bfe26e  usr/lib/python3/dist-packages/aiohttp_session/log.py
+af3cb8f09d7e97a6f60d54503a129963  usr/lib/python3/dist-packages/aiohttp_session/memcached_storage.py
+eceba0c55aed898c03185ba77b0f6bd0  usr/lib/python3/dist-packages/aiohttp_session/nacl_storage.py
+ae53b6bd9423780bf9a7d5cd52200e83  usr/lib/python3/dist-packages/aiohttp_session/redis_storage.py
+c8e9e9183a7aba020a84b862a6fd4f34  usr/share/doc/python3-aiohttp-session/README.rst
+ae44786de9253d84aceb2c83cbb54794  usr/share/doc/python3-aiohttp-session/changelog.Debian.gz
+aab16e70b541c3c27ac3a3e64c5aacd9  usr/share/doc/python3-aiohttp-session/changelog.gz
+a266ecf96b49ef003cfba2dd5418d42e  usr/share/doc/python3-aiohttp-session/copyright

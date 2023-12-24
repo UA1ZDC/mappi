@@ -1,0 +1,37 @@
+{
+  "opts": {
+    "recurse": true,
+    "template": "config/jsdoc/api/template"
+  },
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "includePattern": ".+\\.js$",
+    "excludePattern": "(^|\\/|\\\\)_",
+    "include": [
+      "src/ol"
+    ]
+  },
+  "plugins": [
+    "config/jsdoc/plugins/markdown.cjs",
+    "jsdoc-plugin-typescript",
+    "config/jsdoc/plugins/inline-options.cjs",
+    "config/jsdoc/plugins/events.cjs",
+    "config/jsdoc/plugins/observable.cjs",
+    "config/jsdoc/plugins/api.cjs",
+    "config/jsdoc/plugins/default-export.cjs"
+  ],
+  "typescript": {
+    "moduleRoot": "src"
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true,
+    "default": {
+      "outputSourceFiles": false
+    },
+    "applicationName": "OpenLayers"
+  },
+  "jsVersion": 180
+}

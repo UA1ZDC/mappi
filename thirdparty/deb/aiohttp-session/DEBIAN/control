@@ -1,0 +1,18 @@
+Package: python3-aiohttp-session
+Source: python-aiohttp-session
+Version: 2.9.0-2
+Architecture: all
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Installed-Size: 57
+Depends: python3-aiohttp, python3:any
+Section: python
+Priority: optional
+Homepage: https://github.com/aio-libs/aiohttp-session
+Description: provides sessions for aiohttp.web
+ The library allows us to store user-specific data into a session object.
+ .
+ The session object has a dict-like interface (operations like
+ session[key] = value, value = session[key] etc. are present).
+ .
+ Before processing the session in a web-handler, you have to register the
+ session middleware in aiohttp.web.Application.

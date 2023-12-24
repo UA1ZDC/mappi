@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+bindnow
+
+export PYBUILD_NAME=cryptography
+export PYBUILD_TEST_PYTEST=1
+export PYBUILD_TEST_ARGS={dir}/tests/
+export PYBUILD_BEFORE_TEST=cp -R {dir}/src/${PYBUILD_NAME}.egg-info {build_dir}
+export PYBUILD_AFTER_TEST=rm -r {build_dir}/.hypothesis
+
+%:
+	dh $@ --buildsystem=pybuild
+
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf cryptography/hazmat/bindings/__pycache__ \
+	       cryptography/hazmat/primitives/__pycache__
+
+
+ifeq ($(filter nodoc,$(DEB_BUILD_PROFILES)),)
+override_dh_auto_build:
+	dh_auto_build
+	PYTHONPATH=. \
+	   http_proxy='127.0.0.1:9' \
+	   https_proxy='127.0.0.1:9' \
+	   python3 -m sphinx -N -b html docs/ $(CURDIR)/.pybuild/docs/html/
+endif
+
+
+override_dh_python3:
+	dh_python3 --depends=cffi
+	sed -Ei -e '/^cffi/d' debian/python3-cryptography/usr/lib/python3*/dist-packages/cryptography*.egg-info/requires.txt
+	-rm debian/python3-cryptography/usr/lib/python?.?/dist-packages/cryptography/hazmat/bindings/_openssl.abi3.so \
+	   debian/python3-cryptography/usr/lib/python?.?/dist-packages/cryptography/hazmat/bindings/_padding.abi3.so
+	-rmdir -p debian/python3-cryptography/usr/lib/python?.?/dist-packages/cryptography/hazmat/bindings

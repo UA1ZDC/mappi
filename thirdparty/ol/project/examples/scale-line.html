@@ -1,0 +1,32 @@
+---
+layout: example.html
+title: Scale Line
+shortdesc: Example of a scale line.
+docs: >
+
+tags: "scale-line, openstreetmap"
+---
+<div id="map" class="map"></div>
+<select id="units">
+  <option value="degrees">degrees</option>
+  <option value="imperial">imperial inch</option>
+  <option value="us">us inch</option>
+  <option value="nautical">nautical mile</option>
+  <option value="metric" selected>metric</option>
+</select>
+
+<select id="type">
+  <option value="scaleline">ScaleLine</option>
+  <option value="scalebar">ScaleBar</option>
+</select>
+
+<select id="steps" style="display:none">
+  <option value=2>2 steps</option>
+  <option value=4 selected>4 steps</option>
+  <option value=6>6 steps</option>
+  <option value=8>8 steps</option>
+</select>
+
+<div id="showScaleTextDiv" style="display:none">
+  <label><input type="checkbox" id="showScaleText" checked> Show scale text</label>
+</div>

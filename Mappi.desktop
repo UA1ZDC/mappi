@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name[ru_RU]=Маппи
+Exec=/home/mappi/build_dir/etc/mappi/mainwindow.sh
+Name=Mappi

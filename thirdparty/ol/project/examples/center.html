@@ -1,0 +1,31 @@
+---
+layout: example.html
+title: Advanced View Positioning
+shortdesc: This example demonstrates how a map's view can be adjusted so a geometry or coordinate is positioned at a specific pixel location.
+docs: >
+  This example demonstrates how a map's view can be
+  adjusted so a geometry or coordinate is positioned at a specific
+  pixel location. The map above has top, right, bottom, and left
+  padding applied inside the viewport. The view's <code>fit</code> method
+  is used to fit a geometry in the view with the same padding. The
+  view's <code>centerOn</code> method is used to position a coordinate (Lausanne)
+  at a specific pixel location (the center of the black box).
+  <p>Use <code>Alt+Shift+Drag</code> to rotate the map.</p>
+  <p><b>Note:</b> This example does not shift the view center. So the zoom 
+  controls and rotating the map will still use the center of the viewport as anchor.
+  To shift the whole view based on a padding, use the `padding` option on the view,
+  as shown in the <a href="view-padding.html">view-padding.html</a> example.
+  </p>
+tags: "center, rotation, openstreetmap"
+---
+<div class="mapcontainer">
+  <div id="map" class="map"></div>
+  <div class="padding-top"></div>
+  <div class="padding-left"></div>
+  <div class="padding-right"></div>
+  <div class="padding-bottom"></div>
+  <div class="center"></div>
+</div>
+<button id="zoomtoswitzerland">Zoom to Switzerland</button> (best fit).<br/>
+<button id="zoomtolausanne">Zoom to Lausanne</button> (with min resolution),<br/>
+<button id="centerlausanne">Center on Lausanne</button>

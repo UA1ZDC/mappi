@@ -1,0 +1,6 @@
+version=4
+opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/dlib-$1\.tar\.gz/ \
+  https://github.com/davisking/dlib/tags .*/v?(\d\S*)\.tar\.gz debian debian/orig-tar.sh
+opts="component=models, filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/dlib-models-$1\.tar\.gz/" \
+  https://github.com/davisking/dlib-models/tags .*/v?(\d\S*)\.tar\.gz ignore debian/orig-models-tar.sh
+

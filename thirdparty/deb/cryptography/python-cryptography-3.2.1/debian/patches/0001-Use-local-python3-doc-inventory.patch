@@ -1,0 +1,24 @@
+From: Tristan Seligmann <mithrandi@debian.org>
+Date: Sat, 18 Jul 2020 13:24:59 +0200
+Subject: Use local python3-doc inventory.
+
+---
+ docs/conf.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/docs/conf.py b/docs/conf.py
+index 91bdf25..2e55ee9 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -184,7 +184,10 @@ texinfo_documents = [
+ ]
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {"https://docs.python.org/3": None}
++intersphinx_mapping = {
++    'py': ('https://docs.python.org/3/',
++           ('/usr/share/doc/python3-doc/html/objects.inv', None)),
++}
+ 
+ epub_theme = "epub"
+ 

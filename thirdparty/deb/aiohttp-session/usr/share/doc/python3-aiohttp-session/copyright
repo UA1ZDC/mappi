@@ -1,0 +1,17 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: aiohttp-session
+Source: https://github.com/aio-libs/aiohttp-session
+
+Files: *
+Copyright: 2015-2018 Andrew Svetlov <andrew.svetlov@gmail.com>
+           and aio-libs team
+License: Apache-2
+
+Files: debian/*
+Copyright: 2019 Martin <debacle@debian.org>
+License: Apache-2
+
+License: Apache-2
+ On Debian systems, the full text of the Apache
+ License version 2 can be found in the file
+ `/usr/share/common-licenses/Apache-2.0'.

@@ -1,0 +1,4 @@
+idna python3-idna; PEP386
+pyasn1 python3-pyasn1; PEP386
+six python3-six; PEP386
+setuptools python3-setuptools; PEP386

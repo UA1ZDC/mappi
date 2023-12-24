@@ -1,0 +1,13 @@
+[Unit]
+Description=Mappi application manager
+After=network.target
+
+[Service]
+Type=simple
+User=mappi
+ExecStart=/bin/bash /home/mappi/build_dir/etc/mappi/mappiserver.sh
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

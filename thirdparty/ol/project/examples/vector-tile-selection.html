@@ -1,0 +1,24 @@
+---
+layout: example.html
+title: Vector Tile Selection
+shortdesc: Select features from vector tiles.
+docs: >
+  <p>
+    Click a rendered vector-tile feature to highlight it on the map. Click on an empty spot (ocean) to reset the selection.
+    By changing the action type to "Multi Select" you can select multiple features at a time. With "Single Select on hover",
+    features will be higlighted when the pointer is above them.
+  </p><p>
+    The selection layer is configured with <code>renderMode: 'vector'</code> for better performance on frequent redraws,
+    i.e. when "Single Select on hover" is selected.
+  </p>
+tags: "vector tiles, selection"
+---
+<div id="map" class="map"></div>
+<form class="form-inline">
+  <label for="type">Action type &nbsp;</label>
+  <select id="type" class="form-control">
+    <option value="singleselect" selected>Single Select</option>
+    <option value="multiselect">Multi Select</option>
+    <option value="singleselect-hover">Single Select on hover</option>
+  </select>
+</form>

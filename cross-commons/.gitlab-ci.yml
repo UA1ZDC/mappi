@@ -1,0 +1,64 @@
+include:
+  - project: 'pak_group/codequalityci'
+    ref: main
+    file: '/.gitlab/CodeQuality.gitlab-ci.yml'
+
+variables:
+  GIT_STRATEGY: none
+  GIT_DEPTH: 5
+  GIT_SUBMODULE_STRATEGY: none
+  CORES: 6
+  SRC: $CI_PROJECT_DIR
+  PRJ_NAME: cross-commons
+
+stages:
+  - pull
+  - build
+  - analyze
+  - deploy
+
+pull:
+  stage: pull
+  variables:
+    GIT_STRATEGY: fetch
+  tags: [private]
+  when: always
+  script:
+    - mkdir -p $PRJ_NAME
+    - ls | grep -v $PRJ_NAME | xargs mv -t $PRJ_NAME
+    - mv $PRJ_NAME.pro $PRJ_NAME
+    - mv $PRJ_NAME/include.pro $SRC
+
+build:
+  stage: build
+  needs: [ pull ]
+  tags: [private]
+  when: always
+  timeout: 1 day
+  cache:
+    - key: ccache-dir
+      paths: [ccache]
+  script:
+    - cd $SRC/$PRJ_NAME
+    - export BUILD_DIR=~/build_dir
+    - export PACKAGE_DIR=$BUILD_DIR
+    - export PRJ_DIR=$BUILD_DIR
+    - export QT_VERSION=QT5
+    - export PATH="/usr/lib/ccache:$PATH" #Override all compiler binaries with ccache
+    - export CCACHE_BASEDIR="$SRC"
+    - export CCACHE_DIR="$SRC/ccache"
+    - export CCACHE_COMPILERCHECK=content #slightly slower than "mtime"
+    - ccache --zero-stats || true
+    - qmake -r $PRJ_NAME.pro
+    - make -s clean
+    - make -s # compilation runs two times but with ccache time is similar
+    - ccache --show-stats
+    - pvs-studio-analyzer trace -- make -s &>/dev/null || touch strace_out
+  after_script:
+    - echo "BUILD_JOB_ID=$CI_JOB_ID" >> job.env
+  artifacts:
+    reports:
+      dotenv: job.env
+    name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}
+    expire_in: 30 min
+    paths: [ strace_out ]

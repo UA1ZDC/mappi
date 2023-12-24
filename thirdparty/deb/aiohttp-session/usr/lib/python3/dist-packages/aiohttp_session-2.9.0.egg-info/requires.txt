@@ -1,0 +1,15 @@
+
+[aiomcache]
+aiomcache>=0.5.2
+
+[aioredis]
+aioredis>=1.0.0
+
+[pycrypto]
+cryptography
+
+[pynacl]
+pynacl
+
+[secure]
+cryptography

@@ -1,0 +1,13 @@
+Test-Command: for p in $(py3versions -s); do $p -m pytest tests/; done
+Depends:
+ python3-all,
+ python3-cffi,
+ python3-cryptography,
+ python3-cryptography-vectors (<< 3.2.2~),
+ python3-cryptography-vectors (>= 3.2.1~),
+ python3-hypothesis,
+ python3-iso8601,
+ python3-pretend,
+ python3-pyasn1-modules,
+ python3-pytest,
+ python3-tz,

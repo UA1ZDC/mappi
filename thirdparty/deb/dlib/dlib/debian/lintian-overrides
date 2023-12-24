@@ -1,0 +1,5 @@
+# upstream does not provide an easily available changelog
+no-upstream-changelog
+# symbols file are not recommended for C++ libraries
+# cf http://www.eyrie.org/~eagle/journal/2012-02/001.html
+no-symbols-control-file

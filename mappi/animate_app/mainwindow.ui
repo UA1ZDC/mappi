@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>548</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Анимация</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="btnAdd">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>460</y>
+      <width>110</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Добавить</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>491</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::SingleSelection</enum>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="rowCount">
+     <number>0</number>
+    </property>
+    <property name="columnCount">
+     <number>2</number>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
+    <column/>
+    <column/>
+   </widget>
+   <widget class="QPushButton" name="btnUp">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>460</y>
+      <width>110</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Наверх</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>10</y>
+      <width>500</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDown">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>460</y>
+      <width>110</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Вниз</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnDelete">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>460</y>
+      <width>110</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Удалить</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="actionAdd"/>
+    <addaction name="actionClear"/>
+    <addaction name="actionSave"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <action name="actionSave">
+   <property name="text">
+    <string>Сохранить</string>
+   </property>
+  </action>
+  <action name="actionAdd">
+   <property name="text">
+    <string>Открыть</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Очистить</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

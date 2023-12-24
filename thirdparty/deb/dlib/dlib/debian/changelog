@@ -1,0 +1,13 @@
+dlib (18.18-2) unstable; urgency=medium
+
+  * Add the static library to the dev package. Closes: #836676.
+  * Add Multi-Arch:foreign to libdlib-data control. Closes: #847990.
+  * Standards-Version: updated to 3.9.8
+
+ -- Séverin Lemaignan <severin@guakamole.org>  Mon, 12 Dec 2016 22:03:37 +0000
+
+dlib (18.18-1) unstable; urgency=low
+
+  * Initial release. (Closes: #800531)
+
+ -- Séverin Lemaignan <severin@guakamole.org>  Thu, 14 Jan 2016 09:54:28 +0000

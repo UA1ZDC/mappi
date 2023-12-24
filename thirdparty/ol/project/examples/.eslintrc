@@ -1,0 +1,28 @@
+{
+  "globals": {
+    "$": false,
+    "arc": false,
+    "common": false,
+    "chroma": false,
+    "createMapboxStreetsV6Style": false,
+    "d3": false,
+    "html2canvas": false,
+    "geojsonvt": false,
+    "gifler": false,
+    "GyroNorm": false,
+    "jspdf": false,
+    "jsts": false,
+    "JSZip": false,
+    "mapboxgl": false,
+    "monotoneChainConvexHull": false,
+    "NumpyLoader": false,
+    "saveAs": false,
+    "toastr": false,
+    "topojson": false,
+    "topolis": false,
+    "turf": false
+  },
+  "rules": {
+    "no-unused-vars": [2, {"varsIgnorePattern": "^map"}]
+  }
+}

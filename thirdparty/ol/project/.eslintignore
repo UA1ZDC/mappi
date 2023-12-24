@@ -1,0 +1,3 @@
+examples/resources/
+build/package/**/*webgl*
+config/jsdoc/api/template/static/scripts/

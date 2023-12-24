@@ -1,0 +1,48 @@
+Source: dlib
+Priority: optional
+Maintainer: Séverin Lemaignan <severin@guakamole.org>
+Build-Depends: debhelper (>= 9), bzip2, cmake, libpng-dev, libjpeg-dev, libsqlite3-dev, libblas-dev, liblapack-dev
+Standards-Version: 3.9.8
+Section: libs
+Homepage: http://dlib.net/
+Vcs-Git: https://github.com/severin-lemaignan/dlib-debian.git
+Vcs-Browser: https://github.com/severin-lemaignan/dlib-debian
+
+Package: libdlib-dev
+Section: libdevel
+Architecture: any
+Depends: libdlib18 (= ${binary:Version}), ${misc:Depends}
+Description: C++ toolkit for machine learning and computer vision - development
+ Dlib is a general purpose cross-platform open source software library written
+ in the C++ programming language. It now contains software components for
+ dealing with networking, threads, graphical interfaces, complex data
+ structures, linear algebra, statistical machine learning, image processing,
+ data mining, XML and text parsing, numerical optimization, Bayesian networks,
+ and numerous other tasks.
+ .
+ This package contains the development headers.
+
+Package: libdlib18
+Architecture: any
+Depends: libdlib-data, ${shlibs:Depends}, ${misc:Depends}
+Description: C++ toolkit for machine learning and computer vision - library
+ Dlib is a general purpose cross-platform open source software library written
+ in the C++ programming language. It now contains software components for
+ dealing with networking, threads, graphical interfaces, complex data
+ structures, linear algebra, statistical machine learning, image processing,
+ data mining, XML and text parsing, numerical optimization, Bayesian networks,
+ and numerous other tasks.
+
+Package: libdlib-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: C++ toolkit for machine learning and computer vision - models
+ Dlib is a general purpose cross-platform open source software library written
+ in the C++ programming language. It now contains software components for
+ dealing with networking, threads, graphical interfaces, complex data
+ structures, linear algebra, statistical machine learning, image processing,
+ data mining, XML and text parsing, numerical optimization, Bayesian networks,
+ and numerous other tasks.
+ .
+ This package contains the trained models provided with dlib.

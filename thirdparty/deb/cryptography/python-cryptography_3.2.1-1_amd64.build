@@ -1,0 +1,45 @@
+ dpkg-buildpackage -us -uc -ui -nc -d
+dpkg-buildpackage: инфо: пакет исходного кода python-cryptography
+dpkg-buildpackage: инфо: версия исходного кода 3.2.1-1
+dpkg-buildpackage: инфо: дистрибутив исходного кода unstable
+dpkg-buildpackage: инфо: исходный код изменён Tristan Seligmann <mithrandi@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: инфо: архитектура узла amd64
+ debian/rules binary
+dh binary --buildsystem=pybuild
+   dh_update_autotools_config -O--buildsystem=pybuild
+   dh_autoreconf -O--buildsystem=pybuild
+   dh_auto_configure -O--buildsystem=pybuild
+I: pybuild base:217: python3.7 setup.py config 
+
+Note: Bypassing https://pypi.org/simple/cffi/ (disallowed host; see http://bit.ly/2hrImnY for details).
+
+Couldn't find index page for 'cffi' (maybe misspelled?)
+
+Note: Bypassing https://pypi.org/simple/ (disallowed host; see http://bit.ly/2hrImnY for details).
+
+No local packages or working download links found for cffi!=1.11.3,>=1.8
+Traceback (most recent call last):
+  File "setup.py", line 122, in <module>
+    "src/_cffi_src/build_padding.py:ffi",
+  File "/usr/lib/python3/dist-packages/setuptools/__init__.py", line 144, in setup
+    _install_setup_requires(attrs)
+  File "/usr/lib/python3/dist-packages/setuptools/__init__.py", line 139, in _install_setup_requires
+    dist.fetch_build_eggs(dist.setup_requires)
+  File "/usr/lib/python3/dist-packages/setuptools/dist.py", line 724, in fetch_build_eggs
+    replace_conflicting=True,
+  File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 782, in resolve
+    replace_conflicting=replace_conflicting
+  File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 1065, in best_match
+    return self.obtain(req, installer)
+  File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 1077, in obtain
+    return installer(requirement)
+  File "/usr/lib/python3/dist-packages/setuptools/dist.py", line 791, in fetch_build_egg
+    return cmd.easy_install(req)
+  File "/usr/lib/python3/dist-packages/setuptools/command/easy_install.py", line 698, in easy_install
+    raise DistutilsError(msg)
+distutils.errors.DistutilsError: Could not find suitable distribution for Requirement.parse('cffi!=1.11.3,>=1.8')
+E: pybuild pybuild:341: configure: plugin distutils failed with: exit code=1: python3.7 setup.py config 
+dh_auto_configure: pybuild --configure -i python{version} -p 3.7 returned exit code 13
+make: *** [debian/rules:12: binary] Ошибка 25
+dpkg-buildpackage: ошибка: debian/rules binary subprocess returned exit status 2
